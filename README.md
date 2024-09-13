@@ -1,4 +1,4 @@
-# *Project Diverge*
+# *Project Diverge -- A Neurodivergent Experience in Gaming*
 
 ---
 
