@@ -48,3 +48,5 @@ Wake up as _____ and navigate through their day. In a world that isn't built for
 ![Stardew Valley](https://media.wired.com/photos/65de6b587f1f5ec3f36a117e/191:100/w_1280,c_limit/Stardew-Valley-Update-Announcement-Gear-Multiplayer_Screenshot2.jpg)
 
 ---
+
+https://miro.com/app/board/uXjVKjSALNs=/
