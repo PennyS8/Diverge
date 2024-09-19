@@ -49,4 +49,4 @@ Wake up as _____ and navigate through their day. In a world that isn't built for
 
 ---
 
-https://miro.com/app/board/uXjVKjSALNs=/
+[Follow our development on Miro!](https://miro.com/app/board/uXjVKjSALNs=/)
