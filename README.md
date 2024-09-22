@@ -51,7 +51,10 @@ Wake up as _____ and navigate through their day. In a world that isn't built for
 
 # Additional links to documents and resources
 [Project Diverge Charter](https://upedu-my.sharepoint.com/:w:/g/personal/arcangel25_up_edu/EQK8oChk_VZAvYkaynXwq24BFKp0HozL88BJpmMgeKO5mA?e=bSQe0Y)
+
 [Game Design Document & Scope Document](https://upedu-my.sharepoint.com/:w:/g/personal/arcangel25_up_edu/ET_RwSuyRXtMr4CkyQnHkXIBai8A0xVu-loIWUwPx-Fl1Q?e=jw2g41)
+
 [Follow our development on Miro!](https://miro.com/app/board/uXjVKjSALNs=/)
+
 [See what is in progress right now on Trello!](https://trello.com/invite/b/66d4a6ca39e640fe1c7f6c5e/ATTIf1882a0775bf8acf424c84aa974d5da81A5455BD/milestones)
 
