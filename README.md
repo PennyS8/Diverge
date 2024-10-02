@@ -50,6 +50,8 @@ Wake up as _____ and navigate through their day. In a world that isn't built for
 ---
 
 # Additional links to documents and resources
+[Google Drive](https://drive.google.com/drive/folders/1u6y9qC0jRplMP7nWjS4rD_QeiFhS8QjN?usp=drive_link)
+
 [Project Diverge Charter](https://upedu-my.sharepoint.com/:w:/g/personal/arcangel25_up_edu/EQK8oChk_VZAvYkaynXwq24BFKp0HozL88BJpmMgeKO5mA?e=bSQe0Y)
 
 [Game Design Document & Scope Document](https://upedu-my.sharepoint.com/:w:/g/personal/arcangel25_up_edu/ET_RwSuyRXtMr4CkyQnHkXIBai8A0xVu-loIWUwPx-Fl1Q?e=jw2g41)
