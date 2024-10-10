@@ -1,5 +1,7 @@
 res://scenes/characters/player/player.tscn
 res://scenes/characters/player/attack.gd
 res://scenes/characters/player/can_attack.gd
+res://addons/xsm/examples/platformer/platformer_example.tscn
 res://scripts/characters/player/xsm/can_dash.gd
-res://scripts/characters/player/xsm/idle.gd
+res://scripts/characters/player/xsm/walk.gd
+res://scripts/characters/player/xsm/dash.gd

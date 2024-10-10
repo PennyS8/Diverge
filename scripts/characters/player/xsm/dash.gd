@@ -13,6 +13,7 @@ var distance_travelled := 0
 
 
 func _on_enter(_args):
+	change_state("NoAttack")
 	start_location = target.global_position
 	#TODO: when implementing controller, override this with analog stick direction instead of mouse pos
 	dash_direction = start_location.direction_to(get_viewport().get_mouse_position()).normalized()

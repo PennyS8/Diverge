@@ -20,3 +20,9 @@ func _on_update(_delta):
 		change_state("Idle")
 		
 	target.velocity = lerp(target.velocity, target.dir * ground_speed, acceleration * _delta)
+
+# when another state (such as attack or dash) transitions us out of this,
+# set our velocity to zero so we don't get weird sliding
+# if we have like, an ice level or slippery path, we prob wanna change this
+func _on_exit(_args):
+	target.velocity = Vector2.ZERO
