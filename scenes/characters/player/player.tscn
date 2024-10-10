@@ -1,0 +1,69 @@
+[gd_scene load_steps=8 format=3 uid="uid://cyh345au8bpro"]
+
+[ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
+[ext_resource type="Script" path="res://addons/xsm/state.gd" id="1_q2vpm"]
+[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/velocity_component_2d.gd" id="2_yqnm5"]
+[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="3_c6noe"]
+[ext_resource type="Script" path="res://addons/basecomponents/Components/health_component.gd" id="4_biapr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54ogc"]
+size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uqogs"]
+size = Vector2(16, 32)
+
+[node name="Player" type="CharacterBody2D"]
+
+[node name="PlayerFSM" type="Node" parent="."]
+editor_description = "Is a state region - we can be in multiple states underneath this node (i.e., both CanDash & CanAttack can both be active states)"
+script = ExtResource("1_mpvpn")
+history_size = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("..")
+timed = false
+next_state = NodePath("")
+
+[node name="CanDash" type="Node" parent="PlayerFSM"]
+script = ExtResource("1_q2vpm")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="CanAttack" type="Node" parent="PlayerFSM"]
+script = ExtResource("1_q2vpm")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="Movement" type="Node" parent="PlayerFSM"]
+script = ExtResource("1_q2vpm")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="BodyShape" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_54ogc")
+
+[node name="RectShape" type="Polygon2D" parent="."]
+color = Color(0.57, 0, 0, 1)
+polygon = PackedVector2Array(-8, -16, 8, -16, 8, 16, -8, 16)
+
+[node name="VelocityComponent2D" type="Node2D" parent="."]
+script = ExtResource("2_yqnm5")
+
+[node name="HurtBoxComponent2D" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+script = ExtResource("3_c6noe")
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent2D"]
+shape = SubResource("RectangleShape2D_uqogs")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("4_biapr")
