@@ -9,3 +9,4 @@ func _on_update(_delta):
 	if Input.is_action_just_pressed("ui_accept"):
 		change_state("Dash")
 		change_state("DashTimer")
+		change_state("NoAttack")
