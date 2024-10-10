@@ -137,7 +137,7 @@ var target_path: NodePath
 enum {INACTIVE, ENTERING, ACTIVE, EXITING}
 var status := INACTIVE
 var state_root: State = null
-var target: Node = null
+var target: CharacterBody2D = null
 # You can change the above line by the following one to be able to use
 # autocompletion on target in any State (could be any type instead of
 # KinematicBody2D of course, such as your Player ;) )!

@@ -1066,7 +1066,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../RegionDashPossible")
+next_state = NodePath("")
 
 [node name="NoJump" type="Node" parent="Player/XSM/RegionJumpPossible"]
 script = ExtResource("3")
@@ -1074,7 +1074,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../CoyoteTime")
+next_state = NodePath("")
 
 [node name="CoyoteTime" type="Node" parent="Player/XSM/RegionJumpPossible"]
 script = ExtResource("20")
@@ -1084,7 +1084,7 @@ target_path = NodePath("")
 timed = true
 waiting_time = 0.1
 on_timer_finished = 1
-next_state = NodePath("../CanPreJump")
+next_state = NodePath("")
 
 [node name="CanPreJump" type="Node" parent="Player/XSM/RegionJumpPossible"]
 script = ExtResource("21")
@@ -1092,7 +1092,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../CanJump")
+next_state = NodePath("")
 
 [node name="CanJump" type="Node" parent="Player/XSM/RegionJumpPossible"]
 script = ExtResource("22")
@@ -1108,7 +1108,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../RegionMovement")
+next_state = NodePath("")
 
 [node name="NoDash" type="Node" parent="Player/XSM/RegionDashPossible"]
 script = ExtResource("3")
@@ -1116,7 +1116,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../CanPreDash")
+next_state = NodePath("")
 
 [node name="CanPreDash" type="Node" parent="Player/XSM/RegionDashPossible"]
 script = ExtResource("29")
@@ -1124,7 +1124,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../CanDash")
+next_state = NodePath("")
 
 [node name="CanDash" type="Node" parent="Player/XSM/RegionDashPossible"]
 unique_name_in_owner = true
@@ -1172,7 +1172,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Top2Fall")
+next_state = NodePath("../Fall")
 
 [node name="Top2Fall" type="Node" parent="Player/XSM/RegionMovement/InAir"]
 script = ExtResource("6")
@@ -1216,7 +1216,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Idle")
+next_state = NodePath("../IdleRand/IdleSlow")
 
 [node name="Idle" type="Node" parent="Player/XSM/RegionMovement/OnGround"]
 script = ExtResource("6")
@@ -1233,10 +1233,7 @@ next_state = NodePath("../IdleRand/IdleSlow")
 [node name="IdleRand" type="Node" parent="Player/XSM/RegionMovement/OnGround"]
 script = ExtResource("47_3d6o1")
 randomized = true
-priorities = {
-"IdleSlow": 1,
-"IdleSnore": 1
-}
+priorities = {}
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -1253,7 +1250,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../IdleSnore")
+next_state = NodePath("")
 
 [node name="IdleSnore" type="Node" parent="Player/XSM/RegionMovement/OnGround/IdleRand"]
 script = ExtResource("6")
@@ -1396,7 +1393,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../IdleOnWall")
+next_state = NodePath("../../InAir/Fall")
 
 [node name="IdleOnWall" type="Node" parent="Player/XSM/RegionMovement/OnWall"]
 script = ExtResource("6")
@@ -1601,7 +1598,6 @@ Enjoy ;)"
 
 [node name="ExplanationEnd" type="Label" parent="."]
 unique_name_in_owner = true
-visible = false
 offset_left = 994.0
 offset_top = -421.0
 offset_right = 1232.0

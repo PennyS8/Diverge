@@ -1,0 +1,8 @@
+res://scenes/characters/player/player.tscn
+res://scenes/characters/player/walk.gd
+res://scenes/characters/player/idle.gd
+res://addons/xsm/examples/platformer/platformer_example.tscn
+res://scenes/characters/player/dash_timer.gd
+res://scenes/characters/player/can_dash.gd
+res://scripts/characters/player/player.gd
+res://scenes/characters/player/dash.gd

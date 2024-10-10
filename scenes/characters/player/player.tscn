@@ -1,18 +1,30 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=16 format=3 uid="uid://cyh345au8bpro"]
 
+[ext_resource type="Script" path="res://scripts/characters/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="1_q2vpm"]
-[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/velocity_component_2d.gd" id="2_yqnm5"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="3_c6noe"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/health_component.gd" id="4_biapr"]
+[ext_resource type="Script" path="res://scenes/characters/player/dash_timer.gd" id="4_j2uqp"]
+[ext_resource type="Script" path="res://scripts/characters/player/movement.gd" id="4_xto71"]
+[ext_resource type="Script" path="res://scenes/characters/player/can_dash.gd" id="5_parbs"]
+[ext_resource type="Script" path="res://addons/xsm/state_sound.gd" id="5_we4ao"]
+[ext_resource type="Script" path="res://scenes/characters/player/idle.gd" id="6_p1gyv"]
+[ext_resource type="Script" path="res://scenes/characters/player/walk.gd" id="6_rn5yy"]
+[ext_resource type="Script" path="res://scenes/characters/player/dash.gd" id="9_x3ix7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54ogc"]
 size = Vector2(16, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8cyg"]
+size = Vector2(22, 9)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_uqogs"]
 size = Vector2(16, 32)
 
 [node name="Player" type="CharacterBody2D"]
+physics_interpolation_mode = 1
+script = ExtResource("1_ehhf7")
 
 [node name="PlayerFSM" type="Node" parent="."]
 editor_description = "Is a state region - we can be in multiple states underneath this node (i.e., both CanDash & CanAttack can both be active states)"
@@ -20,11 +32,11 @@ script = ExtResource("1_mpvpn")
 history_size = 0
 disabled = false
 debug_mode = false
-target_path = NodePath("..")
+target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
-[node name="CanDash" type="Node" parent="PlayerFSM"]
+[node name="DashPossible" type="Node" parent="PlayerFSM"]
 script = ExtResource("1_q2vpm")
 disabled = false
 debug_mode = false
@@ -32,7 +44,41 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
-[node name="CanAttack" type="Node" parent="PlayerFSM"]
+[node name="DashTimer" type="Node" parent="PlayerFSM/DashPossible"]
+script = ExtResource("4_j2uqp")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = true
+waiting_time = 0.5
+on_timer_finished = 3
+next_state = NodePath("")
+
+[node name="CanDash" type="Node" parent="PlayerFSM/DashPossible"]
+script = ExtResource("5_parbs")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="AttackPossible" type="Node" parent="PlayerFSM"]
+script = ExtResource("1_q2vpm")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="NoAttack" type="Node" parent="PlayerFSM/AttackPossible"]
+script = ExtResource("1_q2vpm")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="CanAttack" type="Node" parent="PlayerFSM/AttackPossible"]
 script = ExtResource("1_q2vpm")
 disabled = false
 debug_mode = false
@@ -41,12 +87,57 @@ timed = false
 next_state = NodePath("")
 
 [node name="Movement" type="Node" parent="PlayerFSM"]
-script = ExtResource("1_q2vpm")
+script = ExtResource("4_xto71")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
+
+[node name="Walk" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("6_rn5yy")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Idle")
+
+[node name="Idle" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("6_p1gyv")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Idle")
+
+[node name="Dash" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("9_x3ix7")
+dash_speed = 800
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Idle")
+
+[node name="Attack" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("5_we4ao")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Idle")
 
 [node name="BodyShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_54ogc")
@@ -55,8 +146,13 @@ shape = SubResource("RectangleShape2D_54ogc")
 color = Color(0.57, 0, 0, 1)
 polygon = PackedVector2Array(-8, -16, 8, -16, 8, 16, -8, 16)
 
-[node name="VelocityComponent2D" type="Node2D" parent="."]
-script = ExtResource("2_yqnm5")
+[node name="Sword" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
+position = Vector2(11, 0)
+shape = SubResource("RectangleShape2D_i8cyg")
+disabled = true
+debug_color = Color(1, 1, 1, 0.42)
 
 [node name="HurtBoxComponent2D" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 script = ExtResource("3_c6noe")
@@ -67,3 +163,5 @@ shape = SubResource("RectangleShape2D_uqogs")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_biapr")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
