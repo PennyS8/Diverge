@@ -25,7 +25,7 @@ var distance_travelled : float
 func _on_enter(_args) -> void:
 	change_state("NoAttack")
 	
-	var mouse_pos = get_viewport().get_mouse_position()
+	var mouse_pos = target.get_global_mouse_position()
 	
 	start_location = target.global_position
 	attack_dir = start_location.direction_to(mouse_pos).normalized()
