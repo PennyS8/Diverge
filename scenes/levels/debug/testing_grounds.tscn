@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://c21tx8txxbw18"]
+
+[ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://scenes/characters/player/player.tscn" id="1_boros"]
+
+[node name="TestingGrounds" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_boros")]
+motion_mode = 1
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+texture_filter = 1
+zoom = Vector2(4, 4)
+process_callback = 0
+limit_smoothed = true
+position_smoothing_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
