@@ -176,7 +176,7 @@ _data = {
 "attack_up": SubResource("Animation_715gg")
 }
 
-[node name="Player" type="CharacterBody2D"]
+[node name="Player" type="CharacterBody2D" groups=["player"]]
 physics_interpolation_mode = 1
 y_sort_enabled = true
 collision_layer = 4

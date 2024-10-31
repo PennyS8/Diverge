@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="ItemType" load_steps=4 format=3 uid="uid://dtjawl2cgho2l"]
+
+[ext_resource type="Script" path="res://addons/wyvernbox/item_type.gd" id="1_16o78"]
+[ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_00gcn"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ngowb"]
+atlas = ExtResource("2_00gcn")
+region = Rect2(34, 68, 12, 7)
+
+[resource]
+script = ExtResource("1_16o78")
+name = "Key"
+description = ""
+tags = Array[StringName]([])
+texture = SubResource("AtlasTexture_ngowb")
+texture_scale = 1.0
+max_stack_count = 1
+in_inventory_width = 1
+in_inventory_height = 1
+slot_flags = 257
+default_properties_string = "{
+\"key_id\": 0
+}"
+default_properties = {
+"key_id": 0
+}

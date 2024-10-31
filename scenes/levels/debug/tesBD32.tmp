@@ -477,5 +477,3 @@ position = Vector2(928, 248)
 z_index = 1
 y_sort_enabled = true
 position = Vector2(896, 304)
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
