@@ -5,5 +5,5 @@ extends Area2D
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		KeyChain.key.emit(key_id, state)
+		KeyChain.num_smallkeys += 1
 		queue_free()

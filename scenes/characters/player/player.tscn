@@ -256,7 +256,7 @@ next_state = NodePath("")
 [node name="Walk" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("6_rn5yy")
 ground_speed = 60.0
-acceleration = 10.0
+acceleration = 20.0
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = ""
@@ -383,4 +383,5 @@ libraries = {
 "": SubResource("AnimationLibrary_1um1b")
 }
 
+[connection signal="area_entered" from="Sword" to="." method="_on_sword_area_entered"]
 [connection signal="body_entered" from="Sword" to="." method="_on_sword_body_entered"]

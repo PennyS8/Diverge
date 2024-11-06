@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://c21tx8txxbw18"]
+[gd_scene load_steps=26 format=4 uid="uid://c21tx8txxbw18"]
 
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://scenes/characters/player/player.tscn" id="1_boros"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/smooth-pixel.tres" id="1_ib3k2"]
@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://clxwatqbrtb1u" path="res://scenes/objects/interactable/pressure_plate.tscn" id="7_qcrw8"]
 [ext_resource type="PackedScene" uid="uid://c0xn1iqitvhmq" path="res://scenes/objects/interactable/key.tscn" id="8_jw2gc"]
 [ext_resource type="PackedScene" uid="uid://do2n8drgdem1w" path="res://scenes/objects/interactable/key_door.tscn" id="9_aerce"]
+[ext_resource type="PackedScene" uid="uid://c6l4seb1uw45e" path="res://scenes/objects/interactable/small_key_slot.tscn" id="11_mx303"]
+[ext_resource type="PackedScene" uid="uid://dywn8ybv2xl4i" path="res://scenes/objects/interactable/lever.tscn" id="12_nwahg"]
 [ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://scenes/objects/interactable/pushable_block.tscn" id="12_qgq4e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57cbg"]
@@ -601,12 +603,13 @@ sources/0 = SubResource("TileSetAtlasSource_45hkk")
 
 [node name="TestingGrounds" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(8, -15)
 metadata/_edit_horizontal_guides_ = [-188.0, 611.0]
 metadata/_edit_vertical_guides_ = [915.0]
 
 [node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
-texture_filter = 2
+texture_filter = 1
 material = ExtResource("1_ib3k2")
 
 [node name="Ground" type="TileMapLayer" parent="World"]
@@ -647,8 +650,43 @@ y_sort_enabled = true
 tile_set = SubResource("TileSet_g107l")
 y_sort_origin = -10
 
-[node name="PressurePlate" parent="World" instance=ExtResource("7_qcrw8")]
-position = Vector2(808, 376)
+[node name="PuzzleBlocks" type="Node2D" parent="World"]
+z_index = 1
+y_sort_enabled = true
+
+[node name="Door0" type="Node2D" parent="World/PuzzleBlocks"]
+
+[node name="PressurePlate" parent="World/PuzzleBlocks/Door0" instance=ExtResource("7_qcrw8")]
+position = Vector2(760, 297)
+
+[node name="PushableBlock" parent="World/PuzzleBlocks/Door0" instance=ExtResource("12_qgq4e")]
+position = Vector2(728, 293)
+
+[node name="KeyDoor" parent="World/PuzzleBlocks/Door0" instance=ExtResource("9_aerce")]
+position = Vector2(736, 248)
+
+[node name="Door1" type="Node2D" parent="World/PuzzleBlocks"]
+
+[node name="KeyDoor" parent="World/PuzzleBlocks/Door1" instance=ExtResource("9_aerce")]
+position = Vector2(824, 248)
+key_num = 1
+
+[node name="Key" parent="World/PuzzleBlocks/Door1" instance=ExtResource("8_jw2gc")]
+position = Vector2(848, 294.5)
+
+[node name="SmallKeySlot" parent="World/PuzzleBlocks/Door1" instance=ExtResource("11_mx303")]
+position = Vector2(847, 266)
+key_id = 1
+
+[node name="Door2" type="Node2D" parent="World/PuzzleBlocks"]
+
+[node name="KeyDoor2" parent="World/PuzzleBlocks/Door2" instance=ExtResource("9_aerce")]
+position = Vector2(920, 248)
+key_num = 2
+
+[node name="Lever" parent="World/PuzzleBlocks/Door2" instance=ExtResource("12_nwahg")]
+position = Vector2(947, 293)
+key_id = 2
 
 [node name="Player" parent="." instance=ExtResource("1_boros")]
 z_index = 1
@@ -672,42 +710,6 @@ position_smoothing_speed = 12.0
 editor_draw_screen = false
 script = ExtResource("6_lalxm")
 
-[node name="KeyDoor" parent="." instance=ExtResource("9_aerce")]
-z_index = 1
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(928, 248)
-
-[node name="Key" parent="." instance=ExtResource("8_jw2gc")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(896, 304)
-
-[node name="Key5" parent="." instance=ExtResource("8_jw2gc")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(1099, 340)
-
-[node name="Key3" parent="." instance=ExtResource("8_jw2gc")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(1039, 306)
-
-[node name="Key2" parent="." instance=ExtResource("8_jw2gc")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(971, 305)
-state = false
-
-[node name="Key4" parent="." instance=ExtResource("8_jw2gc")]
-z_index = 1
-y_sort_enabled = true
-position = Vector2(1097, 306)
-state = false
-
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="PushableBlock" parent="." instance=ExtResource("12_qgq4e")]
-position = Vector2(840, 373)
-
-[connection signal="body_exited" from="World/PressurePlate" to="World/PressurePlate" method="_on_body_exited"]
+[connection signal="body_exited" from="World/PuzzleBlocks/Door0/PressurePlate" to="World/PuzzleBlocks/Door0/PressurePlate" method="_on_body_exited"]

@@ -17,3 +17,5 @@ func _camera_move(delta):
 func _on_sword_body_entered(body: Node2D) -> void:
 	if body.is_in_group("block"):
 		body.push(swing_dir)
+	elif body.is_in_group("lever"):
+		body.flip()
