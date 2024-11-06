@@ -180,7 +180,7 @@ _data = {
 physics_interpolation_mode = 1
 y_sort_enabled = true
 collision_layer = 4
-collision_mask = 19
+collision_mask = 83
 motion_mode = 1
 wall_min_slide_angle = 0.0872665
 script = ExtResource("1_ehhf7")
@@ -358,6 +358,9 @@ color = Color(0.57, 0, 0, 1)
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [node name="Sword" type="Area2D" parent="."]
+z_index = 1
+y_sort_enabled = true
+collision_mask = 65
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
 position = Vector2(11, 0)
@@ -379,3 +382,5 @@ script = ExtResource("4_biapr")
 libraries = {
 "": SubResource("AnimationLibrary_1um1b")
 }
+
+[connection signal="body_entered" from="Sword" to="." method="_on_sword_body_entered"]

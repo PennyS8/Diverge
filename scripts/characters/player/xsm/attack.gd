@@ -47,6 +47,7 @@ func _on_enter(_args) -> void:
 	# only be the 4 main cardinals (up, down, left, right)
 	swing_dir = swing_dir.snapped(Vector2.ONE)
 	
+	target.swing_dir = swing_dir
 	# our four cardinals are:
 	# UP: (0,-1)
 	# RIGHT: (1,0)
