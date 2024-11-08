@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://c21tx8txxbw18"]
+[gd_scene load_steps=27 format=4 uid="uid://c21tx8txxbw18"]
 
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://scenes/characters/player/player.tscn" id="1_boros"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/smooth-pixel.tres" id="1_ib3k2"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c6l4seb1uw45e" path="res://scenes/objects/interactable/small_key_slot.tscn" id="11_mx303"]
 [ext_resource type="PackedScene" uid="uid://dywn8ybv2xl4i" path="res://scenes/objects/interactable/lever.tscn" id="12_nwahg"]
 [ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://scenes/objects/interactable/pushable_block.tscn" id="12_qgq4e"]
+[ext_resource type="PackedScene" uid="uid://c3hs0j0l3dsrr" path="res://scenes/objects/breakable/breakable_barrel.tscn" id="15_jego1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57cbg"]
 texture = ExtResource("2_afk6e")
@@ -687,6 +688,12 @@ key_num = 2
 [node name="Lever" parent="World/PuzzleBlocks/Door2" instance=ExtResource("12_nwahg")]
 position = Vector2(947, 293)
 key_id = 2
+
+[node name="BreakableBarrel" parent="World" instance=ExtResource("15_jego1")]
+position = Vector2(840, 453)
+
+[node name="BreakableBarrel2" parent="World" instance=ExtResource("15_jego1")]
+position = Vector2(808, 468)
 
 [node name="Player" parent="." instance=ExtResource("1_boros")]
 z_index = 1

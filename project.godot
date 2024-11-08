@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 KeyChain="*res://scripts/globals/key_chain.gd"
+Shaker="*res://addons/shaker/src/Shaker.gd"
 
 [display]
 
@@ -30,7 +31,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/xsm/plugin.cfg")
+enabled=PackedStringArray("res://addons/shaker/plugin.cfg", "res://addons/xsm/plugin.cfg")
 
 [global_group]
 
