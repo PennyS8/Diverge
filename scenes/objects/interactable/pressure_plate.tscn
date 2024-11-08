@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=3 uid="uid://clxwatqbrtb1u"]
+
+[ext_resource type="Script" path="res://scenes/objects/interactable/pressure_plate.gd" id="1_dalsm"]
+[ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_hk4ta"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuc6t"]
+size = Vector2(12, 12.25)
+
+[node name="PressurePlate" type="Area2D"]
+texture_filter = 1
+collision_layer = 32
+collision_mask = 68
+script = ExtResource("1_dalsm")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture = ExtResource("2_hk4ta")
+hframes = 2
+region_enabled = true
+region_rect = Rect2(0, 160, 32, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 0.125)
+shape = SubResource("RectangleShape2D_tuc6t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

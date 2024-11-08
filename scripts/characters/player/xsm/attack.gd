@@ -29,7 +29,8 @@ func _on_enter(_args) -> void:
 	
 	start_location = target.global_position
 	attack_dir = start_location.direction_to(mouse_pos).normalized()
-	
+	distance_travelled = 0
+
 	# this logic is so that we find which of the four cardinals our mouse is \
 	# closest to. whichever absolute value is larger determines which \
 	# component (x or y) we want to take as the main value.
@@ -47,6 +48,7 @@ func _on_enter(_args) -> void:
 	# only be the 4 main cardinals (up, down, left, right)
 	swing_dir = swing_dir.snapped(Vector2.ONE)
 	
+	target.swing_dir = swing_dir
 	# our four cardinals are:
 	# UP: (0,-1)
 	# RIGHT: (1,0)
@@ -59,7 +61,7 @@ func _on_enter(_args) -> void:
 # pretty much same logic as dash for these two functions.
 func _on_update(_delta):
 	target.velocity = attack_dir * attack_nudge_speed
-	distance_travelled = start_location.distance_to(target.global_position)
+	distance_travelled = distance_travelled + (target.velocity * _delta).length()
 	
 func _after_update(_delta):
 	if distance_travelled >= attack_nudge_distance:
