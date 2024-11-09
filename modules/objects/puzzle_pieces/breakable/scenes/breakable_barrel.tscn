@@ -1,12 +1,13 @@
 [gd_scene load_steps=13 format=3 uid="uid://c3hs0j0l3dsrr"]
 
-[ext_resource type="Script" path="res://scripts/components/breakable_barrel.gd" id="1_65xo1"]
+[ext_resource type="Script" path="res://modules/objects/puzzle_pieces/interactable/scripts/breakable_barrel.gd" id="1_65xo1"]
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_f4gt4"]
 [ext_resource type="Script" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="3_ke3lh"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="4_dlbfx"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="5_xgq67"]
 [ext_resource type="Script" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="6_w70w5"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="7_dh27g"]
+
 
 [sub_resource type="Resource" id="Resource_twx01"]
 script = ExtResource("5_xgq67")
