@@ -11,13 +11,13 @@ config_version=5
 [application]
 
 config/name="Project Diverge"
-run/main_scene="res://scenes/levels/debug/testing_grounds.tscn"
+run/main_scene="res://modules/levels/debug/scenes/testing_grounds.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
-KeyChain="*res://scripts/globals/key_chain.gd"
+KeyChain="*res://modules/globals/scripts/key_chain.gd"
 Shaker="*res://addons/shaker/src/Shaker.gd"
 
 [display]
