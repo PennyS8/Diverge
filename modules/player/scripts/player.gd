@@ -13,7 +13,6 @@ func _physics_process(delta):
 func _camera_move(delta):
 	$Camera2D.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25
 
-
 func _on_sword_body_entered(body: Node2D) -> void:
 	if body.is_in_group("block"):
 		body.push(swing_dir)

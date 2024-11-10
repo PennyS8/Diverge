@@ -13,6 +13,7 @@ config_version=5
 config/name="Project Diverge"
 run/main_scene="res://modules/levels/debug/scenes/testing_grounds.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+run/max_fps=120
 config/icon="res://icon.svg"
 
 [autoload]
@@ -27,7 +28,7 @@ window/size/viewport_height=1080
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
@@ -105,10 +106,18 @@ inventory_filter={
 2d_physics/layer_5="Obstacle"
 2d_physics/layer_6="Interactible"
 2d_physics/layer_7="PushableBox"
+2d_physics/layer_8="BoxEdge"
+
+[physics]
+
+2d/stretch/scale_mode="fractional"
+2d/stretch/aspect="expand"
+2d/stretch/mode="canvas_items"
+2d/size/viewport_height=1080
+2d/size/viewport_width=1920
+2d/per_pixel_transparency/allowed=true
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
-textures/default_filters/use_nearest_mipmap_filter=true
 textures/decals/filter=0
 textures/light_projectors/filter=0

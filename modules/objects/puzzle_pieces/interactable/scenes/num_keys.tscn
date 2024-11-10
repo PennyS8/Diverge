@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" path="res://modules/objects/puzzle_pieces/interactable/scripts/num_keys.gd" id="1_kkxw7"]
 
-
 [node name="NumKeys" type="Control"]
 layout_mode = 3
 anchors_preset = 15
