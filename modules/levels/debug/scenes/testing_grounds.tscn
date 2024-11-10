@@ -693,7 +693,7 @@ key_id = 2
 position = Vector2(840, 453)
 
 [node name="BreakableBarrel2" parent="World" instance=ExtResource("13_byabl")]
-position = Vector2(808, 468)
+position = Vector2(808, 469)
 
 [node name="Player" parent="." instance=ExtResource("14_pjn08")]
 z_index = 1
