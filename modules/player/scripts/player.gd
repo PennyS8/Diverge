@@ -5,11 +5,16 @@ extends CharacterBody2D
 # Player keeps it own velocity, as well as vars that can be used by many different states
 
 var dir : Vector2 = Vector2.ZERO
+
+# swing_dir is a variable updated by our sword swing that gets the 
+# nearest cardinal direction to our mouse click (n, e, s, w)
+# we keep it in here to use it to push blocks in that direction
 var swing_dir : Vector2
 
-func _physics_process(delta):
+func _process(delta):
 	_camera_move(delta)
-	
+	$Camera2D.position = round($Camera2D.position)
+
 func _camera_move(delta):
 	$Camera2D.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25
 

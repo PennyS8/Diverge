@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="2_sjcl0"]
 [ext_resource type="Texture2D" uid="uid://bl7dwelj0f1um" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/taiga_ [resources].png" id="3_ra2le"]
 [ext_resource type="Texture2D" uid="uid://5ogjkbk72frr" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/taiga_.png" id="4_uk4vh"]
-[ext_resource type="TileSet" uid="uid://dgs3bfgkdvmep" path="res://modules/levels/debug/scenes/dungeon.tres" id="5_66tx0"]
+[ext_resource type="TileSet" uid="uid://dp01idjexi8cb" path="res://modules/levels/debug/scenes/dungeon.tres" id="5_66tx0"]
 [ext_resource type="PackedScene" uid="uid://clxwatqbrtb1u" path="res://modules/objects/puzzle_pieces/interactable/scenes/pressure_plate.tscn" id="7_n5bs7"]
 [ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://modules/objects/puzzle_pieces/interactable/scenes/pushable_block.tscn" id="8_wv2q6"]
 [ext_resource type="PackedScene" uid="uid://do2n8drgdem1w" path="res://modules/objects/puzzle_pieces/interactable/scenes/key_door.tscn" id="9_8uvo0"]
