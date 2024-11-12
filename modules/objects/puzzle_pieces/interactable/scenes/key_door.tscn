@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://do2n8drgdem1w"]
+[gd_scene load_steps=6 format=3 uid="uid://do2n8drgdem1w"]
 
 [ext_resource type="Script" path="res://modules/objects/puzzle_pieces/interactable/scripts/key_door.gd" id="1_5x4m0"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/smooth-pixel.tres" id="2_gyri1"]
 [ext_resource type="Texture2D" uid="uid://bsq6ybebj8ubm" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/door.png" id="2_kkv14"]
+[ext_resource type="AudioStream" uid="uid://bsnxds0i2hrcb" path="res://assets/placeholder_puzzle_chime.ogg" id="4_stpep"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_am3rr"]
 size = Vector2(32, 48)
@@ -25,3 +26,6 @@ region_rect = Rect2(0, 112, 32, 96)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(16, -24)
 shape = SubResource("RectangleShape2D_am3rr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_stpep")

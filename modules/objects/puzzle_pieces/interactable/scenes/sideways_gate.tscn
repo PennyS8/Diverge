@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://r6dufu5v4ydi"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/smooth-pixel.tres" id="1_ump3m"]
+[ext_resource type="Script" path="res://modules/objects/puzzle_pieces/interactable/scripts/sideways_gate.gd" id="2_kkphh"]
+[ext_resource type="Texture2D" uid="uid://4dge2slnqgfq" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/gate.png" id="2_x6fw8"]
+[ext_resource type="AudioStream" uid="uid://bsnxds0i2hrcb" path="res://assets/placeholder_puzzle_chime.ogg" id="4_6t7kw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_krj5i"]
+size = Vector2(16, 35)
+
+[node name="SidewaysGate" type="StaticBody2D"]
+texture_filter = 2
+material = ExtResource("1_ump3m")
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("2_kkphh")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 2
+material = ExtResource("1_ump3m")
+position = Vector2(8, -17.5)
+texture = ExtResource("2_x6fw8")
+hframes = 2
+region_rect = Rect2(0, 112, 32, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -17.5)
+shape = SubResource("RectangleShape2D_krj5i")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_6t7kw")
