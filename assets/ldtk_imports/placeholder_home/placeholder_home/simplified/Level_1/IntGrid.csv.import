@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://c00fw52m6ov03"
+
+[deps]
+
+files=["res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation"]
+
+source_file="res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.csv"
+dest_files=["res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation", "res://assets/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_1/IntGrid.0.translation"]
+
+[params]
+
+compress=true
+delimiter=0

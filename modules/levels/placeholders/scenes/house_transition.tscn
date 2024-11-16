@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://btn1qexhyyea5"]
+
+[ext_resource type="Script" path="res://modules/levels/placeholders/scripts/house_transition.gd" id="1_6ijj2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j76cr"]
+size = Vector2(10, 9)
+
+[node name="HouseTransition" type="Area2D"]
+z_index = 1
+script = ExtResource("1_6ijj2")
+
+[node name="RectShape" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(-5, -5, 5, -5, 5, 4, -5, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_j76cr")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

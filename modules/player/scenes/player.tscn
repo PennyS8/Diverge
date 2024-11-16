@@ -15,7 +15,6 @@
 [ext_resource type="Script" path="res://modules/player/scripts/xsm/attack.gd" id="10_v37cr"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="12_e6mu1"]
 
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54ogc"]
 size = Vector2(16, 16)
 

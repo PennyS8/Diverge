@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=4 uid="uid://c21tx8txxbw18"]
+[gd_scene load_steps=29 format=4 uid="uid://c21tx8txxbw18"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/smooth-pixel.tres" id="1_ahmh2"]
+[ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/levels/placeholders/scenes/house_transition.tscn" id="2_qn8kd"]
 [ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="2_sjcl0"]
 [ext_resource type="Texture2D" uid="uid://bl7dwelj0f1um" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/taiga_ [resources].png" id="3_ra2le"]
 [ext_resource type="Texture2D" uid="uid://5ogjkbk72frr" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/taiga_.png" id="4_uk4vh"]
@@ -14,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dywn8ybv2xl4i" path="res://modules/objects/puzzle_pieces/interactable/scenes/lever.tscn" id="12_pt3ci"]
 [ext_resource type="PackedScene" uid="uid://c3hs0j0l3dsrr" path="res://modules/objects/puzzle_pieces/breakable/scenes/breakable_barrel.tscn" id="13_byabl"]
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/player/scenes/player.tscn" id="14_pjn08"]
+[ext_resource type="PackedScene" uid="uid://n2x5iije4alx" path="res://modules/levels/debug/scenes/damage_area.tscn" id="15_e20kq"]
 [ext_resource type="Script" path="res://modules/player/scripts/player_camera.gd" id="15_rpsiv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57cbg"]
@@ -694,6 +696,14 @@ position = Vector2(840, 453)
 
 [node name="BreakableBarrel2" parent="World" instance=ExtResource("13_byabl")]
 position = Vector2(808, 468)
+
+[node name="HouseTransition" parent="World" instance=ExtResource("2_qn8kd")]
+position = Vector2(618, 169)
+collision_layer = 32
+collision_mask = 4
+
+[node name="DamageArea" parent="World" instance=ExtResource("15_e20kq")]
+position = Vector2(618, 193)
 
 [node name="Player" parent="." instance=ExtResource("14_pjn08")]
 z_index = 1

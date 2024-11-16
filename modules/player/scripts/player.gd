@@ -7,6 +7,8 @@ extends CharacterBody2D
 var dir : Vector2 = Vector2.ZERO
 var swing_dir : Vector2
 
+@onready var health_component = $HealthComponent
+
 func _physics_process(delta):
 	_camera_move(delta)
 	
