@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://modules/levels/placeholder_mom_house/stat_replenish.gd" id="1_xnc8w"]
 [ext_resource type="PackedScene" uid="uid://fbmlxgb2ghl8" path="res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home.ldtk" id="2_dtgkf"]
-[ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="3_fk6l7"]
+[ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/level_transition.tscn" id="3_xcpf1"]
 
 [node name="PlaceholderHome" type="Node2D"]
 script = ExtResource("1_xnc8w")
@@ -11,8 +11,12 @@ script = ExtResource("1_xnc8w")
 
 [node name="placeholder_home" parent="Home" instance=ExtResource("2_dtgkf")]
 
-[node name="Player" parent="." instance=ExtResource("3_fk6l7")]
-position = Vector2(88, 234)
+[node name="Entrances" type="Node2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-zoom = Vector2(4, 4)
+[node name="0" type="Marker2D" parent="Entrances" groups=["level_entrance"]]
+position = Vector2(88, 246)
+
+[node name="LevelTransition" parent="." instance=ExtResource("3_xcpf1")]
+position = Vector2(88, 254)
+next_level_path = "res://modules/levels/debug/testing_grounds/testing_grounds.tscn"
+entrance_name = "HouseExit"
