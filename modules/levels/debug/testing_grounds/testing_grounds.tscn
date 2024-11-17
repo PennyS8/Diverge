@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://c21tx8txxbw18"]
+[gd_scene load_steps=27 format=4 uid="uid://c21tx8txxbw18"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_apu1s"]
 [ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="2_wj027"]
@@ -13,10 +13,8 @@
 [ext_resource type="PackedScene" uid="uid://c6l4seb1uw45e" path="res://modules/objects/puzzle_pieces/key_slot/small_key_slot.tscn" id="11_n6254"]
 [ext_resource type="PackedScene" uid="uid://dywn8ybv2xl4i" path="res://modules/objects/puzzle_pieces/lever/lever.tscn" id="12_l807p"]
 [ext_resource type="PackedScene" uid="uid://c3hs0j0l3dsrr" path="res://modules/objects/puzzle_pieces/breakable_barrel/breakable_barrel.tscn" id="13_22pfi"]
-[ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/levels/placeholder_mom_house/house_transition.tscn" id="14_usk1t"]
+[ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="14_usk1t"]
 [ext_resource type="PackedScene" uid="uid://n2x5iije4alx" path="res://modules/objects/debug/damage_area/damage_area.tscn" id="15_04g4e"]
-[ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="16_ils11"]
-[ext_resource type="Script" path="res://modules/entities/player/player_camera.gd" id="17_c58ay"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57cbg"]
 texture = ExtResource("3_waj6y")
@@ -606,7 +604,6 @@ sources/0 = SubResource("TileSetAtlasSource_45hkk")
 
 [node name="TestingGrounds" type="Node2D"]
 y_sort_enabled = true
-position = Vector2(8, -15)
 metadata/_edit_horizontal_guides_ = [-188.0, 611.0]
 metadata/_edit_vertical_guides_ = [915.0]
 
@@ -699,33 +696,16 @@ position = Vector2(808, 468)
 
 [node name="HouseTransition" parent="World" instance=ExtResource("14_usk1t")]
 position = Vector2(618, 169)
-collision_layer = 32
-collision_mask = 4
+next_level_path = "res://modules/levels/placeholder_mom_house/placeholder_home.tscn"
+entrance_name = "0"
 
 [node name="DamageArea" parent="World" instance=ExtResource("15_04g4e")]
 position = Vector2(618, 193)
 
-[node name="Player" parent="." instance=ExtResource("16_ils11")]
-z_index = 1
-z_as_relative = false
-texture_filter = 2
-material = ExtResource("1_apu1s")
-position = Vector2(761, 380)
-wall_min_slide_angle = 0.261799
+[node name="Entrances" type="Node2D" parent="."]
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-texture_filter = 1
-zoom = Vector2(4, 4)
-process_callback = 0
-limit_left = -190
-limit_top = -189
-limit_right = 1139
-limit_bottom = 611
-limit_smoothed = true
-position_smoothing_enabled = true
-position_smoothing_speed = 12.0
-editor_draw_screen = false
-script = ExtResource("17_c58ay")
+[node name="HouseExit" type="Marker2D" parent="Entrances" groups=["level_entrance"]]
+position = Vector2(618, 174)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

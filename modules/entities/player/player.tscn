@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=25 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://modules/entities/player/xsm/dash.gd" id="9_x3ix7"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/attack.gd" id="10_v37cr"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="12_e6mu1"]
-
+[ext_resource type="Script" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_54ogc"]
 size = Vector2(16, 16)
@@ -350,6 +350,14 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../../Idle")
 
+[node name="MovementDisabled" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("1_q2vpm")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
 [node name="BodyShape" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_54ogc")
 
@@ -383,6 +391,15 @@ script = ExtResource("4_biapr")
 libraries = {
 "": SubResource("AnimationLibrary_1um1b")
 }
+
+[node name="Camera2D" type="Camera2D" parent="."]
+texture_filter = 1
+zoom = Vector2(4, 4)
+process_callback = 0
+position_smoothing_enabled = true
+position_smoothing_speed = 12.0
+editor_draw_screen = false
+script = ExtResource("15_25a4m")
 
 [connection signal="area_entered" from="Sword" to="." method="_on_sword_area_entered"]
 [connection signal="body_entered" from="Sword" to="." method="_on_sword_body_entered"]
