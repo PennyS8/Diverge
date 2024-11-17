@@ -3,20 +3,23 @@ extends Area2D
 @export var key_id := 0
 @export var enabled := false
 @export var stays_down := false
+
+@export var frame1 : Texture2D
+@export var frame2 : Texture2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	if enabled:
-		$Sprite2D.frame = 1
+		$Sprite2D.texture = frame2
 	
 	KeyChain.key.connect(_key_toggle)
 
 func pop_up():
 	enabled = false
-	$Sprite2D.frame = 0
+	$Sprite2D.texture = frame1
 
 func push_down():
 	enabled = true
-	$Sprite2D.frame = 1
+	$Sprite2D.texture = frame2
 	KeyChain.key.emit(key_id, enabled)
 
 func _on_body_entered(body: Node2D) -> void:

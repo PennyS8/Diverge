@@ -13,8 +13,11 @@ script = ExtResource("1_xnc8w")
 
 [node name="Entrances" type="Node2D" parent="."]
 
-[node name="0" type="Marker2D" parent="Entrances" groups=["level_entrance"]]
+[node name="FrontDoor" type="Marker2D" parent="Entrances" groups=["level_entrance"]]
 position = Vector2(88, 246)
+
+[node name="SideDoor" type="Marker2D" parent="Entrances" groups=["level_entrance"]]
+position = Vector2(112, 19)
 
 [node name="LevelTransition" parent="." instance=ExtResource("3_xcpf1")]
 position = Vector2(88, 254)

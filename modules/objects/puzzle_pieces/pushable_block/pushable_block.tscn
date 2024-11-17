@@ -3,8 +3,6 @@
 [ext_resource type="Script" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.gd" id="1_0d25t"]
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_mb1va"]
 
-
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vq2pb"]
 size = Vector2(16, 16)
 
@@ -12,15 +10,16 @@ size = Vector2(16, 16)
 z_index = 1
 y_sort_enabled = true
 collision_layer = 64
-collision_mask = 36
+collision_mask = 243
 script = ExtResource("1_0d25t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -23)
 texture = ExtResource("2_mb1va")
-vframes = 3
+centered = false
 region_enabled = true
-region_rect = Rect2(0, 9, 16, 71)
+region_rect = Rect2(0, 9, 16, 23)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 3.25)
+position = Vector2(8, -8)
 shape = SubResource("RectangleShape2D_vq2pb")
