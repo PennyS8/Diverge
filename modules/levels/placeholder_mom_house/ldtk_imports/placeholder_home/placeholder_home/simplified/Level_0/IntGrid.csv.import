@@ -1,0 +1,17 @@
+[remap]
+
+importer="csv_translation"
+type="Translation"
+uid="uid://jew3re3c25d3"
+
+[deps]
+
+files=["res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.1.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.1.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.1.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.4.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.4.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation"]
+
+source_file="res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.csv"
+dest_files=["res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.1.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.1.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.1.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.4.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.4.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation", "res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home/simplified/Level_0/IntGrid.0.translation"]
+
+[params]
+
+compress=true
+delimiter=0

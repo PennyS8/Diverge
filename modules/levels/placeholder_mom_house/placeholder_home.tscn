@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://baoxul0auaj8j"]
+
+[ext_resource type="Script" path="res://modules/levels/placeholder_mom_house/stat_replenish.gd" id="1_xnc8w"]
+[ext_resource type="PackedScene" uid="uid://fbmlxgb2ghl8" path="res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home.ldtk" id="2_dtgkf"]
+[ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="3_fk6l7"]
+
+[node name="PlaceholderHome" type="Node2D"]
+script = ExtResource("1_xnc8w")
+
+[node name="Home" type="Node2D" parent="."]
+
+[node name="placeholder_home" parent="Home" instance=ExtResource("2_dtgkf")]
+
+[node name="Player" parent="." instance=ExtResource("3_fk6l7")]
+position = Vector2(88, 234)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+zoom = Vector2(4, 4)
