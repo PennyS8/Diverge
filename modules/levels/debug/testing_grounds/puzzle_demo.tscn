@@ -1,18 +1,18 @@
 [gd_scene load_steps=16 format=4 uid="uid://dl4bmto4x8rxp"]
 
-[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/smooth-pixel.tres" id="1_03t0q"]
-[ext_resource type="TileSet" uid="uid://dp01idjexi8cb" path="res://modules/levels/debug/scenes/dungeon.tres" id="1_y2b0n"]
-[ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/player/scenes/player.tscn" id="2_0ti5x"]
-[ext_resource type="PackedScene" uid="uid://do2n8drgdem1w" path="res://modules/objects/puzzle_pieces/interactable/scenes/key_door.tscn" id="2_qhtsn"]
-[ext_resource type="PackedScene" uid="uid://clxwatqbrtb1u" path="res://modules/objects/puzzle_pieces/interactable/scenes/pressure_plate.tscn" id="3_d77jv"]
-[ext_resource type="PackedScene" uid="uid://c6l4seb1uw45e" path="res://modules/objects/puzzle_pieces/interactable/scenes/small_key_slot.tscn" id="3_vuq42"]
-[ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://modules/objects/puzzle_pieces/interactable/scenes/pushable_block.tscn" id="5_3nmoc"]
-[ext_resource type="PackedScene" uid="uid://r6dufu5v4ydi" path="res://modules/objects/puzzle_pieces/interactable/scenes/sideways_gate.tscn" id="6_e2c5h"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_03t0q"]
+[ext_resource type="TileSet" uid="uid://dp01idjexi8cb" path="res://modules/levels/debug/testing_grounds/dungeon.tres" id="1_y2b0n"]
+[ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="2_0ti5x"]
+[ext_resource type="PackedScene" uid="uid://do2n8drgdem1w" path="res://modules/objects/puzzle_pieces/signal_door/key_door.tscn" id="2_qhtsn"]
+[ext_resource type="PackedScene" uid="uid://clxwatqbrtb1u" path="res://modules/objects/puzzle_pieces/pressure_plate/pressure_plate.tscn" id="3_d77jv"]
+[ext_resource type="PackedScene" uid="uid://c6l4seb1uw45e" path="res://modules/objects/puzzle_pieces/key_slot/small_key_slot.tscn" id="3_vuq42"]
+[ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.tscn" id="5_3nmoc"]
+[ext_resource type="PackedScene" uid="uid://r6dufu5v4ydi" path="res://modules/objects/puzzle_pieces/sideways_gate/sideways_gate.tscn" id="6_e2c5h"]
 [ext_resource type="Script" path="res://modules/levels/debug/trap_trigger.gd" id="7_7fox4"]
 [ext_resource type="AudioStream" uid="uid://djspx6fvpwq44" path="res://assets/placeholder_enemy_trap.ogg" id="8_r3cbc"]
 [ext_resource type="Script" path="res://modules/levels/debug/completed_enemy_trap_trigger.gd" id="9_d1ure"]
-[ext_resource type="PackedScene" uid="uid://c0xn1iqitvhmq" path="res://modules/objects/puzzle_pieces/interactable/scenes/key.tscn" id="11_hjnpr"]
-[ext_resource type="PackedScene" uid="uid://gna64jq1jkf1" path="res://modules/objects/puzzle_pieces/interactable/scenes/num_keys.tscn" id="12_2u8hh"]
+[ext_resource type="PackedScene" uid="uid://c0xn1iqitvhmq" path="res://modules/objects/puzzle_pieces/key/key.tscn" id="11_hjnpr"]
+[ext_resource type="PackedScene" uid="uid://gna64jq1jkf1" path="res://modules/ui/debug/num_keys/num_keys.tscn" id="12_2u8hh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1giiv"]
 size = Vector2(6, 32)
@@ -149,20 +149,7 @@ visible = false
 position = Vector2(590, 155)
 
 [node name="Player" parent="." instance=ExtResource("2_0ti5x")]
-z_index = 1
 position = Vector2(48, 32)
-
-[node name="DashPossible" parent="Player/PlayerFSM" index="0"]
-next_state = NodePath("../AttackPossible")
-
-[node name="DashTimer" parent="Player/PlayerFSM/DashPossible" index="0"]
-next_state = NodePath("../CanDash")
-
-[node name="AttackPossible" parent="Player/PlayerFSM" index="1"]
-next_state = NodePath("../Movement")
-
-[node name="NoAttack" parent="Player/PlayerFSM/AttackPossible" index="0"]
-next_state = NodePath("../CanAttack")
 
 [node name="Camera2D" parent="Player" index="7"]
 limit_left = -170

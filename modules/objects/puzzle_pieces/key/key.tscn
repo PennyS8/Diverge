@@ -2,8 +2,7 @@
 
 [ext_resource type="Script" path="res://modules/objects/puzzle_pieces/key/key.gd" id="1_5a3x4"]
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_sqpx4"]
-[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/smooth-pixel.tres" id="2_tx0ap"]
-
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_tx0ap"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utre4"]
 size = Vector2(12, 7)

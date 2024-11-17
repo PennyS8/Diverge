@@ -179,6 +179,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 physics_interpolation_mode = 1
+z_index = 1
 y_sort_enabled = true
 collision_layer = 4
 collision_mask = 83
