@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://clxwatqbrtb1u"]
+
+[ext_resource type="Script" path="res://modules/objects/puzzle_pieces/pressure_plate/pressure_plate.gd" id="1_dalsm"]
+[ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_hk4ta"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2mhmk"]
+atlas = ExtResource("3_vluix")
+region = Rect2(0, 0, 16, 16)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xtem"]
+atlas = ExtResource("3_vluix")
+region = Rect2(17, 0, 16, 16)
+filter_clip = true
+
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tuc6t"]
+size = Vector2(12, 11.125)
+
+[node name="PressurePlate" type="Area2D"]
+material = ExtResource("1_4rqts")
+collision_layer = 32
+collision_mask = 68
+script = ExtResource("1_dalsm")
+frame1 = SubResource("AtlasTexture_2mhmk")
+frame2 = SubResource("AtlasTexture_4xtem")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+y_sort_enabled = true
+texture_filter = 2
+material = ExtResource("1_4rqts")
+position = Vector2(8, -8)
+texture = SubResource("AtlasTexture_2mhmk")
+region_rect = Rect2(0, 0, 48, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, -7.4375)
+shape = SubResource("RectangleShape2D_tuc6t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

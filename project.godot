@@ -11,16 +11,17 @@ config_version=5
 [application]
 
 config/name="Project Diverge"
-run/main_scene="res://modules/levels/debug/scenes/testing_grounds.tscn"
+run/main_scene="res://modules/globals/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=120
 config/icon="res://icon.svg"
 
 [autoload]
 
-KeyChain="*res://modules/globals/scripts/key_chain.gd"
+KeyChain="*res://modules/globals/key_chain.gd"
 Shaker="*res://addons/shaker/src/Shaker.gd"
 GameManager="*res://modules/globals/scripts/game_manager.gd"
+LevelManager="*res://modules/globals/level_manager.tscn"
 
 [display]
 
@@ -33,11 +34,12 @@ window/stretch/aspect="keep_height"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/shaker/plugin.cfg", "res://addons/xsm/plugin.cfg")
+enabled=PackedStringArray("res://addons/ldtk-importer/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/xsm/plugin.cfg")
 
 [global_group]
 
 player=""
+level_entrance="A position that the player can spawn into a new level"
 
 [input]
 

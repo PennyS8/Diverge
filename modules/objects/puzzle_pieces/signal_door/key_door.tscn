@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://do2n8drgdem1w"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/smooth-pixel.tres" id="2_gyri1"]
+[ext_resource type="AudioStream" uid="uid://bsnxds0i2hrcb" path="res://assets/placeholder_puzzle_chime.ogg" id="4_stpep"]
+[ext_resource type="Script" path="res://modules/objects/puzzle_pieces/signal_door/key_door.gd" id="1_5x4m0"]
+[ext_resource type="Texture2D" uid="uid://0pidwidag6bd" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Tiles.png" id="2_a2eby"]
+
+
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_am3rr"]
+size = Vector2(32, 48)
+
+[node name="KeyDoor" type="Area2D"]
+texture_filter = 2
+material = ExtResource("2_gyri1")
+collision_layer = 34
+collision_mask = 4
+script = ExtResource("1_5x4m0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 2
+material = ExtResource("2_gyri1")
+position = Vector2(16, -24)
+texture = ExtResource("2_kkv14")
+hframes = 3
+region_rect = Rect2(0, 112, 32, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(16, -24)
+shape = SubResource("RectangleShape2D_am3rr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_stpep")
