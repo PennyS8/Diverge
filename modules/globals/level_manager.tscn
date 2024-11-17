@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://dt2uaqdd4hxiu"]
+
+[ext_resource type="Script" path="res://modules/globals/level_manager.gd" id="1_dvekp"]
+[ext_resource type="PackedScene" uid="uid://c21tx8txxbw18" path="res://modules/levels/debug/testing_grounds/testing_grounds.tscn" id="2_vwsl8"]
+
+[node name="LevelManager" type="Node2D" node_paths=PackedStringArray("current_level")]
+script = ExtResource("1_dvekp")
+current_level = NodePath("TestingGrounds")
+
+[node name="TestingGrounds" parent="." instance=ExtResource("2_vwsl8")]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TransitionOverlay" type="ColorRect" parent="CanvasLayer"]
+unique_name_in_owner = true
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.054902, 0.054902, 0.0705882, 0)

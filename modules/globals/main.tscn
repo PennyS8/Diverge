@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjxg6hpe2ru82"]
+
+[ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="2_wwsun"]
+[ext_resource type="PackedScene" uid="uid://gna64jq1jkf1" path="res://modules/ui/debug/num_keys/num_keys.tscn" id="3_wjh11"]
+
+[node name="Main" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("2_wwsun")]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+
+[node name="NumKeys" parent="GUI" instance=ExtResource("3_wjh11")]
