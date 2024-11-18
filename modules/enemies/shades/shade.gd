@@ -11,3 +11,8 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	pass
+
+
+func _on_health_component_died() -> void:
+	if $HealthComponent.health <= 0:
+		$ShadeFSM.change_state("Dead")
