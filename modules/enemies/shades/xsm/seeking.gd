@@ -1,13 +1,11 @@
 @tool
 extends State
 
-@export var parent : CharacterBody2D
-@export var state_machine : State
 @export var nav_agent : NavigationAgent2D
-@export var movement_speed : float
+@export var movement_speed : float = 45
 
-# NOTE: This breaks if there is more than 1 node in the "player" global group
-@onready var movement_target_pos : Vector2 = get_tree().get_nodes_in_group("player")[0].global_position
+@onready var player : CharacterBody2D = get_tree().get_first_node_in_group("player")
+@onready var movement_target_pos : Vector2 = player.global_position
 
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
@@ -50,15 +48,18 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
+	movement_target_pos = player.global_position
+	set_movement_target(movement_target_pos)
+	
 	if nav_agent.is_navigation_finished():
-		return
+		change_state("Melee")
 	
-	var current_agent_position: Vector2 = global_position
+	var current_agent_position: Vector2 = target.global_position
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
-
-	velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 	
-	move_and_slide()
+	target.velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+	target.move_and_slide()
+	
 	
 	#
 	#nav_agent.target_position = movement_target_pos

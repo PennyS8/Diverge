@@ -371,7 +371,7 @@ texture = ExtResource("4_3t3tk")
 
 [resource]
 physics_layer_0/collision_layer = 1
-physics_layer_0/collision_mask = 31
+physics_layer_0/collision_mask = 30
 physics_layer_0/physics_material = SubResource("PhysicsMaterial_w7i1o")
 physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 31

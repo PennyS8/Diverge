@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://bpgun2i5o6ru"]
+[gd_scene load_steps=17 format=3 uid="uid://bpgun2i5o6ru"]
 
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="1_0ntyj"]
 [ext_resource type="Script" path="res://modules/enemies/shades/shade.gd" id="1_305ye"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://modules/enemies/shades/xsm/dead.gd" id="5_fnale"]
 [ext_resource type="Script" path="res://modules/enemies/shades/xsm/stunned.gd" id="6_508y8"]
 [ext_resource type="Script" path="res://modules/enemies/shades/xsm/melee.gd" id="7_k76c3"]
+[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="10_pm2cd"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
 radius = 8.1
@@ -16,21 +17,55 @@ radius = 8.1
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xa74g"]
 size = Vector2(16, 16)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_54508"]
+radius = 15.0
+
 [sub_resource type="Animation" id="Animation_6qj3b"]
 length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitBoxComponent2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_0nojc"]
+resource_name = "Melee"
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitBoxComponent2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
 _data = {
+"Melee": SubResource("Animation_0nojc"),
 "RESET": SubResource("Animation_6qj3b")
 }
 
 [node name="Shade" type="CharacterBody2D" groups=["enemy"]]
+collision_layer = 0
+collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_305ye")
 
 [node name="RectShape" type="Polygon2D" parent="."]
 y_sort_enabled = true
-color = Color(0.444228, 0.475073, 0.0833648, 1)
+color = Color(0.790134, 8.27849e-06, 0.517563, 1)
 polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
@@ -43,14 +78,11 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("Seeking")
+next_state = NodePath("")
 
-[node name="Seeking" type="Node" parent="ShadeFSM" node_paths=PackedStringArray("parent", "state_machine", "nav_agent")]
+[node name="Seeking" type="Node" parent="ShadeFSM" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("4_6wehf")
-parent = NodePath("../..")
-state_machine = NodePath("..")
 nav_agent = NodePath("../../NavigationAgent2D")
-walk_speed = 15.0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -67,11 +99,15 @@ next_state = NodePath("")
 
 [node name="Melee" type="Node" parent="ShadeFSM"]
 script = ExtResource("7_k76c3")
+animation_player = NodePath("../../AnimationPlayer")
+anim_on_enter = "Melee"
+loop_mode = 0
+on_finished = 1
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Seeking")
 
 [node name="Stunned" type="Node" parent="ShadeFSM"]
 script = ExtResource("6_508y8")
@@ -89,15 +125,27 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("3_rx7yw")
+
 [node name="HurtBoxComponent2D" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+collision_layer = 8
+collision_mask = 4
 script = ExtResource("2_7t42n")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent2D"]
 shape = SubResource("RectangleShape2D_xa74g")
 
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("3_rx7yw")
+[node name="HitBoxComponent2D" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 4
+script = ExtResource("10_pm2cd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent2D"]
+shape = SubResource("CircleShape2D_54508")
+disabled = true
+debug_color = Color(1, 0, 1, 0.262745)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -105,3 +153,5 @@ libraries = {
 }
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
