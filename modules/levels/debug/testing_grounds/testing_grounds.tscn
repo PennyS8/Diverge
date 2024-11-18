@@ -368,6 +368,7 @@ position = Vector2(752, 304)
 
 [node name="PushableBlock" parent="World/PuzzleBlocks/Door0" instance=ExtResource("8_yaqet")]
 position = Vector2(720, 304)
+collision_mask = 241
 
 [node name="KeyDoor" parent="World/PuzzleBlocks/Door0" instance=ExtResource("9_6q250")]
 position = Vector2(736, 272)
