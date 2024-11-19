@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://bpgun2i5o6ru"]
+[gd_scene load_steps=19 format=3 uid="uid://bpgun2i5o6ru"]
 
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="1_0ntyj"]
 [ext_resource type="Script" path="res://modules/enemies/shades/shade.gd" id="1_305ye"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="2_7t42n"]
-[ext_resource type="Script" path="res://modules/enemies/shades/xsm/roaming.gd" id="3_723v8"]
+[ext_resource type="Script" path="res://modules/enemies/shades/roaming.gd" id="3_iblk0"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/health_component.gd" id="3_rx7yw"]
 [ext_resource type="Script" path="res://modules/enemies/shades/xsm/seeking.gd" id="4_6wehf"]
 [ext_resource type="Script" path="res://modules/enemies/shades/xsm/dead.gd" id="5_fnale"]
@@ -19,6 +19,9 @@ size = Vector2(16, 16)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_54508"]
 radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lw36x"]
+radius = 72.0
 
 [sub_resource type="Animation" id="Animation_0nojc"]
 resource_name = "Melee"
@@ -110,6 +113,14 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
+[node name="Roaming" type="Node" parent="ShadeFSM"]
+script = ExtResource("3_iblk0")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
 [node name="Seeking" type="Node" parent="ShadeFSM" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("4_6wehf")
 nav_agent = NodePath("../../NavigationAgent2D")
@@ -117,17 +128,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Seeking")
-
-[node name="Roaming" type="Node" parent="ShadeFSM" node_paths=PackedStringArray("nav_agent")]
-script = ExtResource("3_723v8")
-nav_agent = NodePath("../../NavigationAgent2D")
-movement_speed = 30.0
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("../Seeking")
+next_state = NodePath(".")
 
 [node name="Melee" type="Node" parent="ShadeFSM"]
 script = ExtResource("7_k76c3")
@@ -159,7 +160,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Roaming")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_rx7yw")
@@ -183,12 +184,19 @@ shape = SubResource("CircleShape2D_54508")
 disabled = true
 debug_color = Color(1, 0, 1, 0.262745)
 
+[node name="SeekeeDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SeekeeDetector"]
+shape = SubResource("CircleShape2D_lw36x")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_1um1b")
 }
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="Hit" from="HurtBoxComponent2D" to="." method="_on_hurt_box_component_2d_hit"]
