@@ -25,12 +25,11 @@ GameManager="*res://modules/globals/game_manager.gd"
 
 [display]
 
-window/size/viewport_width=480
-window/size/viewport_height=270
+window/size/viewport_width=1920
+window/size/viewport_height=1080
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
-window/stretch/scale_mode="integer"
 window/dpi/allow_hidpi=false
 
 [editor_plugins]
@@ -128,6 +127,7 @@ left_click={
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
-textures/decals/filter=0
-textures/light_projectors/filter=0
+textures/lossless_compression/force_png=true
+anti_aliasing/quality/msaa_2d=1
+anti_aliasing/quality/msaa_3d=1
+anti_aliasing/quality/screen_space_aa=1

@@ -394,7 +394,7 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-process_callback = 0
+zoom = Vector2(4, 4)
 position_smoothing_speed = 12.0
 script = ExtResource("15_25a4m")
 
