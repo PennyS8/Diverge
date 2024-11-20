@@ -394,12 +394,8 @@ libraries = {
 }
 
 [node name="Camera2D" type="Camera2D" parent="."]
-texture_filter = 1
-zoom = Vector2(4, 4)
 process_callback = 0
-position_smoothing_enabled = true
 position_smoothing_speed = 12.0
-editor_draw_screen = false
 script = ExtResource("15_25a4m")
 
 [connection signal="area_entered" from="Sword" to="." method="_on_sword_area_entered"]

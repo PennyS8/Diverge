@@ -149,6 +149,7 @@ visible = false
 position = Vector2(590, 155)
 
 [node name="Player" parent="." instance=ExtResource("2_0ti5x")]
+visible = false
 position = Vector2(48, 32)
 
 [node name="Camera2D" parent="Player" index="7"]
