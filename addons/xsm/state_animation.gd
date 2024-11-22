@@ -246,7 +246,7 @@ func stop(reset: bool = true) -> void:
 	var anim_player = get_node_or_null(animation_player)
 	if status == ACTIVE and anim_player != null:
 		anim_player.stop(reset)
-		state_root.current_anim_priority = 0
+		#state_root.current_anim_priority = 0
 
 
 func is_playing(anim: String) -> bool:
