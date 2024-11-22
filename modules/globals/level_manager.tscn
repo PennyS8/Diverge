@@ -4,6 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://c21tx8txxbw18" path="res://modules/levels/debug/testing_grounds/testing_grounds.tscn" id="2_4v8u8"]
 
 [node name="LevelManager" type="Node2D"]
+z_as_relative = false
+y_sort_enabled = true
 script = ExtResource("1_dvekp")
 default_level = ExtResource("2_4v8u8")
 

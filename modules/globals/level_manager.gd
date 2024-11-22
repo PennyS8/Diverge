@@ -13,6 +13,8 @@ var custom_scene_path : String
 
 @export var default_level : PackedScene
 
+var main : Node2D
+
 var player
 var transitioning := false
 
@@ -24,7 +26,7 @@ func _ready():
 	
 func _main_ready():
 	player = get_tree().get_first_node_in_group("player")
-
+	main = get_tree().current_scene
 	if custom_scene_path:
 		_swap_level(custom_scene_path)
 	else:
@@ -49,10 +51,10 @@ func change_level(path : String, entrance_name : String = ""):
 func _swap_level(path : String, entrance_name : String = ""):
 	var packed = load(path)
 	var level = packed.instantiate()
-	add_child(level)
+	main.add_child(level)
 	
 	if current_level:
-		remove_child(current_level)
+		main.remove_child(current_level)
 		current_level.queue_free()
 	current_level = level
 	
