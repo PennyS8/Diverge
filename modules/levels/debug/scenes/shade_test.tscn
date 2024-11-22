@@ -1,7 +1,7 @@
 [gd_scene load_steps=29 format=4 uid="uid://gw0hpw8mu57y"]
 
 [ext_resource type="PackedScene" uid="uid://bpgun2i5o6ru" path="res://modules/enemies/shades/shade.tscn" id="1_5s466"]
-[ext_resource type="Material" path="res://assets/smooth-pixel.tres" id="1_ywdf3"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/smooth-pixel.tres" id="1_ywdf3"]
 [ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="2_licy6"]
 [ext_resource type="Texture2D" uid="uid://bl7dwelj0f1um" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/taiga_ [resources].png" id="3_6d7dk"]
 [ext_resource type="Texture2D" uid="uid://5ogjkbk72frr" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/taiga_.png" id="4_l1ibb"]
