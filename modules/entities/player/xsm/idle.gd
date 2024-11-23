@@ -26,5 +26,13 @@ func _on_update(_delta):
 	if target.dir != Vector2.ZERO:
 		change_state("Walk")
 	
-
+	match idle_dir:
+		Vector2.UP:
+			play("idle_up")
+		Vector2.RIGHT:
+			play("idle_right")
+		Vector2.LEFT:
+			play("idle_left")
+		Vector2.DOWN:
+			play("idle_down")
 	

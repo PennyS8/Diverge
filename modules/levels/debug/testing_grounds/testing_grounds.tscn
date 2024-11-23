@@ -362,21 +362,23 @@ tile_set = SubResource("TileSet_g107l")
 y_sort_origin = -10
 
 [node name="PuzzleBlocks" type="Node2D" parent="World"]
-z_index = 1
 y_sort_enabled = true
 
 [node name="Door0" type="Node2D" parent="World/PuzzleBlocks"]
+y_sort_enabled = true
 
 [node name="PressurePlate" parent="World/PuzzleBlocks/Door0" instance=ExtResource("7_cngft")]
 position = Vector2(752, 304)
 
 [node name="PushableBlock" parent="World/PuzzleBlocks/Door0" instance=ExtResource("8_yaqet")]
+z_as_relative = false
 position = Vector2(720, 304)
 
 [node name="KeyDoor" parent="World/PuzzleBlocks/Door0" instance=ExtResource("9_6q250")]
 position = Vector2(736, 272)
 
 [node name="Door1" type="Node2D" parent="World/PuzzleBlocks"]
+z_index = 1
 
 [node name="KeyDoor" parent="World/PuzzleBlocks/Door1" instance=ExtResource("9_6q250")]
 position = Vector2(848, 272)
@@ -390,6 +392,7 @@ position = Vector2(888, 264)
 key_id = 1
 
 [node name="Door2" type="Node2D" parent="World/PuzzleBlocks"]
+z_index = 1
 
 [node name="KeyDoor2" parent="World/PuzzleBlocks/Door2" instance=ExtResource("9_6q250")]
 position = Vector2(944, 272)
@@ -408,7 +411,7 @@ position = Vector2(808, 468)
 [node name="HouseTransition" parent="World" instance=ExtResource("14_usk1t")]
 position = Vector2(616, 168)
 next_level_path = "res://modules/levels/placeholder_mom_house/placeholder_home.tscn"
-entrance_name = "SideDoor"
+entrance_name = "FrontDoor"
 
 [node name="DamageArea" parent="World" instance=ExtResource("15_04g4e")]
 position = Vector2(616, 193)
