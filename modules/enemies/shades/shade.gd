@@ -6,6 +6,8 @@ extends CharacterBody2D
 @export var hitpoints = 10
 @export var movement_speed : float = 30.0
 
+var follow_target
+
 
 func _ready() -> void:
 	pass
