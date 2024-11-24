@@ -4,7 +4,6 @@ extends State
 @export var nav_agent : NavigationAgent2D
 @export var movement_speed : float = 45
 
-@onready var seekee : CharacterBody2D
 @onready var movement_target_pos : Vector2
 
 #
@@ -23,8 +22,7 @@ func _on_enter(_args) -> void:
 	nav_agent.path_desired_distance = 4.0
 	nav_agent.target_desired_distance = 4.0
 	
-	seekee = _args # CharacterBody2D that the Roaming state detected
-	movement_target_pos = seekee.global_position
+	movement_target_pos = target.follow_target.global_position
 
 
 # This function is called just after the state enters
@@ -41,7 +39,7 @@ func set_movement_target(target_pos: Vector2):
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
 	
-	movement_target_pos = seekee.global_position
+	movement_target_pos = target.follow_target.global_position
 	set_movement_target(movement_target_pos)
 	
 	if nav_agent.is_navigation_finished():

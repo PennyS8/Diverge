@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="1_0ntyj"]
 [ext_resource type="Script" path="res://modules/enemies/shades/shade.gd" id="1_305ye"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="2_7t42n"]
-[ext_resource type="Script" path="res://modules/enemies/shades/roaming.gd" id="3_iblk0"]
+[ext_resource type="Script" path="res://modules/enemies/shades/xsm/roaming.gd" id="3_iblk0"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/health_component.gd" id="3_rx7yw"]
 [ext_resource type="Script" path="res://modules/enemies/shades/xsm/seeking.gd" id="4_6wehf"]
 [ext_resource type="Script" path="res://modules/enemies/shades/xsm/dead.gd" id="5_fnale"]
@@ -119,7 +119,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath(".")
 
 [node name="Seeking" type="Node" parent="ShadeFSM" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("4_6wehf")
@@ -184,11 +184,11 @@ shape = SubResource("CircleShape2D_54508")
 disabled = true
 debug_color = Color(1, 0, 1, 0.262745)
 
-[node name="SeekeeDetector" type="Area2D" parent="."]
+[node name="AgroRegion" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="SeekeeDetector"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRegion"]
 shape = SubResource("CircleShape2D_lw36x")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
