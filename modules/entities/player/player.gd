@@ -17,11 +17,12 @@ var lock_camera := false
 
 func _process(delta):
 	_camera_move(delta)
-	$Camera2D.position = round($Camera2D.position)
+	#$Camera2D.global_position = round($Camera2D.global_position)
+	pass
 
 func _camera_move(delta):
 	if !lock_camera:
-		$Camera2D.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25
+		$Camera2D.global_position = round(global_position + (get_global_mouse_position() - global_position) * 0.25)
 		$Camera2D.position_smoothing_enabled = true
 	else:
 		$Camera2D.position_smoothing_enabled = false

@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://c3hs0j0l3dsrr"]
+[gd_scene load_steps=13 format=3 uid="uid://c3hs0j0l3dsrr"]
 
 [ext_resource type="Script" path="res://modules/objects/puzzle_pieces/breakable_barrel/breakable_barrel.gd" id="1_65xo1"]
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_f4gt4"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_sy0e3"]
 [ext_resource type="Script" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="3_ke3lh"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="4_dlbfx"]
 [ext_resource type="Script" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="5_xgq67"]
@@ -46,6 +47,7 @@ script = ExtResource("1_65xo1")
 health = 4
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_sy0e3")
 position = Vector2(4.32134e-07, -1.04308e-07)
 texture = ExtResource("2_f4gt4")
 region_enabled = true

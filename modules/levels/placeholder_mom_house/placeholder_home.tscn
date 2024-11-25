@@ -8,18 +8,20 @@
 script = ExtResource("1_xnc8w")
 
 [node name="Home" type="Node2D" parent="."]
+texture_filter = 2
 
 [node name="placeholder_home" parent="Home" instance=ExtResource("2_dtgkf")]
+position = Vector2(-9, 16)
 
 [node name="Entrances" type="Node2D" parent="."]
 
 [node name="FrontDoor" type="Marker2D" parent="Entrances" groups=["level_entrance"]]
-position = Vector2(88, 246)
+position = Vector2(79, 253)
 
 [node name="SideDoor" type="Marker2D" parent="Entrances" groups=["level_entrance"]]
 position = Vector2(112, 19)
 
 [node name="LevelTransition" parent="." instance=ExtResource("3_xcpf1")]
-position = Vector2(88, 254)
+position = Vector2(79, 266)
 next_level_path = "res://modules/levels/debug/testing_grounds/testing_grounds.tscn"
 entrance_name = "HouseExit"
