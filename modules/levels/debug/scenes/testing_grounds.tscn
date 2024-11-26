@@ -1,6 +1,6 @@
 [gd_scene load_steps=27 format=4 uid="uid://c21tx8txxbw18"]
 
-[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/smooth-pixel.tres" id="1_ahmh2"]
+[ext_resource type="Material" path="res://assets/smooth-pixel.tres" id="1_ahmh2"]
 [ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="2_sjcl0"]
 [ext_resource type="Texture2D" uid="uid://bl7dwelj0f1um" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/taiga_ [resources].png" id="3_ra2le"]
 [ext_resource type="Texture2D" uid="uid://5ogjkbk72frr" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/taiga_.png" id="4_uk4vh"]
