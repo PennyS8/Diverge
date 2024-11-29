@@ -6,6 +6,7 @@ extends StateSound
 @export var friction := 10
 
 var idle_dir := Vector2.DOWN
+
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #

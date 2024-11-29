@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqd288hq0db0a"]
+
+[ext_resource type="Script" path="res://modules/ledge_hop_region.gd" id="1_jqm87"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmt27"]
+size = Vector2(16, 4)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c64vw"]
+size = Vector2(16, 4)
+
+[node name="LedgeHopRegion" type="Node2D"]
+editor_description = "LedgeHopRegion defines the region in which a CharacterBody2D may 'drop' from a height off a ledge.
+
+LedgeTop area2D: The upper edge of the ledge.
+LedgeBottom area2D: The position the CharacterBody2D will end up if they were to 'drop' off the ledge.
+
+Note: The transformation of the LedgeBottom2D is used in the calculation of the 'drop' psuedo-animation. This also relies on LedgeTop having no transformation.
+
+The 'drop' psuedo-animation is performed by taking the relative location of the CharacterBody2D to the center of the LedgeTop area2D, then translating it's position to the same relative position to the LedgeBottom area2D. The 'drop' is performed when a CharacterBody2D maintains its velocity within the LedgeTop area2D for a period of time. 
+
+Note: We'll also have to check that the CharacterBody2D is not actively performing a different action at the same time (e.g., attacking while running off the ledge)."
+script = ExtResource("1_jqm87")
+
+[node name="LedgeTop" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeTop"]
+shape = SubResource("RectangleShape2D_vmt27")
+
+[node name="LedgeBottom" type="Area2D" parent="."]
+position = Vector2(0, 16)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LedgeBottom"]
+shape = SubResource("RectangleShape2D_c64vw")

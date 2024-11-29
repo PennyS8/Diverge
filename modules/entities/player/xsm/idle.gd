@@ -20,6 +20,9 @@ func _on_enter(_args):
 			play_blend("idle_left", 0.0)
 		Vector2.DOWN:
 			play_blend("idle_down", 0.0)
+
+
+
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta):
