@@ -21,7 +21,6 @@
 [ext_resource type="Script" path="res://modules/entities/player/xsm/hop.gd" id="14_l3d1o"]
 [ext_resource type="Script" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="15_257pe"]
-[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Texture2D" uid="uid://dt65a7smcu0go" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Up.png" id="17_ofofd"]
 [ext_resource type="Texture2D" uid="uid://c20vronu6w3d0" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Right_Down.png" id="19_2k7e2"]
 [ext_resource type="Texture2D" uid="uid://b81ru4ss0b1i8" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Left_Down.png" id="20_tr5oi"]
@@ -882,7 +881,7 @@ target_path = NodePath("")
 timed = true
 waiting_time = 0.5
 on_timer_finished = 3
-next_state = NodePath("../CanDash")
+next_state = NodePath("")
 
 [node name="CanDash" type="Node" parent="PlayerFSM/DashPossible"]
 script = ExtResource("5_parbs")
@@ -906,7 +905,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../CanAttack")
+next_state = NodePath("")
 
 [node name="CanAttack" type="Node" parent="PlayerFSM/AttackPossible"]
 script = ExtResource("6_yyqig")
@@ -959,7 +958,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../WalkRight")
+next_state = NodePath("")
 
 [node name="WalkRight" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -971,7 +970,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../WalkUp")
+next_state = NodePath("")
 
 [node name="WalkUp" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -983,7 +982,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../WalkLeft")
+next_state = NodePath("")
 
 [node name="WalkLeft" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -1176,9 +1175,7 @@ shape = SubResource("CapsuleShape2D_n7koy")
 z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -8)
-collision_layer = 4
-collision_mask = 120
-script = ExtResource("16_7tnll")
+collision_mask = 97
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword"]
 position = Vector2(11, -3.69551e-07)
@@ -1187,8 +1184,6 @@ disabled = true
 debug_color = Color(1, 1, 1, 0.42)
 
 [node name="HurtBoxComponent2D" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
-collision_layer = 4
-collision_mask = 0
 script = ExtResource("3_c6noe")
 health_component = NodePath("../HealthComponent")
 

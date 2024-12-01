@@ -1,17 +1,19 @@
 @tool
 extends StateAnimation
 
-
-#
-# FUNCTIONS TO INHERIT IN YOUR STATES
-#
+# is passed in in walk transition so that we know if we stop pushing in this dir
+# to leave the state
+var push_dir
 
 # NOTE: TODO: delete this comment block
 # player.dir
 # player.is_on_wall
 # player.move_and_collide
 
-# This additionnal callback allows you to act at the end
+# order of operations:
+# if we're walking towards a wall
+
+# This additional callback allows you to act at the end
 # of an animation
 func _on_anim_finished() -> void:
 	pass
@@ -26,7 +28,12 @@ func _on_loop_finished() -> void:
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	pass
+	print("DEBUG: pushing!")
+	# initialize push direction. if this doesn't match target.dir, transition out
+	if _args:
+		push_dir = _args
+	else:
+		push_dir = target.dir
 
 
 # This function is called just after the state enters
@@ -38,20 +45,29 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	if Input.is_action_just_pressed("push"):
-		change_state("Push")
-
+	var collision = target.get_last_slide_collision()
+	if collision:
+		var collider = collision.get_collider()
+		if collider is TileMapLayer:
+			var tile_rid = collision.get_collider_rid()
+			var collision_layer = PhysicsServer2D.body_get_collision_layer(tile_rid)
+			if (collision_layer & 1) == 1:
+				# layer bitmask contains "ledge"
+				change_state("Hop", push_dir)
 
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root
 func _after_update(_delta: float) -> void:
-	pass
+	# base state: if not moving, get out of push
+	if target.dir != push_dir:
+		change_state("Idle")
 
 
 # This function is called before the State exits
 # XSM before_exits the root first, then the children
 func _before_exit(_args) -> void:
-	pass
+	print("DEBUG: not pushing!")
+
 
 
 # This function is called when the State exits

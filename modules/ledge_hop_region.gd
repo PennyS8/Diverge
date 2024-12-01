@@ -8,10 +8,10 @@ func _ready() -> void:
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	var possible_bodies = ledge_top.get_overlapping_bodies()
 	for body in possible_bodies:
-		if body.is(CharacterBody2D): #if body.is_in_group("Player"):
+		if body.is_in_group("Player"): #if body.is_in_group("Player"):
 			
 			# TODO: Check if body has constant velocity for duration
 			

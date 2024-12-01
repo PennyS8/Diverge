@@ -17,9 +17,10 @@ var hop_dir : Vector2
 # This function is called when the state enters
 # XSM enters the root first, then the children
 func _on_enter(_args) -> void:
-	change_state("NoAttack")
+	if _args:
+		hop_dir = _args
 	
-	var mouse_pos = target.get_global_mouse_position()  
+	change_state("NoAttack")
 	
 	hop_dir = Vector2(0, 1) # down
 
