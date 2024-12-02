@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5wr1t2eeb2u0"]
+
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/ranged_shade/shade_projectile.gd" id="1_p6ta0"]
+[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="2_yo41a"]
+
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8u60t"]
+size = Vector2(4, 4)
+
+[node name="ShadeProjectile" type="Area2D"]
+z_index = 3
+collision_layer = 128
+collision_mask = 87
+priority = 1
+script = ExtResource("1_p6ta0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8u60t")
+
+[node name="RectShape" type="Polygon2D" parent="."]
+y_sort_enabled = true
+color = Color(1, 0.455, 0.439742, 1)
+polygon = PackedVector2Array(-2, -2, 2, -2, 2, 2, -2, 2)
+
+[node name="HitBoxComponent2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 128
+collision_mask = 0
+script = ExtResource("2_yo41a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent2D"]
+shape = SubResource("RectangleShape2D_8u60t")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_shape_entered" from="." to="." method="_on_body_shape_entered"]
