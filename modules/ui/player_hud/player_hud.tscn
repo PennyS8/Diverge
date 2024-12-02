@@ -1,0 +1,44 @@
+[gd_scene load_steps=3 format=3 uid="uid://dlgu6ii31q1ht"]
+
+[ext_resource type="Script" path="res://modules/ui/player_hud/player_hud.gd" id="1_7rjie"]
+[ext_resource type="PackedScene" uid="uid://bcx1ka3l64iq4" path="res://modules/ui/hud_heart/hud_heart.tscn" id="1_xbvhq"]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_7rjie")
+
+[node name="IngameUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="MarginContainer" type="MarginContainer" parent="IngameUI"]
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+
+[node name="HFlowContainer" type="HFlowContainer" parent="IngameUI/MarginContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/h_separation = 50
+theme_override_constants/v_separation = 25
+
+[node name="Heart" parent="IngameUI/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
+layout_mode = 2
+
+[node name="Heart2" parent="IngameUI/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
+layout_mode = 2
+
+[node name="Heart3" parent="IngameUI/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
+layout_mode = 2
+
+[node name="Heart4" parent="IngameUI/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
+layout_mode = 2
+
+[node name="Heart5" parent="IngameUI/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
+layout_mode = 2
+
+[node name="VFlowContainer" type="VFlowContainer" parent="IngameUI/MarginContainer/HFlowContainer"]
+layout_mode = 2
+size_flags_horizontal = 0

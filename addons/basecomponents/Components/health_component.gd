@@ -4,11 +4,14 @@ class_name HealthComponent
 ## Used for managing a Node's health. 
 
 ## Total/maximum amount of health.
-@export var max_health := 20
+@export var max_health := 10
 
 ## Current amount of health,[br]
 ## [b]Default is [member HealthComponent.max_health][/b].
 var health := max_health
+
+## Added reference to HUD
+@onready var heart_hud = get_tree().get_first_node_in_group("gui")
 
 ## Boolean for if the Node is alive or dead.
 var alive := true
@@ -20,6 +23,8 @@ signal Died
 ## and will kill if the [member HealthComponent.health] reaches 0.
 func damage(amount := 0) -> void:
 	if alive: 
+		heart_hud.heart_damage(amount)
+		
 		health = clamp(health - abs(amount), 0, max_health)
 		
 		if health == 0: kill()
@@ -28,7 +33,10 @@ func damage(amount := 0) -> void:
 ## Increases the [member HealthComponent.health] by the amount specified,[br]
 ## and will not go higher than [member HealthComponent.max_health].
 func heal(amount := 0) -> void:
-	if alive: health = clamp(health + abs(amount), 0, max_health)
+	if alive: 
+		heart_hud.heart_heal(amount)
+		
+		health = clamp(health + abs(amount), 0, max_health)
 	else: print(owner.name + " is already dead!")
 
 ## Kills the Node, which emits the [signal HealthComponent.Died],
