@@ -29,7 +29,6 @@ GameManager="*res://modules/globals/game_manager.gd"
 general/balloon_path="res://modules/dialogue/test_dialogue.tscn"
 general/custom_test_scene_path="res://modules/dialogue/test_dialogue.tscn"
 
-
 [display]
 
 window/size/viewport_width=1920
