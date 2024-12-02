@@ -21,7 +21,13 @@ config/icon="res://icon.svg"
 KeyChain="*res://modules/globals/key_chain.gd"
 Shaker="*res://addons/shaker/src/Shaker.gd"
 LevelManager="*res://modules/globals/level_manager.tscn"
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameManager="*res://modules/globals/game_manager.gd"
+
+[dialogue_manager]
+
+general/balloon_path="res://modules/dialogue/test_dialogue.tscn"
+general/custom_test_scene_path="res://modules/dialogue/test_dialogue.tscn"
 
 [display]
 
@@ -34,7 +40,7 @@ window/dpi/allow_hidpi=false
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ldtk-importer/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/xsm/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/ldtk-importer/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/xsm/plugin.cfg")
 
 [global_group]
 
@@ -104,6 +110,10 @@ left_click={
 "events": [Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"button_mask":1,"position":Vector2(677, 33),"global_position":Vector2(693, 113),"factor":1.0,"button_index":1,"canceled":false,"pressed":true,"double_click":false,"script":null)
 ]
 }
+
+[internationalization]
+
+locale/translations_pot_files=PackedStringArray("res://modules/dialogue/dialogue.dialogue")
 
 [layer_names]
 
