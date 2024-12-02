@@ -13,17 +13,22 @@ var hop_states : Dictionary = {
 # used for calculating sword swing direction (up, down, left right)
 # as well as nudge direction (360deg)
 var hop_dir : Vector2
+var hop_pos : Vector2
 
 # This function is called when the state enters
 # XSM enters the root first, then the children
 func _on_enter(_args) -> void:
 	if _args:
-		hop_dir = _args
-	
+		hop_dir = _args[0]
+		hop_pos = _args[1]
+	else:
+		hop_dir = Vector2.DOWN
+		hop_pos = Vector2.ZERO
+		push_error("_args not implemented in calling function")
 	change_state("NoAttack")
-	
-	hop_dir = Vector2(0, 1) # down
 
+	var pos_tween = target.create_tween()
+	pos_tween.tween_property(target, "global_position", target.global_position+hop_pos, 0.5).set_trans(Tween.TRANS_QUAD)
 	# our four cardinals are:
 	# UP: (0,-1)
 	# RIGHT: (1,0)

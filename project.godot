@@ -47,6 +47,7 @@ enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://add
 player=""
 level_entrance="A position that the player can spawn into a new level"
 enemy=""
+ledge=""
 
 [input]
 

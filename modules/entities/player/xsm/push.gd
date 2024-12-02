@@ -50,10 +50,23 @@ func _on_update(_delta: float) -> void:
 		var collider = collision.get_collider()
 		if collider is TileMapLayer:
 			var tile_rid = collision.get_collider_rid()
+			
+			var hop_pos = _get_ledge_end_position(tile_rid, collider)
+			
 			var collision_layer = PhysicsServer2D.body_get_collision_layer(tile_rid)
 			if (collision_layer & 1) == 1:
 				# layer bitmask contains "ledge"
-				change_state("Hop", push_dir)
+				var args = [push_dir, hop_pos]
+				change_state("Hop", args)
+			
+
+func _get_ledge_end_position(tile_rid : RID, collider : TileMapLayer) -> Vector2:
+	var coords = collider.get_coords_for_body_rid(tile_rid)
+	var data = collider.get_cell_tile_data(coords)
+	if data:
+		return data.get_custom_data("end_location")
+	else:
+		return Vector2.ZERO
 
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root
