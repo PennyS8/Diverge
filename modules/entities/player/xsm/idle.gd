@@ -5,6 +5,7 @@ var idle_dir : Vector2
 
 func _on_enter(_args):
 	change_state("CanAttack")
+	change_state("CanDash")
 	
 	if(_args):
 		idle_dir = _args

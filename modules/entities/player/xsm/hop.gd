@@ -26,6 +26,7 @@ func _on_enter(_args) -> void:
 		hop_pos = Vector2.ZERO
 		push_error("_args not implemented in calling function")
 	change_state("NoAttack")
+	change_state("NoDash")
 
 	var pos_tween = target.create_tween()
 	pos_tween.tween_property(target, "global_position", target.global_position+hop_pos, 0.5).set_trans(Tween.TRANS_QUAD)
