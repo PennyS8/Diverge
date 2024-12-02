@@ -1,4 +1,9 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://c1q13vjtcpw6d"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://c1q13vjtcpw6d"]
+
+[ext_resource type="Texture2D" uid="uid://5ogjkbk72frr" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/taiga_.png" id="1_xsela"]
+[ext_resource type="Texture2D" uid="uid://b83wnaawulpke" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/taigaPath_.png" id="2_a30bg"]
+[ext_resource type="Texture2D" uid="uid://n415hrvl8ild" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/taiga_ [bridgeVertical].png" id="3_gj703"]
+[ext_resource type="Texture2D" uid="uid://okohrvxwiuhk" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/taiga_ [bridgeHorizontal].png" id="4_3t3tk"]
 
 [sub_resource type="TileMapPattern" id="TileMapPattern_14x1f"]
 tile_data = PackedInt32Array(0, 65536, 1, 65536, 65536, 2, 131072, 65536, 4, 1, 131072, 1, 65537, 131072, 2, 131073, 131072, 4, 2, 327680, 1, 65538, 327680, 2, 131074, 327680, 4)
@@ -8,43 +13,115 @@ rough = true
 bounce = 1.0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_av3dp"]
+texture = ExtResource("1_xsela")
+1:5/animation_columns = 4
+1:5/animation_separation = Vector2i(4, 0)
+1:5/animation_frame_0/duration = 1.0
+1:5/animation_frame_1/duration = 0.5
+1:5/animation_frame_2/duration = 0.5
+1:5/animation_frame_3/duration = 0.5
 1:5/0 = 0
 1:5/0/terrain_set = 0
 1:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, 4, 8, 4, 8, 8, 1, 8)
+2:5/animation_separation = Vector2i(4, 0)
+2:5/animation_frame_0/duration = 1.0
+2:5/animation_frame_1/duration = 0.5
+2:5/animation_frame_2/duration = 0.5
+2:5/animation_frame_3/duration = 0.5
 2:5/0 = 0
 2:5/0/terrain_set = 0
 2:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 4, 8, 4, 8, 6, -8, 6)
+3:5/animation_separation = Vector2i(4, 0)
+3:5/animation_frame_0/duration = 1.0
+3:5/animation_frame_1/duration = 0.5
+3:5/animation_frame_2/duration = 0.5
+3:5/animation_frame_3/duration = 0.5
 3:5/0 = 0
 3:5/0/terrain_set = 0
 3:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 4, -1, 4, -1, 8, -8, 8)
+3:6/animation_separation = Vector2i(4, 0)
+3:6/animation_frame_0/duration = 1.0
+3:6/animation_frame_1/duration = 0.5
+3:6/animation_frame_2/duration = 0.5
+3:6/animation_frame_3/duration = 0.5
 3:6/0 = 0
 3:6/0/terrain_set = 0
 3:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1, -8, -5, -8, -5, 8, -1, 8)
+2:6/animation_separation = Vector2i(4, 0)
+2:6/animation_frame_0/duration = 1.0
+2:6/animation_frame_1/duration = 0.5
+2:6/animation_frame_2/duration = 0.5
+2:6/animation_frame_3/duration = 0.5
 2:6/0 = 0
 2:6/0/terrain_set = 0
 2:6/0/probability = 5.0
+1:6/animation_separation = Vector2i(4, 0)
+1:6/animation_frame_0/duration = 1.0
+1:6/animation_frame_1/duration = 0.5
+1:6/animation_frame_2/duration = 0.5
+1:6/animation_frame_3/duration = 0.5
 1:6/0 = 0
 1:6/0/terrain_set = 0
 1:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -8, 5, -8, 5, 8, 1, 8)
+1:7/animation_separation = Vector2i(4, 0)
+1:7/animation_frame_0/duration = 1.0
+1:7/animation_frame_1/duration = 0.5
+1:7/animation_frame_2/duration = 0.5
+1:7/animation_frame_3/duration = 0.5
 1:7/0 = 0
 1:7/0/terrain_set = 0
 1:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -8, 5, -8, 5, -4, 8, -4, 8, 4, 1, 4)
+2:7/animation_separation = Vector2i(4, 0)
+2:7/animation_frame_0/duration = 1.0
+2:7/animation_frame_1/duration = 0.5
+2:7/animation_frame_2/duration = 0.5
+2:7/animation_frame_3/duration = 0.5
 2:7/0 = 0
 2:7/0/terrain_set = 0
 2:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -5, 8, -5, 8, 4, -8, 4)
+3:7/animation_separation = Vector2i(4, 0)
+3:7/animation_frame_0/duration = 1.0
+3:7/animation_frame_1/duration = 0.5
+3:7/animation_frame_2/duration = 0.5
+3:7/animation_frame_3/duration = 0.5
 3:7/0 = 0
 3:7/0/terrain_set = 0
 3:7/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1, 4, -8, 4, -8, -4, -5, -4, -5, -8, -1, -8)
+4:7/animation_separation = Vector2i(4, 0)
+4:7/animation_frame_0/duration = 1.0
+4:7/animation_frame_1/duration = 0.5
+4:7/animation_frame_2/duration = 0.5
+4:7/animation_frame_3/duration = 0.5
 4:7/0 = 0
+4:6/animation_separation = Vector2i(4, 0)
+4:6/animation_frame_0/duration = 1.0
+4:6/animation_frame_1/duration = 0.5
+4:6/animation_frame_2/duration = 0.5
+4:6/animation_frame_3/duration = 0.5
 4:6/0 = 0
 4:6/0/terrain_set = 0
 4:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(8, 1, 8, 5, -5, 5, -5, -8, -1, -8, -1, 1)
+5:6/animation_separation = Vector2i(4, 0)
+5:6/animation_frame_0/duration = 1.0
+5:6/animation_frame_1/duration = 0.5
+5:6/animation_frame_2/duration = 0.5
+5:6/animation_frame_3/duration = 0.5
 5:6/0 = 0
 5:6/0/terrain_set = 0
 5:6/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, -8, 5, -8, 5, 5, -8, 5, -8, 1, 1, 1)
+5:5/animation_separation = Vector2i(4, 0)
+5:5/animation_frame_0/duration = 1.0
+5:5/animation_frame_1/duration = 0.5
+5:5/animation_frame_2/duration = 0.5
+5:5/animation_frame_3/duration = 0.5
 5:5/0 = 0
 5:5/0/terrain_set = 0
 5:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(1, 8, 5, 8, 5, -5, -8, -5, -8, 4, 1, 4)
+4:5/animation_separation = Vector2i(4, 0)
+4:5/animation_frame_0/duration = 1.0
+4:5/animation_frame_1/duration = 0.5
+4:5/animation_frame_2/duration = 0.5
+4:5/animation_frame_3/duration = 0.5
 4:5/0 = 0
 4:5/0/terrain_set = 0
 4:5/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1, 8, -5, 8, -5, -5, 8, -5, 8, 4, -1, 4)
@@ -186,6 +263,7 @@ bounce = 1.0
 9:3/0/terrain_set = 0
 9:4/0 = 0
 9:4/0/terrain_set = 0
+7:3/size_in_atlas = Vector2i(2, 2)
 7:3/0 = 0
 2:3/0 = 0
 2:3/0/probability = 5.0
@@ -193,6 +271,7 @@ bounce = 1.0
 3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, 4, -1, 4, -1, 8, -8, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5er54"]
+texture = ExtResource("2_a30bg")
 1:1/0 = 0
 2:1/0 = 0
 3:1/0 = 0
@@ -213,6 +292,7 @@ bounce = 1.0
 6:3/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_msk0e"]
+texture = ExtResource("3_gj703")
 1:0/0 = 0
 3:0/0 = 0
 1:1/0 = 0
@@ -241,6 +321,7 @@ bounce = 1.0
 3:8/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_exef1"]
+texture = ExtResource("4_3t3tk")
 1:0/0 = 0
 2:0/0 = 0
 3:0/0 = 0
