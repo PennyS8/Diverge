@@ -165,7 +165,6 @@ static func create_new_tileset_source(definition: Dictionary, base_dir: String) 
 	source.margins = Vector2i(margin, margin)
 	source.separation = Vector2i(separation, separation)
 	source.texture_region_size = Vector2(tile_size, tile_size)
-	source.use_texture_padding = false
 
 	# Create/remove tiles in non-empty/empty cells.
 	for y in range(0, grid_h):

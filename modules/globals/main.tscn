@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://bjxg6hpe2ru82"]
+[gd_scene load_steps=4 format=3 uid="uid://b8ywe7vivb1en"]
 
+[ext_resource type="Script" path="res://modules/globals/main.gd" id="1_2uu7l"]
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="2_wwsun"]
 [ext_resource type="PackedScene" uid="uid://gna64jq1jkf1" path="res://modules/ui/debug/num_keys/num_keys.tscn" id="3_wjh11"]
 
 [node name="Main" type="Node2D"]
+z_as_relative = false
+y_sort_enabled = true
+script = ExtResource("1_2uu7l")
 
 [node name="Player" parent="." instance=ExtResource("2_wwsun")]
 
