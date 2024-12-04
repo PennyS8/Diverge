@@ -18,23 +18,6 @@ tracks/0/keys = {
 "values": [39]
 }
 
-[sub_resource type="Animation" id="Animation_mu6wg"]
-resource_name = "damage_half"
-length = 0.35
-step = 40.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.153353, 0.294885),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [40, 41]
-}
-
 [sub_resource type="Animation" id="Animation_1xnsw"]
 resource_name = "damage_full"
 length = 0.35
@@ -52,6 +35,23 @@ tracks/0/keys = {
 "values": [53, 54]
 }
 
+[sub_resource type="Animation" id="Animation_mu6wg"]
+resource_name = "damage_half"
+length = 0.35
+step = 40.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.153353, 0.294885),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [40, 41]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cg2u1"]
 _data = {
 "RESET": SubResource("Animation_e100q"),
@@ -60,20 +60,20 @@ _data = {
 }
 
 [node name="HudHeart" type="Control"]
-custom_minimum_size = Vector2(9, 9)
+custom_minimum_size = Vector2(40, 35)
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 35.0
 script = ExtResource("1_66xcc")
+metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 scale = Vector2(5, 5)
 texture = ExtResource("1_uxsif")
 centered = false
+offset = Vector2(-4, -5)
 hframes = 13
 vframes = 20
 frame = 39

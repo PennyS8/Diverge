@@ -9,18 +9,25 @@ func _ready() -> void:
 			
 
 func heart_damage(amount : int):
-	var player_health = get_tree().get_first_node_in_group("player").health_component.health
 	var player_max_health = get_tree().get_first_node_in_group("player").health_component.max_health
 	var max_hearts : int = ceil(player_max_health / 2.0)
-	var index = ceil((player_health) / 2.0) - 1
-	
-	# Sets index back to 0 in the case that it becomes a negative number
-	if index < 0:
-		index = 0
+	var damage = amount
 
-	hearts[index].update_sprite(amount)
+	for i in range(max_hearts - 1, -1, -1):
+		if damage <= 0:
+			break
+		if hearts[i].empty:
+			continue
+		
+		if (damage >= 2) or (hearts[i].full == false):
+			if hearts[i].full == false:
+				damage -= 1
+			else:
+				damage -= 2
+			hearts[i].update_sprite("full_damage")
+		else:
+			hearts[i].update_sprite("half_damage")
+			damage = 0
 
 func heart_heal(amount : int):
 	pass
-	
-	

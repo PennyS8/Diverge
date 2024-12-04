@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlgu6ii31q1ht"]
+[gd_scene load_steps=4 format=3 uid="uid://dlgu6ii31q1ht"]
 
 [ext_resource type="Script" path="res://modules/ui/player_hud/player_hud.gd" id="1_7rjie"]
 [ext_resource type="PackedScene" uid="uid://bcx1ka3l64iq4" path="res://modules/ui/hud_heart/hud_heart.tscn" id="1_xbvhq"]
+[ext_resource type="PackedScene" uid="uid://dx0iml7qkauhn" path="res://modules/ui/hud_key/hud_key.tscn" id="3_osnti"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_7rjie")
@@ -9,36 +10,52 @@ script = ExtResource("1_7rjie")
 [node name="IngameUI" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-
-[node name="MarginContainer" type="MarginContainer" parent="IngameUI"]
-layout_mode = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 
-[node name="HFlowContainer" type="HFlowContainer" parent="IngameUI/MarginContainer"]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-size_flags_vertical = 0
-theme_override_constants/h_separation = 50
-theme_override_constants/v_separation = 25
+[node name="HBoxContainer" type="HBoxContainer" parent="IngameUI"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 186.0
+grow_horizontal = 2
+theme_override_constants/separation = 16
 
-[node name="Heart" parent="IngameUI/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
-layout_mode = 2
-
-[node name="Heart2" parent="IngameUI/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
-layout_mode = 2
-
-[node name="Heart3" parent="IngameUI/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
-layout_mode = 2
-
-[node name="Heart4" parent="IngameUI/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
-layout_mode = 2
-
-[node name="Heart5" parent="IngameUI/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
-layout_mode = 2
-
-[node name="VFlowContainer" type="VFlowContainer" parent="IngameUI/MarginContainer/HFlowContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="IngameUI/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+
+[node name="HFlowContainer" type="HFlowContainer" parent="IngameUI/HBoxContainer/MarginContainer"]
+custom_minimum_size = Vector2(400, 170)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/h_separation = 10
+
+[node name="Heart" parent="IngameUI/HBoxContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
+layout_mode = 2
+
+[node name="Heart2" parent="IngameUI/HBoxContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
+layout_mode = 2
+
+[node name="Heart3" parent="IngameUI/HBoxContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
+layout_mode = 2
+
+[node name="Heart4" parent="IngameUI/HBoxContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
+layout_mode = 2
+
+[node name="Heart5" parent="IngameUI/HBoxContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
+layout_mode = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="IngameUI/HBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="HudKey" parent="IngameUI/HBoxContainer/MarginContainer2" instance=ExtResource("3_osnti")]
+layout_mode = 2

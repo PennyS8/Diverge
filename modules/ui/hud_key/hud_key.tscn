@@ -1,6 +1,13 @@
-[gd_scene format=3 uid="uid://dx0iml7qkauhn"]
+[gd_scene load_steps=3 format=3 uid="uid://dx0iml7qkauhn"]
+
+[ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="1_1ymtp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c3jgv"]
+atlas = ExtResource("1_1ymtp")
+region = Rect2(34, 68, 12, 7)
 
 [node name="HudKey" type="Control"]
+custom_minimum_size = Vector2(80, 85)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -8,10 +15,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 41.0
+offset_bottom = 24.0
 
-[node name="TextureRect" type="TextureRect" parent="PanelContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(40, 35)
 layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_c3jgv")
+expand_mode = 3
+stretch_mode = 5
