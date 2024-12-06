@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://b8ywe7vivb1en"]
+[gd_scene load_steps=7 format=3 uid="uid://b8ywe7vivb1en"]
 
 [ext_resource type="Script" path="res://modules/globals/main.gd" id="1_2uu7l"]
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="2_wwsun"]
 [ext_resource type="PackedScene" uid="uid://gna64jq1jkf1" path="res://modules/ui/debug/num_keys/num_keys.tscn" id="3_wjh11"]
+[ext_resource type="PackedScene" uid="uid://n2we8f4pf3fj" path="res://modules/ui/menus/intro/intro.tscn" id="4_faj30"]
+[ext_resource type="PackedScene" uid="uid://giub3rx77mho" path="res://modules/ui/menus/pause/paused.tscn" id="5_1ymda"]
+[ext_resource type="PackedScene" uid="uid://ctrkxhipcfq8n" path="res://modules/ui/menus/credits/credits.tscn" id="6_46eed"]
 
 [node name="Main" type="Node2D"]
 z_as_relative = false
@@ -14,3 +17,9 @@ script = ExtResource("1_2uu7l")
 [node name="GUI" type="CanvasLayer" parent="."]
 
 [node name="NumKeys" parent="GUI" instance=ExtResource("3_wjh11")]
+
+[node name="PauseMenu" parent="GUI" instance=ExtResource("5_1ymda")]
+
+[node name="TitleScreen" parent="GUI" instance=ExtResource("4_faj30")]
+
+[node name="Credits" parent="GUI" instance=ExtResource("6_46eed")]
