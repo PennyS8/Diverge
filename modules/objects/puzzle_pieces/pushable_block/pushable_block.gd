@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 var pushing := false
 
-func push(direction : Vector2):
-	direction = direction * $CollisionShape2D.shape.size.x
+func push(area : HitBoxComponent2D):
+	var direction = area.get_parent().swing_dir
+	direction = direction * $BodyCollider.shape.size.x
 	if !move_and_collide(direction, true):
 		if !pushing:
 			pushing = true
