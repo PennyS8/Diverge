@@ -6,6 +6,9 @@ func _ready() -> void:
 	if get_tree().current_scene.name != "Main":
 		await LevelManager.main_ready
 	var player = get_tree().get_first_node_in_group("player")
-	print(player.health_component.health)
-	player.health_component.health = player.health_component.max_health
-	print(player.health_component.health)
+	
+	# Gets how much health the player has lost
+	var heal_amount = player.health_component.max_health - player.health_component.health
+	
+	# Fully heals the player
+	player.health_component.heal(heal_amount)

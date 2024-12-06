@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://modules/globals/main.gd" id="1_2uu7l"]
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="2_wwsun"]
 [ext_resource type="PackedScene" uid="uid://gna64jq1jkf1" path="res://modules/ui/debug/num_keys/num_keys.tscn" id="3_wjh11"]
-[ext_resource type="PackedScene" uid="uid://dlgu6ii31q1ht" path="res://modules/ui/player_hud/player_hud.tscn" id="4_1al8n"]
+[ext_resource type="PackedScene" uid="uid://dlgu6ii31q1ht" path="res://modules/ui/hud/player_hud/player_hud.tscn" id="4_1al8n"]
 
 [node name="Main" type="Node2D"]
 z_as_relative = false

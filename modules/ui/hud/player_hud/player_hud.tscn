@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlgu6ii31q1ht"]
+[gd_scene load_steps=5 format=3 uid="uid://dlgu6ii31q1ht"]
 
-[ext_resource type="Script" path="res://modules/ui/player_hud/player_hud.gd" id="1_7rjie"]
-[ext_resource type="PackedScene" uid="uid://bcx1ka3l64iq4" path="res://modules/ui/hud_heart/hud_heart.tscn" id="1_xbvhq"]
-[ext_resource type="PackedScene" uid="uid://dx0iml7qkauhn" path="res://modules/ui/hud_key/hud_key.tscn" id="3_osnti"]
+[ext_resource type="Script" path="res://modules/ui/hud/player_hud/player_hud.gd" id="1_7rjie"]
+[ext_resource type="PackedScene" uid="uid://bcx1ka3l64iq4" path="res://modules/ui/hud/hud_heart/hud_heart.tscn" id="1_xbvhq"]
+[ext_resource type="PackedScene" uid="uid://dx0iml7qkauhn" path="res://modules/ui/hud/hud_small_key/hud_small_key.tscn" id="3_osnti"]
+[ext_resource type="PackedScene" uid="uid://gt54641y1ntm" path="res://modules/ui/hud/hud_big_key/hud_big_key.tscn" id="4_nce0q"]
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_7rjie")
@@ -19,6 +20,7 @@ anchors_preset = 10
 anchor_right = 1.0
 offset_bottom = 186.0
 grow_horizontal = 2
+scale = Vector2(1.5, 1.5)
 theme_override_constants/separation = 16
 
 [node name="MarginContainer" type="MarginContainer" parent="IngameUI/HBoxContainer"]
@@ -50,6 +52,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="IngameUI/HBoxContainer"]
+custom_minimum_size = Vector2(110, 65)
 layout_mode = 2
 size_flags_vertical = 0
 theme_override_constants/margin_left = 16
@@ -58,4 +61,16 @@ theme_override_constants/margin_right = 0
 theme_override_constants/margin_bottom = 0
 
 [node name="HudKey" parent="IngameUI/HBoxContainer/MarginContainer2" instance=ExtResource("3_osnti")]
+layout_mode = 2
+
+[node name="MarginContainer3" type="MarginContainer" parent="IngameUI/HBoxContainer"]
+custom_minimum_size = Vector2(110, 65)
+layout_mode = 2
+size_flags_vertical = 0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 0
+theme_override_constants/margin_bottom = 0
+
+[node name="HudBigKey" parent="IngameUI/HBoxContainer/MarginContainer3" instance=ExtResource("4_nce0q")]
 layout_mode = 2

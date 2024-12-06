@@ -3,7 +3,7 @@ extends CanvasLayer
 var hearts : Array[HUDHeart] = []
 
 func _ready() -> void:
-	for child in $IngameUI/MarginContainer/HFlowContainer.get_children():
+	for child in $IngameUI/HBoxContainer/MarginContainer/HFlowContainer.get_children():
 		if child is HUDHeart:
 			hearts.append(child)
 			
@@ -24,10 +24,27 @@ func heart_damage(amount : int):
 				damage -= 1
 			else:
 				damage -= 2
-			hearts[i].update_sprite("full_damage")
+			hearts[i].damage_sprite("full_damage")
 		else:
-			hearts[i].update_sprite("half_damage")
+			hearts[i].damage_sprite("half_damage")
 			damage = 0
 
 func heart_heal(amount : int):
-	pass
+	var heal = amount
+
+	for heart in hearts:
+		if heal <= 0:
+			break
+		if heart.full:
+			continue
+		
+		if (heal >= 2) and (heart.empty == true):
+			heal -= 2
+			heart.heal_sprite("full_heal")
+		else:
+			if heart.empty == false:
+				heal -= 1
+				heart.heal_sprite("full_heal")
+			else:
+				heal = 0
+				heart.heal_sprite("half_heal")
