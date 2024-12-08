@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://gt54641y1ntm"]
+
+[ext_resource type="Script" path="res://modules/ui/hud/hud_big_key/hud_big_key.gd" id="1_kb20q"]
+[ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_bm0fx"]
+[ext_resource type="LabelSettings" uid="uid://d3l10jcs707nc" path="res://assets/hud/number_labels.tres" id="3_volt5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hulv2"]
+atlas = ExtResource("2_bm0fx")
+region = Rect2(52, 68, 9, 7)
+
+[node name="HudBigKey" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1826.0
+offset_bottom = -1031.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_kb20q")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 65.0
+offset_bottom = 35.0
+
+[node name="BigKeys" type="Label" parent="HBoxContainer"]
+unique_name_in_owner = true
+texture_filter = 1
+layout_mode = 2
+size_flags_horizontal = 4
+text = "0
+"
+label_settings = ExtResource("3_volt5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer"]
+custom_minimum_size = Vector2(45, 35)
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer/PanelContainer"]
+texture_filter = 1
+layout_mode = 2
+texture = SubResource("AtlasTexture_hulv2")

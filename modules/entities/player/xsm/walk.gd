@@ -6,6 +6,10 @@ extends StateSound
 @export var friction := 10
 
 var idle_dir := Vector2.DOWN
+
+# the number of physics frames for walking against a wall to count as pushing
+@export var push_frames := 20
+var curr_push_frame := push_frames
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
@@ -23,13 +27,16 @@ var idle_dir := Vector2.DOWN
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args):
-	pass
+	push_frames = 30
 	
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta):
 	if target.dir == Vector2.ZERO:
 		change_state("Idle", idle_dir)
+	
+	if Input.is_action_just_pressed("push"):
+		change_state("Push")
 	
 	target.velocity = lerp(target.velocity, target.dir * ground_speed, acceleration * _delta)
 
@@ -49,7 +56,21 @@ func _on_update(_delta):
 		elif ydir == -1:
 			play_blend("walk_up", 0.0)
 			idle_dir = Vector2.UP
-		
+	
+	# get_wall_normal returns the direction the wall's collision is to us;
+	# i.e. newton's second law, opposite reaction to our action
+	# basically if we're on a collision & get_wall_normal matches the negative of our direction,
+	# we're "pushing" against that object :) physics mf
+	if target.is_on_wall():
+		if target.get_wall_normal() == -target.dir:
+			curr_push_frame -= 1
+			if curr_push_frame <= 0:
+				curr_push_frame = push_frames
+				change_state("Push", target.dir)
+		else:
+			# reset to default
+			curr_push_frame = push_frames
+			
 # when another state (such as attack or dash) transitions us out of this,
 # set our velocity to zero so we don't get weird sliding
 # if we have like, an ice level or slippery path, we prob wanna change this

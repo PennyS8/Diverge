@@ -21,11 +21,11 @@ var start_location : Vector2
 var distance_travelled : float
 
 # This function is called when the state enters
-# XSM enters the root first, the the children
+# XSM enters the root first, then the children
 func _on_enter(_args) -> void:
 	change_state("NoAttack")
 	
-	var mouse_pos = target.get_global_mouse_position()
+	var mouse_pos = target.get_global_mouse_position()  
 	
 	start_location = target.global_position
 	attack_dir = start_location.direction_to(mouse_pos).normalized()

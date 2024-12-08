@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://c21tx8txxbw18"]
+[gd_scene load_steps=26 format=4 uid="uid://c21tx8txxbw18"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_apu1s"]
 [ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="2_wj027"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c3hs0j0l3dsrr" path="res://modules/objects/puzzle_pieces/breakable_barrel/breakable_barrel.tscn" id="13_22pfi"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="14_usk1t"]
 [ext_resource type="PackedScene" uid="uid://n2x5iije4alx" path="res://modules/objects/debug/damage_area/damage_area.tscn" id="15_04g4e"]
+[ext_resource type="PackedScene" uid="uid://c5qx3tabt31rv" path="res://modules/objects/debug/heal_area/heal_area.tscn" id="16_gdg6b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57cbg"]
 texture = ExtResource("3_waj6y")
@@ -318,6 +319,7 @@ sources/0 = SubResource("TileSetAtlasSource_45hkk")
 
 [node name="TestingGrounds" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(-784, -384)
 metadata/_edit_horizontal_guides_ = [-188.0, 611.0]
 metadata/_edit_vertical_guides_ = [915.0]
 
@@ -415,7 +417,10 @@ next_level_path = "res://modules/levels/placeholder_mom_house/placeholder_home.t
 entrance_name = "FrontDoor"
 
 [node name="DamageArea" parent="World" instance=ExtResource("15_04g4e")]
-position = Vector2(616, 193)
+position = Vector2(550, 224)
+
+[node name="HealArea" parent="World" instance=ExtResource("16_gdg6b")]
+position = Vector2(552, 199)
 
 [node name="Entrances" type="Node2D" parent="."]
 
