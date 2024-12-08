@@ -11,6 +11,9 @@ var dir : Vector2 = Vector2.ZERO
 # we keep it in here to use it to push blocks in that direction
 var swing_dir : Vector2
 
+# if player is currently inside a "ledge" area, the reference to that is stored here
+var ledge_collision : Area2D
+
 @onready var health_component = $HealthComponent
 
 var lock_camera := false
