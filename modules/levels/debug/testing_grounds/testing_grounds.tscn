@@ -319,6 +319,7 @@ sources/0 = SubResource("TileSetAtlasSource_45hkk")
 
 [node name="TestingGrounds" type="Node2D"]
 y_sort_enabled = true
+position = Vector2(-784, -384)
 metadata/_edit_horizontal_guides_ = [-188.0, 611.0]
 metadata/_edit_vertical_guides_ = [915.0]
 

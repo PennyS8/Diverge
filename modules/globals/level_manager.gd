@@ -17,21 +17,29 @@ var main : Node2D
 
 var player
 var transitioning := false
+var found_player := false
 
 func _ready():
 	if get_tree().current_scene.name != "Main":
+		if get_tree().get_first_node_in_group("player"):
+			found_player = true
 		custom_scene_path = get_tree().current_scene.scene_file_path
 		get_tree().change_scene_to_file("res://modules/globals/main.tscn")
 	main_ready.connect(_main_ready)
-	
+
+
 func _main_ready():
 	player = get_tree().get_first_node_in_group("player")
+	if found_player:
+		# Removes the player in the Main.tcsn, leaving the Player in the scene being loaded
+		player.queue_free()
 	main = get_tree().current_scene
 	if custom_scene_path:
 		_swap_level(custom_scene_path)
 	else:
 		_swap_level(default_level.resource_path)
-		
+
+
 func change_level(path : String, entrance_name : String = ""):
 	if transitioning:
 		return
@@ -47,6 +55,7 @@ func change_level(path : String, entrance_name : String = ""):
 	tween.tween_callback(_swap_level.bind(path, entrance_name))
 	tween.tween_property(fade_screen, "color:a", 0, fade_time)
 	tween.finished.connect(_transition_complete)
+
 
 func _swap_level(path : String, entrance_name : String = ""):
 	var packed = load(path)
@@ -70,6 +79,7 @@ func _get_entrances():
 	entrances.clear()
 	for entrance in get_tree().get_nodes_in_group("level_entrance"):
 		entrances[entrance.name] = entrance.position
+
 
 func _transition_complete():
 	player.lock_camera = false

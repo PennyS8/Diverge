@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://dywn8ybv2xl4i"]
+[gd_scene load_steps=6 format=3 uid="uid://dywn8ybv2xl4i"]
 
 [ext_resource type="Script" path="res://modules/objects/puzzle_pieces/lever/lever.gd" id="1_crycx"]
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_cmmj7"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_xin6p"]
+[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="4_qhppc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sny1c"]
 size = Vector2(16, 11)
 
 [node name="Lever" type="StaticBody2D" groups=["lever"]]
 z_index = 2
+collision_layer = 48
+collision_mask = 4
 script = ExtResource("1_crycx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -19,6 +22,17 @@ hframes = 2
 region_enabled = true
 region_rect = Rect2(32, 92, 64, 18)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_sny1c")
+
+[node name="HurtBoxComponent2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("4_qhppc")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent2D"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_sny1c")
+
+[connection signal="Hit" from="HurtBoxComponent2D" to="." method="flip"]

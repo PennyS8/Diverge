@@ -17,8 +17,9 @@ func _init() -> void:
 	connect("area_entered", hitbox_entered)
 
 func _ready() -> void:
-	if (!health_component):
-		printerr("Missing HealthComponent on " + str(get_path()) + "'s HurtBoxComponent")
+	pass
+	#if (!health_component):
+		#printerr("Missing HealthComponent on " + str(get_path()) + "'s HurtBoxComponent")
 
 ## Function that is run on a [HitBoxComponent2D] collision.[br]
 ## Applies the [member HitBoxComponent2D.damage] to the health component

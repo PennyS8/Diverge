@@ -8,7 +8,7 @@ class_name HealthComponent
 
 ## Current amount of health,[br]
 ## [b]Default is [member HealthComponent.max_health][/b].
-var health := max_health
+@onready var health := max_health
 
 ## Added reference to HUD
 @onready var heart_hud = get_tree().get_first_node_in_group("gui")
