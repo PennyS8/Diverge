@@ -1,0 +1,127 @@
+[gd_scene load_steps=12 format=3 uid="uid://giub3rx77mho"]
+
+[ext_resource type="Texture2D" uid="uid://cscjb3otqhlyx" path="res://assets/menus/menuBackground.png" id="1_8nw2s"]
+[ext_resource type="Script" path="res://modules/ui/menus/pause/paused.gd" id="1_spn0w"]
+[ext_resource type="Texture2D" uid="uid://b68rounwrbxfg" path="res://assets/menus/PixelTreeSet/Trees.png" id="2_vtynh"]
+[ext_resource type="FontFile" uid="uid://dicl577yt6abd" path="res://assets/menus/Atkinson-Hyperlegible-Regular-102.ttf" id="3_8dxr1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1yu2q"]
+
+[sub_resource type="Theme" id="Theme_dge3s"]
+Button/styles/normal = SubResource("StyleBoxTexture_1yu2q")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2sfei"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nve0j"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dwdi5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eudr0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_61gb6"]
+atlas = ExtResource("2_vtynh")
+region = Rect2(99, 136.849, 59, 87.1508)
+
+[node name="PauseMenu" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_spn0w")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.827451, 0.517647, 0.690196, 0)
+
+[node name="ColorMenu" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_8nw2s")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 150
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="Label" type="Label" parent="ColorMenu/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_8dxr1")
+theme_override_font_sizes/font_size = 300
+text = "Paused"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="ColorMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_dge3s")
+theme_override_fonts/font = ExtResource("3_8dxr1")
+theme_override_font_sizes/font_size = 150
+theme_override_styles/hover = SubResource("StyleBoxFlat_2sfei")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_nve0j")
+text = "Resume"
+
+[node name="Button2" type="Button" parent="ColorMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme = SubResource("Theme_dge3s")
+theme_override_fonts/font = ExtResource("3_8dxr1")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/hover = SubResource("StyleBoxFlat_dwdi5")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_eudr0")
+text = "Exit
+"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ColorMenu"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -512.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+theme_override_constants/separation = 900
+alignment = 1
+
+[node name="TextureRect2" type="TextureRect" parent="ColorMenu/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_61gb6")
+expand_mode = 3
+
+[node name="TextureRect" type="TextureRect" parent="ColorMenu/HBoxContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_61gb6")
+expand_mode = 3
+
+[connection signal="pressed" from="ColorMenu/VBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="ColorMenu/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
