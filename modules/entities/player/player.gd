@@ -35,5 +35,3 @@ func _on_sword_body_entered(body: Node2D) -> void:
 		body.push(swing_dir)
 	elif body.is_in_group("lever"):
 		body.flip()
-	elif body.is_in_group("barrel"):
-		body.hit(1)
