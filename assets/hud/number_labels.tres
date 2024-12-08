@@ -1,0 +1,15 @@
+[gd_resource type="LabelSettings" load_steps=3 format=3 uid="uid://d3l10jcs707nc"]
+
+[ext_resource type="FontFile" uid="uid://r6ljhgbyjfck" path="res://assets/hud/alagard.ttf" id="1_0ykf6"]
+
+[sub_resource type="FontVariation" id="FontVariation_e22nh"]
+base_font = ExtResource("1_0ykf6")
+spacing_top = -2
+spacing_bottom = -6
+
+[resource]
+line_spacing = 0.0
+font = SubResource("FontVariation_e22nh")
+font_size = 32
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
