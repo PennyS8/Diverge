@@ -1,5 +1,6 @@
 extends Node
 
+@warning_ignore("unused_signal")
 signal key(id : int, state : bool)
 
 var num_smallkeys := 0
@@ -7,7 +8,7 @@ var num_bigkeys := 0
 
 var timer
 
-func puzzle_chime(audio : AudioStreamPlayer):
+func puzzle_chime(_audio : AudioStreamPlayer):
 	pass
 	#timer = Timer.new()
 	#
@@ -23,7 +24,7 @@ func puzzle_chime(audio : AudioStreamPlayer):
 	#timer.one_shot = true
 	#add_child(timer)
 	##get_tree().paused = true
-	
+
 func unpause():
 	#get_tree().paused = false
 	timer.queue_free()

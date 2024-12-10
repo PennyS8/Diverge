@@ -64,7 +64,10 @@ func _get_ledge_end_position(tile_rid : RID, collider : TileMapLayer) -> Vector2
 	var coords = collider.get_coords_for_body_rid(tile_rid)
 	var data = collider.get_cell_tile_data(coords)
 	if data:
-		return data.get_custom_data("end_location")
+		var custom_data = data.get_custom_data("end_location")
+		if custom_data:
+			return custom_data
+		else: return Vector2.ZERO
 	else:
 		return Vector2.ZERO
 
