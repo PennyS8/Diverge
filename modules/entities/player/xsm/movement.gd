@@ -6,7 +6,7 @@ extends State
 func _on_enter(_args):
 	pass
 
-func _on_update(delta):
+func _on_update(_delta):
 	target.dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	if Input.is_action_just_pressed("push"):
 		change_state("Push")

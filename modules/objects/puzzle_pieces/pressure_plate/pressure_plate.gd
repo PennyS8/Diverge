@@ -22,11 +22,11 @@ func push_down():
 	$Sprite2D.texture = frame2
 	KeyChain.key.emit(key_id, enabled)
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	if !enabled:
 		push_down()
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	if enabled and !stays_down:
 		if !get_overlapping_bodies():
 			pop_up()

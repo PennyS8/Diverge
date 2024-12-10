@@ -3,7 +3,7 @@ extends StaticBody2D
 @onready var particles = $CPUParticles2D
 
 # load bearing unused param
-func hit(area : HitBoxComponent2D):
+func hit(_area : HitBoxComponent2D):
 	$Sprite2D/ShakerComponent2D.play_shake()
 	particles.restart()
 

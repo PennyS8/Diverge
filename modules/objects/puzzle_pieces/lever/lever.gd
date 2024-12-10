@@ -4,7 +4,7 @@ extends StaticBody2D
 @export var toggled := false
 
 # structural unused param
-func flip(area):
+func flip(_area):
 	if !toggled:
 		toggled = true
 		$Sprite2D.frame = 1
