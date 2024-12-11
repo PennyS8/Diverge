@@ -51,10 +51,15 @@ func _on_update(_delta: float) -> void:
 		if collider is TileMapLayer:
 			var tile_rid = collision.get_collider_rid()
 			
-			var hop_pos = _get_ledge_end_position(tile_rid, collider)
-			
 			var collision_layer = PhysicsServer2D.body_get_collision_layer(tile_rid)
 			if (collision_layer & 1) == 1:
+				var hop_pos
+				if collider.tile_set.get_custom_data_layer_by_name("end_location") > -1:
+					hop_pos = _get_ledge_end_position(tile_rid, collider)
+				else:
+					printerr("no end_location data layer on ledge tile")
+					return
+				
 				# layer bitmask contains "ledge"
 				var args = [push_dir, hop_pos]
 				change_state("Hop", args)

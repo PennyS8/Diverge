@@ -1,13 +1,13 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt2uaqdd4hxiu"]
 
 [ext_resource type="Script" path="res://modules/globals/level_manager.gd" id="1_dvekp"]
-[ext_resource type="PackedScene" uid="uid://c21tx8txxbw18" path="res://modules/levels/debug/testing_grounds/testing_grounds.tscn" id="2_4v8u8"]
+[ext_resource type="PackedScene" uid="uid://b8d2txpebdt2f" path="res://modules/levels/debug/testing_grounds/debug_gym.tscn" id="2_fk1pd"]
 
 [node name="LevelManager" type="Node2D"]
 z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("1_dvekp")
-default_level = ExtResource("2_4v8u8")
+default_level = ExtResource("2_fk1pd")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
