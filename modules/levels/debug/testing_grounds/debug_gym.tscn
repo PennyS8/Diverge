@@ -1,5 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://b8d2txpebdt2f"]
+[gd_scene load_steps=3 format=4 uid="uid://b8d2txpebdt2f"]
 
 [ext_resource type="PackedScene" uid="uid://m6shqoju2l67" path="res://modules/levels/placeholder_gym/school_gym.tscn" id="1_7w8lo"]
+[ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="2_f5k0d"]
 
-[node name="SchoolGym" instance=ExtResource("1_7w8lo")]
+[node name="DebugGym" instance=ExtResource("1_7w8lo")]
+
+[node name="LedgeTesting" type="TileMapLayer" parent="Tiles" index="3"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAASAA8AAAADAAYAAAATAA8AAAAEAAcAAAATAA4AAAAEAAcAAAAUAA4AAAAEAAcAAAAUAA8AAAAEAAcAAAAUABAAAAAEAAcAAAATABAAAAAEAAcAAAASAA4AAAADAAYAAAASABAAAAADAAYAAAATAA0AAAACAAcAAAAUAA0AAAACAAcAAAASAA0AAAAEAAUAAAAVAA0AAAAFAAUAAAAVAA4AAAABAAYAAAAVAA8AAAABAAYAAAAVABAAAAABAAYAAAAVABEAAAAFAAYAAAAUABEAAAACAAUAAAATABEAAAACAAUAAAASABEAAAAEAAYAAAA=")
+tile_set = ExtResource("2_f5k0d")
