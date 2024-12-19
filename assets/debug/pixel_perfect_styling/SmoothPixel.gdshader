@@ -1,29 +1,17 @@
 shader_type canvas_item;
-render_mode unshaded;
-
-// Texture must have 'Filter'-flag enabled!
-
-// Automatic smoothing
-// independent of geometry and perspective
-vec4 texturePointSmooth(sampler2D smp, vec2 uv, vec2 pixel_size)
-{
-	vec2 ddx = dFdx(uv);
-	vec2 ddy = dFdy(uv);
-	vec2 lxy = sqrt(ddx * ddx + ddy * ddy);
-	
-	vec2 uv_pixels = uv / pixel_size;
-	
-	vec2 uv_pixels_floor = round(uv_pixels) - vec2(0.5f);
-	vec2 uv_dxy_pixels = uv_pixels - uv_pixels_floor;
-	
-	uv_dxy_pixels = clamp((uv_dxy_pixels - vec2(0.5f)) * pixel_size / lxy + vec2(0.5f), 0.0f, 1.0f);
-	
-	uv = uv_pixels_floor * pixel_size;
-	
-	return textureGrad(smp, uv + uv_dxy_pixels * pixel_size, ddx, ddy);
-}
-
-void fragment()
-{
-	COLOR = texturePointSmooth(TEXTURE, UV, TEXTURE_PIXEL_SIZE);
+void fragment() {
+    // Get the texture size
+    vec2 texture_size = vec2(textureSize(TEXTURE, 0));   
+    // Calculate the box filter size in texel units
+    vec2 box_size = clamp(fwidth(UV) * texture_size, vec2(1e-5), vec2(1.0));
+    // Scale UV by texture size to get texel coordinate
+    vec2 tx = UV * texture_size - 0.5 * box_size;
+    // Compute offset for pixel-sized box filter
+    vec2 tx_offset = clamp((fract(tx) - (vec2(1.0) - box_size)) / box_size, vec2(0.0), vec2(1.0));
+    // Compute bilinear sample UV coordinates
+    vec2 uv = (floor(tx) + vec2(0.5) + tx_offset) / texture_size;
+    // Sample the texture using the original UV coordinates
+    vec4 color = texture(TEXTURE, uv);
+    // Set the output color
+    COLOR = color;
 }
