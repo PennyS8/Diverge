@@ -1,9 +1,9 @@
-extends Status
+extends StatusEffectClass
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	get_tethered()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -11,6 +11,6 @@ func _process(delta: float) -> void:
 	pass
 
 
-#@Override
+# Overrides the get_tethered() in 
 func get_tethered():
-	pass
+	print("DEBUG: get_tethered() Overrided")

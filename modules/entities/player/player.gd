@@ -35,9 +35,12 @@ func _on_sword_body_entered(body: Node2D) -> void:
 		body.push(swing_dir)
 	elif body.is_in_group("lever"):
 		body.flip()
-
-func _on_thread_body_entered(body: Node2D) -> void:
-	if body.is_in_group("barrel"):
+	elif body.is_in_group("barrel"):
 		if body.get_node("StatusHolder"):
 			body.get_node("StatusHolder").add_child($"res://modules/status_effects/tethered.tscn")
+
+#func _on_thread_body_entered(body: Node2D) -> void:
+	#if body.is_in_group("barrel"):
+		#if body.get_node("StatusHolder"):
+			#body.get_node("StatusHolder").add_child($"res://modules/status_effects/tethered.tscn")
 		
