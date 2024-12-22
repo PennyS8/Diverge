@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cwi3uv88c4u2x"]
+[gd_scene load_steps=26 format=4 uid="uid://cwi3uv88c4u2x"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_dgvvs"]
 [ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="2_rkdkp"]
@@ -14,7 +14,6 @@
 [ext_resource type="PackedScene" uid="uid://dywn8ybv2xl4i" path="res://modules/objects/puzzle_pieces/lever/lever.tscn" id="12_mrk7l"]
 [ext_resource type="PackedScene" uid="uid://c3hs0j0l3dsrr" path="res://modules/objects/puzzle_pieces/breakable_barrel/breakable_barrel.tscn" id="13_8p5p6"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="14_o8if4"]
-[ext_resource type="PackedScene" uid="uid://wvc60slpimnw" path="res://modules/status_effects/tethered.tscn" id="14_w4jxp"]
 [ext_resource type="PackedScene" uid="uid://n2x5iije4alx" path="res://modules/objects/debug/damage_area/damage_area.tscn" id="15_pbs0g"]
 [ext_resource type="PackedScene" uid="uid://c5qx3tabt31rv" path="res://modules/objects/debug/heal_area/heal_area.tscn" id="16_4s10q"]
 
@@ -412,8 +411,6 @@ position = Vector2(840, 453)
 [node name="BreakableBarrel2" parent="World" instance=ExtResource("13_8p5p6")]
 position = Vector2(808, 468)
 
-[node name="Tethered" parent="World/BreakableBarrel2/StatusHolder" index="0" instance=ExtResource("14_w4jxp")]
-
 [node name="HouseTransition" parent="World" instance=ExtResource("14_o8if4")]
 position = Vector2(616, 168)
 next_level_path = "res://modules/levels/placeholder_mom_house/placeholder_home.tscn"
@@ -431,6 +428,3 @@ position = Vector2(552, 199)
 position = Vector2(616, 174)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[editable path="World/BreakableBarrel"]
-[editable path="World/BreakableBarrel2"]
