@@ -1,0 +1,106 @@
+[gd_scene load_steps=8 format=3 uid="uid://ctrkxhipcfq8n"]
+
+[ext_resource type="Script" path="res://modules/ui/menus/credits/credits.gd" id="1_bjso8"]
+[ext_resource type="Texture2D" uid="uid://cscjb3otqhlyx" path="res://assets/menus/menuBackground.png" id="1_hg6hi"]
+[ext_resource type="FontFile" uid="uid://dicl577yt6abd" path="res://assets/menus/Atkinson-Hyperlegible-Regular-102.ttf" id="3_eye5c"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_1yu2q"]
+
+[sub_resource type="Theme" id="Theme_dge3s"]
+Button/styles/normal = SubResource("StyleBoxTexture_1yu2q")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_my1lw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_i732b"]
+
+[node name="Credits" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_bjso8")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.827451, 0.517647, 0.690196, 0)
+
+[node name="ColorMenu" type="NinePatchRect" parent="."]
+texture_filter = 1
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = -20.0
+offset_bottom = -20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_hg6hi")
+patch_margin_left = 4
+patch_margin_top = 4
+patch_margin_right = 4
+patch_margin_bottom = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ColorMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 75
+
+[node name="MarginContainer" type="MarginContainer" parent="ColorMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_top = 50
+
+[node name="Label" type="Label" parent="ColorMenu/VBoxContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_eye5c")
+theme_override_font_sizes/font_size = 200
+text = "Credits
+"
+
+[node name="Label2" type="Label" parent="ColorMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_eye5c")
+theme_override_font_sizes/font_size = 75
+text = "Sophie Arcangel
+Nate Clark
+Max Hopper
+Penny Silliman"
+horizontal_alignment = 1
+
+[node name="Label3" type="Label" parent="ColorMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_eye5c")
+theme_override_font_sizes/font_size = 50
+text = "Special thanks to Dr. Matthew Rueben, Chase Ohmstead, Carson Dowhan, 
+and the Shiley School of Engineering at University of Portland"
+horizontal_alignment = 1
+
+[node name="Button2" type="Button" parent="ColorMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = SubResource("Theme_dge3s")
+theme_override_fonts/font = ExtResource("3_eye5c")
+theme_override_font_sizes/font_size = 75
+theme_override_styles/hover = SubResource("StyleBoxFlat_my1lw")
+theme_override_styles/pressed = SubResource("StyleBoxTexture_i732b")
+text = "Back"
+icon_alignment = 1
+
+[connection signal="pressed" from="ColorMenu/VBoxContainer/Button2" to="." method="_on_button_2_pressed"]
