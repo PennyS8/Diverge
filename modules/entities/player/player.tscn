@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=56 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://modules/entities/player/xsm/attack_melee.gd" id="10_v37cr"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/attack_ranged.gd" id="12_ds73y"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="12_e6mu1"]
+[ext_resource type="Script" path="res://modules/entities/player/xsm/attack_ranged_2.gd" id="13_3fc3n"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_41n4o"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/fall.gd" id="13_upq7c"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/push.gd" id="13_xr8le"]
@@ -53,7 +54,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0.0]
+"values": [1.5708]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -166,26 +167,26 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Thread:rotation")
+tracks/10/path = NodePath("Thread/CollisionShape2D:disabled")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0.0]
+"values": [true]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Thread/CollisionShape2D:disabled")
+tracks/11/path = NodePath("Thread:rotation")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.001),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [1.5708]
 }
 
 [sub_resource type="Animation" id="Animation_eyqri"]
@@ -240,18 +241,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false, true]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Thread:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1.5708]
-}
 
 [sub_resource type="Animation" id="Animation_w8kox"]
 resource_name = "attack_left"
@@ -304,18 +293,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Thread:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3.14159]
 }
 
 [sub_resource type="Animation" id="Animation_fgref"]
@@ -387,18 +364,6 @@ tracks/3/keys = {
 "update": 1,
 "values": [true, false, true]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Thread:rotation")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0.0]
-}
 
 [sub_resource type="Animation" id="Animation_dveoe"]
 resource_name = "attack_up"
@@ -463,18 +428,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Thread:rotation")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4.71239]
 }
 
 [sub_resource type="Animation" id="Animation_vkkf0"]
@@ -822,12 +775,18 @@ tracks/1/keys = {
 "values": [0, 7]
 }
 
+[sub_resource type="Animation" id="Animation_5a8st"]
+resource_name = "attack_ranged_2"
+length = 0.15
+step = 0.025
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
 _data = {
 "RESET": SubResource("Animation_6qj3b"),
 "attack_down": SubResource("Animation_eyqri"),
 "attack_left": SubResource("Animation_w8kox"),
 "attack_ranged": SubResource("Animation_fgref"),
+"attack_ranged_2": SubResource("Animation_5a8st"),
 "attack_right": SubResource("Animation_g17vg"),
 "attack_up": SubResource("Animation_dveoe"),
 "fall": SubResource("Animation_vkkf0"),
@@ -1028,6 +987,19 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../Idle")
 
+[node name="AttackRanged2" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("13_3fc3n")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = "attack_ranged"
+loop_mode = 0
+on_finished = 2
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Idle")
+
 [node name="AttackMelee" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("10_v37cr")
 sample = null
@@ -1190,10 +1162,11 @@ position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_n7koy")
 
-[node name="Hook" type="Area2D" parent="."]
+[node name="Hook" type="Area2D" parent="." groups=["hook"]]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -8)
+rotation = 1.5708
 collision_layer = 4
 collision_mask = 120
 script = ExtResource("16_7tnll")
@@ -1212,6 +1185,7 @@ disabled = true
 
 [node name="Thread" type="Area2D" parent="." groups=["thread"]]
 position = Vector2(0, -8)
+rotation = 1.5708
 collision_layer = 4
 collision_mask = 120
 script = ExtResource("16_7tnll")
@@ -1220,6 +1194,7 @@ damage = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Thread"]
 position = Vector2(32, 0)
 shape = SubResource("RectangleShape2D_noa8g")
+disabled = true
 
 [node name="HurtBoxComponent2D" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 position = Vector2(0, -10)

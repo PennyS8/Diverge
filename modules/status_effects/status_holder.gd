@@ -5,17 +5,21 @@ extends Node2D
 func _ready() -> void:
 	pass
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	check_status()
-	
+	pass
 
+## Adds a specified status by name
+## including the global group & the status node
+func add_status(status_name:String):
+	get_parent().add_to_group("status_"+status_name)
+	var status_node = load("res://modules/status_effects/"+status_name+".tscn")
+	var status = status_node.instantiate()
+	add_child(status)
 
-func check_status():
-	var status : Array = []
-	for node in get_children():
-	# NOTE: All child nodes of the StatusHolder are seen as status effects EXCEPT the plumbob
-		if node is not ColorRect:
-			status.append(node)
-	
+## Removes a specified status by name
+## including the global group & the status node
+func remove_status(status_name:String):
+	var status = get_node(status_name)
+	get_parent().remove_from_group("status_"+status_name)
+	remove_child(get_node(status_name)) # TODO: node is not being removed

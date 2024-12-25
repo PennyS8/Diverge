@@ -6,7 +6,7 @@ extends CharacterBody2D
 
 var dir : Vector2 = Vector2.ZERO
 
-# swing_dir is a variable updated by our sword swing that gets the 
+# swing_dir is a variable updated by our hook swing that gets the 
 # nearest cardinal direction to our mouse click (n, e, s, w)
 # we keep it in here to use it to push blocks in that direction
 var swing_dir : Vector2

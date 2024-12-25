@@ -1,26 +1,25 @@
 extends StaticBody2D
 
 @onready var particles = $CPUParticles2D
+@onready var status_holder = get_node("StatusHolder")
 
-# load bearing unused param
 func hit(_area : HitBoxComponent2D):
-	$Sprite2D/ShakerComponent2D.play_shake()
-	particles.restart()
-	
-	# If the thread is the attacking _area, apply the tethered status effect
+	# If the attacking _area is the players thread apply the tethered status effect
 	if _area.is_in_group("thread"):
-		var status_node = load("res://modules/status_effects/tethered.tscn")
-		var status = status_node.instantiate()
-		var status_holder = get_node("StatusHolder")
-		status_holder.add_child(status)
-	
+		if get_tree().get_nodes_in_group("status_tethered").size() <= 0:
+			status_holder.add_status("tethered")
+		
+	elif _area.is_in_group("hook"):
+		$Sprite2D/ShakerComponent2D.play_shake()
+		particles.restart()
 
+func fling(fling_point : Vector2):
+	global_position = fling_point
+	#status_holder.remove_status("tethered")
 
 func _on_cpu_particles_2d_finished() -> void:
 	if particles.amount == 16:
 		queue_free()
-	
-
 
 func _on_health_component_died() -> void:
 	particles.amount = 16

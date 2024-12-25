@@ -10,7 +10,7 @@ var hop_states : Dictionary = {
 	Vector2.DOWN: "HopDown"
 	}
 
-# used for calculating sword swing direction (up, down, left right)
+# used for calculating hook swing direction (up, down, left right)
 # as well as nudge direction (360deg)
 var hop_dir : Vector2
 var hop_pos : Vector2

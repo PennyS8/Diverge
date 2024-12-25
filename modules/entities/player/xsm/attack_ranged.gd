@@ -2,7 +2,7 @@
 extends StateSound
 
 
-# used for calculating sword swing direction (up, down, left right)
+# used for calculating hook swing direction (up, down, left right)
 # as well as nudge direction (360deg)
 var attack_dir : Vector2
 
