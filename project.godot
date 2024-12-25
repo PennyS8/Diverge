@@ -49,6 +49,7 @@ player=""
 level_entrance="A position that the player can spawn into a new level"
 enemy=""
 ledge=""
+thread=""
 
 [input]
 

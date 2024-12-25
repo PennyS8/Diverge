@@ -1210,8 +1210,10 @@ disabled = true
 polygon = PackedVector2Array(0, 0, 0, 12, 20, 8)
 disabled = true
 
-[node name="Thread" type="Area2D" parent="."]
+[node name="Thread" type="Area2D" parent="." groups=["thread"]]
 position = Vector2(0, -8)
+collision_layer = 4
+collision_mask = 120
 script = ExtResource("16_7tnll")
 damage = 0
 
@@ -1243,6 +1245,3 @@ zoom = Vector2(4, 4)
 process_callback = 0
 position_smoothing_speed = 12.0
 script = ExtResource("15_25a4m")
-
-[connection signal="body_entered" from="Hook" to="." method="_on_sword_body_entered"]
-[connection signal="body_entered" from="Thread" to="." method="_on_thread_body_entered"]

@@ -23,22 +23,11 @@ func _process(_delta):
 	#$Camera2D.global_position = round($Camera2D.global_position)
 	pass
 
+
 func _camera_move(_delta):
 	if !lock_camera:
 		$Camera2D.global_position = round(global_position + (get_global_mouse_position() - global_position) * 0.25)
 		$Camera2D.position_smoothing_enabled = true
 	else:
 		$Camera2D.position_smoothing_enabled = false
-
-func _on_sword_body_entered(body: Node2D) -> void:
-	if body.is_in_group("block"):
-		body.push(swing_dir)
-	elif body.is_in_group("lever"):
-		body.flip()
-
-
-func _on_thread_body_entered(body: Node2D) -> void:
-	if body.is_in_group("barrel"):
-		if body.get_node("StatusHolder"):
-			body.get_node("StatusHolder").add_child($"res://modules/status_effects/tethered.tscn")
-		
+	
