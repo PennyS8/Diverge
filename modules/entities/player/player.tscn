@@ -312,6 +312,11 @@ tracks/0/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_5a8st"]
+resource_name = "attack_ranged_2"
+length = 0.15
+step = 0.025
+
 [sub_resource type="Animation" id="Animation_g17vg"]
 resource_name = "attack_right"
 length = 0.15
@@ -775,11 +780,6 @@ tracks/1/keys = {
 "values": [0, 7]
 }
 
-[sub_resource type="Animation" id="Animation_5a8st"]
-resource_name = "attack_ranged_2"
-length = 0.15
-step = 0.025
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
 _data = {
 "RESET": SubResource("Animation_6qj3b"),
@@ -991,7 +991,7 @@ next_state = NodePath("../Idle")
 script = ExtResource("13_3fc3n")
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
-anim_on_enter = "attack_ranged"
+anim_on_enter = "attack_ranged_2"
 loop_mode = 0
 on_finished = 2
 disabled = false

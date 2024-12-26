@@ -16,7 +16,7 @@ func _on_enter(_args) -> void:
 		# There should only ever be 1 node in the status_tethered group
 		var tethered_entity = tethered_entities[0]
 		tethered_entity.fling(mouse_pos)
-		tethered_entity.get_node("StatusHolder").remove_status("tethered")
+		tethered_entity.get_node("StatusHolder").remove_status("Tethered")
 	
 	#tether_point = target.global_position.direction_to(mouse_pos).normalized()
 	#$"../../../Thread".rotation = Vector2(0, 0).angle_to_point(tether_point)

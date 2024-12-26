@@ -15,8 +15,7 @@ func hit(_area : HitBoxComponent2D):
 
 func fling(fling_point : Vector2):
 	global_position = fling_point
-	#status_holder.remove_status("tethered")
-
+ 
 func _on_cpu_particles_2d_finished() -> void:
 	if particles.amount == 16:
 		queue_free()

@@ -21,5 +21,5 @@ func add_status(status_name:String):
 ## including the global group & the status node
 func remove_status(status_name:String):
 	var status = get_node(status_name)
-	get_parent().remove_from_group("status_"+status_name)
-	remove_child(get_node(status_name)) # TODO: node is not being removed
+	get_parent().remove_from_group("status_"+status_name.to_lower())
+	get_node(status_name).queue_free() # TODO: node is not being removed
