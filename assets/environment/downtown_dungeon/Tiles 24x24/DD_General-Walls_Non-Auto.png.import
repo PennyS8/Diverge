@@ -3,20 +3,19 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ce10vjgkrj5nk"
-path.bptc="res://.godot/imported/DD_General-Walls_Non-Auto.png-1fbad491ebd6bef2a41678005e1c923e.bptc.ctex"
+path="res://.godot/imported/DD_General-Walls_Non-Auto.png-1fbad491ebd6bef2a41678005e1c923e.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png"
-dest_files=["res://.godot/imported/DD_General-Walls_Non-Auto.png-1fbad491ebd6bef2a41678005e1c923e.bptc.ctex"]
+dest_files=["res://.godot/imported/DD_General-Walls_Non-Auto.png-1fbad491ebd6bef2a41678005e1c923e.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=true
 compress/lossy_quality=0.8
 compress/hdr_compression=1
