@@ -3,6 +3,8 @@ extends StaticBody2D
 @onready var particles = $CPUParticles2D
 @onready var status_holder = get_node("StatusHolder")
 
+const THREAD_LENGTH = 64
+
 func hit(_area : HitBoxComponent2D):
 	# If the attacking _area is the players thread apply the tethered status effect
 	if _area.is_in_group("thread"):
@@ -14,8 +16,14 @@ func hit(_area : HitBoxComponent2D):
 		particles.restart()
 
 func fling(fling_point : Vector2):
-	global_position = fling_point
- 
+	var tween = create_tween()
+	if global_position.distance_to(fling_point) <= THREAD_LENGTH:
+		tween.tween_property(self, "global_position", fling_point, 0.1)
+	else:
+		var fling_dir = global_position.direction_to(fling_point).normalized()
+		var new_fling_point = global_position + fling_dir*THREAD_LENGTH
+		tween.tween_property(self, "global_position", new_fling_point, 0.1)
+  
 func _on_cpu_particles_2d_finished() -> void:
 	if particles.amount == 16:
 		queue_free()
