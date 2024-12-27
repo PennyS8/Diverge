@@ -16,5 +16,4 @@ func _on_enter(_args) -> void:
 		# There should only ever be 1 node in the status_tethered group
 		var tethered_entity = tethered_entities[0]
 		tethered_entity.fling(mouse_pos)
-		tethered_entity.get_node("StatusHolder").remove_status("Tethered")
 	
