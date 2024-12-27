@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://bpgun2i5o6ru"]
+[gd_scene load_steps=20 format=3 uid="uid://bpgun2i5o6ru"]
 
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="1_0ntyj"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/melee_shade/shade.gd" id="1_305ye"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/melee_shade/xsm/stunned.gd" id="6_508y8"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/melee_shade/xsm/melee.gd" id="7_k76c3"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="10_pm2cd"]
+[ext_resource type="PackedScene" uid="uid://m7h0vpdfj1dt" path="res://modules/status_effects/status_holder.tscn" id="11_af2ss"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
 radius = 8.1
@@ -197,6 +198,8 @@ shape = SubResource("CircleShape2D_lw36x")
 libraries = {
 "": SubResource("AnimationLibrary_1um1b")
 }
+
+[node name="StatusHolder" parent="." instance=ExtResource("11_af2ss")]
 
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="Hit" from="HurtBoxComponent2D" to="." method="_on_hurt_box_component_2d_hit"]
