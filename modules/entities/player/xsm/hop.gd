@@ -42,3 +42,7 @@ func _on_enter(_args) -> void:
 # pretty much same logic as dash for these two functions.
 func _on_update(_delta):
 	pass
+
+# Need to change the state back to "CanDash" as we change to the "NoDash" state upon entry
+func _on_exit(_args):
+	change_state("CanDash")

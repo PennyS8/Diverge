@@ -22,8 +22,11 @@ func _on_enter(_args):
 func _on_update(_delta):
 	target.velocity = dash_direction * dash_speed
 	distance_travelled = distance_travelled + (target.velocity * _delta).length()
-	
+
 func _after_update(_delta):
 	if distance_travelled >= dash_distance:
 		target.velocity = Vector2.ZERO
 		change_state("Idle")
+
+func _on_exit(_args):
+	change_state("DashTimer")
