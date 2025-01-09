@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://wvc60slpimnw"]
+[gd_scene load_steps=2 format=3 uid="uid://ck5osecv5u3dr"]
 
 [ext_resource type="Script" path="res://modules/status_effects/tethered.gd" id="1_jmrvs"]
 

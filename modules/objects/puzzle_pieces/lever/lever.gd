@@ -10,7 +10,7 @@ const THREAD_LENGTH = 64
 func hit(_area : HitBoxComponent2D):
 	# If the attacking _area is the players thread apply the tethered status effect
 	if _area.is_in_group("thread"):
-		if get_tree().get_nodes_in_group("status_tethered").size() <= 1:
+		if get_tree().get_nodes_in_group("status_tethered").size() <= 0:
 			add_to_group("status_tethered")
 			
 			var status_node = load("res://modules/status_effects/tethered.tscn")
