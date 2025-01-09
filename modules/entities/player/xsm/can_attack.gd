@@ -11,7 +11,3 @@ extends State
 func _on_update(_delta: float) -> void:
 	if Input.is_action_just_pressed("attack_melee"):
 		change_state("AttackMelee")
-	if Input.is_action_just_pressed("attack_ranged"):
-		change_state("ModeLasso")
-	if Input.is_action_just_pressed("fling"):
-		change_state("ModeSnap")

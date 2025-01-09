@@ -914,7 +914,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("ModeLasso")
+next_state = NodePath("")
 
 [node name="ModeLasso" type="Node" parent="PlayerFSM/ThreadMode"]
 script = ExtResource("8_dku0b")
@@ -922,7 +922,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../ModeLasso")
+next_state = NodePath("")
 
 [node name="ModeSnap" type="Node" parent="PlayerFSM/ThreadMode"]
 script = ExtResource("9_1jcsy")
@@ -930,9 +930,9 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../ModeLasso")
+next_state = NodePath("")
 
-[node name="State" type="Node" parent="PlayerFSM/ThreadMode"]
+[node name="ModeDisabled" type="Node" parent="PlayerFSM/ThreadMode"]
 script = ExtResource("1_q2vpm")
 disabled = false
 debug_mode = false
