@@ -26,7 +26,7 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 		$ShadeFSM.change_state("Stunned")
 		# If the attacking _area is the players thread apply the tethered status effect
 		if _area.is_in_group("thread"):
-			if get_tree().get_nodes_in_group("status_tethered").size() <= 0:
+			if get_tree().get_nodes_in_group("status_tethered").size() <= 1:
 				status_holder.add_status("tethered")
 
 func fling(fling_point : Vector2):

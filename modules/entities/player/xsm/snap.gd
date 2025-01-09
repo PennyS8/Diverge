@@ -9,7 +9,8 @@ extends StateSound
 # XSM enters the root first, then the children
 func _on_enter(_args) -> void:
 	change_state("NoAttack")
-	
+	change_state("ModeDisabled")
+
 	var mouse_pos = target.get_global_mouse_position()
 	var tethered_entities = get_tree().get_nodes_in_group("status_tethered")
 	if tethered_entities.size() > 0:
@@ -17,3 +18,7 @@ func _on_enter(_args) -> void:
 		var tethered_entity = tethered_entities[0]
 		tethered_entity.fling(mouse_pos)
 	
+
+func _on_exit(_args) -> void:
+	change_state("ModeLasso")
+	change_state("CanAttack")

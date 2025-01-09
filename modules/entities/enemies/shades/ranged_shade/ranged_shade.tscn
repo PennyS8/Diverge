@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://bi6255tx4u0jr"]
 
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/melee_shade/shade.gd" id="1_0ppdu"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/melee_shade/melee_shade.gd" id="1_0ppdu"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_81f8r"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/melee_shade/xsm/roaming.gd" id="3_vol8a"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/ranged_shade/charge_attack.gd" id="4_t3lex"]

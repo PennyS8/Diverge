@@ -13,8 +13,6 @@ func _on_update(_delta):
 		change_state("Push")
 	elif Input.is_action_just_pressed("fall"):
 		change_state("Fall")
-	elif Input.is_action_just_pressed("fling"):
-		change_state("AttackRanged2")
 
 func _after_update(_delta):
 	# target.velocity = target.move_and_slide(target.velocity, Vector2.UP)

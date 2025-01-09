@@ -9,9 +9,5 @@ extends State
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	if Input.is_action_just_pressed("attack_melee"):
-		change_state("AttackMelee")
 	if Input.is_action_just_pressed("attack_ranged"):
-		change_state("ModeLasso")
-	if Input.is_action_just_pressed("fling"):
-		change_state("ModeSnap")
+			change_state("Lasso")

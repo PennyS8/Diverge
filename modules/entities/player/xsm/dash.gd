@@ -13,6 +13,7 @@ var walled : bool
 
 func _on_enter(_args):
 	change_state("NoAttack")
+	
 	start_location = target.global_position
 	# TODO: when implementing controller, override this with analog stick direction instead of mouse pos
 	var mouse_pos = target.get_global_mouse_position()
