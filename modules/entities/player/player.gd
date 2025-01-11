@@ -21,8 +21,9 @@ var lock_camera := false
 func _process(_delta):
 	_camera_move(_delta)
 	#$Camera2D.global_position = round($Camera2D.global_position)
-	pass
 
+func pull():
+	pass
 
 func _camera_move(_delta):
 	if !lock_camera:

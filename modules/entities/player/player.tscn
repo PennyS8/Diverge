@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=58 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -12,13 +12,11 @@
 [ext_resource type="Script" path="res://modules/entities/player/xsm/idle.gd" id="6_p1gyv"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/walk.gd" id="6_rn5yy"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/can_attack.gd" id="6_yyqig"]
-[ext_resource type="Script" path="res://modules/entities/player/xsm/mode_lasso.gd" id="8_dku0b"]
-[ext_resource type="Script" path="res://modules/entities/player/xsm/mode_snap.gd" id="9_1jcsy"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/dash.gd" id="9_x3ix7"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/attack_melee.gd" id="10_v37cr"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/lasso.gd" id="12_ds73y"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="12_e6mu1"]
-[ext_resource type="Script" path="res://modules/entities/player/xsm/snap.gd" id="13_3fc3n"]
+[ext_resource type="Script" path="res://modules/entities/player/xsm/throw.gd" id="13_3fc3n"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_41n4o"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/fall.gd" id="13_upq7c"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/push.gd" id="13_xr8le"]
@@ -28,22 +26,24 @@
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="15_257pe"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Texture2D" uid="uid://dt65a7smcu0go" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Up.png" id="17_ofofd"]
+[ext_resource type="Script" path="res://modules/entities/player/xsm/recall.gd" id="17_qcq68"]
 [ext_resource type="Texture2D" uid="uid://c20vronu6w3d0" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Right_Down.png" id="19_2k7e2"]
 [ext_resource type="Texture2D" uid="uid://b81ru4ss0b1i8" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Left_Down.png" id="20_tr5oi"]
 [ext_resource type="Texture2D" uid="uid://vdbiwqb28uk" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Left_Down.png" id="21_ehp40"]
+[ext_resource type="PackedScene" uid="uid://m7h0vpdfj1dt" path="res://modules/status_effects/status_holder.tscn" id="22_2akqh"]
 [ext_resource type="Texture2D" uid="uid://b884a153yy7k0" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Down.png" id="22_q6hjh"]
 [ext_resource type="Texture2D" uid="uid://b8xveflaeecj3" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Right_Down.png" id="23_5brmn"]
 [ext_resource type="Texture2D" uid="uid://capua5nuuldm2" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Up.png" id="24_wgt2l"]
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n7koy"]
-radius = 3.0
-height = 12.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_noa8g"]
 size = Vector2(64, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n7koy"]
+radius = 3.0
+height = 12.0
 
 [sub_resource type="Animation" id="Animation_6qj3b"]
 length = 0.001
@@ -206,22 +206,10 @@ tracks/12/keys = {
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Thread/LeadEnd:disabled")
+tracks/13/path = NodePath("Thread/CollisionShape2D:disabled")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Thread/TailEnd:disabled")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -685,6 +673,35 @@ tracks/1/keys = {
 "values": [0, 7]
 }
 
+[sub_resource type="Animation" id="Animation_fgref"]
+resource_name = "lasso"
+length = 0.15
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Thread/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.14),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Thread:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 1), Vector2(1, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_5eygn"]
 resource_name = "walk_down"
 step = 0.125
@@ -797,88 +814,6 @@ tracks/1/keys = {
 "values": [0, 7]
 }
 
-[sub_resource type="Animation" id="Animation_dwsxj"]
-resource_name = "snap"
-length = 0.15
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Thread/LeadEnd:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Thread:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Thread/TailEnd:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.14),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-
-[sub_resource type="Animation" id="Animation_fgref"]
-resource_name = "lasso"
-length = 0.15
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Thread/LeadEnd:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.14),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Thread:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1), Vector2(1, 1)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Thread/TailEnd:disabled")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
 _data = {
 "RESET": SubResource("Animation_6qj3b"),
@@ -896,7 +831,6 @@ _data = {
 "idle_right": SubResource("Animation_8nind"),
 "idle_up": SubResource("Animation_axq7n"),
 "lasso": SubResource("Animation_fgref"),
-"snap": SubResource("Animation_dwsxj"),
 "walk_down": SubResource("Animation_5eygn"),
 "walk_left": SubResource("Animation_dq4jc"),
 "walk_right": SubResource("Animation_0j1ny"),
@@ -974,38 +908,6 @@ next_state = NodePath("")
 
 [node name="CanAttack" type="Node" parent="PlayerFSM/AttackPossible"]
 script = ExtResource("6_yyqig")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("")
-
-[node name="ThreadMode" type="Node" parent="PlayerFSM"]
-script = ExtResource("1_q2vpm")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("Idle")
-
-[node name="ModeLasso" type="Node" parent="PlayerFSM/ThreadMode"]
-script = ExtResource("8_dku0b")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("")
-
-[node name="ModeSnap" type="Node" parent="PlayerFSM/ThreadMode"]
-script = ExtResource("9_1jcsy")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("")
-
-[node name="ModeDisabled" type="Node" parent="PlayerFSM/ThreadMode"]
-script = ExtResource("1_q2vpm")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -1118,13 +1020,22 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../Idle")
 
-[node name="Snap" type="Node" parent="PlayerFSM/Movement"]
+[node name="Throw" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("13_3fc3n")
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
-anim_on_enter = "snap"
-loop_mode = 0
-on_finished = 2
+anim_on_enter = "NONE"
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Idle")
+
+[node name="Recall" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("17_qcq68")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = "NONE"
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -1277,21 +1188,7 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../Lasso")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("13_41n4o")
-texture = ExtResource("14_iekqc")
-offset = Vector2(0, -11)
-hframes = 8
-
-[node name="Shadow" type="Sprite2D" parent="."]
-material = ExtResource("13_41n4o")
-texture = ExtResource("15_257pe")
-offset = Vector2(0, -11)
-
-[node name="BodyCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_n7koy")
+[node name="StatusHolder" parent="." instance=ExtResource("22_2akqh")]
 
 [node name="Hook" type="Area2D" parent="." groups=["hook"]]
 z_index = 1
@@ -1322,12 +1219,7 @@ collision_mask = 120
 script = ExtResource("16_7tnll")
 damage = 0
 
-[node name="LeadEnd" type="CollisionShape2D" parent="Thread"]
-position = Vector2(32, -1.81899e-12)
-shape = SubResource("RectangleShape2D_noa8g")
-disabled = true
-
-[node name="TailEnd" type="CollisionShape2D" parent="Thread"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Thread"]
 position = Vector2(32, -1.81899e-12)
 shape = SubResource("RectangleShape2D_noa8g")
 disabled = true
@@ -1344,6 +1236,22 @@ shape = SubResource("RectangleShape2D_7l3cj")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_biapr")
+
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_n7koy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("13_41n4o")
+texture = ExtResource("14_iekqc")
+offset = Vector2(0, -11)
+hframes = 8
+
+[node name="Shadow" type="Sprite2D" parent="."]
+material = ExtResource("13_41n4o")
+texture = ExtResource("15_257pe")
+offset = Vector2(0, -11)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
