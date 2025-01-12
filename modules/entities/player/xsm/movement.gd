@@ -21,7 +21,7 @@ func _on_update(_delta):
 		if prev_tethered < 2:
 			change_state("Lasso")
 	elif Input.is_action_just_pressed("throw"):
-		change_state("Throw")
+		change_state("Aim")
 	elif Input.is_action_just_pressed("recall"):
 		change_state("Recall")
 

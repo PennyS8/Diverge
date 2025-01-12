@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=59 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -20,6 +20,7 @@
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_41n4o"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/fall.gd" id="13_upq7c"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/push.gd" id="13_xr8le"]
+[ext_resource type="Script" path="res://modules/entities/player/xsm/aim.gd" id="14_7pa4m"]
 [ext_resource type="Texture2D" uid="uid://d3i86f53vn5f8" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Down.png" id="14_iekqc"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/hop.gd" id="14_l3d1o"]
 [ext_resource type="Script" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
@@ -1014,6 +1015,17 @@ animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = "lasso"
 loop_mode = 0
 on_finished = 2
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Idle")
+
+[node name="Aim" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("14_7pa4m")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")

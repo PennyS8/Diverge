@@ -8,10 +8,13 @@ func _on_enter(_args) -> void:
 	change_state("NoAttack")
 	
 	var mouse_pos = target.get_global_mouse_position() + Vector2(0, 8)
+	var num_tethered_entities = $"/root/StatusEffectsManager".num_tethered_entities()
 	var tethered_entities = get_tree().get_nodes_in_group("status_tethered")
-	if tethered_entities.size() == 1:
+	if num_tethered_entities == 1:
 		var tethered_entity = tethered_entities[0]
-		tethered_entity.fling(mouse_pos)
+		if tethered_entity.name == "Player":
+			tethered_entity = tethered_entities[1]
+		tethered_entity.get_node("StatusHolder").fling_tethered_entity(mouse_pos)
 	
 	change_state("Idle")
 

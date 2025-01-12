@@ -19,8 +19,8 @@ func hit(_area : HitBoxComponent2D):
 		$Sprite2D/ShakerComponent2D.play_shake()
 		particles.restart()
 
-func fling(fling_point : Vector2):
-	pass
+#func fling(fling_point : Vector2):
+	#pass
 	#var tween = create_tween()
 	#var tether_line = status_holder.get_node("Tethered").get_node("Line2D")
 	#

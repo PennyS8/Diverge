@@ -68,7 +68,7 @@ func pull_tethered_entity():
 	pass
 
 # Retracts the length of the thread, pulling the tethered entity to the fling point
-func fling_tethered_entity():
+func fling_tethered_entity(fling_point : Vector2):
 	pass
 
 func update_tethered_thread():
