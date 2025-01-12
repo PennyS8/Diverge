@@ -16,6 +16,7 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
+	# Using sem here seems redundant but is necessary when functions are called by super()
 	thread_line2d = sem.get_node("ThreadLine2D")
 	if get_tree().get_node_count_in_group("status_tethered") <= 0:
 		if thread_line2d:
@@ -69,7 +70,17 @@ func pull_tethered_entity():
 
 # Retracts the length of the thread, pulling the tethered entity to the fling point
 func fling_tethered_entity(fling_point : Vector2):
-	pass
+	var tethered_entities = get_tree().get_nodes_in_group("status_tethered")
+	# Find the targeted tethered entity
+	var tethered_entity = tethered_entities[0]
+	if tethered_entity.name == "Player":
+		tethered_entity = tethered_entities[1]
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(tethered_entity, "global_position", fling_point, 0.25)
+	
+	for node in tethered_entities:
+		node.get_node("StatusHolder").remove_status("Tethered")
 
 func update_tethered_thread():
 	thread_line2d.clear_points()

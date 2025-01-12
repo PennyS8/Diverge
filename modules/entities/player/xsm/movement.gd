@@ -14,14 +14,6 @@ func _on_update(_delta):
 		change_state("Fall")
 	elif Input.is_action_just_pressed("override_drop"):
 		change_state("Drop")
-	
-	elif Input.is_action_just_pressed("lasso"):
-		# Prevents the player from lassoing when 2 entities are already tethered
-		var prev_tethered = $"/root/StatusEffectsManager".num_tethered_entities()
-		if prev_tethered < 2:
-			change_state("Lasso")
-	elif Input.is_action_just_pressed("throw"):
-		change_state("Aim")
 	elif Input.is_action_just_pressed("recall"):
 		change_state("Recall")
 
