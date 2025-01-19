@@ -7,6 +7,7 @@ var THREAD_LENGTH = 64
 var tethered_entity
 var guide_arrow
 var mouse_pos
+@onready var status_holder = $"../../../StatusHolder"
 
 # This function is called when the state enters
 # XSM enters the root first, then the children
@@ -15,10 +16,10 @@ func _on_enter(_args) -> void:
 	
 	mouse_pos = target.get_global_mouse_position()
 	
-	# Find the targeted tethered entity
+	# Find the targeted tethered entity (not the player)
 	var tethered_entities = get_tree().get_nodes_in_group("status_tethered")
-	tethered_entity = tethered_entities[0]
-	if tethered_entity.name == "Player":
+	var tethered_entity = tethered_entities[0]
+	if tethered_entity.is_in_group("player"):
 		tethered_entity = tethered_entities[1]
 	
 	# Define the guide arrow to help the player aim their throw
@@ -47,5 +48,23 @@ func _on_update(delta: float) -> void:
 
 func _on_exit(_args) -> void:
 	guide_arrow.queue_free()
-	tethered_entity.get_node("StatusHolder").fling_tethered_entity(mouse_pos)
+	
+	# Check for selected node to collide with entity being thrown
+	var selected_node = get_tree().get_first_node_in_group("selected")
+	
+	if selected_node:
+		status_holder.remove_status("Tethered")
+		
+		selected_node.get_node("StatusHolder").deselect()
+		selected_node.get_node("StatusHolder").add_status("tethered")
+		selected_node.get_node("StatusHolder").pull_tethered_entity()
+	else:
+		var tethered_entities = get_tree().get_nodes_in_group("status_tethered")
+		# Find the targeted tethered entity (not the player)
+		var tethered_entity = tethered_entities[0]
+		if tethered_entity.is_in_group("player"):
+			tethered_entity = tethered_entities[1]
+		
+		tethered_entity.get_node("StatusHolder").fling_tethered_entity(mouse_pos)
+	
 	change_state("CanAttack")

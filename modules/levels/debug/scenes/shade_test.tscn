@@ -620,8 +620,6 @@ position = Vector2(1024, 416)
 [node name="RangedShade" parent="." instance=ExtResource("5_rrdsi")]
 position = Vector2(960, 512)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_ae84j")
 

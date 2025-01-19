@@ -17,7 +17,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	# Using sem here seems redundant but is necessary when functions are called by super()
-	thread_line2d = sem.get_node("ThreadLine2D")
+	thread_line2d = sem.get_node_or_null("ThreadLine2D")
 	if get_tree().get_node_count_in_group("status_tethered") <= 0:
 		if thread_line2d:
 			thread_line2d.queue_free()
@@ -66,23 +66,22 @@ func num_tethered_entities() -> float:
 # When a tethered entity moves further from the other tethered entity than the max\
 # length of the thread apply a force/movement to the other tethered entity
 func pull_tethered_entity():
-	pass
-
-# Retracts the length of the thread, pulling the tethered entity to the fling point
-func fling_tethered_entity(fling_point : Vector2):
 	var tethered_entities = get_tree().get_nodes_in_group("status_tethered")
-	# Find the targeted tethered entity
-	var tethered_entity = tethered_entities[0]
-	if tethered_entity.name == "Player":
-		tethered_entity = tethered_entities[1]
 	
-	var tween = get_tree().create_tween()
-	tween.tween_property(tethered_entity, "global_position", fling_point, 0.25)
+	if tethered_entities.size() != 2:
+		return
+		
+	var entity_1_pos : Vector2 = tethered_entities[0].global_position
+	var entity_2_pos : Vector2 = tethered_entities[1].global_position
 	
-	for node in tethered_entities:
-		node.get_node("StatusHolder").remove_status("Tethered")
+	var mid_point = entity_1_pos.lerp(entity_2_pos, 0.5)
+	for entity in tethered_entities:
+		entity.get_node_or_null("StatusHolder").fling_tethered_entity(mid_point)
 
 func update_tethered_thread():
+	if !thread_line2d:
+		return
+	
 	thread_line2d.clear_points()
 	var tethered_entities = get_tree().get_nodes_in_group("status_tethered")
 	
