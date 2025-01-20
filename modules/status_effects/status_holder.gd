@@ -29,7 +29,7 @@ func fling_tethered_node(fling_point : Vector2):
 	if !get_parent().is_in_group("status_tethered"):
 		return
 	var end_point = global_position.lerp(fling_point, 0.8)
-
+	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self_object, "global_position", end_point, 0.25)
 	

@@ -1,34 +1,19 @@
 @tool
 extends StateSound
 
-
-@onready var anim = $"../../../AnimationPlayer"
 @onready var status_holder = $"../../../StatusHolder"
-@onready var thread = $"../../../Thread"
-@onready var sem = $/root/StatusEffectsManager
-
-# Number of nodes with the "tethered" status effect (EXCLUDING the player)
-var prev_tethered
+@onready var yarn_raycast = $"../../../YarnRayCast2D"
 
 # This function is called when the state enters
 # XSM enters the root first, then the children
 func _on_enter(_args) -> void:
 	change_state("NoAttack")
 	
-	prev_tethered = sem.num_tethered_nodes()
-	
-	var mouse_pos = target.get_global_mouse_position() + Vector2(0, 8)
-	var attack_dir = target.global_position.direction_to(mouse_pos).normalized()
-	thread.rotation = Vector2(0, 0).angle_to_point(attack_dir)
-
-func _on_exit(_args) -> void:
-	var curr_tethered = sem.num_tethered_nodes()
-	
-	if prev_tethered == 0 and curr_tethered == 1:
+	if yarn_raycast.is_colliding():
+		var collided_body = yarn_raycast.get_collider() # Get first body collided with
+		# Apply status effects to the player and the collided body
+		collided_body.get_parent().add_status("tethered")
 		status_holder.add_status("tethered")
-	elif prev_tethered == 1 and curr_tethered == 2:
-		status_holder.remove_status("Tethered")
-	else: # If no nodes were hit by the thread
-		pass
 	
 	change_state("CanAttack")
+	change_state("Idle")

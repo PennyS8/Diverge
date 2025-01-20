@@ -2,19 +2,11 @@ extends StaticBody2D
 
 @onready var particles = $CPUParticles2D
 @onready var status_holder = get_node("StatusHolder")
-@onready var sem = $/root/StatusEffectsManager
 
 const THREAD_LENGTH = 64
 
 func hit(_area : HitBoxComponent2D):
-	# If the attacking _area is the players thread apply the tethered status effect
-	if _area.is_in_group("thread"):
-		if status_holder.get_node_or_null("Tethered"):
-			pass
-		else:
-			status_holder.add_status("tethered")
-		
-	elif _area.is_in_group("hook"):
+	if _area.is_in_group("hook"):
 		$Sprite2D/ShakerComponent2D.play_shake()
 		particles.restart()
 

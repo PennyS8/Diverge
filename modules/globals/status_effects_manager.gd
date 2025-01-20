@@ -7,24 +7,35 @@ extends Node2D
 #
 class_name StatusEffectsClass
 
-
 @onready var thread_line2d : Line2D
-@onready var sem = $"/root/StatusEffectsManager" # SEM (Status Effects Manager)
-var THREAD_LENGTH = 64
+var YARN_LENGTH = 64
 
 func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	# Using SEM here seems redundant but is necessary when functions are called by super()
-	thread_line2d = sem.get_node_or_null("ThreadLine2D")
-	if get_tree().get_node_count_in_group("status_tethered") <= 0:
+	thread_line2d = StatusEffectsManager.get_node_or_null("ThreadLine2D")
+	var tethered_nodes = get_tree().get_nodes_in_group("status_tethered")
+	# Check if the yarn needs to be updated
+	if tethered_nodes.size() != 2:
 		if thread_line2d:
 			thread_line2d.queue_free()
-	else:
-		if not thread_line2d:
-			create_thread_line2d()
-		update_tethered_thread()
+		return
+	
+	# Check if the yarn is over streched and breaks
+	var node_1_pos : Vector2 = tethered_nodes[0].global_position
+	var node_2_pos : Vector2 = tethered_nodes[1].global_position
+	if node_1_pos.distance_to(node_2_pos) > YARN_LENGTH:
+		for tethered_node in tethered_nodes:
+			tethered_node.get_node("StatusHolder").remove_status("Tethered")
+		if thread_line2d:
+			thread_line2d.queue_free()
+		return # Don't update thread_line2d if yarn has broken
+	
+	# Draw/update thread_line2d
+	if not thread_line2d:
+		create_thread_line2d()
+	update_tethered_thread()
 
 # Adds a specified status by name
 # including the global group & the status node
@@ -37,7 +48,7 @@ func add_status(status_name:String):
 # Removes a specified status by name
 # including the global group & the status node
 func remove_status(status_name:String):
-	get_node(status_name).queue_free() # TODO: node is not being removed, just corrupted
+	get_node(status_name).queue_free() # TODO: node is not being removed properly
 	get_parent().remove_from_group("status_"+status_name.to_lower())
 
 func get_tethered():
@@ -49,13 +60,13 @@ func get_stunned():
 func get_fucked_lol():
 	return null
 
-func num_tethered_nodes() -> float:
-	var tethered_nodes = get_tree().get_nodes_in_group("status_tethered")
-	var num_tethered = 0 # Excluding the player
-	for node in tethered_nodes:
-		if node.name != "Player":
-			num_tethered += 1
-	return num_tethered
+#func num_tethered_nodes() -> float:
+	#var tethered_nodes = get_tree().get_nodes_in_group("status_tethered")
+	#var num_tethered = 0 # Excluding the player
+	#for node in tethered_nodes:
+		#if node.name != "Player":
+			#num_tethered += 1
+	#return num_tethered
 
 func create_thread_line2d():
 	thread_line2d = Line2D.new()
@@ -63,7 +74,7 @@ func create_thread_line2d():
 	thread_line2d.default_color = Color(255, 255, 0, 0.5)
 	thread_line2d.width = 2
 	thread_line2d.z_index = 1
-	sem.add_child(thread_line2d)
+	StatusEffectsManager.add_child(thread_line2d)
 
 # When a tethered node moves further from the other tethered node than the max\
 # length of the thread apply a force/movement to the other tethered node
@@ -72,13 +83,15 @@ func pull_tethered_node():
 	
 	if tethered_nodes.size() != 2:
 		return
-		
+	
 	var node_1_pos : Vector2 = tethered_nodes[0].global_position
 	var node_2_pos : Vector2 = tethered_nodes[1].global_position
 	
 	var mid_point = node_1_pos.lerp(node_2_pos, 0.5)
 	for node in tethered_nodes:
-		node.get_node_or_null("StatusHolder").fling_tethered_node(mid_point)
+		var end_point = node.global_position.lerp(mid_point, 0.8)
+		var tween = get_tree().create_tween()
+		tween.tween_property(node, "global_position", end_point, 0.25)
 
 func update_tethered_thread():
 	if !thread_line2d:

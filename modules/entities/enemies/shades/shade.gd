@@ -3,8 +3,6 @@ extends CharacterBody2D
 @export var hitpoints = 10
 @export var movement_speed : float = 30.0
 
-@onready var _animation = $AnimationPlayer
-@onready var _navagent = $NavigationAgent2D
 @onready var status_holder = get_node("StatusHolder")
 
 const THREAD_LENGTH = 64

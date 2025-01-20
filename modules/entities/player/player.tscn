@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=56 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -34,9 +34,6 @@
 [ext_resource type="Texture2D" uid="uid://b884a153yy7k0" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Down.png" id="22_q6hjh"]
 [ext_resource type="Texture2D" uid="uid://b8xveflaeecj3" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Right_Down.png" id="23_5brmn"]
 [ext_resource type="Texture2D" uid="uid://capua5nuuldm2" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Up.png" id="24_wgt2l"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_noa8g"]
-size = Vector2(64, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
@@ -174,42 +171,6 @@ tracks/10/path = NodePath("Hook/CollisionPolygon2DRight:disabled")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-tracks/11/type = "value"
-tracks/11/imported = false
-tracks/11/enabled = true
-tracks/11/path = NodePath("Thread:rotation")
-tracks/11/interp = 1
-tracks/11/loop_wrap = true
-tracks/11/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1.5708]
-}
-tracks/12/type = "value"
-tracks/12/imported = false
-tracks/12/enabled = true
-tracks/12/path = NodePath("Thread:scale")
-tracks/12/interp = 1
-tracks/12/loop_wrap = true
-tracks/12/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2(1, 1)]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Thread/CollisionShape2D:disabled")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -673,35 +634,6 @@ tracks/1/keys = {
 "values": [0, 7]
 }
 
-[sub_resource type="Animation" id="Animation_fgref"]
-resource_name = "lasso"
-length = 0.15
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Thread/CollisionShape2D:disabled")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.14),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Thread:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, 1), Vector2(1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_5eygn"]
 resource_name = "walk_down"
 step = 0.125
@@ -830,7 +762,6 @@ _data = {
 "idle_left": SubResource("Animation_2nhnb"),
 "idle_right": SubResource("Animation_8nind"),
 "idle_up": SubResource("Animation_axq7n"),
-"lasso": SubResource("Animation_fgref"),
 "walk_down": SubResource("Animation_5eygn"),
 "walk_left": SubResource("Animation_dq4jc"),
 "walk_right": SubResource("Animation_0j1ny"),
@@ -1011,9 +942,7 @@ next_state = NodePath("../Idle")
 script = ExtResource("12_ds73y")
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
-anim_on_enter = "lasso"
-loop_mode = 0
-on_finished = 2
+anim_on_enter = "NONE"
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -1190,6 +1119,13 @@ next_state = NodePath("../Lasso")
 
 [node name="StatusHolder" parent="." instance=ExtResource("22_2akqh")]
 
+[node name="YarnRayCast2D" type="RayCast2D" parent="."]
+position = Vector2(0, -8)
+target_position = Vector2(52, 0)
+collision_mask = 256
+collide_with_areas = true
+collide_with_bodies = false
+
 [node name="Hook" type="Area2D" parent="." groups=["hook"]]
 z_index = 1
 y_sort_enabled = true
@@ -1209,19 +1145,6 @@ disabled = true
 
 [node name="CollisionPolygon2DRight" type="CollisionPolygon2D" parent="Hook"]
 polygon = PackedVector2Array(0, 0, 0, 12, 20, 8)
-disabled = true
-
-[node name="Thread" type="Area2D" parent="." groups=["thread"]]
-position = Vector2(0, -8)
-rotation = 1.5708
-collision_layer = 4
-collision_mask = 120
-script = ExtResource("16_7tnll")
-damage = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Thread"]
-position = Vector2(32, -1.81899e-12)
-shape = SubResource("RectangleShape2D_noa8g")
 disabled = true
 
 [node name="HurtBoxComponent2D" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]

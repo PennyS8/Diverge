@@ -8,15 +8,7 @@ extends StaticBody2D
 const THREAD_LENGTH = 64
 
 func hit(_area : HitBoxComponent2D):
-	# If the attacking _area is the players thread apply the tethered status effect
-	if _area.is_in_group("thread"):
-		add_to_group("status_tethered")
-		
-		var status_node = load("res://modules/status_effects/tethered.tscn")
-		var status = status_node.instantiate()
-		status_holder.add_child(status)
-	
-	elif _area.is_in_group("hook"):
+	if _area.is_in_group("hook"):
 		flip()
 
 func fling(fling_point : Vector2):
