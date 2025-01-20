@@ -4,7 +4,7 @@ extends StateSound
 #@onready var sem = $"/root/StatusEffectsManager" # SEM (Status Effects Manager)
 var thread_aim_guide = preload("res://modules/status_effects/thread_aim_guide.tscn")
 var THREAD_LENGTH = 64
-var tethered_entity
+var tethered_node
 var guide_arrow
 var mouse_pos
 @onready var status_holder = $"../../../StatusHolder"
@@ -16,11 +16,11 @@ func _on_enter(_args) -> void:
 	
 	mouse_pos = target.get_global_mouse_position()
 	
-	# Find the targeted tethered entity (not the player)
-	var tethered_entities = get_tree().get_nodes_in_group("status_tethered")
-	var tethered_entity = tethered_entities[0]
-	if tethered_entity.is_in_group("player"):
-		tethered_entity = tethered_entities[1]
+	# Find the targeted tethered node (not the player)
+	var tethered_nodes = get_tree().get_nodes_in_group("status_tethered")
+	tethered_node = tethered_nodes[0]
+	if tethered_node.is_in_group("player"):
+		tethered_node = tethered_nodes[1]
 	
 	# Define the guide arrow to help the player aim their throw
 	guide_arrow = thread_aim_guide.instantiate()
@@ -38,18 +38,18 @@ func _on_update(delta: float) -> void:
 	# Place the arrow head at the mouse position
 	mouse_pos = target.get_global_mouse_position()
 	guide_arrow.global_position = mouse_pos
-	# Draw a line from the entity to the arrow head
-	var dist = mouse_pos.distance_to(tethered_entity.global_position)
+	# Draw a line from the node to the arrow head
+	var dist = mouse_pos.distance_to(tethered_node.global_position)
 	guide_arrow.get_node("Line2D").points[0] = Vector2(-dist, 0)
 	# Rotate the arrow to point at the mouse position
-	var realtive_pos = tethered_entity.to_local(mouse_pos)
+	var realtive_pos = tethered_node.to_local(mouse_pos)
 	var arrow_rotation = Vector2.ZERO.angle_to_point(realtive_pos)
 	guide_arrow.rotation = arrow_rotation
 
 func _on_exit(_args) -> void:
 	guide_arrow.queue_free()
 	
-	# Check for selected node to collide with entity being thrown
+	# Check for selected node to collide with node being thrown
 	var selected_node = get_tree().get_first_node_in_group("selected")
 	
 	if selected_node:
@@ -57,14 +57,8 @@ func _on_exit(_args) -> void:
 		
 		selected_node.get_node("StatusHolder").deselect()
 		selected_node.get_node("StatusHolder").add_status("tethered")
-		selected_node.get_node("StatusHolder").pull_tethered_entity()
+		selected_node.get_node("StatusHolder").pull_tethered_node()
 	else:
-		var tethered_entities = get_tree().get_nodes_in_group("status_tethered")
-		# Find the targeted tethered entity (not the player)
-		var tethered_entity = tethered_entities[0]
-		if tethered_entity.is_in_group("player"):
-			tethered_entity = tethered_entities[1]
-		
-		tethered_entity.get_node("StatusHolder").fling_tethered_entity(mouse_pos)
+		tethered_node.get_node("StatusHolder").fling_tethered_node(mouse_pos)
 	
 	change_state("CanAttack")

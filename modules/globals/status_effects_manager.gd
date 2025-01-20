@@ -16,20 +16,14 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	# Using sem here seems redundant but is necessary when functions are called by super()
+	# Using SEM here seems redundant but is necessary when functions are called by super()
 	thread_line2d = sem.get_node_or_null("ThreadLine2D")
 	if get_tree().get_node_count_in_group("status_tethered") <= 0:
 		if thread_line2d:
 			thread_line2d.queue_free()
 	else:
 		if not thread_line2d:
-			thread_line2d = Line2D.new()
-			thread_line2d.set_name("ThreadLine2D")
-			thread_line2d.default_color = Color(255, 255, 0, 0.5)
-			thread_line2d.width = 2
-			$"/root".move_child(sem, -1)
-			sem.add_child(thread_line2d)
-		
+			create_thread_line2d()
 		update_tethered_thread()
 
 # Adds a specified status by name
@@ -55,40 +49,48 @@ func get_stunned():
 func get_fucked_lol():
 	return null
 
-func num_tethered_entities() -> float:
-	var tethered_entities = get_tree().get_nodes_in_group("status_tethered")
+func num_tethered_nodes() -> float:
+	var tethered_nodes = get_tree().get_nodes_in_group("status_tethered")
 	var num_tethered = 0 # Excluding the player
-	for entity in tethered_entities:
-		if entity.name != "Player":
+	for node in tethered_nodes:
+		if node.name != "Player":
 			num_tethered += 1
 	return num_tethered
 
-# When a tethered entity moves further from the other tethered entity than the max\
-# length of the thread apply a force/movement to the other tethered entity
-func pull_tethered_entity():
-	var tethered_entities = get_tree().get_nodes_in_group("status_tethered")
+func create_thread_line2d():
+	thread_line2d = Line2D.new()
+	thread_line2d.set_name("ThreadLine2D")
+	thread_line2d.default_color = Color(255, 255, 0, 0.5)
+	thread_line2d.width = 2
+	thread_line2d.z_index = 1
+	sem.add_child(thread_line2d)
+
+# When a tethered node moves further from the other tethered node than the max\
+# length of the thread apply a force/movement to the other tethered node
+func pull_tethered_node():
+	var tethered_nodes = get_tree().get_nodes_in_group("status_tethered")
 	
-	if tethered_entities.size() != 2:
+	if tethered_nodes.size() != 2:
 		return
 		
-	var entity_1_pos : Vector2 = tethered_entities[0].global_position
-	var entity_2_pos : Vector2 = tethered_entities[1].global_position
+	var node_1_pos : Vector2 = tethered_nodes[0].global_position
+	var node_2_pos : Vector2 = tethered_nodes[1].global_position
 	
-	var mid_point = entity_1_pos.lerp(entity_2_pos, 0.5)
-	for entity in tethered_entities:
-		entity.get_node_or_null("StatusHolder").fling_tethered_entity(mid_point)
+	var mid_point = node_1_pos.lerp(node_2_pos, 0.5)
+	for node in tethered_nodes:
+		node.get_node_or_null("StatusHolder").fling_tethered_node(mid_point)
 
 func update_tethered_thread():
 	if !thread_line2d:
 		return
 	
 	thread_line2d.clear_points()
-	var tethered_entities = get_tree().get_nodes_in_group("status_tethered")
+	var tethered_nodes = get_tree().get_nodes_in_group("status_tethered")
 	
-	if tethered_entities.size() == 2:
-		var entity_1_pos = tethered_entities[0].global_position
-		var entity_2_pos = tethered_entities[1].global_position
-		var p1 = thread_line2d.to_local(entity_1_pos)
-		var p2 = thread_line2d.to_local(entity_2_pos)
+	if tethered_nodes.size() == 2:
+		var node_1_pos = tethered_nodes[0].global_position
+		var node_2_pos = tethered_nodes[1].global_position
+		var p1 = thread_line2d.to_local(node_1_pos)
+		var p2 = thread_line2d.to_local(node_2_pos)
 		thread_line2d.add_point(p1)
 		thread_line2d.add_point(p2)

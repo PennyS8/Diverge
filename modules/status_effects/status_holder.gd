@@ -23,9 +23,9 @@ func deselect():
 	get_parent().remove_from_group("selected")
 	get_parent().modulate = Color(255, 255, 255, 1)
 
-# Retracts the length of the thread, pulling the tethered entity to the fling point
+# Retracts the length of the thread, pulling the tethered node to the fling point
 # TODO: replace tween position with a force on body in dir
-func fling_tethered_entity(fling_point : Vector2):
+func fling_tethered_node(fling_point : Vector2):
 	if !get_parent().is_in_group("status_tethered"):
 		return
 	var end_point = global_position.lerp(fling_point, 0.8)
