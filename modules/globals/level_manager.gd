@@ -40,7 +40,7 @@ func _main_ready():
 		_swap_level(default_level.resource_path)
 
 
-func change_level(path : String, entrance_name : String = ""):
+func change_level(path : String, entrance_name : String = "0"):
 	if transitioning:
 		return
 	transitioning = true
@@ -57,7 +57,7 @@ func change_level(path : String, entrance_name : String = ""):
 	tween.finished.connect(_transition_complete)
 
 
-func _swap_level(path : String, entrance_name : String = ""):
+func _swap_level(path : String, entrance_name : String = "0"):
 	var packed = load(path)
 	var level = packed.instantiate()
 	main.add_child(level)
