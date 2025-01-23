@@ -2,10 +2,10 @@
 extends StateSound
 
 var thread_aim_guide = preload("res://modules/status_effects/thread_aim_guide.tscn")
-const YARN_LENGTH = 64
 var tethered_node
 var guide_arrow
 var arrow_point
+const YARN_LENGTH = 96 # 64 + 32
 
 @onready var status_holder = $"../../../StatusHolder"
 
@@ -65,11 +65,16 @@ func _on_exit(_args) -> void:
 		
 		selected_node.get_node("StatusHolder").deselect()
 		selected_node.get_node("StatusHolder").add_status("tethered")
+		
 		selected_node.get_node("StatusHolder").pull_tethered_node()
-	# Throw tethered body to arrow_point
+		tethered_node.get_node("StatusHolder").pull_tethered_node()
+		
+		selected_node.get_node("StatusHolder").remove_status("Tethered")
+		tethered_node.get_node("StatusHolder").remove_status("Tethered")
+	# Throw tethered body to the player
 	else:
-		tethered_node.get_node("StatusHolder").fling_tethered_node(arrow_point)
+		tethered_node.get_node("StatusHolder").fling_tethered_node()
 		StatusEffectsManager.thread_line2d.queue_free()
-		status_holder.remove_status("Tethered")
+		#status_holder.remove_status("Tethered")
 	
 	change_state("CanAttack")

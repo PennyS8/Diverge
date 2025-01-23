@@ -5,8 +5,6 @@ extends CharacterBody2D
 
 @onready var status_holder = get_node("StatusHolder")
 
-const THREAD_LENGTH = 64
-
 var follow_target
 
 func _ready() -> void:

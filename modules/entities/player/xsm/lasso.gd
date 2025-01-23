@@ -17,3 +17,9 @@ func _on_enter(_args) -> void:
 	
 	change_state("CanAttack")
 	change_state("Idle")
+
+func _on_update(delta: float) -> void:
+	pass
+
+func _on_exit(_args) -> void:
+	pass

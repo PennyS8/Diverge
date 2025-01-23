@@ -3,8 +3,6 @@ extends StaticBody2D
 @onready var particles = $CPUParticles2D
 @onready var status_holder = get_node("StatusHolder")
 
-const THREAD_LENGTH = 64
-
 func hit(_area : HitBoxComponent2D):
 	if _area.is_in_group("hook"):
 		$Sprite2D/ShakerComponent2D.play_shake()

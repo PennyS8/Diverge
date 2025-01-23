@@ -53,6 +53,7 @@ thread=""
 hook=""
 status_tethered=""
 selected=""
+anchor=""
 
 [input]
 

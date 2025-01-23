@@ -2,12 +2,22 @@ extends StaticBody2D
 
 @export var key_id := 0
 @export var toggled := false
-
+@onready var player = get_tree().get_first_node_in_group("player")
 @onready var status_holder = get_node("StatusHolder")
 
-func hit(_area : HitBoxComponent2D):
-	if _area.is_in_group("hook"):
-		flip()
+# Retracts the length of the thread, pulling the player to the anchor 
+# TODO: replace tween position with a force on body in dir
+func pull_player():
+	if !is_in_group("status_tethered"):
+		return
+	
+	var player_pos = player.global_position
+	var end_point = player_pos.lerp(self.global_position, 0.6)
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(player, "global_position", end_point, 0.2)
+	
+	status_holder.remove_status("Tethered")
 
 func fling(fling_point : Vector2):
 	pass
@@ -43,15 +53,3 @@ func pull():
 			#flip()
 			#if get_node("StatusHolder").get_node("Tethered"):
 				#get_node("StatusHolder").remove_status("Tethered")
-
-func flip():
-	if !toggled:
-		toggled = true
-		$Sprite2D.frame = 1
-		$Sprite2D.offset.x = -8
-		KeyChain.key.emit(key_id, true)
-	else:
-		toggled = false
-		$Sprite2D.frame = 0
-		$Sprite2D.offset.x = 8
-		KeyChain.key.emit(key_id, false)

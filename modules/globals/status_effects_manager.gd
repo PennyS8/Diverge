@@ -8,7 +8,7 @@ extends Node2D
 class_name StatusEffectsClass
 
 @onready var thread_line2d : Line2D
-var YARN_LENGTH = 64
+var YARN_LENGTH = 128
 
 func _ready() -> void:
 	pass
@@ -16,6 +16,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	thread_line2d = StatusEffectsManager.get_node_or_null("ThreadLine2D")
 	var tethered_nodes = get_tree().get_nodes_in_group("status_tethered")
+	
 	# Check if the yarn needs to be updated
 	if tethered_nodes.size() != 2:
 		if thread_line2d:
@@ -51,23 +52,6 @@ func remove_status(status_name:String):
 	get_node(status_name).queue_free() # TODO: node is not being removed properly
 	get_parent().remove_from_group("status_"+status_name.to_lower())
 
-func get_tethered():
-	return null
-
-func get_stunned():
-	return null
-
-func get_fucked_lol():
-	return null
-
-#func num_tethered_nodes() -> float:
-	#var tethered_nodes = get_tree().get_nodes_in_group("status_tethered")
-	#var num_tethered = 0 # Excluding the player
-	#for node in tethered_nodes:
-		#if node.name != "Player":
-			#num_tethered += 1
-	#return num_tethered
-
 func create_thread_line2d():
 	thread_line2d = Line2D.new()
 	thread_line2d.set_name("ThreadLine2D")
@@ -75,23 +59,6 @@ func create_thread_line2d():
 	thread_line2d.width = 2
 	thread_line2d.z_index = 1
 	StatusEffectsManager.add_child(thread_line2d)
-
-# When a tethered node moves further from the other tethered node than the max\
-# length of the thread apply a force/movement to the other tethered node
-func pull_tethered_node():
-	var tethered_nodes = get_tree().get_nodes_in_group("status_tethered")
-	
-	if tethered_nodes.size() != 2:
-		return
-	
-	var node_1_pos : Vector2 = tethered_nodes[0].global_position
-	var node_2_pos : Vector2 = tethered_nodes[1].global_position
-	
-	var mid_point = node_1_pos.lerp(node_2_pos, 0.5)
-	for node in tethered_nodes:
-		var end_point = node.global_position.lerp(mid_point, 0.8)
-		var tween = get_tree().create_tween()
-		tween.tween_property(node, "global_position", end_point, 0.25)
 
 func update_tethered_thread():
 	if !thread_line2d:
