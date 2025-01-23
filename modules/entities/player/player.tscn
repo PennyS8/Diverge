@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=57 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -24,6 +24,7 @@
 [ext_resource type="Script" path="res://modules/entities/player/xsm/hop.gd" id="14_l3d1o"]
 [ext_resource type="Script" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="15_257pe"]
+[ext_resource type="Script" path="res://modules/entities/player/xsm/grapple.gd" id="15_trbfo"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Texture2D" uid="uid://dt65a7smcu0go" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Up.png" id="17_ofofd"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/recall.gd" id="17_qcq68"]
@@ -951,6 +952,17 @@ next_state = NodePath("../Idle")
 
 [node name="Throw" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("14_7pa4m")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Idle")
+
+[node name="Grapple" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("15_trbfo")
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = ""

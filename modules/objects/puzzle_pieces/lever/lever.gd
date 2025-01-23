@@ -21,7 +21,7 @@ func fling(fling_point : Vector2):
 			#flip() # if lever is right and pulled left, flip
 	#
 	#if get_node("StatusHolder").get_node("Tethered"):
-		#get_node("StatusHolder").remove_status("Tethered")
+		#get_node("StatusHolder").remove_status("tethered")
 
 func pull():
 	pass
@@ -42,7 +42,7 @@ func pull():
 		#if toggled and pull_dir.x > 0 or !toggled and pull_dir.x < 0:
 			#flip()
 			#if get_node("StatusHolder").get_node("Tethered"):
-				#get_node("StatusHolder").remove_status("Tethered")
+				#get_node("StatusHolder").remove_status("tethered")
 
 func flip():
 	if !toggled:

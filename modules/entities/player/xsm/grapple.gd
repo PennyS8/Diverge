@@ -9,11 +9,14 @@ extends StateSound
 func _on_enter(_args) -> void:
 	change_state("NoAttack")
 	
-	if yarn_raycast.is_colliding():
-		var collided_body = yarn_raycast.get_collider() # Get first body collided with
-		# Apply status effects to the player and the collided body
-		collided_body.get_parent().add_status("tethered")
-		status_holder.add_status("tethered")
+	var player_pos = target.global_position
+	var anchor_body = _args
+	var end_point = player_pos.lerp(anchor_body.global_position, 0.7)
+	
+	var tween = get_tree().create_tween()
+	tween.tween_property(target, "global_position", end_point, 0.2)
+	
+	anchor_body.get_node("StatusHolder").remove_status("tethered")
 	
 	change_state("CanAttack")
 	change_state("Idle")

@@ -28,7 +28,7 @@ func _physics_process(delta: float) -> void:
 	var node_2_pos : Vector2 = tethered_nodes[1].global_position
 	if node_1_pos.distance_to(node_2_pos) > YARN_LENGTH:
 		for tethered_node in tethered_nodes:
-			tethered_node.get_node("StatusHolder").remove_status("Tethered")
+			tethered_node.get_node("StatusHolder").remove_status("tethered")
 		if thread_line2d:
 			thread_line2d.queue_free()
 		return # Don't update thread_line2d if yarn has broken
@@ -49,8 +49,9 @@ func add_status(status_name:String):
 # Removes a specified status by name
 # including the global group & the status node
 func remove_status(status_name:String):
-	get_node(status_name).queue_free() # TODO: node is not being removed properly
-	get_parent().remove_from_group("status_"+status_name.to_lower())
+	var captialized_name = status_name[0].to_upper() + status_name.substr(1)
+	get_node(captialized_name).queue_free() # TODO: node is not being removed properly
+	get_parent().remove_from_group("status_"+status_name)
 
 func create_thread_line2d():
 	thread_line2d = Line2D.new()

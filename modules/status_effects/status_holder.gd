@@ -26,34 +26,28 @@ func deselect():
 # Retracts the length of the thread, pulling the tethered body to the player
 # TODO: replace tween position with a force on body in dir
 func fling_tethered_node():
-	if !get_parent().is_in_group("status_tethered"):
-		return
-	
-	if self_object.is_in_group("anchor"):
-		self_object.pull_player()
-		remove_status("Tethered")
-		return
-	
 	var player_pos = player.global_position
 	var end_point = self_object.global_position.lerp(player_pos, 0.6)
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self_object, "global_position", end_point, 0.2)
 	
-	remove_status("Tethered")
+	# TODO: Remove this 
+	remove_status("tethered")
 
 # When a tethered node moves further from the other tethered node than the max\
 # length of the thread apply a force/movement to the other tethered node
 func pull_tethered_node():
 	if self_object.is_in_group("anchor"):
+		remove_status("tethered")
 		return
 	
+	# Find the other tethered body that we are being pulled toward
 	var tethered_nodes = get_tree().get_nodes_in_group("status_tethered")
-	if tethered_nodes.size() != 2:
-		return
-	
 	var body = tethered_nodes[0]
 	if body.name == self_object.name:
+		if tethered_nodes.size() != 2:
+			return
 		body = tethered_nodes[1]
 	
 	var end_point

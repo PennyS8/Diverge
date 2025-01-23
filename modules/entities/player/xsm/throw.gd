@@ -25,23 +25,32 @@ func _on_enter(_args) -> void:
 	target.add_child(guide_arrow)
 
 func _on_update(delta: float) -> void:
+	# These vars declared here because they're needed if we grapple an anchor
+	var mouse_pos = target.get_global_mouse_position()
+	var dist = tethered_node.global_position.distance_to(mouse_pos)
+	
 	if Input.is_action_just_released("throw"):
+		# If player has tethered an anchor ONLY, change to grapple state
+		var selected_node = get_tree().get_first_node_in_group("selected")
+		if !(dist <= YARN_LENGTH and selected_node):
+			if tethered_node.is_in_group("anchor"):
+				change_state("Grapple", tethered_node)
+				return
+		
+		# Otherwise change to idle state
 		change_state("Idle")
 	
+	# Define the guide arrow to help the player aim their throw
 	if !target.get_node("AimGuide"):
-		# Define the guide arrow to help the player aim their throw
 		guide_arrow = thread_aim_guide.instantiate()
 		target.add_child(guide_arrow)
-	
-	# Establish vars to define guide_arrow
-	var mouse_pos = target.get_global_mouse_position()
-	arrow_point = mouse_pos
-	var dist = tethered_node.global_position.distance_to(mouse_pos)
 	
 	# Adjust values to not exceed the YARN_LENGTH limit
 	if dist > YARN_LENGTH:
 		arrow_point = tethered_node.global_position.lerp(mouse_pos, YARN_LENGTH/dist)
 		dist = YARN_LENGTH
+	else:
+		arrow_point = mouse_pos
 	
 	# Place the arrow head at the mouse position
 	guide_arrow.global_position = arrow_point
@@ -55,26 +64,37 @@ func _on_update(delta: float) -> void:
 func _on_exit(_args) -> void:
 	guide_arrow.queue_free()
 	
-	var mouse_pos = target.get_global_mouse_position()
-	
 	# Check for selected node in range to collide with node being thrown
-	var dist = tethered_node.global_position.distance_to(mouse_pos)
 	var selected_node = get_tree().get_first_node_in_group("selected")
+	
+	# Disallow the player to lasso a body to an anchor
+	if selected_node:
+		if selected_node.is_in_group("anchor"):
+			selected_node = null
+		else:
+			# Apply tethered status to selected_node
+			selected_node.get_node("StatusHolder").add_status("tethered")
+	
+	var mouse_pos = target.get_global_mouse_position()
+	var dist = tethered_node.global_position.distance_to(mouse_pos)
+	# Pull the tethered_node and the selected_node toward eachother, if able
 	if dist <= YARN_LENGTH and selected_node:
-		status_holder.remove_status("Tethered")
+		status_holder.remove_status("tethered")
 		
 		selected_node.get_node("StatusHolder").deselect()
-		selected_node.get_node("StatusHolder").add_status("tethered")
 		
 		selected_node.get_node("StatusHolder").pull_tethered_node()
 		tethered_node.get_node("StatusHolder").pull_tethered_node()
 		
-		selected_node.get_node("StatusHolder").remove_status("Tethered")
-		tethered_node.get_node("StatusHolder").remove_status("Tethered")
-	# Throw tethered body to the player
+		selected_node.get_node("StatusHolder").remove_status("tethered")
+		tethered_node.get_node("StatusHolder").remove_status("tethered")
+	# Pull the tethered body to the player, or the player to an anchor
 	else:
-		tethered_node.get_node("StatusHolder").fling_tethered_node()
-		StatusEffectsManager.thread_line2d.queue_free()
-		#status_holder.remove_status("Tethered")
+		if !tethered_node.is_in_group("anchor"):
+			tethered_node.get_node("StatusHolder").fling_tethered_node()
+		else:
+			# The player is already transitioning to the grapple state
+			status_holder.remove_status("tethered")
 	
+	StatusEffectsManager.thread_line2d.queue_free()
 	change_state("CanAttack")
