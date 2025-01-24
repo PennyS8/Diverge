@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=53 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -159,6 +159,18 @@ tracks/9/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(1, 1)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("ActionableMarker2D:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_eyqri"]
@@ -645,6 +657,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0, 7]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ActionableMarker2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.5708]
+}
 
 [sub_resource type="Animation" id="Animation_dq4jc"]
 resource_name = "walk_left"
@@ -672,6 +696,18 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [0, 7]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ActionableMarker2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_0j1ny"]
@@ -701,6 +737,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0, 7]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ActionableMarker2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.14159]
+}
 
 [sub_resource type="Animation" id="Animation_o4rbi"]
 resource_name = "walk_up"
@@ -729,6 +777,18 @@ tracks/1/keys = {
 "update": 0,
 "values": [0, 7]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("ActionableMarker2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.5708]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
 _data = {
@@ -751,6 +811,9 @@ _data = {
 "walk_right": SubResource("Animation_0j1ny"),
 "walk_up": SubResource("Animation_o4rbi")
 }
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_88lij"]
+radius = 12.0
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
@@ -795,7 +858,7 @@ target_path = NodePath("")
 timed = true
 waiting_time = 0.5
 on_timer_finished = 3
-next_state = NodePath("../CanDash")
+next_state = NodePath("")
 
 [node name="CanDash" type="Node" parent="PlayerFSM/DashPossible"]
 script = ExtResource("5_parbs")
@@ -819,7 +882,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../CanAttack")
+next_state = NodePath("")
 
 [node name="CanAttack" type="Node" parent="PlayerFSM/AttackPossible"]
 script = ExtResource("6_yyqig")
@@ -871,7 +934,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../WalkRight")
+next_state = NodePath("")
 
 [node name="WalkRight" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -883,7 +946,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../WalkUp")
+next_state = NodePath("")
 
 [node name="WalkUp" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -895,7 +958,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../WalkLeft")
+next_state = NodePath("")
 
 [node name="WalkLeft" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -1128,5 +1191,17 @@ zoom = Vector2(4, 4)
 process_callback = 0
 position_smoothing_speed = 12.0
 script = ExtResource("15_25a4m")
+
+[node name="ActionableMarker2D" type="Marker2D" parent="."]
+position = Vector2(0, -9)
+
+[node name="ActionableFinder" type="Area2D" parent="ActionableMarker2D"]
+rotation = 1.5708
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActionableMarker2D/ActionableFinder"]
+position = Vector2(0, 10)
+shape = SubResource("CircleShape2D_88lij")
 
 [connection signal="body_entered" from="Sword" to="." method="_on_sword_body_entered"]

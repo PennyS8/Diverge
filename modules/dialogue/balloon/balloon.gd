@@ -2,10 +2,10 @@ extends CanvasLayer
 ## A basic dialogue balloon for use with Dialogue Manager.
 
 ## The action to use for advancing the dialogue
-@export var next_action: StringName = &"ui_accept"
+@export var next_action: StringName = &"interact"
 
 ## The action to use to skip typing the dialogue
-@export var skip_action: StringName = &"ui_cancel"
+@export var skip_action: StringName = &"interact"
 
 ## The dialogue resource
 var resource: DialogueResource
@@ -42,7 +42,7 @@ var dialogue_line: DialogueLine:
 		character_label.visible = not dialogue_line.character.is_empty()
 		character_label.text = tr(dialogue_line.character, "dialogue")
 		var portrait_path: String = "res://modules/dialogue/character_portraits/%s.png" % dialogue_line.character.to_lower()
-		if FileAccess.file_exists(portrait_path):
+		if ResourceLoader.exists(portrait_path):
 			portrait.texture = load(portrait_path)
 		else:
 			portrait.texture = null
@@ -160,7 +160,8 @@ func _on_balloon_gui_input(event: InputEvent) -> void:
 	get_viewport().set_input_as_handled()
 
 	if event is InputEventMouseButton and event.is_pressed() and event.button_index == MOUSE_BUTTON_LEFT:
-		next(dialogue_line.next_id)
+		#next(dialogue_line.next_id)
+		pass
 	elif event.is_action_pressed(next_action) and get_viewport().gui_get_focus_owner() == balloon:
 		next(dialogue_line.next_id)
 

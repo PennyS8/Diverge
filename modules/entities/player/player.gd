@@ -14,7 +14,10 @@ var swing_dir : Vector2
 # if player is currently inside a "ledge" area, the reference to that is stored here
 var ledge_collision : Area2D
 
+var idleDirection
+
 @onready var health_component = $HealthComponent
+@onready var actionable_finder = $ActionableMarker2D/ActionableFinder
 
 var lock_camera := false
 
@@ -35,3 +38,25 @@ func _on_sword_body_entered(body: Node2D) -> void:
 		body.push(swing_dir)
 	elif body.is_in_group("lever"):
 		body.flip()
+		
+func _unhandled_input(event: InputEvent) -> void:
+	if Input.is_action_just_pressed("interact"):
+		var actionables = actionable_finder.get_overlapping_areas()
+		if actionables.size()>0:
+			actionables[0].action()
+			return
+
+func stop_movement()->void:
+	var direction = $AnimationPlayer.current_animation
+	direction = direction.get_slice("_", 1)
+	idleDirection = "idle_" + direction
+	get_node("PlayerFSM").change_state("MovementDisabled")
+	var anim : Animation= $AnimationPlayer.get_animation(idleDirection)
+	anim.loop_mode =(Animation.LOOP_LINEAR)
+	$AnimationPlayer.play(idleDirection)
+
+
+func start_movement()->void:
+	var anim : Animation= $AnimationPlayer.get_animation(idleDirection)
+	anim.loop_mode =(Animation.LOOP_NONE)
+	get_node("PlayerFSM").change_state("Idle")
