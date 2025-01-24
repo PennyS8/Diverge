@@ -18,6 +18,5 @@ func _on_update(_delta):
 		change_state("Recall")
 
 func _after_update(_delta):
-	# target.velocity = target.move_and_slide(target.velocity, Vector2.UP)
 	target.move_and_slide()
 	

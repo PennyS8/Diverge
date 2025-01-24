@@ -16,7 +16,5 @@ func _on_enter(_args) -> void:
 	var tween = get_tree().create_tween()
 	tween.tween_property(target, "global_position", end_point, 0.2)
 	
-	anchor_body.get_node("StatusHolder").remove_status("tethered")
-	
 	change_state("CanAttack")
 	change_state("Idle")
