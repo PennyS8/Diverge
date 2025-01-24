@@ -10,18 +10,14 @@ func hit(_area : HitBoxComponent2D):
 		flip()
 
 func fling(fling_point : Vector2):
-	pass
-	#var fling_dir = global_position.direction_to(fling_point).normalized()
-	#var component_x = abs(fling_dir.x)
-	#var component_y = abs(fling_dir.y)
-	## if the lever is being pulled left or right enough to be flipped
-	#if abs(fling_dir.x) > abs(fling_dir.y):
-		## if lever is right and pulled left, or if lever is left and pulled right, flip the lever
-		#if toggled and fling_dir.x > 0 or !toggled and fling_dir.x < 0:
-			#flip() # if lever is right and pulled left, flip
-	#
-	#if get_node("StatusHolder").get_node("Tethered"):
-		#get_node("StatusHolder").remove_status("tethered")
+	var fling_dir = global_position.direction_to(fling_point).normalized()
+	var component_x = abs(fling_dir.x)
+	var component_y = abs(fling_dir.y)
+	# if the lever is being pulled left or right enough to be flipped
+	if abs(fling_dir.x) > abs(fling_dir.y):
+		# if lever is right and pulled left, or if lever is left and pulled right, flip the lever
+		if toggled and fling_dir.x > 0 or !toggled and fling_dir.x < 0:
+			flip() # if lever is right and pulled left, flip
 
 func pull():
 	pass

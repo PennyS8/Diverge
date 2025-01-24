@@ -27,6 +27,11 @@ func deselect():
 # TODO: replace tween position with a force on body in dir
 func fling_tethered_node():
 	var player_pos = player.global_position
+	
+	if self_object.is_in_group("lever"):
+		self_object.fling(player_pos)
+		return
+	
 	var end_point = self_object.global_position.lerp(player_pos, 0.5)
 	
 	var tween = get_tree().create_tween()
@@ -52,7 +57,7 @@ func pull_tethered_node():
 		end_point = self_object.global_position.lerp(selected_body.global_position, 0.8)
 	else:
 		var mid_point = self_object.global_position.lerp(selected_body.global_position, 0.5)
-		end_point = self_object.global_position.lerp(mid_point, 0.7)
+		end_point = self_object.global_position.lerp(mid_point, 0.75)
 	
 	var tween = get_tree().create_tween()
 	tween.tween_property(self_object, "global_position", end_point, 0.25)

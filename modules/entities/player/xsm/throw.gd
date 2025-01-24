@@ -9,7 +9,7 @@ var tethered_node
 var selected_node
 
 var hold_counter : float = 0.0
-const HOLD_TIME : float = 1
+const HOLD_TIME : float = 0.2
 
 const YARN_LENGTH = 96 # 64 + 32
 
@@ -30,6 +30,10 @@ func _on_enter(_args) -> void:
 func _on_update(delta: float) -> void:
 	if Input.is_action_pressed("throw"):
 		hold_counter += delta
+	
+	if tethered_node.is_in_group("lever"):
+		change_state("Idle")
+		return
 	
 	# These vars declared here because they're needed if we grapple an anchor
 	var mouse_pos = target.get_global_mouse_position()
@@ -67,10 +71,15 @@ func _on_exit(_args) -> void:
 	# Check for valid selected node in range to collide with node being thrown
 	if selected_node:
 		var dist = tethered_node.global_position.distance_to(selected_node.global_position)
-		if dist <= YARN_LENGTH and !selected_node.is_in_group("anchor"):
-			selected_node.get_node("StatusHolder").add_status("tethered")
-		else:
+		if (
+			selected_node.is_in_group("anchor") or
+			selected_node.is_in_group("lever") or
+			tethered_node.is_in_group("lever") or
+			dist > YARN_LENGTH
+		):
 			selected_node = null
+		else:
+			selected_node.get_node("StatusHolder").add_status("tethered")
 	
 	# Pull the tethered_node and the selected_node toward eachother, if able
 	if selected_node:
@@ -85,20 +94,26 @@ func _on_exit(_args) -> void:
 		tethered_node.get_node("StatusHolder").remove_status("tethered")
 	
 	# Pull the tethered body to the player, or the player to an anchor
-	elif !tethered_node.is_in_group("anchor"):
+	elif !tethered_node.is_in_group("anchor") and !tethered_node.is_in_group("lever"):
 		if hold_counter >= HOLD_TIME:
 			pass
 		else:
 			tethered_node.get_node("StatusHolder").fling_tethered_node()
 		#tethered_node.get_node("StatusHolder").remove_status("tethered")
 		#status_holder.remove_status("tethered")
-	else:
+	
+	elif tethered_node.is_in_group("anchor"):
 		if hold_counter >= HOLD_TIME:
 			pass
 		else:
 			# The player is already transitioning to the grapple state
 			status_holder.remove_status("tethered")
 			tethered_node.get_node("StatusHolder").remove_status("tethered")
+	
+	elif tethered_node.is_in_group("lever"):
+		tethered_node.get_node("StatusHolder").fling_tethered_node()
+		tethered_node.get_node("StatusHolder").remove_status("tethered")
+		status_holder.remove_status("tethered")
 	
 	StatusEffectsManager.yarn_line2d.queue_free()
 	change_state("CanAttack")
