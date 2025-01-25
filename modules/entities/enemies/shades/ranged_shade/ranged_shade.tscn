@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://bi6255tx4u0jr"]
+[gd_scene load_steps=23 format=3 uid="uid://bi6255tx4u0jr"]
 
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade.gd" id="1_0ppdu"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_81f8r"]
@@ -92,6 +92,13 @@ _data = {
 "Stunned": SubResource("Animation_741tg")
 }
 
+[sub_resource type="Curve" id="Curve_ne7pj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_8rhcx"]
+colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
+
 [node name="RangedShade" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 0
 collision_mask = 3
@@ -110,8 +117,10 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
-[node name="Roaming" type="Node" parent="ShadeFSM"]
+[node name="Roaming" type="Node" parent="ShadeFSM" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("3_vol8a")
+nav_agent = NodePath("../../NavigationAgent2D")
+movement_speed = 45.0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -161,7 +170,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Roaming")
+next_state = NodePath("")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("8_2cjjq")
@@ -205,6 +214,27 @@ libraries = {
 }
 
 [node name="StatusHolder" parent="." instance=ExtResource("12_7af50")]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 10.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_ne7pj")
+color = Color(0.488605, 0.427964, 0.528217, 1)
+color_ramp = SubResource("Gradient_8rhcx")
 
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="Hit" from="HurtBoxComponent2D" to="." method="_on_hurt_box_component_2d_hit"]
