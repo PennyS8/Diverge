@@ -1131,13 +1131,6 @@ next_state = NodePath("../Lasso")
 
 [node name="StatusHolder" parent="." instance=ExtResource("22_2akqh")]
 
-[node name="YarnRayCast2D" type="RayCast2D" parent="."]
-position = Vector2(0, -8)
-target_position = Vector2(84, 0)
-collision_mask = 256
-collide_with_areas = true
-collide_with_bodies = false
-
 [node name="Hook" type="Area2D" parent="." groups=["hook"]]
 z_index = 1
 y_sort_enabled = true

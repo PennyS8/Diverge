@@ -2,7 +2,6 @@
 extends StateSound
 
 @onready var status_holder = $"../../../StatusHolder"
-@onready var yarn_raycast = $"../../../YarnRayCast2D"
 
 # This function is called when the state enters
 # XSM enters the root first, then the children

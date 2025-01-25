@@ -17,11 +17,11 @@ func select():
 	if get_parent().is_in_group("status_tethered"):
 		return
 	get_parent().add_to_group("selected")
-	get_parent().modulate = Color(255, 255, 0, 0.5)
+	get_parent().modulate = Color(1, 1, 0, 0.5)
 
 func deselect():
 	get_parent().remove_from_group("selected")
-	get_parent().modulate = Color(255, 255, 255, 1)
+	get_parent().modulate = Color(1, 1, 1, 1)
 
 # Retracts the length of the yarn, pulling the tethered body to the player
 # TODO: replace tween position with a force on body in dir

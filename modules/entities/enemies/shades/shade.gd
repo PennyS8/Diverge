@@ -14,8 +14,7 @@ func _physics_process(delta: float) -> void:
 	pass
 
 func _on_health_component_died() -> void:
-	if $HealthComponent.health <= 0:
-		$ShadeFSM.change_state("Dead")
+	$ShadeFSM.change_state("Dead")
 
 func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	if $HealthComponent.health > 0:
@@ -23,6 +22,8 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 		# If the attacking _area is the players thread apply the tethered status effect
 		if _area.is_in_group("thread"):
 			status_holder.add_status("tethered")
+	else:
+		print("hi")
 
 func pull():
 	pass

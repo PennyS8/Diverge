@@ -119,7 +119,7 @@ func _on_exit(_args) -> void:
 
 func update_guide_arrow(dist, mouse_pos):
 	# Define the guide arrow to help the player aim their throw
-	if !target.get_node("AimGuide"):
+	if !target.get_node_or_null("AimGuide"):
 		guide_arrow = yarn_aim_guide.instantiate()
 		target.add_child(guide_arrow)
 	

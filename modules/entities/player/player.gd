@@ -15,16 +15,9 @@ var swing_dir : Vector2
 var ledge_collision : Area2D
 
 @onready var health_component = $HealthComponent
-@onready var yarn_raycast = $YarnRayCast2D
-
+@onready var status_holder = $StatusHolder
 func _process(_delta):
 	_camera_move(_delta)
-
-func _physics_process(delta: float) -> void:
-	# Rotate the raycast toward the mouse
-	var mouse_pos = get_global_mouse_position() + Vector2(0, 8)
-	var attack_dir = global_position.direction_to(mouse_pos).normalized()
-	yarn_raycast.rotation = Vector2.ZERO.angle_to_point(attack_dir)
 
 func _camera_move(_delta):
 	if !lock_camera:
@@ -32,4 +25,8 @@ func _camera_move(_delta):
 		$Camera2D.position_smoothing_enabled = true
 	else:
 		$Camera2D.position_smoothing_enabled = false
+		
+func can_attack():
+	$PlayerFSM.change_state("CanAttack")
+	$PlayerFSM.change_state("Idle")
 	

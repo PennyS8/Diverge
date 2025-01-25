@@ -33,7 +33,7 @@ func damage(amount := 0) -> void:
 		
 		health = clamp(health - abs(amount), 0, max_health)
 		
-		if health == 0: kill()
+		if health <= 0: kill()
 	else: print(owner.name + " is already dead!")
 
 ## Increases the [member HealthComponent.health] by the amount specified,[br]
