@@ -9,7 +9,7 @@ var tethered_node
 var selected_node
 
 var hold_counter : float = 0.0
-const HOLD_TIME : float = 0.2
+const HOLD_TIME : float = 0.15
 
 const YARN_LENGTH = 96 # 64 + 32
 
@@ -72,7 +72,6 @@ func _on_exit(_args) -> void:
 	if selected_node:
 		var dist = tethered_node.global_position.distance_to(selected_node.global_position)
 		if (
-			selected_node.is_in_group("anchor") or
 			selected_node.is_in_group("lever") or
 			tethered_node.is_in_group("lever") or
 			dist > YARN_LENGTH
