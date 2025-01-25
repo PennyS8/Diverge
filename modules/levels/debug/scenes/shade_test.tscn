@@ -622,11 +622,11 @@ position = Vector2(1024, 416)
 position = Vector2(960, 512)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_ae84j")
 
 [node name="World" type="Node2D" parent="NavigationRegion2D"]
 y_sort_enabled = true
-texture_filter = 1
 material = ExtResource("1_ywdf3")
 
 [node name="Ground" type="TileMapLayer" parent="NavigationRegion2D/World"]
@@ -668,11 +668,11 @@ tile_set = SubResource("TileSet_g107l")
 y_sort_origin = -10
 
 [node name="PuzzleBlocks" type="Node2D" parent="NavigationRegion2D/World"]
-z_index = 1
 y_sort_enabled = true
 position = Vector2(0, 24)
 
 [node name="Door0" type="Node2D" parent="NavigationRegion2D/World/PuzzleBlocks"]
+y_sort_enabled = true
 
 [node name="PressurePlate" parent="NavigationRegion2D/World/PuzzleBlocks/Door0" instance=ExtResource("7_ya7u2")]
 position = Vector2(760, 297)
@@ -684,6 +684,7 @@ position = Vector2(728, 293)
 position = Vector2(736, 248)
 
 [node name="Door1" type="Node2D" parent="NavigationRegion2D/World/PuzzleBlocks"]
+y_sort_enabled = true
 
 [node name="KeyDoor" parent="NavigationRegion2D/World/PuzzleBlocks/Door1" instance=ExtResource("9_gyuw2")]
 position = Vector2(824, 248)
@@ -697,6 +698,7 @@ position = Vector2(864, 240)
 key_id = 1
 
 [node name="Door2" type="Node2D" parent="NavigationRegion2D/World/PuzzleBlocks"]
+y_sort_enabled = true
 
 [node name="KeyDoor2" parent="NavigationRegion2D/World/PuzzleBlocks/Door2" instance=ExtResource("9_gyuw2")]
 position = Vector2(920, 248)

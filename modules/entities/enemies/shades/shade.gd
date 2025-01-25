@@ -13,7 +13,7 @@ func _ready() -> void:
 	pass
 
 func _physics_process(delta: float) -> void:
-	pass
+	$AgroRegion.look_at(to_global(velocity))
 
 func _on_health_component_died() -> void:
 	$ShadeFSM.change_state("Dead")

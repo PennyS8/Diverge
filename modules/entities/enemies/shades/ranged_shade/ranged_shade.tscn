@@ -22,8 +22,8 @@ size = Vector2(16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_54508"]
 radius = 15.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lw36x"]
-radius = 72.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xhyh"]
+radius = 36.0
 
 [sub_resource type="Animation" id="Animation_0nojc"]
 resource_name = "Melee"
@@ -100,6 +100,8 @@ point_count = 2
 colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
 
 [node name="RangedShade" type="CharacterBody2D" groups=["enemy"]]
+z_index = 1
+y_sort_enabled = true
 collision_layer = 0
 collision_mask = 3
 motion_mode = 1
@@ -199,7 +201,10 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRegion"]
-shape = SubResource("CircleShape2D_lw36x")
+shape = SubResource("CircleShape2D_0xhyh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AgroRegion"]
+polygon = PackedVector2Array(72, 0, 70, -19, 63, -36, 51, -51, 37, -62, 18, -70, 0, -8, 0, 10, 19, 70, 36, 63, 51, 51, 63, 36, 70, 19)
 
 [node name="RectShape" type="Polygon2D" parent="."]
 y_sort_enabled = true

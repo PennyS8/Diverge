@@ -10,7 +10,8 @@
 size = Vector2(16, 11)
 
 [node name="Lever" type="StaticBody2D" groups=["lever"]]
-z_index = 2
+z_index = 1
+y_sort_enabled = true
 collision_layer = 48
 collision_mask = 4
 script = ExtResource("1_crycx")
