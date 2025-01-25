@@ -41,7 +41,7 @@ func fling_tethered_node():
 # length of the yarn apply a force/movement to the other tethered node
 func pull_tethered_node():
 	if self_object.is_in_group("anchor"):
-		remove_status("tethered")
+		#remove_status("tethered")
 		return
 	
 	# Find the other tethered body that we are being pulled toward
