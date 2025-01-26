@@ -1701,6 +1701,8 @@ texture_region_size = Vector2i(24, 24)
 12:15/0 = 0
 13:15/0 = 0
 14:15/0 = 0
+8:11/0 = 0
+15:15/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xv6dm"]
 texture = ExtResource("4_mcnvq")
