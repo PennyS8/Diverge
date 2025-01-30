@@ -83,6 +83,7 @@ func _on_exit(_args) -> void:
 	# Pull the tethered_node and the selected_node toward eachother, if able
 	if selected_node:
 		status_holder.remove_status("tethered")
+		target.get_node("YarnController").queue_free()
 		
 		selected_node.get_node("StatusHolder").deselect()
 		
@@ -108,13 +109,15 @@ func _on_exit(_args) -> void:
 			# The player is already transitioning to the grapple state
 			status_holder.remove_status("tethered")
 			tethered_node.get_node("StatusHolder").remove_status("tethered")
+			target.get_node("YarnController").queue_free()
 	
 	elif tethered_node.is_in_group("lever"):
 		tethered_node.get_node("StatusHolder").fling_tethered_node()
 		tethered_node.get_node("StatusHolder").remove_status("tethered")
 		status_holder.remove_status("tethered")
+		target.get_node("YarnController").queue_free()
 	
-	StatusEffectsManager.yarn_line2d.queue_free()
+	#StatusEffectsManager.yarn_line2d.queue_free()
 	change_state("CanAttack")
 
 func update_guide_arrow(dist, mouse_pos):

@@ -14,8 +14,8 @@ func _on_enter(_args) -> void:
 	
 	# Rotate the yarn projectile toward the mouse
 	var mouse_pos = target.get_global_mouse_position() + Vector2(0, 8)
-	var attack_dir = target.global_position.direction_to(mouse_pos).normalized()
-	yarn.rotation = Vector2.ZERO.angle_to_point(attack_dir)
+	var dir = target.global_position.direction_to(mouse_pos).normalized()
+	yarn.rotation = Vector2.ZERO.angle_to_point(dir)
 	yarn.position.y -= 8
 	
 	target.add_child(yarn)
