@@ -23,6 +23,7 @@ Shaker="*res://addons/shaker/src/Shaker.gd"
 LevelManager="*res://modules/globals/level_manager.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameManager="*res://modules/globals/game_manager.gd"
+SaveAndLoad="*res://modules/globals/saving/save_load.gd"
 
 [dialogue_manager]
 
@@ -48,6 +49,7 @@ player=""
 level_entrance="A position that the player can spawn into a new level"
 enemy=""
 ledge=""
+saved_data=""
 
 [input]
 

@@ -8,6 +8,22 @@ extends CharacterBody2D
 
 var follow_target
 
+func on_save_game(saved_data:Array[SavedData]):
+	if $HealthComponent.health <= 0: 
+		return
+	
+	var my_data = SavedData.new()
+	my_data.position = global_position
+	my_data.scene_path = scene_file_path
+	
+	saved_data.append(my_data)
+
+func on_before_load_game():
+	get_parent().remove_child(self)
+	queue_free()
+
+func on_load_game(saved_data:SavedData):
+	global_position = saved_data.position
 
 func _ready() -> void:
 	pass

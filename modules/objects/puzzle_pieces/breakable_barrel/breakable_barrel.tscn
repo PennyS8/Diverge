@@ -40,7 +40,7 @@ region = Rect2(151, 87, 2, 4)
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="BreakableBarrel" type="StaticBody2D" groups=["barrel"]]
+[node name="BreakableBarrel" type="StaticBody2D" groups=["barrel", "saved_data"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 48

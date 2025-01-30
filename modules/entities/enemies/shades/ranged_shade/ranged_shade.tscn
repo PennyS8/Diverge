@@ -91,7 +91,7 @@ _data = {
 "Stunned": SubResource("Animation_741tg")
 }
 
-[node name="RangedShade" type="CharacterBody2D" groups=["enemy"]]
+[node name="RangedShade" type="CharacterBody2D" groups=["enemy", "saved_data"]]
 collision_layer = 0
 collision_mask = 3
 motion_mode = 1

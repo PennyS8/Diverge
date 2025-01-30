@@ -14,6 +14,7 @@ var custom_scene_path : String
 @export var default_level : PackedScene
 
 var main : Node2D
+var new_level_name : String
 
 var player
 var transitioning := false
@@ -49,6 +50,9 @@ func change_level(path : String, entrance_name : String = ""):
 	player.lock_camera = true
 
 	# save level state
+	SaveAndLoad.room_save(current_level.get_name())
+	print(current_level.get_name())
+	
 	var tween = get_tree().create_tween()
 	tween.set_parallel(false)
 	tween.tween_property(fade_screen, "color:a", 1, fade_time)
@@ -60,6 +64,7 @@ func change_level(path : String, entrance_name : String = ""):
 func _swap_level(path : String, entrance_name : String = ""):
 	var packed = load(path)
 	var level = packed.instantiate()
+	new_level_name = level.get_name()
 	main.add_child(level)
 	
 	if current_level:
@@ -74,7 +79,6 @@ func _swap_level(path : String, entrance_name : String = ""):
 	else:
 		player.global_position = Vector2.ZERO
 
-
 func _get_entrances():
 	entrances.clear()
 	for entrance in get_tree().get_nodes_in_group("level_entrance"):
@@ -84,3 +88,6 @@ func _get_entrances():
 func _transition_complete():
 	player.lock_camera = false
 	transitioning = false
+	
+	SaveAndLoad.room_load(new_level_name)
+	print(new_level_name)

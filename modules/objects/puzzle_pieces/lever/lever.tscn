@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sny1c"]
 size = Vector2(16, 11)
 
-[node name="Lever" type="StaticBody2D" groups=["lever"]]
+[node name="Lever" type="StaticBody2D" groups=["lever", "saved_data"]]
 z_index = 2
 collision_layer = 48
 collision_mask = 4
