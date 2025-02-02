@@ -23,7 +23,6 @@ Shaker="*res://addons/shaker/src/Shaker.gd"
 LevelManager="*res://modules/globals/level_manager.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameManager="*res://modules/globals/game_manager.gd"
-StatusEffectsManager="*res://modules/globals/StatusEffectsManager.tscn"
 
 [dialogue_manager]
 

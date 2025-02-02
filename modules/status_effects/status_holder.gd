@@ -1,4 +1,4 @@
-extends StatusEffectsClass
+extends Node2D # StatusEffectsClass
 
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var self_object : PhysicsBody2D = get_parent()
@@ -22,6 +22,24 @@ func select():
 func deselect():
 	get_parent().remove_from_group("selected")
 	get_parent().modulate = Color(1, 1, 1, 1)
+
+# Adds a specified status by name
+# including the global group & the status node
+func add_status(status_name:String):
+	print("Adding "+status_name+" status to "+get_parent().name)
+	get_parent().add_to_group("status_"+status_name)
+	var status_node = load("res://modules/status_effects/"+status_name+".tscn")
+	var status = status_node.instantiate()
+	add_child(status)
+
+# Removes a specified status by name
+# including the global group & the status node
+func remove_status(status_name:String):
+	print("Removing "+status_name+" status from "+get_parent().name)
+	var captialized_name = status_name[0].to_upper() + status_name.substr(1)
+	get_node(captialized_name).queue_free() # TODO: node is not being removed properly
+	get_parent().remove_from_group("status_"+status_name)
+
 
 # Retracts the length of the yarn, pulling the tethered body to the player
 # TODO: replace tween position with a force on body in dir
