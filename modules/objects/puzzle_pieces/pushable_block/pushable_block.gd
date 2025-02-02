@@ -10,6 +10,8 @@ func _ready() -> void:
 func on_save_game(saved_data:Array[SavedData]):
 	var my_data = SavedData.new()
 	
+	# Checks if puzzle is completed, if not it gets the default position regardless
+	# of where is gets moved. 
 	if puzzle_completed == true:
 		my_data.position = global_position
 	else:
@@ -26,6 +28,8 @@ func on_before_load_game():
 
 func on_load_game(saved_data:SavedData):
 	global_position = saved_data.position
+	# Assigns saved position to default in order to prevent box from saving (0,0) location.
+	default_position = saved_data.position
 
 func push(area : HitBoxComponent2D):
 	var direction = area.get_parent().swing_dir

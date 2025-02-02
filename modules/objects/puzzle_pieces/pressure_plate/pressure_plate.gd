@@ -35,8 +35,8 @@ func _on_body_exited(_body: Node2D) -> void:
 			pop_up()
 			KeyChain.key.emit(key_id, enabled)
 			
-			if _body.is_in_group("block"):
-				_body.puzzle_completed = false
+		if _body.is_in_group("block"):
+			_body.puzzle_completed = false
 	
 func _key_toggle(id, state):
 	if id == key_id and !state:

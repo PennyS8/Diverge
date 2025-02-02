@@ -16,10 +16,6 @@ func _main_ready():
 func save_game():
 	var saved_game:SavedGame = SavedGame.new()
 	
-	# TODO: Remove these variable assignments once main_ready sets them properly
-	player = get_tree().get_first_node_in_group("player")
-	main = get_tree().current_scene
-	
 	saved_game.player_health = player.health_component.health
 	saved_game.player_position = player.global_position
 	
@@ -36,10 +32,6 @@ func load_game():
 	if !(save_exists("user://savegame.tres")):
 		print("No existing save file.")
 		return
-	
-	# TODO: Remove these variable assignments once main_ready sets them properly
-	player = get_tree().get_first_node_in_group("player")
-	main = get_tree().current_scene
 
 	var saved_game:SavedGame = load("user://savegame.tres")
 	
@@ -51,6 +43,7 @@ func load_game():
 	for item in saved_game.saved_data:
 		var scene = load(item.scene_path) as PackedScene
 		var restored_node = scene.instantiate()
+		restored_node.global_position = item.position
 		main.add_child(restored_node)
 		
 		if restored_node.has_method("on_load_game"):
@@ -71,34 +64,30 @@ func room_save(room_id):
 	
 	var saved_room:SavedGame = SavedGame.new()
 	
-	saved_room.player_health = player.health_component.health
-	
 	var saved_data:Array[SavedData] = []
 	# Calls the 'on_save_game' function on all entities with the 'saved_data' group.
 	# This being enemies, items, etc.
 	get_tree().call_group("saved_data", "on_save_game", saved_data)
 	saved_room.saved_data = saved_data
 	
-	var save_game_path = "user://temp/saveroom_{id}.tres"
-	var format_path = save_game_path.format({"id": room_id})
+	var save_room_path = "user://temp/saveroom_{id}.tres"
+	var format_path = save_room_path.format({"id": room_id})
 	ResourceSaver.save(saved_room, format_path)
 
 func room_load(room_id):
-	var save_game_path = "user://temp/saveroom_{id}.tres"
-	var format_path = save_game_path.format({"id": room_id})
+	var save_room_path = "user://temp/saveroom_{id}.tres"
+	var format_path = save_room_path.format({"id": room_id})
 	
 	# Makes sure to not load if save file doesn't exist
 	if !(save_exists(format_path)):
 		print("No existing save file.")
 		return
 
-	var saved_game:SavedGame = load(format_path)
-	
-	player.health_component.health = saved_game.player_health
+	var saved_room:SavedGame = load(format_path)
 	
 	get_tree().call_group("saved_data", "on_before_load_game")
 	
-	for item in saved_game.saved_data:
+	for item in saved_room.saved_data:
 		var scene = load(item.scene_path) as PackedScene
 		var restored_node = scene.instantiate()
 		main.add_child(restored_node)

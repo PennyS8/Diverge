@@ -51,7 +51,6 @@ func change_level(path : String, entrance_name : String = ""):
 
 	# save level state
 	SaveAndLoad.room_save(current_level.get_name())
-	print(current_level.get_name())
 	
 	var tween = get_tree().create_tween()
 	tween.set_parallel(false)
@@ -78,6 +77,9 @@ func _swap_level(path : String, entrance_name : String = ""):
 		player.global_position = entrances[entrance_name]
 	else:
 		player.global_position = Vector2.ZERO
+	
+	# Loads level while the tween is still happening to prevent player from seeing loading.
+	SaveAndLoad.room_load(new_level_name)
 
 func _get_entrances():
 	entrances.clear()
@@ -89,5 +91,3 @@ func _transition_complete():
 	player.lock_camera = false
 	transitioning = false
 	
-	SaveAndLoad.room_load(new_level_name)
-	print(new_level_name)

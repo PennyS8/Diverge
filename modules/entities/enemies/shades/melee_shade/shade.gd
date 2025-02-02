@@ -6,6 +6,7 @@ extends CharacterBody2D
 @export var hitpoints = 10
 @export var movement_speed : float = 30.0
 
+var default_position
 var follow_target
 
 func on_save_game(saved_data:Array[SavedData]):
@@ -24,9 +25,10 @@ func on_before_load_game():
 
 func on_load_game(saved_data:SavedData):
 	global_position = saved_data.position
+	default_position = saved_data.position
 
 func _ready() -> void:
-	pass
+	default_position = global_position
 
 
 func _physics_process(delta: float) -> void:
