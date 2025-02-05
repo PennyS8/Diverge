@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=57 format=3 uid="uid://cq3hvofrushyg"]
+[gd_resource type="TileSet" load_steps=59 format=3 uid="uid://cq3hvofrushyg"]
 
 [ext_resource type="Texture2D" uid="uid://ce10vjgkrj5nk" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png" id="1_yso85"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="2_aaivm"]
@@ -2600,6 +2600,12 @@ texture_region_size = Vector2i(24, 24)
 2:15/0 = 0
 3:15/0 = 0
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_h15j3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2oklr"]
+texture = SubResource("CompressedTexture2D_h15j3")
+texture_region_size = Vector2i(24, 24)
+
 [resource]
 tile_size = Vector2i(24, 24)
 occlusion_layer_0/light_mask = 1
@@ -2616,3 +2622,4 @@ sources/4 = SubResource("TileSetAtlasSource_y46eu")
 sources/5 = SubResource("TileSetAtlasSource_cj2f0")
 sources/6 = SubResource("TileSetAtlasSource_fqsd5")
 sources/7 = SubResource("TileSetAtlasSource_1wg7y")
+sources/8 = SubResource("TileSetAtlasSource_2oklr")
