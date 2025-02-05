@@ -25,13 +25,19 @@ func _process(delta):
 	
 	# Yarn has collided with a body
 	else:
-		current_dist = global_position.distance_to(tethered_body.global_position)
-		yarn_end_pos = Vector2(current_dist, 0.0)
-		
-		# Rotate the yarn projectile toward the mouse
-		var tethered_body_dir = tethered_body.global_position - Vector2(0, -8)
-		var dir = get_parent().global_position.direction_to(tethered_body_dir).normalized()
-		global_rotation = Vector2.ZERO.angle_to_point(dir)
+		if is_instance_valid(tethered_body):
+			current_dist = global_position.distance_to(tethered_body.global_position)
+			yarn_end_pos = Vector2(current_dist, 0.0)
+			
+			# Rotate the yarn projectile toward the mouse
+			var tethered_body_dir = tethered_body.global_position - Vector2(0, -8)
+			var dir = get_parent().global_position.direction_to(tethered_body_dir).normalized()
+			global_rotation = Vector2.ZERO.angle_to_point(dir)
+		else:
+			if get_parent().is_in_group("player"):
+				get_parent().get_node("PlayerFSM").change_state("Recall")
+			queue_free()
+			
 	
 	$Line2D.points[1] = yarn_end_pos
 	
