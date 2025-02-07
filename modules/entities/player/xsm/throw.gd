@@ -31,11 +31,6 @@ func _on_enter(_args) -> void:
 		tethered_node = tethered_nodes[1]
 
 func _on_update(delta: float) -> void:
-	if Input.is_action_just_pressed("recall"):
-		interupt = true
-		change_state("Idle")
-		return
-	
 	if tethered_node.is_in_group("lever"):
 		change_state("Idle")
 		return
@@ -70,6 +65,15 @@ func _on_update(delta: float) -> void:
 	# Draw a guide arrow if the "throw" button is being held down
 	if hold_counter >= HOLD_TIME:
 		update_guide_arrow(dist, mouse_pos)
+		
+	if Input.is_action_just_pressed("recall"):
+		interupt = true
+		change_state("Recall")
+		
+
+func _before_exit(_args):
+	if Input.is_action_pressed("recall"):
+		interupt = true
 
 func _on_exit(_args) -> void:
 	if guide_arrow: # Remove the guide arrow
@@ -78,8 +82,10 @@ func _on_exit(_args) -> void:
 	
 	if interupt:
 		status_holder.remove_status("tethered")
-		tethered_node.get_node("StatusHolder").remove_status("tethered")
-		selected_node.get_node("StatusHolder").remove_status("tethered")
+		tethered_node.get_node_or_null("StatusHolder").remove_status("tethered")
+		if selected_node:
+			if selected_node.get_node_or_null("StatusHolder"):
+				selected_node.get_node("StatusHolder").remove_status("tethered")
 		target.get_node_or_null("YarnController").queue_free()
 		change_state("CanAttack")
 		return
@@ -113,7 +119,7 @@ func _on_exit(_args) -> void:
 	elif !tethered_node.is_in_group("anchor") and !tethered_node.is_in_group("lever"):
 		if hold_counter >= HOLD_TIME:
 			pass
-		else:
+		elif !interupt:
 			tethered_node.get_node("StatusHolder").fling_tethered_node()
 	
 	elif tethered_node.is_in_group("anchor"):
