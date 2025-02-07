@@ -16,11 +16,13 @@ script = ExtResource("1_2uu7l")
 visible = false
 
 [node name="NumKeys" parent="GUI" instance=ExtResource("3_wjh11")]
+mouse_filter = 2
 
 [node name="GUI2" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 
 [node name="Health" parent="GUI2" groups=["gui"] instance=ExtResource("4_1al8n")]

@@ -35,11 +35,8 @@ func _on_update(_delta):
 	if target.dir == Vector2.ZERO:
 		change_state("Idle", idle_dir)
 	
-	if Input.is_action_just_pressed("push"):
-		change_state("Push")
-	
 	target.velocity = lerp(target.velocity, target.dir * ground_speed, acceleration * _delta)
-
+	
 	var xdir = target.dir.snapped(Vector2.ONE).x
 	var ydir = target.dir.snapped(Vector2.ONE).y
 	

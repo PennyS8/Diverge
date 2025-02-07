@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://dywn8ybv2xl4i"]
+[gd_scene load_steps=7 format=3 uid="uid://dywn8ybv2xl4i"]
 
 [ext_resource type="Script" path="res://modules/objects/puzzle_pieces/lever/lever.gd" id="1_crycx"]
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_cmmj7"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_xin6p"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="4_qhppc"]
+[ext_resource type="PackedScene" uid="uid://m7h0vpdfj1dt" path="res://modules/status_effects/status_holder.tscn" id="5_gxuwi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sny1c"]
 size = Vector2(16, 11)
 
 [node name="Lever" type="StaticBody2D" groups=["lever"]]
-z_index = 2
+z_index = 1
+y_sort_enabled = true
 collision_layer = 48
 collision_mask = 4
 script = ExtResource("1_crycx")
@@ -35,4 +37,6 @@ script = ExtResource("4_qhppc")
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_sny1c")
 
-[connection signal="Hit" from="HurtBoxComponent2D" to="." method="flip"]
+[node name="StatusHolder" parent="." instance=ExtResource("5_gxuwi")]
+
+[connection signal="Hit" from="HurtBoxComponent2D" to="." method="hit"]

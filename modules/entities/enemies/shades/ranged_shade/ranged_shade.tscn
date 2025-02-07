@@ -1,16 +1,17 @@
-[gd_scene load_steps=20 format=3 uid="uid://bi6255tx4u0jr"]
+[gd_scene load_steps=23 format=3 uid="uid://bi6255tx4u0jr"]
 
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/melee_shade/shade.gd" id="1_0ppdu"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade.gd" id="1_0ppdu"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_81f8r"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/melee_shade/xsm/roaming.gd" id="3_vol8a"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/roaming.gd" id="3_vol8a"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/ranged_shade/charge_attack.gd" id="4_t3lex"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/ranged_shade/ranged_attack.gd" id="5_q5uxu"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/melee_shade/xsm/stunned.gd" id="6_6q11h"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/stunned.gd" id="6_6q11h"]
 [ext_resource type="PackedScene" uid="uid://b5wr1t2eeb2u0" path="res://modules/entities/enemies/shades/ranged_shade/shade_projectile.tscn" id="6_23k0m"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/melee_shade/xsm/dead.gd" id="7_cxdtl"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/dead.gd" id="7_cxdtl"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/health_component.gd" id="8_2cjjq"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="9_5uvqb"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="10_o57fr"]
+[ext_resource type="PackedScene" uid="uid://m7h0vpdfj1dt" path="res://modules/status_effects/status_holder.tscn" id="12_7af50"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
 radius = 8.1
@@ -21,8 +22,8 @@ size = Vector2(16, 16)
 [sub_resource type="CircleShape2D" id="CircleShape2D_54508"]
 radius = 15.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lw36x"]
-radius = 72.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xhyh"]
+radius = 36.0
 
 [sub_resource type="Animation" id="Animation_0nojc"]
 resource_name = "Melee"
@@ -91,7 +92,16 @@ _data = {
 "Stunned": SubResource("Animation_741tg")
 }
 
+[sub_resource type="Curve" id="Curve_ne7pj"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_8rhcx"]
+colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
+
 [node name="RangedShade" type="CharacterBody2D" groups=["enemy"]]
+z_index = 1
+y_sort_enabled = true
 collision_layer = 0
 collision_mask = 3
 motion_mode = 1
@@ -109,8 +119,10 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
-[node name="Roaming" type="Node" parent="ShadeFSM"]
+[node name="Roaming" type="Node" parent="ShadeFSM" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("3_vol8a")
+nav_agent = NodePath("../../NavigationAgent2D")
+movement_speed = 45.0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -160,7 +172,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Roaming")
+next_state = NodePath("")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("8_2cjjq")
@@ -189,7 +201,10 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRegion"]
-shape = SubResource("CircleShape2D_lw36x")
+shape = SubResource("CircleShape2D_0xhyh")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AgroRegion"]
+polygon = PackedVector2Array(72, 0, 70, -19, 63, -36, 51, -51, 37, -62, 18, -70, 0, -8, 0, 10, 19, 70, 36, 63, 51, 51, 63, 36, 70, 19)
 
 [node name="RectShape" type="Polygon2D" parent="."]
 y_sort_enabled = true
@@ -202,6 +217,29 @@ polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 libraries = {
 "": SubResource("AnimationLibrary_1um1b")
 }
+
+[node name="StatusHolder" parent="." instance=ExtResource("12_7af50")]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 10.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_min = 3.0
+scale_amount_max = 3.0
+scale_amount_curve = SubResource("Curve_ne7pj")
+color = Color(0.488605, 0.427964, 0.528217, 1)
+color_ramp = SubResource("Gradient_8rhcx")
 
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="Hit" from="HurtBoxComponent2D" to="." method="_on_hurt_box_component_2d_hit"]

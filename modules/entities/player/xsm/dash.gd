@@ -9,12 +9,13 @@ var distance_travelled := 0
 var walled : bool
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
-#	
+#
 
 func _on_enter(_args):
 	change_state("NoAttack")
+	
 	start_location = target.global_position
-	#TODO: when implementing controller, override this with analog stick direction instead of mouse pos
+	# TODO: when implementing controller, override this with analog stick direction instead of mouse pos
 	var mouse_pos = target.get_global_mouse_position()
 	dash_direction = start_location.direction_to(mouse_pos).normalized()
 	distance_travelled = 0
