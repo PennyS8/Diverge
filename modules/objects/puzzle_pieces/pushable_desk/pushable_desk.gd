@@ -1,8 +1,14 @@
 extends CharacterBody2D
 
 var pushing := false
+var desk_sprite
 
-func push(area : HitBoxComponent2D):
+# TODO: Figure out how to pass the specific sprite texture in the future
+# to allow for multiple desk sprites.
+func _ready() -> void:
+	pass
+
+func push(area: HitBoxComponent2D):
 	var direction = area.get_parent().swing_dir
 	direction = direction * $BodyCollider.shape.size.x
 	if !move_and_collide(direction, true):
