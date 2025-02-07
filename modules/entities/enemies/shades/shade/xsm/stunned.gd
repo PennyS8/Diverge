@@ -21,7 +21,14 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	pass
+	target.velocity = target.knockback
+	target.move_and_slide()
+	
+	if target.crowd_control == true:
+		# No knockback if the enemy is trapped
+		target.knockback = lerp(Vector2.ZERO, Vector2.ZERO, 0.0)
+	else:
+		target.knockback = lerp(target.knockback, Vector2.ZERO, 0.2)
 
 
 # This function is called each frame after all the update calls

@@ -38,7 +38,9 @@ func set_movement_target(target_pos: Vector2):
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	
+	if !target.follow_target:
+		change_state("Roaming")
+		
 	movement_target_pos = target.follow_target.global_position
 	set_movement_target(movement_target_pos)
 	
