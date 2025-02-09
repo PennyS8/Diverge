@@ -1,9 +1,10 @@
-[gd_scene load_steps=51 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=57 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="1_q2vpm"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="3_c6noe"]
+[ext_resource type="Script" path="res://modules/entities/player/xsm/dash_possible.gd" id="3_rf1lm"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/health_component.gd" id="4_biapr"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/dash_timer.gd" id="4_j2uqp"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/movement.gd" id="4_xto71"]
@@ -12,152 +13,169 @@
 [ext_resource type="Script" path="res://modules/entities/player/xsm/walk.gd" id="6_rn5yy"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/can_attack.gd" id="6_yyqig"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/dash.gd" id="9_x3ix7"]
-[ext_resource type="Script" path="res://modules/entities/player/xsm/attack.gd" id="10_v37cr"]
+[ext_resource type="Script" path="res://modules/entities/player/xsm/attack_melee.gd" id="10_v37cr"]
+[ext_resource type="Script" path="res://modules/entities/player/xsm/lasso.gd" id="12_ds73y"]
 [ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="12_e6mu1"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_41n4o"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/fall.gd" id="13_upq7c"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/push.gd" id="13_xr8le"]
+[ext_resource type="Script" path="res://modules/entities/player/xsm/throw.gd" id="14_7pa4m"]
 [ext_resource type="Texture2D" uid="uid://d3i86f53vn5f8" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Down.png" id="14_iekqc"]
 [ext_resource type="Script" path="res://modules/entities/player/xsm/hop.gd" id="14_l3d1o"]
 [ext_resource type="Script" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="15_257pe"]
+[ext_resource type="Script" path="res://modules/entities/player/xsm/grapple.gd" id="15_trbfo"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Texture2D" uid="uid://dt65a7smcu0go" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Up.png" id="17_ofofd"]
+[ext_resource type="Script" path="res://modules/entities/player/xsm/recall.gd" id="17_qcq68"]
 [ext_resource type="Texture2D" uid="uid://c20vronu6w3d0" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Right_Down.png" id="19_2k7e2"]
 [ext_resource type="Texture2D" uid="uid://b81ru4ss0b1i8" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Left_Down.png" id="20_tr5oi"]
 [ext_resource type="Texture2D" uid="uid://vdbiwqb28uk" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Left_Down.png" id="21_ehp40"]
+[ext_resource type="PackedScene" uid="uid://m7h0vpdfj1dt" path="res://modules/status_effects/status_holder.tscn" id="22_2akqh"]
 [ext_resource type="Texture2D" uid="uid://b884a153yy7k0" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Down.png" id="22_q6hjh"]
 [ext_resource type="Texture2D" uid="uid://b8xveflaeecj3" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Right_Down.png" id="23_5brmn"]
 [ext_resource type="Texture2D" uid="uid://capua5nuuldm2" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Up.png" id="24_wgt2l"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
+size = Vector2(8, 16)
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n7koy"]
 radius = 3.0
 height = 12.0
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
-size = Vector2(8, 16)
 
 [sub_resource type="Animation" id="Animation_6qj3b"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword:rotation")
+tracks/0/path = NodePath(".:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0.0]
+"values": [Vector2(0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:texture")
+tracks/1/path = NodePath(".:scale")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("14_iekqc")]
+"values": [Vector2(1, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sword/CollisionPolygon2DLeft:disabled")
+tracks/2/path = NodePath("Sprite2D:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [ExtResource("14_iekqc")]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sword/CollisionPolygon2DMid:disabled")
+tracks/3/path = NodePath("Sprite2D:scale")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [Vector2(1, 1)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sprite2D:scale")
+tracks/4/path = NodePath("Sprite2D:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"update": 1,
+"values": [Vector2(0, 0)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Sprite2D:position")
+tracks/5/path = NodePath("Shadow:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [true]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("Shadow:visible")
+tracks/6/path = NodePath("HurtBoxComponent2D/HurtBoxCollider:disabled")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("HurtBoxComponent2D/HurtBoxCollider:disabled")
+tracks/7/path = NodePath("Hook:rotation")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [1.5708]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
 tracks/8/enabled = true
-tracks/8/path = NodePath(".:position")
+tracks/8/path = NodePath("Hook/CollisionPolygon2DLeft:disabled")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, 0)]
+"update": 1,
+"values": [true]
 }
 tracks/9/type = "value"
 tracks/9/imported = false
 tracks/9/enabled = true
-tracks/9/path = NodePath(".:scale")
+tracks/9/path = NodePath("Hook/CollisionPolygon2DMid:disabled")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Hook/CollisionPolygon2DRight:disabled")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
 
 [sub_resource type="Animation" id="Animation_eyqri"]
@@ -167,7 +185,7 @@ step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword:rotation")
+tracks/0/path = NodePath("Hook:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -179,11 +197,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/CollisionPolygon2DLeft:disabled")
+tracks/1/path = NodePath("Hook/CollisionPolygon2DLeft:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.025, 0.075),
+"times": PackedFloat32Array(0, 0.025, 0.125),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -191,11 +209,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sword/CollisionPolygon2DMid:disabled")
+tracks/2/path = NodePath("Hook/CollisionPolygon2DMid:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
+"times": PackedFloat32Array(0, 0.05, 0.125),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -203,7 +221,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sword/CollisionPolygon2DRight:disabled")
+tracks/3/path = NodePath("Hook/CollisionPolygon2DRight:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -220,7 +238,7 @@ step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword:rotation")
+tracks/0/path = NodePath("Hook:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -232,11 +250,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/CollisionPolygon2DLeft:disabled")
+tracks/1/path = NodePath("Hook/CollisionPolygon2DLeft:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.025, 0.075),
+"times": PackedFloat32Array(0, 0.025, 0.125),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -244,11 +262,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sword/CollisionPolygon2DMid:disabled")
+tracks/2/path = NodePath("Hook/CollisionPolygon2DMid:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
+"times": PackedFloat32Array(0, 0.05, 0.125),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -256,7 +274,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sword/CollisionPolygon2DRight:disabled")
+tracks/3/path = NodePath("Hook/CollisionPolygon2DRight:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -273,7 +291,7 @@ step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword:rotation")
+tracks/0/path = NodePath("Hook:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -285,11 +303,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/CollisionPolygon2DLeft:disabled")
+tracks/1/path = NodePath("Hook/CollisionPolygon2DLeft:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.025, 0.075),
+"times": PackedFloat32Array(0, 0.025, 0.125),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -297,11 +315,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sword/CollisionPolygon2DMid:disabled")
+tracks/2/path = NodePath("Hook/CollisionPolygon2DMid:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
+"times": PackedFloat32Array(0, 0.05, 0.125),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -309,7 +327,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sword/CollisionPolygon2DRight:disabled")
+tracks/3/path = NodePath("Hook/CollisionPolygon2DRight:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -326,7 +344,7 @@ step = 0.025
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sword:rotation")
+tracks/0/path = NodePath("Hook:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -338,11 +356,12 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sword/CollisionPolygon2DLeft:disabled")
+tracks/1/path = NodePath("Hook/CollisionPolygon2DLeft:disabled")
+
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.025, 0.075),
+"times": PackedFloat32Array(0, 0.05, 0.125),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -350,11 +369,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sword/CollisionPolygon2DMid:disabled")
+tracks/2/path = NodePath("Hook/CollisionPolygon2DMid:disabled")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1),
+"times": PackedFloat32Array(0, 0.075, 0.125),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [true, false, true]
@@ -362,7 +381,7 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Sword/CollisionPolygon2DRight:disabled")
+tracks/3/path = NodePath("Hook/CollisionPolygon2DRight:disabled")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -374,7 +393,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Sword/CollisionPolygon2DLeft:disabled")
+tracks/4/path = NodePath("Hook/CollisionPolygon2DLeft:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -771,12 +790,12 @@ timed = false
 next_state = NodePath("")
 
 [node name="DashPossible" type="Node" parent="PlayerFSM"]
-script = ExtResource("1_q2vpm")
+script = ExtResource("3_rf1lm")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("Push")
+next_state = NodePath("CanDash")
 
 [node name="NoDash" type="Node" parent="PlayerFSM/DashPossible"]
 script = ExtResource("1_q2vpm")
@@ -794,7 +813,7 @@ target_path = NodePath("")
 timed = true
 waiting_time = 0.5
 on_timer_finished = 3
-next_state = NodePath("../NoDash")
+next_state = NodePath("")
 
 [node name="CanDash" type="Node" parent="PlayerFSM/DashPossible"]
 script = ExtResource("5_parbs")
@@ -802,7 +821,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../NoDash")
+next_state = NodePath("")
 
 [node name="AttackPossible" type="Node" parent="PlayerFSM"]
 script = ExtResource("1_q2vpm")
@@ -810,7 +829,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("Push")
+next_state = NodePath("CanAttack")
 
 [node name="NoAttack" type="Node" parent="PlayerFSM/AttackPossible"]
 script = ExtResource("1_q2vpm")
@@ -834,7 +853,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("Push")
+next_state = NodePath("Idle")
 
 [node name="Idle" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("6_p1gyv")
@@ -921,7 +940,51 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../Idle")
 
-[node name="Attack" type="Node" parent="PlayerFSM/Movement"]
+[node name="Lasso" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("12_ds73y")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = "NONE"
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Idle")
+
+[node name="Throw" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("14_7pa4m")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Idle")
+
+[node name="Grapple" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("15_trbfo")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Idle")
+
+[node name="Recall" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("17_qcq68")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = "NONE"
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Idle")
+
+[node name="AttackMelee" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("10_v37cr")
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
@@ -932,7 +995,7 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../Idle")
 
-[node name="AttackUp" type="Node" parent="PlayerFSM/Movement/Attack"]
+[node name="AttackUp" type="Node" parent="PlayerFSM/Movement/AttackMelee"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "attack_up"
@@ -944,7 +1007,7 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../../Idle")
 
-[node name="AttackRight" type="Node" parent="PlayerFSM/Movement/Attack"]
+[node name="AttackRight" type="Node" parent="PlayerFSM/Movement/AttackMelee"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "attack_right"
@@ -956,7 +1019,7 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../../Idle")
 
-[node name="AttackDown" type="Node" parent="PlayerFSM/Movement/Attack"]
+[node name="AttackDown" type="Node" parent="PlayerFSM/Movement/AttackMelee"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "attack_down"
@@ -968,7 +1031,7 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../../Idle")
 
-[node name="AttackLeft" type="Node" parent="PlayerFSM/Movement/Attack"]
+[node name="AttackLeft" type="Node" parent="PlayerFSM/Movement/AttackMelee"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "attack_left"
@@ -1065,42 +1128,29 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../StateSound")
+next_state = NodePath("../Lasso")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-material = ExtResource("13_41n4o")
-texture = ExtResource("14_iekqc")
-offset = Vector2(0, -11)
-hframes = 8
+[node name="StatusHolder" parent="." instance=ExtResource("22_2akqh")]
 
-[node name="Shadow" type="Sprite2D" parent="."]
-material = ExtResource("13_41n4o")
-texture = ExtResource("15_257pe")
-offset = Vector2(0, -11)
-
-[node name="BodyCollider" type="CollisionShape2D" parent="."]
-position = Vector2(0, -3)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_n7koy")
-
-[node name="Sword" type="Area2D" parent="."]
+[node name="Hook" type="Area2D" parent="." groups=["hook"]]
 z_index = 1
 y_sort_enabled = true
 position = Vector2(0, -8)
+rotation = 1.5708
 collision_layer = 4
 collision_mask = 120
 script = ExtResource("16_7tnll")
 
-[node name="CollisionPolygon2DMid" type="CollisionPolygon2D" parent="Sword"]
+[node name="CollisionPolygon2DLeft" type="CollisionPolygon2D" parent="Hook"]
+polygon = PackedVector2Array(0, 0, 0, -12, 20, -8)
+disabled = true
+
+[node name="CollisionPolygon2DMid" type="CollisionPolygon2D" parent="Hook"]
 polygon = PackedVector2Array(0, 0, 20, 8, 20, -8)
 disabled = true
 
-[node name="CollisionPolygon2DRight" type="CollisionPolygon2D" parent="Sword"]
+[node name="CollisionPolygon2DRight" type="CollisionPolygon2D" parent="Hook"]
 polygon = PackedVector2Array(0, 0, 0, 12, 20, 8)
-disabled = true
-
-[node name="CollisionPolygon2DLeft" type="CollisionPolygon2D" parent="Sword"]
-polygon = PackedVector2Array(0, 0, 0, -12, 20, -8)
 disabled = true
 
 [node name="HurtBoxComponent2D" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
@@ -1116,6 +1166,22 @@ shape = SubResource("RectangleShape2D_7l3cj")
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("4_biapr")
 
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_n7koy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("13_41n4o")
+texture = ExtResource("14_iekqc")
+offset = Vector2(0, -11)
+hframes = 8
+
+[node name="Shadow" type="Sprite2D" parent="."]
+material = ExtResource("13_41n4o")
+texture = ExtResource("15_257pe")
+offset = Vector2(0, -11)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_1um1b")
@@ -1127,5 +1193,3 @@ zoom = Vector2(4, 4)
 process_callback = 0
 position_smoothing_speed = 12.0
 script = ExtResource("15_25a4m")
-
-[connection signal="body_entered" from="Sword" to="." method="_on_sword_body_entered"]

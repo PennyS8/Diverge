@@ -13,6 +13,9 @@ class_name HealthComponent
 ## Added reference to HUD
 @onready var heart_hud = get_tree().get_first_node_in_group("gui")
 
+# Stores parent node
+@onready var parent = get_parent()
+
 ## Boolean for if the Node is alive or dead.
 var alive := true
 
@@ -23,18 +26,24 @@ signal Died
 ## and will kill if the [member HealthComponent.health] reaches 0.
 func damage(amount := 0) -> void:
 	if alive: 
-		heart_hud.heart_damage(amount)
+		# Checks that parent is player in order to prevent HUD from being updated by
+		# boxes and enemies
+		if parent.is_in_group("player"):
+			heart_hud.heart_damage(amount)
 		
 		health = clamp(health - abs(amount), 0, max_health)
 		
-		if health == 0: kill()
+		if health <= 0: kill()
 	else: print(owner.name + " is already dead!")
 
 ## Increases the [member HealthComponent.health] by the amount specified,[br]
 ## and will not go higher than [member HealthComponent.max_health].
 func heal(amount := 0) -> void:
 	if alive: 
-		heart_hud.heart_heal(amount)
+		# Checks that parent is player in order to prevent HUD from being updated by
+		# boxes and enemies
+		if parent.is_in_group("player"):
+			heart_hud.heart_heal(amount)
 		
 		health = clamp(health + abs(amount), 0, max_health)
 	else: print(owner.name + " is already dead!")

@@ -13,6 +13,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
+mouse_filter = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="IngameUI"]
 layout_mode = 1
@@ -21,12 +22,14 @@ anchor_right = 1.0
 offset_bottom = 186.0
 grow_horizontal = 2
 scale = Vector2(1.5, 1.5)
+mouse_filter = 2
 theme_override_constants/separation = 16
 
 [node name="MarginContainer" type="MarginContainer" parent="IngameUI/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 
@@ -34,27 +37,34 @@ theme_override_constants/margin_top = 16
 custom_minimum_size = Vector2(400, 170)
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_constants/h_separation = 10
 
 [node name="Heart" parent="IngameUI/HBoxContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Heart2" parent="IngameUI/HBoxContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Heart3" parent="IngameUI/HBoxContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Heart4" parent="IngameUI/HBoxContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="Heart5" parent="IngameUI/HBoxContainer/MarginContainer/HFlowContainer" instance=ExtResource("1_xbvhq")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="MarginContainer2" type="MarginContainer" parent="IngameUI/HBoxContainer"]
 custom_minimum_size = Vector2(110, 65)
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 0
@@ -62,11 +72,13 @@ theme_override_constants/margin_bottom = 0
 
 [node name="HudKey" parent="IngameUI/HBoxContainer/MarginContainer2" instance=ExtResource("3_osnti")]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="MarginContainer3" type="MarginContainer" parent="IngameUI/HBoxContainer"]
 custom_minimum_size = Vector2(110, 65)
 layout_mode = 2
 size_flags_vertical = 0
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 0
@@ -74,3 +86,4 @@ theme_override_constants/margin_bottom = 0
 
 [node name="HudBigKey" parent="IngameUI/HBoxContainer/MarginContainer3" instance=ExtResource("4_nce0q")]
 layout_mode = 2
+mouse_filter = 2

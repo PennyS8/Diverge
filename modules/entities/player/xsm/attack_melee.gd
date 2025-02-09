@@ -13,7 +13,7 @@ var attack_states : Dictionary = {
 @export var attack_nudge_speed := 250
 @export var attack_nudge_distance := 16
 
-# used for calculating sword swing direction (up, down, left right)
+# used for calculating hook swing direction (up, down, left right)
 # as well as nudge direction (360deg)
 var attack_dir : Vector2
 
@@ -30,7 +30,7 @@ func _on_enter(_args) -> void:
 	start_location = target.global_position
 	attack_dir = start_location.direction_to(mouse_pos).normalized()
 	distance_travelled = 0
-
+	
 	# this logic is so that we find which of the four cardinals our mouse is \
 	# closest to. whichever absolute value is larger determines which \
 	# component (x or y) we want to take as the main value.
@@ -57,12 +57,16 @@ func _on_enter(_args) -> void:
 	# the dictionary initialized at the top of this script assigns each vector2
 	# value to the corresponding state node name
 	change_state(attack_states[swing_dir])
-	
+
+
 # pretty much same logic as dash for these two functions.
 func _on_update(_delta):
 	target.velocity = attack_dir * attack_nudge_speed
 	distance_travelled = distance_travelled + (target.velocity * _delta).length()
 	
+
+
 func _after_update(_delta):
 	if distance_travelled >= attack_nudge_distance:
 		target.velocity = Vector2.ZERO
+	

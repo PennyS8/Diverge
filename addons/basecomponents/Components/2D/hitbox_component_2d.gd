@@ -7,6 +7,7 @@ class_name HitBoxComponent2D
 ## Amount of damage to deal to a [HurtBoxComponent2D]'s [HealthComponent],[br]
 ##[b](if specified inside [HurtBoxComponent2D])[/b].
 @export var damage := 10
+@export var knockback_coef := 200.0
 
 func _init() -> void:
 	monitoring = false
