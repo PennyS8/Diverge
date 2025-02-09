@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c3hs0j0l3dsrr" path="res://modules/objects/puzzle_pieces/breakable_barrel/breakable_barrel.tscn" id="13_22pfi"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="14_usk1t"]
 [ext_resource type="PackedScene" uid="uid://n2x5iije4alx" path="res://modules/objects/debug/damage_area/damage_area.tscn" id="15_04g4e"]
-[ext_resource type="PackedScene" uid="uid://c5qx3tabt31rv" path="res://modules/objects/debug/heal_area/heal_area.tscn" id="16_gdg6b"]
+[ext_resource type="PackedScene" path="res://modules/objects/debug/heal_area/heal_area.tscn" id="16_gdg6b"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57cbg"]
 texture = ExtResource("3_waj6y")

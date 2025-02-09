@@ -22,7 +22,7 @@ func on_load_game(saved_data:SavedData):
 	key_id = saved_data.puzzle_key_id
 	
 	if saved_data.puzzle_completed == true:
-		flip(1)
+		flip()
 
 func hit(_area : HitBoxComponent2D):
 	if _area.is_in_group("hook"):
