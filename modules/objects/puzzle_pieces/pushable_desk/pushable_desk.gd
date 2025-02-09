@@ -1,12 +1,16 @@
 extends CharacterBody2D
 
+@onready var sprite = $Sprite2D
+@onready var frames = sprite.texture.get_width() / sprite.region_rect.size.x
+
 var pushing := false
-var desk_sprite
 
 # TODO: Figure out how to pass the specific sprite texture in the future
 # to allow for multiple desk sprites.
 func _ready() -> void:
-	pass
+	var random = randi_range(0, frames - 1)
+	sprite.region_rect.position.x = random * sprite.region_rect.size.x
+	
 
 func push(area: HitBoxComponent2D):
 	var direction = area.get_parent().swing_dir
