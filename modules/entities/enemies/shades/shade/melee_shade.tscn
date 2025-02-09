@@ -98,7 +98,7 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_00tmr"]
 colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
 
-[node name="MeleeShade" type="CharacterBody2D" groups=["enemy"]]
+[node name="MeleeShade" type="CharacterBody2D" groups=["enemy", "saved_data"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 0

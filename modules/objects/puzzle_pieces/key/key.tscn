@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utre4"]
 size = Vector2(12, 7)
 
-[node name="Key" type="Area2D"]
+[node name="Key" type="Area2D" groups=["saved_data"]]
 collision_mask = 4
 script = ExtResource("1_5a3x4")
 

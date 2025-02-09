@@ -25,14 +25,19 @@ func push_down():
 func _on_body_entered(_body: Node2D) -> void:
 	if !enabled:
 		push_down()
+		
+		if _body.is_in_group("block"):
+			_body.puzzle_completed = true
 
 func _on_body_exited(_body: Node2D) -> void:
 	if enabled and !stays_down:
 		if !get_overlapping_bodies():
 			pop_up()
 			KeyChain.key.emit(key_id, enabled)
+			
+		if _body.is_in_group("block"):
+			_body.puzzle_completed = false
 	
 func _key_toggle(id, state):
 	if id == key_id and !state:
 		pop_up()
-	

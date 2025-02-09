@@ -99,7 +99,7 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_8rhcx"]
 colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
 
-[node name="RangedShade" type="CharacterBody2D" groups=["enemy"]]
+[node name="RangedShade" type="CharacterBody2D" groups=["enemy", "saved_data"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 0
