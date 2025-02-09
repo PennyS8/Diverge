@@ -11,4 +11,3 @@ func push(area : HitBoxComponent2D):
 			var twe = create_tween()
 			twe.tween_property(self, "global_position", global_position + direction, 0.2)
 			twe.finished.connect(set.bind("pushing", false))
-		
