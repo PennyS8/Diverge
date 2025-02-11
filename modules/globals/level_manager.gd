@@ -28,7 +28,6 @@ func _ready():
 		get_tree().change_scene_to_file("res://modules/globals/main.tscn")
 	main_ready.connect(_main_ready)
 
-
 func _main_ready():
 	player = get_tree().get_first_node_in_group("player")
 	if found_player:
@@ -39,7 +38,6 @@ func _main_ready():
 		_swap_level(custom_scene_path)
 	else:
 		_swap_level(default_level.resource_path)
-
 
 func change_level(path : String, entrance_name : String = ""):
 	if transitioning:
@@ -58,7 +56,6 @@ func change_level(path : String, entrance_name : String = ""):
 	tween.tween_callback(_swap_level.bind(path, entrance_name))
 	tween.tween_property(fade_screen, "color:a", 0, fade_time)
 	tween.finished.connect(_transition_complete)
-
 
 func _swap_level(path : String, entrance_name : String = ""):
 	var packed = load(path)
@@ -86,8 +83,6 @@ func _get_entrances():
 	for entrance in get_tree().get_nodes_in_group("level_entrance"):
 		entrances[entrance.name] = entrance.position
 
-
 func _transition_complete():
 	player.lock_camera = false
 	transitioning = false
-	

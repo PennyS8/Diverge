@@ -26,7 +26,7 @@ func _on_enter(_args) -> void:
 # when StateAutomaticTimer timeout()
 func _state_timeout() -> void:
 	var player_found := false
-	var overlaps = agro_region.get_overlapping_bodies()
+	#var overlaps = agro_region.get_overlapping_bodies()
 	var possible_follow_targets = agro_region.get_overlapping_bodies()
 	for follow_target in possible_follow_targets:
 		if follow_target.is_in_group("player"):

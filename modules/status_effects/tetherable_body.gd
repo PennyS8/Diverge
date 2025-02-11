@@ -32,7 +32,6 @@ func fling():
 	var player_pos = player.global_position
 	
 	if is_in_group("lever"):
-		#fling(player_pos)
 		return
 	
 	var end_point = global_position.lerp(player_pos, 0.5)

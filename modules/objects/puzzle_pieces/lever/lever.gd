@@ -34,8 +34,8 @@ func fling(): #func fling(fling_point : Vector2):
 	var fling_point = Vector2(-1, 0) # TODO: Define fling_point by finding the other tethered_body
 	
 	var fling_dir = global_position.direction_to(fling_point).normalized()
-	var component_x = abs(fling_dir.x)
-	var component_y = abs(fling_dir.y)
+	#var component_x = abs(fling_dir.x)
+	#var component_y = abs(fling_dir.y)
 	# if the lever is being pulled left or right enough to be flipped
 	if abs(fling_dir.x) > abs(fling_dir.y):
 		# if lever is right and pulled left, or if lever is left and pulled right, flip the lever

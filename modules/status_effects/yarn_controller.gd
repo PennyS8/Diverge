@@ -47,8 +47,7 @@ func _process(delta):
 			get_parent().get_node("PlayerFSM").change_state("Recall")
 		queue_free()
 
-func _on_projectile_body_shape_entered(body_rid: RID, body: Node2D, body_shape_index: int, local_shape_index: int) -> void:
-	var en = body.name
+func _on_projectile_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
 	# Do not collide with parent
 	if body == get_parent():
 		return

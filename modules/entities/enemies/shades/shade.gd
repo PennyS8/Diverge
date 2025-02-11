@@ -30,7 +30,7 @@ func on_load_game(saved_data:SavedData):
 func _ready() -> void:
 	default_position = global_position
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	$AgroRegion.look_at(to_global(velocity))
 
 func _on_health_component_died() -> void:
@@ -48,7 +48,7 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	else:
 		$ShadeFSM.change_state("Dead")
 
-func _on_agro_region_body_exited(body):
+func _on_agro_region_body_exited(_body):
 	follow_target = null
 	$ShadeFSM.change_state("Roaming")
 
