@@ -1,8 +1,8 @@
-extends StaticBody2D
+extends TetherableBody
 
 @onready var particles = $CPUParticles2D
 @onready var health_component = $HealthComponent
-@onready var status_holder = get_node("StatusHolder")
+@onready var tetherable_area = $TetherableArea2D
 
 func on_save_game(saved_data:Array[SavedData]):
 	# We do not need to save it if it is dead
@@ -21,18 +21,21 @@ func on_before_load_game():
 
 func on_load_game(saved_data:SavedData):
 	global_position = saved_data.position
-
+	
+func _on_tetherable_area_2d_mouse_entered() -> void:
+	select()
+	
+func _on_tetherable_area_2d_mouse_exited() -> void:
+	deselect()
+	
 func hit(_area : HitBoxComponent2D):
 	if _area.is_in_group("hook"):
 		$Sprite2D/ShakerComponent2D.play_shake()
 		particles.restart()
 
-func pull():
-	pass
-	#var player_pos = get_tree().get_nodes_in_group("player")[0].global_position + Vector2(0, -8)
-	#var tether_dir = player_pos.direction_to(global_position).normalized()
-	#var new_pos = player_pos + tether_dir*THREAD_LENGTH
-	#self.global_position = new_pos
+# Overrides for tethered functionalities
+#func pull(): # Between self and another body
+#func fling(): # Between self and player
 
 func _on_cpu_particles_2d_finished() -> void:
 	if particles.amount == 16:

@@ -1,4 +1,4 @@
-extends CharacterBody2D
+extends TetherableBody
 
 # All the logic is handled by the xsm below
 # Even variables have now been moved to states
@@ -15,7 +15,7 @@ var swing_dir : Vector2
 var ledge_collision : Area2D
 
 @onready var health_component = $HealthComponent
-@onready var status_holder = $StatusHolder
+
 func _process(_delta):
 	_camera_move(_delta)
 
@@ -29,4 +29,11 @@ func _camera_move(_delta):
 func can_attack():
 	$PlayerFSM.change_state("CanAttack")
 	$PlayerFSM.change_state("Idle")
-	
+
+# Override
+func fling():
+	pass
+
+# Override
+func pull():
+	pass

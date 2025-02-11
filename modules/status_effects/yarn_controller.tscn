@@ -35,5 +35,5 @@ width = 2.0
 texture = SubResource("GradientTexture2D_tiuj8")
 texture_mode = 1
 
-[connection signal="area_entered" from="Projectile" to="." method="_on_projectile_area_entered"]
+[connection signal="body_shape_entered" from="Projectile" to="." method="_on_projectile_body_shape_entered"]
 [connection signal="draw" from="Line2D" to="." method="_on_line_2d_draw"]
