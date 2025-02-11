@@ -40,9 +40,14 @@ func _process(delta):
 			queue_free()
 	
 	$Line2D.points[1] = yarn_end_pos
+	$RayCast2D.target_position = yarn_end_pos
 	
 	# Base case, yarn is recalled or snaps from tension
-	if current_dist >= YARN_LENGTH or Input.is_action_just_pressed("recall"):
+	if (
+		current_dist >= YARN_LENGTH or
+		Input.is_action_just_pressed("recall") or
+		$RayCast2D.get_collider() != tethered_body
+	):
 		if get_parent().is_in_group("player"):
 			get_parent().get_node("PlayerFSM").change_state("Recall")
 		queue_free()
@@ -60,8 +65,8 @@ func _on_projectile_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape
 		!can_collide or
 		!body.is_in_group("tetherable_body")
 	): # Do NOT collide if any of the above conditions are true
-		#can_collide = false
-		#$Projectile.queue_free()
+		can_collide = false
+		$Projectile.queue_free()
 		return
 	
 	# Projectile has collided with a tetherable body

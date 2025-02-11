@@ -23,7 +23,7 @@ script = ExtResource("1_f6jx5")
 
 [node name="Projectile" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 256
+collision_mask = 339
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile"]
 shape = SubResource("CircleShape2D_febas")
@@ -34,6 +34,10 @@ points = PackedVector2Array(0, 0, 0, 0)
 width = 2.0
 texture = SubResource("GradientTexture2D_tiuj8")
 texture_mode = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collision_mask = 322
 
 [connection signal="body_shape_entered" from="Projectile" to="." method="_on_projectile_body_shape_entered"]
 [connection signal="draw" from="Line2D" to="." method="_on_line_2d_draw"]

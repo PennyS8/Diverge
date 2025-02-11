@@ -18,12 +18,12 @@ func deselect():
 
 # Adds itself to the status_tethered global group
 func add_tethered_status():
-	print("Adding "+self.name+" to group status_tethered")
+	#print("Adding "+self.name+" to group status_tethered")
 	add_to_group("status_tethered")
 
 # Removes itself from the status_tethered global group
 func remove_tethered_status():
-	print("Removing "+self.name+" from group status_tethered")
+	#print("Removing "+self.name+" from group status_tethered")
 	remove_from_group("status_tethered")
 
 # Retracts the length of the yarn, pulling the tethered body to the player
