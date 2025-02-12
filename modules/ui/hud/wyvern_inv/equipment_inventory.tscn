@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://gpeishkjbb60"]
+[gd_scene load_steps=18 format=3 uid="uid://gpeishkjbb60"]
 
 [ext_resource type="Script" path="res://addons/wyvernbox/inventory_view.gd" id="1_igakj"]
 [ext_resource type="Script" path="res://addons/wyvernbox/inventories/restricted_inventory.gd" id="2_u5gh5"]
@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://b7jlucsddt6dg" path="res://addons/wyvernbox_prefabs/inventory_cell.tscn" id="5_ele7e"]
 [ext_resource type="Script" path="res://addons/wyvernbox/item_instantiator.gd" id="6_ojqjg"]
 [ext_resource type="Texture2D" uid="uid://bibwfg1e2rajp" path="res://assets/debug/Juni.JPG" id="6_x6ee3"]
-[ext_resource type="Texture2D" uid="uid://bdkrtjyq7nxcc" path="res://assets/debug/TESTPENCILBOX.png" id="10_cqltf"]
+[ext_resource type="Texture2D" uid="uid://bdkrtjyq7nxcc" path="res://assets/debug/TESTPENCILBOX.png" id="10_u08uh"]
 
 [sub_resource type="Resource" id="3"]
 resource_name = "RestrictedInventory"
@@ -20,27 +20,45 @@ width = 13
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibjd1"]
 atlas = ExtResource("6_x6ee3")
-region = Rect2(712, 824, 676, 470)
+region = Rect2(676, 940, 676, 470)
 
 [sub_resource type="Resource" id="Resource_xjeog"]
 script = ExtResource("4_5om5x")
-name = "Sword"
-description = "Yeah"
+name = "Weaver's Hook"
+description = "Bead and block, until it is done."
 tags = Array[StringName]([&"mainhand"])
 texture = SubResource("AtlasTexture_ibjd1")
 texture_scale = 0.04
 max_stack_count = 1
 in_inventory_width = 1
 in_inventory_height = 1
-slot_flags = 65540
+slot_flags = 65536
 default_properties_string = "{}"
+default_properties = {}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2s3jh"]
+atlas = ExtResource("6_x6ee3")
+region = Rect2(303, 732, 170, 174)
+
+[sub_resource type="Resource" id="Resource_v2uwl"]
+script = ExtResource("4_5om5x")
+name = "Unraveled Satchel"
+description = ""
+tags = Array[StringName]([])
+texture = SubResource("AtlasTexture_2s3jh")
+texture_scale = 0.15
+max_stack_count = 1
+in_inventory_width = 1
+in_inventory_height = 1
+slot_flags = 131072
+default_properties_string = ""
 default_properties = {}
 
 [sub_resource type="Resource" id="Resource_eedmd"]
 script = ExtResource("6_ojqjg")
-items_to_add = Array[ExtResource("3_1i8ug")]([SubResource("Resource_xjeog")])
-item_repeat_ranges = Array[Vector2]([Vector2(1, 1)])
-item_chances = Array[float]([100.0])
+items_to_add = Array[ExtResource("3_1i8ug")]([SubResource("Resource_xjeog"), SubResource("Resource_v2uwl")])
+item_repeat_ranges = Array[Vector2]([Vector2(1, 1), Vector2(1, 1)])
+item_chances = Array[float]([100.0, 100.0])
 repeat_post_chance = false
 randomize_locations = false
 delay_between_items = 0.0
@@ -65,7 +83,7 @@ inventory = SubResource("3")
 contents = SubResource("Resource_eedmd")
 item_scene = ExtResource("3_vtxtt")
 interaction_mode = 0
-cell_size = Vector2(26, 26)
+cell_size = Vector2(48, 48)
 selected_item_style = ExtResource("4_djypq")
 
 [node name="Cells" type="Control" parent="."]
@@ -84,7 +102,7 @@ offset_bottom = 88.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
-texture = ExtResource("10_cqltf")
+texture = ExtResource("10_u08uh")
 
 [node name="Mainhand" parent="Cells" instance=ExtResource("5_ele7e")]
 layout_mode = 0
@@ -98,7 +116,7 @@ offset_bottom = 88.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
-texture = ExtResource("10_cqltf")
+texture = ExtResource("10_u08uh")
 
 [node name="Headphones" parent="Cells" instance=ExtResource("5_ele7e")]
 layout_mode = 0
@@ -112,7 +130,7 @@ offset_bottom = 32.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
-texture = ExtResource("10_cqltf")
+texture = ExtResource("10_u08uh")
 
 [node name="Gen1" parent="Cells" instance=ExtResource("5_ele7e")]
 layout_mode = 0
@@ -126,7 +144,7 @@ offset_bottom = 116.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
-texture = ExtResource("10_cqltf")
+texture = ExtResource("10_u08uh")
 
 [node name="Gen2" parent="Cells" instance=ExtResource("5_ele7e")]
 layout_mode = 0
@@ -140,7 +158,7 @@ offset_bottom = 116.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
-texture = ExtResource("10_cqltf")
+texture = ExtResource("10_u08uh")
 
 [node name="Gen3" parent="Cells" instance=ExtResource("5_ele7e")]
 layout_mode = 0
@@ -154,7 +172,7 @@ offset_bottom = 116.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
-texture = ExtResource("10_cqltf")
+texture = ExtResource("10_u08uh")
 
 [node name="Gen4" parent="Cells" instance=ExtResource("5_ele7e")]
 layout_mode = 0
@@ -168,7 +186,7 @@ offset_bottom = 116.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
-texture = ExtResource("10_cqltf")
+texture = ExtResource("10_u08uh")
 
 [node name="Gen5" parent="Cells" instance=ExtResource("5_ele7e")]
 layout_mode = 0
@@ -182,7 +200,7 @@ offset_bottom = 116.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
-texture = ExtResource("10_cqltf")
+texture = ExtResource("10_u08uh")
 
 [node name="Gen6" parent="Cells" instance=ExtResource("5_ele7e")]
 layout_mode = 0
@@ -196,7 +214,7 @@ offset_bottom = 141.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
-texture = ExtResource("10_cqltf")
+texture = ExtResource("10_u08uh")
 
 [node name="Gen7" parent="Cells" instance=ExtResource("5_ele7e")]
 layout_mode = 0
@@ -210,7 +228,7 @@ offset_bottom = 141.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
-texture = ExtResource("10_cqltf")
+texture = ExtResource("10_u08uh")
 
 [node name="Gen8" parent="Cells" instance=ExtResource("5_ele7e")]
 layout_mode = 0
@@ -224,7 +242,7 @@ offset_bottom = 141.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
-texture = ExtResource("10_cqltf")
+texture = ExtResource("10_u08uh")
 
 [node name="Gen9" parent="Cells" instance=ExtResource("5_ele7e")]
 layout_mode = 0
@@ -238,7 +256,7 @@ offset_bottom = 141.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
-texture = ExtResource("10_cqltf")
+texture = ExtResource("10_u08uh")
 
 [node name="Gen10" parent="Cells" instance=ExtResource("5_ele7e")]
 layout_mode = 0
@@ -252,7 +270,7 @@ offset_bottom = 141.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
-texture = ExtResource("10_cqltf")
+texture = ExtResource("10_u08uh")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 layout_mode = 0

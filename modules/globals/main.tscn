@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b8ywe7vivb1en"]
+[gd_scene load_steps=13 format=3 uid="uid://b8ywe7vivb1en"]
 
 [ext_resource type="Script" path="res://modules/globals/main.gd" id="1_2uu7l"]
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="2_wwsun"]
@@ -8,6 +8,15 @@
 [ext_resource type="Script" path="res://modules/globals/temp_buttons/save_button.gd" id="5_yg3b2"]
 [ext_resource type="Script" path="res://modules/globals/temp_buttons/load_button.gd" id="6_rd2v5"]
 [ext_resource type="Script" path="res://modules/globals/temp_buttons/delete_button.gd" id="7_dubel"]
+[ext_resource type="Script" path="res://modules/globals/inventory_panel.gd" id="8_02pmu"]
+[ext_resource type="PackedScene" uid="uid://ms4bp1b33wt2" path="res://modules/ui/hud/wyvern_inv/notebook_panel.tscn" id="8_dbv5s"]
+[ext_resource type="Shader" path="res://modules/globals/blur.gdshader" id="9_nlpsi"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yc34w"]
+shader = ExtResource("9_nlpsi")
+shader_parameter/blur_amount = 2.0
+shader_parameter/mix_amount = 0.3
+shader_parameter/color_over = Color(0.255659, 0.255659, 0.255659, 1)
 
 [node name="Main" type="Node2D"]
 z_as_relative = false
@@ -59,6 +68,23 @@ custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 text = "Delete"
 script = ExtResource("7_dubel")
+
+[node name="InventoryPanel" type="CanvasLayer" parent="GUI2"]
+visible = false
+script = ExtResource("8_02pmu")
+
+[node name="ColorRect" type="ColorRect" parent="GUI2/InventoryPanel"]
+material = SubResource("ShaderMaterial_yc34w")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.219608, 0.219608, 0.219608, 1)
+
+[node name="EquipmentPanel" parent="GUI2/InventoryPanel" instance=ExtResource("8_dbv5s")]
 
 [node name="Utilities" type="Node" parent="."]
 

@@ -1,13 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://dnigre5uq6m5b"]
+[gd_scene load_steps=8 format=3 uid="uid://ms4bp1b33wt2"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_xe0cd"]
 [ext_resource type="Texture2D" uid="uid://ceivns3460sja" path="res://assets/hud/notebook.png" id="2_hc3us"]
 [ext_resource type="PackedScene" uid="uid://gpeishkjbb60" path="res://modules/ui/hud/wyvern_inv/equipment_inventory.tscn" id="3_u7xja"]
 [ext_resource type="PackedScene" uid="uid://cqa45c6lfsffv" path="res://addons/wyvernbox_prefabs/tooltip.tscn" id="4_stxl0"]
+[ext_resource type="Script" path="res://addons/wyvernbox/extension/tooltip_property_stats.gd" id="5_sb6jk"]
+[ext_resource type="Script" path="res://addons/wyvernbox/extension/tooltip_property_description.gd" id="6_1alct"]
 
 [sub_resource type="Theme" id="Theme_btflt"]
 
-[node name="NotebookPanel" type="Panel"]
+[node name="EquipmentPanel" type="Panel"]
+mouse_filter = 2
 theme = SubResource("Theme_btflt")
 
 [node name="TextureRect" type="TextureRect" parent="."]
@@ -16,6 +19,7 @@ layout_mode = 1
 offset_right = 640.0
 offset_bottom = 360.0
 scale = Vector2(3, 3)
+mouse_filter = 2
 texture = ExtResource("2_hc3us")
 
 [node name="Equip" parent="." instance=ExtResource("3_u7xja")]
@@ -23,15 +27,37 @@ layout_mode = 1
 anchors_preset = 0
 anchor_left = 0.0
 anchor_right = 0.0
-offset_left = 591.0
-offset_top = 324.0
-offset_right = 591.0
-offset_bottom = 324.0
+offset_left = 585.0
+offset_top = 250.0
+offset_right = 585.0
+offset_bottom = 250.0
 grow_horizontal = 1
-scale = Vector2(3, 3)
+rotation = 0.00462317
+scale = Vector2(4, 4)
 show_backgrounds = false
 
 [node name="Tooltip" parent="." instance=ExtResource("4_stxl0")]
 visible = false
-layout_mode = 0
+layout_mode = 1
 offset_bottom = 196.0
+property_scripts = Array[Script]([ExtResource("5_sb6jk"), ExtResource("6_1alct")])
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 1
+offset_left = 1143.0
+offset_top = 211.0
+offset_right = 1569.0
+offset_bottom = 595.0
+rotation = -0.00664901
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+text = "this right side may have:
+
+current dungeon map
+
+current dungeon keys
+
+objectives
+
+& more!
+
+press tab to close this panel"

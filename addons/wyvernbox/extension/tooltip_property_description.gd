@@ -6,4 +6,4 @@ func _display(item_stack : ItemStack):
 	if desc_tr != item_stack.item_type.description:
 		if !is_label_empty(): add_spacing(2.0, false)
 		add_bbcode("[color=#%s]" % tooltip.color_description.to_html())
-		add_bbcode(desc_tr)
+	add_bbcode(desc_tr)
