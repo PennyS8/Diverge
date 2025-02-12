@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=3 uid="uid://dnigre5uq6m5b"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_xe0cd"]
+[ext_resource type="Texture2D" uid="uid://ceivns3460sja" path="res://assets/hud/notebook.png" id="2_hc3us"]
+[ext_resource type="PackedScene" uid="uid://gpeishkjbb60" path="res://modules/ui/hud/wyvern_inv/equipment_inventory.tscn" id="3_u7xja"]
+[ext_resource type="PackedScene" uid="uid://cqa45c6lfsffv" path="res://addons/wyvernbox_prefabs/tooltip.tscn" id="4_stxl0"]
+
+[sub_resource type="Theme" id="Theme_btflt"]
+
+[node name="NotebookPanel" type="Panel"]
+theme = SubResource("Theme_btflt")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("1_xe0cd")
+layout_mode = 1
+offset_right = 640.0
+offset_bottom = 360.0
+scale = Vector2(3, 3)
+texture = ExtResource("2_hc3us")
+
+[node name="Equip" parent="." instance=ExtResource("3_u7xja")]
+layout_mode = 1
+anchors_preset = 0
+anchor_left = 0.0
+anchor_right = 0.0
+offset_left = 591.0
+offset_top = 324.0
+offset_right = 591.0
+offset_bottom = 324.0
+grow_horizontal = 1
+scale = Vector2(3, 3)
+show_backgrounds = false
+
+[node name="Tooltip" parent="." instance=ExtResource("4_stxl0")]
+visible = false
+layout_mode = 0
+offset_bottom = 196.0
