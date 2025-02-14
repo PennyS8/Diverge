@@ -21,13 +21,13 @@ func on_before_load_game():
 
 func on_load_game(saved_data:SavedData):
 	global_position = saved_data.position
-	
+
 func _on_tetherable_area_2d_mouse_entered() -> void:
 	select()
-	
+
 func _on_tetherable_area_2d_mouse_exited() -> void:
 	deselect()
-	
+
 func hit(_area : HitBoxComponent2D):
 	if _area.is_in_group("hook"):
 		$Sprite2D/ShakerComponent2D.play_shake()
@@ -46,4 +46,3 @@ func _on_health_component_died() -> void:
 	$Sprite2D.visible = false
 	set_collision_layer_value(5, false)
 	set_collision_layer_value(6, false)
-	

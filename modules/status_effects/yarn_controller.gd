@@ -45,25 +45,53 @@ func _process(delta):
 	# Base case, yarn is recalled or snaps from tension
 	if (
 		current_dist >= YARN_LENGTH or
-		Input.is_action_just_pressed("recall") or
-		$RayCast2D.get_collider() != tethered_body
+		Input.is_action_just_pressed("recall") #or
+		#$RayCast2D.get_collider() != tethered_body
 	):
 		if get_parent().is_in_group("player"):
 			get_parent().get_node("PlayerFSM").change_state("Recall")
 		queue_free()
 
-func _on_projectile_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+func _on_projectile_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+	pass
+	## Do not collide with parent
+	#if body == get_parent():
+		#return
+	#
+	#if get_parent() == player:
+		#player.can_attack()
+	#
+	#if (
+		#body == player or
+		#!can_collide or
+		#!body.is_in_group("tetherable_body")
+	#): # Do NOT collide if any of the above conditions are true
+		#can_collide = false
+		#$Projectile.queue_free()
+		#return
+	#
+	## Projectile has collided with a tetherable body
+	#
+	#can_collide = false
+	#tethered_body = body
+	#
+	#player.add_tethered_status()
+	#body.add_tethered_status()
+	#
+	#$Projectile.queue_free()
+
+func _on_projectile_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	# Do not collide with parent
-	if body == get_parent():
+	if area == get_parent():
 		return
 	
 	if get_parent() == player:
 		player.can_attack()
 	
 	if (
-		body == player or
+		area == player or
 		!can_collide or
-		!body.is_in_group("tetherable_body")
+		!area.get_parent().is_in_group("tetherable_body")
 	): # Do NOT collide if any of the above conditions are true
 		can_collide = false
 		$Projectile.queue_free()
@@ -72,9 +100,9 @@ func _on_projectile_body_shape_entered(_body_rid: RID, body: Node2D, _body_shape
 	# Projectile has collided with a tetherable body
 	
 	can_collide = false
-	tethered_body = body
+	tethered_body = area
 	
 	player.add_tethered_status()
-	body.add_tethered_status()
+	area.get_parent().add_tethered_status()
 	
 	$Projectile.queue_free()

@@ -19,6 +19,7 @@ func deselect():
 # Adds itself to the status_tethered global group
 func add_tethered_status():
 	#print("Adding "+self.name+" to group status_tethered")
+	deselect()
 	add_to_group("status_tethered")
 
 # Removes itself from the status_tethered global group
