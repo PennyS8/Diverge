@@ -38,7 +38,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/ldtk-importer/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/xsm/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/ldtk-importer/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/wyvernbox/editor/plugin.cfg", "res://addons/xsm/plugin.cfg")
 
 [global_group]
 

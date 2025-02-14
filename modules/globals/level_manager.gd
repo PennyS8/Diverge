@@ -21,7 +21,10 @@ var transitioning := false
 var found_player := false
 
 func _ready():
-	if get_tree().current_scene.name != "Main":
+	var scene = get_tree().current_scene
+	if scene is Control:
+		return
+	if scene.name != "Main":
 		if get_tree().get_first_node_in_group("player"):
 			found_player = true
 		custom_scene_path = get_tree().current_scene.scene_file_path

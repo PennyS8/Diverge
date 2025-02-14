@@ -5,3 +5,8 @@ func _ready():
 	SaveAndLoad.delete_room_saves()
 	LevelManager.main_ready.emit()
 	SaveAndLoad.main_ready.emit()
+
+
+func _on_equipment_panel_check_hook() -> void:
+	if get_node_or_null("Player"):
+		$Player.check_unlock_hook()
