@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=56 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -31,7 +31,6 @@
 [ext_resource type="Texture2D" uid="uid://c20vronu6w3d0" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Right_Down.png" id="19_2k7e2"]
 [ext_resource type="Texture2D" uid="uid://b81ru4ss0b1i8" path="res://modules/entities/player/placeholder_sprites/Idle/Idle_Left_Down.png" id="20_tr5oi"]
 [ext_resource type="Texture2D" uid="uid://vdbiwqb28uk" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Left_Down.png" id="21_ehp40"]
-[ext_resource type="PackedScene" uid="uid://m7h0vpdfj1dt" path="res://modules/status_effects/status_holder.tscn" id="22_2akqh"]
 [ext_resource type="Texture2D" uid="uid://b884a153yy7k0" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Down.png" id="22_q6hjh"]
 [ext_resource type="Texture2D" uid="uid://b8xveflaeecj3" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Right_Down.png" id="23_5brmn"]
 [ext_resource type="Texture2D" uid="uid://capua5nuuldm2" path="res://modules/entities/player/placeholder_sprites/Walk/walk_Up.png" id="24_wgt2l"]
@@ -357,7 +356,6 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Hook/CollisionPolygon2DLeft:disabled")
-
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -774,7 +772,7 @@ _data = {
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4
-collision_mask = 83
+collision_mask = 251
 motion_mode = 1
 wall_min_slide_angle = 0.0872665
 script = ExtResource("1_ehhf7")
@@ -1129,8 +1127,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("../Lasso")
-
-[node name="StatusHolder" parent="." instance=ExtResource("22_2akqh")]
 
 [node name="Hook" type="Area2D" parent="." groups=["hook"]]
 z_index = 1

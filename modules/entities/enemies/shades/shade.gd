@@ -1,9 +1,7 @@
-extends CharacterBody2D
+extends TetherableBody
 
 @export var hitpoints = 20
 @export var movement_speed : float = 30.0
-
-@onready var status_holder = get_node("StatusHolder")
 
 var follow_target
 var knockback : Vector2 = Vector2.ZERO
@@ -32,7 +30,7 @@ func on_load_game(saved_data:SavedData):
 func _ready() -> void:
 	default_position = global_position
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	$AgroRegion.look_at(to_global(velocity))
 
 func _on_health_component_died() -> void:
@@ -46,19 +44,16 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 		
 		# If the attacking _area is the players thread apply the tethered status effect
 		if _area.is_in_group("thread"):
-			status_holder.add_status("tethered")
+			add_tethered_status()
 	else:
 		$ShadeFSM.change_state("Dead")
 
-#
-func pull():
-	pass
-	#var player_pos = get_tree().get_nodes_in_group("player")[0].global_position + Vector2(0, -8)
-	#var tether_dir = player_pos.direction_to(global_position).normalized()
-	#var new_pos = player_pos + tether_dir*THREAD_LENGTH
-	#self.global_position = new_pos
-
-
-func _on_agro_region_body_exited(body):
+func _on_agro_region_body_exited(_body):
 	follow_target = null
 	$ShadeFSM.change_state("Roaming")
+
+func _on_tetherable_area_2d_mouse_entered() -> void:
+	select()
+
+func _on_tetherable_area_2d_mouse_exited() -> void:
+	deselect()

@@ -10,7 +10,6 @@
 [ext_resource type="Script" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="7_dh27g"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="9_0sa2f"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/health_component.gd" id="10_b6nhn"]
-[ext_resource type="PackedScene" uid="uid://m7h0vpdfj1dt" path="res://modules/status_effects/status_holder.tscn" id="11_ewuk5"]
 
 [sub_resource type="Resource" id="Resource_twx01"]
 script = ExtResource("5_xgq67")
@@ -41,11 +40,14 @@ region = Rect2(151, 87, 2, 4)
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[node name="BreakableBarrel" type="StaticBody2D" groups=["barrel", "saved_data"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_3jyob"]
+radius = 12.0
+
+[node name="BreakableBarrel" type="CharacterBody2D" groups=["barrel", "saved_data", "tetherable_body"]]
 z_index = 1
 y_sort_enabled = true
-collision_layer = 48
-collision_mask = 4
+collision_layer = 304
+collision_mask = 95
 script = ExtResource("1_65xo1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -94,8 +96,15 @@ polygon = PackedVector2Array(0, 9, 5, 8, 7, 5, 7, 2, 5, 0, 0, -1, -5, 0, -7, 2, 
 script = ExtResource("10_b6nhn")
 max_health = 30
 
-[node name="StatusHolder" parent="." instance=ExtResource("11_ewuk5")]
+[node name="TetherableArea2D" type="Area2D" parent="."]
+collision_layer = 272
+collision_mask = 95
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
+shape = SubResource("CircleShape2D_3jyob")
 
 [connection signal="finished" from="CPUParticles2D" to="." method="_on_cpu_particles_2d_finished"]
 [connection signal="Hit" from="HurtBoxComponent2D" to="." method="hit"]
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="mouse_entered" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_exited"]

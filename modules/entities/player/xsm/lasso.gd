@@ -1,8 +1,6 @@
 @tool
 extends StateSound
 
-@onready var status_holder = $"../../../StatusHolder"
-
 var yarn_controller = preload("res://modules/status_effects/yarn_controller.tscn")
 
 # This function is called when the state enters

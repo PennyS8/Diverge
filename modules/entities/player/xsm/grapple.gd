@@ -1,8 +1,6 @@
 @tool
 extends StateSound
 
-@onready var status_holder = $"../../../StatusHolder"
-
 # This function is called when the state enters
 # XSM enters the root first, then the children
 func _on_enter(_args) -> void:
