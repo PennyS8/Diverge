@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=59 format=3 uid="uid://cq3hvofrushyg"]
+[gd_resource type="TileSet" load_steps=61 format=3 uid="uid://cq3hvofrushyg"]
 
 [ext_resource type="Texture2D" uid="uid://ce10vjgkrj5nk" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png" id="1_yso85"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="2_aaivm"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://ceykw28jgux2o" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior_B2.png" id="6_tyitw"]
 [ext_resource type="Texture2D" uid="uid://xuw5y0dlb1d8" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_B.png" id="7_kkia3"]
 [ext_resource type="Texture2D" uid="uid://cgwn1c5li4xeb" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_D.png" id="8_4x16w"]
+[ext_resource type="Texture2D" uid="uid://dvasicuqsehh2" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General_A2.png" id="9_5bm7g"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
@@ -1209,13 +1210,6 @@ texture_region_size = Vector2i(24, 24)
 17:16/0/terrains_peering_bit/left_side = 0
 17:16/0/terrains_peering_bit/top_side = 0
 17:16/0/terrains_peering_bit/top_right_corner = 0
-15:15/0 = 0
-16:15/0 = 0
-17:17/0 = 0
-18:18/0 = 0
-19:18/0 = 0
-20:19/0 = 0
-20:17/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_optda"]
 texture = ExtResource("2_aaivm")
@@ -2613,6 +2607,112 @@ texture_region_size = Vector2i(24, 24)
 texture = SubResource("CompressedTexture2D_h15j3")
 texture_region_size = Vector2i(24, 24)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_sdbk4"]
+texture = ExtResource("9_5bm7g")
+texture_region_size = Vector2i(24, 24)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+12:0/0 = 0
+13:0/0 = 0
+14:0/0 = 0
+15:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+12:1/0 = 0
+13:1/0 = 0
+14:1/0 = 0
+15:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+12:2/0 = 0
+13:2/0 = 0
+14:2/0 = 0
+15:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+10:3/0 = 0
+11:3/0 = 0
+12:3/0 = 0
+13:3/0 = 0
+14:3/0 = 0
+15:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+10:4/0 = 0
+11:4/0 = 0
+12:4/0 = 0
+13:4/0 = 0
+14:4/0 = 0
+15:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+10:5/0 = 0
+11:5/0 = 0
+12:5/0 = 0
+13:5/0 = 0
+14:5/0 = 0
+15:5/0 = 0
+8:6/0 = 0
+9:6/0 = 0
+10:6/0 = 0
+11:6/0 = 0
+12:6/0 = 0
+13:6/0 = 0
+14:6/0 = 0
+15:6/0 = 0
+8:7/0 = 0
+9:7/0 = 0
+10:7/0 = 0
+11:7/0 = 0
+12:7/0 = 0
+13:7/0 = 0
+14:7/0 = 0
+15:7/0 = 0
+8:8/0 = 0
+9:8/0 = 0
+10:8/0 = 0
+11:8/0 = 0
+12:8/0 = 0
+13:8/0 = 0
+14:8/0 = 0
+15:8/0 = 0
+8:9/0 = 0
+9:9/0 = 0
+10:9/0 = 0
+11:9/0 = 0
+12:9/0 = 0
+13:9/0 = 0
+14:9/0 = 0
+15:9/0 = 0
+8:10/0 = 0
+9:10/0 = 0
+10:10/0 = 0
+11:10/0 = 0
+12:10/0 = 0
+13:10/0 = 0
+14:10/0 = 0
+15:10/0 = 0
+8:11/0 = 0
+9:11/0 = 0
+10:11/0 = 0
+11:11/0 = 0
+12:11/0 = 0
+13:11/0 = 0
+14:11/0 = 0
+15:11/0 = 0
+
 [resource]
 tile_size = Vector2i(24, 24)
 occlusion_layer_0/light_mask = 1
@@ -2630,3 +2730,4 @@ sources/5 = SubResource("TileSetAtlasSource_cj2f0")
 sources/6 = SubResource("TileSetAtlasSource_fqsd5")
 sources/7 = SubResource("TileSetAtlasSource_1wg7y")
 sources/8 = SubResource("TileSetAtlasSource_2oklr")
+sources/9 = SubResource("TileSetAtlasSource_sdbk4")
