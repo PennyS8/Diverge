@@ -13,7 +13,6 @@ config_version=5
 config/name="Project Diverge"
 run/main_scene="res://modules/globals/main.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
-run/max_fps=120
 config/icon="res://assets/RatStompers.png"
 
 [autoload]

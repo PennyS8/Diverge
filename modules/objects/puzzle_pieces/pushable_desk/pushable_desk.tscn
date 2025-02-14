@@ -1,0 +1,45 @@
+[gd_scene load_steps=8 format=3 uid="uid://lbhb1gemkets"]
+
+[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="1_b12at"]
+[ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="1_epsps"]
+[ext_resource type="Script" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.gd" id="1_vlwj6"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_w4i0l"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8cpdf"]
+atlas = ExtResource("1_epsps")
+region = Rect2(96, 216, 72, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hmkkc"]
+size = Vector2(24, 27)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j1p7q"]
+size = Vector2(24, 27)
+
+[node name="PushableDesk" type="CharacterBody2D" groups=["block"]]
+z_index = 1
+y_sort_enabled = true
+material = ExtResource("1_w4i0l")
+collision_layer = 80
+collision_mask = 4
+script = ExtResource("1_vlwj6")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("AtlasTexture_8cpdf")
+region_enabled = true
+region_rect = Rect2(0, 0, 24, 48)
+
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_hmkkc")
+
+[node name="HurtBoxComponent2D" type="Area2D" parent="."]
+collision_layer = 64
+collision_mask = 4
+script = ExtResource("1_b12at")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent2D"]
+position = Vector2(0, 6.5)
+shape = SubResource("RectangleShape2D_j1p7q")
+
+[connection signal="Hit" from="HurtBoxComponent2D" to="." method="push"]

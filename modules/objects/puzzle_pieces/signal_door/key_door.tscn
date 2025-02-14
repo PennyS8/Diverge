@@ -6,7 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://bsnxds0i2hrcb" path="res://assets/placeholder_puzzle_chime.ogg" id="4_stpep"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_am3rr"]
-size = Vector2(32, 48)
+size = Vector2(48, 48)
 
 [node name="KeyDoor" type="Area2D"]
 texture_filter = 2
@@ -28,3 +28,5 @@ shape = SubResource("RectangleShape2D_am3rr")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_stpep")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

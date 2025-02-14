@@ -1,8 +1,7 @@
 @tool
 extends StateAnimation
 
-@onready var anim = $"../../../AnimationPlayer"
-
+var start_pos : Vector2
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
@@ -10,7 +9,10 @@ extends StateAnimation
 # of an animation
 
 func _on_anim_finished() -> void:
-	pass
+	target.global_position = start_pos
+	target.health_component.damage(1)
+	play("RESET")
+	change_state("Idle")
 
 
 # This additionnal callback allows you to act at the end
@@ -22,8 +24,10 @@ func _on_loop_finished() -> void:
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	anim.play("fall")
-
+	if _args:
+		start_pos = _args
+	else:
+		start_pos = Vector2.ZERO
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
