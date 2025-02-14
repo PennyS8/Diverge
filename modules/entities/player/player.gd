@@ -17,8 +17,6 @@ var ledge_collision : Area2D
 @onready var health_component = $HealthComponent
 @onready var status_holder = $StatusHolder
 
-var lock_camera := false
-
 func _process(_delta):
 	_camera_move(_delta)
 

@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://c0xn1iqitvhmq" path="res://modules/objects/puzzle_pieces/key/key.tscn" id="3_qv35e"]
 [ext_resource type="Texture2D" uid="uid://d1i2h41pm54o2" path="res://assets/debug/2d_lights_and_shadows_neutral_point_light.webp" id="3_uagpj"]
 [ext_resource type="PackedScene" uid="uid://bmjl2guxmrnp4" path="res://modules/objects/school_dungeon/key_doubledoor_blue/key_doubledoor_blue.tscn" id="3_vil02"]
-[ext_resource type="PackedScene" uid="uid://bpgun2i5o6ru" path="res://modules/entities/enemies/shades/melee_shade/shade.tscn" id="4_d68o0"]
+[ext_resource type="PackedScene" uid="uid://bpgun2i5o6ru" path="res://modules/entities/enemies/shades/shade/melee_shade.tscn" id="4_d68o0"]
 [ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.tscn" id="4_qw1hv"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_nh665"]

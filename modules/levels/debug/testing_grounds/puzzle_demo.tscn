@@ -150,9 +150,14 @@ position = Vector2(590, 155)
 
 [node name="Player" parent="." instance=ExtResource("2_0ti5x")]
 visible = false
-position = Vector2(48, 32)
 
-[node name="Camera2D" parent="Player" index="7"]
+[node name="Fall" parent="Player/PlayerFSM/Movement" index="9"]
+next_state = NodePath("../Lasso")
+
+[node name="Hop" parent="Player/PlayerFSM/Movement" index="10"]
+next_state = NodePath("../Lasso")
+
+[node name="Camera2D" parent="Player" index="9"]
 limit_left = -170
 limit_top = -139
 limit_right = 1369
