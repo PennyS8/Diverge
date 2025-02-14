@@ -10,12 +10,11 @@ var selected_node
 
 var hold_counter : float = 0.0
 const HOLD_TIME : float = 0.15
+var hold : bool
 
 const YARN_LENGTH := 96.0 # 64 + 32
 
-var interupt := false
-
-@onready var status_holder = $"../../../StatusHolder"
+var interupt : bool
 
 # This function is called when the state enters
 # XSM enters the root first, then the children
@@ -23,6 +22,7 @@ func _on_enter(_args) -> void:
 	change_state("NoAttack")
 	hold_counter = 0.0
 	interupt = false
+	hold = false
 	
 	# Find the targeted tethered node (not the player)
 	var tethered_nodes = get_tree().get_nodes_in_group("status_tethered")
@@ -35,8 +35,10 @@ func _on_update(delta: float) -> void:
 		change_state("Idle")
 		return
 	
-	if Input.is_action_pressed("throw"):
+	if !hold and Input.is_action_pressed("throw"):
 		hold_counter += delta
+		if hold_counter >= HOLD_TIME:
+			hold = true
 	
 	# These vars declared here because they're needed if we grapple an anchor
 	var mouse_pos = target.get_global_mouse_position()
@@ -45,31 +47,34 @@ func _on_update(delta: float) -> void:
 	if Input.is_action_just_released("throw"):
 		# Find the targeted tethered node (not the player)
 		var tethered_nodes = get_tree().get_nodes_in_group("status_tethered")
-		var tethered_node = tethered_nodes[0]
+		tethered_node = tethered_nodes[0]
 		if tethered_node.is_in_group("player"):
 			tethered_node = tethered_nodes[1]
 		
+		# Only find selected node if "throw" was held down
+		if hold:
+			selected_node = get_tree().get_first_node_in_group("selected")
+		
 		# If the player has tethered ONLY an anchor, then grapple the anchor
-		selected_node = get_tree().get_first_node_in_group("selected")
 		if !(dist <= YARN_LENGTH and selected_node):
 			if tethered_node.is_in_group("anchor"):
-				if hold_counter >= HOLD_TIME:
+				if hold:
 					pass
 				else:
 					change_state("Grapple", tethered_node)
 					return
+		
 		# Otherwise exit throw state normally
 		change_state("Idle")
 		return
 	
 	# Draw a guide arrow if the "throw" button is being held down
-	if hold_counter >= HOLD_TIME:
+	if hold:
 		update_guide_arrow(dist, mouse_pos)
 		
 	if Input.is_action_just_pressed("recall"):
 		interupt = true
 		change_state("Recall")
-		
 
 func _before_exit(_args):
 	if Input.is_action_pressed("recall"):
@@ -81,60 +86,60 @@ func _on_exit(_args) -> void:
 		guide_arrow = null
 	
 	if interupt:
-		status_holder.remove_status("tethered")
-		tethered_node.get_node_or_null("StatusHolder").remove_status("tethered")
+		target.remove_tethered_status()
+		tethered_node.remove_tethered_status()
 		if selected_node:
-			if selected_node.get_node_or_null("StatusHolder"):
-				selected_node.get_node("StatusHolder").remove_status("tethered")
+			selected_node.remove_tethered_status()
 		target.get_node_or_null("YarnController").queue_free()
 		change_state("CanAttack")
 		return
 	
 	# Check for valid selected node in range to collide with node being thrown
 	if selected_node:
+		# Check for invalid selected nodes
 		var dist = tethered_node.global_position.distance_to(selected_node.global_position)
 		if (
 			selected_node.is_in_group("lever") or
 			tethered_node.is_in_group("lever") or
-			dist > YARN_LENGTH
+			dist > YARN_LENGTH or
+			!hold
 		):
+			selected_node.deselect()
 			selected_node = null
+		
+		# Pull the tethered_node and the selected_node toward eachother, if able
 		else:
-			selected_node.get_node("StatusHolder").add_status("tethered")
-	
-	# Pull the tethered_node and the selected_node toward eachother, if able
-	if selected_node:
-		status_holder.remove_status("tethered")
-		target.get_node_or_null("YarnController").queue_free()
-		
-		selected_node.get_node("StatusHolder").deselect()
-		
-		selected_node.get_node("StatusHolder").pull_tethered_node()
-		tethered_node.get_node("StatusHolder").pull_tethered_node()
-		
-		selected_node.get_node("StatusHolder").remove_status("tethered")
-		tethered_node.get_node("StatusHolder").remove_status("tethered")
+			selected_node.add_tethered_status()
+			target.remove_tethered_status()
+			target.get_node_or_null("YarnController").queue_free()
+			
+			selected_node.deselect()
+			
+			selected_node.pull()
+			tethered_node.pull()
+			
+			selected_node.remove_tethered_status()
+			tethered_node.remove_tethered_status()
 	
 	# Pull the tethered body to the player, or the player to an anchor
-	elif !tethered_node.is_in_group("anchor") and !tethered_node.is_in_group("lever"):
-		if hold_counter >= HOLD_TIME:
+	elif !tethered_node.is_in_group("anchor"):
+		if hold:
 			pass
 		elif !interupt:
-			tethered_node.get_node("StatusHolder").fling_tethered_node()
+			tethered_node.fling()
 	
 	elif tethered_node.is_in_group("anchor"):
-		if hold_counter >= HOLD_TIME:
+		if hold: # Sanity check
 			pass
 		else:
 			# The player is already transitioning to the grapple state
-			status_holder.remove_status("tethered")
-			tethered_node.get_node("StatusHolder").remove_status("tethered")
+			target.remove_tethered_status()
+			tethered_node.remove_tethered_status()
 			target.get_node_or_null("YarnController").queue_free()
 	
 	elif tethered_node.is_in_group("lever"):
-		tethered_node.get_node("StatusHolder").fling_tethered_node()
-		tethered_node.get_node("StatusHolder").remove_status("tethered")
-		status_holder.remove_status("tethered")
+		tethered_node.fling()
+		target.remove_tethered_status()
 		target.get_node_or_null("YarnController").queue_free()
 	
 	change_state("CanAttack")

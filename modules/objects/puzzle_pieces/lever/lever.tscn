@@ -4,15 +4,17 @@
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_cmmj7"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_xin6p"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="4_qhppc"]
-[ext_resource type="PackedScene" uid="uid://m7h0vpdfj1dt" path="res://modules/status_effects/status_holder.tscn" id="5_gxuwi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sny1c"]
 size = Vector2(16, 11)
 
-[node name="Lever" type="StaticBody2D" groups=["lever", "saved_data"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_acp45"]
+radius = 12.0
+
+[node name="Lever" type="CharacterBody2D" groups=["lever", "saved_data", "tetherable_body"]]
 z_index = 1
 y_sort_enabled = true
-collision_layer = 48
+collision_layer = 304
 collision_mask = 4
 script = ExtResource("1_crycx")
 
@@ -37,6 +39,13 @@ script = ExtResource("4_qhppc")
 position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_sny1c")
 
-[node name="StatusHolder" parent="." instance=ExtResource("5_gxuwi")]
+[node name="TetherableArea2D" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
+shape = SubResource("CircleShape2D_acp45")
 
 [connection signal="Hit" from="HurtBoxComponent2D" to="." method="hit"]
+[connection signal="mouse_entered" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_exited"]

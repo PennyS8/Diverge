@@ -1,6 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://cn80hyaaf6syw"]
+[gd_scene load_steps=7 format=3 uid="uid://cn80hyaaf6syw"]
 
-[ext_resource type="PackedScene" uid="uid://m7h0vpdfj1dt" path="res://modules/status_effects/status_holder.tscn" id="1_6dday"]
+[ext_resource type="Script" path="res://modules/objects/puzzle_pieces/anchor/anchor.gd" id="1_2ruf7"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_itt2y"]
 [ext_resource type="Texture2D" uid="uid://bwn4kjoyt6kw" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/3_Bathroom_Black_Shadow_16x16.png" id="4_0i67h"]
 
@@ -11,10 +11,13 @@ region = Rect2(180, 503, 9, 17)
 [sub_resource type="CircleShape2D" id="CircleShape2D_2s7j1"]
 radius = 3.0
 
-[node name="Anchor" type="StaticBody2D" groups=["anchor"]]
+[sub_resource type="CircleShape2D" id="CircleShape2D_etmmu"]
+radius = 12.0
 
-[node name="StatusHolder" parent="." instance=ExtResource("1_6dday")]
-position = Vector2(0.5, -1)
+[node name="Anchor" type="CharacterBody2D" groups=["anchor", "tetherable_body"]]
+collision_layer = 272
+collision_mask = 4
+script = ExtResource("1_2ruf7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = ExtResource("2_itt2y")
@@ -25,3 +28,13 @@ region_rect = Rect2(32, 92, 64, 18)
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 position = Vector2(0.5, -1)
 shape = SubResource("CircleShape2D_2s7j1")
+
+[node name="TetherableArea2D" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
+shape = SubResource("CircleShape2D_etmmu")
+
+[connection signal="mouse_entered" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_exited"]

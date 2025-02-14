@@ -13,6 +13,7 @@ var tethered_body
 @onready var player = get_tree().get_first_node_in_group("player")
 
 func _process(delta):
+	# to dereference the player and abstract the YarnController
 	if hold_projectile:
 		return
 	
@@ -37,35 +38,71 @@ func _process(delta):
 			if get_parent().is_in_group("player"):
 				get_parent().get_node("PlayerFSM").change_state("Recall")
 			queue_free()
-			
 	
 	$Line2D.points[1] = yarn_end_pos
+	$RayCast2D.target_position = yarn_end_pos
 	
 	# Base case, yarn is recalled or snaps from tension
-	if current_dist >= YARN_LENGTH or Input.is_action_just_pressed("recall"):
+	if (
+		current_dist >= YARN_LENGTH or
+		Input.is_action_just_pressed("recall") #or
+		#$RayCast2D.get_collider() != tethered_body
+	):
 		if get_parent().is_in_group("player"):
 			get_parent().get_node("PlayerFSM").change_state("Recall")
 		queue_free()
 
-func _on_projectile_area_entered(area):
-	if !can_collide:
-		return
-	
-	# if we collide with the player
-	if area.get_parent().get_parent() == player:
-		return
-	
-	# if we collide with self
-	#if area.get_parent().get_parent() == self:
+func _on_projectile_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
+	pass
+	## Do not collide with parent
+	#if body == get_parent():
 		#return
-	
-	can_collide = false
-	tethered_body = area
+	#
+	#if get_parent() == player:
+		#player.can_attack()
+	#
+	#if (
+		#body == player or
+		#!can_collide or
+		#!body.is_in_group("tetherable_body")
+	#): # Do NOT collide if any of the above conditions are true
+		#can_collide = false
+		#$Projectile.queue_free()
+		#return
+	#
+	## Projectile has collided with a tetherable body
+	#
+	#can_collide = false
+	#tethered_body = body
+	#
+	#player.add_tethered_status()
+	#body.add_tethered_status()
+	#
+	#$Projectile.queue_free()
+
+func _on_projectile_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
+	# Do not collide with parent
+	if area == get_parent():
+		return
 	
 	if get_parent() == player:
 		player.can_attack()
 	
-	get_parent().status_holder.add_status("tethered")
-	area.get_parent().add_status("tethered")
+	if (
+		area == player or
+		!can_collide or
+		!area.get_parent().is_in_group("tetherable_body")
+	): # Do NOT collide if any of the above conditions are true
+		can_collide = false
+		$Projectile.queue_free()
+		return
+	
+	# Projectile has collided with a tetherable body
+	
+	can_collide = false
+	tethered_body = area
+	
+	player.add_tethered_status()
+	area.get_parent().add_tethered_status()
 	
 	$Projectile.queue_free()

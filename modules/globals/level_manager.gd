@@ -31,7 +31,6 @@ func _ready():
 		get_tree().change_scene_to_file("res://modules/globals/main.tscn")
 	main_ready.connect(_main_ready)
 
-
 func _main_ready():
 	player = get_tree().get_first_node_in_group("player")
 	if found_player:
@@ -89,8 +88,6 @@ func _get_entrances():
 	for entrance in get_tree().get_nodes_in_group("level_entrance"):
 		entrances[entrance.name] = entrance.position
 
-
 func _transition_complete():
 	player.lock_camera = false
 	transitioning = false
-	
