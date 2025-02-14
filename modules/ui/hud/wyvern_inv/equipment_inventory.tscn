@@ -51,7 +51,7 @@ max_stack_count = 1
 in_inventory_width = 1
 in_inventory_height = 1
 slot_flags = 131072
-default_properties_string = ""
+default_properties_string = "{}"
 default_properties = {}
 
 [sub_resource type="Resource" id="Resource_eedmd"]

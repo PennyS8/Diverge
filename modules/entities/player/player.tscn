@@ -357,7 +357,6 @@ tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Hook/CollisionPolygon2DLeft:disabled")
-
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -813,7 +812,7 @@ target_path = NodePath("")
 timed = true
 waiting_time = 0.5
 on_timer_finished = 3
-next_state = NodePath("")
+next_state = NodePath("../CanDash")
 
 [node name="CanDash" type="Node" parent="PlayerFSM/DashPossible"]
 script = ExtResource("5_parbs")
@@ -831,13 +830,21 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("CanAttack")
 
+[node name="AttackLocked" type="Node" parent="PlayerFSM/AttackPossible"]
+script = ExtResource("1_q2vpm")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../NoAttack")
+
 [node name="NoAttack" type="Node" parent="PlayerFSM/AttackPossible"]
 script = ExtResource("1_q2vpm")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../CanAttack")
 
 [node name="CanAttack" type="Node" parent="PlayerFSM/AttackPossible"]
 script = ExtResource("6_yyqig")
@@ -845,7 +852,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../AttackLocked")
 
 [node name="Movement" type="Node" parent="PlayerFSM"]
 script = ExtResource("4_xto71")
@@ -889,7 +896,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../WalkRight")
 
 [node name="WalkRight" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -901,7 +908,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../WalkUp")
 
 [node name="WalkUp" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -913,7 +920,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../WalkLeft")
 
 [node name="WalkLeft" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")

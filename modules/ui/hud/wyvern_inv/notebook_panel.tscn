@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://ms4bp1b33wt2"]
+[gd_scene load_steps=9 format=3 uid="uid://ms4bp1b33wt2"]
 
+[ext_resource type="Script" path="res://modules/ui/hud/wyvern_inv/notebook_panel.gd" id="1_kg5hy"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_xe0cd"]
 [ext_resource type="Texture2D" uid="uid://ceivns3460sja" path="res://assets/hud/notebook.png" id="2_hc3us"]
 [ext_resource type="PackedScene" uid="uid://gpeishkjbb60" path="res://modules/ui/hud/wyvern_inv/equipment_inventory.tscn" id="3_u7xja"]
@@ -12,6 +13,7 @@
 [node name="EquipmentPanel" type="Panel"]
 mouse_filter = 2
 theme = SubResource("Theme_btflt")
+script = ExtResource("1_kg5hy")
 
 [node name="TextureRect" type="TextureRect" parent="."]
 material = ExtResource("1_xe0cd")
@@ -61,3 +63,5 @@ objectives
 & more!
 
 press tab to close this panel"
+
+[connection signal="item_stack_added" from="Equip" to="." method="_on_equip_item_stack_added"]

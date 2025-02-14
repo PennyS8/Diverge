@@ -14,8 +14,8 @@
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yc34w"]
 shader = ExtResource("9_nlpsi")
-shader_parameter/blur_amount = 2.0
-shader_parameter/mix_amount = 0.3
+shader_parameter/blur_amount = 9.5e-08
+shader_parameter/mix_amount = 0.1
 shader_parameter/color_over = Color(0.255659, 0.255659, 0.255659, 1)
 
 [node name="Main" type="Node2D"]
@@ -95,3 +95,7 @@ script = ExtResource("5_jmjhv")
 [connection signal="pressed" from="GUI2/TempButtonLayer/MarginContainer/HBoxContainer/SaveButton" to="GUI2/TempButtonLayer/MarginContainer/HBoxContainer/SaveButton" method="_on_pressed"]
 [connection signal="pressed" from="GUI2/TempButtonLayer/MarginContainer/HBoxContainer/LoadButton" to="GUI2/TempButtonLayer/MarginContainer/HBoxContainer/LoadButton" method="_on_pressed"]
 [connection signal="pressed" from="GUI2/TempButtonLayer/MarginContainer/HBoxContainer/DeleteButton" to="GUI2/TempButtonLayer/MarginContainer/HBoxContainer/DeleteButton" method="_on_pressed"]
+[connection signal="check_hook" from="GUI2/InventoryPanel/EquipmentPanel" to="." method="_on_equipment_panel_check_hook"]
+[connection signal="item_stack_added" from="GUI2/InventoryPanel/EquipmentPanel/Equip" to="." method="_on_equip_item_stack_added"]
+
+[editable path="GUI2/InventoryPanel/EquipmentPanel"]
