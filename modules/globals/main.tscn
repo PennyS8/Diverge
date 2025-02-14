@@ -15,6 +15,7 @@ y_sort_enabled = true
 script = ExtResource("1_2uu7l")
 
 [node name="Player" parent="." instance=ExtResource("2_wwsun")]
+scale = Vector2(1, 1)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 visible = false
