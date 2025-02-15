@@ -46,6 +46,7 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 		if _area.is_in_group("thread"):
 			add_tethered_status()
 	else:
+		$CPUParticles2D.restart()
 		$ShadeFSM.change_state("Dead")
 
 func _on_agro_region_body_exited(_body):
