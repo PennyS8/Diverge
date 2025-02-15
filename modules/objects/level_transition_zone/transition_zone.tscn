@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://modules/objects/level_transition_zone/transition_zone.gd" id="1_otka4"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j76cr"]
-size = Vector2(10, 9)
+size = Vector2(6, 6)
 
 [node name="TransitionZone" type="Area2D"]
 z_index = 1
@@ -11,12 +11,9 @@ collision_layer = 32
 collision_mask = 4
 script = ExtResource("1_otka4")
 
-[node name="RectShape" type="Polygon2D" parent="."]
-polygon = PackedVector2Array(-5, -5, 5, -5, 5, 4, -5, 4)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -0.5)
 shape = SubResource("RectangleShape2D_j76cr")
+debug_color = Color(0.908494, 0.230311, 0.491003, 0.42)
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
