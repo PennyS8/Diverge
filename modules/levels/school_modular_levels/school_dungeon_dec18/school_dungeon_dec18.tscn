@@ -97,9 +97,7 @@ position = Vector2(-96, 504)
 scale = Vector2(1.5, 1.5)
 
 [node name="LockedDoor" parent="Entities" instance=ExtResource("3_vil02")]
-position = Vector2(288, 433)
-locked_sprite = null
-unlocked_sprite = null
+position = Vector2(288, 432)
 
 [node name="Key" parent="Entities" instance=ExtResource("3_qv35e")]
 position = Vector2(-120, 432)

@@ -11,10 +11,6 @@
 [ext_resource type="Script" path="res://addons/basecomponents/Components/health_component.gd" id="8_2cjjq"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="9_5uvqb"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="10_o57fr"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0xhyh"]
-radius = 36.0
-
 [ext_resource type="Texture2D" uid="uid://d4ml0vjhqwsbo" path="res://modules/entities/enemies/shades/ShadeWIP_64x64.png" id="13_wwonh"]
 
 [sub_resource type="Gradient" id="Gradient_qqgag"]
@@ -36,6 +32,9 @@ size = Vector2(21, 40)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_54508"]
 radius = 15.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0xhyh"]
+radius = 36.0
 
 [sub_resource type="Animation" id="Animation_0nojc"]
 resource_name = "Melee"

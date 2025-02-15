@@ -19,6 +19,7 @@ locked_sprite = ExtResource("3_1moo1")
 unlocked_sprite = ExtResource("4_el4rs")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 2
 material = ExtResource("1_p2cfc")
 position = Vector2(24, -24)
 texture = ExtResource("3_1moo1")
