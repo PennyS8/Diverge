@@ -86,7 +86,7 @@ func _swap_level(path : String, entrance_name : String = "0"):
 func _get_entrances():
 	entrances.clear()
 	for entrance in get_tree().get_nodes_in_group("level_entrance"):
-		entrances[entrance.name] = entrance.position
+		entrances[entrance.name] = entrance.global_position
 
 func _transition_complete():
 	player.lock_camera = false
