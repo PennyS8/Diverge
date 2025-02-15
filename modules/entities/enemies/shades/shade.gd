@@ -30,6 +30,14 @@ func on_load_game(saved_data:SavedData):
 func _ready() -> void:
 	default_position = global_position
 
+func fling(): 
+	$ShadeFSM.change_state("Stunned")
+	super.fling()
+
+func pull():
+	$ShadeFSM.change_state("Stunned")
+	super.pull()
+
 func _physics_process(_delta: float) -> void:
 	$AgroRegion.look_at(to_global(velocity))
 
@@ -41,10 +49,6 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 		knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
 		$ShadeFSM.change_state("Stunned")
 		$CPUParticles2D.restart()
-		
-		# If the attacking _area is the players thread apply the tethered status effect
-		if _area.is_in_group("thread"):
-			add_tethered_status()
 	else:
 		$ShadeFSM.change_state("Dead")
 
@@ -57,3 +61,11 @@ func _on_tetherable_area_2d_mouse_entered() -> void:
 
 func _on_tetherable_area_2d_mouse_exited() -> void:
 	deselect()
+
+# Removes the knockback from the enemy for tethering but still stuns enemy
+func tethered_stun():
+	crowd_control = true
+	$ShadeFSM.change_state("Stunned")
+	
+	# turns crowd control back off for future
+	crowd_control = false

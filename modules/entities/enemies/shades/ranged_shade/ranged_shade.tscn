@@ -169,7 +169,7 @@ target_path = NodePath("")
 timed = true
 waiting_time = 1.0
 on_timer_finished = 0
-next_state = NodePath("../Seeking")
+next_state = NodePath("")
 
 [node name="Stunned" type="Node" parent="ShadeFSM"]
 script = ExtResource("6_6q11h")
@@ -181,7 +181,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Seeking")
+next_state = NodePath("../Roaming")
 
 [node name="Dead" type="Node" parent="ShadeFSM"]
 script = ExtResource("7_cxdtl")
