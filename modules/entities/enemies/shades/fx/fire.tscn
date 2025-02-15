@@ -1,0 +1,61 @@
+[gd_scene load_steps=10 format=3 uid="uid://mmoilvlj5y12"]
+
+[ext_resource type="Shader" path="res://modules/entities/enemies/shades/shade/melee_shade2.gdshader" id="1_chk6w"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/gpu_particles_2d.gd" id="2_7w0gh"]
+
+[sub_resource type="Gradient" id="Gradient_vh7tq"]
+offsets = PackedFloat32Array(0.381029, 0.52)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_11bc5"]
+noise_type = 2
+frequency = 0.035
+fractal_octaves = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_8awvp"]
+height = 100
+seamless = true
+seamless_blend_skirt = 0.345
+color_ramp = SubResource("Gradient_vh7tq")
+noise = SubResource("FastNoiseLite_11bc5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j38ii"]
+shader = ExtResource("1_chk6w")
+shader_parameter/offset_speed_multiplier = 2.0
+shader_parameter/flame_color = Color(0, 0, 0, 1)
+shader_parameter/bounds_size = Vector2(100, 100)
+shader_parameter/origin = Vector2(0, 0)
+shader_parameter/core_flame_radius = 0.8
+shader_parameter/noise = SubResource("NoiseTexture2D_8awvp")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mqh5u"]
+lifetime_randomness = 1.0
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(21.07, 5.27, 1)
+direction = Vector3(0, -1, 0)
+spread = 0.0
+initial_velocity_min = 198.0
+initial_velocity_max = 448.98
+gravity = Vector3(0, -4, 0)
+turbulence_enabled = true
+turbulence_noise_strength = 0.9
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.153
+
+[sub_resource type="Gradient" id="Gradient_ipymu"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_prsa8"]
+gradient = SubResource("Gradient_ipymu")
+width = 30
+height = 30
+
+[node name="Fire" type="GPUParticles2D"]
+z_index = 3
+material = SubResource("ShaderMaterial_j38ii")
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_mqh5u")
+texture = SubResource("GradientTexture2D_prsa8")
+script = ExtResource("2_7w0gh")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bi6255tx4u0jr"]
+[gd_scene load_steps=27 format=3 uid="uid://bi6255tx4u0jr"]
 
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade.gd" id="1_0ppdu"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_81f8r"]
@@ -6,18 +6,30 @@
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/ranged_shade/charge_attack.gd" id="4_t3lex"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/ranged_shade/ranged_attack.gd" id="5_q5uxu"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/stunned.gd" id="6_6q11h"]
-[ext_resource type="PackedScene" uid="uid://b5wr1t2eeb2u0" path="res://modules/entities/enemies/shades/ranged_shade/shade_projectile.tscn" id="6_23k0m"]
+[ext_resource type="PackedScene" uid="uid://bxrguchun6dk8" path="res://modules/entities/enemies/shades/ranged_shade/shade_projectile.tscn" id="6_23k0m"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/dead.gd" id="7_cxdtl"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/health_component.gd" id="8_2cjjq"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="9_5uvqb"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="10_o57fr"]
 [ext_resource type="PackedScene" uid="uid://m7h0vpdfj1dt" path="res://modules/status_effects/status_holder.tscn" id="12_7af50"]
+[ext_resource type="Texture2D" uid="uid://d4ml0vjhqwsbo" path="res://modules/entities/enemies/shades/ShadeWIP_64x64.png" id="13_wwonh"]
+
+[sub_resource type="Gradient" id="Gradient_qqgag"]
+offsets = PackedFloat32Array(0, 0.431487)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x1clu"]
+gradient = SubResource("Gradient_qqgag")
+width = 48
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
 radius = 8.1
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xa74g"]
-size = Vector2(16, 16)
+size = Vector2(21, 40)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_54508"]
 radius = 15.0
@@ -85,11 +97,43 @@ tracks/0/keys = {
 "values": [true, false]
 }
 
+[sub_resource type="Animation" id="Animation_150i5"]
+resource_name = "die"
+length = 0.5
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.806, 0, 2.957, 1), Color(0.806, 0, 2.957, 0)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.5),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
 _data = {
 "Melee": SubResource("Animation_0nojc"),
 "RESET": SubResource("Animation_6qj3b"),
-"Stunned": SubResource("Animation_741tg")
+"Stunned": SubResource("Animation_741tg"),
+"die": SubResource("Animation_150i5")
 }
 
 [sub_resource type="Curve" id="Curve_ne7pj"]
@@ -107,7 +151,11 @@ collision_mask = 3
 motion_mode = 1
 script = ExtResource("1_0ppdu")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_x1clu")
+
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
+position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_56qhg")
 
 [node name="ShadeFSM" type="Node" parent="."]
@@ -168,6 +216,10 @@ next_state = NodePath("../Seeking")
 
 [node name="Dead" type="Node" parent="ShadeFSM"]
 script = ExtResource("7_cxdtl")
+animation_player = NodePath("../../AnimationPlayer")
+anim_on_enter = "die"
+loop_mode = 0
+on_finished = 0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -184,6 +236,7 @@ script = ExtResource("9_5uvqb")
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent2D"]
+position = Vector2(-0.5, -19)
 shape = SubResource("RectangleShape2D_xa74g")
 
 [node name="HitBoxComponent2D" type="Area2D" parent="."]
@@ -205,11 +258,6 @@ shape = SubResource("CircleShape2D_0xhyh")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AgroRegion"]
 polygon = PackedVector2Array(72, 0, 70, -19, 63, -36, 51, -51, 37, -62, 18, -70, 0, -8, 0, 10, 19, 70, 36, 63, 51, 51, 63, 36, 70, 19)
-
-[node name="RectShape" type="Polygon2D" parent="."]
-y_sort_enabled = true
-color = Color(3.27289e-06, 0.684495, 0.443996, 1)
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 
@@ -240,6 +288,14 @@ scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_ne7pj")
 color = Color(0.488605, 0.427964, 0.528217, 1)
 color_ramp = SubResource("Gradient_8rhcx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.806, 0, 2.957, 1)
+show_behind_parent = true
+texture_filter = 1
+texture = ExtResource("13_wwonh")
+offset = Vector2(0, -21)
+region_rect = Rect2(21, 14, 22, 40)
 
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="Hit" from="HurtBoxComponent2D" to="." method="_on_hurt_box_component_2d_hit"]
