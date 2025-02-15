@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=57 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -852,6 +852,9 @@ _data = {
 "walk_up": SubResource("Animation_o4rbi")
 }
 
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_rc6ld"]
+b = Vector2(0, 0)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 y_sort_enabled = true
@@ -1153,7 +1156,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Lasso")
 
 [node name="Hop" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("14_l3d1o")
@@ -1164,7 +1167,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Lasso")
 
 [node name="HopUp" type="Node" parent="PlayerFSM/Movement/Hop"]
 script = ExtResource("12_e6mu1")
@@ -1279,8 +1282,15 @@ libraries = {
 autoplay = "idle_down"
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(4, 4)
+zoom = Vector2(5.5, 5.5)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 16.0
 script = ExtResource("15_25a4m")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SegmentShape2D_rc6ld")

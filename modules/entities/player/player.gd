@@ -18,8 +18,28 @@ var hook_locked := true
 
 @onready var health_component = $HealthComponent
 
+var curr_camera_boundry : Area2D
+
 func _process(_delta):
 	_camera_move(_delta)
+	
+	# Camera Boundries MUST NOT overlap eachother, and must have the collision\
+	# layer 9 (i.e., "CameraBoundryCollider").
+	
+	var areas = $Area2D.get_overlapping_areas()
+	if !areas: # Check if null (or empty)
+		return
+	
+	var area = areas[0]
+	if area != curr_camera_boundry: # Only set the camera limits once
+		curr_camera_boundry = area
+		
+		var top_right : Vector2 = area.get_node("LimitTopRight").global_position
+		var bottom_left : Vector2 = area.get_node("LimitBottomLeft").global_position
+		$Camera2D.limit_top = top_right.y
+		$Camera2D.limit_right = top_right.x
+		$Camera2D.limit_bottom = bottom_left.y
+		$Camera2D.limit_left = bottom_left.x
 
 func check_unlock_hook():
 	var inv : RestrictedInventory = load("res://modules/ui/hud/wyvern_inv/equipment_inventory.tres")
