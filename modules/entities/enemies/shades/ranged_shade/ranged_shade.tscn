@@ -119,11 +119,6 @@ shape = SubResource("CircleShape2D_0xhyh")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AgroRegion"]
 polygon = PackedVector2Array(72, 0, 70, -19, 63, -36, 51, -51, 37, -62, 18, -70, 0, -8, 0, 10, 19, 70, 36, 63, 51, 51, 63, 36, 70, 19)
 
-[node name="RectShape" type="Polygon2D" parent="."]
-y_sort_enabled = true
-color = Color(3.27289e-06, 0.684495, 0.443996, 1)
-polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_56qhg")
 
@@ -214,6 +209,9 @@ disabled = true
 debug_color = Color(1, 0, 1, 0.262745)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0, 0.686275, 0.443137, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -247,6 +245,11 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
 shape = SubResource("CircleShape2D_so1fn")
+
+[node name="RectShape" type="Polygon2D" parent="."]
+y_sort_enabled = true
+color = Color(3.27289e-06, 0.684495, 0.443996, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="Hit" from="HurtBoxComponent2D" to="." method="_on_hurt_box_component_2d_hit"]
