@@ -10,6 +10,8 @@ extends State
 @onready var movement_target_pos : Vector2
 @export var nav_agent : NavigationAgent2D
 @export var movement_speed : float = 25
+
+var roam_timer : Timer
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
@@ -44,7 +46,11 @@ func _roam_timer():
 	# pick random location within 32 pixels
 	# walk to it
 	var random_time = randf_range(2, 4)
-	var roam_timer = get_tree().create_timer(random_time)
+	roam_timer = Timer.new()
+	add_child(roam_timer)
+	roam_timer.wait_time = random_time
+	roam_timer.one_shot = true
+	roam_timer.start()
 	roam_timer.timeout.connect(_roam_random)
 	
 func _roam_random():
@@ -69,7 +75,7 @@ func _before_exit(_args) -> void:
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
-	pass
+	roam_timer.queue_free()
 
 
 # when StateAutomaticTimer timeout()

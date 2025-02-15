@@ -30,6 +30,14 @@ func on_load_game(saved_data:SavedData):
 func _ready() -> void:
 	default_position = global_position
 
+func fling(): 
+	$ShadeFSM.change_state("Stunned")
+	super.fling()
+
+func pull():
+	$ShadeFSM.change_state("Stunned")
+	super.pull()
+
 func _physics_process(_delta: float) -> void:
 	$AgroRegion.look_at(to_global(velocity))
 
