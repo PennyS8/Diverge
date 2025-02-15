@@ -302,6 +302,9 @@ disabled = true
 debug_color = Color(1, 0, 1, 0.262745)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+debug_enabled = true
+debug_use_custom = true
+debug_path_custom_color = Color(0.788235, 0, 0.517647, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -338,6 +341,11 @@ collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
 shape = SubResource("CircleShape2D_lei1k")
+
+[node name="RectShape" type="Polygon2D" parent="."]
+y_sort_enabled = true
+color = Color(0.790134, 8.27849e-06, 0.517563, 1)
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
 
 [connection signal="body_exited" from="AgroRegion" to="." method="_on_agro_region_body_exited"]
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
