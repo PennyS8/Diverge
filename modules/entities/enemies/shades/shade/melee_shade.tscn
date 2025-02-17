@@ -302,7 +302,6 @@ disabled = true
 debug_color = Color(1, 0, 1, 0.262745)
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.788235, 0, 0.517647, 1)
 

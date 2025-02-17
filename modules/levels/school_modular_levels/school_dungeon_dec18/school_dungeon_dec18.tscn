@@ -212,6 +212,7 @@ position = Vector2(192, -252)
 [node name="Entities" type="Node2D" parent="Rooms/Foyer"]
 
 [node name="LockedDoor" parent="Rooms/Foyer/Entities" instance=ExtResource("3_vil02")]
+z_index = 1
 position = Vector2(-24, -108)
 
 [node name="MeleeShade" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]

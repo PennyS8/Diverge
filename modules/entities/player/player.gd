@@ -42,7 +42,7 @@ func _process(_delta):
 		$Camera2D.limit_left = bottom_left.x
 
 func check_unlock_hook():
-	var inv : RestrictedInventory = load("res://modules/ui/hud/wyvern_inv/equipment_inventory.tres")
+	var deinv : RestrictedInventory = load("res://modules/ui/hud/wyvern_inv/equipment_inventory.tres")
 	hook_locked = false
 	can_attack()
 	
