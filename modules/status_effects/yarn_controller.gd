@@ -88,21 +88,26 @@ func _on_projectile_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape
 	if get_parent() == player:
 		player.can_attack()
 	
-	if (
-		area == player or
-		!can_collide or
-		!area.get_parent().is_in_group("tetherable_body")
-	): # Do NOT collide if any of the above conditions are true
-		can_collide = false
-		$Projectile.queue_free()
-		return
+	#if (
+		#area == player or
+		#!can_collide or
+		#!area.get_parent().is_in_group("tetherable_body")
+	#): # Do NOT collide if any of the above conditions are true
+		#can_collide = false
+		#$Projectile.queue_free()
+		#return
+	#
+	## Projectile has collided with a tetherable body
+	#
+	#can_collide = false
+	#tethered_body = area
+	#
+	#player.add_tethered_status()
+	#area.get_parent().add_tethered_status()
 	
-	# Projectile has collided with a tetherable body
+	if area.get_parent() is YarnableComponent:
+		var component : YarnableComponent = area.get_parent()
+		component.rip_it(player.global_position)
 	
 	can_collide = false
-	tethered_body = area
-	
-	player.add_tethered_status()
-	area.get_parent().add_tethered_status()
-	
 	$Projectile.queue_free()

@@ -1,0 +1,2 @@
+extends YarnBehavior
+class_name DefaultYarn

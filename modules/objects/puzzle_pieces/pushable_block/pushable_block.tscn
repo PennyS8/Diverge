@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bbdhy8cvtgg0l"]
+[gd_scene load_steps=7 format=3 uid="uid://bbdhy8cvtgg0l"]
 
 [ext_resource type="Script" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.gd" id="1_0d25t"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_qdcea"]
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_mb1va"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="4_qwfq3"]
+[ext_resource type="PackedScene" uid="uid://xcsdhlk2mff0" path="res://modules/components/yarnable_component.tscn" id="5_ljbla"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vq2pb"]
 size = Vector2(16, 16)
@@ -38,4 +39,15 @@ script = ExtResource("4_qwfq3")
 position = Vector2(8, -8)
 shape = SubResource("RectangleShape2D_vq2pb")
 
+[node name="YarnableComponent" parent="." instance=ExtResource("5_ljbla")]
+
+[node name="TetherZone" parent="YarnableComponent" index="0"]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" parent="YarnableComponent/TetherZone" index="0"]
+position = Vector2(8, -8)
+
 [connection signal="Hit" from="HurtBoxComponent2D" to="." method="push"]
+
+[editable path="YarnableComponent"]
