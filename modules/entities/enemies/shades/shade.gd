@@ -50,6 +50,7 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 		$ShadeFSM.change_state("Stunned")
 		$CPUParticles2D.restart()
 	else:
+		$CPUParticles2D.restart()
 		$ShadeFSM.change_state("Dead")
 
 func _on_agro_region_body_exited(_body):

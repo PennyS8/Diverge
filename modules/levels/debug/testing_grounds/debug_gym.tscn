@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=4 uid="uid://b8d2txpebdt2f"]
+
+[ext_resource type="PackedScene" uid="uid://m6shqoju2l67" path="res://modules/levels/placeholder_gym/school_gym.tscn" id="1_7w8lo"]
+[ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="2_f5k0d"]
+[ext_resource type="PackedScene" uid="uid://lbhb1gemkets" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.tscn" id="3_rl8tq"]
+
+[node name="DebugGym" instance=ExtResource("1_7w8lo")]
+
+[node name="LedgeTesting" type="TileMapLayer" parent="Tiles" index="3"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAASAA8AAAADAAYAAAATAA8AAAAEAAcAAAATAA4AAAAEAAcAAAAUAA4AAAAEAAcAAAAUAA8AAAAEAAcAAAAUABAAAAAEAAcAAAATABAAAAAEAAcAAAASAA4AAAADAAYAAAASABAAAAADAAYAAAATAA0AAAACAAcAAAAUAA0AAAACAAcAAAASAA0AAAAEAAUAAAAVAA0AAAAFAAUAAAAVAA4AAAABAAYAAAAVAA8AAAABAAYAAAAVABAAAAABAAYAAAAVABEAAAAFAAYAAAAUABEAAAACAAUAAAATABEAAAACAAUAAAASABEAAAAEAAYAAAA=")
+tile_set = ExtResource("2_f5k0d")
+
+[node name="Objects" type="Node2D" parent="." index="1"]
+
+[node name="PushableDesk" parent="Objects" index="0" instance=ExtResource("3_rl8tq")]
+position = Vector2(138, 116)
+
+[node name="PushableDesk2" parent="Objects" index="1" instance=ExtResource("3_rl8tq")]
+position = Vector2(217, 104)
+
+[node name="PushableDesk3" parent="Objects" index="2" instance=ExtResource("3_rl8tq")]
+position = Vector2(191, 199)

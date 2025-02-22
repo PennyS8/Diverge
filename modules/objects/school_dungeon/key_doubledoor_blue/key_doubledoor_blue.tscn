@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://bmjl2guxmrnp4"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_p2cfc"]
+[ext_resource type="Script" path="res://modules/objects/puzzle_pieces/signal_door/key_door.gd" id="2_bmw7n"]
+[ext_resource type="Texture2D" uid="uid://inw5h7c1ds0q" path="res://modules/objects/school_dungeon/key_doubledoor_blue/school_keydoubledoor_locked_blue.png" id="3_1moo1"]
+[ext_resource type="Texture2D" uid="uid://dhcparmknfhw3" path="res://modules/objects/school_dungeon/key_doubledoor_blue/school_keydoubledoor_unlocked_blue.png" id="4_el4rs"]
+[ext_resource type="AudioStream" uid="uid://bsnxds0i2hrcb" path="res://assets/placeholder_puzzle_chime.ogg" id="5_qmch3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_am3rr"]
+size = Vector2(48, 48)
+
+[node name="LockedDoor" type="Area2D"]
+texture_filter = 2
+material = ExtResource("1_p2cfc")
+collision_layer = 34
+collision_mask = 4
+script = ExtResource("2_bmw7n")
+locked_sprite = ExtResource("3_1moo1")
+unlocked_sprite = ExtResource("4_el4rs")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 2
+material = ExtResource("1_p2cfc")
+position = Vector2(24, -24)
+texture = ExtResource("3_1moo1")
+region_rect = Rect2(0, 112, 32, 96)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(24, -24)
+shape = SubResource("RectangleShape2D_am3rr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_qmch3")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

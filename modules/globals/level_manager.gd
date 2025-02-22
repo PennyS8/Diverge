@@ -21,7 +21,10 @@ var transitioning := false
 var found_player := false
 
 func _ready():
-	if get_tree().current_scene.name != "Main":
+	var scene = get_tree().current_scene
+	if scene is Control:
+		return
+	if scene.name != "Main":
 		if get_tree().get_first_node_in_group("player"):
 			found_player = true
 		custom_scene_path = get_tree().current_scene.scene_file_path
@@ -39,7 +42,8 @@ func _main_ready():
 	else:
 		_swap_level(default_level.resource_path)
 
-func change_level(path : String, entrance_name : String = ""):
+
+func change_level(path : String, entrance_name : String = "0"):
 	if transitioning:
 		return
 	transitioning = true
@@ -57,7 +61,8 @@ func change_level(path : String, entrance_name : String = ""):
 	tween.tween_property(fade_screen, "color:a", 0, fade_time)
 	tween.finished.connect(_transition_complete)
 
-func _swap_level(path : String, entrance_name : String = ""):
+
+func _swap_level(path : String, entrance_name : String = "0"):
 	var packed = load(path)
 	var level = packed.instantiate()
 	new_level_name = level.get_name()
@@ -81,7 +86,7 @@ func _swap_level(path : String, entrance_name : String = ""):
 func _get_entrances():
 	entrances.clear()
 	for entrance in get_tree().get_nodes_in_group("level_entrance"):
-		entrances[entrance.name] = entrance.position
+		entrances[entrance.name] = entrance.global_position
 
 func _transition_complete():
 	player.lock_camera = false

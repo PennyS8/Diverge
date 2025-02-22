@@ -16,7 +16,7 @@ var attack_states : Dictionary = {
 # used for calculating hook swing direction (up, down, left right)
 # as well as nudge direction (360deg)
 var attack_dir : Vector2
-
+var swing_dir : Vector2
 var start_location : Vector2
 var distance_travelled : float
 
@@ -37,7 +37,7 @@ func _on_enter(_args) -> void:
 	var component_x = abs(attack_dir.x)
 	var component_y = abs(attack_dir.y)
 	
-	var swing_dir = attack_dir
+	swing_dir = attack_dir
 	if component_x > component_y:
 		swing_dir.y = 0
 	if component_y > component_x:
@@ -65,8 +65,9 @@ func _on_update(_delta):
 	distance_travelled = distance_travelled + (target.velocity * _delta).length()
 	
 
-
 func _after_update(_delta):
 	if distance_travelled >= attack_nudge_distance:
 		target.velocity = Vector2.ZERO
-	
+
+func change_to_next_substate():
+	change_state("Idle", swing_dir)

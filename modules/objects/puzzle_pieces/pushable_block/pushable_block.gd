@@ -33,7 +33,7 @@ func on_load_game(saved_data:SavedData):
 
 func push(area : HitBoxComponent2D):
 	var direction = area.get_parent().swing_dir
-	direction = direction * $BodyCollider.shape.size.x
+	direction = direction * 24 # TODO: STOP Overriding: $BodyCollider.shape.size.x
 	if !move_and_collide(direction, true):
 		if !pushing:
 			pushing = true

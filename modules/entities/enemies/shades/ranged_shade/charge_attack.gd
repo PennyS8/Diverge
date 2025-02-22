@@ -20,7 +20,7 @@ func _on_enter(_args) -> void:
 
 # when StateAutomaticTimer timeout()
 func _state_timeout() -> void:
-	change_state("Attack", target.follow_target.global_position)
+	change_state("Attack", target.follow_target.global_position - Vector2(0, 8))
 
 
 # Called when any other Timer times out

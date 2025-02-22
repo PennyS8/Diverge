@@ -13,12 +13,12 @@ extends StateAnimation
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	var shot_loc = _args
-	var parent_loc : Vector2 = target.global_position
+	var parent_loc : Vector2 = target.global_position + Vector2(0, -12)
 	var projectile_rotation = parent_loc.angle_to_point(shot_loc)
 	
 	var proj : Area2D = projectile_scene.instantiate()
 	proj.rotate(projectile_rotation)
-	proj.global_position = target.global_position
+	proj.global_position = target.global_position + Vector2(0, -12)
 	get_tree().current_scene.add_child(proj)
 	
 	target.modulate = Color.WHITE
