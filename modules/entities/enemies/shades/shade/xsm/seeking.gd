@@ -2,8 +2,9 @@
 extends State
 
 @export var nav_agent : NavigationAgent2D
-@export var movement_speed : float = 45
-
+@export var movement_speed : float
+@export var STEER_SPEED : float
+@export var MAX_SPEED : float
 @onready var movement_target_pos : Vector2
 
 #
@@ -50,7 +51,9 @@ func _on_update(_delta: float) -> void:
 	var current_agent_position: Vector2 = target.global_position
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
 	
-	target.velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+	var desired_velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+	var steering = (desired_velocity - target.velocity).normalized() * STEER_SPEED
+	target.velocity = (target.velocity + steering).limit_length(MAX_SPEED)
 	target.move_and_slide()
 
 

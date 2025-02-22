@@ -233,6 +233,9 @@ next_state = NodePath(".")
 [node name="Seeking" type="Node" parent="ShadeFSM" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("4_6wehf")
 nav_agent = NodePath("../../NavigationAgent2D")
+movement_speed = 30.0
+STEER_SPEED = 1.0
+MAX_SPEED = 30.0
 disabled = false
 debug_mode = false
 target_path = NodePath("")

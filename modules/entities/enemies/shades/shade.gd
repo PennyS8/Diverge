@@ -1,7 +1,7 @@
 extends TetherableBody
 
-@export var hitpoints = 20
-@export var movement_speed : float = 30.0
+@export var hitpoints : int
+@export var movement_speed : float
 
 var follow_target
 var knockback : Vector2 = Vector2.ZERO
@@ -53,9 +53,9 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 		$CPUParticles2D.restart()
 		$ShadeFSM.change_state("Dead")
 
-func _on_agro_region_body_exited(_body):
-	follow_target = null
-	$ShadeFSM.change_state("Roaming")
+#func _on_agro_region_body_exited(_body):
+	#follow_target = null
+	#$ShadeFSM.change_state("Roaming")
 
 func _on_tetherable_area_2d_mouse_entered() -> void:
 	select()
