@@ -98,6 +98,7 @@ tile_map_data = PackedByteArray("AABFABAABQAPAAkAAABIABAABQAPAAkAAABIAA8ABQAPAAk
 tile_set = ExtResource("2_2bp75")
 
 [node name="BlockPaths" type="TileMapLayer" parent="NavigationRegion2D/Tiles"]
+visible = false
 z_index = 1
 y_sort_enabled = true
 use_parent_material = true
