@@ -49,8 +49,10 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 		knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
 		$ShadeFSM.change_state("Stunned")
 		$Display/HitFX.restart()
+		$HitflashPlayer.play("Hitflash")
 	else:
 		$Display/HitFX.restart()
+		$HitflashPlayer.play("Hitflash")
 		$ShadeFSM.change_state("Dead")
 
 #func _on_agro_region_body_exited(_body):

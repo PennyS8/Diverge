@@ -42,7 +42,7 @@ func _on_update(_delta: float) -> void:
 	set_movement_target(movement_target_pos)
 	
 	if nav_agent.is_navigation_finished():
-		change_state("Melee")
+		change_state("ChargeAttack")
 	
 	var current_agent_position: Vector2 = target.global_position
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()

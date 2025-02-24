@@ -1702,7 +1702,7 @@ disabled = true
 [node name="HurtBoxComponent2D" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 position = Vector2(0, -10)
 collision_layer = 4
-collision_mask = 0
+collision_mask = 8
 script = ExtResource("3_c6noe")
 health_component = NodePath("../HealthComponent")
 

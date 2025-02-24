@@ -15,11 +15,6 @@ extends StateAnimation
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	# we enter charge to play the anim of the attack charging.
-	change_state("Charge")
-
-# called when child exits
-func change_to_next_substate():
 	# grab player location once
 	var player_position = target.follow_target.global_position
 	var dash_direction = target.global_position.direction_to(player_position).normalized()
@@ -32,7 +27,7 @@ func change_to_next_substate():
 	tween.tween_property(target, "global_position", dash_force, dash_time)
 	
 	play("Melee")
-	
+
 func _on_update(_delta: float) -> void:
 	nav_agent.target_position = target.follow_target.global_position
 	

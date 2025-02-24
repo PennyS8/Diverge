@@ -8,7 +8,7 @@ extends StateAnimation
 # This additionnal callback allows you to act at the end
 # of an animation
 func _on_anim_finished():
-	pass
+	change_state("Melee")
 
 
 # This additionnal callback allows you to act at the end

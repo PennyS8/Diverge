@@ -45,22 +45,18 @@ func _get_input_port_type(port):
 
 
 func _get_output_port_count():
-	return 2
+	return 1
 
 
 func _get_output_port_name(port):
 	match port:
 		0:
 			return "color"
-		1:
-			return "alpha"
 
 func _get_output_port_type(port):
 	match port:
 		0:
-			return PORT_TYPE_VECTOR_3D
-		1:
-			return PORT_TYPE_SCALAR
+			return PORT_TYPE_VECTOR_4D
 
 func _get_global_code(mode):
 	return """
@@ -82,10 +78,6 @@ func _get_code(input_vars, output_vars,
 	var code = \
 		"""
 		vec4 smoothed_texture = smoothpixel(%s, %s, %s);
-		float x = smoothed_texture.x;
-		float y = smoothed_texture.y;
-		float z = smoothed_texture.z;
-		%s = vec3(x,y,z);
-		%s = smoothed_texture.w;
-		""" % [input_vars[0], input_vars[1], input_vars[2], output_vars[0], output_vars[1]]
+		%s = smoothed_texture;
+		""" % [input_vars[0], input_vars[1], input_vars[2], output_vars[0]]
 	return code
