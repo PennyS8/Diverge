@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bpgun2i5o6ru"]
+[gd_scene load_steps=28 format=3 uid="uid://bpgun2i5o6ru"]
 
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="1_0ntyj"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_1u68j"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/seeking.gd" id="4_6wehf"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/dead.gd" id="5_fnale"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/stunned.gd" id="6_508y8"]
+[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="7_bpnt0"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/melee.gd" id="7_k76c3"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="10_pm2cd"]
 
@@ -207,6 +208,16 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("../Seeking")
+
+[node name="Charge" type="Node" parent="ShadeFSM/Melee"]
+script = ExtResource("7_bpnt0")
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
 
 [node name="Stunned" type="Node" parent="ShadeFSM"]
 script = ExtResource("6_508y8")

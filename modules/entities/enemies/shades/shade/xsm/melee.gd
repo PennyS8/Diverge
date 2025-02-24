@@ -11,7 +11,9 @@ extends StateAnimation
 func _on_enter(_args) -> void:
 	pass
 
-
+func change_to_next_substate():
+	pass
+	
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
 func _after_enter(_args) -> void:
@@ -34,7 +36,6 @@ func _after_update(_delta: float) -> void:
 # XSM before_exits the root first, then the children
 func _before_exit(_args) -> void:
 	pass
-
 
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
