@@ -39,6 +39,7 @@ func pull():
 	super.pull()
 
 func _physics_process(_delta: float) -> void:
+	super(_delta)
 	$AgroRegion.look_at(to_global(velocity))
 
 func _on_health_component_died() -> void:
