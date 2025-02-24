@@ -1,7 +1,13 @@
 @tool
 extends StateAnimation
 
+@export var nav_agent : NavigationAgent2D
 
+## Unit: Pixels
+@export var dash_distance : float
+
+## Unit: seconds
+@export var dash_time : float
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
@@ -9,45 +15,25 @@ extends StateAnimation
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	pass
+	# we enter charge to play the anim of the attack charging.
+	change_state("Charge")
 
+# called when child exits
 func change_to_next_substate():
-	pass
+	# grab player location once
+	var player_position = target.follow_target.global_position
+	var dash_direction = target.global_position.direction_to(player_position).normalized()
 	
-# This function is called just after the state enters
-# XSM after_enters the children first, then the parent
-func _after_enter(_args) -> void:
-	pass
-
-
-# This function is called each frame if the state is ACTIVE
-# XSM updates the root first, then the children
+	#distance in px
+	var dash_force = dash_direction * dash_distance
+	
+	dash_force = target.to_global(dash_force)
+	var tween = target.create_tween()
+	tween.tween_property(target, "global_position", dash_force, dash_time)
+	
+	play("Melee")
+	
 func _on_update(_delta: float) -> void:
-	pass
-
-
-# This function is called each frame after all the update calls
-# XSM after_updates the children first, then the root
-func _after_update(_delta: float) -> void:
-	pass
-
-
-# This function is called before the State exits
-# XSM before_exits the root first, then the children
-func _before_exit(_args) -> void:
-	pass
-
-# This function is called when the State exits
-# XSM before_exits the children first, then the root
-func _on_exit(_args) -> void:
-	pass
-
-
-# when StateAutomaticTimer timeout()
-func _state_timeout() -> void:
-	pass
-
-
-# Called when any other Timer times out
-func _on_timeout(_name) -> void:
-	pass
+	nav_agent.target_position = target.follow_target.global_position
+	
+	

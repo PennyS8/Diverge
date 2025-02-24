@@ -17,14 +17,10 @@ extends State
 
 # This function is called when the state enters
 # XSM enters the root first, the the children
-func _on_enter(_args) -> void:
-	# These values need to be adjusted for the actor's speed
-	# and the navigation layout.
-	nav_agent.path_desired_distance = 4.0
-	nav_agent.target_desired_distance = 4.0
-	
+func _on_enter(_args) -> void:	
 	movement_target_pos = target.follow_target.global_position
-
+	nav_agent.target_desired_distance = 24
+	nav_agent.path_desired_distance = 10
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent

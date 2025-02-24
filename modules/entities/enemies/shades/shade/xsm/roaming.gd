@@ -16,6 +16,8 @@ var roam_timer : Timer
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	_roam_timer()
+	nav_agent.target_desired_distance = 10
+	nav_agent.path_desired_distance = 20
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
