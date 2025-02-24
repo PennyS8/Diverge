@@ -10,11 +10,11 @@ func select():
 	if is_in_group("status_tethered"):
 		return
 	add_to_group("selected")
-	modulate = Color(1, 1, 0, 0.5)
+	#modulate = Color(1, 1, 0, 0.5)
 
 func deselect():
 	remove_from_group("selected")
-	modulate = Color(1, 1, 1, 1)
+	#modulate = Color(1, 1, 1, 1)
 
 # Adds itself to the status_tethered global group
 func add_tethered_status():

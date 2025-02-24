@@ -21,7 +21,7 @@ func _on_enter(_args) -> void:
 	proj.global_position = target.global_position + Vector2(0, -12)
 	get_tree().current_scene.add_child(proj)
 	
-	target.modulate = Color.WHITE
+	#target.modulate = Color.WHITE
 
 # when StateAutomaticTimer timeout()
 func _state_timeout() -> void:

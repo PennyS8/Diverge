@@ -48,9 +48,9 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	if $HealthComponent.health > 0:
 		knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
 		$ShadeFSM.change_state("Stunned")
-		$CPUParticles2D.restart()
+		$Display/HitFX.restart()
 	else:
-		$CPUParticles2D.restart()
+		$Display/HitFX.restart()
 		$ShadeFSM.change_state("Dead")
 
 #func _on_agro_region_body_exited(_body):

@@ -52,10 +52,12 @@ func _on_update(_delta: float) -> void:
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
 	
 	var desired_velocity = current_agent_position.direction_to(next_path_position) * movement_speed
-	var steering = (desired_velocity - target.velocity).normalized() * STEER_SPEED
-	target.velocity = (target.velocity + steering).limit_length(MAX_SPEED)
+	# debug raycast display
+	$"../../Display/DebugDesiredVelocity".target_position = desired_velocity
+		
+	target.velocity = target.velocity.lerp(desired_velocity, 0.075)
+	$"../../Display/DebugActualVelocity".target_position = target.velocity
 	target.move_and_slide()
-
 
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root

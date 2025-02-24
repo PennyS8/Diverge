@@ -1,0 +1,17 @@
+[gd_resource type="VisualShader" load_steps=2 format=3 uid="uid://crm3isq424sea"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_nafgw"]
+input_name = "texture_pixel_size"
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+
+"
+mode = 1
+flags/light_only = false
+nodes/fragment/0/position = Vector2(1040, 120)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_nafgw")
+nodes/fragment/2/position = Vector2(-60, 60)
