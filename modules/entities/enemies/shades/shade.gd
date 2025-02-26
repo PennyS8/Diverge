@@ -48,7 +48,11 @@ func _on_health_component_died() -> void:
 func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	if $HealthComponent.health > 0:
 		knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
-		$ShadeFSM.change_state("Stunned")
+		if _area.get_parent().is_in_group("player"):
+			$ShadeFSM.change_state("Stunned", _area.get_parent())
+		else:
+			$ShadeFSM.change_state("Stunned")
+
 		$Display/HitFX.restart()
 		$HitflashPlayer.play("Hitflash")
 	else:
