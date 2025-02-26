@@ -31,4 +31,3 @@ func _on_enter(_args) -> void:
 func _on_update(_delta: float) -> void:
 	nav_agent.target_position = target.follow_target.global_position
 	
-	

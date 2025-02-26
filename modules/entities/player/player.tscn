@@ -1246,7 +1246,7 @@ next_state = NodePath(".")
 
 [node name="Walk" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("6_rn5yy")
-ground_speed = 60.0
+ground_speed = 38.0
 acceleration = 20.0
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
@@ -1621,3 +1621,6 @@ collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("SegmentShape2D_rc6ld")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+radius = 8.0

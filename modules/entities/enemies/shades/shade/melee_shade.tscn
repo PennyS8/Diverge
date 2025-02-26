@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bpgun2i5o6ru"]
+[gd_scene load_steps=34 format=3 uid="uid://bpgun2i5o6ru"]
 
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="1_0ntyj"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_1u68j"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/seeking.gd" id="4_6wehf"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/dead.gd" id="5_fnale"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/stunned.gd" id="6_508y8"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/backstep.gd" id="6_yoqb8"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/charge_melee.gd" id="7_c0hfq"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/melee.gd" id="7_k76c3"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="10_pm2cd"]
@@ -51,7 +52,7 @@ colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
 
 [sub_resource type="Animation" id="Animation_165la"]
 resource_name = "ChargeMelee"
-length = 0.75
+length = 0.55
 step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -60,7 +61,7 @@ tracks/0/path = NodePath("Display/Sprite2D:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.7),
+"times": PackedFloat32Array(0, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [8, 0]
@@ -302,14 +303,24 @@ next_state = NodePath(".")
 [node name="Seeking" type="Node" parent="ShadeFSM" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("4_6wehf")
 nav_agent = NodePath("../../NavAgent")
-movement_speed = 30.0
-STEER_SPEED = 0.9
+movement_speed = 40.0
+STEER_SPEED = 0.3
 MAX_SPEED = 30.0
+backstep_random_mintime = 4.0
+backstep_random_maxtime = 20.0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath(".")
+
+[node name="Backstep" type="Node" parent="ShadeFSM"]
+script = ExtResource("6_yoqb8")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
 
 [node name="ChargeAttack" type="Node" parent="ShadeFSM"]
 script = ExtResource("7_c0hfq")
@@ -370,14 +381,12 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Backstep")
 
 [node name="NavAgent" type="NavigationAgent2D" parent="."]
-path_desired_distance = 10.0
+path_desired_distance = 8.0
 target_desired_distance = 24.0
-avoidance_enabled = true
-radius = 16.0
-neighbor_distance = 70.0
+radius = 8.0
 max_speed = 40.0
 debug_enabled = true
 debug_use_custom = true
@@ -506,6 +515,7 @@ libraries = {
 "": SubResource("AnimationLibrary_nkxn5")
 }
 
+[connection signal="velocity_computed" from="NavAgent" to="." method="_on_nav_agent_velocity_computed"]
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="Hit" from="Hurtbox" to="." method="_on_hurt_box_component_2d_hit"]
 [connection signal="body_exited" from="AgroRegion" to="." method="_on_agro_region_body_exited"]
