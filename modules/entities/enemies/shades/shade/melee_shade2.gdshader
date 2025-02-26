@@ -27,6 +27,26 @@ void vertex() {
 }
 
 
+uniform int x_pixel_size : hint_range(1, 100);
+uniform int y_pixel_size : hint_range(1, 100);
+uniform int pixelSize = 4;
+
+vec4 pixelate(vec2 pixel_size, vec2 uv, sampler2D textur) {
+	ivec2 size = textureSize(textur, 0);
+
+	int xRes = size.x;
+	int yRes = size.y;
+
+	float xFactor = float(xRes) / float(pixelSize);
+	float yFactor = float(yRes) / float(pixelSize);
+
+	float grid_uv_x = round(uv.x * xFactor) / xFactor;
+	float grid_uv_y = round(uv.y * yFactor) / yFactor;
+
+	vec4 text = texture(textur, vec2(grid_uv_x, grid_uv_y));
+
+	return text;
+}
 
 float core_flame_alpha(vec2 uv)
 {
@@ -83,4 +103,6 @@ void fragment() {
 	COLOR.rgb = flame_color;
 	// The classic color dodge formula: (B/(1-A))
 	COLOR.rgb /= (1.0-smoothstep(0.5, 0.0, particle_lifetime_phase));
+	COLOR *= pixelate(TEXTURE_PIXEL_SIZE, UV, TEXTURE);
+
 }

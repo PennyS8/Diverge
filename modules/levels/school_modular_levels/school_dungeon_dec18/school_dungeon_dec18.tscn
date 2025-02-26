@@ -122,7 +122,6 @@ tile_map_data = PackedByteArray("AAD0/x8AAAAKABAAAAD1/x8AAAAKABAAAAD2/x8AAAAKABA
 tile_set = ExtResource("2_2bp75")
 
 [node name="Lighting" type="Node2D" parent="."]
-visible = false
 
 [node name="PointLight2D" type="PointLight2D" parent="Lighting"]
 position = Vector2(833, 936)

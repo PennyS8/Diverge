@@ -18,7 +18,7 @@ extends State
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:	
-	movement_target_pos = target.follow_target.global_position
+	movement_target_pos = target.follow_target.to_global(target.follow_target.velocity)
 	nav_agent.target_desired_distance = 24
 	nav_agent.path_desired_distance = 10
 
@@ -38,7 +38,7 @@ func _on_update(_delta: float) -> void:
 	if !target.follow_target:
 		change_state("Roaming")
 		
-	movement_target_pos = target.follow_target.global_position
+	movement_target_pos = target.follow_target.to_global(target.follow_target.velocity * 0.2)
 	set_movement_target(movement_target_pos)
 	
 	if nav_agent.is_navigation_finished():

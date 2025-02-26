@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dj3wxycpv5yve"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dvi1klar74b87"]
 
 [ext_resource type="Shader" uid="uid://crm3isq424sea" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="1_nrcf5"]
 
