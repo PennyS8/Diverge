@@ -1,15 +1,18 @@
-[gd_scene load_steps=27 format=3 uid="uid://dx5na7ufncxg3"]
+[gd_scene load_steps=30 format=3 uid="uid://dx5na7ufncxg3"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_7xwuo"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade.gd" id="2_tklmg"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
 [ext_resource type="Texture2D" uid="uid://d4ml0vjhqwsbo" path="res://modules/entities/enemies/shades/ShadeWIP_64x64.png" id="3_g1pll"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="4_e4b7j"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/roaming.gd" id="5_80q8i"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/seeking.gd" id="6_uvrbb"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/melee.gd" id="7_81kni"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/stunned.gd" id="8_jtjxq"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/dead.gd" id="9_umgsg"]
+[ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="4_ga5u4"]
+[ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="4_kcpdx"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/roaming.gd" id="6_2ptfn"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/seeking.gd" id="7_8fy0v"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/melee.gd" id="8_pitir"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/stunned.gd" id="9_6lwy3"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/can_attack.gd" id="10_3d4nf"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/health_component.gd" id="10_5ojq5"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/dead.gd" id="10_m6rex"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
 
@@ -163,9 +166,9 @@ y_sort_enabled = true
 texture_filter = 2
 material = ExtResource("1_7xwuo")
 collision_layer = 8
-collision_mask = 95
+collision_mask = 87
 motion_mode = 1
-script = ExtResource("2_tklmg")
+script = ExtResource("2_knfav")
 
 [node name="Shadow" type="Sprite2D" parent="."]
 texture = SubResource("GradientTexture2D_ia2jp")
@@ -208,12 +211,16 @@ texture = ExtResource("3_g1pll")
 offset = Vector2(0, -21)
 region_rect = Rect2(21, 14, 22, 40)
 
+[node name="SoftCollision" parent="." instance=ExtResource("4_kcpdx")]
+position = Vector2(0, -6)
+
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_56qhg")
 
 [node name="ShadeFSM" type="Node" parent="."]
-script = ExtResource("4_e4b7j")
+script = ExtResource("4_ga5u4")
 history_size = 0
 disabled = false
 debug_mode = false
@@ -221,27 +228,42 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
-[node name="Roaming" type="Node" parent="ShadeFSM" node_paths=PackedStringArray("nav_agent")]
-script = ExtResource("5_80q8i")
-nav_agent = NodePath("../../NavigationAgent2D")
+[node name="Movement" type="Node" parent="ShadeFSM"]
+script = ExtResource("4_e4b7j")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="Roaming" type="Node" parent="ShadeFSM/Movement" node_paths=PackedStringArray("nav_agent")]
+script = ExtResource("6_2ptfn")
+nav_agent = NodePath("../../../NavigationAgent2D")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Roaming")
+
+[node name="Seeking" type="Node" parent="ShadeFSM/Movement" node_paths=PackedStringArray("nav_agent")]
+script = ExtResource("7_8fy0v")
+nav_agent = NodePath("../../../NavigationAgent2D")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath(".")
 
-[node name="Seeking" type="Node" parent="ShadeFSM" node_paths=PackedStringArray("nav_agent")]
-script = ExtResource("6_uvrbb")
-nav_agent = NodePath("../../NavigationAgent2D")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath(".")
-
-[node name="Melee" type="Node" parent="ShadeFSM"]
-script = ExtResource("7_81kni")
-animation_player = NodePath("../../AnimationPlayer")
+[node name="Melee" type="Node" parent="ShadeFSM/Movement"]
+script = ExtResource("8_pitir")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = "Melee"
 loop_mode = 0
 on_finished = 1
@@ -251,26 +273,50 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../Seeking")
 
-[node name="Stunned" type="Node" parent="ShadeFSM"]
-script = ExtResource("8_jtjxq")
-animation_player = NodePath("../../AnimationPlayer")
+[node name="Stunned" type="Node" parent="ShadeFSM/Movement"]
+script = ExtResource("9_6lwy3")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = "Stunned"
 loop_mode = 0
 on_finished = 1
 disabled = false
 debug_mode = false
 target_path = NodePath("")
-timed = true
-waiting_time = 2.0
-on_timer_finished = 3
+timed = false
 next_state = NodePath("../Roaming")
 
-[node name="Dead" type="Node" parent="ShadeFSM"]
-script = ExtResource("9_umgsg")
-animation_player = NodePath("../../AnimationPlayer")
+[node name="Dead" type="Node" parent="ShadeFSM/Movement"]
+script = ExtResource("10_m6rex")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = "die"
 loop_mode = 0
-on_finished = 0
+on_finished = 1
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="AttackPossible" type="Node" parent="ShadeFSM"]
+script = ExtResource("4_e4b7j")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="NoAttack" type="Node" parent="ShadeFSM/AttackPossible"]
+script = ExtResource("4_e4b7j")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath(".")
+
+[node name="CanAttack" type="Node" parent="ShadeFSM/AttackPossible"]
+script = ExtResource("10_3d4nf")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -279,6 +325,7 @@ next_state = NodePath("")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("10_5ojq5")
+max_health = 20
 
 [node name="HurtBoxComponent2D" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 8

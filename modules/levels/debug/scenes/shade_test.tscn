@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=4 uid="uid://gw0hpw8mu57y"]
 
-[ext_resource type="PackedScene" uid="uid://bpgun2i5o6ru" path="res://modules/entities/enemies/shades/shade/melee_shade.tscn" id="1_5s466"]
+[ext_resource type="PackedScene" uid="uid://dx5na7ufncxg3" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn" id="1_r3gmb"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ywdf3"]
 [ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="2_licy6"]
 [ext_resource type="Texture2D" uid="uid://bl7dwelj0f1um" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/taiga_ [resources].png" id="3_6d7dk"]
@@ -615,8 +615,11 @@ sources/0 = SubResource("TileSetAtlasSource_45hkk")
 y_sort_enabled = true
 position = Vector2(-800, -384)
 
-[node name="Shade" parent="." instance=ExtResource("1_5s466")]
-position = Vector2(1024, 416)
+[node name="ComplexShade2" parent="." instance=ExtResource("1_r3gmb")]
+position = Vector2(950, 400)
+
+[node name="ComplexShade" parent="." instance=ExtResource("1_r3gmb")]
+position = Vector2(940, 450)
 
 [node name="RangedShade" parent="." instance=ExtResource("5_rrdsi")]
 position = Vector2(960, 512)
