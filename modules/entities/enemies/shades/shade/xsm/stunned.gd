@@ -14,6 +14,8 @@ func _on_enter(_args) -> void:
 			hit_by = _args
 			return
 	hit_by = null
+
+	
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the fchildren
 func _on_update(_delta: float) -> void:

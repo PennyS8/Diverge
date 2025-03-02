@@ -41,6 +41,10 @@ func pull():
 func _physics_process(_delta: float) -> void:
 	super(_delta)
 	$AgroRegion.look_at(to_global(velocity))
+	if sliding_to_target:
+		$AgroRegion.monitoring = false
+	else:
+		$AgroRegion.monitoring = true
 
 func _on_health_component_died() -> void:
 	$ShadeFSM.change_state("Dead")
