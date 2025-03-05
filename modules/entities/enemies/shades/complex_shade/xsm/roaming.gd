@@ -6,6 +6,7 @@ extends StateSound
 #
 
 @onready var agro_region : Area2D = $"../../../AgroRegion"
+@onready var soft_collision = $"../../../SoftCollision"
 
 @onready var movement_target_pos : Vector2
 @export var nav_agent : NavigationAgent2D
@@ -37,6 +38,10 @@ func _on_update(_delta: float) -> void:
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
 	
 	target.velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+	
+	if soft_collision.is_colliding():
+		target.velocity += soft_collision.get_push_vector() * _delta * 600
+	
 	target.move_and_slide()
 
 func _roam_timer():

@@ -55,7 +55,7 @@ func _on_update(_delta: float) -> void:
 	target.velocity = current_agent_position.direction_to(next_path_position) * movement_speed
 	
 	if soft_collision.is_colliding():
-		target.velocity += soft_collision.get_push_vector() * _delta * 400
+		target.velocity += soft_collision.get_push_vector() * _delta * 600
 	
 	target.move_and_slide()
 

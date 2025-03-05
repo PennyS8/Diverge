@@ -615,6 +615,12 @@ sources/0 = SubResource("TileSetAtlasSource_45hkk")
 y_sort_enabled = true
 position = Vector2(-800, -384)
 
+[node name="ComplexShade4" parent="." instance=ExtResource("1_r3gmb")]
+position = Vector2(1000, 400)
+
+[node name="ComplexShade3" parent="." instance=ExtResource("1_r3gmb")]
+position = Vector2(1050, 450)
+
 [node name="ComplexShade2" parent="." instance=ExtResource("1_r3gmb")]
 position = Vector2(950, 400)
 

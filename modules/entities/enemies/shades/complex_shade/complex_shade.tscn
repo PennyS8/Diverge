@@ -251,6 +251,7 @@ next_state = NodePath("../Roaming")
 [node name="Seeking" type="Node" parent="ShadeFSM/Movement" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("7_8fy0v")
 nav_agent = NodePath("../../../NavigationAgent2D")
+movement_speed = 30.0
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = ""
