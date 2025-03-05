@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://bcx1ka3l64iq4"]
 
-[ext_resource type="Script" path="res://modules/ui/hud/hud_heart/hud_heart.gd" id="1_66xcc"]
+[ext_resource type="Script" uid="uid://b51k3j50euyaq" path="res://modules/ui/hud/hud_heart/hud_heart.gd" id="1_66xcc"]
 [ext_resource type="Texture2D" uid="uid://cy4201deur1h3" path="res://assets/hud/Pixel_Hearts_GUI_Pack_v002/hearts.png" id="1_uxsif"]
 
 [sub_resource type="Animation" id="Animation_e100q"]
@@ -54,9 +54,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_cg2u1"]
 _data = {
-"RESET": SubResource("Animation_e100q"),
-"damage_full": SubResource("Animation_1xnsw"),
-"damage_half": SubResource("Animation_mu6wg")
+&"RESET": SubResource("Animation_e100q"),
+&"damage_full": SubResource("Animation_1xnsw"),
+&"damage_half": SubResource("Animation_mu6wg")
 }
 
 [node name="HudHeart" type="Control"]

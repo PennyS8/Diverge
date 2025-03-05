@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bxrguchun6dk8"]
 
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/ranged_shade/shade_projectile.gd" id="1_p6ta0"]
+[ext_resource type="Script" uid="uid://tx7gfoijbt3e" path="res://modules/entities/enemies/shades/ranged_shade/shade_projectile.gd" id="1_p6ta0"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_i7wa3"]
-[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="2_yo41a"]
+[ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="2_yo41a"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8u60t"]
 size = Vector2(4, 4)

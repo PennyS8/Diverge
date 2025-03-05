@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://lbhb1gemkets"]
 
-[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="1_b12at"]
+[ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="1_b12at"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="1_epsps"]
-[ext_resource type="Script" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.gd" id="1_vlwj6"]
+[ext_resource type="Script" uid="uid://t81j0lydoai" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.gd" id="1_vlwj6"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_w4i0l"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8cpdf"]

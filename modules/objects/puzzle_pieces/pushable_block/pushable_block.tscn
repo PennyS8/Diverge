@@ -1,9 +1,9 @@
 [gd_scene load_steps=6 format=3 uid="uid://bbdhy8cvtgg0l"]
 
-[ext_resource type="Script" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.gd" id="1_0d25t"]
+[ext_resource type="Script" uid="uid://h8tvs5e44ekl" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.gd" id="1_0d25t"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_qdcea"]
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_mb1va"]
-[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="4_qwfq3"]
+[ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="4_qwfq3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vq2pb"]
 size = Vector2(16, 16)

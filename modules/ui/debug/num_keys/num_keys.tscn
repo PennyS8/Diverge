@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://gna64jq1jkf1"]
 
-[ext_resource type="Script" path="res://modules/ui/debug/num_keys/num_keys.gd" id="1_kkxw7"]
+[ext_resource type="Script" uid="uid://1idjl7xev3mk" path="res://modules/ui/debug/num_keys/num_keys.gd" id="1_kkxw7"]
 
 [node name="NumKeys" type="Control"]
 layout_mode = 3

@@ -1,16 +1,16 @@
 [gd_scene load_steps=27 format=3 uid="uid://bi6255tx4u0jr"]
 
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade.gd" id="1_0ppdu"]
-[ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_81f8r"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/roaming.gd" id="3_vol8a"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/ranged_shade/charge_attack.gd" id="4_t3lex"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/ranged_shade/ranged_attack.gd" id="5_q5uxu"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/stunned.gd" id="6_6q11h"]
+[ext_resource type="Script" uid="uid://cxw1ndyc6mkbk" path="res://modules/entities/enemies/shades/shade.gd" id="1_0ppdu"]
+[ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="2_81f8r"]
+[ext_resource type="Script" uid="uid://yr5lkl65lac" path="res://modules/entities/enemies/shades/shade/xsm/roaming.gd" id="3_vol8a"]
+[ext_resource type="Script" uid="uid://c5t2a6sfgunsf" path="res://modules/entities/enemies/shades/ranged_shade/charge_attack.gd" id="4_t3lex"]
+[ext_resource type="Script" uid="uid://csbothgjoi6mf" path="res://modules/entities/enemies/shades/ranged_shade/ranged_attack.gd" id="5_q5uxu"]
+[ext_resource type="Script" uid="uid://bmkj7gqgnvueq" path="res://modules/entities/enemies/shades/shade/xsm/stunned.gd" id="6_6q11h"]
 [ext_resource type="PackedScene" uid="uid://bxrguchun6dk8" path="res://modules/entities/enemies/shades/ranged_shade/shade_projectile.tscn" id="6_23k0m"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/dead.gd" id="7_cxdtl"]
-[ext_resource type="Script" path="res://addons/basecomponents/Components/health_component.gd" id="8_2cjjq"]
-[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="9_5uvqb"]
-[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="10_o57fr"]
+[ext_resource type="Script" uid="uid://cgkkk35n3tai7" path="res://modules/entities/enemies/shades/shade/xsm/dead.gd" id="7_cxdtl"]
+[ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="8_2cjjq"]
+[ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="9_5uvqb"]
+[ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="10_o57fr"]
 [ext_resource type="Texture2D" uid="uid://d4ml0vjhqwsbo" path="res://modules/entities/enemies/shades/ShadeWIP_64x64.png" id="13_wwonh"]
 
 [sub_resource type="Gradient" id="Gradient_qqgag"]
@@ -129,10 +129,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
 _data = {
-"Melee": SubResource("Animation_0nojc"),
-"RESET": SubResource("Animation_6qj3b"),
-"Stunned": SubResource("Animation_741tg"),
-"die": SubResource("Animation_150i5")
+&"Melee": SubResource("Animation_0nojc"),
+&"RESET": SubResource("Animation_6qj3b"),
+&"Stunned": SubResource("Animation_741tg"),
+&"die": SubResource("Animation_150i5")
 }
 
 [sub_resource type="Curve" id="Curve_ne7pj"]
