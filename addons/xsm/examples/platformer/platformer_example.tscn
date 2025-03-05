@@ -1,35 +1,35 @@
 [gd_scene load_steps=95 format=3 uid="uid://c3v43v28hxpce"]
 
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/on_ground/on_ground.gd" id="1"]
-[ext_resource type="Script" path="res://addons/xsm/state_sound.gd" id="1_o7hwj"]
-[ext_resource type="Script" path="res://addons/xsm/state.gd" id="3"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/in_air/in_air.gd" id="4"]
+[ext_resource type="Script" uid="uid://cnjinso2l1gcf" path="res://addons/xsm/examples/platformer/player/states/movements/on_ground/on_ground.gd" id="1"]
+[ext_resource type="Script" uid="uid://gptykq0qp1fx" path="res://addons/xsm/state_sound.gd" id="1_o7hwj"]
+[ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="3"]
+[ext_resource type="Script" uid="uid://d3xhyif256rkw" path="res://addons/xsm/examples/platformer/player/states/movements/in_air/in_air.gd" id="4"]
 [ext_resource type="Texture2D" uid="uid://cq7f5sfojpuhy" path="res://addons/xsm/examples/platformer/assets/sprites/collectables/new_ship.png" id="5"]
-[ext_resource type="Script" path="res://addons/xsm/state_animation.gd" id="6"]
+[ext_resource type="Script" uid="uid://sgbgpy8s08d3" path="res://addons/xsm/state_animation.gd" id="6"]
 [ext_resource type="Texture2D" uid="uid://b0mvy8jrfhvtf" path="res://addons/xsm/examples/platformer/assets/sprites/decor/tilemap.png" id="7"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/player.gd" id="8"]
+[ext_resource type="Script" uid="uid://cx1to23xeu7je" path="res://addons/xsm/examples/platformer/player/player.gd" id="8"]
 [ext_resource type="AudioStream" uid="uid://bpfdiixvnb32n" path="res://addons/xsm/examples/platformer/assets/sounds/jump.wav" id="10"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/jumps/jumps.gd" id="11"]
+[ext_resource type="Script" uid="uid://cv4e883c3jgpw" path="res://addons/xsm/examples/platformer/player/states/movements/jumps/jumps.gd" id="11"]
 [ext_resource type="Texture2D" uid="uid://baabkdhs35s5q" path="res://addons/xsm/examples/platformer/assets/sprites/player/slime.png" id="12"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/on_ground/crouch.gd" id="13"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/on_ground/brake.gd" id="14"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/movement.gd" id="15"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/in_air/fall.gd" id="18"]
-[ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="19"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/jump_possible/coyote_time.gd" id="20"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/jump_possible/can_pre_jump.gd" id="21"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/jump_possible/can_jump.gd" id="22"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/jumps/ground_jump.gd" id="23"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/on_wall/on_wall.gd" id="24"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/jumps/wall_jump.gd" id="25"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/in_air/corner_hop.gd" id="26"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/dash/dash.gd" id="27"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/movements/on_ground/on_edge.gd" id="28"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/dash_possible/can_pre_dash.gd" id="29"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/player/states/dash_possible/can_dash.gd" id="30"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/level/shard.gd" id="31"]
+[ext_resource type="Script" uid="uid://da1jbmctfujoo" path="res://addons/xsm/examples/platformer/player/states/movements/on_ground/crouch.gd" id="13"]
+[ext_resource type="Script" uid="uid://kj3yl35sfphy" path="res://addons/xsm/examples/platformer/player/states/movements/on_ground/brake.gd" id="14"]
+[ext_resource type="Script" uid="uid://cqb3ytvlp84u2" path="res://addons/xsm/examples/platformer/player/states/movements/movement.gd" id="15"]
+[ext_resource type="Script" uid="uid://div46fuobdjmk" path="res://addons/xsm/examples/platformer/player/states/movements/in_air/fall.gd" id="18"]
+[ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="19"]
+[ext_resource type="Script" uid="uid://cmigfl63asxj" path="res://addons/xsm/examples/platformer/player/states/jump_possible/coyote_time.gd" id="20"]
+[ext_resource type="Script" uid="uid://b276h5a7yimbc" path="res://addons/xsm/examples/platformer/player/states/jump_possible/can_pre_jump.gd" id="21"]
+[ext_resource type="Script" uid="uid://ccu4eqtj6q0me" path="res://addons/xsm/examples/platformer/player/states/jump_possible/can_jump.gd" id="22"]
+[ext_resource type="Script" uid="uid://dy37sby1mr84d" path="res://addons/xsm/examples/platformer/player/states/movements/jumps/ground_jump.gd" id="23"]
+[ext_resource type="Script" uid="uid://cefycxwea8i7k" path="res://addons/xsm/examples/platformer/player/states/movements/on_wall/on_wall.gd" id="24"]
+[ext_resource type="Script" uid="uid://b6qp42vgbqfsr" path="res://addons/xsm/examples/platformer/player/states/movements/jumps/wall_jump.gd" id="25"]
+[ext_resource type="Script" uid="uid://dv3qlvppmkrgk" path="res://addons/xsm/examples/platformer/player/states/movements/in_air/corner_hop.gd" id="26"]
+[ext_resource type="Script" uid="uid://y7c52qg40spp" path="res://addons/xsm/examples/platformer/player/states/movements/dash/dash.gd" id="27"]
+[ext_resource type="Script" uid="uid://b5w41hcbdhhdl" path="res://addons/xsm/examples/platformer/player/states/movements/on_ground/on_edge.gd" id="28"]
+[ext_resource type="Script" uid="uid://cnunjwe00cqfp" path="res://addons/xsm/examples/platformer/player/states/dash_possible/can_pre_dash.gd" id="29"]
+[ext_resource type="Script" uid="uid://c00jknqiv1gvt" path="res://addons/xsm/examples/platformer/player/states/dash_possible/can_dash.gd" id="30"]
+[ext_resource type="Script" uid="uid://jg6innnmkj0b" path="res://addons/xsm/examples/platformer/level/shard.gd" id="31"]
 [ext_resource type="Texture2D" uid="uid://ct7r7507orox2" path="res://addons/xsm/examples/platformer/assets/sprites/decor/ship.png" id="32"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/level/end_ship.gd" id="33"]
+[ext_resource type="Script" uid="uid://6a31y1ubjaqr" path="res://addons/xsm/examples/platformer/level/end_ship.gd" id="33"]
 [ext_resource type="Texture2D" uid="uid://c8k7dl1kpyka3" path="res://addons/xsm/examples/platformer/assets/sprites/decor/bg.png" id="33_dfw4i"]
 [ext_resource type="Texture2D" uid="uid://wqioqnxotxxn" path="res://addons/xsm/examples/platformer/assets/sprites/collectables/shard.png" id="34"]
 [ext_resource type="Texture2D" uid="uid://cbgdbixwa7uy6" path="res://addons/xsm/examples/platformer/assets/sprites/decor/bg_mountains.png" id="35"]
@@ -39,11 +39,11 @@
 [ext_resource type="Texture2D" uid="uid://bqi4bnqcq3hbx" path="res://addons/xsm/examples/platformer/assets/sprites/player/light.png" id="39"]
 [ext_resource type="FontFile" uid="uid://c000k6dru7r6e" path="res://addons/xsm/examples/platformer/level/font_TIMESS__.ttf" id="40_oshkx"]
 [ext_resource type="Texture2D" uid="uid://bs3bj206fu1xt" path="res://addons/xsm/examples/platformer/assets/sprites/clouds/cloud1.png" id="43"]
-[ext_resource type="Script" path="res://addons/xsm/examples/platformer/level/clouds.gd" id="44"]
+[ext_resource type="Script" uid="uid://cu5cqefle6wog" path="res://addons/xsm/examples/platformer/level/clouds.gd" id="44"]
 [ext_resource type="AudioStream" uid="uid://b77rq8rh1rgbn" path="res://addons/xsm/examples/platformer/assets/sounds/move.wav" id="45"]
 [ext_resource type="AudioStream" uid="uid://dathtypfp0erp" path="res://addons/xsm/examples/platformer/assets/sounds/dash.wav" id="46"]
 [ext_resource type="AudioStream" uid="uid://cio6sgybswhgo" path="res://addons/xsm/examples/platformer/assets/sounds/moving_ship.wav" id="47"]
-[ext_resource type="Script" path="res://addons/xsm/state_rand.gd" id="47_3d6o1"]
+[ext_resource type="Script" uid="uid://cbn1ekmkyjeje" path="res://addons/xsm/state_rand.gd" id="47_3d6o1"]
 [ext_resource type="AudioStream" uid="uid://bvyaobex3vbmd" path="res://addons/xsm/examples/platformer/assets/sounds/explosion.wav" id="48"]
 
 [sub_resource type="RectangleShape2D" id="78"]
@@ -314,21 +314,21 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_m0qpe"]
 _data = {
-"Ball": SubResource("86"),
-"Brake": SubResource("2"),
-"Crouch": SubResource("3"),
-"Dash": SubResource("80"),
-"Fall": SubResource("4"),
-"Idle": SubResource("7"),
-"IdleSlow": SubResource("87"),
-"IdleSnore": SubResource("88"),
-"Jump": SubResource("8"),
-"Land": SubResource("9"),
-"OnEdge": SubResource("79"),
-"Run": SubResource("12"),
-"Top2Fall": SubResource("76"),
-"Walk": SubResource("14"),
-"Walk2Run": SubResource("75")
+&"Ball": SubResource("86"),
+&"Brake": SubResource("2"),
+&"Crouch": SubResource("3"),
+&"Dash": SubResource("80"),
+&"Fall": SubResource("4"),
+&"Idle": SubResource("7"),
+&"IdleSlow": SubResource("87"),
+&"IdleSnore": SubResource("88"),
+&"Jump": SubResource("8"),
+&"Land": SubResource("9"),
+&"OnEdge": SubResource("79"),
+&"Run": SubResource("12"),
+&"Top2Fall": SubResource("76"),
+&"Walk": SubResource("14"),
+&"Walk2Run": SubResource("75")
 }
 
 [sub_resource type="ParticleProcessMaterial" id="81"]

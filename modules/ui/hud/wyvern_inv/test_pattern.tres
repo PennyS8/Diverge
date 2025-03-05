@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="ItemPattern" load_steps=3 format=3 uid="uid://cuc5048ywobsa"]
 
-[ext_resource type="Script" path="res://addons/wyvernbox/crafting/item_like.gd" id="1_j8h0m"]
-[ext_resource type="Script" path="res://addons/wyvernbox/crafting/item_pattern.gd" id="2_kbxx3"]
+[ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="1_j8h0m"]
+[ext_resource type="Script" uid="uid://0rodky4is3fo" path="res://addons/wyvernbox/crafting/item_pattern.gd" id="2_kbxx3"]
 
 [resource]
 script = ExtResource("2_kbxx3")
