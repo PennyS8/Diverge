@@ -5,7 +5,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j76cr"]
 size = Vector2(6, 6)
 
-[node name="TransitionZone" type="Area2D"]
+[node name="TransitionZone" type="Area2D" groups=["saved_data"]]
 z_index = 1
 collision_layer = 32
 collision_mask = 4

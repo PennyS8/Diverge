@@ -12,6 +12,7 @@ tile_map_data = PackedByteArray("AAASAA8AAAADAAYAAAATAA8AAAAEAAcAAAATAA4AAAAEAAc
 tile_set = ExtResource("2_f5k0d")
 
 [node name="Objects" type="Node2D" parent="." index="1"]
+y_sort_enabled = true
 
 [node name="PushableDesk" parent="Objects" index="0" instance=ExtResource("3_rl8tq")]
 position = Vector2(138, 116)
