@@ -1,4 +1,4 @@
-[gd_resource type="TileSet" load_steps=59 format=3 uid="uid://cq3hvofrushyg"]
+[gd_resource type="TileSet" load_steps=60 format=3 uid="uid://cq3hvofrushyg"]
 
 [ext_resource type="Texture2D" uid="uid://ce10vjgkrj5nk" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png" id="1_yso85"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="2_aaivm"]
@@ -2230,6 +2230,12 @@ texture_region_size = Vector2i(24, 24)
 3:14/0 = 0
 4:14/0 = 0
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6o6a6"]
+vertices = PackedVector2Array(12, 12, -12, 12, -12, -12, 12, -12)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)])
+agent_radius = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_y46eu"]
 texture = ExtResource("5_laoei")
 texture_region_size = Vector2i(24, 24)
@@ -2278,6 +2284,7 @@ texture_region_size = Vector2i(24, 24)
 1:5/0 = 0
 2:5/next_alternative_id = 2
 2:5/0 = 0
+2:5/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_6o6a6")
 3:5/next_alternative_id = 4
 3:5/0 = 0
 3:5/0/probability = 0.07
@@ -3123,6 +3130,7 @@ physics_layer_0/collision_mask = 0
 terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Brick_Wall"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
+navigation_layer_0/layers = 2
 sources/0 = SubResource("TileSetAtlasSource_pauoy")
 sources/1 = SubResource("TileSetAtlasSource_optda")
 sources/2 = SubResource("TileSetAtlasSource_6u1e2")
