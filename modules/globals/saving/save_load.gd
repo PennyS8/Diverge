@@ -43,9 +43,17 @@ func load_game():
 	for item in saved_game.saved_data:
 		var scene = load(item.scene_path) as PackedScene
 		var restored_node = scene.instantiate()
-		restored_node.global_position = item.position
+		var node = get_node(item.parent_node_path)
 		
-		main.add_child(restored_node)
+		# If the node path does not exist, add the item to main
+		# NOTE: This shouldn't ever occur but is moreso a sanity check to be safe
+		if node != null:
+			node.add_child(restored_node)
+		else:
+			main.add_child(restored_node)
+		
+		if restored_node.has_method("on_load_game"):
+			restored_node.on_load_game(item)
 		
 		if restored_node.has_method("on_load_game"):
 			restored_node.on_load_game(item)
@@ -93,11 +101,10 @@ func room_load(room_id):
 		var restored_node = scene.instantiate()
 		var node = get_node(item.parent_node_path)
 		
-		# TODO: Uncomment this out or delete it
-		#main.add_child(restored_node)
-		
-		# TODO: Try to add child to node path (Must figure out how to remove the "Pushable Block"
-		# at the end though?)
+		# Gets node name before resinstantiation. This is to prevent us from having
+		# "CharacterBody@12" or some randomized name similar to that in Remote
+		var item_name = restored_node.name
+
 		
 		# If the node path does not exist, add the item to main
 		# NOTE: This shouldn't ever occur but is moreso a sanity check to be safe
@@ -108,6 +115,11 @@ func room_load(room_id):
 		
 		if restored_node.has_method("on_load_game"):
 			restored_node.on_load_game(item)
+		
+		# Checks if the restored node name has been set to randomized unique name. If
+		# so, it renames it to what the item is and Godot adds a unique identifier
+		if restored_node.name != item_name:
+			restored_node.name = item_name
 
 func delete_room_saves():
 	var room_save_path = "user://temp"
