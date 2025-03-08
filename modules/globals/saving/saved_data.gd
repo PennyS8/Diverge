@@ -5,3 +5,4 @@ extends Resource
 @export var scene_path:String
 @export var puzzle_completed:bool
 @export var puzzle_key_id:int
+@export var parent_node_path:NodePath

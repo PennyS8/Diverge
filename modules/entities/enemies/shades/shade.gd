@@ -16,6 +16,8 @@ func on_save_game(saved_data:Array[SavedData]):
 	var my_data = SavedData.new()
 	my_data.position = global_position
 	my_data.scene_path = scene_file_path
+	# Gets path up to node for reinstantiation
+	my_data.parent_node_path = get_parent().get_path()
 	
 	saved_data.append(my_data)
 

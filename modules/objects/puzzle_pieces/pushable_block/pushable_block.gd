@@ -19,6 +19,8 @@ func on_save_game(saved_data:Array[SavedData]):
 	
 	my_data.scene_path = scene_file_path
 	my_data.puzzle_completed = puzzle_completed
+	# Gets path up to node for reinstantiation
+	my_data.parent_node_path = get_parent().get_path()
 	
 	saved_data.append(my_data)
 
