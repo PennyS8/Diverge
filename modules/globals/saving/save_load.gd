@@ -71,6 +71,8 @@ func room_save(room_id):
 	if DirAccess.open("user://temp") == null:
 		DirAccess.make_dir_absolute("user://temp")
 	
+	print("Saved Level: " + room_id)
+	
 	var saved_room:SavedGame = SavedGame.new()
 	
 	var saved_data:Array[SavedData] = []
@@ -86,6 +88,8 @@ func room_save(room_id):
 func room_load(room_id):
 	var save_room_path = "user://temp/saveroom_{id}.tres"
 	var format_path = save_room_path.format({"id": room_id})
+	
+	print("Loaded Level: " + room_id)
 	
 	# Makes sure to not load if save file doesn't exist
 	if !(save_exists(format_path)):
