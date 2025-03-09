@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://clxwatqbrtb1u"]
 
-[ext_resource type="Script" path="res://modules/objects/puzzle_pieces/pressure_plate/pressure_plate.gd" id="1_dalsm"]
+[ext_resource type="Script" uid="uid://dckkqdqw5n4rg" path="res://modules/objects/puzzle_pieces/pressure_plate/pressure_plate.gd" id="1_dalsm"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="3_65har"]
 [ext_resource type="Texture2D" uid="uid://deud1b8f01ge0" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/pressure_plate.png" id="3_dbg54"]
 

@@ -1,12 +1,12 @@
 [gd_scene load_steps=11 format=3 uid="uid://ms4bp1b33wt2"]
 
-[ext_resource type="Script" path="res://modules/ui/hud/wyvern_inv/notebook_panel.gd" id="1_kg5hy"]
+[ext_resource type="Script" uid="uid://bssdk2mnj3g1j" path="res://modules/ui/hud/wyvern_inv/notebook_panel.gd" id="1_kg5hy"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_xe0cd"]
 [ext_resource type="Texture2D" uid="uid://ceivns3460sja" path="res://assets/hud/notebook.png" id="2_hc3us"]
 [ext_resource type="PackedScene" uid="uid://gpeishkjbb60" path="res://modules/ui/hud/wyvern_inv/equipment_inventory.tscn" id="3_u7xja"]
 [ext_resource type="PackedScene" uid="uid://cqa45c6lfsffv" path="res://addons/wyvernbox_prefabs/tooltip.tscn" id="4_stxl0"]
-[ext_resource type="Script" path="res://addons/wyvernbox/extension/tooltip_property_stats.gd" id="5_sb6jk"]
-[ext_resource type="Script" path="res://addons/wyvernbox/extension/tooltip_property_description.gd" id="6_1alct"]
+[ext_resource type="Script" uid="uid://bjciyjxxotjid" path="res://addons/wyvernbox/extension/tooltip_property_stats.gd" id="5_sb6jk"]
+[ext_resource type="Script" uid="uid://bmhxkcy7lv2mv" path="res://addons/wyvernbox/extension/tooltip_property_description.gd" id="6_1alct"]
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="8_sikor"]
 
 [sub_resource type="Theme" id="Theme_btflt"]

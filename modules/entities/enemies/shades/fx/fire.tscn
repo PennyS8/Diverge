@@ -1,8 +1,8 @@
 [gd_scene load_steps=14 format=3 uid="uid://mmoilvlj5y12"]
 
-[ext_resource type="Shader" path="res://modules/entities/enemies/shades/shade/melee_shade2.gdshader" id="1_chk6w"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/gpu_particles_2d.gd" id="2_7w0gh"]
-[ext_resource type="Shader" path="res://modules/entities/enemies/shades/fx/pixelate.gdshader" id="3_hiqmq"]
+[ext_resource type="Shader" uid="uid://fvmplha3qyes" path="res://modules/entities/enemies/shades/shade/melee_shade2.gdshader" id="1_chk6w"]
+[ext_resource type="Script" uid="uid://d3mlfv23dqyw5" path="res://modules/entities/enemies/shades/shade/gpu_particles_2d.gd" id="2_7w0gh"]
+[ext_resource type="Shader" uid="uid://cgd2edgbydjva" path="res://modules/entities/enemies/shades/fx/pixelate.gdshader" id="3_hiqmq"]
 [ext_resource type="Texture2D" uid="uid://23ro2j06cy5d" path="res://assets/debug/LOVELY-Antique-Elegant-Carved-Bone-Crochet-pic-1A-720_10.10-322e065c.webp" id="4_mk6ga"]
 
 [sub_resource type="Gradient" id="Gradient_vh7tq"]
@@ -23,6 +23,7 @@ noise = SubResource("FastNoiseLite_11bc5")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j38ii"]
 shader = ExtResource("1_chk6w")
+shader_parameter/noise = SubResource("NoiseTexture2D_8awvp")
 shader_parameter/offset_speed_multiplier = 2.0
 shader_parameter/flame_color = Color(0, 0, 0, 1)
 shader_parameter/bounds_size = Vector2(100, 100)
@@ -31,7 +32,15 @@ shader_parameter/core_flame_radius = 0.8
 shader_parameter/x_pixel_size = 24
 shader_parameter/y_pixel_size = 24
 shader_parameter/pixelSize = 24
-shader_parameter/noise = SubResource("NoiseTexture2D_8awvp")
+
+[sub_resource type="Gradient" id="Gradient_ipymu"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_prsa8"]
+gradient = SubResource("Gradient_ipymu")
+width = 30
+height = 30
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mqh5u"]
 lifetime_randomness = 1.0
@@ -48,15 +57,6 @@ turbulence_noise_strength = 0.9
 turbulence_influence_min = 0.0
 turbulence_influence_max = 0.153
 
-[sub_resource type="Gradient" id="Gradient_ipymu"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(1, 1, 1, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_prsa8"]
-gradient = SubResource("Gradient_ipymu")
-width = 30
-height = 30
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m8bpe"]
 shader = ExtResource("3_hiqmq")
 shader_parameter/x_pixel_size = 24
@@ -71,8 +71,8 @@ shader_parameter/y_pixel_size = 24
 z_index = 3
 material = SubResource("ShaderMaterial_j38ii")
 amount = 200
-process_material = SubResource("ParticleProcessMaterial_mqh5u")
 texture = SubResource("GradientTexture2D_prsa8")
+process_material = SubResource("ParticleProcessMaterial_mqh5u")
 script = ExtResource("2_7w0gh")
 
 [node name="ColorRect" type="ColorRect" parent="."]

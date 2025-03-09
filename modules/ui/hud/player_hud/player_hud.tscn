@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dlgu6ii31q1ht"]
 
-[ext_resource type="Script" path="res://modules/ui/hud/player_hud/player_hud.gd" id="1_7rjie"]
+[ext_resource type="Script" uid="uid://cnc5dnwnqaph7" path="res://modules/ui/hud/player_hud/player_hud.gd" id="1_7rjie"]
 [ext_resource type="PackedScene" uid="uid://bcx1ka3l64iq4" path="res://modules/ui/hud/hud_heart/hud_heart.tscn" id="1_xbvhq"]
 [ext_resource type="PackedScene" uid="uid://dx0iml7qkauhn" path="res://modules/ui/hud/hud_small_key/hud_small_key.tscn" id="3_osnti"]
 [ext_resource type="PackedScene" uid="uid://gt54641y1ntm" path="res://modules/ui/hud/hud_big_key/hud_big_key.tscn" id="4_nce0q"]

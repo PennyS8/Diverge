@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgxc0xpb1lawa"]
 
-[ext_resource type="Script" path="res://modules/status_effects/yarn_controller.gd" id="1_f6jx5"]
+[ext_resource type="Script" uid="uid://cmedhnkse60t5" path="res://modules/status_effects/yarn_controller.gd" id="1_f6jx5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_febas"]
 radius = 5.0

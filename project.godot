@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Project Diverge"
 run/main_scene="res://modules/levels/school_modular_levels/school_dungeon_dec18/school_dungeon_dec18.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=120
 config/icon="res://assets/RatStompers.png"
 
@@ -32,8 +32,8 @@ shapes/navigation/geometry_face_color=Color(0.501961, 1, 1, 0)
 
 [dialogue_manager]
 
-general/balloon_path="res://modules/dialogue/test_dialogue.tscn"
-general/custom_test_scene_path="res://modules/dialogue/test_dialogue.tscn"
+editor/advanced/custom_test_scene_path="res://modules/dialogue/test_dialogue.tscn"
+runtime/balloon_path="res://modules/dialogue/test_dialogue.tscn"
 
 [display]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://baoxul0auaj8j"]
 
-[ext_resource type="Script" path="res://modules/levels/placeholder_mom_house/stat_replenish.gd" id="1_xnc8w"]
+[ext_resource type="Script" uid="uid://b8sdok4snym2d" path="res://modules/levels/placeholder_mom_house/stat_replenish.gd" id="1_xnc8w"]
 [ext_resource type="PackedScene" uid="uid://fbmlxgb2ghl8" path="res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/placeholder_home.ldtk" id="2_dtgkf"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="3_xcpf1"]
 

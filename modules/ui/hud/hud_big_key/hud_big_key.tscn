@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://gt54641y1ntm"]
 
-[ext_resource type="Script" path="res://modules/ui/hud/hud_big_key/hud_big_key.gd" id="1_kb20q"]
+[ext_resource type="Script" uid="uid://b11c2wh7ix4fa" path="res://modules/ui/hud/hud_big_key/hud_big_key.gd" id="1_kb20q"]
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_bm0fx"]
 [ext_resource type="LabelSettings" uid="uid://d3l10jcs707nc" path="res://assets/hud/number_labels.tres" id="3_volt5"]
 

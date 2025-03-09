@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://cn80hyaaf6syw"]
 
-[ext_resource type="Script" path="res://modules/objects/puzzle_pieces/anchor/anchor.gd" id="1_2ruf7"]
+[ext_resource type="Script" uid="uid://b7d5kyvhywe0l" path="res://modules/objects/puzzle_pieces/anchor/anchor.gd" id="1_2ruf7"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_itt2y"]
 [ext_resource type="Texture2D" uid="uid://bwn4kjoyt6kw" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/3_Bathroom_Black_Shadow_16x16.png" id="4_0i67h"]
 

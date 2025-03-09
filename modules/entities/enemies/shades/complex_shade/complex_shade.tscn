@@ -1,20 +1,20 @@
 [gd_scene load_steps=30 format=3 uid="uid://dx5na7ufncxg3"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_7xwuo"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
+[ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
 [ext_resource type="Texture2D" uid="uid://d4ml0vjhqwsbo" path="res://modules/entities/enemies/shades/ShadeWIP_64x64.png" id="3_g1pll"]
-[ext_resource type="Script" path="res://addons/xsm/state.gd" id="4_e4b7j"]
-[ext_resource type="Script" path="res://addons/xsm/state_regions.gd" id="4_ga5u4"]
+[ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="4_e4b7j"]
+[ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="4_ga5u4"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="4_kcpdx"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/roaming.gd" id="6_2ptfn"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/seeking.gd" id="7_8fy0v"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/melee.gd" id="8_pitir"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/stunned.gd" id="9_6lwy3"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/can_attack.gd" id="10_3d4nf"]
-[ext_resource type="Script" path="res://addons/basecomponents/Components/health_component.gd" id="10_5ojq5"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/dead.gd" id="10_m6rex"]
-[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
-[ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
+[ext_resource type="Script" uid="uid://bx6jvvpiqokkf" path="res://modules/entities/enemies/shades/complex_shade/xsm/roaming.gd" id="6_2ptfn"]
+[ext_resource type="Script" uid="uid://bfvba1oo0iob7" path="res://modules/entities/enemies/shades/complex_shade/xsm/seeking.gd" id="7_8fy0v"]
+[ext_resource type="Script" uid="uid://d07o421syyh25" path="res://modules/entities/enemies/shades/complex_shade/xsm/melee.gd" id="8_pitir"]
+[ext_resource type="Script" uid="uid://dftanwwuon216" path="res://modules/entities/enemies/shades/complex_shade/xsm/stunned.gd" id="9_6lwy3"]
+[ext_resource type="Script" uid="uid://b0iwoais0ilj2" path="res://modules/entities/enemies/shades/complex_shade/xsm/can_attack.gd" id="10_3d4nf"]
+[ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_5ojq5"]
+[ext_resource type="Script" uid="uid://cggi1jq1vgh8q" path="res://modules/entities/enemies/shades/complex_shade/xsm/dead.gd" id="10_m6rex"]
+[ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
+[ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
 
 [sub_resource type="Gradient" id="Gradient_ih2li"]
 offsets = PackedFloat32Array(0, 0.431487)
@@ -151,10 +151,10 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
 _data = {
-"Melee": SubResource("Animation_0nojc"),
-"RESET": SubResource("Animation_6qj3b"),
-"Stunned": SubResource("Animation_741tg"),
-"die": SubResource("Animation_4xl6e")
+&"Melee": SubResource("Animation_0nojc"),
+&"RESET": SubResource("Animation_6qj3b"),
+&"Stunned": SubResource("Animation_741tg"),
+&"die": SubResource("Animation_4xl6e")
 }
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_lei1k"]
@@ -355,7 +355,7 @@ debug_path_custom_color = Color(0.788235, 0, 0.517647, 1)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_1um1b")
+&"": SubResource("AnimationLibrary_1um1b")
 }
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]

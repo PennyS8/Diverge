@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="ShakerPreset3D" load_steps=13 format=3 uid="uid://cqfe3012jylqs"]
+[gd_resource type="Resource" script_class="ShakerPreset3D" load_steps=14 format=3 uid="uid://cqfe3012jylqs"]
 
-[ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerTypeCurve3D.gd" id="2_020y4"]
-[ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerTypeRandom3D.gd" id="3_6s2h2"]
-[ext_resource type="Script" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="4_ko4ur"]
+[ext_resource type="Script" uid="uid://be7n3e5yy2oa0" path="res://addons/shaker/data/Vector3/BaseShakerType3D.gd" id="1_huvb5"]
+[ext_resource type="Script" uid="uid://c5tqab3kgkna4" path="res://addons/shaker/data/Vector3/ShakerTypeCurve3D.gd" id="2_020y4"]
+[ext_resource type="Script" uid="uid://bxjo42fre52vf" path="res://addons/shaker/data/Vector3/ShakerTypeRandom3D.gd" id="3_6s2h2"]
+[ext_resource type="Script" uid="uid://bji8h8obydn65" path="res://addons/shaker/data/Vector3/ShakerPreset3D.gd" id="4_ko4ur"]
 
 [sub_resource type="Curve" id="Curve_csfne"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.429245, 0), 0.0, 0.0, 0, 0, Vector2(0.457547, 1), 0.0, 0.0, 0, 0, Vector2(0.787736, 1), 0.0, 0.0, 0, 0, Vector2(0.985849, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -83,8 +84,8 @@ bake_internal = 64
 
 [resource]
 script = ExtResource("4_ko4ur")
-PositionShake = Array[Resource("res://addons/shaker/data/Vector3/BaseShakerType3D.gd")]([SubResource("Resource_n7d86")])
-RotationShake = Array[Resource("res://addons/shaker/data/Vector3/BaseShakerType3D.gd")]([SubResource("Resource_c2tfw"), SubResource("Resource_1e44d")])
-ScaleShake = Array[Resource("res://addons/shaker/data/Vector3/BaseShakerType3D.gd")]([SubResource("Resource_011mv")])
+PositionShake = Array[ExtResource("1_huvb5")]([SubResource("Resource_n7d86")])
+RotationShake = Array[ExtResource("1_huvb5")]([SubResource("Resource_c2tfw"), SubResource("Resource_1e44d")])
+ScaleShake = Array[ExtResource("1_huvb5")]([SubResource("Resource_011mv")])
 bake_internal = 64
 __follow_timeline = true

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://r6dufu5v4ydi"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ump3m"]
-[ext_resource type="Script" path="res://modules/objects/puzzle_pieces/sideways_gate/sideways_gate.gd" id="2_kkphh"]
+[ext_resource type="Script" uid="uid://ctv37g5sudqr0" path="res://modules/objects/puzzle_pieces/sideways_gate/sideways_gate.gd" id="2_kkphh"]
 [ext_resource type="Texture2D" uid="uid://4dge2slnqgfq" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/gate.png" id="2_x6fw8"]
 [ext_resource type="AudioStream" uid="uid://bsnxds0i2hrcb" path="res://assets/placeholder_puzzle_chime.ogg" id="4_6t7kw"]
 

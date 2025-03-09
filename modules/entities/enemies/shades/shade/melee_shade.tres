@@ -1,6 +1,6 @@
 [gd_resource type="VisualShader" load_steps=13 format=3 uid="uid://bioxwr2g6j7rp"]
 
-[ext_resource type="Script" path="res://assets/debug/pixel_perfect_styling/smooth_pixel_node.gd" id="1_71u2b"]
+[ext_resource type="Script" uid="uid://c51bsb6qm3qmt" path="res://assets/debug/pixel_perfect_styling/smooth_pixel_node.gd" id="1_71u2b"]
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_072rw"]
 input_name = "texture"
@@ -131,7 +131,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(654.595, -217.778)
 mode = 1
 flags/light_only = false
 varyings/modulate = "0,5"
