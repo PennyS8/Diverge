@@ -1,6 +1,7 @@
 extends CharacterBody2D
 
 @onready var player = get_tree().get_first_node_in_group("player")
+var sliding_to_target := false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,11 +11,11 @@ func select():
 	if is_in_group("status_tethered"):
 		return
 	add_to_group("selected")
-	modulate = Color(1, 1, 0, 0.5)
+	#modulate = Color(1, 1, 0, 0.5)
 
 func deselect():
 	remove_from_group("selected")
-	modulate = Color(1, 1, 1, 1)
+	#modulate = Color(1, 1, 1, 1)
 
 # Adds itself to the status_tethered global group
 func add_tethered_status():
@@ -27,18 +28,22 @@ func remove_tethered_status():
 	#print("Removing "+self.name+" from group status_tethered")
 	remove_from_group("status_tethered")
 
+func _physics_process(_delta):
+	if player:
+		var dist = global_position.distance_to(player.global_position)
+	
+		if sliding_to_target and dist > 16:
+			global_position = global_position.move_toward(player.global_position, 100*_delta)
+		elif dist <= 16:
+			sliding_to_target = false
+
 # Retracts the length of the yarn, pulling the tethered body to the player
 # TODO: replace tween position with a force on body in dir
 func fling():
-	var player_pos = player.global_position
-	
 	if is_in_group("lever"):
 		return
 	
-	var end_point = global_position.lerp(player_pos, 0.5)
-	
-	var tween = get_tree().create_tween()
-	tween.tween_property(self, "global_position", end_point, 0.2)
+	sliding_to_target = true
 
 # When a tethered node moves further from the other tethered node than the max\
 # length of the yarn apply a force/movement to the other tethered node

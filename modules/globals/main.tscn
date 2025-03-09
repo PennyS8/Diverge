@@ -92,6 +92,8 @@ color = Color(0.219608, 0.219608, 0.219608, 1)
 unique_name_in_owner = true
 script = ExtResource("5_jmjhv")
 
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
 [connection signal="pressed" from="GUI2/TempButtonLayer/MarginContainer/HBoxContainer/SaveButton" to="GUI2/TempButtonLayer/MarginContainer/HBoxContainer/SaveButton" method="_on_pressed"]
 [connection signal="pressed" from="GUI2/TempButtonLayer/MarginContainer/HBoxContainer/LoadButton" to="GUI2/TempButtonLayer/MarginContainer/HBoxContainer/LoadButton" method="_on_pressed"]
 [connection signal="pressed" from="GUI2/TempButtonLayer/MarginContainer/HBoxContainer/DeleteButton" to="GUI2/TempButtonLayer/MarginContainer/HBoxContainer/DeleteButton" method="_on_pressed"]

@@ -1,7 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://mmoilvlj5y12"]
+[gd_scene load_steps=14 format=3 uid="uid://mmoilvlj5y12"]
 
 [ext_resource type="Shader" path="res://modules/entities/enemies/shades/shade/melee_shade2.gdshader" id="1_chk6w"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/gpu_particles_2d.gd" id="2_7w0gh"]
+[ext_resource type="Shader" path="res://modules/entities/enemies/shades/fx/pixelate.gdshader" id="3_hiqmq"]
+[ext_resource type="Texture2D" uid="uid://23ro2j06cy5d" path="res://assets/debug/LOVELY-Antique-Elegant-Carved-Bone-Crochet-pic-1A-720_10.10-322e065c.webp" id="4_mk6ga"]
 
 [sub_resource type="Gradient" id="Gradient_vh7tq"]
 offsets = PackedFloat32Array(0.381029, 0.52)
@@ -26,6 +28,9 @@ shader_parameter/flame_color = Color(0, 0, 0, 1)
 shader_parameter/bounds_size = Vector2(100, 100)
 shader_parameter/origin = Vector2(0, 0)
 shader_parameter/core_flame_radius = 0.8
+shader_parameter/x_pixel_size = 24
+shader_parameter/y_pixel_size = 24
+shader_parameter/pixelSize = 24
 shader_parameter/noise = SubResource("NoiseTexture2D_8awvp")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mqh5u"]
@@ -52,6 +57,16 @@ gradient = SubResource("Gradient_ipymu")
 width = 30
 height = 30
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m8bpe"]
+shader = ExtResource("3_hiqmq")
+shader_parameter/x_pixel_size = 24
+shader_parameter/y_pixel_size = 24
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i13aq"]
+shader = ExtResource("3_hiqmq")
+shader_parameter/x_pixel_size = 24
+shader_parameter/y_pixel_size = 24
+
 [node name="Fire" type="GPUParticles2D"]
 z_index = 3
 material = SubResource("ShaderMaterial_j38ii")
@@ -59,3 +74,16 @@ amount = 200
 process_material = SubResource("ParticleProcessMaterial_mqh5u")
 texture = SubResource("GradientTexture2D_prsa8")
 script = ExtResource("2_7w0gh")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_m8bpe")
+offset_left = -105.0
+offset_top = -79.0
+offset_right = -43.0
+offset_bottom = -3.0
+
+[node name="Lovely-antique-elegant-carved-bone-crochet-pic-1a-72010_10-322e065c" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_i13aq")
+position = Vector2(-410, 223.5)
+scale = Vector2(0.202703, 0.428378)
+texture = ExtResource("4_mk6ga")

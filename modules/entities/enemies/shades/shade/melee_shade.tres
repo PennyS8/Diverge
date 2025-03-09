@@ -1,0 +1,162 @@
+[gd_resource type="VisualShader" load_steps=13 format=3 uid="uid://bioxwr2g6j7rp"]
+
+[ext_resource type="Script" path="res://assets/debug/pixel_perfect_styling/smooth_pixel_node.gd" id="1_71u2b"]
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_072rw"]
+input_name = "texture"
+
+[sub_resource type="VisualShaderNodeVaryingGetter" id="VisualShaderNodeVaryingGetter_80muu"]
+varying_name = "modulate"
+varying_type = 5
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_pt5dy"]
+default_input_values = [0, Quaternion(0, 0, 0, 0), 1, Quaternion(0, 0, 0, 0)]
+expanded_output_ports = [0]
+op_type = 2
+operator = 2
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_fcmvp"]
+parameter_name = "Flash"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeColorParameter" id="VisualShaderNodeColorParameter_3srn4"]
+parameter_name = "ColorParameter"
+default_value_enabled = true
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_cyg15"]
+default_input_values = [0, false, 1, Vector3(1, 1, 1), 2, Vector3(0, 0, 0)]
+expanded_output_ports = [0]
+op_type = 4
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_pnew6"]
+input_name = "texture_pixel_size"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_mlfou"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeCustom" id="VisualShaderNodeCustom_q0gl6"]
+initialized = true
+script = ExtResource("1_71u2b")
+
+[sub_resource type="VisualShaderNodeVaryingSetter" id="VisualShaderNodeVaryingSetter_y2gad"]
+varying_name = "modulate"
+varying_type = 5
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_0dynk"]
+input_name = "color"
+
+[resource]
+code = "shader_type canvas_item;
+render_mode blend_mix;
+
+
+// Varyings
+varying vec4 var_modulate;
+
+uniform bool Flash = false;
+uniform vec4 ColorParameter : source_color = vec4(1.000000, 1.000000, 1.000000, 1.000000);
+
+
+// SmoothPixel
+
+		vec4 smoothpixel(vec2 uv_in, vec2 texture_pixel_size, sampler2D original_texture) {
+			vec2 box_size = clamp(fwidth(uv_in) / texture_pixel_size, 1e-5, 1);
+			// Scale UV by texture size to get texel coordinate
+			vec2 tx = uv_in / texture_pixel_size - 0.5 * box_size;
+			// Compute offset for pixel-sized box filter
+			vec2 tx_offset = smoothstep(vec2(1) - box_size, vec2(1), fract(tx));
+			// Compute bilinear sample UV coordinates
+			vec2 uv = (floor(tx) + 0.5 + tx_offset) * texture_pixel_size;
+			// sample the texture
+			return texture(original_texture, uv);
+		}
+	
+
+void vertex() {
+// Input:3
+	vec4 n_out3p0 = COLOR;
+
+
+// VaryingSetter:2
+	var_modulate = n_out3p0;
+
+
+}
+
+void fragment() {
+// BooleanParameter:17
+	bool n_out17p0 = Flash;
+
+
+// ColorParameter:19
+	vec4 n_out19p0 = ColorParameter;
+
+
+// VaryingGetter:12
+	vec4 n_out12p0 = var_modulate;
+
+
+// Input:5
+	vec2 n_out5p0 = UV;
+
+
+// Input:4
+	vec2 n_out4p0 = TEXTURE_PIXEL_SIZE;
+
+
+	vec4 n_out9p0;
+// SmoothPixel:9
+	{
+		
+				vec4 smoothed_texture = smoothpixel(n_out5p0, n_out4p0, TEXTURE);
+				n_out9p0 = smoothed_texture;
+				
+	}
+
+
+// VectorOp:15
+	vec4 n_out15p0 = n_out12p0 * n_out9p0;
+	float n_out15p4 = n_out15p0.a;
+
+
+	vec3 n_out20p0;
+// Switch:20
+	n_out20p0 = mix(vec3(n_out15p0.xyz), vec3(n_out19p0.xyz), float(n_out17p0));
+
+
+// Output:0
+	COLOR.rgb = n_out20p0;
+	COLOR.a = n_out15p4;
+
+
+}
+"
+graph_offset = Vector2(654.595, -217.778)
+mode = 1
+flags/light_only = false
+varyings/modulate = "0,5"
+nodes/vertex/2/node = SubResource("VisualShaderNodeVaryingSetter_y2gad")
+nodes/vertex/2/position = Vector2(-93.8473, 218.032)
+nodes/vertex/3/node = SubResource("VisualShaderNodeInput_0dynk")
+nodes/vertex/3/position = Vector2(-375, 225)
+nodes/vertex/connections = PackedInt32Array(3, 0, 2, 0)
+nodes/fragment/0/position = Vector2(2640, 400)
+nodes/fragment/4/node = SubResource("VisualShaderNodeInput_pnew6")
+nodes/fragment/4/position = Vector2(320, 480)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_mlfou")
+nodes/fragment/5/position = Vector2(320, 320)
+nodes/fragment/9/node = SubResource("VisualShaderNodeCustom_q0gl6")
+nodes/fragment/9/position = Vector2(1100, 575)
+nodes/fragment/10/node = SubResource("VisualShaderNodeInput_072rw")
+nodes/fragment/10/position = Vector2(360, 680)
+nodes/fragment/12/node = SubResource("VisualShaderNodeVaryingGetter_80muu")
+nodes/fragment/12/position = Vector2(1125, 200)
+nodes/fragment/15/node = SubResource("VisualShaderNodeVectorOp_pt5dy")
+nodes/fragment/15/position = Vector2(1600, 275)
+nodes/fragment/17/node = SubResource("VisualShaderNodeBooleanParameter_fcmvp")
+nodes/fragment/17/position = Vector2(1540, -340)
+nodes/fragment/19/node = SubResource("VisualShaderNodeColorParameter_3srn4")
+nodes/fragment/19/position = Vector2(1540, -140)
+nodes/fragment/20/node = SubResource("VisualShaderNodeSwitch_cyg15")
+nodes/fragment/20/position = Vector2(2180, 160)
+nodes/fragment/connections = PackedInt32Array(5, 0, 9, 0, 10, 0, 9, 2, 4, 0, 9, 1, 17, 0, 20, 0, 20, 0, 0, 0, 19, 0, 20, 1, 15, 0, 20, 2, 9, 0, 15, 1, 12, 0, 15, 0, 15, 4, 0, 1)

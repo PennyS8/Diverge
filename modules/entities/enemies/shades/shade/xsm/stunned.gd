@@ -1,26 +1,29 @@
 @tool
 extends StateAnimation
 
+## THIS STATE EXITS BASED ON THE CONDITIONS OF THE TIMER ATTACHED TO IT.
+## WE POSSIBLY WANT TO PASS THIS IN AS A PARAMETER OR SOMETHING. THE TIMER IS FOR DEBUG.
+## I LOVE YOU.
 
-#
-# FUNCTIONS TO INHERIT IN YOUR STATES
-#
+@onready var agro_region : Area2D = $"../../AgroRegion"
+var hit_by : CharacterBody2D
 
-# This function is called when the state enters
-# XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	pass
+	if _args:
+		if _args is CharacterBody2D:
+			hit_by = _args
+			return
+	hit_by = null
 
-
-# This function is called just after the state enters
-# XSM after_enters the children first, then the parent
-func _after_enter(_args) -> void:
-	pass
-
-
+	
 # This function is called each frame if the state is ACTIVE
-# XSM updates the root first, then the children
+# XSM updates the root first, then the fchildren
 func _on_update(_delta: float) -> void:
+	var possible_follow_targets = agro_region.get_overlapping_bodies()
+	for follow_target in possible_follow_targets:
+		if follow_target.is_in_group("player"):
+			target.follow_target = follow_target
+			
 	target.velocity = target.knockback
 	target.move_and_slide()
 	
@@ -30,30 +33,15 @@ func _on_update(_delta: float) -> void:
 	else:
 		target.knockback = lerp(target.knockback, Vector2.ZERO, 0.2)
 
-
-# This function is called each frame after all the update calls
-# XSM after_updates the children first, then the root
-func _after_update(_delta: float) -> void:
-	pass
-
-
-# This function is called before the State exits
-# XSM before_exits the root first, then the children
-func _before_exit(_args) -> void:
-	pass
-
-
-# This function is called when the State exits
-# XSM before_exits the children first, then the root
-func _on_exit(_args) -> void:
-	pass
-
-
-# when StateAutomaticTimer timeout()
 func _state_timeout() -> void:
-	pass
+	if hit_by:
+		target.follow_target = hit_by
+		change_state("Seeking")
+	else:
+		change_state("Roaming")
+		
 
-
-# Called when any other Timer times out
-func _on_timeout(_name) -> void:
+func _before_exit(_args):
+	
 	pass
+	

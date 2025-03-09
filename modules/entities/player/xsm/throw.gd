@@ -56,7 +56,7 @@ func _on_update(delta: float) -> void:
 			selected_node = get_tree().get_first_node_in_group("selected")
 		
 		# If the player has tethered ONLY an anchor, then grapple the anchor
-		if !(dist <= YARN_LENGTH and selected_node):
+		if dist > YARN_LENGTH and !selected_node:
 			if tethered_node.is_in_group("anchor"):
 				if hold:
 					pass

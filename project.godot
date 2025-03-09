@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Project Diverge"
-run/main_scene="res://modules/globals/main.tscn"
+run/main_scene="res://modules/levels/school_modular_levels/school_dungeon_dec18/school_dungeon_dec18.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 run/max_fps=120
 config/icon="res://assets/RatStompers.png"
@@ -167,6 +167,7 @@ locale/translations_pot_files=PackedStringArray("res://modules/dialogue/dialogue
 2d_physics/layer_8="Projectile"
 2d_physics/layer_9="Tetherable"
 2d_physics/layer_10="CameraBoundryCollider"
+2d_physics/layer_11="SoftCollisions"
 2d_physics/layer_y="BoxEdge"
 
 [rendering]

@@ -16,7 +16,8 @@ func _on_anim_finished() -> void:
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	target.modulate = Color.REBECCA_PURPLE
+	pass
+	#target.modulate = Color.REBECCA_PURPLE
 
 # when StateAutomaticTimer timeout()
 func _state_timeout() -> void:

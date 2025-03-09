@@ -8,8 +8,6 @@ extends StateAnimation
 
 @export var dash_speed : float
 
-## Unit: seconds
-@export var dash_time : float
 var dashing
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
@@ -23,7 +21,7 @@ func _on_enter(_args) -> void:
 	
 	# grab player location once
 	var player_position = target.follow_target.global_position
-	var dash_direction = target.global_position.direction_to(player_position).normalized()
+	var dash_direction = -target.global_position.direction_to(player_position).normalized()
 	
 	#distance in px
 	var dash_force = dash_direction * dash_distance
@@ -47,6 +45,9 @@ func _on_update(_delta: float) -> void:
 		
 		target.velocity = current_agent_position.direction_to(next_path_position) * dash_speed
 		target.move_and_slide()
+
+	elif target.follow_target:
+		change_state("Seeking")
 	
 func _on_exit(_args) -> void:
 	play("RESET")

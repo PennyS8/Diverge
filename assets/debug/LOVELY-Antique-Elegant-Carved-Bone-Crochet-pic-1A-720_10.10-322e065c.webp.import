@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://sl51x8oswnsd"
-path="res://.godot/imported/Idle.png-0976b5a7e6fd3d315572b9a8f4425c85.ctex"
+uid="uid://23ro2j06cy5d"
+path="res://.godot/imported/LOVELY-Antique-Elegant-Carved-Bone-Crochet-pic-1A-720_10.10-322e065c.webp-27718c271c02df87d3c9d71ac31c06a8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle.png"
-dest_files=["res://.godot/imported/Idle.png-0976b5a7e6fd3d315572b9a8f4425c85.ctex"]
+source_file="res://assets/debug/LOVELY-Antique-Elegant-Carved-Bone-Crochet-pic-1A-720_10.10-322e065c.webp"
+dest_files=["res://.godot/imported/LOVELY-Antique-Elegant-Carved-Bone-Crochet-pic-1A-720_10.10-322e065c.webp-27718c271c02df87d3c9d71ac31c06a8.ctex"]
 
 [params]
 
@@ -19,7 +19,7 @@ compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=1
+compress/normal_map=0
 compress/channel_pack=0
 mipmaps/generate=false
 mipmaps/limit=-1

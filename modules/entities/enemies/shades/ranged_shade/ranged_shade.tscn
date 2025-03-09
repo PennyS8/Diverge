@@ -1,6 +1,7 @@
-[gd_scene load_steps=27 format=3 uid="uid://bi6255tx4u0jr"]
+[gd_scene load_steps=31 format=3 uid="uid://bi6255tx4u0jr"]
 
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade.gd" id="1_0ppdu"]
+[ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="1_03uea"]
 [ext_resource type="Script" path="res://addons/xsm/state.gd" id="2_81f8r"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/shade/xsm/roaming.gd" id="3_vol8a"]
 [ext_resource type="Script" path="res://modules/entities/enemies/shades/ranged_shade/charge_attack.gd" id="4_t3lex"]
@@ -12,17 +13,7 @@
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="9_5uvqb"]
 [ext_resource type="Script" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="10_o57fr"]
 [ext_resource type="Texture2D" uid="uid://d4ml0vjhqwsbo" path="res://modules/entities/enemies/shades/ShadeWIP_64x64.png" id="13_wwonh"]
-
-[sub_resource type="Gradient" id="Gradient_qqgag"]
-offsets = PackedFloat32Array(0, 0.431487)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_x1clu"]
-gradient = SubResource("Gradient_qqgag")
-width = 48
-height = 16
-fill = 1
-fill_from = Vector2(0.5, 0.5)
+[ext_resource type="Animation" path="res://assets/Hitflash.res" id="14_qo4ni"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
 radius = 8.1
@@ -103,7 +94,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:self_modulate")
+tracks/0/path = NodePath("Display/Sprite2D:self_modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -135,6 +126,20 @@ _data = {
 "die": SubResource("Animation_150i5")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_so1fn"]
+radius = 12.0
+
+[sub_resource type="Gradient" id="Gradient_qqgag"]
+offsets = PackedFloat32Array(0, 0.431487)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_x1clu"]
+gradient = SubResource("Gradient_qqgag")
+width = 48
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
 [sub_resource type="Curve" id="Curve_ne7pj"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -142,8 +147,26 @@ point_count = 2
 [sub_resource type="Gradient" id="Gradient_8rhcx"]
 colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_so1fn"]
-radius = 12.0
+[sub_resource type="Animation" id="Animation_0l2b6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display/Sprite2D:material:shader_parameter/Flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nkxn5"]
+_data = {
+"Hitflash": ExtResource("14_qo4ni"),
+"RESET": SubResource("Animation_0l2b6")
+}
 
 [node name="RangedShade" type="CharacterBody2D" groups=["enemy", "saved_data", "tetherable_body"]]
 z_index = 1
@@ -152,9 +175,6 @@ collision_layer = 264
 collision_mask = 95
 motion_mode = 1
 script = ExtResource("1_0ppdu")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_x1clu")
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
@@ -270,7 +290,19 @@ libraries = {
 "": SubResource("AnimationLibrary_1um1b")
 }
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="TetherableArea2D" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
+shape = SubResource("CircleShape2D_so1fn")
+
+[node name="Display" type="Node2D" parent="."]
+
+[node name="Shadow" type="Sprite2D" parent="Display"]
+texture = SubResource("GradientTexture2D_x1clu")
+
+[node name="HitFX" type="CPUParticles2D" parent="Display"]
 emitting = false
 amount = 30
 one_shot = true
@@ -291,20 +323,18 @@ scale_amount_curve = SubResource("Curve_ne7pj")
 color = Color(0.488605, 0.427964, 0.528217, 1)
 color_ramp = SubResource("Gradient_8rhcx")
 
-[node name="TetherableArea2D" type="Area2D" parent="."]
-collision_layer = 256
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
-shape = SubResource("CircleShape2D_so1fn")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="Display"]
 self_modulate = Color(0.806, 0, 2.957, 1)
 show_behind_parent = true
-texture_filter = 1
+material = ExtResource("1_03uea")
 texture = ExtResource("13_wwonh")
 offset = Vector2(0, -21)
 region_rect = Rect2(21, 14, 22, 40)
+
+[node name="HitflashPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nkxn5")
+}
 
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="Hit" from="HurtBoxComponent2D" to="." method="_on_hurt_box_component_2d_hit"]

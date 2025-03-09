@@ -1,23 +1,20 @@
 @tool
-extends State
+extends StateSound
 
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
 
-@onready var agro_region : Area2D = $"../../AgroRegion"
+@onready var agro_region : Area2D = $"../../../AgroRegion"
+@onready var soft_collision = $"../../../SoftCollision"
 
 @onready var movement_target_pos : Vector2
 @export var nav_agent : NavigationAgent2D
 @export var movement_speed : float = 25
-
-var roam_timer : Timer
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	_roam_timer()
-	nav_agent.target_desired_distance = 10
-	nav_agent.path_desired_distance = 20
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
@@ -41,6 +38,10 @@ func _on_update(_delta: float) -> void:
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
 	
 	target.velocity = current_agent_position.direction_to(next_path_position) * movement_speed
+	
+	if soft_collision.is_colliding():
+		target.velocity += soft_collision.get_push_vector() * _delta * 600
+	
 	target.move_and_slide()
 
 func _roam_timer():
@@ -48,11 +49,7 @@ func _roam_timer():
 	# pick random location within 32 pixels
 	# walk to it
 	var random_time = randf_range(2, 4)
-	roam_timer = Timer.new()
-	add_child(roam_timer)
-	roam_timer.wait_time = random_time
-	roam_timer.one_shot = true
-	roam_timer.start()
+	var roam_timer = get_tree().create_timer(random_time)
 	roam_timer.timeout.connect(_roam_random)
 	
 func _roam_random():
@@ -77,7 +74,7 @@ func _before_exit(_args) -> void:
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
-	roam_timer.queue_free()
+	pass
 
 
 # when StateAutomaticTimer timeout()
