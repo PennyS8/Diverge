@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var sprite = $Sprite2D
 @onready var frames = sprite.texture.get_width() / sprite.region_rect.size.x
 
+var default_position
 var pushing := false
 
 # TODO: Figure out how to pass the specific sprite texture in the future
@@ -10,11 +11,13 @@ var pushing := false
 func _ready() -> void:
 	var random = randi_range(0, frames - 1)
 	sprite.region_rect.position.x = random * sprite.region_rect.size.x
+	
+	default_position = global_position
 
 func on_save_game(saved_data:Array[SavedData]):
 	var my_data = SavedData.new()
 	
-	my_data.position = global_position
+	my_data.position = default_position
 	my_data.scene_path = scene_file_path
 	# Gets path up to node for reinstantiation
 	my_data.parent_node_path = get_parent().get_path()
@@ -27,6 +30,8 @@ func on_before_load_game():
 
 func on_load_game(saved_data:SavedData):
 	global_position = saved_data.position
+	# Assigns saved position to default in order to prevent box from saving (0,0) location.
+	default_position = saved_data.position
 
 func push(area: HitBoxComponent2D):
 	var direction = area.get_parent().swing_dir
