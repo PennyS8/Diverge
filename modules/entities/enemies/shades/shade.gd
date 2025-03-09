@@ -45,6 +45,11 @@ func _physics_process(_delta: float) -> void:
 		$AgroRegion.monitoring = false
 	else:
 		$AgroRegion.monitoring = true
+	
+	if get_node_or_null("SoftCollision"):
+		if $SoftCollision.is_colliding():
+			velocity += $SoftCollision.get_push_vector() * _delta * 200
+	
 
 func _on_health_component_died() -> void:
 	$ShadeFSM.change_state("Dead")

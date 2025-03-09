@@ -45,6 +45,7 @@ func _on_update(_delta: float) -> void:
 		
 		target.velocity = current_agent_position.direction_to(next_path_position) * dash_speed
 		target.move_and_slide()
+
 	elif target.follow_target:
 		change_state("Seeking")
 	
