@@ -202,7 +202,7 @@ target_path = NodePath("")
 timed = true
 waiting_time = 1.0
 on_timer_finished = 0
-next_state = NodePath("")
+next_state = NodePath("../Roaming")
 
 [node name="Stunned" type="Node" parent="ShadeFSM"]
 script = ExtResource("6_6q11h")

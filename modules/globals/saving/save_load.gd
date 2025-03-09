@@ -43,8 +43,17 @@ func load_game():
 	for item in saved_game.saved_data:
 		var scene = load(item.scene_path) as PackedScene
 		var restored_node = scene.instantiate()
-		restored_node.global_position = item.position
-		main.add_child(restored_node)
+		var node = get_node(item.parent_node_path)
+		
+		# If the node path does not exist, add the item to main
+		# NOTE: This shouldn't ever occur but is moreso a sanity check to be safe
+		if node != null:
+			node.add_child(restored_node)
+		else:
+			main.add_child(restored_node)
+		
+		if restored_node.has_method("on_load_game"):
+			restored_node.on_load_game(item)
 		
 		if restored_node.has_method("on_load_game"):
 			restored_node.on_load_game(item)
@@ -62,6 +71,8 @@ func room_save(room_id):
 	if DirAccess.open("user://temp") == null:
 		DirAccess.make_dir_absolute("user://temp")
 	
+	print("Saved Level: " + room_id)
+	
 	var saved_room:SavedGame = SavedGame.new()
 	
 	var saved_data:Array[SavedData] = []
@@ -78,6 +89,8 @@ func room_load(room_id):
 	var save_room_path = "user://temp/saveroom_{id}.tres"
 	var format_path = save_room_path.format({"id": room_id})
 	
+	print("Loaded Level: " + room_id)
+	
 	# Makes sure to not load if save file doesn't exist
 	if !(save_exists(format_path)):
 		print("No existing save file.")
@@ -90,10 +103,27 @@ func room_load(room_id):
 	for item in saved_room.saved_data:
 		var scene = load(item.scene_path) as PackedScene
 		var restored_node = scene.instantiate()
-		main.add_child(restored_node)
+		var node = get_node(item.parent_node_path)
+		
+		# Gets node name before resinstantiation. This is to prevent us from having
+		# "CharacterBody@12" or some randomized name similar to that in Remote
+		var item_name = restored_node.name
+
+		
+		# If the node path does not exist, add the item to main
+		# NOTE: This shouldn't ever occur but is moreso a sanity check to be safe
+		if node != null:
+			node.add_child(restored_node)
+		else:
+			main.add_child(restored_node)
 		
 		if restored_node.has_method("on_load_game"):
 			restored_node.on_load_game(item)
+		
+		# Checks if the restored node name has been set to randomized unique name. If
+		# so, it renames it to what the item is and Godot adds a unique identifier
+		if restored_node.name != item_name:
+			restored_node.name = item_name
 
 func delete_room_saves():
 	var room_save_path = "user://temp"

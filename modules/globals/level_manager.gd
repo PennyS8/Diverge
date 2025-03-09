@@ -80,6 +80,10 @@ func _swap_level(path : String, entrance_name : String = "0"):
 	else:
 		player.global_position = Vector2.ZERO
 	
+	# Resets the scenes name if it gets set to a randomized name by Godot
+	if current_level.name != new_level_name:
+		current_level.name = new_level_name
+	
 	# Loads level while the tween is still happening to prevent player from seeing loading.
 	SaveAndLoad.room_load(new_level_name)
 
