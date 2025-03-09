@@ -26,6 +26,10 @@ GameManager="*res://modules/globals/game_manager.gd"
 SaveAndLoad="*res://modules/globals/saving/save_load.gd"
 TetherableBody="*res://modules/status_effects/tetherable_body.gd"
 
+[debug]
+
+shapes/navigation/geometry_face_color=Color(0.501961, 1, 1, 0)
+
 [dialogue_manager]
 
 general/balloon_path="res://modules/dialogue/test_dialogue.tscn"
