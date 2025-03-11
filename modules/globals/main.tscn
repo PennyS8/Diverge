@@ -1,16 +1,16 @@
 [gd_scene load_steps=13 format=3 uid="uid://b8ywe7vivb1en"]
 
-[ext_resource type="Script" uid="uid://nsrx7kwfq13q" path="res://modules/globals/main.gd" id="1_2uu7l"]
+[ext_resource type="Script" uid="uid://hrfgvn40midl" path="res://modules/globals/main.gd" id="1_2uu7l"]
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="2_wwsun"]
 [ext_resource type="PackedScene" uid="uid://gna64jq1jkf1" path="res://modules/ui/debug/num_keys/num_keys.tscn" id="3_wjh11"]
 [ext_resource type="PackedScene" uid="uid://dlgu6ii31q1ht" path="res://modules/ui/hud/player_hud/player_hud.tscn" id="4_1al8n"]
 [ext_resource type="Script" uid="uid://t66eoi8gmq5o" path="res://modules/globals/saving/save_load.gd" id="5_jmjhv"]
-[ext_resource type="Script" uid="uid://beis6xfiaj4v2" path="res://modules/globals/temp_buttons/save_button.gd" id="5_yg3b2"]
-[ext_resource type="Script" uid="uid://7hbnfyccmv87" path="res://modules/globals/temp_buttons/load_button.gd" id="6_rd2v5"]
-[ext_resource type="Script" uid="uid://de01judd51lpr" path="res://modules/globals/temp_buttons/delete_button.gd" id="7_dubel"]
-[ext_resource type="Script" uid="uid://cmxg2nju60sa6" path="res://modules/globals/inventory_panel.gd" id="8_02pmu"]
+[ext_resource type="Script" uid="uid://ejsho4gnd1ks" path="res://modules/globals/temp_buttons/save_button.gd" id="5_yg3b2"]
+[ext_resource type="Script" uid="uid://c0ab3s822b7fl" path="res://modules/globals/temp_buttons/load_button.gd" id="6_rd2v5"]
+[ext_resource type="Script" uid="uid://7vm6xnytapgt" path="res://modules/globals/temp_buttons/delete_button.gd" id="7_dubel"]
+[ext_resource type="Script" uid="uid://c8qxb50jimxvj" path="res://modules/globals/inventory_panel.gd" id="8_02pmu"]
 [ext_resource type="PackedScene" uid="uid://ms4bp1b33wt2" path="res://modules/ui/hud/wyvern_inv/notebook_panel.tscn" id="8_dbv5s"]
-[ext_resource type="Shader" uid="uid://cfnilwjdk0x11" path="res://modules/globals/blur.gdshader" id="9_nlpsi"]
+[ext_resource type="Shader" uid="uid://c7ga40mwai0hs" path="res://modules/globals/blur.gdshader" id="9_nlpsi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yc34w"]
 shader = ExtResource("9_nlpsi")

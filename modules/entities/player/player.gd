@@ -16,10 +16,16 @@ var ledge_collision : Area2D
 
 var hook_locked := true
 
+# this is to pass unhandled input to states
+signal unhandled_input_received(event)
+
 @onready var health_component = $HealthComponent
 
 var curr_camera_boundry : Area2D
 
+func _unhandled_input(event: InputEvent) -> void:
+	unhandled_input_received.emit(event)
+	
 func _process(_delta):
 	_camera_move(_delta)
 	

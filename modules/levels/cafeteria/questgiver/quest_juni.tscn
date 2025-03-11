@@ -1,0 +1,96 @@
+[gd_scene load_steps=12 format=3 uid="uid://crnbqsmdob0o2"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_hs5t4"]
+[ext_resource type="Script" uid="uid://dwqn6g4y6m777" path="res://modules/levels/cafeteria/questgiver/quest_juni.gd" id="2_0r8bs"]
+[ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="3_k8jxq"]
+[ext_resource type="Texture2D" uid="uid://sl51x8oswnsd" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle.png" id="4_w4tam"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
+radius = 6.0
+
+[sub_resource type="Gradient" id="Gradient_ih2li"]
+offsets = PackedFloat32Array(0, 0.431487)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ia2jp"]
+gradient = SubResource("Gradient_ih2li")
+width = 48
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_x568u"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_00tmr"]
+colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjuao"]
+resource_local_to_scene = true
+shader = ExtResource("3_k8jxq")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_1us1g"]
+radius = 25.1794
+
+[node name="QuestJuni" type="StaticBody2D" groups=["enemy", "saved_data", "tetherable_body"]]
+z_index = 1
+y_sort_enabled = true
+material = ExtResource("1_hs5t4")
+collision_layer = 8
+collision_mask = 83
+script = ExtResource("2_0r8bs")
+
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_56qhg")
+
+[node name="Display" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="Shadow" type="Sprite2D" parent="Display"]
+texture = SubResource("GradientTexture2D_ia2jp")
+
+[node name="SmokeFX" type="CPUParticles2D" parent="Display"]
+position = Vector2(0, -12)
+amount = 10
+lifetime = 2.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angle_max = 270.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_x568u")
+color = Color(0.214103, 0.214103, 0.214103, 1)
+color_ramp = SubResource("Gradient_00tmr")
+hue_variation_min = -0.51
+hue_variation_max = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Display"]
+self_modulate = Color(0.134467, 0.000247055, 0.303661, 1)
+material = SubResource("ShaderMaterial_mjuao")
+position = Vector2(-1, 0)
+texture = ExtResource("4_w4tam")
+offset = Vector2(0, -11)
+hframes = 8
+vframes = 6
+frame = 8
+region_rect = Rect2(21, 14, 22, 40)
+
+[node name="InteractionCircle" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractionCircle"]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_1us1g")
+
+[connection signal="body_entered" from="InteractionCircle" to="." method="_on_interaction_circle_body_entered"]
