@@ -19,8 +19,8 @@ size = Vector2(24, 27)
 z_index = 1
 y_sort_enabled = true
 material = ExtResource("1_w4i0l")
-collision_layer = 80
-collision_mask = 4
+collision_layer = 2128
+collision_mask = 2052
 script = ExtResource("1_vlwj6")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

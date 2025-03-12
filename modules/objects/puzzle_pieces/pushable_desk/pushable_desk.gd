@@ -6,8 +6,6 @@ extends CharacterBody2D
 var default_position
 var pushing := false
 
-# TODO: Figure out how to pass the specific sprite texture in the future
-# to allow for multiple desk sprites.
 func _ready() -> void:
 	var random = randi_range(0, frames - 1)
 	sprite.region_rect.position.x = random * sprite.region_rect.size.x

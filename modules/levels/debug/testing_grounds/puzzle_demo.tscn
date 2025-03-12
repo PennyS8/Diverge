@@ -149,15 +149,47 @@ visible = false
 position = Vector2(590, 155)
 
 [node name="Player" parent="." instance=ExtResource("2_0ti5x")]
-visible = false
 
-[node name="Fall" parent="Player/PlayerFSM/Movement" index="9"]
-next_state = NodePath("../Lasso")
+[node name="DashTimer" parent="Player/PlayerFSM/DashPossible" index="1"]
+next_state = NodePath("../CanDash")
 
-[node name="Hop" parent="Player/PlayerFSM/Movement" index="10"]
-next_state = NodePath("../Lasso")
+[node name="WalkDown" parent="Player/PlayerFSM/Movement/Walk" index="0"]
+next_state = NodePath("../WalkRight")
 
-[node name="Camera2D" parent="Player" index="9"]
+[node name="WalkRight" parent="Player/PlayerFSM/Movement/Walk" index="1"]
+next_state = NodePath("../WalkUp")
+
+[node name="WalkUp" parent="Player/PlayerFSM/Movement/Walk" index="2"]
+next_state = NodePath("../WalkLeft")
+
+[node name="DashDown" parent="Player/PlayerFSM/Movement/Dash" index="0"]
+next_state = NodePath("../DashRight")
+
+[node name="DashRight" parent="Player/PlayerFSM/Movement/Dash" index="1"]
+next_state = NodePath("../DashUp")
+
+[node name="DashUp" parent="Player/PlayerFSM/Movement/Dash" index="2"]
+next_state = NodePath("../DashLeft")
+
+[node name="AttackUp" parent="Player/PlayerFSM/Movement/AttackMelee" index="0"]
+next_state = NodePath("../AttackRight")
+
+[node name="AttackRight" parent="Player/PlayerFSM/Movement/AttackMelee" index="1"]
+next_state = NodePath("../AttackDown")
+
+[node name="AttackDown" parent="Player/PlayerFSM/Movement/AttackMelee" index="2"]
+next_state = NodePath("../AttackLeft")
+
+[node name="HopUp" parent="Player/PlayerFSM/Movement/Hop" index="0"]
+next_state = NodePath("../HopLeft")
+
+[node name="HopLeft" parent="Player/PlayerFSM/Movement/Hop" index="1"]
+next_state = NodePath("../HopRight")
+
+[node name="HopRight" parent="Player/PlayerFSM/Movement/Hop" index="2"]
+next_state = NodePath("../HopDown")
+
+[node name="Camera2D" parent="Player" index="8"]
 limit_left = -170
 limit_top = -139
 limit_right = 1369
