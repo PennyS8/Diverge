@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://bqw3u8f8a3q1a"
+path="res://.godot/imported/juni_hungry.dialogue-ce8d13d89e4d999cae60f30dfa2ad79b.tres"
+
+[deps]
+
+source_file="res://modules/levels/cafeteria/questgiver/juni_hungry.dialogue"
+dest_files=["res://.godot/imported/juni_hungry.dialogue-ce8d13d89e4d999cae60f30dfa2ad79b.tres"]
+
+[params]
+
+defaults=true

@@ -24,11 +24,11 @@ signal unhandled_input_received(event)
 var curr_camera_boundry : Area2D
 
 func _unhandled_input(event: InputEvent) -> void:
+	dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	_camera_move()
 	unhandled_input_received.emit(event)
 	
-func _process(_delta):
-	_camera_move(_delta)
-	
+func _process(_delta):	
 	# Camera Boundries MUST NOT overlap eachother, and must have the collision\
 	# layer 9 (i.e., "CameraBoundryCollider").
 	
@@ -52,7 +52,7 @@ func check_unlock_hook():
 	hook_locked = false
 	can_attack()
 	
-func _camera_move(_delta):
+func _camera_move():
 	if !lock_camera:
 		$Camera2D.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25
 		$Camera2D.position_smoothing_enabled = true

@@ -10,16 +10,15 @@ func _on_update(_delta):
 	pass
 
 func state_unhandled_input(event : InputEvent):
-	target.dir = event.get_vector("move_left", "move_right", "move_up", "move_down")
-
-	if event.is_action_just_pressed("override_push"):
-		change_state("Push")
-	elif event.is_action_just_pressed("override_fall"):
-		change_state("Fall")
-	elif event.is_action_just_pressed("override_drop"):
-		change_state("Drop")
-	elif event.is_action_just_pressed("recall"):
-		change_state("Recall")
+	if event is InputEventAction:
+		if event.is_action_just_pressed("override_push"):
+			change_state("Push")
+		elif event.is_action_just_pressed("override_fall"):
+			change_state("Fall")
+		elif event.is_action_just_pressed("override_drop"):
+			change_state("Drop")
+		elif event.is_action_just_pressed("recall"):
+			change_state("Recall")
 
 func _after_update(_delta):
 	target.move_and_slide()
