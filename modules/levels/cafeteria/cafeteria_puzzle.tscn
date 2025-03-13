@@ -74,7 +74,7 @@ position = Vector2(-1, 10)
 
 [node name="SmallTable2" parent="Props" instance=ExtResource("3_mrivh")]
 z_index = 1
-position = Vector2(-28, -148)
+position = Vector2(-20, -128)
 
 [node name="ChairDown" parent="Props/SmallTable2" instance=ExtResource("7_tevex")]
 z_index = 1
