@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://ujycspak5aug"
-path="res://.godot/imported/portrait.png-47b775281b1df893ac0fa81cd1370b7c.ctex"
+path="res://.godot/imported/portrait.png-2c8b1da796598e01c6d4d3bc640ea4fd.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://modules/dialogue/character_portraits/juniper/portrait.png"
-dest_files=["res://.godot/imported/portrait.png-47b775281b1df893ac0fa81cd1370b7c.ctex"]
+source_file="res://modules/dialogue/character/juniper/portrait.png"
+dest_files=["res://.godot/imported/portrait.png-2c8b1da796598e01c6d4d3bc640ea4fd.ctex"]
 
 [params]
 

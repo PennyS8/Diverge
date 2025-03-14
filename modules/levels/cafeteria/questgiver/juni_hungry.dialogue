@@ -1,12 +1,20 @@
 ~ start
-Juniper: Ughhh, my head hurts so much... What are you even talking about?
-Test test test.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+Juniper: Hello! You're not attacking me!
+Shaded Figure: i feel awful. why do i feel awful. i did everything right.
+Shaded Figure: i came to class. i studied. i went for a walk. everything. i've exhausted my options.
+- Have you eaten anything?
+	Shaded Figure: i looked at the food. someone took the last of the good food before i could get to them. so i'm having water for lunch.
+	Juniper: I think that's why you're feeling poorly.
+- Aren't you missing something?
+	Shaded Figure: ohhh... that's right. i'm in the cafeteria, aren't i?
+	Shaded Figure: anyway... i couldn't get the only good food. all the other food has an awful texture.
+	Shaded Figure: well, except for the chicken burger. but i ate that every day last semester and it tastes like metal now.
+	Juniper: Hey, same here!
+Juniper: Pro tip: I actually found out that the noodles here are pretty good if you give them a chance.
+Shaded Figure: i'm fine with water, thanks. but i need to figure out why i feel so badly.
+Juniper: ...
+Juniper: [i]to self[/i] I should see if I can find any noodles for them.
 => END
+
+~ fed
+Shaded Figure:

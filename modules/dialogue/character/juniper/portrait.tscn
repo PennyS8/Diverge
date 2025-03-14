@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://1a1728dpk24t"]
 
 [ext_resource type="Script" uid="uid://cd1nd5ihy6jij" path="res://modules/dialogue/portrait_balloon/base_portrait.gd" id="1_w3nrr"]
-[ext_resource type="Texture2D" uid="uid://ujycspak5aug" path="res://modules/dialogue/character_portraits/juniper/portrait.png" id="2_ecodr"]
+[ext_resource type="Texture2D" uid="uid://ujycspak5aug" path="res://modules/dialogue/character/juniper/portrait.png" id="2_ecodr"]
 
 [sub_resource type="Animation" id="Animation_4xwua"]
 length = 0.001

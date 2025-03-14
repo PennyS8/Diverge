@@ -154,8 +154,9 @@ func hide_character() -> void:
 
 func show_character(character_name: String) -> void:
 	if not character_name: return
-
-	var portrait_scene: PackedScene = load("res://modules/dialogue/character_portraits/%s/portrait.tscn" % character_name.to_lower())
+	talk_sound = load("res://modules/dialogue/character/%s/talk.wav" % character_name.to_lower())
+	
+	var portrait_scene: PackedScene = load("res://modules/dialogue/character/%s/portrait.tscn" % character_name.to_lower())
 	if not portrait_scene: return
 	portrait = portrait_scene.instantiate()
 	portrait_position.add_child(portrait)
