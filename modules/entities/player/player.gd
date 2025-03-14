@@ -24,14 +24,14 @@ signal unhandled_input_received(event)
 var curr_camera_boundry : Area2D
 
 func _unhandled_input(event: InputEvent) -> void:
-	dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	_camera_move()
 	unhandled_input_received.emit(event)
-	
+	_camera_move()
+	dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+
 func _process(_delta):	
 	# Camera Boundries MUST NOT overlap eachother, and must have the collision\
 	# layer 9 (i.e., "CameraBoundryCollider").
-	
+
 	var areas = $Area2D.get_overlapping_areas()
 	if !areas: # Check if null (or empty)
 		return

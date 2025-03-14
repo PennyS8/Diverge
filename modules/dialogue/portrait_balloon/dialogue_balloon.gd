@@ -80,7 +80,9 @@ var dialogue_line: DialogueLine:
 			await show_character(dialogue_line.character)
 
 		if has_character:
-			portrait.emote(dialogue_line.tags)
+			if is_instance_valid(portrait):
+				portrait.emote(dialogue_line.tags)
+				
 			will_hide_balloon = false
 			dialogue_label.show()
 			if not dialogue_line.text.is_empty():

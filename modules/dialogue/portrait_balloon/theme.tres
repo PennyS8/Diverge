@@ -1,4 +1,6 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://dy0m5bq4qqxya"]
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://dy0m5bq4qqxya"]
+
+[ext_resource type="Texture2D" uid="uid://dbvdskabxbwn7" path="res://assets/hud/kenney_ui-pack-pixel-adventure/Tilesheets/Large tiles/Thick outline/tilemap_packed_4x.png" id="1_851qe"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -44,12 +46,13 @@ expand_margin_top = 5.0
 expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uy0d5"]
-bg_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_xwr4d"]
+texture = ExtResource("1_851qe")
+texture_margin_left = 24.0
+texture_margin_top = 24.0
+texture_margin_right = 24.0
+texture_margin_bottom = 24.0
+region_rect = Rect2(0, 128, 128, 128)
 
 [resource]
 default_font_size = 20
@@ -61,4 +64,4 @@ MarginContainer/constants/margin_bottom = 15
 MarginContainer/constants/margin_left = 30
 MarginContainer/constants/margin_right = 30
 MarginContainer/constants/margin_top = 15
-Panel/styles/panel = SubResource("StyleBoxFlat_uy0d5")
+Panel/styles/panel = SubResource("StyleBoxTexture_xwr4d")

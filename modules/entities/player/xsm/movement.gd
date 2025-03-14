@@ -8,6 +8,14 @@ func _on_enter(_args):
 
 func _on_update(_delta):
 	pass
+	#if Input.is_action_just_pressed("override_push"):
+		#change_state("Push")
+	#elif Input.is_action_just_pressed("override_fall"):
+		#change_state("Fall")
+	#elif Input.is_action_just_pressed("override_drop"):
+		#change_state("Drop")
+	#elif Input.is_action_just_pressed("recall"):
+			#change_state("Recall")
 
 func state_unhandled_input(event : InputEvent):
 	if event is InputEventAction:

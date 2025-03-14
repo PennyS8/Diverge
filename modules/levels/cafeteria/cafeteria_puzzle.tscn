@@ -176,11 +176,239 @@ texture = SubResource("AtlasTexture_rtce6")
 [node name="BeegTable" parent="Props" instance=ExtResource("4_f2utr")]
 position = Vector2(190, 34)
 
+[node name="ChairDown4" parent="Props/BeegTable" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(68, -34)
+
+[node name="ChairDown5" parent="Props/BeegTable" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(87, -34)
+
+[node name="ChairDown6" parent="Props/BeegTable" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(106, -34)
+
+[node name="ChairDown" parent="Props/BeegTable" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(11, -34)
+
+[node name="ChairDown2" parent="Props/BeegTable" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(30, -34)
+
+[node name="ChairDown3" parent="Props/BeegTable" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(49, -34)
+
+[node name="ChairDown7" parent="Props/BeegTable" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(-43, -34)
+
+[node name="ChairDown8" parent="Props/BeegTable" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(-24, -34)
+
+[node name="ChairDown9" parent="Props/BeegTable" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(-7, -34)
+
+[node name="ChairDown10" parent="Props/BeegTable" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(-104, -34)
+
+[node name="ChairDown11" parent="Props/BeegTable" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(-84, -34)
+
+[node name="ChairDown12" parent="Props/BeegTable" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(-64, -34)
+
+[node name="ChairUp" parent="Props/BeegTable" instance=ExtResource("6_w1428")]
+position = Vector2(-99, 13)
+
+[node name="ChairUp2" parent="Props/BeegTable" instance=ExtResource("6_w1428")]
+position = Vector2(-76, 13)
+
+[node name="ChairUp3" parent="Props/BeegTable" instance=ExtResource("6_w1428")]
+position = Vector2(-54, 13)
+
+[node name="ChairUp4" parent="Props/BeegTable" instance=ExtResource("6_w1428")]
+position = Vector2(-31, 13)
+
+[node name="ChairUp5" parent="Props/BeegTable" instance=ExtResource("6_w1428")]
+position = Vector2(-7, 11)
+
+[node name="ChairUp6" parent="Props/BeegTable" instance=ExtResource("6_w1428")]
+position = Vector2(16, 11)
+
+[node name="ChairUp7" parent="Props/BeegTable" instance=ExtResource("6_w1428")]
+position = Vector2(44, 13)
+
+[node name="ChairUp8" parent="Props/BeegTable" instance=ExtResource("6_w1428")]
+position = Vector2(67, 13)
+
+[node name="ChairUp9" parent="Props/BeegTable" instance=ExtResource("6_w1428")]
+position = Vector2(89, 12)
+
+[node name="ChairUp10" parent="Props/BeegTable" instance=ExtResource("6_w1428")]
+position = Vector2(112, 12)
+
 [node name="BeegTable2" parent="Props" instance=ExtResource("4_f2utr")]
-position = Vector2(191, -129)
+position = Vector2(178, -137)
+
+[node name="ChairDown4" parent="Props/BeegTable2" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(68, -34)
+
+[node name="ChairDown5" parent="Props/BeegTable2" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(87, -34)
+
+[node name="ChairDown6" parent="Props/BeegTable2" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(106, -34)
+
+[node name="ChairDown" parent="Props/BeegTable2" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(11, -34)
+
+[node name="ChairDown2" parent="Props/BeegTable2" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(30, -34)
+
+[node name="ChairDown3" parent="Props/BeegTable2" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(49, -34)
+
+[node name="ChairDown7" parent="Props/BeegTable2" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(-43, -34)
+
+[node name="ChairDown8" parent="Props/BeegTable2" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(-24, -34)
+
+[node name="ChairDown9" parent="Props/BeegTable2" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(-7, -34)
+
+[node name="ChairDown10" parent="Props/BeegTable2" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(-104, -34)
+
+[node name="ChairDown11" parent="Props/BeegTable2" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(-84, -34)
+
+[node name="ChairDown12" parent="Props/BeegTable2" instance=ExtResource("7_tevex")]
+z_index = 1
+z_as_relative = false
+position = Vector2(-64, -34)
+
+[node name="ChairUp" parent="Props/BeegTable2" instance=ExtResource("6_w1428")]
+position = Vector2(-99, 13)
+
+[node name="ChairUp2" parent="Props/BeegTable2" instance=ExtResource("6_w1428")]
+position = Vector2(-76, 13)
+
+[node name="ChairUp3" parent="Props/BeegTable2" instance=ExtResource("6_w1428")]
+position = Vector2(-54, 13)
+
+[node name="ChairUp4" parent="Props/BeegTable2" instance=ExtResource("6_w1428")]
+position = Vector2(-31, 13)
+
+[node name="ChairUp5" parent="Props/BeegTable2" instance=ExtResource("6_w1428")]
+position = Vector2(-7, 11)
+
+[node name="ChairUp6" parent="Props/BeegTable2" instance=ExtResource("6_w1428")]
+position = Vector2(16, 11)
+
+[node name="ChairUp7" parent="Props/BeegTable2" instance=ExtResource("6_w1428")]
+position = Vector2(44, 13)
+
+[node name="ChairUp8" parent="Props/BeegTable2" instance=ExtResource("6_w1428")]
+position = Vector2(67, 13)
+
+[node name="ChairUp9" parent="Props/BeegTable2" instance=ExtResource("6_w1428")]
+position = Vector2(89, 12)
+
+[node name="ChairUp10" parent="Props/BeegTable2" instance=ExtResource("6_w1428")]
+position = Vector2(112, 12)
 
 [node name="BeegVerticalTable" parent="Props" instance=ExtResource("12_tevex")]
 position = Vector2(-26, 219)
+
+[node name="ChairLeft8" parent="Props/BeegVerticalTable" instance=ExtResource("4_rdlhk")]
+position = Vector2(23, -197)
+
+[node name="ChairLeft7" parent="Props/BeegVerticalTable" instance=ExtResource("4_rdlhk")]
+position = Vector2(25, -172)
+
+[node name="ChairLeft6" parent="Props/BeegVerticalTable" instance=ExtResource("4_rdlhk")]
+position = Vector2(23, -150)
+
+[node name="ChairLeft5" parent="Props/BeegVerticalTable" instance=ExtResource("4_rdlhk")]
+position = Vector2(26, -129)
+
+[node name="ChairLeft4" parent="Props/BeegVerticalTable" instance=ExtResource("4_rdlhk")]
+position = Vector2(25, -98)
+
+[node name="ChairLeft3" parent="Props/BeegVerticalTable" instance=ExtResource("4_rdlhk")]
+position = Vector2(24, -65)
+
+[node name="ChairLeft2" parent="Props/BeegVerticalTable" instance=ExtResource("4_rdlhk")]
+position = Vector2(22, -38)
+
+[node name="ChairLeft" parent="Props/BeegVerticalTable" instance=ExtResource("4_rdlhk")]
+position = Vector2(24, -10)
+
+[node name="ChairRight" parent="Props/BeegVerticalTable" instance=ExtResource("5_rtce6")]
+position = Vector2(-23, -8)
+
+[node name="ChairRight2" parent="Props/BeegVerticalTable" instance=ExtResource("5_rtce6")]
+position = Vector2(-26, -32)
+
+[node name="ChairRight3" parent="Props/BeegVerticalTable" instance=ExtResource("5_rtce6")]
+position = Vector2(-24, -65)
+
+[node name="ChairRight4" parent="Props/BeegVerticalTable" instance=ExtResource("5_rtce6")]
+position = Vector2(-23, -94)
+
+[node name="ChairRight5" parent="Props/BeegVerticalTable" instance=ExtResource("5_rtce6")]
+position = Vector2(-22, -123)
+
+[node name="ChairRight6" parent="Props/BeegVerticalTable" instance=ExtResource("5_rtce6")]
+position = Vector2(-25, -152)
+
+[node name="ChairRight7" parent="Props/BeegVerticalTable" instance=ExtResource("5_rtce6")]
+position = Vector2(-22, -180)
+
+[node name="ChairRight8" parent="Props/BeegVerticalTable" instance=ExtResource("5_rtce6")]
+position = Vector2(-23, -202)
 
 [node name="Characters" type="Node2D" parent="."]
 
