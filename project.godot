@@ -33,7 +33,7 @@ shapes/navigation/geometry_face_color=Color(0.501961, 1, 1, 0)
 [dialogue_manager]
 
 editor/advanced/custom_test_scene_path="res://modules/dialogue/test_dialogue.tscn"
-runtime/balloon_path="res://modules/dialogue/test_dialogue.tscn"
+runtime/balloon_path="uid://covyosa222o3j"
 
 [display]
 
@@ -43,7 +43,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/ldtk-importer/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/xsm/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/ldtk-importer/plugin.cfg", "res://addons/scene_palette/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/xsm/plugin.cfg")
 
 [global_group]
 
@@ -153,7 +153,7 @@ recall={
 
 [internationalization]
 
-locale/translations_pot_files=PackedStringArray("res://modules/dialogue/dialogue.dialogue")
+locale/translations_pot_files=PackedStringArray("res://modules/dialogue/dialogue.dialogue", "res://modules/levels/cafeteria/questgiver/juni_hungry.dialogue")
 
 [layer_names]
 

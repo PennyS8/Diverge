@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://d255w2wosscdb"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_y86tq"]
+[ext_resource type="Texture2D" uid="uid://dsdummvmgocs2" path="res://assets/environment/downtown_dungeon/custom_sprites/beeg_horizontal_table.png" id="2_ryeql"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0gam"]
+size = Vector2(238, 41)
+
+[node name="BeegTable" type="StaticBody2D"]
+z_index = 1
+y_sort_enabled = true
+material = ExtResource("1_y86tq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8.5)
+shape = SubResource("RectangleShape2D_f0gam")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = ExtResource("2_ryeql")
+offset = Vector2(0, -12)
