@@ -1,0 +1,75 @@
+[gd_scene load_steps=7 format=3 uid="uid://sn5tojdiulxw"]
+
+[ext_resource type="Script" uid="uid://cd1nd5ihy6jij" path="res://modules/dialogue/portrait_balloon/base_portrait.gd" id="1_xh6df"]
+[ext_resource type="Texture2D" uid="uid://cu0210dc5hyog" path="res://modules/dialogue/character/shaded figure/shade.png" id="2_xh6df"]
+
+[sub_resource type="Animation" id="Animation_4xwua"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_qrdbg"]
+resource_name = "default"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_aryb2"]
+resource_name = "happy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Anchor:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.1, 0.9), Vector2(0.8, 1.1), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tiydy"]
+_data = {
+&"RESET": SubResource("Animation_4xwua"),
+&"default": SubResource("Animation_qrdbg"),
+&"happy": SubResource("Animation_aryb2")
+}
+
+[node name="Portrait" type="Node2D"]
+z_index = 3
+script = ExtResource("1_xh6df")
+
+[node name="Anchor" type="Marker2D" parent="."]
+
+[node name="Body" type="Sprite2D" parent="Anchor"]
+texture_filter = 1
+position = Vector2(0, 78)
+scale = Vector2(4, 4)
+texture = ExtResource("2_xh6df")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_tiydy")
+}
+autoplay = "default"

@@ -154,14 +154,17 @@ func hide_character() -> void:
 
 func show_character(character_name: String) -> void:
 	if not character_name: return
-	talk_sound = load("res://modules/dialogue/character/%s/talk.wav" % character_name.to_lower())
+	var soundpath = "res://modules/dialogue/character/%s/talk.wav" % character_name.to_lower()
+	if FileAccess.file_exists(soundpath):
+		talk_sound = load(soundpath)
 	
-	var portrait_scene: PackedScene = load("res://modules/dialogue/character/%s/portrait.tscn" % character_name.to_lower())
-	if not portrait_scene: return
-	portrait = portrait_scene.instantiate()
-	portrait_position.add_child(portrait)
-	animation_player.play("show_character")
-	await animation_player.animation_finished
+	var portraitpath = "res://modules/dialogue/character/%s/portrait.tscn" % character_name.to_lower()
+	if FileAccess.file_exists(portraitpath):
+		var portrait_scene: PackedScene = load(portraitpath)
+		portrait = portrait_scene.instantiate()
+		portrait_position.add_child(portrait)
+		animation_player.play("show_character")
+		await animation_player.animation_finished
 
 
 #endregion
