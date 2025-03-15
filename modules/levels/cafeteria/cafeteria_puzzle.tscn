@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=24 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_rqif0"]
@@ -12,7 +12,10 @@
 [ext_resource type="PackedScene" uid="uid://p7qdhlen8ym6" path="res://modules/levels/cafeteria/props/chair_down.tscn" id="7_tevex"]
 [ext_resource type="Texture2D" uid="uid://xuw5y0dlb1d8" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_B.png" id="9_vgalx"]
 [ext_resource type="PackedScene" uid="uid://1cju27vr58hn" path="res://modules/levels/cafeteria/props/beeg_vertical_table.tscn" id="12_tevex"]
+[ext_resource type="Texture2D" uid="uid://nbp0b5x6771i" path="res://assets/environment/downtown_dungeon/custom_sprites/lunch_line.png" id="13_tevex"]
 [ext_resource type="PackedScene" uid="uid://crnbqsmdob0o2" path="res://modules/levels/cafeteria/questgiver/quest_juni.tscn" id="13_w1428"]
+[ext_resource type="Texture2D" uid="uid://cc1e1yrk13kyw" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/18_Jail_Black_Shadow_16x16.png" id="14_mjuao"]
+[ext_resource type="Texture2D" uid="uid://6c4pld4xa5tj" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/26_Condominium_Black_Shadow_16x16.png" id="15_v6hvt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3djk"]
 atlas = ExtResource("9_vgalx")
@@ -21,6 +24,24 @@ region = Rect2(4, 361, 88, 23)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rtce6"]
 atlas = ExtResource("9_vgalx")
 region = Rect2(100, 361, 88, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjuao"]
+size = Vector2(24, 45.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6hvt"]
+size = Vector2(144, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6hvt"]
+atlas = ExtResource("14_mjuao")
+region = Rect2(0, 485, 24, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nd65k"]
+atlas = ExtResource("14_mjuao")
+region = Rect2(24, 485, 24, 11)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d8ey"]
+atlas = ExtResource("15_v6hvt")
+region = Rect2(84, 3, 8, 9)
 
 [node name="CafeteriaLevel" type="Node2D"]
 y_sort_enabled = true
@@ -48,7 +69,13 @@ tile_set = ExtResource("2_rqif0")
 z_index = 1
 y_sort_enabled = true
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD1//j/AAAQACMAAAD1//3/AAAQACMAAAD1/wIAAAAQACMAAAD1/wcAAAAQACMAAADx//P/AAADABEAAADx//T/AAADABEAAADx//X/AAADABEAAADx//b/AAADABEAAADx//f/AAADABEAAADx//j/AAADABEAAADx//n/AAADABEAAADx//r/AAADABEAAADx//v/AAADABEAAADx//z/AAADABIAAADx/wEAAAADABAAAADx/wIAAAADABEAAADx/wMAAAADABEAAADx/wQAAAADABEAAADx/wUAAAADABEAAADx/wYAAAADABEAAADx/wcAAAADABEAAADx/wgAAAADABEAAADx/wkAAAADABEAAADy/woAAAADABAAAAD0/woAAAABABAAAAD1/woAAAACABAAAAD2/woAAAACABAAAAD3/woAAAACABAAAAD4/woAAAACABAAAAD5/woAAAACABAAAAD6/woAAAACABAAAAD7/woAAAACABAAAAD8/woAAAACABAAAAD9/woAAAACABAAAAD+/woAAAACABAAAAD//woAAAACABAAAAAAAAoAAAACABAAAAAOAAMAAAAAABMAAAAOAAIAAAABABEAAAAOAAEAAAABABEAAAAOAAAAAAABABEAAAAOAP//AAABABEAAAAOAP7/AAABABEAAAAOAP3/AAABABEAAAAOAPz/AAABABEAAAAOAPv/AAABABEAAAAOAPr/AAABABEAAAAOAPn/AAABABEAAAAOAPj/AAABABEAAAAOAPf/AAABABEAAAAOAPb/AAABABEAAAAOAPX/AAABABEAAAAOAPT/AAABABEAAAAOAPP/AAABABEAAAAOAPL/AAABABEAAAAOAPH/AAABABEAAADy//L/AAADABIAAAD0//L/AAABABIAAAAGAPD/AAABABIAAAAHAPD/AAACABIAAAAIAPD/AAACABIAAAAJAPD/AAACABIAAAAKAPD/AAACABIAAAALAPD/AAACABIAAAAMAPD/AAACABIAAAANAPD/AAACABIAAAAOAPD/AAACABMAAADx/woAAAABABMAAADx//3/AAATACEAAADx//7/AAATACMAAADx//L/AAADABMAAAD1//L/AAACABIAAAD7/+//AAACABEAAAD7//D/AAACABIAAAD6/+//AAACABEAAAD6//D/AAACABIAAAD5/+//AAACABEAAAD5//D/AAACABIAAAD4/+//AAACABEAAAD4//D/AAACABIAAAD3/+//AAACABEAAAD3//D/AAACABIAAAD2/+//AAACABEAAAD2//D/AAACABIAAAD8//D/AAADABIAAAD9/+3/AAACABIAAAD+/+3/AAACABIAAAD//+3/AAACABIAAAAAAO3/AAACABIAAAABAO3/AAACABIAAAACAO3/AAACABIAAAADAO3/AAACABIAAAAEAO3/AAACABIAAAAFAO3/AAACABIAAAAGAO3/AAACABMAAAAGAO7/AAABABEAAAAGAO//AAABABEAAAD8/+//AAADABEAAAD8/+7/AAADABEAAAD8/+3/AAADABMAAAD1//f/AAAQACEAAAD1//z/AAAQACEAAAD1/wEAAAAQACEAAAD1/wYAAAAQACEAAAD1/wUAAAAAAA8AAAD1/wAAAAAAAA8AAAD1//v/AAAAAA8AAAD1//b/AAAAAA8AAAABAAoAAAAAABMAAAABAAkAAAABABEAAAABAAgAAAABABEAAAABAAcAAAABABEAAAABAAYAAAABABEAAAABAAUAAAABABEAAAABAAQAAAABABEAAAABAAMAAAABABAAAAACAAMAAAACABAAAAADAAMAAAACABAAAAAEAAMAAAACABAAAAAFAAMAAAACABAAAAAGAAMAAAACABAAAAAHAAMAAAACABAAAAAIAAMAAAACABAAAAAJAAMAAAACABAAAAAKAAMAAAACABAAAAALAAMAAAACABAAAAAMAAMAAAACABAAAAANAAMAAAACABAAAAD///L/CAAMAAcAAAAAAPL/CAAKAAUAAAD///H/CAAIAAYAAAABAPL/CAAKAAUAAAACAPL/CAAKAAUAAAADAPL/CAAKAAUAAAAEAPL/CAALAAUAAAA=")
+tile_map_data = PackedByteArray("AAD1//j/AAAQACMAAAD1//3/AAAQACMAAAD1/wIAAAAQACMAAAD1/wcAAAAQACMAAADx//P/AAADABEAAADx//T/AAADABEAAADx//X/AAADABEAAADx//b/AAADABEAAADx//f/AAADABEAAADx//j/AAADABEAAADx//n/AAADABEAAADx//r/AAADABEAAADx//v/AAADABEAAADx//z/AAADABIAAADx/wEAAAADABAAAADx/wIAAAADABEAAADx/wMAAAADABEAAADx/wQAAAADABEAAADx/wUAAAADABEAAADx/wYAAAADABEAAADx/wcAAAADABEAAADx/wgAAAADABEAAADx/wkAAAADABEAAADy/woAAAADABAAAAD0/woAAAABABAAAAD1/woAAAACABAAAAD2/woAAAACABAAAAD3/woAAAACABAAAAD4/woAAAACABAAAAD5/woAAAACABAAAAD6/woAAAACABAAAAD7/woAAAACABAAAAD8/woAAAACABAAAAD9/woAAAACABAAAAD+/woAAAACABAAAAD//woAAAACABAAAAAAAAoAAAACABAAAAAOAAMAAAAAABMAAAAOAAIAAAABABEAAAAOAAEAAAABABEAAAAOAAAAAAABABEAAAAOAP//AAABABEAAAAOAP7/AAABABEAAAAOAP3/AAABABEAAAAOAPz/AAABABEAAAAOAPv/AAABABEAAAAOAPr/AAABABEAAAAOAPn/AAABABEAAAAOAPj/AAABABEAAAAOAPf/AAABABEAAAAOAPb/AAABABEAAAAOAPX/AAABABEAAAAOAPT/AAABABEAAAAOAPP/AAABABEAAAAOAPL/AAABABEAAAAOAPH/AAABABEAAADy//L/AAADABIAAAD0//L/AAABABIAAAAGAPD/AAABABIAAAAHAPD/AAACABIAAAAIAPD/AAACABIAAAAJAPD/AAACABIAAAAKAPD/AAACABIAAAALAPD/AAACABIAAAAMAPD/AAACABIAAAANAPD/AAACABIAAAAOAPD/AAACABMAAADx/woAAAABABMAAADx//3/AAATACEAAADx//7/AAATACMAAADx//L/AAADABMAAAD1//L/AAACABIAAAD7/+//AAACABEAAAD7//D/AAACABIAAAD6/+//AAACABEAAAD6//D/AAACABIAAAD5/+//AAACABEAAAD5//D/AAACABIAAAD4/+//AAACABEAAAD4//D/AAACABIAAAD3/+//AAACABEAAAD3//D/AAACABIAAAD2/+//AAACABEAAAD2//D/AAACABIAAAD8//D/AAADABIAAAD9/+3/AAACABIAAAD+/+3/AAACABIAAAD//+3/AAACABIAAAAAAO3/AAACABIAAAABAO3/AAACABIAAAACAO3/AAACABIAAAADAO3/AAACABIAAAAEAO3/AAACABIAAAAFAO3/AAACABIAAAAGAO3/AAACABMAAAAGAO7/AAABABEAAAAGAO//AAABABEAAAD8/+//AAADABEAAAD8/+7/AAADABEAAAD8/+3/AAADABMAAAD1//f/AAAQACEAAAD1//z/AAAQACEAAAD1/wEAAAAQACEAAAD1/wYAAAAQACEAAAD1/wUAAAAAAA8AAAD1/wAAAAAAAA8AAAD1//v/AAAAAA8AAAD1//b/AAAAAA8AAAABAAoAAAAAABMAAAABAAkAAAABABEAAAABAAgAAAABABEAAAABAAcAAAABABEAAAABAAYAAAABABEAAAABAAUAAAABABEAAAABAAQAAAABABEAAAABAAMAAAABABAAAAACAAMAAAACABAAAAADAAMAAAACABAAAAAEAAMAAAACABAAAAAFAAMAAAACABAAAAAGAAMAAAACABAAAAAHAAMAAAACABAAAAAIAAMAAAACABAAAAAJAAMAAAACABAAAAAKAAMAAAACABAAAAALAAMAAAACABAAAAAMAAMAAAACABAAAAANAAMAAAACABAAAAA=")
+tile_set = ExtResource("2_rqif0")
+
+[node name="WallObjects" type="TileMapLayer" parent="Tiles"]
+z_index = 2
+material = ExtResource("1_ad4o5")
+tile_map_data = PackedByteArray("AAAEAO7/AgAEAAwAAAAFAO7/AgAHAAwAAAAFAO//AgAHAA0AAAAEAO//AgAEAA0AAAADAO//BQAMAAgAAAADAPD/BQAMAAkAAAA=")
 tile_set = ExtResource("2_rqif0")
 
 [node name="Props" type="Node2D" parent="."]
@@ -57,6 +84,7 @@ y_sort_enabled = true
 [node name="SmallTable" parent="Props" instance=ExtResource("3_mrivh")]
 z_index = 1
 position = Vector2(-138, -103)
+collision_layer = 2
 
 [node name="ChairDown" parent="Props/SmallTable" instance=ExtResource("7_tevex")]
 z_index = 1
@@ -75,6 +103,7 @@ position = Vector2(-1, 10)
 [node name="SmallTable2" parent="Props" instance=ExtResource("3_mrivh")]
 z_index = 1
 position = Vector2(-20, -128)
+collision_layer = 2
 
 [node name="ChairDown" parent="Props/SmallTable2" instance=ExtResource("7_tevex")]
 z_index = 1
@@ -93,6 +122,7 @@ position = Vector2(-1, 10)
 [node name="SmallTable3" parent="Props" instance=ExtResource("3_mrivh")]
 z_index = 1
 position = Vector2(132, -43)
+collision_layer = 2
 
 [node name="ChairDown" parent="Props/SmallTable3" instance=ExtResource("7_tevex")]
 z_index = 1
@@ -111,6 +141,7 @@ position = Vector2(-1, 10)
 [node name="SmallTable4" parent="Props" instance=ExtResource("3_mrivh")]
 z_index = 1
 position = Vector2(-106, 8)
+collision_layer = 2
 
 [node name="ChairDown" parent="Props/SmallTable4" instance=ExtResource("7_tevex")]
 z_index = 1
@@ -129,6 +160,7 @@ position = Vector2(-1, 10)
 [node name="SmallTable5" parent="Props" instance=ExtResource("3_mrivh")]
 z_index = 1
 position = Vector2(6, -56)
+collision_layer = 2
 
 [node name="ChairDown" parent="Props/SmallTable5" instance=ExtResource("7_tevex")]
 z_index = 1
@@ -147,19 +179,23 @@ position = Vector2(-1, 10)
 [node name="BlueVendingMachine" parent="Props" instance=ExtResource("6_mrivh")]
 z_index = 1
 position = Vector2(-231, -255)
+collision_layer = 2
 
 [node name="RedVendingMachine" parent="Props" instance=ExtResource("7_f2utr")]
 z_index = 1
 position = Vector2(-265, -255)
+collision_layer = 2
 
 [node name="RedVendingMachine2" parent="Props" instance=ExtResource("7_f2utr")]
 z_index = 1
 position = Vector2(293, -256)
+collision_layer = 2
 
 [node name="RedVendingMachine3" parent="Props" instance=ExtResource("7_f2utr")]
 z_index = 1
 position = Vector2(321, -256)
 scale = Vector2(-1, 1)
+collision_layer = 2
 
 [node name="LunchSign" type="Sprite2D" parent="Props"]
 z_index = 1
@@ -175,6 +211,7 @@ texture = SubResource("AtlasTexture_rtce6")
 
 [node name="BeegTable" parent="Props" instance=ExtResource("4_f2utr")]
 position = Vector2(190, 34)
+collision_layer = 2
 
 [node name="ChairDown4" parent="Props/BeegTable" instance=ExtResource("7_tevex")]
 z_index = 1
@@ -268,6 +305,7 @@ position = Vector2(112, 12)
 
 [node name="BeegTable2" parent="Props" instance=ExtResource("4_f2utr")]
 position = Vector2(178, -137)
+collision_layer = 2
 
 [node name="ChairDown4" parent="Props/BeegTable2" instance=ExtResource("7_tevex")]
 z_index = 1
@@ -361,6 +399,7 @@ position = Vector2(112, 12)
 
 [node name="BeegVerticalTable" parent="Props" instance=ExtResource("12_tevex")]
 position = Vector2(-26, 219)
+collision_layer = 2
 
 [node name="ChairLeft8" parent="Props/BeegVerticalTable" instance=ExtResource("4_rdlhk")]
 position = Vector2(23, -197)
@@ -410,10 +449,93 @@ position = Vector2(-22, -180)
 [node name="ChairRight8" parent="Props/BeegVerticalTable" instance=ExtResource("5_rtce6")]
 position = Vector2(-23, -202)
 
-[node name="StaticBody2D" type="StaticBody2D" parent="Props"]
-position = Vector2(24, -277)
+[node name="CheckeredArea" type="Node2D" parent="Props"]
+y_sort_enabled = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Props/StaticBody2D"]
+[node name="LunchLine" type="StaticBody2D" parent="Props/CheckeredArea"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(73, -342)
+collision_layer = 2
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Props/CheckeredArea/LunchLine"]
+position = Vector2(-60, -23.25)
+shape = SubResource("RectangleShape2D_mjuao")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/CheckeredArea/LunchLine"]
+position = Vector2(0, 7)
+shape = SubResource("RectangleShape2D_v6hvt")
+debug_color = Color(0, 0.6, 0.701961, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
+material = ExtResource("1_ad4o5")
+texture = ExtResource("13_tevex")
+offset = Vector2(0, -18)
+
+[node name="FoodThing2" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+material = ExtResource("1_ad4o5")
+position = Vector2(-9, 2)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = SubResource("AtlasTexture_v6hvt")
+offset = Vector2(0, -3.5)
+
+[node name="FoodThing3" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+material = ExtResource("1_ad4o5")
+position = Vector2(34, 2)
+rotation = 3.14159
+scale = Vector2(1, -1)
+texture = SubResource("AtlasTexture_nd65k")
+offset = Vector2(0, -3.5)
+
+[node name="Arrow" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+material = ExtResource("1_ad4o5")
+position = Vector2(-33, 0)
+texture = SubResource("AtlasTexture_5d8ey")
+offset = Vector2(0, 0.5)
+
+[node name="Arrow2" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+material = ExtResource("1_ad4o5")
+position = Vector2(13, 0)
+texture = SubResource("AtlasTexture_5d8ey")
+offset = Vector2(0, 0.5)
+
+[node name="Arrow3" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+material = ExtResource("1_ad4o5")
+position = Vector2(58, 0)
+texture = SubResource("AtlasTexture_5d8ey")
+offset = Vector2(0, 0.5)
+
+[node name="Grubline" type="NinePatchRect" parent="Props/CheckeredArea/LunchLine"]
+z_index = 1
+material = ExtResource("1_ad4o5")
+offset_left = -49.0
+offset_top = -15.0
+offset_right = 71.0
+offset_bottom = 4.0
+texture = ExtResource("14_mjuao")
+region_rect = Rect2(141, 418, 22, 19)
+patch_margin_left = 4
+patch_margin_right = 4
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Characters" type="Node2D" parent="."]
 
