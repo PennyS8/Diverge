@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://cp53bw4fgv7b2"]
+[gd_scene load_steps=72 format=4 uid="uid://cp53bw4fgv7b2"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_0bwgv"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_beb0c"]
@@ -12,6 +12,12 @@
 [ext_resource type="Texture2D" uid="uid://xuw5y0dlb1d8" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_B.png" id="8_v2ajd"]
 [ext_resource type="Texture2D" uid="uid://cgwn1c5li4xeb" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_D.png" id="9_n07ws"]
 [ext_resource type="Texture2D" uid="uid://dvasicuqsehh2" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General_A2.png" id="10_7r4fh"]
+[ext_resource type="PackedScene" uid="uid://cnbmh4388o50p" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/BurnerStation.tscn" id="15_v2ajd"]
+[ext_resource type="PackedScene" uid="uid://b77m20ym35viw" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/MixerStation.tscn" id="16_n07ws"]
+[ext_resource type="PackedScene" uid="uid://di4xha63wqq2k" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/ScaleStation.tscn" id="17_7r4fh"]
+[ext_resource type="PackedScene" uid="uid://cmr82b3m7no0t" path="res://modules/levels/cafeteria/props/vending_machine_blue.tscn" id="17_v2ajd"]
+[ext_resource type="PackedScene" uid="uid://cobjdtd1p8rx4" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/chem_table_4.tscn" id="18_0jtan"]
+[ext_resource type="Script" uid="uid://28hkm83pq6al" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/materials_station.gd" id="18_n07ws"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
@@ -3144,6 +3150,9 @@ size = Vector2(384, 312)
 parsed_collision_mask = 4294966355
 agent_radius = 8.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_7r4fh"]
+radius = 18.0
+
 [node name="ChemLabPuzzle" type="Node2D"]
 
 [node name="BaseLayerVoid" type="TileMapLayer" parent="."]
@@ -3172,7 +3181,6 @@ position = Vector2(-216, 168)
 position = Vector2(216, -168)
 
 [node name="Tiles" type="NavigationRegion2D" parent="ChemLab"]
-y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_nv2xa")
 navigation_layers = 3
 
@@ -3182,7 +3190,6 @@ tile_map_data = PackedByteArray("AAD5//3/BAACAAQAAAD5//7/BAACAAUAAAD5////BAACAAU
 tile_set = ExtResource("2_beb0c")
 
 [node name="Walls" type="TileMapLayer" parent="ChemLab/Tiles"]
-z_index = 1
 y_sort_enabled = true
 texture_filter = 2
 material = ExtResource("1_0bwgv")
@@ -3190,20 +3197,30 @@ tile_map_data = PackedByteArray("AAD4//r/AAALABMAAAD4//v/AAALABEAAAD4//z/AAALABE
 tile_set = ExtResource("2_beb0c")
 
 [node name="WallObjects" type="TileMapLayer" parent="ChemLab/Tiles"]
-z_index = 2
+z_index = 1
 y_sort_enabled = true
 material = ExtResource("1_0bwgv")
-tile_map_data = PackedByteArray("AAD+//v/AQAIAAAAAAD+//z/AQAIAAEAAAD///v/AQAJAAAAAAD///z/AQAJAAEAAAAAAPv/AQAKAAAAAAAAAPz/AQAKAAEAAAABAPv/AQALAAAAAAABAPz/AQALAAEAAAA=")
+tile_map_data = PackedByteArray("AAD+//v/AQAIAAAAAAD+//z/AQAIAAEAAAD///v/AQAJAAAAAAD///z/AQAJAAEAAAAAAPv/AQAKAAAAAAAAAPz/AQAKAAEAAAABAPv/AQALAAAAAAABAPz/AQALAAEAAAD5//v/AgAFAAIAAAD6//v/AgAGAAIAAAD7//v/AgAHAAIAAAAEAPv/AgAGAAIAAAAFAPv/AgAGAAIAAAAGAPv/AgAHAAIAAAADAPv/AgAFAAIAAAA=")
 tile_set = ExtResource("2_beb0c")
 
 [node name="Objects" type="TileMapLayer" parent="ChemLab/Tiles"]
-z_index = 2
+z_index = 1
 y_sort_enabled = true
 material = ExtResource("1_0bwgv")
-tile_map_data = PackedByteArray("AAD///7/AQAJAAcAAAAAAP7/AQAJAAcAAAD6/wEADwANAAQAAAD5/wIADwAOAAwAAAD6/wIADwANAAUAAAD5////DwAOAAwAAAD5//7/DwAMAAsAAAAGAAIADwANAAwAAAAGAP//DwANAAwAAAAGAP7/DwAMAAsAAAAAAAEAAQAJAAgAAAD/////AQAJAAgAAAAAAP//AQAJAAgAAAD//wEAAQAJAAgAAAD//wAAAQAJAAgAAAAAAAAAAQAJAAgAAAAAAAIAAQAJAAkAAAD//wIAAQAJAAkAAAAGAAAADwAMAAwAAAAGAAEADwAMAAwAAAADAPv/AQAIAAQAAAADAPz/AQAIAAUAAAADAP3/AQAIAAYAAAAEAPv/DAABAAYAAAAEAPz/DAABAAcAAAAEAP3/DAABAAgAAAAFAPv/DAACAAYAAAAFAPz/DAACAAcAAAAFAP3/DAACAAgAAAAGAPv/AQAIAAQAAAAGAPz/AQAIAAUAAAAGAP3/AQAIAAYAAAD5//v/AQAIAAQAAAD5//z/AQAIAAUAAAD5//3/AQAIAAYAAAD6//v/AQAIAAQAAAD6//z/AQAIAAUAAAD6//3/AQAIAAYAAAD7//v/AQAIAAQAAAD7//z/AQAIAAUAAAD7//3/AQAIAAYAAAD8//v/AgAOAAkAAAD8//z/AgAOAAoAAAD8//3/AgAOAAsAAAAGAAMADwAMAA0AAAAEAAEADwAMAAQAAAAEAAIADwAMAAUAAAAFAAEADwANAAQAAAAFAAIADwAOAAUAAAD5/wAADwAMAAwAAAD5/wMADwAMAA0AAAD7/wIADwAPAAUAAAD7/wEADwAPAAQAAAD5/wEADwAMAAwAAAD6////DwANAAQAAAD7////DwAPAAQAAAD6/wAADwAOAAUAAAD7/wAADwAPAAUAAAAEAP//DwAMAAQAAAAFAP//DwANAAQAAAAEAAAADwAMAAUAAAAFAAAADwANAAUAAAA=")
+tile_map_data = PackedByteArray("AAD///7/AQAJAAcAAAAAAP7/AQAJAAcAAAAAAAEAAQAJAAgAAAAAAP//AQAJAAgAAAAAAAAAAQAJAAgAAAAAAAIAAQAJAAkAAAD//wIAAQAJAAkAAAADAPv/AQAIAAQAAAADAPz/AQAIAAUAAAADAP3/AQAIAAYAAAAGAPv/AQAIAAQAAAAGAPz/AQAIAAUAAAD5//v/AQAIAAQAAAD5//z/AQAIAAUAAAD5//3/AQAIAAYAAAD6//v/AQAIAAQAAAD6//z/AQAIAAUAAAD6//3/AQAIAAYAAAD7//v/AQAIAAQAAAD7//z/AQAIAAUAAAD7//3/AQAIAAYAAAD8//v/AgAOAAkAAAD8//z/AgAOAAoAAAD8//3/AgAOAAsAAAAGAP3/AQAIAAYAAAD/////AQAJAAgAAAD//wAAAQAJAAgAAAD//wEAAQAJAAgAAAA=")
+tile_set = ExtResource("2_beb0c")
+
+[node name="Counters" type="TileMapLayer" parent="ChemLab/Tiles"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+material = ExtResource("1_0bwgv")
+position = Vector2(0, 30)
+tile_map_data = PackedByteArray("AAD5/wIADwAMAA0AAAAGAAIADwAMAA0AAAD5/wEADwAOAAwAAAD5/wAADwAMAAwAAAD5//7/DwAOAAwAAAD5//3/DwAMAAsAAAAGAP3/DwAMAAsAAAAGAP7/DwANAAwAAAAGAAAADwAMAAwAAAAGAAEADwANAAwAAAD5////DwAMAAwAAAAGAP//DwAMAAwAAAA=")
 tile_set = ExtResource("2_beb0c")
 
 [node name="TopLayerVoid" type="TileMapLayer" parent="ChemLab/Tiles"]
+visible = false
 z_index = 2
 z_as_relative = false
 material = ExtResource("1_0bwgv")
@@ -3223,4 +3240,38 @@ scale = Vector2(4, 4)
 next_level_path = "uid://cp53bw4fgv7b2"
 entrance_name = "LabSouth"
 
+[node name="Stations" type="Node2D" parent="ChemLab"]
+
+[node name="BurnerStation" parent="ChemLab/Stations" instance=ExtResource("15_v2ajd")]
+z_index = 1
+position = Vector2(-144, -4)
+
+[node name="MixerStation" parent="ChemLab/Stations" instance=ExtResource("16_n07ws")]
+z_index = 1
+position = Vector2(96, 56)
+
+[node name="ScaleStation" parent="ChemLab/Stations" instance=ExtResource("17_7r4fh")]
+z_index = 1
+position = Vector2(96, -4)
+
+[node name="Table4" parent="ChemLab/Stations" instance=ExtResource("18_0jtan")]
+z_index = 1
+position = Vector2(-144, 56)
+
+[node name="MaterialsCabinet" parent="ChemLab/Stations" instance=ExtResource("17_v2ajd")]
+z_index = 1
+position = Vector2(120, -82)
+script = ExtResource("18_n07ws")
+
+[node name="Locker" type="Area2D" parent="ChemLab/Stations/MaterialsCabinet"]
+position = Vector2(0, 24)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ChemLab/Stations/MaterialsCabinet/Locker"]
+shape = SubResource("CircleShape2D_7r4fh")
+
 [node name="Entities" type="Node2D" parent="ChemLab"]
+
+[connection signal="body_entered" from="ChemLab/Stations/MaterialsCabinet/Locker" to="ChemLab/Stations/MaterialsCabinet" method="_on_locker_body_entered"]
+[connection signal="body_exited" from="ChemLab/Stations/MaterialsCabinet/Locker" to="ChemLab/Stations/MaterialsCabinet" method="_on_locker_body_exited"]

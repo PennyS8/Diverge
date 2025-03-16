@@ -1,0 +1,36 @@
+~ mixer
+Juniper: Just got to mix it with something
+
+- Green Solution
+	Juniper: Adding some green
+- Blue Solution
+	Juniper: Adding some blue
+
+Juniper: Yippie it's red now
+=> END
+
+~ burner
+Juniper: Just got to boil it
+Juniper: ...
+Juniper: ...
+Juniper: this shit's slow
+Juniper: ...
+Juniper: Yippie it changed colors!
+=> END
+
+~ scale
+Juniper: Okay, I only need a little
+Juniper: Just a touch more
+Juniper: Oh fuck, that's too much
+Juniper: Okay that's enough
+=> END
+
+~ materials
+Juniper: What was it that I needed?
+
+- Orange Substance
+- Yellow Powder
+
+Juniper: Ah, there it is!
+Juniper: I should weigh just the right amount
+=> END
