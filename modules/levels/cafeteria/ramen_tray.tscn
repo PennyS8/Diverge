@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bw5puypn7f5nx"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_p3hce"]
+[ext_resource type="Script" uid="uid://bmqslj0n2bhui" path="res://modules/levels/cafeteria/ramen_tray.gd" id="2_hy37e"]
+[ext_resource type="Texture2D" uid="uid://xif0g3urgtv1" path="res://assets/environment/downtown_dungeon/custom_sprites/ramen.png" id="3_26siq"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0i42r"]
+radius = 17.1172
+
+[node name="RamenTray" type="Area2D"]
+y_sort_enabled = true
+material = ExtResource("1_p3hce")
+script = ExtResource("2_hy37e")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("1_p3hce")
+position = Vector2(0, 5)
+texture = ExtResource("3_26siq")
+offset = Vector2(0.5, -5.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_0i42r")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

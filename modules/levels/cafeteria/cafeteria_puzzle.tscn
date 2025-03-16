@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=27 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_rqif0"]
@@ -16,6 +16,8 @@
 [ext_resource type="PackedScene" uid="uid://crnbqsmdob0o2" path="res://modules/levels/cafeteria/questgiver/quest_juni.tscn" id="13_w1428"]
 [ext_resource type="Texture2D" uid="uid://cc1e1yrk13kyw" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/18_Jail_Black_Shadow_16x16.png" id="14_mjuao"]
 [ext_resource type="Texture2D" uid="uid://6c4pld4xa5tj" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/26_Condominium_Black_Shadow_16x16.png" id="15_v6hvt"]
+[ext_resource type="Script" uid="uid://db7o735bof8ky" path="res://modules/levels/cafeteria/ramen_dispenser.gd" id="16_5d8ey"]
+[ext_resource type="PackedScene" uid="uid://bw5puypn7f5nx" path="res://modules/levels/cafeteria/ramen_tray.tscn" id="17_nd65k"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3djk"]
 atlas = ExtResource("9_vgalx")
@@ -25,23 +27,29 @@ region = Rect2(4, 361, 88, 23)
 atlas = ExtResource("9_vgalx")
 region = Rect2(100, 361, 88, 23)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_mjuao"]
-size = Vector2(24, 45.5)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6hvt"]
-size = Vector2(144, 18)
+size = Vector2(216, 20)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_v6hvt"]
 atlas = ExtResource("14_mjuao")
-region = Rect2(0, 485, 24, 11)
+region = Rect2(0, 485, 23, 11)
+filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nd65k"]
 atlas = ExtResource("14_mjuao")
 region = Rect2(24, 485, 24, 11)
+filter_clip = true
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5d8ey"]
 atlas = ExtResource("15_v6hvt")
 region = Rect2(84, 3, 8, 9)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0i42r"]
+atlas = ExtResource("14_mjuao")
+region = Rect2(97, 599, 29, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5d8ey"]
+size = Vector2(56, 28)
 
 [node name="CafeteriaLevel" type="Node2D"]
 y_sort_enabled = true
@@ -451,47 +459,79 @@ position = Vector2(-23, -202)
 
 [node name="CheckeredArea" type="Node2D" parent="Props"]
 y_sort_enabled = true
+position = Vector2(-72, -240)
 
 [node name="LunchLine" type="StaticBody2D" parent="Props/CheckeredArea"]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(73, -342)
+texture_repeat = 1
+position = Vector2(145, -106)
 collision_layer = 2
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Props/CheckeredArea/LunchLine"]
-position = Vector2(-60, -23.25)
-shape = SubResource("RectangleShape2D_mjuao")
-debug_color = Color(0, 0.6, 0.701961, 0)
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Props/CheckeredArea/LunchLine"]
-position = Vector2(0, 7)
+position = Vector2(-37, 8)
 shape = SubResource("RectangleShape2D_v6hvt")
 debug_color = Color(0, 0.6, 0.701961, 0)
 
 [node name="Sprite2D" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
+texture_repeat = 1
 material = ExtResource("1_ad4o5")
 texture = ExtResource("13_tevex")
-offset = Vector2(0, -18)
+offset = Vector2(-37, -18)
+region_enabled = true
+region_rect = Rect2(0, 0, 216, 72)
+region_filter_clip_enabled = true
 
 [node name="FoodThing2" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
 z_index = 1
 z_as_relative = false
 y_sort_enabled = true
 material = ExtResource("1_ad4o5")
-position = Vector2(-9, 2)
+position = Vector2(20, 2)
 rotation = 3.14159
 scale = Vector2(1, -1)
 texture = SubResource("AtlasTexture_v6hvt")
-offset = Vector2(0, -3.5)
+offset = Vector2(0.5, -3.5)
 
 [node name="FoodThing3" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
 z_index = 1
 z_as_relative = false
 y_sort_enabled = true
 material = ExtResource("1_ad4o5")
-position = Vector2(34, 2)
+position = Vector2(54, 2)
 rotation = 3.14159
 scale = Vector2(1, -1)
+texture = SubResource("AtlasTexture_nd65k")
+offset = Vector2(0, -3.5)
+
+[node name="FoodThing4" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+texture_repeat = 1
+material = ExtResource("1_ad4o5")
+position = Vector2(-27, 4)
+texture = SubResource("AtlasTexture_v6hvt")
+offset = Vector2(12, -5.5)
+region_enabled = true
+region_rect = Rect2(0, 0, 24, 11)
+region_filter_clip_enabled = true
+
+[node name="FoodThing5" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+material = ExtResource("1_ad4o5")
+position = Vector2(-50, 2)
+texture = SubResource("AtlasTexture_nd65k")
+offset = Vector2(0, -3.5)
+
+[node name="FoodThing6" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+material = ExtResource("1_ad4o5")
+position = Vector2(-85, 2)
 texture = SubResource("AtlasTexture_nd65k")
 offset = Vector2(0, -3.5)
 
@@ -504,12 +544,21 @@ position = Vector2(-33, 0)
 texture = SubResource("AtlasTexture_5d8ey")
 offset = Vector2(0, 0.5)
 
+[node name="Arrow4" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+material = ExtResource("1_ad4o5")
+position = Vector2(-68, 0)
+texture = SubResource("AtlasTexture_5d8ey")
+offset = Vector2(0, 0.5)
+
 [node name="Arrow2" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
 z_index = 1
 z_as_relative = false
 y_sort_enabled = true
 material = ExtResource("1_ad4o5")
-position = Vector2(13, 0)
+position = Vector2(2, 0)
 texture = SubResource("AtlasTexture_5d8ey")
 offset = Vector2(0, 0.5)
 
@@ -518,26 +567,83 @@ z_index = 1
 z_as_relative = false
 y_sort_enabled = true
 material = ExtResource("1_ad4o5")
-position = Vector2(58, 0)
+position = Vector2(37, 0)
+texture = SubResource("AtlasTexture_5d8ey")
+offset = Vector2(0, 0.5)
+
+[node name="Arrow5" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+material = ExtResource("1_ad4o5")
+position = Vector2(-103, 0)
 texture = SubResource("AtlasTexture_5d8ey")
 offset = Vector2(0, 0.5)
 
 [node name="Grubline" type="NinePatchRect" parent="Props/CheckeredArea/LunchLine"]
 z_index = 1
 material = ExtResource("1_ad4o5")
-offset_left = -49.0
-offset_top = -15.0
-offset_right = 71.0
-offset_bottom = 4.0
+offset_left = -115.0
+offset_top = -12.0
+offset_right = 70.0
+offset_bottom = 7.0
 texture = ExtResource("14_mjuao")
 region_rect = Rect2(141, 418, 22, 19)
 patch_margin_left = 4
 patch_margin_right = 4
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
-metadata/_edit_use_anchors_ = true
+
+[node name="TrayArea" type="Sprite2D" parent="Props/CheckeredArea/LunchLine"]
+material = ExtResource("1_ad4o5")
+position = Vector2(-130, 1)
+texture = SubResource("AtlasTexture_0i42r")
+offset = Vector2(0.5, -11)
+
+[node name="RamenDispenser" type="Node2D" parent="Props/CheckeredArea"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(135, -88)
+script = ExtResource("16_5d8ey")
+ramen_item = ExtResource("17_nd65k")
+
+[node name="DispensePoints" type="Node2D" parent="Props/CheckeredArea/RamenDispenser"]
+y_sort_enabled = true
+position = Vector2(-23, -23)
+
+[node name="DispensePoint1" type="Marker2D" parent="Props/CheckeredArea/RamenDispenser/DispensePoints"]
+y_sort_enabled = true
+position = Vector2(-70, 0)
+
+[node name="DispensePoint2" type="Marker2D" parent="Props/CheckeredArea/RamenDispenser/DispensePoints"]
+y_sort_enabled = true
+position = Vector2(-35, 0)
+
+[node name="DispensePoint3" type="Marker2D" parent="Props/CheckeredArea/RamenDispenser/DispensePoints"]
+y_sort_enabled = true
+
+[node name="DispensePoint4" type="Marker2D" parent="Props/CheckeredArea/RamenDispenser/DispensePoints"]
+y_sort_enabled = true
+position = Vector2(35, 0)
+
+[node name="DispensePoint5" type="Marker2D" parent="Props/CheckeredArea/RamenDispenser/DispensePoints"]
+y_sort_enabled = true
+position = Vector2(70, 0)
+
+[node name="debug area" type="Area2D" parent="Props/CheckeredArea/RamenDispenser"]
+position = Vector2(-23, 35)
+collision_mask = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Props/CheckeredArea/RamenDispenser/debug area"]
+z_index = 1
+shape = SubResource("RectangleShape2D_5d8ey")
 
 [node name="Characters" type="Node2D" parent="."]
 
 [node name="QuestJuni" parent="Characters" instance=ExtResource("13_w1428")]
 position = Vector2(-106, -21)
+
+[node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
+position = Vector2(41, -242)
+
+[connection signal="body_entered" from="Props/CheckeredArea/RamenDispenser/debug area" to="Props/CheckeredArea/RamenDispenser" method="_on_debug_area_body_entered"]

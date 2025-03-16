@@ -10,7 +10,7 @@ favorites = {
 &"color": "#0e1521",
 &"instantiate_scenes_for_previews": true,
 &"minimized_dirs": {},
-&"scene_preview_scale": 1.0,
+&"scene_preview_scale": 0.96,
 &"show_labels": true
 }
 }
