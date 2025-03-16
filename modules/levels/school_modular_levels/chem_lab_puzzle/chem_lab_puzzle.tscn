@@ -3216,7 +3216,7 @@ z_as_relative = false
 y_sort_enabled = true
 material = ExtResource("1_0bwgv")
 position = Vector2(0, 30)
-tile_map_data = PackedByteArray("AAD5/wIADwAMAA0AAAAGAAIADwAMAA0AAAD5/wEADwAOAAwAAAD5/wAADwAMAAwAAAD5//7/DwAOAAwAAAD5//3/DwAMAAsAAAAGAP3/DwAMAAsAAAAGAP7/DwANAAwAAAAGAAAADwAMAAwAAAAGAAEADwANAAwAAAD5////DwAMAAwAAAAGAP//DwAMAAwAAAA=")
+tile_map_data = PackedByteArray("AAD5/wIADwAMAA0AAAAGAAIADwAMAA0AAAD5/wEADwAOAAwAAAD5/wAADwAMAAwAAAD5//3/DwAMAAsAAAAGAP3/DwAMAAsAAAAGAAAADwAMAAwAAAAGAAEADwANAAwAAAD5////DwAOAAwAAAAGAP//DwANAAwAAAD5//7/DwAMAAwAAAAGAP7/DwAMAAwAAAA=")
 tile_set = ExtResource("2_beb0c")
 
 [node name="TopLayerVoid" type="TileMapLayer" parent="ChemLab/Tiles"]
