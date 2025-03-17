@@ -6,6 +6,8 @@ extends TetherableBody
 
 @export var loot_table : Resource
 
+var great_grandparent
+
 func _ready():
 	var end_pos = global_position + Vector2(0, 10)
 	var tween = create_tween()
@@ -18,6 +20,8 @@ func _ready():
 		$Item.monitoring = true
 		var item_item = ItemStack.new(item_stack, 1, null)
 		$Item.item_stack = item_item
+		
+	great_grandparent = get_parent().get_parent().get_parent()
 	
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
@@ -26,7 +30,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 func spawn_wanderer():
 	var wanderer = load("res://modules/levels/cafeteria/wanderer.tscn")
 	var wanderer_instance : CharacterBody2D = wanderer.instantiate()
-	get_tree().current_scene.add_child(wanderer_instance)
+	great_grandparent.add_child(wanderer_instance)
 	wanderer_instance.pick_up.connect(pick_up_tray)
 	
 	# set their location to a bit downwards, and their end location as our end_location
@@ -36,20 +40,21 @@ func spawn_wanderer():
 func spawn_ramen_seeker():
 	var seeker = load("res://modules/levels/cafeteria/shade_varieties/ramen_shade.tscn")
 	var seeker_instance : CharacterBody2D = seeker.instantiate()
-	get_tree().current_scene.add_child(seeker_instance)
+	great_grandparent.current_scene.add_child(seeker_instance)
 	# set their location to a bit downwards, and their end location as our end_location
 	seeker_instance.global_position = get_parent().get_parent().global_position + Vector2(randi_range(-72, 72), randi_range(120, 160))
 	seeker_instance.get_node("ShadeFSM").change_state("SeekingRamen")
 	
 func pick_up_tray(body):
+	# ramen's been taken by someone else
 	remove_from_group("edible_ramen")
-	print(self.get_groups())
-	reparent(body)
-	#stops shining shader
-	$CanvasGroup/Sprite2D.z_index = 4
 	
+	# keeps movement tracking to each other
+	reparent(body)
 	position += Vector2(0,16)
 
+	#stops shining shader
+	$CanvasGroup/Sprite2D.call_deferred("reparent", self)
 
 func _on_item_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -59,9 +64,11 @@ func _on_item_body_entered(body: Node2D) -> void:
 	elif body.is_in_group("enemy"):
 		$Item.set_deferred("monitoring", false)
 		remove_from_group("edible_ramen")
-		print(self.get_groups())
+		
+		#reparent self to shade to track with it
 		call_deferred("reparent",body)
 		body.get_node("ShadeFSM").change_state("FoundRamen")
-		#stops shining shader
-		$CanvasGroup/Sprite2D.z_index = 4
 		global_position = body.global_position
+
+		#stops shining shader
+		$CanvasGroup/Sprite2D.call_deferred("reparent", self)

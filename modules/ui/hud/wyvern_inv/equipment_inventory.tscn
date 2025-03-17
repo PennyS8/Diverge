@@ -71,6 +71,7 @@ atlas = ExtResource("6_x6ee3")
 region = Rect2(75, 18, 896, 1767)
 
 [node name="Equip" type="Control" groups=["inventory_view"]]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -87,6 +88,7 @@ cell_size = Vector2(48, 48)
 selected_item_style = ExtResource("4_djypq")
 
 [node name="Cells" type="Control" parent="."]
+texture_filter = 1
 anchors_preset = 0
 mouse_filter = 2
 
