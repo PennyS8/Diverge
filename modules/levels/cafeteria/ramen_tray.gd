@@ -16,6 +16,7 @@ func _ready():
 		$TetherableArea2D.monitorable = true
 		$Item.monitoring = true
 		var item_item = ItemStack.new(item_stack, 1, null)
+		self.add_to_group("edible_ramen")
 		$Item.item_stack = item_item
 	
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:

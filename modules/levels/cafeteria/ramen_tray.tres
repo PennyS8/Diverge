@@ -9,6 +9,7 @@ colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 gradient = SubResource("Gradient_6sqo7")
 
 [resource]
+resource_local_to_scene = true
 shader = ExtResource("1_6sqo7")
 shader_parameter/vertical_gradient = SubResource("GradientTexture1D_dyw0l")
 shader_parameter/size_effect = 1.0

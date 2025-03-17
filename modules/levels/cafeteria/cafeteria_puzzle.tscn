@@ -1,4 +1,4 @@
-[gd_scene load_steps=54 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=56 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_rqif0"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://p7qdhlen8ym6" path="res://modules/levels/cafeteria/props/chair_down.tscn" id="7_tevex"]
 [ext_resource type="Texture2D" uid="uid://cyn8w8jju8h5k" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Normal/Dash.png" id="8_sp0p5"]
 [ext_resource type="Texture2D" uid="uid://xuw5y0dlb1d8" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_B.png" id="9_vgalx"]
+[ext_resource type="PackedScene" uid="uid://bpgun2i5o6ru" path="res://modules/entities/enemies/shades/shade/melee_shade.tscn" id="12_esxpl"]
 [ext_resource type="Script" uid="uid://kfndxak1lwjf" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/camera_boundry_region.gd" id="12_roxoq"]
 [ext_resource type="PackedScene" uid="uid://1cju27vr58hn" path="res://modules/levels/cafeteria/props/beeg_vertical_table.tscn" id="12_tevex"]
 [ext_resource type="Texture2D" uid="uid://nbp0b5x6771i" path="res://assets/environment/downtown_dungeon/custom_sprites/lunch_line.png" id="13_tevex"]
@@ -185,6 +186,12 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axqkd"]
 radius = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_whr8t"]
+resource_local_to_scene = true
+shader = ExtResource("7_ikyt7")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6mxk6"]
 size = Vector2(218, 269)
@@ -439,6 +446,11 @@ metadata/_custom_type_script = "uid://cd88j4in2ij0d"
 
 [node name="CameraLock" type="Marker2D" parent="CheckeredArea/RamenDispenser"]
 position = Vector2(-27, 43)
+
+[node name="MeleeShade" parent="CheckeredArea/RamenDispenser" instance=ExtResource("12_esxpl")]
+
+[node name="Sprite2D" parent="CheckeredArea/RamenDispenser/MeleeShade/Display" index="2"]
+material = SubResource("ShaderMaterial_whr8t")
 
 [node name="CameraBoundry" type="Area2D" parent="CheckeredArea"]
 process_mode = 4
@@ -874,3 +886,5 @@ position = Vector2(41, -226)
 [connection signal="area_entered" from="CheckeredArea/RamenDispenser/DispensePoints/DispensePoint4" to="CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [4]]
 [connection signal="area_entered" from="CheckeredArea/RamenDispenser/DispensePoints/DispensePoint5" to="CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [5]]
 [connection signal="body_entered" from="CheckeredArea/RamenDispenser/debug area" to="CheckeredArea/RamenDispenser" method="_on_debug_area_body_entered"]
+
+[editable path="CheckeredArea/RamenDispenser/MeleeShade"]

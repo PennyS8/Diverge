@@ -27,7 +27,7 @@ void fragment() {
 	}
 
 	COLOR *= c;
-	
+
     // Set up base parameters
     vec4 old_color = COLOR;
     float time = TIME * abs(speed); // Absolute time for both positive and negative speeds

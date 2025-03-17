@@ -22,7 +22,7 @@ max_stack_count = 1
 in_inventory_width = 1
 in_inventory_height = 1
 slot_flags = 256
-default_properties_string = ""
+default_properties_string = "{}"
 default_properties = {}
 metadata/_custom_type_script = "uid://cgg102c222rfg"
 
@@ -43,7 +43,7 @@ radius = 12.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i8hlk"]
 size = Vector2(20, 26)
 
-[node name="RamenTray" type="CharacterBody2D" groups=["edible_ramen", "tetherable_body"]]
+[node name="RamenTray" type="CharacterBody2D" groups=["tetherable_body"]]
 y_sort_enabled = true
 material = ExtResource("1_p3hce")
 use_parent_material = true
