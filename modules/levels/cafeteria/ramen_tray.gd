@@ -1,6 +1,11 @@
 extends TetherableBody
 
 @export var spawns_wanderer : bool
+
+@export var item_stack : ItemType
+
+@export var loot_table : Resource
+
 func _ready():
 	var end_pos = global_position + Vector2(0, 10)
 	var tween = create_tween()
@@ -9,6 +14,9 @@ func _ready():
 		call_deferred("spawn_wanderer")
 	else:
 		$TetherableArea2D.monitorable = true
+		$Item.monitoring = true
+		var item_item = ItemStack.new(item_stack, 1, null)
+		$Item.item_stack = item_item
 	
 func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 	if event is InputEventMouseButton:
@@ -26,4 +34,12 @@ func spawn_wanderer():
 	
 func pick_up_tray(body):
 	reparent(body)
+	#stops shining shader
+	$CanvasGroup/Sprite2D.z_index = 4
 	position += Vector2(0,16)
+
+
+func _on_item_body_entered(body: Node2D) -> void:
+	var deinv = GameManager.inventory_node.inventory
+	$Item.try_pickup(deinv)
+	queue_free()

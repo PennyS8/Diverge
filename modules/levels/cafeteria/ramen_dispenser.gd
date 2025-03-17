@@ -11,6 +11,7 @@ func dispense(point, wanderer_spawn):
 	point.add_child(ramen_instance)
 
 func _on_debug_area_body_entered(body: Node2D) -> void:
+	LevelManager.player.enter_cutscene($CameraLock.global_position)
 	var dispense_points = $DispensePoints.get_children()
 	for point in dispense_points:
 		point.spawns_wanderer = true
@@ -21,11 +22,11 @@ func _on_debug_area_body_entered(body: Node2D) -> void:
 	var tween = create_tween()
 	if lunch_shady_left == true:
 		$LunchShady/AnimatedSprite2D.play("dash_right")
-		tween.tween_property($LunchShady, "global_position", $LunchShady.global_position+Vector2(170,0), 0.25)
+		tween.tween_property($LunchShady, "global_position", $LunchShady.global_position+Vector2(170,0), 0.5)
 		lunch_shady_left = false
 	else:
 		$LunchShady/AnimatedSprite2D.play("dash_left")
-		tween.tween_property($LunchShady, "global_position", $LunchShady.global_position-Vector2(170,0), 0.25)
+		tween.tween_property($LunchShady, "global_position", $LunchShady.global_position-Vector2(170,0), 0.5)
 		lunch_shady_left = true
 		
 func _on_dispense_point_area_entered(area : Node2D, num : int) -> void:

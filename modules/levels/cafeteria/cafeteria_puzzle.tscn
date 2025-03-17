@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=54 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_rqif0"]
@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://p7qdhlen8ym6" path="res://modules/levels/cafeteria/props/chair_down.tscn" id="7_tevex"]
 [ext_resource type="Texture2D" uid="uid://cyn8w8jju8h5k" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Normal/Dash.png" id="8_sp0p5"]
 [ext_resource type="Texture2D" uid="uid://xuw5y0dlb1d8" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_B.png" id="9_vgalx"]
+[ext_resource type="Script" uid="uid://kfndxak1lwjf" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/camera_boundry_region.gd" id="12_roxoq"]
 [ext_resource type="PackedScene" uid="uid://1cju27vr58hn" path="res://modules/levels/cafeteria/props/beeg_vertical_table.tscn" id="12_tevex"]
 [ext_resource type="Texture2D" uid="uid://nbp0b5x6771i" path="res://assets/environment/downtown_dungeon/custom_sprites/lunch_line.png" id="13_tevex"]
 [ext_resource type="PackedScene" uid="uid://crnbqsmdob0o2" path="res://modules/levels/cafeteria/questgiver/quest_juni.tscn" id="13_w1428"]
@@ -21,6 +22,8 @@
 [ext_resource type="Texture2D" uid="uid://6c4pld4xa5tj" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/26_Condominium_Black_Shadow_16x16.png" id="15_v6hvt"]
 [ext_resource type="Script" uid="uid://db7o735bof8ky" path="res://modules/levels/cafeteria/ramen_dispenser.gd" id="16_5d8ey"]
 [ext_resource type="PackedScene" uid="uid://bw5puypn7f5nx" path="res://modules/levels/cafeteria/ramen_tray.tscn" id="17_nd65k"]
+[ext_resource type="Script" uid="uid://cd88j4in2ij0d" path="res://addons/wyvernbox/ground/ground_items_manager.gd" id="22_6mxk6"]
+[ext_resource type="PackedScene" uid="uid://cjdtl6ek4qp7d" path="res://addons/wyvernbox_prefabs/ground_item_stack_view_2d.tscn" id="23_roxoq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6hvt"]
 size = Vector2(216, 20)
@@ -182,6 +185,9 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axqkd"]
 radius = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6mxk6"]
+size = Vector2(218, 269)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3djk"]
 atlas = ExtResource("9_vgalx")
@@ -425,6 +431,30 @@ offset = Vector2(0, -11)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CheckeredArea/RamenDispenser/LunchShady"]
 position = Vector2(-3, -5)
 shape = SubResource("CircleShape2D_axqkd")
+
+[node name="GroundItemManager" type="Node" parent="CheckeredArea/RamenDispenser"]
+script = ExtResource("22_6mxk6")
+item_scene = ExtResource("23_roxoq")
+metadata/_custom_type_script = "uid://cd88j4in2ij0d"
+
+[node name="CameraLock" type="Marker2D" parent="CheckeredArea/RamenDispenser"]
+position = Vector2(-27, 43)
+
+[node name="CameraBoundry" type="Area2D" parent="CheckeredArea"]
+process_mode = 4
+collision_layer = 512
+collision_mask = 4
+script = ExtResource("12_roxoq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CheckeredArea/CameraBoundry"]
+position = Vector2(108, -61.5)
+shape = SubResource("RectangleShape2D_6mxk6")
+
+[node name="LimitBottomLeft" type="Marker2D" parent="CheckeredArea/CameraBoundry"]
+position = Vector2(-25, 73)
+
+[node name="LimitTopRight" type="Marker2D" parent="CheckeredArea/CameraBoundry"]
+position = Vector2(289, -214)
 
 [node name="Tiles" type="Node2D" parent="."]
 y_sort_enabled = true
