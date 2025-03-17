@@ -14,6 +14,8 @@ func dispense(point, wanderer_spawn):
 func _on_debug_area_body_entered(body: Node2D) -> void:
 	if !cutscene_watched:
 		LevelManager.player.enter_cutscene($CameraLock.global_position)
+		cutscene_watched = true
+
 	
 	var dispense_points = $DispensePoints.get_children()
 	for point in dispense_points:
@@ -35,10 +37,5 @@ func _on_debug_area_body_entered(body: Node2D) -> void:
 func _on_dispense_point_area_entered(area : Node2D, num : int) -> void:
 	var point = get_node("DispensePoints/DispensePoint" + str(num))
 	call_deferred("dispense", point, point.spawns_wanderer)
-
-func all_done():
-	if !cutscene_watched:
-		cutscene_watched = true
-		LevelManager.player.exit_cutscene()
 
 	

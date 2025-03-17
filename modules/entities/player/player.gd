@@ -4,6 +4,7 @@ extends TetherableBody
 # Even variables have now been moved to states
 # Player keeps it own velocity, as well as vars that can be used by many different states
 var lock_camera := false
+var in_cutscene := false
 var dir : Vector2 = Vector2.ZERO
 
 # swing_dir is a variable updated by our hook swing that gets the 
@@ -75,9 +76,11 @@ func enter_cutscene(camera_pos):
 	$PlayerFSM.change_state("MovementDisabled")
 	velocity = Vector2.ZERO
 	lock_camera = true
+	in_cutscene = true
 	$Camera2D.global_position = camera_pos
 	
 func exit_cutscene():
 	$PlayerFSM.change_state("Idle")
 	lock_camera = false
-	$Camera2D.position = global_position + (get_global_mouse_position() - global_position) * 0.25
+	in_cutscene = false
+	$Camera2D.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25

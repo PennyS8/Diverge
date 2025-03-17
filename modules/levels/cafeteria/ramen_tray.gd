@@ -30,7 +30,7 @@ func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
 func spawn_wanderer():
 	var wanderer = load("res://modules/levels/cafeteria/wanderer.tscn")
 	var wanderer_instance : CharacterBody2D = wanderer.instantiate()
-	great_grandparent.add_child(wanderer_instance)
+	get_tree().current_scene.add_child(wanderer_instance)
 	wanderer_instance.pick_up.connect(pick_up_tray)
 	
 	# set their location to a bit downwards, and their end location as our end_location
@@ -40,7 +40,7 @@ func spawn_wanderer():
 func spawn_ramen_seeker():
 	var seeker = load("res://modules/levels/cafeteria/shade_varieties/ramen_shade.tscn")
 	var seeker_instance : CharacterBody2D = seeker.instantiate()
-	great_grandparent.current_scene.add_child(seeker_instance)
+	get_tree().current_scene.add_child(seeker_instance)
 	# set their location to a bit downwards, and their end location as our end_location
 	seeker_instance.global_position = get_parent().get_parent().global_position + Vector2(randi_range(-72, 72), randi_range(120, 160))
 	seeker_instance.get_node("ShadeFSM").change_state("SeekingRamen")
@@ -58,6 +58,7 @@ func pick_up_tray(body):
 
 func _on_item_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
+		$Item.set_deferred("monitoring", false)
 		var deinv = GameManager.inventory_node.inventory
 		$Item.try_pickup(deinv)
 		queue_free()
@@ -72,3 +73,11 @@ func _on_item_body_entered(body: Node2D) -> void:
 
 		#stops shining shader
 		$CanvasGroup/Sprite2D.call_deferred("reparent", self)
+
+func pull():
+	$Item.set_deferred("monitoring", false)
+	super.pull()
+	
+func fling():
+	$Item.set_deferred("monitoring", false)
+	super.fling()

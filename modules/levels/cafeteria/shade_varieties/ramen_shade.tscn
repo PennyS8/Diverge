@@ -42,15 +42,19 @@ timed = false
 next_state = NodePath("")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
-[node name="FoundRamen" type="Node" parent="ShadeFSM" index="8" node_paths=PackedStringArray("state_root")]
+[node name="FoundRamen" type="Node" parent="ShadeFSM" index="8"]
 script = ExtResource("4_wn67w")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
-state_root = NodePath("..")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
+[node name="TetherableArea2D" parent="." index="8"]
+collision_layer = 0
+monitoring = false
+monitorable = false
 
 [node name="Sprite2D" parent="Display" index="2"]
 material = SubResource("ShaderMaterial_buh3d")
