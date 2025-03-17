@@ -14,6 +14,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _on_burner_body_entered(body: Node2D) -> void:
 	interactable = true
+	$Glint.show()
 
 func _on_burner_body_exited(body: Node2D) -> void:
 	interactable = false
+	$Glint.hide()

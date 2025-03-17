@@ -14,3 +14,4 @@ func _on_body_entered(_body: Node2D) -> void:
 	player.dir = Vector2.ZERO
 	var dialogue = load("res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue")
 	DialogueManager.show_dialogue_balloon(dialogue, "entrance")
+	

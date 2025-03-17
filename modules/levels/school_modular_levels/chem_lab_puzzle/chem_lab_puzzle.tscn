@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://cp53bw4fgv7b2"]
+[gd_scene load_steps=74 format=4 uid="uid://cp53bw4fgv7b2"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_0bwgv"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_beb0c"]
@@ -12,14 +12,13 @@
 [ext_resource type="Texture2D" uid="uid://xuw5y0dlb1d8" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_B.png" id="8_v2ajd"]
 [ext_resource type="Texture2D" uid="uid://cgwn1c5li4xeb" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_D.png" id="9_n07ws"]
 [ext_resource type="Texture2D" uid="uid://dvasicuqsehh2" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General_A2.png" id="10_7r4fh"]
-[ext_resource type="PackedScene" uid="uid://cnbmh4388o50p" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/BurnerStation.tscn" id="15_v2ajd"]
-[ext_resource type="PackedScene" uid="uid://b77m20ym35viw" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/MixerStation.tscn" id="16_n07ws"]
-[ext_resource type="PackedScene" uid="uid://di4xha63wqq2k" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/ScaleStation.tscn" id="17_7r4fh"]
-[ext_resource type="PackedScene" uid="uid://cmr82b3m7no0t" path="res://modules/levels/cafeteria/props/vending_machine_blue.tscn" id="17_v2ajd"]
-[ext_resource type="PackedScene" uid="uid://cobjdtd1p8rx4" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/chem_table_4.tscn" id="18_0jtan"]
-[ext_resource type="Script" uid="uid://28hkm83pq6al" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/materials_station.gd" id="18_n07ws"]
-[ext_resource type="Script" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chalk_board.gd" id="19_n07ws"]
-[ext_resource type="Script" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/entrance_dialogue.gd" id="20_7r4fh"]
+[ext_resource type="PackedScene" uid="uid://cnbmh4388o50p" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/burner_station.tscn" id="15_v2ajd"]
+[ext_resource type="PackedScene" uid="uid://b77m20ym35viw" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/mixer_station.tscn" id="16_n07ws"]
+[ext_resource type="PackedScene" uid="uid://di4xha63wqq2k" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/scale_station.tscn" id="17_7r4fh"]
+[ext_resource type="PackedScene" uid="uid://cobjdtd1p8rx4" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/book_station.tscn" id="18_0jtan"]
+[ext_resource type="PackedScene" uid="uid://0xji2upguay6" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/chalk_board.tscn" id="19_7r4fh"]
+[ext_resource type="PackedScene" uid="uid://wwrw6hyhhicu" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/materials_station.tscn" id="19_n07ws"]
+[ext_resource type="Script" uid="uid://bmrc6kgne6fhf" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/entrance_dialogue.gd" id="20_7r4fh"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
@@ -3152,15 +3151,11 @@ size = Vector2(384, 312)
 parsed_collision_mask = 4294966355
 agent_radius = 8.0
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_7r4fh"]
-radius = 24.0
-
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n07ws"]
-radius = 24.0
-height = 96.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jtan"]
+size = Vector2(72, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7r4fh"]
-size = Vector2(24, 24)
+size = Vector2(12, 48)
 
 [node name="ChemLabPuzzle" type="Node2D"]
 
@@ -3209,7 +3204,7 @@ tile_set = ExtResource("2_beb0c")
 z_index = 1
 y_sort_enabled = true
 material = ExtResource("1_0bwgv")
-tile_map_data = PackedByteArray("AAD+//v/AQAIAAAAAAD+//z/AQAIAAEAAAD///v/AQAJAAAAAAD///z/AQAJAAEAAAAAAPv/AQAKAAAAAAAAAPz/AQAKAAEAAAABAPv/AQALAAAAAAABAPz/AQALAAEAAAD5//v/AgAFAAIAAAD6//v/AgAGAAIAAAD7//v/AgAHAAIAAAAEAPv/AgAGAAIAAAAFAPv/AgAGAAIAAAAGAPv/AgAHAAIAAAADAPv/AgAFAAIAAAA=")
+tile_map_data = PackedByteArray("AAD5//v/AgAFAAIAAAD6//v/AgAGAAIAAAD7//v/AgAHAAIAAAAEAPv/AgAGAAIAAAAFAPv/AgAGAAIAAAAGAPv/AgAHAAIAAAADAPv/AgAFAAIAAAA=")
 tile_set = ExtResource("2_beb0c")
 
 [node name="Objects" type="TileMapLayer" parent="ChemLab/Tiles"]
@@ -3262,47 +3257,38 @@ position = Vector2(96, 56)
 z_index = 1
 position = Vector2(96, -4)
 
-[node name="Table4" parent="ChemLab/Stations" instance=ExtResource("18_0jtan")]
+[node name="BookStation" parent="ChemLab/Stations" instance=ExtResource("18_0jtan")]
 z_index = 1
+material = null
 position = Vector2(-144, 56)
 
-[node name="MaterialsCabinet" parent="ChemLab/Stations" instance=ExtResource("17_v2ajd")]
-z_index = 1
-position = Vector2(120, -82)
-script = ExtResource("18_n07ws")
-
-[node name="Locker" type="Area2D" parent="ChemLab/Stations/MaterialsCabinet"]
-position = Vector2(0, 24)
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChemLab/Stations/MaterialsCabinet/Locker"]
-shape = SubResource("CircleShape2D_7r4fh")
-
-[node name="ChalkBoard" type="Area2D" parent="ChemLab/Stations"]
+[node name="ChalkBoard" parent="ChemLab/Stations" instance=ExtResource("19_7r4fh")]
 position = Vector2(0, -72)
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("19_n07ws")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ChemLab/Stations/ChalkBoard"]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_n07ws")
 
 [node name="EntranceDialogue" type="Area2D" parent="ChemLab/Stations"]
+z_index = 2
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("20_7r4fh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ChemLab/Stations/EntranceDialogue"]
-position = Vector2(-60, 84)
+position = Vector2(-60, 54)
 rotation = -3.14159
+shape = SubResource("RectangleShape2D_0jtan")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="ChemLab/Stations/EntranceDialogue"]
+position = Vector2(-96, 84)
+rotation = 1.46071e-05
 shape = SubResource("RectangleShape2D_7r4fh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="ChemLab/Stations/EntranceDialogue"]
+position = Vector2(-24, 84)
+rotation = 2.92142e-05
+shape = SubResource("RectangleShape2D_7r4fh")
+
+[node name="MaterialsStation" parent="ChemLab/Stations" instance=ExtResource("19_n07ws")]
+position = Vector2(120, -82)
 
 [node name="Entities" type="Node2D" parent="ChemLab"]
 
-[connection signal="body_entered" from="ChemLab/Stations/MaterialsCabinet/Locker" to="ChemLab/Stations/MaterialsCabinet" method="_on_locker_body_entered"]
-[connection signal="body_exited" from="ChemLab/Stations/MaterialsCabinet/Locker" to="ChemLab/Stations/MaterialsCabinet" method="_on_locker_body_exited"]
-[connection signal="body_entered" from="ChemLab/Stations/ChalkBoard" to="ChemLab/Stations/ChalkBoard" method="_on_body_entered"]
-[connection signal="body_exited" from="ChemLab/Stations/ChalkBoard" to="ChemLab/Stations/ChalkBoard" method="_on_body_exited"]
 [connection signal="body_entered" from="ChemLab/Stations/EntranceDialogue" to="ChemLab/Stations/EntranceDialogue" method="_on_body_entered"]

@@ -12,12 +12,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		var dialogue = load("res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue")
 		DialogueManager.show_dialogue_balloon(dialogue, "materials")
 
-func _on_locker_body_entered(body: Node2D) -> void:
+func _on_area_2d_body_entered(body: Node2D) -> void:
 	interactable = true
+	$Glint.show()
 
-func _on_locker_body_exited(body: Node2D) -> void:
+func _on_area_2d_body_exited(body: Node2D) -> void:
 	interactable = false
-
-
-func _on_chalk_board_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.
+	$Glint.hide()
