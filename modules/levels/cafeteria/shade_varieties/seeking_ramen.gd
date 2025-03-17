@@ -61,17 +61,23 @@ func get_nearest_edible_ramen():
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
 	target.follow_target = get_nearest_edible_ramen()
-	
-	if !target.follow_target:
-		target.follow_target = get_nearest_edible_ramen()
-
 		
-	movement_target_pos = target.follow_target.global_position
-	set_movement_target(movement_target_pos)
+	if !target.follow_target:
+		change_state("NoMoreRamen")
+#
+	#if !target.follow_target.is_in_group("edible_ramen"):
+		#target.follow_target = null
 	
+	if target.follow_target:
+		movement_target_pos = target.follow_target.global_position
+		set_movement_target(movement_target_pos)
+	else:
+		change_state("NoMoreRamen")
+
 	if nav_agent.is_navigation_finished():
 		target.velocity = Vector2.ZERO
-
+		target.pick_up.emit(target)
+		change_state("FoundRamen")
 	
 	var current_agent_position: Vector2 = target.global_position
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()

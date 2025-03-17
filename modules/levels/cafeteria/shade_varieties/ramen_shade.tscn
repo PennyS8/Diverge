@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbud2iwefc124"]
+[gd_scene load_steps=7 format=3 uid="uid://dbud2iwefc124"]
 
 [ext_resource type="PackedScene" uid="uid://bpgun2i5o6ru" path="res://modules/entities/enemies/shades/shade/melee_shade.tscn" id="1_u8tx3"]
 [ext_resource type="Script" uid="uid://bbd5whbs11jwt" path="res://modules/levels/cafeteria/shade_varieties/seeking_ramen.gd" id="2_wn67w"]
 [ext_resource type="Script" uid="uid://bmwdqq25gls25" path="res://modules/levels/cafeteria/shade_varieties/no_more_ramen.gd" id="3_4mu2v"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="4_v6mmv"]
+[ext_resource type="Script" uid="uid://emamwtxvsy5h" path="res://modules/levels/cafeteria/shade_varieties/found_ramen.gd" id="4_wn67w"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_buh3d"]
 resource_local_to_scene = true
@@ -29,8 +30,20 @@ timed = false
 next_state = NodePath("")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
-[node name="NoMoreRamen" type="Node" parent="ShadeFSM" index="7"]
+[node name="NoMoreRamen" type="Node" parent="ShadeFSM" index="7" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("3_4mu2v")
+nav_agent = NodePath("../../NavAgent")
+dash_distance = 36.0
+dash_speed = 24.0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
+[node name="FoundRamen" type="Node" parent="ShadeFSM" index="8"]
+script = ExtResource("4_wn67w")
 disabled = false
 debug_mode = false
 target_path = NodePath("")

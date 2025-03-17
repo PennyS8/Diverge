@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+@warning_ignore("unused_signal")
 signal pick_up(body)
 
 func _ready():

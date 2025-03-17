@@ -73,6 +73,7 @@ func pull():
 	
 func enter_cutscene(camera_pos):
 	$PlayerFSM.change_state("MovementDisabled")
+	velocity = Vector2.ZERO
 	lock_camera = true
 	$Camera2D.global_position = camera_pos
 	

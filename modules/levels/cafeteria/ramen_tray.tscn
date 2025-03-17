@@ -84,7 +84,7 @@ shape = SubResource("CircleShape2D_hy37e")
 [node name="Item" parent="." instance=ExtResource("9_i8hlk")]
 visible = false
 collision_layer = 0
-collision_mask = 4
+collision_mask = 12
 monitoring = false
 monitorable = false
 

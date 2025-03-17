@@ -38,7 +38,7 @@ func spawn_ramen_seeker():
 	var seeker_instance : CharacterBody2D = seeker.instantiate()
 	get_tree().current_scene.add_child(seeker_instance)
 	# set their location to a bit downwards, and their end location as our end_location
-	seeker_instance.global_position = get_parent().get_parent().global_position + Vector2(randi_range(-72, 72), randi_range(68, 84))
+	seeker_instance.global_position = get_parent().get_parent().global_position + Vector2(randi_range(-72, 72), randi_range(120, 160))
 	seeker_instance.get_node("ShadeFSM").change_state("SeekingRamen")
 	
 func pick_up_tray(body):
@@ -52,6 +52,17 @@ func pick_up_tray(body):
 
 
 func _on_item_body_entered(body: Node2D) -> void:
-	var deinv = GameManager.inventory_node.inventory
-	$Item.try_pickup(deinv)
-	queue_free()
+	if body.is_in_group("player"):
+		var deinv = GameManager.inventory_node.inventory
+		$Item.try_pickup(deinv)
+		queue_free()
+	elif body.is_in_group("enemy"):
+		$Item.monitoring = false
+		remove_from_group("edible_ramen")
+		print(self.get_groups())
+		call_deferred("reparent",body)
+		body.get_node("ShadeFSM").change_state("FoundRamen")
+		#stops shining shader
+		$CanvasGroup/Sprite2D.z_index = 4
+		
+		position += Vector2(0,16)
