@@ -1,8 +1,8 @@
 [gd_scene load_steps=10 format=3 uid="uid://cobjdtd1p8rx4"]
 
-[ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="1_p6g8v"]
+[ext_resource type="Shader" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="1_p6g8v"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_q80hc"]
-[ext_resource type="Script" uid="uid://c5ud8hguculx" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/book_station.gd" id="2_mo6do"]
+[ext_resource type="Script" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/book_station.gd" id="2_mo6do"]
 [ext_resource type="Texture2D" uid="uid://bru5tbdcggbne" path="res://assets/environment/downtown_dungeon/custom_sprites/chem_table_3.png" id="2_q80hc"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="3_jtx4m"]
 

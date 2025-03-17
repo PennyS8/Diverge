@@ -1,11 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cnbmh4388o50p"]
+[gd_scene load_steps=13 format=3 uid="uid://d3sf450spmn7n"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_8ekeg"]
 [ext_resource type="Script" uid="uid://cwy011go7t5hu" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/burner_station.gd" id="2_w0sba"]
 [ext_resource type="Texture2D" uid="uid://bdt8ath5tkth" path="res://assets/environment/downtown_dungeon/custom_sprites/chem_table_1.png" id="3_x1byi"]
 [ext_resource type="Texture2D" uid="uid://be3amrdk8btgi" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior_C.png" id="4_i0qio"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="5_3ht4c"]
-[ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="6_djyga"]
+[ext_resource type="Shader" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="6_djyga"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_je3f8"]
 size = Vector2(48, 20)

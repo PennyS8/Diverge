@@ -12,7 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://xuw5y0dlb1d8" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_B.png" id="8_v2ajd"]
 [ext_resource type="Texture2D" uid="uid://cgwn1c5li4xeb" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_D.png" id="9_n07ws"]
 [ext_resource type="Texture2D" uid="uid://dvasicuqsehh2" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General_A2.png" id="10_7r4fh"]
-[ext_resource type="PackedScene" uid="uid://cnbmh4388o50p" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/burner_station.tscn" id="15_v2ajd"]
+[ext_resource type="PackedScene" uid="uid://d3sf450spmn7n" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/burner_station.tscn" id="13_n07ws"]
 [ext_resource type="PackedScene" uid="uid://b77m20ym35viw" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/mixer_station.tscn" id="16_n07ws"]
 [ext_resource type="PackedScene" uid="uid://di4xha63wqq2k" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/scale_station.tscn" id="17_7r4fh"]
 [ext_resource type="PackedScene" uid="uid://cobjdtd1p8rx4" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/book_station.tscn" id="18_0jtan"]
@@ -3245,8 +3245,7 @@ entrance_name = "LabSouth"
 
 [node name="Stations" type="Node2D" parent="ChemLab"]
 
-[node name="BurnerStation" parent="ChemLab/Stations" instance=ExtResource("15_v2ajd")]
-z_index = 1
+[node name="BurnerStation" parent="ChemLab/Stations" instance=ExtResource("13_n07ws")]
 position = Vector2(-144, -4)
 
 [node name="MixerStation" parent="ChemLab/Stations" instance=ExtResource("16_n07ws")]
