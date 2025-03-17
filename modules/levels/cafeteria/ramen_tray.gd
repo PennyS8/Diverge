@@ -57,12 +57,11 @@ func _on_item_body_entered(body: Node2D) -> void:
 		$Item.try_pickup(deinv)
 		queue_free()
 	elif body.is_in_group("enemy"):
-		$Item.monitoring = false
+		$Item.set_deferred("monitoring", false)
 		remove_from_group("edible_ramen")
 		print(self.get_groups())
 		call_deferred("reparent",body)
 		body.get_node("ShadeFSM").change_state("FoundRamen")
 		#stops shining shader
 		$CanvasGroup/Sprite2D.z_index = 4
-		
-		position += Vector2(0,16)
+		global_position = body.global_position

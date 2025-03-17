@@ -16,34 +16,9 @@ var dashing
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	nav_agent.target_desired_distance = 5
-	nav_agent.path_desired_distance = 10
-	
-	var dash_direction = -target.velocity.normalized()
-	
-	#distance in px
-	var dash_force = dash_direction * dash_distance
-	
-	dash_force = target.to_global(dash_force)
-	nav_agent.target_position = dash_force
-	
-	dashing = true
-
-func _on_update(_delta: float) -> void:
-	if dashing:
-		if nav_agent.is_navigation_finished():
-			dashing = false
-			target.queue_free()
-		
-		var current_agent_position: Vector2 = target.global_position
-		var next_path_position: Vector2 = nav_agent.get_next_path_position()
-		
-		target.velocity = current_agent_position.direction_to(next_path_position) * dash_speed
-		target.move_and_slide()
-
-	elif target.follow_target:
-		change_state("Seeking")
-	
-func _on_exit(_args) -> void:
-	pass
+	var tween = target.create_tween().set_parallel(true)
+	var end_position = target.global_position + Vector2(randi_range(-24, 24), randi_range(24, 32))
+	tween.tween_property(target, "global_position", end_position, 2.0)
+	tween.tween_property(target, "modulate:a", 0.0, 2.0)
+	tween.chain().tween_callback(target.queue_free)
 	
