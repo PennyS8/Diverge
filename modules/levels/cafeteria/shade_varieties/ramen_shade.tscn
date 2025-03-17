@@ -16,8 +16,12 @@ shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 [node name="ShadeFSM" parent="." index="1"]
 next_state = NodePath("SeekingRamen")
 
-[node name="SeekingRamen" type="Node" parent="ShadeFSM" index="6"]
+[node name="SeekingRamen" type="Node" parent="ShadeFSM" index="6" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("2_wn67w")
+nav_agent = NodePath("../../NavAgent")
+movement_speed = 40.0
+STEER_SPEED = 0.03
+MAX_SPEED = 30.0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
