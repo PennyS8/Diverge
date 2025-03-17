@@ -40,6 +40,11 @@ Juniper: I should weigh just the right amount
 => END
 
 ~ entrance
+Juniper: There's my book!
+Juniper: I must have forgotten it when I was completing that lab.
+=> END
+
+~ book
 Juniper: Crap!
 Juniper: I forgot to do that lab for chem.
 Juniper: If I don't do the lab now I'll forget again.

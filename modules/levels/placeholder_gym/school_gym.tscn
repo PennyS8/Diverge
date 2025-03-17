@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_yq4i7"]
 [ext_resource type="TileSet" uid="uid://bb4c8ub1jfs3l" path="res://modules/levels/placeholder_gym/gym_tileset.tres" id="2_5qqrf"]
-[ext_resource type="PackedScene" uid="uid://cnbmh4388o50p" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/BurnerStation.tscn" id="4_18pen"]
+[ext_resource type="PackedScene" uid="uid://cnbmh4388o50p" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/burner_station.tscn" id="4_18pen"]
 [ext_resource type="Texture2D" uid="uid://cxktnnq44odxo" path="res://assets/environment/downtown_dungeon/gym_floor_paint.png" id="4_axoyq"]
 
 
