@@ -18,8 +18,8 @@
 [ext_resource type="PackedScene" uid="uid://cmr82b3m7no0t" path="res://modules/levels/cafeteria/props/vending_machine_blue.tscn" id="17_v2ajd"]
 [ext_resource type="PackedScene" uid="uid://cobjdtd1p8rx4" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/chem_table_4.tscn" id="18_0jtan"]
 [ext_resource type="Script" uid="uid://28hkm83pq6al" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/materials_station.gd" id="18_n07ws"]
-[ext_resource type="Script" uid="uid://bb6qxllei78q8" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chalk_board.gd" id="19_n07ws"]
-[ext_resource type="Script" uid="uid://bmrc6kgne6fhf" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/entrance_dialogue.gd" id="20_7r4fh"]
+[ext_resource type="Script" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chalk_board.gd" id="19_n07ws"]
+[ext_resource type="Script" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/entrance_dialogue.gd" id="20_7r4fh"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)

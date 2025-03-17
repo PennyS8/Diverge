@@ -1,35 +1,60 @@
 ~ mixer
-Juniper: Just got to mix it with something
+if LabVariableManager.color != ""
+	Juniper: Just got to mix it with something
 
-- Green Solution
-	Juniper: Adding some green
-- Blue Solution
-	Juniper: Adding some blue
+	- Green Solution
+		Juniper: Adding some green
+		set LabVariableManager.mixed_substance = "green"
+	
+		if LabVariableManager.color == "orange"
+			set LabVariableManager.color = "brown"
+		else 
+			set LabVariableManager.color = "lime"
+	- Blue Solution
+		Juniper: Adding some blue
+		set LabVariableManager.mixed_substance == "blue"
+	
+		if LabVariableManager.color == "orange"
+			set LabVariableManager.color = "purple"
+		else
+			set LabVariableManager.color = "light blue"
 
-Juniper: Yippie it's red now
+	# Randomized message, the "Yippe" line is twice as likely to get called
+	%2 Juniper: Yippie it's {{LabVariableManager.color}} now
+	% Juniper: Aw I added too much, it's {{LabVariableManager.mixed_substance}} now
+else
+	=> no_materials
 => END
 
 ~ burner
-Juniper: Just got to boil it
-Juniper: ...
-Juniper: ...
-Juniper: this shit's slow
-Juniper: ...
-Juniper: Yippie it changed colors!
+if LabVariableManager.color != ""
+	Juniper: Just got to boil it
+	Juniper: ...
+	Juniper: ...
+	Juniper: this shit's slow
+	Juniper: ...
+	Juniper: Yippie it changed colors!
+else
+	=> no_materials
 => END
 
 ~ scale
-Juniper: Okay, I only need a little
-Juniper: Just a touch more
-Juniper: Oh fuck, that's too much
-Juniper: Okay that's enough
+if LabVariableManager.color != ""
+	Juniper: Okay, I only need a little
+	Juniper: Just a touch more
+	Juniper: Oh fuck, that's too much
+	Juniper: Okay that's enough
+else
+	=> no_materials
 => END
 
 ~ materials
 Juniper: What was it that I needed?
 
 - Orange Substance
+	set LabVariableManager.color = "orange"
 - Yellow Powder
+	set LabVariableManager.color = "yellow"
 
 Juniper: Ah, there it is!
 Juniper: I should weigh just the right amount
@@ -45,4 +70,8 @@ Juniper: I forgot to do that lab for chem.
 Juniper: If I don't do the lab now I'll forget again.
 Juniper: I can grab the book after.
 Juniper: The prof probably left the lab instructions up on the board.
+=> END
+
+~ no_materials
+	Juniper: I need to get some materials from the closet
 => END

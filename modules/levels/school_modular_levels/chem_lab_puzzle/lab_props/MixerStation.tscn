@@ -2,7 +2,7 @@
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_uqox2"]
 [ext_resource type="Texture2D" uid="uid://hk1xabo3vxno" path="res://assets/environment/downtown_dungeon/custom_sprites/chem_table_2.png" id="2_10nb0"]
-[ext_resource type="Script" uid="uid://ctmpfcqmeh5i1" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/mixer_station.gd" id="3_10nb0"]
+[ext_resource type="Script" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/mixer_station.gd" id="3_10nb0"]
 [ext_resource type="Texture2D" uid="uid://cs1yhtggmsirp" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/12_Kitchen_Black_Shadow_16x16.png" id="4_1ou80"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wcn5f"]
