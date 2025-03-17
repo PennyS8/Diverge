@@ -34,3 +34,15 @@ Juniper: What was it that I needed?
 Juniper: Ah, there it is!
 Juniper: I should weigh just the right amount
 => END
+
+~ instructions
+[left]1) Measure 1 unit of red powder & 2 units of the blue solution\n2) Mix the red powder into the blue solution\n3) Boil the blue solution to dissolve the powder fully\n\n4) Measure 1 unit of yellow powder & 3 units of the green solution\n5) Mix the yellow powder into the green solution\n6) Boil the green solution to dissolve the powder fully\n\n7) Mix the lime green & purple solutions\n8) Observe the results
+=> END
+
+~ entrance
+Juniper: Crap!
+Juniper: I forgot to do that lab for chem.
+Juniper: If I don't do the lab now I'll forget again.
+Juniper: I can grab the book after.
+Juniper: The prof probably left the lab instructions up on the board.
+=> END

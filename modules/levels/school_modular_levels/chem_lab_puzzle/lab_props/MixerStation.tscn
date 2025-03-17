@@ -13,7 +13,7 @@ atlas = ExtResource("4_1ou80")
 region = Rect2(240, 382, 15, 15)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p47ew"]
-radius = 18.0
+radius = 24.0
 
 [node name="MixerStation" type="StaticBody2D"]
 material = ExtResource("1_uqox2")
@@ -42,7 +42,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(12, 0)
+position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_p47ew")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_mixer_body_entered"]

@@ -22,7 +22,7 @@ atlas = ExtResource("5_klh8d")
 region = Rect2(281, 312, 7, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhhqs"]
-radius = 18.0
+radius = 24.0
 
 [node name="BurnerStation" type="StaticBody2D"]
 material = ExtResource("1_je3f8")
@@ -69,7 +69,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-11, 0)
+position = Vector2(0, 4)
 shape = SubResource("CircleShape2D_bhhqs")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_burner_body_entered"]
