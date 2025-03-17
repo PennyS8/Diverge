@@ -20,6 +20,8 @@ var hook_locked := true
 
 var curr_camera_boundry : Area2D
 
+@onready var noise = Noise
+
 func _process(_delta):
 	_camera_move(_delta)
 	
