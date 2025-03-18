@@ -6,6 +6,7 @@ extends State
 @export var STEER_SPEED : float
 @export var MAX_SPEED : float
 @onready var movement_target_pos : Vector2
+@export var ramen_patterns : Array[ItemPattern]
 
 @export_group("Behavioral Variables")
 @export_range(0.0,40.0, 0.25) var backstep_random_mintime : float
@@ -63,7 +64,11 @@ func _on_update(_delta: float) -> void:
 	target.follow_target = get_nearest_edible_ramen()
 		
 	if !target.follow_target:
-		change_state("NoMoreRamen")
+		if _check_player_inv():
+			target.follow_target = get_tree().get_first_node_in_group("player")
+			change_state("Seeking")
+		else:
+			change_state("NoMoreRamen")
 #
 	#if !target.follow_target.is_in_group("edible_ramen"):
 		#target.follow_target = null
@@ -72,7 +77,11 @@ func _on_update(_delta: float) -> void:
 		movement_target_pos = target.follow_target.global_position
 		set_movement_target(movement_target_pos)
 	else:
-		change_state("NoMoreRamen")
+		if _check_player_inv():
+			target.follow_target = get_tree().get_first_node_in_group("player")
+			change_state("Seeking")
+		else:
+			change_state("NoMoreRamen")
 
 	if nav_agent.is_navigation_finished():
 		target.velocity = Vector2.ZERO
@@ -88,3 +97,9 @@ func _on_update(_delta: float) -> void:
 	target.velocity *= movement_speed
 	
 	target.move_and_slide()
+
+func _check_player_inv():
+	var deinv : Inventory = GameManager.inventory_node.inventory
+	if deinv.count_items(ramen_patterns):
+		return true
+	else: return false

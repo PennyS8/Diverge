@@ -20,13 +20,7 @@ func _ready():
 		$Item.monitoring = true
 		var item_item = ItemStack.new(item_stack, 1, null)
 		$Item.item_stack = item_item
-		
-	great_grandparent = get_parent().get_parent().get_parent()
-	
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
-	if event is InputEventMouseButton:
-		queue_free()
-		
+
 func spawn_wanderer():
 	var wanderer = load("res://modules/levels/cafeteria/wanderer.tscn")
 	var wanderer_instance : CharacterBody2D = wanderer.instantiate()
@@ -62,6 +56,7 @@ func _on_item_body_entered(body: Node2D) -> void:
 		var deinv = GameManager.inventory_node.inventory
 		$Item.try_pickup(deinv)
 		queue_free()
+	
 	elif body.is_in_group("enemy"):
 		$Item.set_deferred("monitoring", false)
 		remove_from_group("edible_ramen")
@@ -75,9 +70,9 @@ func _on_item_body_entered(body: Node2D) -> void:
 		$CanvasGroup/Sprite2D.call_deferred("reparent", self)
 
 func pull():
-	$Item.set_deferred("monitoring", false)
+	$Item.set_collision_mask_value(4, false)
 	super.pull()
 	
 func fling():
-	$Item.set_deferred("monitoring", false)
+	$Item.set_collision_mask_value(4, false)
 	super.fling()
