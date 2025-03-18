@@ -1,0 +1,73 @@
+[gd_scene load_steps=11 format=3 uid="uid://dbud2iwefc124"]
+
+[ext_resource type="PackedScene" uid="uid://bpgun2i5o6ru" path="res://modules/entities/enemies/shades/shade/melee_shade.tscn" id="1_u8tx3"]
+[ext_resource type="Script" uid="uid://bbd5whbs11jwt" path="res://modules/levels/cafeteria/shade_varieties/seeking_ramen.gd" id="2_wn67w"]
+[ext_resource type="Script" uid="uid://bmwdqq25gls25" path="res://modules/levels/cafeteria/shade_varieties/no_more_ramen.gd" id="3_4mu2v"]
+[ext_resource type="Script" uid="uid://0rodky4is3fo" path="res://addons/wyvernbox/crafting/item_pattern.gd" id="3_buh3d"]
+[ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="3_v6mmv"]
+[ext_resource type="Script" uid="uid://dk8gt5td434kb" path="res://addons/wyvernbox/extension/item_pattern_name.gd" id="4_buh3d"]
+[ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="4_v6mmv"]
+[ext_resource type="Script" uid="uid://emamwtxvsy5h" path="res://modules/levels/cafeteria/shade_varieties/found_ramen.gd" id="4_wn67w"]
+
+[sub_resource type="Resource" id="Resource_207nk"]
+script = ExtResource("4_buh3d")
+name_to_search = "Ramen Noodles"
+name = "Ramen Checker"
+position_dependent = false
+items = Array[ExtResource("3_v6mmv")]([])
+efficiency = Array[float]([])
+metadata/_custom_type_script = "uid://dk8gt5td434kb"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_buh3d"]
+resource_local_to_scene = true
+shader = ExtResource("4_v6mmv")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[node name="RamenShade" instance=ExtResource("1_u8tx3")]
+
+[node name="ShadeFSM" parent="." index="1"]
+next_state = NodePath("SeekingRamen")
+
+[node name="SeekingRamen" type="Node" parent="ShadeFSM" index="6" node_paths=PackedStringArray("nav_agent")]
+script = ExtResource("2_wn67w")
+nav_agent = NodePath("../../NavAgent")
+movement_speed = 40.0
+STEER_SPEED = 0.03
+MAX_SPEED = 30.0
+ramen_patterns = Array[ExtResource("3_buh3d")]([SubResource("Resource_207nk")])
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
+[node name="NoMoreRamen" type="Node" parent="ShadeFSM" index="7" node_paths=PackedStringArray("nav_agent")]
+script = ExtResource("3_4mu2v")
+nav_agent = NodePath("../../NavAgent")
+dash_distance = 36.0
+dash_speed = 24.0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
+[node name="FoundRamen" type="Node" parent="ShadeFSM" index="8"]
+script = ExtResource("4_wn67w")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
+[node name="TetherableArea2D" parent="." index="8"]
+collision_layer = 0
+monitoring = false
+monitorable = false
+
+[node name="Sprite2D" parent="Display" index="2"]
+material = SubResource("ShaderMaterial_buh3d")

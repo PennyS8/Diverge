@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://d1xkjbo67pt4b"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_66l2c"]
+[ext_resource type="Texture2D" uid="uid://b26tj2lcym7o4" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_C.png" id="2_ihsai"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vnkr0"]
+size = Vector2(24, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vc6l8"]
+atlas = ExtResource("2_ihsai")
+region = Rect2(72, 156, 24, 47)
+
+[node name="RedVendingMachine" type="StaticBody2D"]
+material = ExtResource("1_66l2c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 15)
+shape = SubResource("RectangleShape2D_vnkr0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = SubResource("AtlasTexture_vc6l8")
+offset = Vector2(0, 0.5)

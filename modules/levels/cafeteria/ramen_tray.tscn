@@ -1,0 +1,108 @@
+[gd_scene load_steps=16 format=3 uid="uid://bw5puypn7f5nx"]
+
+[ext_resource type="Material" uid="uid://b3i67aukbsan1" path="res://modules/levels/cafeteria/ramen_tray.tres" id="1_i8hlk"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_p3hce"]
+[ext_resource type="Script" uid="uid://bmqslj0n2bhui" path="res://modules/levels/cafeteria/ramen_tray.gd" id="2_hy37e"]
+[ext_resource type="Texture2D" uid="uid://xif0g3urgtv1" path="res://assets/environment/downtown_dungeon/custom_sprites/ramen.png" id="3_26siq"]
+[ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="3_pm5qn"]
+[ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="5_mvy0t"]
+[ext_resource type="Script" uid="uid://b5tr3vk6tqj6l" path="res://addons/wyvernbox/crafting/item_generator.gd" id="6_voe8i"]
+[ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="7_i8hlk"]
+[ext_resource type="PackedScene" uid="uid://cjdtl6ek4qp7d" path="res://addons/wyvernbox_prefabs/ground_item_stack_view_2d.tscn" id="9_i8hlk"]
+
+[sub_resource type="Resource" id="Resource_pxv47"]
+script = ExtResource("3_pm5qn")
+name = "Ramen Noodles"
+description = "Bring these back to the Shaded Figure you met in the cafeteria!"
+tags = Array[StringName]([])
+texture = ExtResource("3_26siq")
+texture_scale = 1.0
+max_stack_count = 1
+in_inventory_width = 1
+in_inventory_height = 1
+slot_flags = 256
+default_properties_string = "{}"
+default_properties = {}
+metadata/_custom_type_script = "uid://cgg102c222rfg"
+
+[sub_resource type="Resource" id="Resource_62811"]
+script = ExtResource("6_voe8i")
+name = ""
+results = Array[ExtResource("5_mvy0t")]([SubResource("Resource_pxv47")])
+weights = Array[float]([1.0])
+count_ranges = Array[Vector2]([Vector2(1, 1)])
+metadata/_custom_type_script = "uid://b5tr3vk6tqj6l"
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0i42r"]
+radius = 17.1172
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hy37e"]
+radius = 12.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i8hlk"]
+size = Vector2(21, 27)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_i8hlk"]
+radius = 13.0
+
+[node name="RamenTray" type="CharacterBody2D" groups=["edible_ramen", "tetherable_body"]]
+y_sort_enabled = true
+material = ExtResource("1_p3hce")
+use_parent_material = true
+collision_layer = 0
+collision_mask = 128
+script = ExtResource("2_hy37e")
+item_stack = SubResource("Resource_pxv47")
+loot_table = SubResource("Resource_62811")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+material = ExtResource("1_i8hlk")
+fit_margin = 0.0
+clear_margin = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup"]
+material = ExtResource("7_i8hlk")
+position = Vector2(0, 5)
+texture = ExtResource("3_26siq")
+offset = Vector2(0.5, -5.5)
+region_enabled = true
+region_rect = Rect2(1, 1, 15, 9)
+region_filter_clip_enabled = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_0i42r")
+
+[node name="TetherableArea2D" type="Area2D" parent="."]
+visible = false
+collision_layer = 256
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
+shape = SubResource("CircleShape2D_hy37e")
+
+[node name="Item" parent="." instance=ExtResource("9_i8hlk")]
+collision_layer = 0
+collision_mask = 12
+monitoring = false
+monitorable = false
+
+[node name="VisItem" parent="Item" index="0"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
+position = Vector2(0.5, 4.5)
+shape = SubResource("RectangleShape2D_i8hlk")
+
+[node name="TopCollider" type="CollisionShape2D" parent="Item"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_i8hlk")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="body_entered" from="Item" to="." method="_on_item_body_entered"]
+
+[editable path="Item"]

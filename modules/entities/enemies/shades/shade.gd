@@ -7,6 +7,8 @@ var follow_target
 var knockback : Vector2 = Vector2.ZERO
 var crowd_control := false
 
+signal pick_up(body)
+
 var default_position
 
 func on_save_game(saved_data:Array[SavedData]):

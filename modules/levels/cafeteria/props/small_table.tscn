@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c68pn2dlicter"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_2l7wr"]
+[ext_resource type="Texture2D" uid="uid://bfsmgd4vfx72m" path="res://assets/environment/downtown_dungeon/custom_sprites/smol_table.png" id="2_x0ske"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vkeoe"]
+size = Vector2(46, 42)
+
+[node name="SmallTable" type="StaticBody2D"]
+z_index = 2
+y_sort_enabled = true
+material = ExtResource("1_2l7wr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -9)
+shape = SubResource("RectangleShape2D_vkeoe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = ExtResource("2_x0ske")
+offset = Vector2(0, -12)

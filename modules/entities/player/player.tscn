@@ -1149,7 +1149,7 @@ shader_parameter/noise_intensity = 0.05
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4
-collision_mask = 243
+collision_mask = 115
 motion_mode = 1
 wall_min_slide_angle = 0.0872665
 script = ExtResource("1_ehhf7")
@@ -1561,7 +1561,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Lasso")
+next_state = NodePath("")
 
 [node name="Hook" type="Area2D" parent="." groups=["hook"]]
 z_index = 1
