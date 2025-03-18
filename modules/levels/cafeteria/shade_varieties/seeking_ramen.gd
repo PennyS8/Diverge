@@ -6,7 +6,7 @@ extends State
 @export var STEER_SPEED : float
 @export var MAX_SPEED : float
 @onready var movement_target_pos : Vector2
-@export var ramen_patterns : Array[ItemPattern]
+@export var ramen_pattern : Array[ItemLike]
 
 @export_group("Behavioral Variables")
 @export_range(0.0,40.0, 0.25) var backstep_random_mintime : float
@@ -100,6 +100,6 @@ func _on_update(_delta: float) -> void:
 
 func _check_player_inv():
 	var deinv : Inventory = GameManager.inventory_node.inventory
-	if deinv.count_items(ramen_patterns):
+	if deinv.count_items(ramen_pattern):
 		return true
 	else: return false

@@ -1,10 +1,7 @@
 extends TetherableBody
 
 @export var spawns_wanderer : bool
-
 @export var item_stack : ItemType
-
-@export var loot_table : Resource
 
 var great_grandparent
 
