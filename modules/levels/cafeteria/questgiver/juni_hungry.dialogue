@@ -10,11 +10,14 @@ Shaded Figure: i came to class. i studied. i went for a walk. everything. i've e
 	Shaded Figure: anyway... i couldn't get the only good food. all the other food has an awful texture.
 	Shaded Figure: well, except for the chicken burger. but i ate that every day last semester and it tastes like metal now.
 	Juniper: Hey, same here!
+- Want some Ramen? [if _test_if_ramen()]
+	Shaded Figure: ...i mean, if you're offering, i guess. that sounds pretty okay.
+	Shaded Figure: woo!
+=> END
+
+~ fed
+Shaded Figure: omg food
 Juniper: Pro tip: I recently found out that the noodles here are pretty good if you give them a chance.
 Shaded Figure: i'm fine with water, thanks. but i need to figure out why i feel so badly.
 Juniper: ...
 Juniper: [i] I should see if I can find any noodles for them. [/i]
-=> END
-
-~ fed
-Shaded Figure:
