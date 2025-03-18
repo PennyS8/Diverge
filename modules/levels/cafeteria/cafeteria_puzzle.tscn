@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=55 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_rqif0"]
@@ -24,7 +24,6 @@
 [ext_resource type="PackedScene" uid="uid://bw5puypn7f5nx" path="res://modules/levels/cafeteria/ramen_tray.tscn" id="17_nd65k"]
 [ext_resource type="Script" uid="uid://wjs6kl2ibj27" path="res://addons/wyvernbox/ground/ground_items_manager.gd" id="22_6mxk6"]
 [ext_resource type="PackedScene" uid="uid://cjdtl6ek4qp7d" path="res://addons/wyvernbox_prefabs/ground_item_stack_view_2d.tscn" id="23_roxoq"]
-[ext_resource type="Resource" uid="uid://ixlr5j5w728j" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="25_esxpl"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_roxoq"]
 vertices = PackedVector2Array(140.094, -244.023, -67.0781, -244.969, -69.6094, -386, 142.688, -386)
@@ -875,7 +874,6 @@ position = Vector2(-23, -202)
 
 [node name="QuestJuni" parent="Characters" instance=ExtResource("13_w1428")]
 position = Vector2(-106, -21)
-item_type = ExtResource("25_esxpl")
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
 position = Vector2(-191, -12)
