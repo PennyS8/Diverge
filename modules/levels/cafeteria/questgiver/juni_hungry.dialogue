@@ -40,10 +40,13 @@ else:
 Juniper: I've got some ramen...
 - You want it? 
 	do! take_ramen()
+	do! move_book()
+	do table_ramen.show()
 	Shaded Figure: ...i mean, if you're offering, i guess. that sounds pretty okay.
 	Shaded Figure: [speed=0.2][shake rate=20 level=10][i]om[/i]  [i]nom[/i]  [i]nom[/i][/shake]
 	Shaded Figure: wow. thank you! here, take this book i've been meaning to the return to the library. 
 	Shaded Figure: it's a good one! i keep forgetting to return it so it's probably better in your hands.
+	do table_book.hide()
 	Juniper: [i] I got one of the three books I need! [/i]
 	=> END
 - But I think I'll keep it.

@@ -2,7 +2,8 @@ extends StaticBody2D
 
 @export var item_type : ItemType
 @export var return_item : ItemType
-
+@onready var table_book = $TableBook
+@onready var table_ramen = $TableRamen
 var quest_done : bool = false
 var talked_to : bool = false
 func _ready():
@@ -29,3 +30,7 @@ func take_ramen():
 		return true
 	else:
 		return false
+		
+func move_book():
+	if table_book:
+		table_book.position = Vector2(15, -4)

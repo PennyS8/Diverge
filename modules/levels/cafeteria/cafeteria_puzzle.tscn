@@ -1,4 +1,4 @@
-[gd_scene load_steps=63 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=66 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_rqif0"]
@@ -28,6 +28,9 @@
 [ext_resource type="PackedScene" uid="uid://cjdtl6ek4qp7d" path="res://addons/wyvernbox_prefabs/ground_item_stack_view_2d.tscn" id="23_roxoq"]
 [ext_resource type="Resource" uid="uid://ixlr5j5w728j" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="25_esxpl"]
 [ext_resource type="Resource" uid="uid://cjq00cbnjmaab" path="res://modules/objects/library_book_cafeteria.tres" id="28_anitv"]
+[ext_resource type="Texture2D" uid="uid://kyv7yk10fodg" path="res://assets/environment/downtown_dungeon/custom_sprites/table_water.png" id="29_clobj"]
+[ext_resource type="Texture2D" uid="uid://deyw8rhivgppt" path="res://assets/environment/downtown_dungeon/custom_sprites/table_book.png" id="30_vas0v"]
+[ext_resource type="Texture2D" uid="uid://xif0g3urgtv1" path="res://assets/environment/downtown_dungeon/custom_sprites/ramen.png" id="31_vas0v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3djk"]
 atlas = ExtResource("9_vgalx")
@@ -884,7 +887,7 @@ position = Vector2(-27, 43)
 position = Vector2(-71, 128)
 
 [node name="Backstep" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeFSM" index="2"]
-next_state = NodePath("../ChargeAttack")
+next_state = NodePath("NoMelee")
 
 [node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeFSM" index="7"]
 next_state = NodePath("../FoundRamen")
@@ -902,7 +905,7 @@ material = SubResource("ShaderMaterial_anitv")
 position = Vector2(13, 127)
 
 [node name="Backstep" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeFSM" index="2"]
-next_state = NodePath("../ChargeAttack")
+next_state = NodePath("NoMelee")
 
 [node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeFSM" index="7"]
 next_state = NodePath("../FoundRamen")
@@ -920,7 +923,7 @@ material = SubResource("ShaderMaterial_ocqtp")
 position = Vector2(-28, 133)
 
 [node name="Backstep" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="2"]
-next_state = NodePath("../ChargeAttack")
+next_state = NodePath("NoMelee")
 
 [node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="7"]
 next_state = NodePath("../Seeking")
@@ -967,6 +970,28 @@ position = Vector2(289, -214)
 position = Vector2(-106, -21)
 item_type = ExtResource("25_esxpl")
 return_item = ExtResource("28_anitv")
+
+[node name="TableWater" type="Sprite2D" parent="Characters/QuestJuni"]
+z_index = 1
+material = ExtResource("1_ad4o5")
+position = Vector2(-13, -6)
+texture = ExtResource("29_clobj")
+offset = Vector2(0.5, 0)
+
+[node name="TableBook" type="Sprite2D" parent="Characters/QuestJuni"]
+z_index = 2
+use_parent_material = true
+position = Vector2(-1, -3)
+texture = ExtResource("30_vas0v")
+offset = Vector2(0.5, 0)
+
+[node name="TableRamen" type="Sprite2D" parent="Characters/QuestJuni"]
+visible = false
+z_index = 1
+use_parent_material = true
+position = Vector2(0, -3)
+texture = ExtResource("31_vas0v")
+offset = Vector2(0.5, 0.5)
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
 position = Vector2(-347, 1)
