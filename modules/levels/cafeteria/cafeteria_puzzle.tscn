@@ -1,4 +1,4 @@
-[gd_scene load_steps=62 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=63 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_rqif0"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://cd88j4in2ij0d" path="res://addons/wyvernbox/ground/ground_items_manager.gd" id="22_6mxk6"]
 [ext_resource type="PackedScene" uid="uid://cjdtl6ek4qp7d" path="res://addons/wyvernbox_prefabs/ground_item_stack_view_2d.tscn" id="23_roxoq"]
 [ext_resource type="Resource" uid="uid://ixlr5j5w728j" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="25_esxpl"]
+[ext_resource type="Resource" uid="uid://cjq00cbnjmaab" path="res://modules/objects/library_book_cafeteria.tres" id="28_anitv"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3djk"]
 atlas = ExtResource("9_vgalx")
@@ -882,6 +883,9 @@ position = Vector2(-27, 43)
 [node name="Shadely" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
 position = Vector2(-71, 128)
 
+[node name="Backstep" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeFSM" index="2"]
+next_state = NodePath("../ChargeAttack")
+
 [node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeFSM" index="7"]
 next_state = NodePath("../FoundRamen")
 
@@ -897,6 +901,9 @@ material = SubResource("ShaderMaterial_anitv")
 [node name="Melisshade" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
 position = Vector2(13, 127)
 
+[node name="Backstep" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeFSM" index="2"]
+next_state = NodePath("../ChargeAttack")
+
 [node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeFSM" index="7"]
 next_state = NodePath("../FoundRamen")
 
@@ -911,6 +918,9 @@ material = SubResource("ShaderMaterial_ocqtp")
 
 [node name="BrickShadehouse" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
 position = Vector2(-28, 133)
+
+[node name="Backstep" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="2"]
+next_state = NodePath("../ChargeAttack")
 
 [node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="7"]
 next_state = NodePath("../Seeking")
@@ -956,12 +966,10 @@ position = Vector2(289, -214)
 [node name="QuestJuni" parent="Characters" instance=ExtResource("13_w1428")]
 position = Vector2(-106, -21)
 item_type = ExtResource("25_esxpl")
+return_item = ExtResource("28_anitv")
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(37, -220)
-
-[node name="1" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(-40, -404)
+position = Vector2(-347, 1)
 
 [connection signal="area_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints/DispensePoint1" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [1]]
 [connection signal="area_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints/DispensePoint2" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [2]]

@@ -4,7 +4,7 @@ var nates_ground_item = preload("res://modules/objects/inventory_helpers/NatesGr
 
 ## Returns the amount of adds that were successful
 func add_itemtype_to_inventory(inventory : Inventory, item_type : ItemType, quantity : int) -> int:
-	var stack = ItemStack.new(item_type, quantity)
+	var stack = ItemStack.new(item_type, quantity, null)
 	return inventory.try_add_item(stack)
 
 func is_itemtype_in_inventory(inventory : Inventory, item_type : ItemType):

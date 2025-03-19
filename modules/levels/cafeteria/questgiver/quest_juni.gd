@@ -1,6 +1,7 @@
 extends StaticBody2D
 
 @export var item_type : ItemType
+@export var return_item : ItemType
 
 var quest_done : bool = false
 var talked_to : bool = false
@@ -24,6 +25,7 @@ func take_ramen():
 	if InventoryHelper.is_itemtype_in_inventory(inv, item_type):
 		inv.consume_items({item_type: 1})
 		quest_done = true
+		InventoryHelper.add_itemtype_to_inventory(inv, return_item, 1)
 		return true
 	else:
 		return false

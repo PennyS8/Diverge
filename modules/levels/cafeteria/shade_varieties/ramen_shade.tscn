@@ -16,10 +16,14 @@ shader_parameter/Flash = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [node name="RamenShade" instance=ExtResource("1_u8tx3")]
+modulate = Color(1, 1, 1, 0)
 
 [node name="ShadeFSM" parent="." index="1"]
 disabled = true
 next_state = NodePath("SeekingRamen")
+
+[node name="Backstep" parent="ShadeFSM" index="2"]
+next_state = NodePath("")
 
 [node name="SeekingRamen" type="Node" parent="ShadeFSM" index="6" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("2_wn67w")
