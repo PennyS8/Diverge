@@ -29,7 +29,14 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		player.dir = Vector2.ZERO
 		var dialogue = load("res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue")
-		DialogueManager.show_dialogue_balloon(dialogue, "book")
+		
+		var dialogue_type
+		if puzzle_complete == true:
+			dialogue_type = "puzzle_completed"
+		else: 
+			dialogue_type = "book"
+		
+		DialogueManager.show_dialogue_balloon(dialogue, dialogue_type)
 
 func _on_book_body_entered(_body: Node2D) -> void:
 	interactable = true

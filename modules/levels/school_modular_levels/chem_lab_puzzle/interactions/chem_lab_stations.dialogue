@@ -3,8 +3,12 @@ Juniper: Where is the on switch for this?
 Juniper: Ah there it is!
 Juniper: Time to mix these.
 Juniper: ...
-do combine_items()
-Juniper: Nice it changed to a {{lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name}}!
+if combine_items() == true
+	Juniper: Nice it changed to a {{lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name}}!
+else
+	Juniper: Oh no! I messed up the lab!
+	Juniper: It's ruined!
+	Juniper: I'll need to start over from the beginning...
 => END
 
 ~ burner
@@ -13,8 +17,9 @@ Juniper: ...
 Juniper: ...
 Juniper: This shit's slow.
 Juniper: ...
-Juniper: Yippie it changed colors!
-Juniper: It looks like that is the end of the lab! 
+Juniper: It's finally done!
+if lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name == "Olive Substance"
+	Juniper: It looks like that is the end of the lab! 
 => END
 
 ~ scale
@@ -30,9 +35,9 @@ Juniper: What was it that I needed?
 
 - Orange Substance
 	do add_inventory_item("orange_substance")
-- Yellow Powder
+- Yellow Substance
 	do add_inventory_item("yellow_substance")
-- Green Liquid
+- Green Substance
 	do add_inventory_item("green_substance")
 - Blue Substance
 	do add_inventory_item("blue_substance")
@@ -42,7 +47,7 @@ Juniper: I should weigh just the right amount.
 => END
 
 ~ instructions
-[left]1) Measure 1 unit of red powder & 2 units of the blue solution.\n2) Mix the red powder into the blue solution.\n3) Boil the blue solution to dissolve the powder fully.\n\n4) Measure 1 unit of yellow powder & 3 units of the green solution.\n5) Mix the yellow powder into the green solution.\n6) Boil the green solution to dissolve the powder fully.\n\n7) Mix the lime green & purple solutions.\n8) Observe the results.
+[left]1) Measure 1 unit of orange substance & 1 unit of the blue substance.\n2) Mix the orange substance into the blue substance.\n3) Boil the mixture for a total of 10 seconds.\n\n4) Measure 1 unit of yellow substance.\n5) Mix the yellow substance into the existing solution.\n6) Boil the mixture for another 10 seconds.\n\n7) Observe the results. You should be left with an olive substance.
 => END
 
 ~ entrance
@@ -58,6 +63,14 @@ Juniper: I can grab the book after.
 Juniper: The prof probably left the lab instructions up on the board.
 => END
 
+~ not_measured
+Juniper: I should measure these out before I mix them.
+=> END
+
+~ not_mixed
+Juniper: I should mix these materials together before I heat them up.
+=> END
+
 ~ no_materials
 Juniper: I need to get some materials from the closet.
 => END
@@ -71,6 +84,11 @@ Juniper: There doesn't seem to be any materials over here to mix.
 Juniper: I guess I should go back to the material closet to get something to mix this with.
 => END
 
-~ puzzle_finished
+~ mess_up
+Juniper: Oh no! I messed up the lab.
+Juniper: ...
+Juniper: I guess I have to start over now.
+
+~ puzzle_completed
 Juniper: I'm glad I don't need to use this anymore now that I've finished the lab! 
 => END

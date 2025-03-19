@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="ItemConversion" load_steps=5 format=3 uid="uid://15ikjyd7kkup"]
+
+[ext_resource type="Resource" uid="uid://t4dljhgt22p3" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/purple_substance.tres" id="1_l6hww"]
+[ext_resource type="Script" uid="uid://4xo2ri3sytl3" path="res://addons/wyvernbox/crafting/item_conversion.gd" id="1_qjvd4"]
+[ext_resource type="Resource" uid="uid://dxsf6bvbtwl4m" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/yellow_substance.tres" id="2_74i2s"]
+[ext_resource type="Resource" uid="uid://dvp7l276ke3qh" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/brown_substance.tres" id="3_74i2s"]
+
+[resource]
+script = ExtResource("1_qjvd4")
+name = "Brown Converter"
+tags = Array[StringName]([&"mixer"])
+input_types = Array[Resource]([ExtResource("1_l6hww"), ExtResource("2_74i2s")])
+input_counts = Array[int]([1, 1])
+output_types = Array[Resource]([ExtResource("3_74i2s")])
+output_ranges = Array[Vector2]([Vector2(1, 1)])
+metadata/_custom_type_script = "uid://4xo2ri3sytl3"
