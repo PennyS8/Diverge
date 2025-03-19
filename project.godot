@@ -25,7 +25,6 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameManager="*res://modules/globals/game_manager.gd"
 SaveAndLoad="*res://modules/globals/saving/save_load.gd"
 TetherableBody="*res://modules/status_effects/tetherable_body.gd"
-LabVariableManager="*res://modules/globals/dialogue/lab_variable_manager.gd"
 
 [debug]
 
