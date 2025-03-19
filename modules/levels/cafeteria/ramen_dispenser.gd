@@ -53,6 +53,7 @@ func shades_attack():
 	for shade in shades:
 		var fsm = shade.get_node("ShadeFSM")
 		fsm.disabled = false
+		shade.get_node("Hurtbox").set_collision_mask_value(3, true)
 		shade.follow_target = LevelManager.player
 		fsm.change_state("Seeking")
 

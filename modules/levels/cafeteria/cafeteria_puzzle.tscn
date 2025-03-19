@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=62 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_rqif0"]
@@ -202,6 +202,18 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axqkd"]
 radius = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_anitv"]
+resource_local_to_scene = true
+shader = ExtResource("7_ikyt7")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocqtp"]
+resource_local_to_scene = true
+shader = ExtResource("7_ikyt7")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whr8t"]
 size = Vector2(19, 35)
@@ -870,8 +882,32 @@ position = Vector2(-27, 43)
 [node name="Shadely" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
 position = Vector2(-71, 128)
 
+[node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeFSM" index="7"]
+next_state = NodePath("../FoundRamen")
+
+[node name="FoundRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeFSM" index="8"]
+next_state = NodePath("../Alerted")
+
+[node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely" index="5"]
+collision_mask = 0
+
+[node name="Sprite2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/Display" index="2"]
+material = SubResource("ShaderMaterial_anitv")
+
 [node name="Melisshade" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
 position = Vector2(13, 127)
+
+[node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeFSM" index="7"]
+next_state = NodePath("../FoundRamen")
+
+[node name="FoundRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeFSM" index="8"]
+next_state = NodePath("../Alerted")
+
+[node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade" index="5"]
+collision_mask = 0
+
+[node name="Sprite2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/Display" index="2"]
+material = SubResource("ShaderMaterial_ocqtp")
 
 [node name="BrickShadehouse" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
 position = Vector2(-28, 133)
@@ -884,6 +920,9 @@ next_state = NodePath("../Seeking")
 
 [node name="HealthComponent" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="4"]
 max_health = 50
+
+[node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="5"]
+collision_mask = 0
 
 [node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/Hurtbox" index="0"]
 position = Vector2(0.5, -17.5)
@@ -931,4 +970,6 @@ position = Vector2(-40, -404)
 [connection signal="area_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints/DispensePoint5" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [5]]
 [connection signal="body_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/debug area" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_debug_area_body_entered"]
 
+[editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely"]
+[editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade"]
 [editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse"]
