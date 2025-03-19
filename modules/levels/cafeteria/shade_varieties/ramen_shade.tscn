@@ -16,7 +16,6 @@ shader_parameter/Flash = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [node name="RamenShade" instance=ExtResource("1_u8tx3")]
-modulate = Color(1, 1, 1, 0)
 
 [node name="ShadeFSM" parent="." index="1"]
 disabled = true
@@ -72,7 +71,6 @@ metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 debug_enabled = false
 
 [node name="TetherableArea2D" parent="." index="8"]
-collision_layer = 0
 monitoring = false
 monitorable = false
 
