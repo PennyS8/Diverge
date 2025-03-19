@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://1wim2ixj78ul"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_7sm56"]
+[ext_resource type="Texture2D" uid="uid://ceykw28jgux2o" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior_B2.png" id="2_0xqhv"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4unbl"]
+atlas = ExtResource("2_0xqhv")
+region = Rect2(192, 99, 48, 96)
+filter_clip = true
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bguq8"]
+size = Vector2(14, 16)
+
+[node name="ChairLeft" type="StaticBody2D"]
+y_sort_enabled = true
+material = ExtResource("1_7sm56")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = SubResource("AtlasTexture_4unbl")
+hframes = 2
+vframes = 2
+frame = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_bguq8")

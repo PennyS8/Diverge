@@ -1,0 +1,60 @@
+[gd_scene load_steps=9 format=3 uid="uid://wwrw6hyhhicu"]
+
+[ext_resource type="Script" uid="uid://28hkm83pq6al" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/materials_station.gd" id="1_wasjk"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_ih7i2"]
+[ext_resource type="Shader" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="3_6uggc"]
+[ext_resource type="Texture2D" uid="uid://b26tj2lcym7o4" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_C.png" id="3_tboem"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1t1g1"]
+size = Vector2(36, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_itiol"]
+atlas = ExtResource("3_tboem")
+region = Rect2(30, 155, 36, 47)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mor7r"]
+shader = ExtResource("3_6uggc")
+shader_parameter/size_effect = 1.0
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 0.5
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = false
+shader_parameter/pause_duration = 0.5
+shader_parameter/texture_size = Vector2(17, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7r4fh"]
+radius = 24.0
+
+[node name="MaterialsStation" type="StaticBody2D"]
+script = ExtResource("1_wasjk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14.5)
+shape = SubResource("RectangleShape2D_1t1g1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_ih7i2")
+texture = SubResource("AtlasTexture_itiol")
+offset = Vector2(0, -0.5)
+
+[node name="Glint" type="CanvasGroup" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_mor7r")
+fit_margin = 0.0
+clear_margin = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Glint"]
+material = ExtResource("2_ih7i2")
+texture = SubResource("AtlasTexture_itiol")
+offset = Vector2(0, -0.5)
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(0, 24)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_7r4fh")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

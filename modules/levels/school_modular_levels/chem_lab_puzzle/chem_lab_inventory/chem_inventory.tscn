@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://c02hclv07w7cs"]
+
+[ext_resource type="Script" uid="uid://bcitej0hli2v8" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/chem_lab_inventory.gd" id="1_5kw1c"]
+[ext_resource type="Script" uid="uid://bvm3c5gk8ux70" path="res://addons/wyvernbox/inventory_view.gd" id="2_eidcb"]
+[ext_resource type="Script" uid="uid://fp2iki0mkowk" path="res://addons/wyvernbox/inventories/restricted_inventory.gd" id="3_wjlm4"]
+[ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="4_tl4qg"]
+[ext_resource type="Script" uid="uid://d1a114hwwhdiu" path="res://addons/wyvernbox/item_instantiator.gd" id="5_c2hmo"]
+[ext_resource type="PackedScene" uid="uid://co5ok1mm2s7vu" path="res://addons/wyvernbox_prefabs/item_stack_view.tscn" id="6_0dk8u"]
+[ext_resource type="StyleBox" uid="uid://cqx3opxr50d2o" path="res://addons/wyvernbox_prefabs/graphics/selected_cell.tres" id="7_xlfaw"]
+[ext_resource type="PackedScene" uid="uid://b7jlucsddt6dg" path="res://addons/wyvernbox_prefabs/inventory_cell.tscn" id="8_pvj2d"]
+
+[sub_resource type="Resource" id="Resource_ti2bs"]
+script = ExtResource("3_wjlm4")
+allow_rotation = true
+restricted_to_types = Array[int]([16, 16])
+width = 2
+metadata/_custom_type_script = "uid://fp2iki0mkowk"
+
+[sub_resource type="Resource" id="Resource_wfch1"]
+script = ExtResource("5_c2hmo")
+items_to_add = Array[ExtResource("4_tl4qg")]([])
+item_repeat_ranges = Array[Vector2]([])
+item_chances = Array[float]([])
+repeat_post_chance = true
+randomize_locations = true
+delay_between_items = 0.0
+spread_distance = 32.0
+spread_cone_degrees = 360.0
+spread_angle_degrees = 0.0
+metadata/_custom_type_script = "uid://d1a114hwwhdiu"
+
+[node name="ChemInventory" type="Panel"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1892.0
+offset_bottom = -1068.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5kw1c")
+
+[node name="Equipment" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 0
+script = ExtResource("2_eidcb")
+inventory = SubResource("Resource_ti2bs")
+contents = SubResource("Resource_wfch1")
+item_scene = ExtResource("6_0dk8u")
+interaction_mode = 5
+cell_size = Vector2(12, 12)
+selected_item_style = ExtResource("7_xlfaw")
+show_backgrounds = false
+metadata/_custom_type_script = "uid://bvm3c5gk8ux70"
+
+[node name="Cells" type="GridContainer" parent="Equipment"]
+layout_mode = 0
+mouse_filter = 2
+columns = 8
+
+[node name="Cell" parent="Equipment/Cells" instance=ExtResource("8_pvj2d")]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+focus_mode = 2
+mouse_filter = 0
+
+[node name="Cell2" parent="Equipment/Cells" instance=ExtResource("8_pvj2d")]
+custom_minimum_size = Vector2(12, 12)
+layout_mode = 2
+focus_mode = 2
+mouse_filter = 0

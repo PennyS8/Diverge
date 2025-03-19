@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemType" load_steps=4 format=3 uid="uid://dxsf6bvbtwl4m"]
+
+[ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="1_jpf6q"]
+[ext_resource type="Texture2D" uid="uid://dkb4r5673qkdp" path="res://assets/environment/downtown_dungeon/custom_sprites/yellow_substance.png" id="2_o01tq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_delqe"]
+atlas = ExtResource("2_o01tq")
+region = Rect2(1, 1, 7, 10)
+
+[resource]
+script = ExtResource("1_jpf6q")
+name = "Yellow Substance"
+description = "Flask filled with a yellow substance"
+tags = Array[StringName]([])
+texture = SubResource("AtlasTexture_delqe")
+texture_scale = 1.0
+max_stack_count = 1
+in_inventory_width = 1
+in_inventory_height = 1
+slot_flags = 16
+default_properties_string = ""
+default_properties = {}
+metadata/_custom_type_script = "uid://cgg102c222rfg"

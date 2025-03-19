@@ -16,16 +16,22 @@ var ledge_collision : Area2D
 
 var hook_locked := true
 
+# this is to pass unhandled input to states
+signal unhandled_input_received(event)
+
 @onready var health_component = $HealthComponent
 
 var curr_camera_boundry : Area2D
 
-func _process(_delta):
-	_camera_move(_delta)
-	
+func _unhandled_input(event: InputEvent) -> void:
+	unhandled_input_received.emit(event)
+	_camera_move()
+	dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+
+func _process(_delta):	
 	# Camera Boundries MUST NOT overlap eachother, and must have the collision\
 	# layer 9 (i.e., "CameraBoundryCollider").
-	
+
 	var areas = $Area2D.get_overlapping_areas()
 	if !areas: # Check if null (or empty)
 		return
@@ -46,7 +52,7 @@ func check_unlock_hook():
 	hook_locked = false
 	can_attack()
 	
-func _camera_move(_delta):
+func _camera_move():
 	if !lock_camera:
 		$Camera2D.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25
 		$Camera2D.position_smoothing_enabled = true

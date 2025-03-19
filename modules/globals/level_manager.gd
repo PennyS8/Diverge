@@ -22,7 +22,7 @@ var found_player := false
 
 func _ready():
 	var scene = get_tree().current_scene
-	if scene is Control:
+	if scene is Control or scene is CanvasLayer:
 		return
 	if scene.name != "Main":
 		if get_tree().get_first_node_in_group("player"):

@@ -1,0 +1,6 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://be2jqhqqluksm"]
+
+[ext_resource type="Shader" uid="uid://bd8hlg7djwx3u" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/CanvasSmoothPixel.gdshader" id="1_3j32c"]
+
+[resource]
+shader = ExtResource("1_3j32c")
