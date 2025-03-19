@@ -33,7 +33,7 @@ func spawn_ramen_seeker():
 	var seeker_instance : CharacterBody2D = seeker.instantiate()
 	get_tree().current_scene.add_child(seeker_instance)
 	# set their location to a bit downwards, and their end location as our end_location
-	seeker_instance.global_position = get_parent().get_parent().global_position + Vector2(randi_range(-72, 72), randi_range(120, 160))
+	seeker_instance.global_position = get_parent().get_parent().global_position + Vector2(randi_range(-96, 96), randi_range(160, 160))
 	seeker_instance.get_node("ShadeFSM").change_state("SeekingRamen")
 	
 func pick_up_tray(body):

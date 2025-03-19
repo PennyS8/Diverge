@@ -18,8 +18,7 @@ var dashing
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	if _check_player_inv():
-		target.follow_target = LevelManager.player
-		change_state("Seeking")
+		change_state("Alerted")
 	else:
 		var tween = target.create_tween().set_parallel(true)
 		var end_position = target.global_position + Vector2(randi_range(-24, 24), randi_range(24, 32))

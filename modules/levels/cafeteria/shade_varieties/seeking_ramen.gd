@@ -66,7 +66,7 @@ func _on_update(_delta: float) -> void:
 	if !target.follow_target:
 		if _check_player_inv():
 			target.follow_target = get_tree().get_first_node_in_group("player")
-			change_state("Seeking")
+			change_state("Alerted")
 		else:
 			change_state("NoMoreRamen")
 #
@@ -79,14 +79,17 @@ func _on_update(_delta: float) -> void:
 	else:
 		if _check_player_inv():
 			target.follow_target = get_tree().get_first_node_in_group("player")
-			change_state("Seeking")
+			change_state("Alerted")
 		else:
 			change_state("NoMoreRamen")
 
 	if nav_agent.is_navigation_finished():
-		target.velocity = Vector2.ZERO
-		target.pick_up.emit(target)
-		change_state("FoundRamen")
+		var item : Area2D = target.follow_target.get_node_or_null("Item")
+		if item:
+			if item.get_collision_mask_value(4):
+				target.velocity = Vector2.ZERO
+				target.pick_up.emit(target)
+				change_state("FoundRamen")
 	
 	var current_agent_position: Vector2 = target.global_position
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
