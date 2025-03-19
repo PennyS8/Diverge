@@ -16,8 +16,10 @@ shader_parameter/Flash = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [node name="RamenShade" instance=ExtResource("1_u8tx3")]
+modulate = Color(1, 1, 1, 0)
 
 [node name="ShadeFSM" parent="." index="1"]
+disabled = true
 next_state = NodePath("SeekingRamen")
 
 [node name="SeekingRamen" type="Node" parent="ShadeFSM" index="6" node_paths=PackedStringArray("nav_agent")]
@@ -43,7 +45,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Seeking")
+next_state = NodePath("")
 
 [node name="FoundRamen" type="Node" parent="ShadeFSM" index="8"]
 script = ExtResource("4_wn67w")
@@ -51,20 +53,23 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Seeking")
+next_state = NodePath("")
 
 [node name="Alerted" type="Node" parent="ShadeFSM" index="9"]
 script = ExtResource("7_buh3d")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "surprise"
 loop_mode = 0
-on_finished = 1
+on_finished = 0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Seeking")
+next_state = NodePath("")
 metadata/_custom_type_script = "uid://sgbgpy8s08d3"
+
+[node name="NavAgent" parent="." index="2"]
+debug_enabled = false
 
 [node name="TetherableArea2D" parent="." index="8"]
 collision_layer = 0

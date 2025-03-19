@@ -78,7 +78,7 @@ func enter_cutscene(camera_pos):
 	lock_camera = true
 	in_cutscene = true
 	var cam_tween = create_tween()
-	cam_tween.tween_property($Camera2D, "global_position", camera_pos, 3)
+	cam_tween.tween_property($Camera2D, "global_position", camera_pos, 2.0)
 	
 func exit_cutscene():
 	$PlayerFSM.change_state("Idle")

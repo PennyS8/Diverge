@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://rtk7ryu3lmv1"
+path="res://.godot/imported/cafeteria_puzzle_intro.dialogue-ae3ea5b7382af01f2f8b51ec3f92d647.tres"
+
+[deps]
+
+source_file="res://modules/levels/cafeteria/cafeteria_puzzle_intro.dialogue"
+dest_files=["res://.godot/imported/cafeteria_puzzle_intro.dialogue-ae3ea5b7382af01f2f8b51ec3f92d647.tres"]
+
+[params]
+
+defaults=true

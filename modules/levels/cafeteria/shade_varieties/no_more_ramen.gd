@@ -23,8 +23,7 @@ func _on_enter(_args) -> void:
 		var tween = target.create_tween().set_parallel(true)
 		var end_position = target.global_position + Vector2(randi_range(-24, 24), randi_range(24, 32))
 		tween.tween_property(target, "global_position", end_position, 2.0)
-		tween.tween_property(target, "modulate:a", 0.0, 2.0)
-		tween.chain().tween_callback(target.queue_free)
+		#tween.chain().tween_callback(target.queue_free)
 	
 func _check_player_inv():
 	var deinv : Inventory = GameManager.inventory_node.inventory

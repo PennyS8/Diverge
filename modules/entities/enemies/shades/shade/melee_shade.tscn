@@ -558,6 +558,7 @@ texture = SubResource("GradientTexture2D_ia2jp")
 
 [node name="SmokeFX" type="CPUParticles2D" parent="Display"]
 position = Vector2(0, -12)
+emitting = false
 amount = 10
 lifetime = 2.0
 emission_shape = 1
