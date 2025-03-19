@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b7wkaxpbeflgu"
-path="res://.godot/imported/Tiny5-Regular.ttf-88cd6e81cb781e3e8e70d89f4af7567b.fontdata"
+uid="uid://c1vr45qdbh1um"
+path="res://.godot/imported/OpenSans-Italic.ttf-7bbb674adb37705144c0c6119ed99c1e.fontdata"
 
 [deps]
 
-source_file="res://assets/fonts/Tiny5/Tiny5-Regular.ttf"
-dest_files=["res://.godot/imported/Tiny5-Regular.ttf-88cd6e81cb781e3e8e70d89f4af7567b.fontdata"]
+source_file="res://assets/hud/open-sans/OpenSans-Italic.ttf"
+dest_files=["res://.godot/imported/OpenSans-Italic.ttf-7bbb674adb37705144c0c6119ed99c1e.fontdata"]
 
 [params]
 
@@ -22,20 +22,14 @@ msdf_size=48
 allow_system_fallback=true
 force_autohinter=false
 hinting=1
-subpixel_positioning=1
+subpixel_positioning=4
 keep_rounding_remainders=true
-oversampling=3.0
+oversampling=4.0
 Fallbacks=null
 fallbacks=[]
 Compress=null
 compress=true
-preload=[{
-"chars": [],
-"glyphs": [],
-"name": "New Configuration",
-"size": Vector2i(16, 0),
-&"variation_embolden": 0.0
-}]
+preload=[]
 language_support={}
 script_support={}
 opentype_features={}
