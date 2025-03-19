@@ -1,4 +1,4 @@
-[gd_scene load_steps=74 format=4 uid="uid://cp53bw4fgv7b2"]
+[gd_scene load_steps=75 format=4 uid="uid://cp53bw4fgv7b2"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_0bwgv"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_beb0c"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://cobjdtd1p8rx4" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/book_station.tscn" id="18_0jtan"]
 [ext_resource type="PackedScene" uid="uid://0xji2upguay6" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/chalk_board.tscn" id="19_7r4fh"]
 [ext_resource type="PackedScene" uid="uid://wwrw6hyhhicu" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/materials_station.tscn" id="19_n07ws"]
+[ext_resource type="PackedScene" uid="uid://c02hclv07w7cs" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/chem_inventory.tscn" id="20_0jtan"]
 [ext_resource type="Script" uid="uid://bmrc6kgne6fhf" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/entrance_dialogue.gd" id="20_7r4fh"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
@@ -3289,5 +3290,26 @@ shape = SubResource("RectangleShape2D_7r4fh")
 position = Vector2(120, -82)
 
 [node name="Entities" type="Node2D" parent="ChemLab"]
+
+[node name="Inventory" type="Control" parent="ChemLab"]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -108.0
+offset_right = -40.0
+offset_bottom = -94.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="ChemInventory" parent="ChemLab/Inventory" instance=ExtResource("20_0jtan")]
+unique_name_in_owner = true
+layout_mode = 1
+offset_right = -32.0
+offset_bottom = -14.0
 
 [connection signal="body_entered" from="ChemLab/Stations/EntranceDialogue" to="ChemLab/Stations/EntranceDialogue" method="_on_body_entered"]

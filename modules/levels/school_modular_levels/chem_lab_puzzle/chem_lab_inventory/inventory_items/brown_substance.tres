@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemType" load_steps=4 format=3 uid="uid://dvp7l276ke3qh"]
+
+[ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="1_s6ydg"]
+[ext_resource type="Texture2D" uid="uid://bmgi8771h3yt" path="res://assets/environment/downtown_dungeon/custom_sprites/brown_substance.png" id="2_8kckq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fx4ou"]
+atlas = ExtResource("2_8kckq")
+region = Rect2(1, 1, 7, 10)
+
+[resource]
+script = ExtResource("1_s6ydg")
+name = "Brown Substance"
+description = ""
+tags = Array[StringName]([])
+texture = SubResource("AtlasTexture_fx4ou")
+texture_scale = 1.0
+max_stack_count = 1
+in_inventory_width = 1
+in_inventory_height = 1
+slot_flags = 16
+default_properties_string = ""
+default_properties = {}
+metadata/_custom_type_script = "uid://cgg102c222rfg"

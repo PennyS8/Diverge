@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://28hkm83pq6al" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/materials_station.gd" id="1_wasjk"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_ih7i2"]
-[ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="3_6uggc"]
+[ext_resource type="Shader" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="3_6uggc"]
 [ext_resource type="Texture2D" uid="uid://b26tj2lcym7o4" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_C.png" id="3_tboem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1t1g1"]

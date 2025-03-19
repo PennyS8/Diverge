@@ -1,67 +1,48 @@
 ~ mixer
-if LabVariableManager.color != ""
-	Juniper: Just got to mix it with something
-
-	- Green Solution
-		Juniper: Adding some green
-		set LabVariableManager.mixed_substance = "green"
-	
-		if LabVariableManager.color == "orange"
-			set LabVariableManager.color = "brown"
-		else 
-			set LabVariableManager.color = "lime"
-	- Blue Solution
-		Juniper: Adding some blue
-		set LabVariableManager.mixed_substance == "blue"
-	
-		if LabVariableManager.color == "orange"
-			set LabVariableManager.color = "purple"
-		else
-			set LabVariableManager.color = "light blue"
-
-	# Randomized message, the "Yippe" line is twice as likely to get called
-	%2 Juniper: Yippie it's {{LabVariableManager.color}} now
-	% Juniper: Aw I added too much, it's {{LabVariableManager.mixed_substance}} now
-else
-	=> no_materials
+Juniper: Where is the on switch for this?
+Juniper: Ah there it is!
+Juniper: Time to mix these.
+Juniper: ...
+do combine_items()
+Juniper: Nice it changed to a {{lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name}}!
 => END
 
 ~ burner
-if LabVariableManager.color != ""
-	Juniper: Just got to boil it
-	Juniper: ...
-	Juniper: ...
-	Juniper: this shit's slow
-	Juniper: ...
-	Juniper: Yippie it changed colors!
-else
-	=> no_materials
+Juniper: Just got to boil it.
+Juniper: ...
+Juniper: ...
+Juniper: This shit's slow.
+Juniper: ...
+Juniper: Yippie it changed colors!
+Juniper: It looks like that is the end of the lab! 
 => END
 
 ~ scale
-if LabVariableManager.color != ""
-	Juniper: Okay, I only need a little
-	Juniper: Just a touch more
-	Juniper: Oh fuck, that's too much
-	Juniper: Okay that's enough
-else
-	=> no_materials
+Juniper: Okay, I only need a little.
+Juniper: Just a touch more.
+Juniper: Oh fuck, that's too much.
+Juniper: Okay that's enough.
+Juniper: Awesome, now I can go mix it!
 => END
 
 ~ materials
 Juniper: What was it that I needed?
 
 - Orange Substance
-	set LabVariableManager.color = "orange"
+	do add_inventory_item("orange_substance")
 - Yellow Powder
-	set LabVariableManager.color = "yellow"
+	do add_inventory_item("yellow_substance")
+- Green Liquid
+	do add_inventory_item("green_substance")
+- Blue Substance
+	do add_inventory_item("blue_substance")
 
 Juniper: Ah, there it is!
-Juniper: I should weigh just the right amount
+Juniper: I should weigh just the right amount.
 => END
 
 ~ instructions
-[left]1) Measure 1 unit of red powder & 2 units of the blue solution\n2) Mix the red powder into the blue solution\n3) Boil the blue solution to dissolve the powder fully\n\n4) Measure 1 unit of yellow powder & 3 units of the green solution\n5) Mix the yellow powder into the green solution\n6) Boil the green solution to dissolve the powder fully\n\n7) Mix the lime green & purple solutions\n8) Observe the results
+[left]1) Measure 1 unit of red powder & 2 units of the blue solution.\n2) Mix the red powder into the blue solution.\n3) Boil the blue solution to dissolve the powder fully.\n\n4) Measure 1 unit of yellow powder & 3 units of the green solution.\n5) Mix the yellow powder into the green solution.\n6) Boil the green solution to dissolve the powder fully.\n\n7) Mix the lime green & purple solutions.\n8) Observe the results.
 => END
 
 ~ entrance
@@ -78,5 +59,18 @@ Juniper: The prof probably left the lab instructions up on the board.
 => END
 
 ~ no_materials
-	Juniper: I need to get some materials from the closet
+Juniper: I need to get some materials from the closet.
+=> END
+
+~ full_inventory
+Juniper: I should probably mix these materials before grabbing more.
+=> END
+
+~ one_material_mixer
+Juniper: There doesn't seem to be any materials over here to mix.
+Juniper: I guess I should go back to the material closet to get something to mix this with.
+=> END
+
+~ puzzle_finished
+Juniper: I'm glad I don't need to use this anymore now that I've finished the lab! 
 => END
