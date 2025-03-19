@@ -7,8 +7,9 @@ extends StaticBody2D
 var quest_done : bool = false
 var talked_to : bool = false
 func _ready():
-	InventoryHelper.add_ground_item(item_type, global_position+Vector2(-24, -24), self)
-
+	#InventoryHelper.add_ground_item(item_type, global_position+Vector2(-24, -24), self)
+	pass
+	
 func _on_interaction_circle_body_entered(body: Node2D) -> void:
 	body.dir = Vector2.ZERO
 	var dialogue = load("res://modules/levels/cafeteria/questgiver/juni_hungry.dialogue")
