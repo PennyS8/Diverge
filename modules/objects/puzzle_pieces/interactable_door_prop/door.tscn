@@ -1,0 +1,14 @@
+[gd_scene load_steps=4 format=3 uid="uid://cey0ldawaolll"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_cugn4"]
+[ext_resource type="Texture2D" uid="uid://bp72ou4t3d6yt" path="res://assets/environment/downtown_dungeon/Door.png" id="2_6icq8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63x3j"]
+atlas = ExtResource("2_6icq8")
+region = Rect2(0, 0, 40, 52)
+
+[node name="Door" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("1_cugn4")
+texture = SubResource("AtlasTexture_63x3j")
