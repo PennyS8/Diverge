@@ -65,10 +65,10 @@ shakerPreset = SubResource("Resource_qslon")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 emitting = false
 amount = 3
+texture = SubResource("AtlasTexture_k4h81")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0
-texture = SubResource("AtlasTexture_k4h81")
 emission_shape = 3
 emission_rect_extents = Vector2(5, 5)
 particle_flag_align_y = true

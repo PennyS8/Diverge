@@ -1,0 +1,71 @@
+[gd_scene load_steps=10 format=3 uid="uid://b77m20ym35viw"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_uqox2"]
+[ext_resource type="Texture2D" uid="uid://hk1xabo3vxno" path="res://assets/environment/downtown_dungeon/custom_sprites/chem_table_2.png" id="2_10nb0"]
+[ext_resource type="Script" uid="uid://ctmpfcqmeh5i1" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/mixer_station.gd" id="3_10nb0"]
+[ext_resource type="Texture2D" uid="uid://cs1yhtggmsirp" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/12_Kitchen_Black_Shadow_16x16.png" id="4_1ou80"]
+[ext_resource type="Shader" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="5_udo7i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wcn5f"]
+size = Vector2(48, 20)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w3kib"]
+atlas = ExtResource("4_1ou80")
+region = Rect2(240, 382, 15, 15)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ilx5c"]
+shader = ExtResource("5_udo7i")
+shader_parameter/size_effect = 1.0
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 0.5
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = false
+shader_parameter/pause_duration = 0.5
+shader_parameter/texture_size = Vector2(17, 12)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_p47ew"]
+radius = 24.0
+
+[node name="MixerStation" type="StaticBody2D"]
+material = ExtResource("1_uqox2")
+collision_layer = 2
+collision_mask = 4
+script = ExtResource("3_10nb0")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(24, -14.5)
+texture = ExtResource("2_10nb0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+z_index = 1
+position = Vector2(24, -10)
+shape = SubResource("RectangleShape2D_wcn5f")
+
+[node name="Mixer" type="Sprite2D" parent="."]
+material = ExtResource("1_uqox2")
+position = Vector2(38, -24)
+texture = SubResource("AtlasTexture_w3kib")
+
+[node name="Glint" type="CanvasGroup" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_ilx5c")
+fit_margin = 0.0
+clear_margin = 0.0
+
+[node name="Mixer" type="Sprite2D" parent="Glint"]
+material = ExtResource("1_uqox2")
+position = Vector2(38, -24)
+texture = SubResource("AtlasTexture_w3kib")
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(24, 0)
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 4)
+shape = SubResource("CircleShape2D_p47ew")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_mixer_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_mixer_body_exited"]

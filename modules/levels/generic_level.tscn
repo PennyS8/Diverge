@@ -134,7 +134,7 @@ polygon = PackedVector2Array(12, 2, -5, 2, -5, -12, 12, -12)
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qppbq"]
 polygon = PackedVector2Array(12, -5, 12, 12, -12, 12, -12, -12, 5, -12, 5, -5)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cw5j0"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8u7wq"]
 texture = ExtResource("1_xgr82")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
@@ -1487,7 +1487,7 @@ texture_region_size = Vector2i(24, 24)
 17:16/0/terrains_peering_bit/top_side = 0
 17:16/0/terrains_peering_bit/top_right_corner = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3wxia"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0grsp"]
 texture = ExtResource("2_w6y66")
 texture_region_size = Vector2i(24, 24)
 1:0/0 = 0
@@ -1872,7 +1872,7 @@ texture_region_size = Vector2i(24, 24)
 14:15/0 = 0
 15:15/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4lpfn"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8jpew"]
 texture = ExtResource("3_y78qw")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
@@ -2117,7 +2117,7 @@ texture_region_size = Vector2i(24, 24)
 8:11/0 = 0
 15:15/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pphsg"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_j1ey7"]
 texture = ExtResource("4_rri5s")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
@@ -2234,7 +2234,7 @@ texture_region_size = Vector2i(24, 24)
 3:14/0 = 0
 4:14/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vamt3"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ym0ma"]
 texture = ExtResource("5_1gv5n")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
@@ -2310,7 +2310,7 @@ texture_region_size = Vector2i(24, 24)
 6:7/0 = 0
 7:7/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpiw1"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2u8xu"]
 texture = ExtResource("6_jj4gv")
 texture_region_size = Vector2i(24, 24)
 1:0/0 = 0
@@ -2563,7 +2563,7 @@ texture_region_size = Vector2i(24, 24)
 14:15/0 = 0
 15:15/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vgrom"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_p3dpv"]
 texture = ExtResource("7_eoawe")
 texture_region_size = Vector2i(24, 24)
 2:0/0 = 0
@@ -2812,7 +2812,7 @@ texture_region_size = Vector2i(24, 24)
 9:15/0 = 0
 10:15/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1s35e"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0s3rm"]
 texture = ExtResource("8_ek48t")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
@@ -3013,7 +3013,7 @@ texture_region_size = Vector2i(24, 24)
 2:15/0 = 0
 3:15/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7nx80"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_3wfux"]
 texture = ExtResource("9_4pchh")
 texture_region_size = Vector2i(24, 24)
 0:0/0 = 0
@@ -3128,15 +3128,15 @@ terrain_set_0/mode = 0
 terrain_set_0/terrain_0/name = "Brick_Wall"
 terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 navigation_layer_0/layers = 1
-sources/0 = SubResource("TileSetAtlasSource_cw5j0")
-sources/1 = SubResource("TileSetAtlasSource_3wxia")
-sources/2 = SubResource("TileSetAtlasSource_4lpfn")
-sources/3 = SubResource("TileSetAtlasSource_pphsg")
-sources/4 = SubResource("TileSetAtlasSource_vamt3")
-sources/5 = SubResource("TileSetAtlasSource_bpiw1")
-sources/6 = SubResource("TileSetAtlasSource_vgrom")
-sources/7 = SubResource("TileSetAtlasSource_1s35e")
-sources/9 = SubResource("TileSetAtlasSource_7nx80")
+sources/0 = SubResource("TileSetAtlasSource_8u7wq")
+sources/1 = SubResource("TileSetAtlasSource_0grsp")
+sources/2 = SubResource("TileSetAtlasSource_8jpew")
+sources/3 = SubResource("TileSetAtlasSource_j1ey7")
+sources/4 = SubResource("TileSetAtlasSource_ym0ma")
+sources/5 = SubResource("TileSetAtlasSource_2u8xu")
+sources/6 = SubResource("TileSetAtlasSource_p3dpv")
+sources/7 = SubResource("TileSetAtlasSource_0s3rm")
+sources/9 = SubResource("TileSetAtlasSource_3wfux")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_137a3"]
 size = Vector2(360, 408)
@@ -12212,12 +12212,12 @@ tile_map_data = PackedByteArray("AAD9/wIAAAALABAAAAD9/wMAAAALABEAAAD9/wQAAAALABE
 tile_set = ExtResource("1_137a3")
 
 [node name="TopLayerVoid" type="TileMapLayer" parent="RoomA/Tiles"]
+visible = false
 z_index = 2
 tile_map_data = PackedByteArray("AAAEAPn/AAAKABEAAAADAPn/AAAKABEAAAACAPn/AAAKABEAAAABAPn/AAAKABEAAAAAAPn/AAAKABEAAAAAAPj/AAAKABEAAAABAPj/AAAKABEAAAACAPj/AAAKABEAAAADAPj/AAAKABEAAAAEAPj/AAAKABEAAAAIAP3/AAAKABEAAAAIAP7/AAAKABEAAAAIAP//AAAKABEAAAAIAAAAAAAKABEAAAAIAAEAAAAKABEAAAAIAAIAAAAKABEAAAAJAP3/AAAKABEAAAAJAP7/AAAKABEAAAAJAP//AAAKABEAAAAJAAAAAAAKABEAAAAJAAEAAAAKABEAAAAJAAIAAAAKABEAAAD8//7/AAAKABEAAAD8////AAAKABEAAAD8/wAAAAAKABEAAAD8/wEAAAAKABEAAAD8/wIAAAAKABEAAAD8//3/AAAKABEAAAD7//3/AAAKABEAAAD7//7/AAAKABEAAAD7////AAAKABEAAAD7/wAAAAAKABEAAAD7/wEAAAAKABEAAAD7/wIAAAAKABEAAAAAAAgAAAAKABEAAAABAAgAAAAKABEAAAACAAgAAAAKABEAAAADAAgAAAAKABEAAAAEAAgAAAAKABEAAAAEAAcAAAAKABEAAAADAAcAAAAKABEAAAACAAcAAAAKABEAAAABAAcAAAAKABEAAAAAAAcAAAAKABEAAAABAPr/AAAKABEAAAACAPr/AAAKABEAAAADAPr/AAAKABEAAAA=")
 tile_set = ExtResource("1_137a3")
 
 [node name="Entrances" type="Node2D" parent="RoomA"]
-visible = false
 
 [node name="ANorth" type="Marker2D" parent="RoomA/Entrances" groups=["level_entrance"]]
 position = Vector2(60, -84)
@@ -12232,7 +12232,6 @@ position = Vector2(60, 156)
 position = Vector2(-60, 36)
 
 [node name="Exits" type="Node2D" parent="RoomA"]
-visible = false
 
 [node name="ANorth" parent="RoomA/Exits" instance=ExtResource("2_60oyn")]
 position = Vector2(60, -108)

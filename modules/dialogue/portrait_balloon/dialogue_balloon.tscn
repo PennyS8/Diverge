@@ -253,37 +253,37 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = SubResource("Theme_o8ndy")
 
-[node name="Panel" type="Panel" parent="Notification"]
-custom_minimum_size = Vector2(600, 0)
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -300.0
-offset_top = -48.0
-offset_right = 300.0
-offset_bottom = 48.0
+[node name="PanelContainer" type="PanelContainer" parent="Notification"]
+layout_mode = 2
+offset_left = 610.0
+offset_top = 490.0
+offset_right = 1310.0
+offset_bottom = 590.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_vertical = 6
 
-[node name="CenterContainer" type="CenterContainer" parent="Notification/Panel"]
-custom_minimum_size = Vector2(600, 0)
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="Panel" type="Panel" parent="Notification/PanelContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(700, 100)
+layout_mode = 2
 
-[node name="NotificationLabel" type="RichTextLabel" parent="Notification/Panel/CenterContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Notification/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="NotificationLabel" type="RichTextLabel" parent="Notification/PanelContainer/MarginContainer"]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(560, 35)
+custom_minimum_size = Vector2(600, 35)
 layout_mode = 2
 bbcode_enabled = true
-text = "[center]Notification..."
+text = "[left]testing"
 fit_content = true
+scroll_active = false
+vertical_alignment = 1
 
 [node name="PortraitPosition" type="Marker2D" parent="."]
 unique_name_in_owner = true

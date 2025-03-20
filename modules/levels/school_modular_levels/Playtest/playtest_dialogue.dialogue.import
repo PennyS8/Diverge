@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://cg6dd5idlqnvs"
+path="res://.godot/imported/playtest_dialogue.dialogue-231bf93dcb85bc5c975c5ff24bba7628.tres"
+
+[deps]
+
+source_file="res://modules/levels/school_modular_levels/Playtest/playtest_dialogue.dialogue"
+dest_files=["res://.godot/imported/playtest_dialogue.dialogue-231bf93dcb85bc5c975c5ff24bba7628.tres"]
+
+[params]
+
+defaults=true
