@@ -1,21 +1,22 @@
-[gd_scene load_steps=35 format=3 uid="uid://bpgun2i5o6ru"]
+[gd_scene load_steps=38 format=3 uid="uid://bpgun2i5o6ru"]
 
-[ext_resource type="Script" uid="uid://cagepw2wjjl3j" path="res://addons/xsm/state.gd" id="1_0ntyj"]
+[ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="1_0ntyj"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_1u68j"]
 [ext_resource type="Script" uid="uid://cxw1ndyc6mkbk" path="res://modules/entities/enemies/shades/shade.gd" id="1_305ye"]
-[ext_resource type="Script" uid="uid://dyofslxwqk5qf" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="2_7t42n"]
+[ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="2_7t42n"]
 [ext_resource type="Script" uid="uid://yr5lkl65lac" path="res://modules/entities/enemies/shades/shade/xsm/roaming.gd" id="3_iblk0"]
 [ext_resource type="Texture2D" uid="uid://sl51x8oswnsd" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle.png" id="3_npe4t"]
-[ext_resource type="Script" uid="uid://cjpvyyixwyy1a" path="res://addons/basecomponents/Components/health_component.gd" id="3_rx7yw"]
+[ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="3_rx7yw"]
 [ext_resource type="Script" uid="uid://54c0fd2wfo6u" path="res://modules/entities/enemies/shades/shade/xsm/seeking.gd" id="4_6wehf"]
-[ext_resource type="Script" uid="uid://mecb4lebc4m7" path="res://modules/entities/enemies/shades/shade/xsm/dead.gd" id="5_fnale"]
+[ext_resource type="Script" uid="uid://cgkkk35n3tai7" path="res://modules/entities/enemies/shades/shade/xsm/dead.gd" id="5_fnale"]
 [ext_resource type="Script" uid="uid://bmkj7gqgnvueq" path="res://modules/entities/enemies/shades/shade/xsm/stunned.gd" id="6_508y8"]
 [ext_resource type="Script" uid="uid://bbg4rwnvd6e57" path="res://modules/entities/enemies/shades/shade/xsm/backstep.gd" id="6_yoqb8"]
 [ext_resource type="Script" uid="uid://dxwye5l5s1pbp" path="res://modules/entities/enemies/shades/shade/xsm/charge_melee.gd" id="7_c0hfq"]
 [ext_resource type="Script" uid="uid://r53fofm0miav" path="res://modules/entities/enemies/shades/shade/xsm/melee.gd" id="7_k76c3"]
-[ext_resource type="Script" uid="uid://cvvycic2x20kt" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="10_pm2cd"]
+[ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="10_pm2cd"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="13_wre0s"]
 [ext_resource type="Animation" uid="uid://dcw7163r0gdii" path="res://assets/Hitflash.res" id="15_swih5"]
+[ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_i2khm"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="17_jlwt1"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
@@ -50,6 +51,10 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_00tmr"]
 colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_bubim"]
+font = ExtResource("17_i2khm")
+font_color = Color(0.180392, 0, 0.384314, 1)
 
 [sub_resource type="Animation" id="Animation_165la"]
 resource_name = "ChargeMelee"
@@ -183,6 +188,52 @@ tracks/5/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Display/Label:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-19, -44)]
+}
+tracks/7/type = "bezier"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Display/Sprite2D:position:y")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/8/type = "bezier"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Display/Shadow:texture:width")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(48, -0.15, 0, 0.15, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Display/Label:visible")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_741tg"]
 resource_name = "Stunned"
@@ -244,13 +295,65 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_61njc"]
+resource_name = "surprise"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display/Label:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-19, -44)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Display/Sprite2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 3, 2),
+"points": PackedFloat32Array(0, 0, 0, 0.05, 0, -6, -0.0375, 0, 0.0375, 0, -0.45909, -0.0333333, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Display/Shadow:texture:width")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(48, 0, 0, 0.0333333, 0, 40, -0.0333333, 0, 0.0333333, 0, 48, -0.0333333, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Display/Label:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
 _data = {
 &"ChargeMelee": SubResource("Animation_165la"),
 &"Melee": SubResource("Animation_0nojc"),
 &"RESET": SubResource("Animation_6qj3b"),
 &"Stunned": SubResource("Animation_741tg"),
-&"die": SubResource("Animation_4xl6e")
+&"die": SubResource("Animation_4xl6e"),
+&"surprise": SubResource("Animation_61njc")
 }
 
 [sub_resource type="Animation" id="Animation_0l2b6"]
@@ -455,6 +558,7 @@ texture = SubResource("GradientTexture2D_ia2jp")
 
 [node name="SmokeFX" type="CPUParticles2D" parent="Display"]
 position = Vector2(0, -12)
+emitting = false
 amount = 10
 lifetime = 2.0
 emission_shape = 1
@@ -513,6 +617,20 @@ modulate = Color(0.821361, 0.953365, 0, 1)
 
 [node name="DebugDesiredVelocity" type="RayCast2D" parent="Display"]
 modulate = Color(0.620947, 0, 0.126258, 1)
+
+[node name="Label" type="Label" parent="Display"]
+visible = false
+offset_left = -19.0
+offset_top = -44.0
+offset_right = 21.0
+offset_bottom = -21.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "!"
+label_settings = SubResource("LabelSettings_bubim")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
