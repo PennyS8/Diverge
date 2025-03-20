@@ -1,18 +1,24 @@
 extends Node2D
 
-var playerNoise: ColorRect  # Store the reference
+var scene = preload("res://modules/entities/enemies/shades/shade/melee_shade.tscn")
 
-func _ready() -> void:
-	var player = get_tree().get_first_node_in_group("player")
-	if player:
-		playerNoise = player.get_node("%stressEffect")
+
+
+@onready var playerNoise
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	print('Collision detected with: ', body)
-	if playerNoise:
-		playerNoise.show()
+	if !playerNoise:
+		playerNoise = LevelManager.player.get_node("stressEffect")
+	playerNoise.show()
+	
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
+	playerNoise.hide()
+
+func _on_spawing_area_body_entered(body: Node2D) -> void:
 	print('Collision ended with: ', body)
-	if playerNoise:
-		playerNoise.hide()
+	var instance = scene.instantiate()
+	get_tree().current_scene.call_deferred("add_child", instance)
+	instance.rotation = 0
+	instance.position = Vector2.ZERO
+	instance.global_position = global_position

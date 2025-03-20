@@ -37,22 +37,27 @@ position = Vector2(483, 380)
 position = Vector2(556, 451)
 
 [node name="MazeWall13" parent="." instance=ExtResource("2_ajujk")]
-position = Vector2(749, 551)
+position = Vector2(749, 519)
+
+[node name="MazeWall18" parent="." instance=ExtResource("2_ajujk")]
+position = Vector2(722, 552)
+rotation = 4.71239
 
 [node name="MazeWall10" parent="." instance=ExtResource("2_ajujk")]
-position = Vector2(700, 309)
+position = Vector2(661, 278)
+rotation = 4.71239
 
 [node name="MazeWall7" parent="." instance=ExtResource("2_ajujk")]
 position = Vector2(700, 450)
 
 [node name="MazeWall8" parent="." instance=ExtResource("2_ajujk")]
-position = Vector2(558, 382)
+position = Vector2(556, 382)
 
 [node name="MazeWall14" parent="." instance=ExtResource("2_ajujk")]
-position = Vector2(628, 309)
+position = Vector2(627, 308)
 
 [node name="MazeWall2" parent="." instance=ExtResource("2_ajujk")]
-position = Vector2(630, 241)
+position = Vector2(627, 242)
 
 [node name="MazeWall11" parent="." instance=ExtResource("2_ajujk")]
 position = Vector2(555, 241)
@@ -67,6 +72,10 @@ rotation = 4.71239
 [node name="MazeWall9" parent="." instance=ExtResource("2_ajujk")]
 position = Vector2(409, 422)
 rotation = 4.71239
+
+[node name="MazeWall17" parent="." instance=ExtResource("2_ajujk")]
+position = Vector2(522, 420)
+rotation = -4.71239
 
 [node name="MazeWall5" parent="." instance=ExtResource("2_ajujk")]
 position = Vector2(480, 288)
