@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=4 uid="uid://cp53bw4fgv7b2"]
+[gd_scene load_steps=76 format=4 uid="uid://cp53bw4fgv7b2"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_0bwgv"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_beb0c"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://wwrw6hyhhicu" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/materials_station.tscn" id="19_n07ws"]
 [ext_resource type="PackedScene" uid="uid://c02hclv07w7cs" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/chem_inventory.tscn" id="20_0jtan"]
 [ext_resource type="Script" uid="uid://bmrc6kgne6fhf" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/entrance_dialogue.gd" id="20_7r4fh"]
+[ext_resource type="PackedScene" uid="uid://crx2yh5r8pj50" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/lab_trash_can.tscn" id="20_mor7r"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
@@ -3288,6 +3289,9 @@ shape = SubResource("RectangleShape2D_7r4fh")
 
 [node name="MaterialsStation" parent="ChemLab/Stations" instance=ExtResource("19_n07ws")]
 position = Vector2(120, -82)
+
+[node name="LabTrashCan" parent="ChemLab/Stations" instance=ExtResource("20_mor7r")]
+position = Vector2(64, -72)
 
 [node name="Entities" type="Node2D" parent="ChemLab"]
 

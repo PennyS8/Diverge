@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="ItemType" load_steps=3 format=3 uid="uid://dqltgjlooebf0"]
+
+[ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="1_5jgnl"]
+[ext_resource type="Texture2D" uid="uid://ctxbaqxxdpbhq" path="res://assets/environment/downtown_dungeon/custom_sprites/light_purple_substance.png" id="2_3qend"]
+
+[resource]
+script = ExtResource("1_5jgnl")
+name = "Light Purple"
+description = ""
+tags = Array[StringName]([])
+texture = ExtResource("2_3qend")
+texture_scale = 1.0
+max_stack_count = 1
+in_inventory_width = 1
+in_inventory_height = 1
+slot_flags = 16
+default_properties_string = "{}"
+default_properties = {}
+metadata/_custom_type_script = "uid://cgg102c222rfg"

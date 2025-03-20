@@ -4,20 +4,24 @@ Juniper: Ah there it is!
 Juniper: Time to mix these.
 Juniper: ...
 if combine_items() == true
+	do station_complete("mixer")
+	# Set the scale to be incomplete again for the second round of measuring
+	do station_incomplete("scale")
 	Juniper: Nice it changed to a {{lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name}}!
 else
-	Juniper: Oh no! I messed up the lab!
-	Juniper: It's ruined!
-	Juniper: I'll need to start over from the beginning...
+	=> mess_up
 => END
 
 ~ burner
 Juniper: Just got to boil it.
 Juniper: ...
 Juniper: ...
-Juniper: This shit's slow.
-Juniper: ...
-Juniper: It's finally done!
+if combine_items() == true
+	# Set the mixer to be incomplete again for the second round of mixing
+	do station_incomplete("mixer")
+	Juniper: Nice it changed to a {{lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name}}!
+else
+	=> mess_up
 if lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name == "Olive Substance"
 	Juniper: It looks like that is the end of the lab! 
 => END
@@ -25,8 +29,9 @@ if lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name == "Olive Su
 ~ scale
 Juniper: Okay, I only need a little.
 Juniper: Just a touch more.
-Juniper: Oh fuck, that's too much.
+Juniper: Oh no, that's too much.
 Juniper: Okay that's enough.
+do station_complete("scale")
 Juniper: Awesome, now I can go mix it!
 => END
 
@@ -41,6 +46,8 @@ Juniper: What was it that I needed?
 	do add_inventory_item("green_substance")
 - Blue Substance
 	do add_inventory_item("blue_substance")
+- Nothing
+	=> END
 
 Juniper: Ah, there it is!
 Juniper: I should weigh just the right amount.
@@ -48,6 +55,11 @@ Juniper: I should weigh just the right amount.
 
 ~ instructions
 [left]1) Measure 1 unit of orange substance & 1 unit of the blue substance.\n2) Mix the orange substance into the blue substance.\n3) Boil the mixture for a total of 10 seconds.\n\n4) Measure 1 unit of yellow substance.\n5) Mix the yellow substance into the existing solution.\n6) Boil the mixture for another 10 seconds.\n\n7) Observe the results. You should be left with an olive substance.
+=> END
+
+~ trash
+Juniper: I hope this is the right place for these!
+do delete_items()
 => END
 
 ~ entrance
@@ -60,7 +72,7 @@ Juniper: Crap!
 Juniper: I forgot to do that lab for chem.
 Juniper: If I don't do the lab now I'll forget again.
 Juniper: I can grab the book after.
-Juniper: The prof probably left the lab instructions up on the board.
+Juniper: The teacher probably left the lab instructions up on the board.
 => END
 
 ~ not_measured
@@ -87,7 +99,15 @@ Juniper: I guess I should go back to the material closet to get something to mix
 ~ mess_up
 Juniper: Oh no! I messed up the lab.
 Juniper: ...
+do failed_lab()
 Juniper: I guess I have to start over now.
+=> END
+
+~ grab_book
+Juniper: Since the lab is done I can grab the book!
+do delete_items()
+Juniper: Time to head out now I guess!
+=> END
 
 ~ puzzle_completed
 Juniper: I'm glad I don't need to use this anymore now that I've finished the lab! 

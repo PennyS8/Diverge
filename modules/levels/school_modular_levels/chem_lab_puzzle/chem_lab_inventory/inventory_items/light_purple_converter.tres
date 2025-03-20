@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemConversion" load_steps=4 format=3 uid="uid://bbt115hsks01w"]
+
+[ext_resource type="Script" uid="uid://4xo2ri3sytl3" path="res://addons/wyvernbox/crafting/item_conversion.gd" id="1_5rvxn"]
+[ext_resource type="Resource" uid="uid://t4dljhgt22p3" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/purple_substance.tres" id="1_b0ycg"]
+[ext_resource type="Resource" uid="uid://dqltgjlooebf0" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/light_purple_substance.tres" id="2_5twnk"]
+
+[resource]
+script = ExtResource("1_5rvxn")
+name = "Light Purple Converter"
+tags = Array[StringName]([&"burner"])
+input_types = Array[Resource]([ExtResource("1_b0ycg")])
+input_counts = Array[int]([1])
+output_types = Array[Resource]([ExtResource("2_5twnk")])
+output_ranges = Array[Vector2]([Vector2(1, 1)])
+metadata/_custom_type_script = "uid://4xo2ri3sytl3"

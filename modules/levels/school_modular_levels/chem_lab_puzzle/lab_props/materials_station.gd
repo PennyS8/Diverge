@@ -28,11 +28,16 @@ func _unhandled_input(_event: InputEvent) -> void:
 		return
 	
 	if Input.is_action_just_pressed("interact"):
+		if chem_inventory.stations["book"] == 1:
+			puzzle_complete = true
+		
 		player.dir = Vector2.ZERO
 		var dialogue = load("res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue")
 		
 		var dialogue_type
-		if chem_inventory.lab_inventory.count_all_items().size() != 2:
+		if puzzle_complete == true:
+			dialogue_type = "puzzle_completed"
+		elif chem_inventory.lab_inventory.count_all_items().size() != 2:
 			dialogue_type = "materials"
 		else: 
 			dialogue_type = "full_inventory"

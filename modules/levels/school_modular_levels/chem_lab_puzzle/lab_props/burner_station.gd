@@ -28,6 +28,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 		return
 	
 	if Input.is_action_just_pressed("interact"):
+		if chem_inventory.stations["book"] == 1:
+			puzzle_complete = true
+		
 		player.dir = Vector2.ZERO
 		var dialogue = load("res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue")
 		
@@ -36,9 +39,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 			dialogue_type = "puzzle_completed"
 		elif chem_inventory.lab_inventory.count_all_items() == { }:
 			dialogue_type = "no_materials"
+		elif chem_inventory.stations["mixer"] == 0:
+			dialogue_type = "not_mixed"
 		else: 
 			dialogue_type = "burner"
-			
+		
 		DialogueManager.show_dialogue_balloon(dialogue, dialogue_type, [chem_inventory])
 
 func _on_burner_body_entered(_body: Node2D) -> void:

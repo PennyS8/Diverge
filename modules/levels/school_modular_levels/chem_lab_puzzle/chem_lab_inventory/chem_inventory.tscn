@@ -39,6 +39,7 @@ offset_bottom = -1068.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5kw1c")
+enemy_locations = Array[Vector2]([Vector2(0, -36), Vector2(-48, 20), Vector2(48, 20), Vector2(0, 72)])
 
 [node name="Equipment" type="Control" parent="."]
 unique_name_in_owner = true
