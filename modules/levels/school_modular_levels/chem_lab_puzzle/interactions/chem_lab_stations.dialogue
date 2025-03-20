@@ -106,6 +106,7 @@ Juniper: I guess I have to start over now.
 ~ grab_book
 Juniper: Since the lab is done I can grab the book!
 do delete_items()
+do pick_up_book()
 Juniper: Time to head out now I guess!
 => END
 

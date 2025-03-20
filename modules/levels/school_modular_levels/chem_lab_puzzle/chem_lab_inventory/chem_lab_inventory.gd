@@ -108,3 +108,8 @@ func station_complete(station_name : String):
 func station_incomplete(station_name : String):
 	if station_name in stations:
 		stations[station_name] = 0
+
+func pick_up_book():
+	var player_inventory = GameManager.inventory_node.inventory 
+	var book = load("res://modules/objects/library_book_lab.tres")
+	InventoryHelper.add_itemtype_to_inventory(player_inventory, book, 1)
