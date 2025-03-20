@@ -1,8 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://73jm5qjy52vq"]
+[gd_scene load_steps=9 format=3 uid="uid://bnqm7hyfjmnm6"]
 
 [ext_resource type="Script" uid="uid://stplmihhi63i" path="res://modules/dialogue/balloon.gd" id="1_36de5"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_a8ve6"]
-[ext_resource type="Script" uid="uid://c0vsyadr6al6d" path="res://addons/dialogue_manager/dialogue_reponses_menu.gd" id="3_72ixx"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_72ixx"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_spyqn"]
 bg_color = Color(0, 0, 0, 1)
@@ -80,13 +80,14 @@ theme = SubResource("Theme_qq3yp")
 [node name="Panel" type="Panel" parent="Balloon"]
 clip_children = 2
 layout_mode = 1
-anchors_preset = 12
+anchors_preset = -1
+anchor_left = 0.211458
 anchor_top = 1.0
-anchor_right = 1.0
+anchor_right = 0.78849
 anchor_bottom = 1.0
 offset_left = 21.0
 offset_top = -183.0
-offset_right = -19.0
+offset_right = -25.9
 offset_bottom = -19.0
 grow_horizontal = 2
 grow_vertical = 0
@@ -100,36 +101,23 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Balloon/Panel/Dialogue"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Panel/Dialogue"]
 layout_mode = 2
-theme_override_constants/separation = 30
 
-[node name="Portrait" type="TextureRect" parent="Balloon/Panel/Dialogue/HBoxContainer"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(150, 150)
-layout_mode = 2
-expand_mode = 2
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Balloon/Panel/Dialogue/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Panel/Dialogue/HBoxContainer/VBoxContainer"]
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/Panel/Dialogue/VBoxContainer"]
 unique_name_in_owner = true
 modulate = Color(1, 1, 1, 0.501961)
 layout_mode = 2
 mouse_filter = 1
-theme_override_font_sizes/normal_font_size = 26
 bbcode_enabled = true
 text = "Character"
 fit_content = true
 scroll_active = false
 
-[node name="DialogueLabel" parent="Balloon/Panel/Dialogue/HBoxContainer/VBoxContainer" instance=ExtResource("2_a8ve6")]
+[node name="DialogueLabel" parent="Balloon/Panel/Dialogue/VBoxContainer" instance=ExtResource("2_a8ve6")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_font_sizes/normal_font_size = 26
 text = "Dialogue..."
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
@@ -156,7 +144,6 @@ response_template = NodePath("ResponseExample")
 
 [node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 26
 text = "Response example"
 
 [connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]

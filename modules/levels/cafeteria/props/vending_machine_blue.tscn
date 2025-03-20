@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmr82b3m7no0t"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_gt2gv"]
+[ext_resource type="Texture2D" uid="uid://b26tj2lcym7o4" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_C.png" id="2_51u0i"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38rs3"]
+size = Vector2(36, 17)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7nyut"]
+atlas = ExtResource("2_51u0i")
+region = Rect2(30, 155, 36, 47)
+
+[node name="BlueVendingMachine" type="StaticBody2D"]
+material = ExtResource("1_gt2gv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 14.5)
+shape = SubResource("RectangleShape2D_38rs3")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = SubResource("AtlasTexture_7nyut")
+offset = Vector2(0, -0.5)

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ch2k64xb7wkq"]
+
+[ext_resource type="PackedScene" uid="uid://1wim2ixj78ul" path="res://modules/levels/cafeteria/props/chair_left.tscn" id="1_2qkp8"]
+
+[node name="ChairUp" instance=ExtResource("1_2qkp8")]
+
+[node name="Sprite2D" parent="." index="0"]
+frame = 2

@@ -211,12 +211,12 @@ func display_custom_data(mouseover_node : Control, title : String, tooltip_prope
 func display_last():
 	if last_func != null && last_func.is_valid():
 		# Breaks if a parameter is null.
-    # last_func.call()
+	# last_func.call()
 
 		# Breaks because tries to convert Object to Object (???)
-    # callv(last_func.get_method, last_func.get_bound_arguments())
+	# callv(last_func.get_method, last_func.get_bound_arguments())
 
-    # I couldn't reproduce it in a new project, so I can't report it and this has to stay.
+	# I couldn't reproduce it in a new project, so I can't report it and this has to stay.
 		Callable(self, last_func.get_method()).callv(last_func.get_bound_arguments())
 
 ## Returns the visual representation of an [InputEvent] of the specified [code]action[/code].

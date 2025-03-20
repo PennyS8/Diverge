@@ -22,6 +22,7 @@ shader_parameter/color_over = Color(0.255659, 0.255659, 0.255659, 1)
 z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("1_2uu7l")
+inventory_path = NodePath("GUI2/InventoryPanel/EquipmentPanel/Equip")
 
 [node name="Player" parent="." instance=ExtResource("2_wwsun")]
 

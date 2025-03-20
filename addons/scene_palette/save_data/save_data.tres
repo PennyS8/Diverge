@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="PalettePluginSaveData" load_steps=2 format=3 uid="uid://r627lnnve74k"]
+
+[ext_resource type="Script" uid="uid://du4yvk8o6ykqh" path="res://addons/scene_palette/resources/rsc_pallete_plugin_save_data.gd" id="1_tuhxn"]
+
+[resource]
+script = ExtResource("1_tuhxn")
+favorites = {
+"res://modules/levels/cafeteria/props": {
+&"allow_nonscene_files": false,
+&"color": "#0e1521",
+&"instantiate_scenes_for_previews": true,
+&"minimized_dirs": {},
+&"scene_preview_scale": 0.96,
+&"show_labels": true
+}
+}
