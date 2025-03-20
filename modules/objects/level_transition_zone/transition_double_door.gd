@@ -5,10 +5,18 @@ var interactable : bool = false
 @export_file("*.tscn","*.scn") var next_level_path
 @export var entrance_name : String
 
+@export var keys_needed : Array[ItemLike]
 func _unhandled_input(_event: InputEvent) -> void:
 	if !interactable:
 		return
 	
+	# check if we have proper keys
+	var inv : Inventory = GameManager.inventory_node.inventory
+	var count_dict = {}
+	for item in keys_needed:
+		count_dict.set(item, 1)
+	if !inv.has_items(keys_needed, count_dict):
+		return
 	# TODO: check player inventory for 3 books
 	
 	if Input.is_action_just_pressed("interact"):
