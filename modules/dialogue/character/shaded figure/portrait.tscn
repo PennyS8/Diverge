@@ -63,7 +63,7 @@ script = ExtResource("1_xh6df")
 
 [node name="Body" type="Sprite2D" parent="Anchor"]
 texture_filter = 1
-position = Vector2(0, 78)
+position = Vector2(0, 121)
 scale = Vector2(4, 4)
 texture = ExtResource("2_xh6df")
 
