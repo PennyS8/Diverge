@@ -11,6 +11,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 		player.dir = Vector2.ZERO
 		var dialogue = load("res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue")
 		DialogueManager.show_dialogue_balloon(dialogue, "instructions")
+		
+		get_viewport().set_input_as_handled()
 
 func _on_chalk_board_body_entered(_body: Node2D) -> void:
 	interactable = true

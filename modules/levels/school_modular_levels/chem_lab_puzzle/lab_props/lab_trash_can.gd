@@ -10,9 +10,12 @@ func _unhandled_input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
 		player.dir = Vector2.ZERO
+		
 		var dialogue = load("res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue")
 		
 		DialogueManager.show_dialogue_balloon(dialogue, "trash", [chem_inventory])
+		
+		get_viewport().set_input_as_handled()
 
 
 func _on_trash_body_entered(_body: Node2D) -> void:

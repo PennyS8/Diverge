@@ -3170,7 +3170,7 @@ tile_map_data = PackedByteArray("AADy//b/AAAKABEAAADy//f/AAAKABEAAADy//j/AAAKABE
 tile_set = SubResource("TileSet_k2yvo")
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(-60, -24)
+position = Vector2(-60, 108)
 
 [node name="ChemLab" type="Node2D" parent="."]
 

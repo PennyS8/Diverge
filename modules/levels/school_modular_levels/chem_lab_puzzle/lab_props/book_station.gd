@@ -46,6 +46,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 			dialogue_type = "book"
 		
 		DialogueManager.show_dialogue_balloon(dialogue, dialogue_type, [chem_inventory])
+		
+		get_viewport().set_input_as_handled()
 
 func _on_book_body_entered(_body: Node2D) -> void:
 	interactable = true

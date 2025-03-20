@@ -1,6 +1,5 @@
 ~ mixer
-Juniper: Where is the on switch for this?
-Juniper: Ah there it is!
+% Juniper: Where is the on switch for this? Ah there it is!
 Juniper: Time to mix these.
 Juniper: ...
 if combine_items() == true
@@ -17,6 +16,7 @@ Juniper: Just got to boil it.
 Juniper: ...
 Juniper: ...
 if combine_items() == true
+	do station_complete("burner")
 	# Set the mixer to be incomplete again for the second round of mixing
 	do station_incomplete("mixer")
 	Juniper: Nice it changed to a {{lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name}}!
@@ -32,11 +32,14 @@ Juniper: Just a touch more.
 Juniper: Oh no, that's too much.
 Juniper: Okay that's enough.
 do station_complete("scale")
+do station_incomplete("materials")
 Juniper: Awesome, now I can go mix it!
 => END
 
 ~ materials
 Juniper: What was it that I needed?
+do station_complete("materials")
+do station_incomplete("burner")
 
 - Orange Substance
 	do add_inventory_item("orange_substance")
@@ -54,7 +57,7 @@ Juniper: I should weigh just the right amount.
 => END
 
 ~ instructions
-[left]1) Measure 1 unit of orange substance & 1 unit of the blue substance.\n2) Mix the orange substance into the blue substance.\n3) Boil the mixture for a total of 10 seconds.\n\n4) Measure 1 unit of yellow substance.\n5) Mix the yellow substance into the existing solution.\n6) Boil the mixture for another 10 seconds.\n\n7) Observe the results. You should be left with an olive substance.
+[left]1) Measure 2 unit of orange substance & 1 units of the blue substance.\n2) Mix the orange substance into the blue substance.\n3) Boil the mixture for a total of 10 seconds.\n\n4) Measure 3 units of yellow substance.\n5) Mix the yellow substance into the existing solution.\n6) Boil the mixture for another 10 seconds.\n\n7) Observe the results. You should be left with an olive substance.
 => END
 
 ~ trash
@@ -64,7 +67,7 @@ do delete_items()
 
 ~ entrance
 Juniper: There's my book!
-Juniper: I must have forgotten it when I was completing that lab.
+Juniper: I must have forgotten it here last class.
 => END
 
 ~ book
@@ -76,23 +79,26 @@ Juniper: The teacher probably left the lab instructions up on the board.
 => END
 
 ~ not_measured
-Juniper: I should measure these out before I mix them.
+Juniper: I feel like I'm forgetting a step...
+Junpier: Oh no! I forgot to measure these out first!
 => END
 
 ~ not_mixed
-Juniper: I should mix these materials together before I heat them up.
+Juniper: Oh I really don't want to mess this lab up again.
+Juniper: I should make sure these materials are really mixed together before I heat them up.
 => END
 
 ~ no_materials
-Juniper: I need to get some materials from the closet.
+Juniper: I better go get some materials from the closet so I can complete this lab fast.
 => END
 
 ~ full_inventory
-Juniper: I should probably mix these materials before grabbing more.
+Juniper: Hmm... I don't have any free hands now.
+Juniper: I should probably go measure and mix these materials together before grabbing more.
 => END
 
 ~ one_material_mixer
-Juniper: There doesn't seem to be any materials over here to mix.
+Juniper: There doesn't seem to be any materials over here to mix...
 Juniper: I guess I should go back to the material closet to get something to mix this with.
 => END
 
@@ -100,7 +106,7 @@ Juniper: I guess I should go back to the material closet to get something to mix
 Juniper: Oh no! I messed up the lab.
 Juniper: ...
 do failed_lab()
-Juniper: I guess I have to start over now.
+Juniper: I guess I have to start over now...
 => END
 
 ~ grab_book
