@@ -9323,7 +9323,6 @@ y_sort_enabled = true
 position = Vector2(-156, -24)
 next_level_path = "uid://cp53bw4fgv7b2"
 entrance_name = "LabSouth"
-puzzle_door = true
 
 [node name="Sprite2D" parent="Hallway/Exits/PuzzleDoorA" index="1"]
 material = SubResource("ShaderMaterial_vrsc7")

@@ -61,6 +61,7 @@ func _on_item_body_entered(body: Node2D) -> void:
 		
 	
 	elif body.is_in_group("enemy"):
+		player.get_node("PlayerFSM").change_state("Recall")
 		$Item.set_deferred("monitoring", false)
 		remove_from_group("edible_ramen")
 		

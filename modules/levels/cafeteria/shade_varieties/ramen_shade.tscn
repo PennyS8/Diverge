@@ -4,10 +4,10 @@
 [ext_resource type="Script" uid="uid://bbd5whbs11jwt" path="res://modules/levels/cafeteria/shade_varieties/seeking_ramen.gd" id="2_wn67w"]
 [ext_resource type="Script" uid="uid://bmwdqq25gls25" path="res://modules/levels/cafeteria/shade_varieties/no_more_ramen.gd" id="3_4mu2v"]
 [ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="3_v6mmv"]
-[ext_resource type="Resource" uid="uid://ixlr5j5w728j" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="4_buh3d"]
+[ext_resource type="Resource" uid="uid://ddkfnyew6hgco" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="4_buh3d"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="4_v6mmv"]
 [ext_resource type="Script" uid="uid://emamwtxvsy5h" path="res://modules/levels/cafeteria/shade_varieties/found_ramen.gd" id="4_wn67w"]
-[ext_resource type="Script" uid="uid://dptm65w1hgtgq" path="res://modules/levels/cafeteria/shade_varieties/alerted.gd" id="7_buh3d"]
+[ext_resource type="Script" path="res://modules/levels/cafeteria/shade_varieties/alerted.gd" id="7_buh3d"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_buh3d"]
 resource_local_to_scene = true
@@ -21,9 +21,6 @@ modulate = Color(1, 1, 1, 0)
 [node name="ShadeFSM" parent="." index="1"]
 disabled = true
 next_state = NodePath("SeekingRamen")
-
-[node name="Backstep" parent="ShadeFSM" index="2"]
-next_state = NodePath("")
 
 [node name="SeekingRamen" type="Node" parent="ShadeFSM" index="6" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("2_wn67w")

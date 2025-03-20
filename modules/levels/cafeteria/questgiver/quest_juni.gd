@@ -4,16 +4,33 @@ extends StaticBody2D
 @export var return_item : ItemType
 @onready var table_book = $TableBook
 @onready var table_ramen = $TableRamen
+@onready var player = get_tree().get_first_node_in_group("player")
+var interactable
 var quest_done : bool = false
 var talked_to : bool = false
 func _ready():
 	#InventoryHelper.add_ground_item(item_type, global_position+Vector2(-24, -24), self)
 	pass
 	
+func _unhandled_input(_event: InputEvent) -> void:
+	if not interactable:
+		return
+	
+	if Input.is_action_just_pressed("interact"):
+		player.dir = Vector2.ZERO
+		var dialogue = load("res://modules/levels/cafeteria/questgiver/juni_hungry.dialogue")
+		DialogueManager.show_dialogue_balloon(dialogue, "start", [self])
+		get_viewport().set_input_as_handled()
+
+	
 func _on_interaction_circle_body_entered(body: Node2D) -> void:
-	body.dir = Vector2.ZERO
-	var dialogue = load("res://modules/levels/cafeteria/questgiver/juni_hungry.dialogue")
-	DialogueManager.show_dialogue_balloon(dialogue, "start", [self])
+	interactable = true
+	$Display/Sprite2D.reparent($Display/Glint)
+	
+func _on_interaction_circle_body_exited(body: Node2D) -> void:
+	interactable = false
+	$Display/Glint/Sprite2D.reparent($Display)
+
 	
 func _test_if_ramen() -> bool:
 	var inv : Inventory = GameManager.inventory_node.inventory

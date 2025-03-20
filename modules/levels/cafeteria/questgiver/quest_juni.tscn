@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://crnbqsmdob0o2"]
+[gd_scene load_steps=13 format=3 uid="uid://crnbqsmdob0o2"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_hs5t4"]
 [ext_resource type="Script" uid="uid://dwqn6g4y6m777" path="res://modules/levels/cafeteria/questgiver/quest_juni.gd" id="2_0r8bs"]
+[ext_resource type="Material" uid="uid://y5hi1gddgtr5" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glintshader.tres" id="3_0r8bs"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="3_k8jxq"]
 [ext_resource type="Texture2D" uid="uid://sl51x8oswnsd" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle.png" id="4_w4tam"]
 
@@ -75,6 +76,11 @@ color_ramp = SubResource("Gradient_00tmr")
 hue_variation_min = -0.51
 hue_variation_max = 1.0
 
+[node name="Glint" type="CanvasGroup" parent="Display"]
+material = ExtResource("3_0r8bs")
+fit_margin = 0.0
+clear_margin = 0.0
+
 [node name="Sprite2D" type="Sprite2D" parent="Display"]
 self_modulate = Color(0.134467, 0.000247055, 0.303661, 1)
 material = SubResource("ShaderMaterial_mjuao")
@@ -95,3 +101,4 @@ position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_1us1g")
 
 [connection signal="body_entered" from="InteractionCircle" to="." method="_on_interaction_circle_body_entered"]
+[connection signal="body_exited" from="InteractionCircle" to="." method="_on_interaction_circle_body_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=71 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="2_nel61"]
@@ -32,6 +32,8 @@
 [ext_resource type="Texture2D" uid="uid://kyv7yk10fodg" path="res://assets/environment/downtown_dungeon/custom_sprites/table_water.png" id="29_clobj"]
 [ext_resource type="Texture2D" uid="uid://deyw8rhivgppt" path="res://assets/environment/downtown_dungeon/custom_sprites/table_book.png" id="30_vas0v"]
 [ext_resource type="Texture2D" uid="uid://xif0g3urgtv1" path="res://assets/environment/downtown_dungeon/custom_sprites/ramen.png" id="31_vas0v"]
+[ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="33_e56cj"]
+[ext_resource type="Texture2D" uid="uid://d1i2h41pm54o2" path="res://assets/debug/2d_lights_and_shadows_neutral_point_light.webp" id="34_rtr6j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3djk"]
 atlas = ExtResource("9_vgalx")
@@ -40,6 +42,12 @@ region = Rect2(4, 361, 88, 23)
 [sub_resource type="AtlasTexture" id="AtlasTexture_rtce6"]
 atlas = ExtResource("9_vgalx")
 region = Rect2(100, 361, 88, 23)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nel61"]
+size = Vector2(24, 24)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5fmv"]
+size = Vector2(96, 24)
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_roxoq"]
 vertices = PackedVector2Array(302, -110, 302, -171, 331, -227, 331, 67.9766, 314, 0, 12, 105, 12, 79, 19, 78, 19, 240, -70, 13, -70, -13, -61, 6, -61, 32, 276, -227, 296, -182, 42, -51, 95, -65, 95, -39, 34, -39, 104, -78, 42, -77, 67, -109, 16, -123, 16, -149, 54, -171, 54, -120, 34, -91, 18, -101, -66.9688, -232, -32, -173, -48, -163, -235, -163, -235, -197, -101, -232, -9, -103, -6, -101, -6, -91, -22, -91, -102, -98, -33, -103, -64, 176, -64, 202, -235, 197, -235, 163, -235, 77, -63, 56, -63, 82, -95, 33, -235, 43, -119, 33, -118, -37, -235, -43, -31, -52, -22, -52, -22, -39, -94, -37, -31, -78, -235, -77, -127, -78, -67.1875, -269, -67.4062, -307, -67, -307, -67, -269, 18.9688, 66.9766, 19.0312, 78, 11, 62, 11, 36, -331, 30, -331.547, 30, -331.531, 19, 139, -307, 140, -307, 140, -269, 139, -269, 173, -235, 173, -236, 259, -236, 259, -235, 276, -235, 62, -182, 296, -171, 139, -235, 62, -171, -67, -237, 8, -149, 8, -163, -8, -163, -8, -173, -32, -163, -48, -150, -57, -150, -57, -124, -48, -124, -48, -111, -33, -111, -9, -111, 8, -111, 8, -123, 67, -120, 34, -77, 160, -78, 159, -109, 159, -111, 206, -111, 210, -109, 168, -64, 206, -120, 210, -120, 257, -109, 257, -110, 308, 0, 308, -11, 160, -64, 144, -78, 144, -88, 120, -88, 120, -78, 104, -65, 18, -91, -102, -124, -110, -124, -110, -138, -126, -138, -126, -148, -150, -148, -150, -138, -166, -138, -166, -125, -175, -125, -175, -99, -166, -99, -166, -86, -151, -86, -151, -78, -127, -86, -110, -86, -110, -98, -22, -78, -7, -39, -7, -31, 74, -11, 17, -31, 17, -39, 104, -26, 119, -18, 34, -51, 104, -39, 119, -26, 143, -18, 143, -26, 160, -26, 160, -38, 168, -38, 74, 0, 66, 0, 66, 51, 79, 51, 79, 62, 171, 62, 171, 60, 218, 60, 222, 62, 218, 51, 222, 51, 269, 62, 269, 61, 314, 61, 9, 79, 9, 62, 9, 36, 9, 11, 2, 11, 2, -6, -54, -6, -54, 6, -78, -13, -78, -27, -94, -27, -118, -27, -134, -27, -269, -43, -134, -14, -143, -14, -331, -19, -143, 12, -134, 12, -134, 25, -119, 25, -60, 54, -95, 25, -78, 25, -78, 13, -60, 32, -54, 54, -54, 56, -54, 82, -54, 85, -60, 85, -60, 111, -54, 111, -54, 114, -61, 114, -61, 140, -54, 140, -54, 143, -62, 143, -62, 169, -54, 169, -54, 176, -61, 202, -61, 226, -54, 226, -54, 236, 2, 236, 2, 224, 10, 224, 10, 198, 2, 198, 2, 196, 8, 196, 8, 170, 2, 170, 2, 169, 10, 169, 10, 143, 2, 143, 2, 136, 11, 136, 11, 110, 2, 110, 2, 105, -293, 240, -293, 259, -307, 259, -307, 240, -331, 240, -403, 19, -403, -19, -331, -232, -307, -232, -307, -235, -293, -235, -293, -232, -282, -232, -282, -226, -248, -226, -248, -227, -208, -227, -208, -232, -187, -232, -187, -235, -101, -235, -67, -386, 139, -386, -269, -197, -269, -163, -269, 197, -269, 163, -269, -77, -269, 43, -269, 77)
@@ -633,6 +641,7 @@ tile_set = ExtResource("2_rqif0")
 use_parent_material = true
 tile_map_data = PackedByteArray("AADy//P/AAASACMAAADy//T/AAASACMAAADy//X/AAASACMAAAD0//P/AAARACEAAAD0//T/AAARACIAAAD0//X/AAASACMAAAD1//P/AAASACEAAAD1//T/AAASACIAAAD1//X/AAASACMAAAD2//H/AAASACEAAAD2//L/AAASACIAAAD2//P/AAASACIAAAD2//T/AAASACIAAAD2//X/AAASACMAAAD3//H/AAASACEAAAD3//L/AAASACIAAAD3//P/AAATACIAAAD3//T/AAATACIAAAD3//X/AAATACMAAAD4//H/AAASACEAAAD4//L/AAASACIAAAD4//P/DQALAAwAAAD4//T/DQALAAwAAAD4//X/DQALAA0AAAD5//H/AAASACEAAAD5//L/AAASACIAAAD5//P/DQALAAwAAAD5//T/DQALAAwAAAD5//X/DQALAA0AAAD6//H/AAASACEAAAD6//L/AAASACIAAAD6//P/DQALAAwAAAD6//T/DQALAAwAAAD6//X/DQALAA0AAAD7//H/AAASACEAAAD7//L/AAASACIAAAD7//P/DQALAAwAAAD7//T/DQALAAwAAAD7//X/DQALAA0AAAD8//H/AAATACEAAAD8//L/AAATACIAAAD8//P/AAAQACIAAAD8//T/AAAQACIAAAD8//X/AAAQACMAAAAGAPH/AAARACEAAAAGAPL/AAARACIAAAAGAPP/AAAQACIAAAAGAPT/AAAQACIAAAAGAPX/AAAQACMAAAAHAPH/AAASACEAAAAHAPL/AAASACIAAAAHAPP/DQALAAwAAAAHAPT/DQALAAwAAAAHAPX/DQALAA0AAAAIAPH/AAASACEAAAAIAPL/AAASACIAAAAIAPP/DQALAAwAAAAIAPT/DQALAAwAAAAIAPX/DQALAA0AAAAJAPH/AAASACEAAAAJAPL/AAASACIAAAAJAPP/DQALAAwAAAAJAPT/DQALAAwAAAAJAPX/DQALAA0AAAAKAPH/AAASACEAAAAKAPL/AAASACIAAAAKAPP/DQALAAwAAAAKAPT/DQALAAwAAAAKAPX/DQALAA0AAAALAPH/AAASACEAAAALAPL/AAASACIAAAALAPP/AAARACIAAAALAPT/AAARACIAAAALAPX/AAARACMAAAAMAPH/AAASACEAAAAMAPL/AAASACIAAAAMAPP/AAASACIAAAAMAPT/AAASACIAAAAMAPX/AAASACMAAAANAPH/AAASACEAAAANAPL/AAASACIAAAANAPP/AAASACIAAAANAPT/AAASACIAAAANAPX/AAASACMAAAD9/+z/AAASACEAAAD9/+3/AAASACMAAAD+/+z/AAASACEAAAD+/+3/AAASACMAAAD//+z/AAASACEAAAD//+3/AAASACMAAAAAAOz/AAASACEAAAAAAO3/AAASACMAAAABAOz/AAASACEAAAABAO3/AAASACMAAAACAOz/AAASACEAAAACAO3/AAASACMAAAADAOz/AAASACEAAAADAO3/AAASACMAAAAEAOz/AAASACEAAAAEAO3/AAASACMAAAAFAOz/AAASACEAAAAFAO3/AAASACMAAADz//X/AAASACMAAADz//T/AAASACMAAADz//P/AAASACMAAAA=")
 tile_set = ExtResource("2_rqif0")
+collision_visibility_mode = 1
 
 [node name="Walls" type="TileMapLayer" parent="Tiles"]
 z_index = 1
@@ -640,6 +649,7 @@ y_sort_enabled = true
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD1//j/AAAQACMAAAD1//3/AAAQACMAAAD1/wIAAAAQACMAAAD1/wcAAAAQACMAAADx//P/AAADABEAAADx//T/AAADABEAAADx//X/AAADABEAAADx//b/AAADABEAAADx//f/AAADABEAAADx//j/AAADABEAAADx//n/AAADABEAAADx//r/AAADABEAAADx//v/AAADABEAAADx/wEAAAADABAAAADx/wIAAAADABEAAADx/wMAAAADABEAAADx/wQAAAADABEAAADx/wUAAAADABEAAADx/wYAAAADABEAAADx/wcAAAADABEAAADx/wgAAAADABEAAADx/wkAAAADABEAAADy/woAAAACABAAAAD0/woAAAACABAAAAD1/woAAAACABAAAAD2/woAAAACABAAAAD3/woAAAACABAAAAD4/woAAAACABAAAAD5/woAAAACABAAAAD6/woAAAACABAAAAD7/woAAAACABAAAAD8/woAAAACABAAAAD9/woAAAACABAAAAD+/woAAAACABAAAAD//woAAAACABAAAAAAAAoAAAACABAAAAAOAAMAAAAAABMAAAAOAAIAAAABABEAAAAOAAEAAAABABEAAAAOAAAAAAABABEAAAAOAP//AAABABEAAAAOAP7/AAABABEAAAAOAP3/AAABABEAAAAOAPz/AAABABEAAAAOAPv/AAABABEAAAAOAPr/AAABABEAAAAOAPn/AAABABEAAAAOAPj/AAABABEAAAAOAPf/AAABABEAAAAOAPb/AAABABEAAAAOAPX/AAABABEAAAAOAPT/AAABABEAAAAOAPP/AAABABEAAAAOAPL/AAABABEAAAAOAPH/AAABABEAAADy//L/AAACABIAAAD0//L/AAACABIAAAAHAPD/AAACABIAAAAIAPD/AAACABIAAAAJAPD/AAACABIAAAAKAPD/AAACABIAAAALAPD/AAACABIAAAAMAPD/AAACABIAAAANAPD/AAACABIAAAAOAPD/AAACABMAAADx/woAAAABABMAAADx//L/AAADABMAAAD1//L/AAACABIAAAD7/+//AAACABEAAAD7//D/AAACABIAAAD6/+//AAACABEAAAD6//D/AAACABIAAAD5/+//AAACABEAAAD5//D/AAACABIAAAD4/+//AAACABEAAAD4//D/AAACABIAAAD3/+//AAACABEAAAD3//D/AAACABIAAAD2/+//AAACABEAAAD2//D/AAACABIAAAD1//f/AAAQACEAAAD1//z/AAAQACEAAAD1/wEAAAAQACEAAAD1/wYAAAAQACEAAAD1/wUAAAAAAA8AAAD1/wAAAAAAAA8AAAD1//v/AAAAAA8AAAD1//b/AAAAAA8AAAABAAoAAAAAABMAAAABAAkAAAABABEAAAABAAgAAAABABEAAAABAAcAAAABABEAAAABAAYAAAABABEAAAABAAUAAAABABEAAAABAAQAAAABABEAAAABAAMAAAABABAAAAACAAMAAAACABAAAAADAAMAAAACABAAAAAEAAMAAAACABAAAAAFAAMAAAACABAAAAAGAAMAAAACABAAAAAHAAMAAAACABAAAAAIAAMAAAACABAAAAAJAAMAAAACABAAAAAKAAMAAAACABAAAAALAAMAAAACABAAAAAMAAMAAAACABAAAAANAAMAAAACABAAAAAGAPD/AAABABIAAAD8//D/AAADABIAAAD8/+z/AAADABEAAAD8/+3/AAADABEAAAAGAOz/AAABABEAAAAGAO3/AAABABEAAAD8/+v/AAADABMAAAD9/+v/AAACABIAAAD+/+v/AAACABIAAAD//+v/AAACABIAAAAAAOv/AAACABIAAAABAOv/AAACABIAAAACAOv/AAACABIAAAADAOv/AAACABIAAAAEAOv/AAACABIAAAAFAOv/AAACABIAAAAGAOv/AAACABMAAAD8/+7/AAADABEAAAD8/+//AAADABEAAAAGAO7/AAABABEAAAAGAO//AAABABEAAADx//z/AAADABIAAADx//3/AAATACEAAADx//7/AAATACMAAADw//7/AAASACMAAADw//3/AAASACEAAADv//7/AAASACMAAADv//3/AAASACEAAADw//z/AAACABIAAADv//z/AAACABIAAADw/wEAAAACABAAAADv/wEAAAACABAAAADz//L/AAACABIAAADz//P/AAASACEAAAD0//P/AAASACEAAADy//P/AAASACEAAAD0//T/AAASACIAAADz//T/AAASACIAAADy//T/AAASACIAAADz//X/AAASACMAAADy//X/AAASACMAAADz/woAAAACABAAAAA=")
 tile_set = ExtResource("2_rqif0")
+collision_visibility_mode = 1
 
 [node name="WallObjects" type="TileMapLayer" parent="Tiles"]
 z_index = 1
@@ -648,6 +658,38 @@ material = ExtResource("1_ad4o5")
 position = Vector2(0, 2)
 tile_map_data = PackedByteArray("AAADAO3/BQAMAAgAAAADAO7/BQAMAAkAAAAEAOz/AgAEAAwAAAAEAO3/AgAEAA0AAAAFAOz/AgAHAAwAAAAFAO3/AgAHAA0AAAA=")
 tile_set = ExtResource("2_rqif0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Tiles"]
+z_index = 2
+position = Vector2(-84, -275)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/StaticBody2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_nel61")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="Tiles"]
+z_index = 2
+position = Vector2(-84, -299)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/StaticBody2D2"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_nel61")
+
+[node name="StaticBody2D3" type="StaticBody2D" parent="Tiles"]
+z_index = 2
+position = Vector2(-180, -262)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/StaticBody2D3"]
+position = Vector2(36, -1)
+shape = SubResource("RectangleShape2D_i5fmv")
+
+[node name="StaticBody2D4" type="StaticBody2D" parent="Tiles"]
+z_index = 2
+position = Vector2(180, -262)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/StaticBody2D4"]
+position = Vector2(36, -1)
+shape = SubResource("RectangleShape2D_i5fmv")
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 y_sort_enabled = true
@@ -896,9 +938,6 @@ position = Vector2(-27, 43)
 [node name="Shadely" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
 position = Vector2(-71, 128)
 
-[node name="Backstep" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeFSM" index="2"]
-next_state = NodePath("NoMelee")
-
 [node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely" index="5"]
 collision_mask = 0
 
@@ -908,9 +947,6 @@ material = SubResource("ShaderMaterial_anitv")
 [node name="Melisshade" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
 position = Vector2(13, 127)
 
-[node name="Backstep" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeFSM" index="2"]
-next_state = NodePath("NoMelee")
-
 [node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade" index="5"]
 collision_mask = 0
 
@@ -919,9 +955,6 @@ material = SubResource("ShaderMaterial_ocqtp")
 
 [node name="BrickShadehouse" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
 position = Vector2(-28, 133)
-
-[node name="Backstep" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="2"]
-next_state = NodePath("NoMelee")
 
 [node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="7"]
 next_state = NodePath("../Seeking")
@@ -961,6 +994,7 @@ position = Vector2(-25, 73)
 position = Vector2(289, -214)
 
 [node name="CameraBoundry" type="Area2D" parent="NavigationRegion2D"]
+visible = false
 position = Vector2(-29, 1)
 collision_layer = 512
 collision_mask = 4
@@ -1008,6 +1042,51 @@ offset = Vector2(0.5, 0.5)
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
 position = Vector2(-399, 4)
 
+[node name="Player" parent="." instance=ExtResource("33_e56cj")]
+
+[node name="DashTimer" parent="Player/PlayerFSM/DashPossible" index="1"]
+next_state = NodePath("../CanDash")
+
+[node name="WalkDown" parent="Player/PlayerFSM/Movement/Walk" index="0"]
+next_state = NodePath("../WalkRight")
+
+[node name="WalkRight" parent="Player/PlayerFSM/Movement/Walk" index="1"]
+next_state = NodePath("../WalkUp")
+
+[node name="WalkUp" parent="Player/PlayerFSM/Movement/Walk" index="2"]
+next_state = NodePath("../WalkLeft")
+
+[node name="DashDown" parent="Player/PlayerFSM/Movement/Dash" index="0"]
+next_state = NodePath("../DashRight")
+
+[node name="DashRight" parent="Player/PlayerFSM/Movement/Dash" index="1"]
+next_state = NodePath("../DashUp")
+
+[node name="DashUp" parent="Player/PlayerFSM/Movement/Dash" index="2"]
+next_state = NodePath("../DashLeft")
+
+[node name="AttackUp" parent="Player/PlayerFSM/Movement/AttackMelee" index="0"]
+next_state = NodePath("../AttackRight")
+
+[node name="AttackRight" parent="Player/PlayerFSM/Movement/AttackMelee" index="1"]
+next_state = NodePath("../AttackDown")
+
+[node name="AttackDown" parent="Player/PlayerFSM/Movement/AttackMelee" index="2"]
+next_state = NodePath("../AttackLeft")
+
+[node name="HopUp" parent="Player/PlayerFSM/Movement/Hop" index="0"]
+next_state = NodePath("../HopLeft")
+
+[node name="HopLeft" parent="Player/PlayerFSM/Movement/Hop" index="1"]
+next_state = NodePath("../HopRight")
+
+[node name="HopRight" parent="Player/PlayerFSM/Movement/Hop" index="2"]
+next_state = NodePath("../HopDown")
+
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+blend_mode = 2
+texture = ExtResource("34_rtr6j")
+
 [connection signal="area_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints/DispensePoint1" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [1]]
 [connection signal="area_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints/DispensePoint2" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [2]]
 [connection signal="area_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints/DispensePoint3" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [3]]
@@ -1018,3 +1097,4 @@ position = Vector2(-399, 4)
 [editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely"]
 [editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade"]
 [editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse"]
+[editable path="Player"]

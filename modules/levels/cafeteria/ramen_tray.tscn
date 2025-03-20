@@ -4,7 +4,7 @@
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_p3hce"]
 [ext_resource type="Script" uid="uid://bmqslj0n2bhui" path="res://modules/levels/cafeteria/ramen_tray.gd" id="2_hy37e"]
 [ext_resource type="Texture2D" uid="uid://xif0g3urgtv1" path="res://assets/environment/downtown_dungeon/custom_sprites/ramen.png" id="3_26siq"]
-[ext_resource type="Resource" uid="uid://ixlr5j5w728j" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="3_pxv47"]
+[ext_resource type="Resource" uid="uid://ddkfnyew6hgco" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="3_pxv47"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="7_i8hlk"]
 [ext_resource type="PackedScene" uid="uid://cjdtl6ek4qp7d" path="res://addons/wyvernbox_prefabs/ground_item_stack_view_2d.tscn" id="9_i8hlk"]
 
