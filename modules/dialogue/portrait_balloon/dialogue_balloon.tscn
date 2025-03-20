@@ -1,14 +1,13 @@
-[gd_scene load_steps=21 format=3 uid="uid://covyosa222o3j"]
+[gd_scene load_steps=15 format=3 uid="uid://covyosa222o3j"]
 
 [ext_resource type="Script" uid="uid://d3umiakbyorkt" path="res://modules/dialogue/portrait_balloon/dialogue_balloon.gd" id="1_ndejj"]
 [ext_resource type="AudioStream" uid="uid://oqqmbm8k1cbl" path="res://modules/dialogue/portrait_balloon/talk.wav" id="2_73577"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_hudaw"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_2hpv4"]
-[ext_resource type="Texture2D" uid="uid://dbvdskabxbwn7" path="res://assets/hud/kenney_ui-pack-pixel-adventure/Tilesheets/Large tiles/Thick outline/tilemap_packed_4x.png" id="3_6oaa8"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="3_uhdg3"]
 [ext_resource type="Texture2D" uid="uid://c1bxhj1plofkn" path="res://assets/hud/kenney_ui-pack-pixel-adventure/Tilesheets/Large tiles/Thick outline/tilemap_packed.png" id="4_oan6x"]
 [ext_resource type="Theme" uid="uid://bbxsjeowhx3sp" path="res://modules/dialogue/portrait_balloon/nate_custom_panel.tres" id="4_uhdg3"]
-[ext_resource type="PackedScene" uid="uid://1a1728dpk24t" path="res://modules/dialogue/character/juniper/portrait.tscn" id="11_5e3vs"]
+[ext_resource type="Theme" uid="uid://bdm22f77we4ma" path="res://modules/dialogue/portrait_balloon/notif-theme.tres" id="8_uhdg3"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kjl50"]
 texture = ExtResource("4_oan6x")
@@ -19,101 +18,6 @@ texture_margin_bottom = 5.0
 axis_stretch_horizontal = 2
 axis_stretch_vertical = 2
 region_rect = Rect2(32, 0, 32, 32)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_oan6x"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.329412, 0.329412, 0.329412, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5e3vs"]
-bg_color = Color(0.121569, 0.121569, 0.121569, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0, 0.729412, 1, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xvyov"]
-bg_color = Color(0, 0, 0, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 3
-border_color = Color(0.290196, 0.290196, 0.290196, 1)
-corner_radius_top_left = 20
-corner_radius_top_right = 20
-corner_radius_bottom_right = 20
-corner_radius_bottom_left = 20
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kpg67"]
-texture = ExtResource("3_6oaa8")
-texture_margin_left = 24.0
-texture_margin_top = 20.0
-texture_margin_right = 24.0
-texture_margin_bottom = 24.0
-axis_stretch_horizontal = 2
-axis_stretch_vertical = 2
-region_rect = Rect2(0, 132, 128, 124)
-
-[sub_resource type="Theme" id="Theme_o8ndy"]
-default_font_size = 20
-Button/styles/disabled = SubResource("StyleBoxFlat_oan6x")
-Button/styles/focus = SubResource("StyleBoxFlat_5e3vs")
-Button/styles/hover = SubResource("StyleBoxFlat_5e3vs")
-Button/styles/normal = SubResource("StyleBoxFlat_xvyov")
-MarginContainer/constants/margin_bottom = 24
-MarginContainer/constants/margin_left = 30
-MarginContainer/constants/margin_right = 30
-MarginContainer/constants/margin_top = 24
-Panel/styles/panel = SubResource("StyleBoxTexture_kpg67")
-RichTextLabel/colors/default_color = Color(0.247472, 0.117376, 3.60981e-08, 1)
-RichTextLabel/colors/font_outline_color = Color(0, 0, 0, 1)
-RichTextLabel/colors/font_selected_color = Color(0, 0, 0, 1)
-RichTextLabel/colors/font_shadow_color = Color(0, 0, 0, 1)
-RichTextLabel/colors/selection_color = Color(0, 0, 0, 1)
-RichTextLabel/colors/table_border = Color(0, 0, 0, 1)
-RichTextLabel/colors/table_even_row_bg = Color(0, 0, 0, 1)
-RichTextLabel/colors/table_odd_row_bg = Color(0, 0, 0, 1)
-RichTextLabel/constants/line_separation = 0
-RichTextLabel/constants/outline_size = 0
-RichTextLabel/constants/shadow_offset_x = 0
-RichTextLabel/constants/shadow_offset_y = 0
-RichTextLabel/constants/shadow_outline_size = 0
-RichTextLabel/constants/table_h_separation = 0
-RichTextLabel/constants/table_v_separation = 0
-RichTextLabel/constants/text_highlight_h_padding = 0
-RichTextLabel/constants/text_highlight_v_padding = 0
-RichTextLabel/font_sizes/bold_font_size = 20
-RichTextLabel/font_sizes/bold_italics_font_size = 20
-RichTextLabel/font_sizes/italics_font_size = 20
-RichTextLabel/font_sizes/mono_font_size = 20
-RichTextLabel/font_sizes/normal_font_size = 20
-RichTextLabel/fonts/bold_font = null
-RichTextLabel/fonts/bold_italics_font = null
-RichTextLabel/fonts/italics_font = null
-RichTextLabel/fonts/mono_font = null
-RichTextLabel/fonts/normal_font = null
-RichTextLabel/styles/focus = null
-RichTextLabel/styles/normal = null
 
 [sub_resource type="Animation" id="Animation_xp3hu"]
 length = 0.001
@@ -242,6 +146,7 @@ scroll_following = true
 
 [node name="PortraitBox" type="Panel" parent="Balloon/HBoxContainer"]
 unique_name_in_owner = true
+visible = false
 use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -256,9 +161,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -229.0
-offset_top = -176.0
+offset_top = -313.0
 offset_right = 30.0
-offset_bottom = -26.0
+offset_bottom = 87.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(0.55, 0.55)
@@ -267,7 +172,7 @@ scale = Vector2(0.55, 0.55)
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_constants/separation = 15
+theme_override_constants/separation = 9
 script = ExtResource("3_2hpv4")
 response_template = NodePath("ResponseExample")
 
@@ -283,7 +188,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = SubResource("Theme_o8ndy")
+theme = ExtResource("8_uhdg3")
 
 [node name="PanelContainer" type="PanelContainer" parent="Notification"]
 layout_mode = 2
@@ -312,7 +217,6 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 35)
 layout_mode = 2
 bbcode_enabled = true
-text = "[left]testing"
 fit_content = true
 scroll_active = false
 vertical_alignment = 1
@@ -335,8 +239,6 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_5e3vs")
 [node name="PortraitPosition" type="Marker2D" parent="PortraitContainer"]
 unique_name_in_owner = true
 position = Vector2(156, 268)
-
-[node name="Portrait" parent="PortraitContainer/PortraitPosition" instance=ExtResource("11_5e3vs")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
