@@ -30,6 +30,7 @@ func _ready():
 		custom_scene_path = get_tree().current_scene.scene_file_path
 		get_tree().change_scene_to_file("res://modules/globals/main.tscn")
 	main_ready.connect(_main_ready)
+	await main_ready
 
 func _main_ready():
 	player = get_tree().get_first_node_in_group("player")
@@ -70,13 +71,14 @@ func _swap_level(path : String, entrance_name : String = "0"):
 	
 	if current_level:
 		main.remove_child(current_level)
-		current_level.queue_free()
+		current_level.call_deferred("queue_free")
 	current_level = level
 	
 	_get_entrances()
 
 	if entrances.has(entrance_name):
 		player.global_position = entrances[entrance_name]
+		player.lock_camera = false
 	else:
 		player.global_position = Vector2.ZERO
 	
