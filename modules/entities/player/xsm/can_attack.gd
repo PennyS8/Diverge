@@ -6,6 +6,9 @@ func _on_enter(_args) -> void:
 
 	
 func state_unhandled_input(event : InputEvent):
+	if is_active("MovementDisabled"):
+		return
+		
 	var num_tethered_nodes = get_tree().get_node_count_in_group("status_tethered")
 	
 	if Input.is_action_just_pressed("attack_melee"):
