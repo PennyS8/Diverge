@@ -32,7 +32,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 		var dialogue = load("res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue")
 		
 		var dialogue_type
-		if chem_inventory.lab_inventory.count_all_items() == { }:
+		if puzzle_complete == true:
+			dialogue_type = "puzzle_completed"
+		elif chem_inventory.lab_inventory.count_all_items() == { }:
 			dialogue_type = "no_materials"
 		elif chem_inventory.lab_inventory.count_all_items().size() == 1:
 			dialogue_type = "one_material_mixer"
