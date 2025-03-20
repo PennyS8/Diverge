@@ -1,0 +1,205 @@
+[gd_scene load_steps=27 format=3 uid="uid://gxisel3yklqj"]
+
+[ext_resource type="Script" uid="uid://brw2sib5f4ij7" path="res://modules/levels/cafeteria/wanderer.gd" id="1_odue2"]
+[ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="2_w0g44"]
+[ext_resource type="Texture2D" uid="uid://b72ap4mxbwsim" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk.png" id="3_0uyq4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ih2u7"]
+radius = 6.0
+
+[sub_resource type="Gradient" id="Gradient_ih2li"]
+offsets = PackedFloat32Array(0, 0.431487)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_m4t57"]
+gradient = SubResource("Gradient_ih2li")
+width = 48
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_qi2uf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_yoo50"]
+colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7eiqb"]
+resource_local_to_scene = true
+shader = ExtResource("2_w0g44")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4djj6"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(0, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xpvsg"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(48, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_satq4"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(96, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bta3c"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(144, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ms12h"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(192, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7jdvs"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(240, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_llom4"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(288, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4djw6"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(336, 0, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5revb"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(0, 192, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p1pal"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(48, 192, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2d7xb"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(96, 192, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i6iou"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(144, 192, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3kjy"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(192, 192, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qor7v"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(240, 192, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qpmx"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(288, 192, 48, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ncm2y"]
+atlas = ExtResource("3_0uyq4")
+region = Rect2(336, 192, 48, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gl863"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4djj6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xpvsg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_satq4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bta3c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ms12h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7jdvs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_llom4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4djw6")
+}],
+"loop": true,
+"name": &"walk_down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5revb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1pal")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2d7xb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i6iou")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3kjy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qor7v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qpmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ncm2y")
+}],
+"loop": true,
+"name": &"walk_up",
+"speed": 4.0
+}]
+
+[node name="Wanderer" type="CharacterBody2D"]
+modulate = Color(1, 1, 1, 0)
+z_index = 1
+y_sort_enabled = true
+collision_layer = 1024
+collision_mask = 1024
+script = ExtResource("1_odue2")
+
+[node name="BodyCollider" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_ih2u7")
+
+[node name="Display" type="Node2D" parent="."]
+use_parent_material = true
+
+[node name="Shadow" type="Sprite2D" parent="Display"]
+texture = SubResource("GradientTexture2D_m4t57")
+
+[node name="SmokeFX" type="CPUParticles2D" parent="Display"]
+position = Vector2(0, -12)
+amount = 10
+lifetime = 2.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angle_max = 270.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_qi2uf")
+color = Color(0.214103, 0.214103, 0.214103, 1)
+color_ramp = SubResource("Gradient_yoo50")
+hue_variation_min = -0.51
+hue_variation_max = 1.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Display"]
+self_modulate = Color(0.133333, 0, 0.301961, 1)
+material = SubResource("ShaderMaterial_7eiqb")
+position = Vector2(-1, 0)
+sprite_frames = SubResource("SpriteFrames_gl863")
+animation = &"walk_up"
+autoplay = "walk_up"
+offset = Vector2(0, -11)

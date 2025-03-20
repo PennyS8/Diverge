@@ -5,7 +5,6 @@ extends Area2D
 
 signal clicked()
 
-
 ## The modulation to apply if filtered out by [member GroundItemManager.view_filter_patterns]. [code]Color(1, 1, 1, 1)[/code] to disable.
 @export var filter_hidden_color := Color(0.5, 0.5, 0.5, 0.5)
 
