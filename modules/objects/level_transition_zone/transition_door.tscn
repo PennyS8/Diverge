@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://cey0ldawaolll"]
 
-[ext_resource type="Script" uid="uid://c6q6080bnw84g" path="res://modules/objects/level_transition_zone/transition_door.gd" id="1_3ij6u"]
+[ext_resource type="Script" path="res://modules/objects/level_transition_zone/transition_door.gd" id="1_3ij6u"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_14a13"]
 [ext_resource type="Texture2D" uid="uid://bp72ou4t3d6yt" path="res://assets/environment/downtown_dungeon/Door.png" id="3_3yaq0"]
 [ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="4_xe10q"]

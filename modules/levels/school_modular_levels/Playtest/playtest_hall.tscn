@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=4 uid="uid://dibtck8dlixm1"]
+[gd_scene load_steps=91 format=4 uid="uid://dibtck8dlixm1"]
 
 [ext_resource type="Texture2D" uid="uid://ce10vjgkrj5nk" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png" id="1_453bp"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="2_at4ji"]
@@ -14,6 +14,8 @@
 [ext_resource type="PackedScene" uid="uid://cey0ldawaolll" path="res://modules/objects/level_transition_zone/transition_door.tscn" id="12_w3j1q"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_at4ji"]
 [ext_resource type="PackedScene" uid="uid://fwmvu87dwacp" path="res://modules/objects/level_transition_zone/transition_double_door.tscn" id="13_usixv"]
+[ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="15_l83xx"]
+[ext_resource type="Resource" uid="uid://cjq00cbnjmaab" path="res://modules/objects/library_book_cafeteria.tres" id="16_uy203"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
@@ -9160,6 +9162,8 @@ size = Vector2(21, 14)
 size = Vector2(23, 14)
 
 [node name="PlaytestHall" type="Node2D"]
+y_sort_enabled = true
+material = ExtResource("13_at4ji")
 
 [node name="BaseLayerVoid" type="TileMapLayer" parent="."]
 visible = false
@@ -9171,10 +9175,12 @@ position = Vector2(390, 36)
 
 [node name="StartRoom" type="Node2D" parent="." groups=["room_with_dynamic_transitions"]]
 y_sort_enabled = true
-position = Vector2(-636, 0)
+use_parent_material = true
+position = Vector2(-648, 0)
 
 [node name="Tiles" type="Node2D" parent="StartRoom"]
 y_sort_enabled = true
+use_parent_material = true
 
 [node name="Floor" type="TileMapLayer" parent="StartRoom/Tiles"]
 use_parent_material = true
@@ -9182,9 +9188,10 @@ tile_map_data = PackedByteArray("AAAAAAAABAACAAUAAAABAAAABAACAAUAAAACAAAABAACAAU
 tile_set = ExtResource("10_kgxs5")
 
 [node name="Walls" type="TileMapLayer" parent="StartRoom/Tiles"]
+z_index = 1
 y_sort_enabled = true
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAHAP3/AAAJABIAAAAHAP7/AAAVACEAAAAHAP//AAAVACMAAAD///7/AAALABEAAAAGAP7/AAAWACMAAAAKAP3/AAAKABMAAAAKAP7/AAAJABEAAAAKAP//AAAJABEAAAAKAAAAAAAJABEAAAAKAAIAAAAJABEAAAAKAAMAAAAIABMAAAAKAAEAAAAJABEAAAAJAP7/AAAWACEAAAAJAP//AAAWACMAAAAIAP//AAAWACMAAAAIAP7/AAAWACEAAAAJAP3/AAAKABIAAAAIAP3/AAAKABIAAAAHAAQAAAAIABMAAAAHAAMAAAAJABAAAAAIAAMAAAAKABAAAAAJAAMAAAAKABAAAAAAAP7/AAAWACMAAAABAP7/AAAWACMAAAACAP7/AAAWACMAAAADAP7/AAAWACMAAAAEAP7/AAAWACMAAAAFAP7/AAAWACMAAAD///z/AAALABMAAAD///3/AAALABEAAAAAAPz/AAAKABIAAAAAAP3/AAAWACIAAAABAPz/AAAKABIAAAABAP3/AAAWACIAAAACAPz/AAAKABIAAAACAP3/AAAWACIAAAADAPz/AAAKABIAAAADAP3/AAAWACIAAAAEAPz/AAAKABIAAAAEAP3/AAAWACIAAAAFAPz/AAAKABIAAAAFAP3/AAAWACIAAAAGAPz/AAAKABIAAAAGAP3/AAAWACIAAAAHAPz/AAAKABMAAAD//wQAAAAJABMAAAAAAAQAAAAKABAAAAABAAQAAAAKABAAAAACAAQAAAAKABAAAAADAAQAAAAKABAAAAAEAAQAAAAKABAAAAAFAAQAAAAKABAAAAAGAAQAAAAKABAAAAD/////AAALABEAAAD//wAAAAALABEAAAD//wEAAAALABEAAAD//wIAAAALABEAAAD//wMAAAALABEAAAA=")
+tile_map_data = PackedByteArray("AAAHAP3/AAAJABIAAAAHAP7/AAAVACEAAAAHAP//AAAVACMAAAD///7/AAALABEAAAAGAP7/AAAWACMAAAAKAP3/AAAKABMAAAAKAP7/AAAJABEAAAAKAP//AAAJABEAAAAKAAAAAAAJABEAAAAKAAIAAAAJABEAAAAKAAMAAAAIABMAAAAKAAEAAAAJABEAAAAJAP7/AAAWACEAAAAJAP//AAAWACMAAAAIAP//AAAWACMAAAAIAP7/AAAWACEAAAAJAP3/AAAKABIAAAAIAP3/AAAKABIAAAAHAAQAAAAIABMAAAAHAAMAAAAJABAAAAAIAAMAAAAKABAAAAAJAAMAAAAKABAAAAAAAP7/AAAWACMAAAABAP7/AAAWACMAAAACAP7/AAAWACMAAAADAP7/AAAWACMAAAAEAP7/AAAWACMAAAAFAP7/AAAWACMAAAD///z/AAALABMAAAD///3/AAALABEAAAAAAPz/AAAKABIAAAAAAP3/AAAWACEAAAABAPz/AAAKABIAAAABAP3/AAAWACEAAAACAPz/AAAKABIAAAACAP3/AAAWACEAAAADAPz/AAAKABIAAAADAP3/AAAWACEAAAAEAPz/AAAKABIAAAAEAP3/AAAWACEAAAAFAPz/AAAKABIAAAAFAP3/AAAWACEAAAAGAPz/AAAKABIAAAAGAP3/AAAWACEAAAAHAPz/AAAKABMAAAD//wQAAAAJABMAAAAAAAQAAAAKABAAAAABAAQAAAAKABAAAAACAAQAAAAKABAAAAADAAQAAAAKABAAAAAEAAQAAAAKABAAAAAFAAQAAAAKABAAAAAGAAQAAAAKABAAAAD/////AAALABEAAAD//wAAAAALABEAAAD//wEAAAALABEAAAD//wIAAAALABEAAAD//wMAAAALABEAAAA=")
 tile_set = SubResource("TileSet_lifee")
 
 [node name="TopLayerVoid" type="TileMapLayer" parent="StartRoom/Tiles"]
@@ -9193,7 +9200,6 @@ tile_map_data = PackedByteArray("AAAJAAMAAAAKABEAAAAJAAIAAAAKABEAAAAJAAEAAAAKABE
 tile_set = SubResource("TileSet_dh5oh")
 
 [node name="CameraBoundry" type="Area2D" parent="StartRoom"]
-visible = false
 collision_layer = 512
 collision_mask = 4
 
@@ -9205,7 +9211,7 @@ shape = SubResource("RectangleShape2D_60oyn")
 position = Vector2(-42, 138)
 
 [node name="LimitTopRight" type="Marker2D" parent="StartRoom/CameraBoundry"]
-position = Vector2(240, -120)
+position = Vector2(216, -144)
 
 [node name="Entrances" type="Node2D" parent="StartRoom"]
 
@@ -9222,9 +9228,12 @@ entrance_name = "HallwayWest"
 
 [node name="Hallway" type="Node2D" parent="." groups=["room_with_dynamic_transitions"]]
 y_sort_enabled = true
+use_parent_material = true
+position = Vector2(-12, 0)
 
 [node name="Tiles" type="Node2D" parent="Hallway"]
 y_sort_enabled = true
+use_parent_material = true
 position = Vector2(60, -72)
 
 [node name="Floor" type="TileMapLayer" parent="Hallway/Tiles"]
@@ -9234,12 +9243,14 @@ tile_map_data = PackedByteArray("AAD0/wMABAACAAUAAAD0/wQABAACAAUAAAD0/wUABAACAAU
 tile_set = ExtResource("10_kgxs5")
 
 [node name="Walls" type="TileMapLayer" parent="Hallway/Tiles"]
+z_index = 1
 y_sort_enabled = true
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD9/wYAAAAKABAAAAD+/wYAAAAKABAAAAD//wYAAAAKABAAAAAAAAYAAAAKABAAAAAEAAYAAAAKABAAAAAFAAYAAAAKABAAAAAGAAYAAAAKABAAAAAHAAIAAAAWACMAAAAHAAYAAAAKABAAAAAIAAIAAAAJABEAAAD7/wEAAAAWACMAAAD3/wEAAAAWACMAAAD4/wEAAAAWACMAAAD5/wEAAAAWACMAAAD6/wEAAAAWACMAAAD8/wEAAAAWACMAAAD9/wEAAAAWACMAAAD+/wEAAAAWACMAAAD//wEAAAAWACMAAAAAAAEAAAAWACMAAAABAAEAAAAWACMAAAACAAEAAAAWACMAAAADAAEAAAAWACMAAAAEAAEAAAAWACMAAAAFAAIAAAAVACMAAAAGAAIAAAAWACMAAAAIAAMAAAAJABEAAAAIAAQAAAAJABEAAAAIAAUAAAAJABEAAAAIAAYAAAAIABMAAAADAAYAAAAKABAAAAACAAYAAAAKABAAAAABAAYAAAAKABAAAAD8/wYAAAAKABAAAAD7/wYAAAAKABAAAAD6/wYAAAAKABAAAAD5/wYAAAAKABAAAAD4/wYAAAAKABAAAAD3/wYAAAAKABAAAAAIAAEAAAAJABEAAAD1/wEAAAAWACMAAAD2/wEAAAAWACMAAAD1/wYAAAAKABAAAAD2/wYAAAAKABAAAADv/wEAAAALABEAAADv/wIAAAALABEAAADv/wMAAAALABEAAADv/wQAAAALABEAAADv/wUAAAALABEAAADv/wYAAAAJABMAAADw/wIAAAAWACMAAADw/wYAAAAKABAAAADx/wIAAAAWACMAAADx/wYAAAAKABAAAADy/wIAAAAXACMAAADy/wYAAAAKABAAAADz/wEAAAAWACMAAADz/wYAAAAKABAAAAD0/wEAAAAWACMAAAD0/wYAAAAKABAAAADy////AAALABMAAAAFAP//AAAKABMAAADw/wEAAAAWACEAAADx/wEAAAAWACEAAADy/wEAAAAXACEAAADz/wAAAAAWACEAAAD0/wAAAAAWACEAAAD1/wAAAAAWACEAAAD2/wAAAAAWACEAAAD3/wAAAAAWACEAAAD4/wAAAAAWACEAAAD5/wAAAAAWACEAAAD6/wAAAAAWACEAAAD7/wAAAAAWACEAAAD8/wAAAAAWACEAAAD9/wAAAAAWACEAAAD+/wAAAAAWACEAAAD//wAAAAAWACEAAAAAAAAAAAAWACEAAAABAAAAAAAWACEAAAACAAAAAAAWACEAAAADAAAAAAAWACEAAAAEAAAAAAAWACEAAAAFAAEAAAAVACEAAAAGAAEAAAAWACEAAAAHAAEAAAAWACEAAADv/wAAAAALABMAAADw/wAAAAAKABIAAADx/wAAAAAKABIAAADy/wAAAAALABIAAADz////AAAKABIAAAD0////AAAKABIAAAD1////AAAKABIAAAD2////AAAKABIAAAD3////AAAKABIAAAD4////AAAKABIAAAD5////AAAKABIAAAD6////AAAKABIAAAD7////AAAKABIAAAD8////AAAKABIAAAD9////AAAKABIAAAD+////AAAKABIAAAD/////AAAKABIAAAAAAP//AAAKABIAAAABAP//AAAKABIAAAACAP//AAAKABIAAAADAP//AAAKABIAAAAEAP//AAAKABIAAAAFAAAAAAAJABIAAAAGAAAAAAAKABIAAAAHAAAAAAAKABIAAAAIAAAAAAAKABMAAAA=")
 tile_set = ExtResource("10_kgxs5")
 
 [node name="WallObjects" type="TileMapLayer" parent="Hallway/Tiles"]
+z_index = 1
 y_sort_enabled = true
 use_parent_material = true
 tile_map_data = PackedByteArray("AAD5/wAAAgAOAAMAAAD5/wEAAgAOAAQAAAD6/wAAAgAPAAMAAAD6/wEAAgAPAAQAAAADAAAAAgAOAAUAAAADAAEAAgAOAAYAAAAEAAAAAgAPAAEAAAAEAAEAAgAPAAIAAADz/wAAAgANAAEAAADz/wEAAgANAAIAAAD0/wAAAgANAAMAAAD0/wEAAgANAAQAAAD1/wAAAgAPAAEAAAD1/wEAAgAPAAIAAAD+/wAAAgAPAAEAAAD+/wEAAgAPAAIAAAD9/wAAAgANAAUAAAD9/wEAAgANAAYAAAD4/wAAAgAPAAEAAAD4/wEAAgAPAAIAAAACAAAAAgAPAAUAAAACAAEAAgAPAAYAAAD//wAAAgANAAUAAAD//wEAAgANAAYAAADy/wEAAQABAA8AAAAFAAEAAQAAAA8AAAA=")
@@ -9252,7 +9263,6 @@ tile_map_data = PackedByteArray("AAAIAAAAAAAKABEAAAAIAAEAAAAKABEAAAAIAAIAAAAKABE
 tile_set = ExtResource("10_kgxs5")
 
 [node name="CameraBoundry" type="Area2D" parent="Hallway"]
-visible = false
 collision_layer = 512
 collision_mask = 4
 
@@ -9261,10 +9271,10 @@ position = Vector2(-36, 0)
 shape = SubResource("RectangleShape2D_137a3")
 
 [node name="LimitBottomLeft" type="Marker2D" parent="Hallway/CameraBoundry"]
-position = Vector2(-324, 120)
+position = Vector2(-300, 120)
 
 [node name="LimitTopRight" type="Marker2D" parent="Hallway/CameraBoundry"]
-position = Vector2(252, -120)
+position = Vector2(228, -120)
 
 [node name="Entrances" type="Node2D" parent="Hallway"]
 visible = false
@@ -9285,17 +9295,16 @@ position = Vector2(216, 42)
 position = Vector2(-288, 42)
 
 [node name="Exits" type="Node2D" parent="Hallway"]
+z_index = 1
+y_sort_enabled = true
 
 [node name="PuzzleDoorA" parent="Hallway/Exits" instance=ExtResource("12_w3j1q")]
-y_sort_enabled = true
 position = Vector2(-156, -24)
 
 [node name="PuzzleDoorB" parent="Hallway/Exits" instance=ExtResource("12_w3j1q")]
-y_sort_enabled = true
 position = Vector2(-36, -24)
 
 [node name="PuzzleDoorC" parent="Hallway/Exits" instance=ExtResource("12_w3j1q")]
-y_sort_enabled = true
 position = Vector2(84, -24)
 
 [node name="HallwayEast" parent="Hallway/Exits" instance=ExtResource("11_xknx3")]
@@ -9312,7 +9321,7 @@ entrance_name = "StartRoomWest"
 
 [node name="EndRoom" type="Node2D" parent="." groups=["room_with_dynamic_transitions"]]
 y_sort_enabled = true
-position = Vector2(420, 0)
+position = Vector2(408, 0)
 
 [node name="Tiles" type="Node2D" parent="EndRoom"]
 y_sort_enabled = true
@@ -9323,6 +9332,7 @@ tile_map_data = PackedByteArray("AAD8/wAAAAAKABEAAAD8/wEAAAAKABEAAAD8/wIAAAAKABE
 tile_set = ExtResource("10_kgxs5")
 
 [node name="Walls" type="TileMapLayer" parent="EndRoom/Tiles"]
+z_index = 1
 y_sort_enabled = true
 material = ExtResource("13_at4ji")
 tile_map_data = PackedByteArray("AAD7////AAALABEAAAD7//7/AAALABEAAAD7/wAAAAALABEAAAD7/wEAAAALABEAAAD8////AAAWACMAAAD+////AAAXACMAAAD9////AAAWACMAAAABAP3/AAAWACMAAAACAP3/AAAWACMAAAADAP3/AAAWACMAAAAEAP3/AAAWACMAAAAHAP3/AAAJABEAAAAHAP7/AAAJABEAAAAHAP//AAAJABEAAAAHAAAAAAAJABEAAAAHAAEAAAAJABEAAAD7//z/AAALABMAAAD8//z/AAAKABIAAAAAAPr/AAAKABIAAAABAPr/AAAKABIAAAACAPr/AAAKABIAAAADAPr/AAAKABIAAAAEAPr/AAAKABIAAAAGAPr/AAAKABMAAAAFAPr/AAAKABIAAAD///r/AAALABMAAAD8//3/AAAWACEAAAD9//3/AAAWACEAAAD+//3/AAAXACEAAAD///v/AAALABIAAAAAAPv/AAAWACEAAAABAPv/AAAWACEAAAACAPv/AAAWACEAAAADAPv/AAAWACEAAAAEAPv/AAAWACEAAAAFAPv/AAAWACEAAAAGAPv/AAAJABIAAAD///3/AAAXACIAAAAAAP3/AAAWACMAAAAFAP3/AAAWACMAAAAGAP3/AAAVACIAAAD8//7/AAAWACIAAAD9//7/AAAWACIAAAAGAPz/AAAVACEAAAAFAPz/AAAWACIAAAAEAPz/AAAWACIAAAADAPz/AAAWACIAAAACAPz/AAAWACIAAAABAPz/AAAWACIAAAAAAPz/AAAWACIAAAD///z/AAAXACEAAAD+//7/AAAXACIAAAAHAPz/AAAJABEAAAAHAPv/AAAKABMAAAD///7/AAAXACMAAAAGAP7/AAAVACMAAAD9//z/AAAKABIAAAD+//v/AAALABMAAAD+//z/AAALABIAAAD7//3/AAALABEAAAD+/wMAAAALABAAAAAHAAMAAAAJABEAAAD7/wMAAAAJABMAAAD8/wMAAAAKABAAAAD9/wMAAAAKABAAAAD+/wQAAAAJABMAAAD//wQAAAAKABAAAAAAAAQAAAAKABAAAAABAAQAAAAKABAAAAACAAQAAAAKABAAAAADAAQAAAAKABAAAAAEAAQAAAAKABAAAAAFAAQAAAAKABAAAAAGAAQAAAAKABAAAAAHAAQAAAAIABMAAAAHAAIAAAAJABEAAAD7/wIAAAALABEAAAA=")
@@ -9342,7 +9352,6 @@ tile_map_data = PackedByteArray("AAD8/wEAAAAKABEAAAD8/wAAAAAKABEAAAD8////AAAKABE
 tile_set = SubResource("TileSet_dh5oh")
 
 [node name="CameraBoundry" type="Area2D" parent="EndRoom"]
-visible = false
 collision_layer = 512
 collision_mask = 4
 
@@ -9351,10 +9360,10 @@ position = Vector2(36, -24)
 shape = SubResource("RectangleShape2D_60oyn")
 
 [node name="LimitBottomLeft" type="Marker2D" parent="EndRoom/CameraBoundry"]
-position = Vector2(-96, 120)
+position = Vector2(-72, 120)
 
 [node name="LimitTopRight" type="Marker2D" parent="EndRoom/CameraBoundry"]
-position = Vector2(216, -168)
+position = Vector2(324, -144)
 
 [node name="Entrances" type="Node2D" parent="EndRoom"]
 
@@ -9362,13 +9371,14 @@ position = Vector2(216, -168)
 position = Vector2(-60, 42)
 
 [node name="Exits" type="Node2D" parent="EndRoom"]
+y_sort_enabled = true
 
 [node name="TransitionDoubleDoor" parent="EndRoom/Exits" instance=ExtResource("13_usixv")]
 z_index = 1
-y_sort_enabled = true
 position = Vector2(72, -48)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "DarkRoomEntrance"
+keys_needed = Array[ExtResource("15_l83xx")]([ExtResource("16_uy203")])
 
 [node name="EndRoomWest" parent="EndRoom/Exits" instance=ExtResource("11_xknx3")]
 position = Vector2(-84, 42)
