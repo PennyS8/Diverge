@@ -13,3 +13,7 @@ else:
 ~ need_books
 Juniper: I need to get my library books before I can look the librarian in the eye! She'd be so mad at me!
 => END
+
+~ puzzle_complete
+Juniper: I've already got the library book from this room!
+=> END

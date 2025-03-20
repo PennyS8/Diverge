@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemType" load_steps=3 format=3 uid="uid://cjq00cbnjmaab"]
+[gd_resource type="Resource" script_class="ItemType" load_steps=3 format=3 uid="uid://v46rcraqdjre"]
 
 [ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="1_7q888"]
 [ext_resource type="Texture2D" uid="uid://dc6nffbm4146i" path="res://assets/environment/downtown_dungeon/custom_sprites/cafeteria_book.png" id="2_cubc4"]

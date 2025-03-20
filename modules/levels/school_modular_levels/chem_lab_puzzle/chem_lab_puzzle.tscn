@@ -3241,8 +3241,8 @@ position = Vector2(-60, 108)
 [node name="LabSouth" parent="ChemLab/Exits" instance=ExtResource("4_hm8n3")]
 position = Vector2(-60, 132)
 scale = Vector2(4, 4)
-next_level_path = "uid://cp53bw4fgv7b2"
-entrance_name = "LabSouth"
+next_level_path = "uid://dibtck8dlixm1"
+entrance_name = "PuzzleDoorA"
 
 [node name="Stations" type="Node2D" parent="ChemLab"]
 

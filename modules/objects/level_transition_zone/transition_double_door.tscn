@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://fwmvu87dwacp"]
+[gd_scene load_steps=8 format=3 uid="uid://bme0largcnr4h"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_a8bu3"]
-[ext_resource type="Script" uid="uid://jdbescwh43bj" path="res://modules/objects/level_transition_zone/transition_double_door.gd" id="1_pilwa"]
+[ext_resource type="Script" path="res://modules/objects/level_transition_zone/transition_double_door.gd" id="1_pilwa"]
 [ext_resource type="Texture2D" uid="uid://inw5h7c1ds0q" path="res://modules/objects/school_dungeon/key_doubledoor_blue/school_keydoubledoor_locked_blue.png" id="2_pilwa"]
 [ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="3_r7ma5"]
 
