@@ -88,11 +88,11 @@ position = Vector2(555, 241)
 position = Vector2(701, 241)
 
 [node name="MazeWall3" parent="NavigationRegion2D" instance=ExtResource("2_ajujk")]
-position = Vector2(411, 488)
+position = Vector2(430, 487)
 rotation = -1.5708
 
 [node name="MazeWall9" parent="NavigationRegion2D" instance=ExtResource("2_ajujk")]
-position = Vector2(409, 422)
+position = Vector2(429, 423)
 rotation = -1.5708
 
 [node name="MazeWall17" parent="NavigationRegion2D" instance=ExtResource("2_ajujk")]
@@ -108,7 +108,11 @@ position = Vector2(480, 248)
 rotation = -1.5708
 
 [node name="MazeWall4" parent="NavigationRegion2D" instance=ExtResource("2_ajujk")]
-position = Vector2(411, 528)
+position = Vector2(430, 527)
+rotation = -1.5708
+
+[node name="MazeWall19" parent="NavigationRegion2D" instance=ExtResource("2_ajujk")]
+position = Vector2(430, 567)
 rotation = -1.5708
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
