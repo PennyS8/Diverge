@@ -43,7 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://d2k5ylavgktxb" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Left_Down.png" id="39_av2sy"]
 [ext_resource type="Texture2D" uid="uid://bqlnm1rdma2s0" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Right.png" id="42_ixb32"]
 [ext_resource type="Texture2D" uid="uid://benoslp55jhin" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Up.png" id="43_fgoev"]
-[ext_resource type="Shader" uid="uid://cay2138tmvvxx" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
+[ext_resource type="Shader" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
