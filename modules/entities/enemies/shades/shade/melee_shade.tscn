@@ -19,6 +19,7 @@
 [ext_resource type="Animation" uid="uid://dcw7163r0gdii" path="res://assets/Hitflash.res" id="15_swih5"]
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_i2khm"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="17_jlwt1"]
+[ext_resource type="LabelSettings" uid="uid://li7joahtc8st" path="res://modules/entities/enemies/shades/shade/starstun.tres" id="19_61njc"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
 radius = 6.0
@@ -56,11 +57,6 @@ colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
 [sub_resource type="LabelSettings" id="LabelSettings_bubim"]
 font = ExtResource("17_i2khm")
 font_color = Color(0.180392, 0, 0.384314, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_61njc"]
-font = ExtResource("17_i2khm")
-font_size = 8
-font_color = Color(0.888132, 0.475603, 0, 1)
 
 [sub_resource type="Animation" id="Animation_165la"]
 resource_name = "ChargeMelee"
@@ -685,11 +681,33 @@ offset_right = 25.0
 offset_bottom = -8.33333
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 16
-text = "꩜"
-label_settings = SubResource("LabelSettings_61njc")
+label_settings = ExtResource("19_61njc")
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Display/Stunned"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 47.0
+offset_bottom = 30.0
+rotation = -0.0872665
+theme_override_font_sizes/font_size = 16
+text = "✦"
+label_settings = ExtResource("19_61njc")
+
+[node name="Label2" type="Label" parent="Display/Stunned"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 8.0
+offset_right = 57.0
+offset_bottom = 31.0
+rotation = 0.226893
+scale = Vector2(0.75, 0.75)
+theme_override_font_sizes/font_size = 16
+text = "✦"
+label_settings = ExtResource("19_61njc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

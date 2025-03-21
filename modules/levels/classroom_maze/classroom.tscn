@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=4 uid="uid://cfqgwnxrjxs7m"]
+[gd_scene load_steps=20 format=4 uid="uid://cfqgwnxrjxs7m"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_10qxe"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="1_fc0v8"]
@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://0g1yvcadp4ib" path="res://modules/levels/classroom_maze/components/seated_classmates.tscn" id="6_ks26a"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="8_lw440"]
 [ext_resource type="PackedScene" uid="uid://bmnk17c835wi4" path="res://modules/objects/inventory_helpers/NatesGroundItem.tscn" id="10_qkcgf"]
-[ext_resource type="Resource" uid="uid://ruaqo31f3ul2" path="res://modules/objects/library_book_classroom.tres" id="11_24tlu"]
+[ext_resource type="Resource" path="res://modules/objects/library_book_classroom.tres" id="11_24tlu"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c6yy0"]
 vertices = PackedVector2Array(494.773, 322, 473.023, 337.039, 473.094, 311.992, 494.938, 288.852, 566.773, 322, 545.023, 337.039, 545.094, 311.992, 566.938, 288.852, 638.773, 322, 617.023, 337.039, 617.094, 311.992, 638.938, 288.852, 494.773, 394, 473.023, 409.039, 473.094, 383.992, 494.938, 360.852, 566.773, 394, 545.023, 409.039, 545.094, 383.992, 566.938, 360.852, 566.773, 466, 545.023, 481.039, 545.094, 455.992, 566.938, 432.852, 638.773, 466, 617.023, 481.039, 617.094, 455.992, 638.938, 432.852, 639.023, 274, 616.992, 291.117, 617.023, 265.039, 617.062, 250, 639.023, 250, 567.023, 274, 544.992, 291.117, 545.023, 265.039, 545.062, 250, 567.023, 250, 472.992, 291.117, 567.023, 346, 544.992, 363.117, 567.023, 322, 495.023, 346, 472.992, 363.117, 495.023, 322, 638.844, 413.141, 616.992, 435.117, 617.023, 409.039, 617.094, 383.992, 567.023, 418, 544.992, 435.117, 567.023, 394, 638.977, 374.898, 616.992, 363.117, 638.922, 360.891, 494.977, 446.898, 494.844, 485.141, 473.094, 455.992, 472.992, 435.117, 494.922, 432.891, 473.094, 551.992, 472.992, 531.117, 473.023, 481.039, 494.938, 528.852, 494.773, 562, 710.844, 269.141, 710.977, 288.883, 710.977, 304.602, 710.844, 341.141, 689.094, 311.992, 688.992, 291.117, 689.023, 265.039, 689.062, 250, 689.094, 383.992, 688.992, 363.117, 689.023, 337.039, 710.977, 360.883, 710.977, 376.602, 710.844, 413.141, 689.094, 455.992, 688.992, 435.117, 689.023, 409.039, 710.977, 432.883, 710.977, 448.602, 710.844, 485.141, 689.023, 481.039, 688.992, 531.117, 538, 274, 538, 265.008, 610, 274, 610, 265.008, 682, 274, 682, 265.008, 538, 346, 538, 337.008, 610, 346, 610, 337.008, 639.023, 346, 682, 346, 682, 337.008, 466, 418, 466, 409.008, 495.023, 418, 538, 418, 538, 409.008, 610, 418, 610, 409.008, 466, 490, 466, 481.008, 616.992, 531.117, 610, 490, 610, 481.008, 639.023, 490, 638.938, 528.852, 682, 490, 682, 481.008, 710.906, 250, 422.938, 432.852, 366.07, 440, 346, 439.953, 346, 412.148, 366.109, 412.203, 423.023, 418, 495.023, 562, 495.023, 573.367, 473.031, 573.32, 639.023, 562, 639.023, 573.688, 617.023, 573.641, 638.773, 562, 617.094, 551.992, 366.008, 542, 366, 538, 366.047, 538, 366.031, 542, 366, 514, 366.047, 514, 422.922, 528.891, 366, 490, 366.047, 490, 366, 466, 366.203, 466, 366.008, 374, 366, 370, 366.047, 370, 366.031, 374, 366, 346, 366.047, 346, 422.938, 360.852, 366, 322, 366.047, 322, 422.844, 341.141, 366, 298, 366.203, 298, 422.977, 302.898, 754, 573.961, 689.023, 573.812, 689.094, 551.992, 749.102, 485.141, 566.859, 573.531, 545.023, 573.477, 545.094, 551.992, 566.977, 542.898, 544.992, 531.117, 566.922, 528.891, 442, 287, 442, 250, 495.023, 250, 495.023, 274, 466, 288.891, 749.102, 269.141, 749.102, 263, 758, 263, 758, 302, 754, 288.883, 754, 302, 639.023, 322, 749.102, 341.141, 749.102, 335, 758, 335, 758, 374, 754, 360.883, 754, 374, 422.773, 394, 423.023, 394, 495.023, 394, 749.102, 413.141, 749.102, 407, 758, 407, 758, 446, 754, 432.883, 754, 446, 422.773, 466, 423.023, 466, 423.023, 490, 538, 528.977, 567.023, 466, 567.023, 490, 538, 531.07, 639.023, 466, 749.102, 479, 758, 479, 758, 590, 754, 590, 422.977, 542.898, 422.867, 573.203, 366.094, 573.07, 374, 250, 366.07, 272, 346, 271.953, 346, 269.141, 346.367, 250, 682, 291.07, 682, 288.977, 610, 291.07, 610, 288.977, 538, 291.07, 538, 288.977, 466, 291.07, 682, 363.07, 682, 360.891, 610, 363.07, 610, 360.977, 538, 363.07, 538, 360.977, 466, 363.07, 466, 360.977, 682, 435.07, 682, 432.977, 610, 435.07, 610, 432.977, 538, 435.07, 538, 432.891, 466, 435.07, 466, 432.977, 682, 531.07, 682, 528.977, 610, 531.07, 610, 528.891, 466, 531.07, 466, 528.891, 374, 287, 676.281, 409, 675.617, 413.141, 532.281, 481, 531.617, 485.141, 460.281, 337, 459.617, 341.141, 422.922, 288.891)
@@ -35,11 +35,15 @@ size = Vector2(12.0001, 36)
 [sub_resource type="CircleShape2D" id="CircleShape2D_q5rug"]
 radius = 22.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qkcgf"]
+size = Vector2(468, 462)
+
 [node name="Classroom" type="Node2D"]
 y_sort_enabled = true
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 y_sort_enabled = true
+position = Vector2(-576, -428)
 navigation_polygon = SubResource("NavigationPolygon_c6yy0")
 navigation_layers = 3
 
@@ -263,82 +267,83 @@ position = Vector2(721, 403)
 position = Vector2(721, 475)
 
 [node name="SeatedClassmate" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(603, 319)
+position = Vector2(27, -109)
 
 [node name="SeatedClassmate2" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(674, 320)
+position = Vector2(98, -108)
 
 [node name="SeatedClassmate3" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(752, 320)
+position = Vector2(176, -108)
 
 [node name="SeatedClassmate4" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(751, 249)
+position = Vector2(175, -179)
 
 [node name="SeatedClassmate5" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(674, 248)
+position = Vector2(98, -180)
 
 [node name="SeatedClassmate6" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(601, 249)
+position = Vector2(25, -179)
 
 [node name="SeatedClassmate7" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(530, 250)
+position = Vector2(-46, -178)
 
 [node name="SeatedClassmate8" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(530, 321)
+position = Vector2(-46, -107)
 
 [node name="SeatedClassmate9" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(458, 322)
+position = Vector2(-118, -106)
 
 [node name="SeatedClassmate10" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(459, 396)
+position = Vector2(-117, -32)
 
 [node name="SeatedClassmate11" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(458, 468)
+position = Vector2(-118, 40)
 
 [node name="SeatedClassmate12" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(456, 561)
+position = Vector2(-120, 133)
 
 [node name="SeatedClassmate13" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(530, 562)
+position = Vector2(-46, 134)
 
 [node name="SeatedClassmate14" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(530, 469)
+position = Vector2(-46, 41)
 
 [node name="SeatedClassmate15" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(531, 393)
+position = Vector2(-45, -35)
 
 [node name="SeatedClassmate16" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(603, 395)
+position = Vector2(27, -33)
 
 [node name="SeatedClassmate17" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(602, 468)
+position = Vector2(26, 40)
 
 [node name="SeatedClassmate18" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(601, 561)
+position = Vector2(25, 133)
 
 [node name="SeatedClassmate19" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(674, 561)
+position = Vector2(98, 133)
 
 [node name="SeatedClassmate20" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(675, 467)
+position = Vector2(99, 39)
 
 [node name="SeatedClassmate21" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(675, 395)
+position = Vector2(99, -33)
 
 [node name="SeatedClassmate22" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(752, 395)
+position = Vector2(176, -33)
 
 [node name="SeatedClassmate23" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(752, 466)
+position = Vector2(176, 38)
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(756, 588)
+position = Vector2(180, 160)
 
 [node name="dialogue" type="Area2D" parent="."]
 y_sort_enabled = true
-position = Vector2(756, 588)
+position = Vector2(180, 160)
 collision_mask = 4
 script = ExtResource("4_c6yy0")
+book = ExtResource("11_24tlu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="dialogue"]
 shape = SubResource("CircleShape2D_10qxe")
@@ -346,7 +351,7 @@ shape = SubResource("CircleShape2D_10qxe")
 [node name="fuzz_dialogue" type="Area2D" parent="."]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(732, 540)
+position = Vector2(156, 112)
 rotation = 1.57215
 collision_layer = 0
 collision_mask = 4
@@ -362,6 +367,7 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_c6yy0")
 
 [node name="Entrance" type="Node2D" parent="."]
+position = Vector2(-576, -428)
 
 [node name="ClassroomSouth" type="Marker2D" parent="Entrance" groups=["level_entrance"]]
 position = Vector2(756, 588)
@@ -369,6 +375,7 @@ position = Vector2(756, 588)
 [node name="Exit" type="Node2D" parent="."]
 z_index = 1
 y_sort_enabled = true
+position = Vector2(-576, -428)
 
 [node name="ClassroomSouth" parent="Exit" instance=ExtResource("8_lw440")]
 position = Vector2(756, 612)
@@ -378,12 +385,37 @@ entrance_name = "PuzzleDoorC"
 
 [node name="NatesGroundItem" parent="." instance=ExtResource("10_qkcgf")]
 z_index = 2
-position = Vector2(407, 261)
+position = Vector2(-169, -167)
 ground_item = ExtResource("11_24tlu")
 
 [node name="Shape3D" parent="NatesGroundItem/Item" index="1"]
 visible = true
 shape = SubResource("CircleShape2D_q5rug")
+
+[node name="HoverRect" parent="NatesGroundItem/Item" index="3"]
+metadata/_edit_use_anchors_ = true
+
+[node name="CameraBoundry" type="Area2D" parent="."]
+position = Vector2(-229, -92)
+collision_layer = 512
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBoundry"]
+position = Vector2(210, 73)
+shape = SubResource("RectangleShape2D_qkcgf")
+
+[node name="LimitBottomLeft" type="Marker2D" parent="CameraBoundry"]
+position = Vector2(-83, 264)
+
+[node name="LimitTopRight" type="Marker2D" parent="CameraBoundry"]
+position = Vector2(541, -216)
+
+[node name="CameraLocation" type="Marker2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(80, 56)
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(-576, -428)
 
 [connection signal="body_entered" from="dialogue" to="dialogue" method="_on_body_entered"]
 [connection signal="body_entered" from="fuzz_dialogue" to="fuzz_dialogue" method="_on_body_entered"]
