@@ -34,8 +34,8 @@ func add_inventory_item(item_name: String):
 	else:
 		print("Failed to add item to slot")
 
-func combine_items() -> bool:
-	find_color_recipe()
+func combine_items(station : String) -> bool:
+	find_color_recipe(station)
 	# If a recipe converter isn't found, we return false
 	if converter_name == "":
 		return false
@@ -75,14 +75,16 @@ func failed_lab():
 func delete_items():
 	lab_inventory.clear()
 
-func find_color_recipe():
+func find_color_recipe(station : String):
 	for recipe in recipes.values():
-		# If we find the needed recipe, leave the function
-		var recipe_items : Array[Resource] = recipe.input_types
-		
-		if has_needed_items(recipe_items):
-			converter_name = recipes.find_key(recipe)
-			return
+		# The recipes only have 1 tag (the station) so we just check the first spot in the array
+		if recipe.tags[0] == station:
+			# If we find the needed recipe, leave the function
+			var recipe_items : Array[Resource] = recipe.input_types
+			
+			if has_needed_items(recipe_items):
+				converter_name = recipes.find_key(recipe)
+				return
 	
 	converter_name = ""
 

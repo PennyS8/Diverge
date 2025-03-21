@@ -1,8 +1,8 @@
 ~ mixer
-% Juniper: Where is the on switch for this? Ah there it is!
 Juniper: Time to mix these.
+Juniper: Where is the on switch for this? Ah there it is!
 Juniper: ...
-if combine_items() == true
+if combine_items("mixer") == true
 	do station_complete("mixer")
 	# Set the scale to be incomplete again for the second round of measuring
 	do station_incomplete("scale")
@@ -15,7 +15,7 @@ else
 Juniper: Just got to boil it.
 Juniper: ...
 Juniper: ...
-if combine_items() == true
+if combine_items("burner") == true
 	do station_complete("burner")
 	# Set the mixer to be incomplete again for the second round of mixing
 	do station_incomplete("mixer")
@@ -38,9 +38,6 @@ Juniper: Awesome, now I can go mix it!
 
 ~ materials
 Juniper: What was it that I needed?
-do station_complete("materials")
-do station_incomplete("burner")
-
 - Orange Substance
 	do add_inventory_item("orange_substance")
 - Yellow Substance
@@ -53,11 +50,13 @@ do station_incomplete("burner")
 	=> END
 
 Juniper: Ah, there it is!
+do station_complete("materials")
+do station_incomplete("burner")
 Juniper: I should weigh just the right amount.
 => END
 
 ~ instructions
-[left]1) Measure 2 unit of orange substance & 1 units of the blue substance.\n2) Mix the orange substance into the blue substance.\n3) Boil the mixture for a total of 10 seconds.\n\n4) Measure 3 units of yellow substance.\n5) Mix the yellow substance into the existing solution.\n6) Boil the mixture for another 10 seconds.\n\n7) Observe the results. You should be left with an olive substance.
+[left]1) Measure 2 grams of orange substance and 1 gram of the blue substance.\n2) Mix the orange substance into the blue substance.\n3) Boil the mixture for a total of 10 seconds.\n\n4) Measure 3 grmas of yellow substance.\n5) Mix the yellow substance into the existing solution.\n6) Boil the mixture for another 10 seconds.\n\n7) Observe the results. You should be left with an olive substance.
 => END
 
 ~ trash
@@ -102,11 +101,16 @@ Juniper: There doesn't seem to be any materials over here to mix...
 Juniper: I guess I should go back to the material closet to get something to mix this with.
 => END
 
+~ no_materials_trash
+Juniper: Hmm... 
+Juniper: It looks like there are some left over materials in there.
+=> END
+
 ~ mess_up
 Juniper: Oh no! I messed up the lab.
 Juniper: ...
-do failed_lab()
 Juniper: I guess I have to start over now...
+do failed_lab()
 => END
 
 ~ grab_book
