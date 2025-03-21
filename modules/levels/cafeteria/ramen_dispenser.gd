@@ -23,6 +23,11 @@ func dispense(point, wanderer_spawn):
 	ramen_instance.name = "RamenTray"
 
 func _on_debug_area_body_entered(body: Node2D) -> void:
+	if get_tree().current_scene.get_node_or_null("DialogueBalloon"):
+		return
+	if LevelManager.player.dialogue_open:
+		return
+	
 	var inv = GameManager.inventory_node.inventory
 	if InventoryHelper.is_itemtype_in_inventory(inv, ramen_type) or InventoryHelper.is_itemtype_in_inventory(inv, book_item):
 		return
@@ -38,7 +43,9 @@ func _on_debug_area_body_entered(body: Node2D) -> void:
 		disabled_area.spawns_wanderer = false
 		
 		var dialogue = load("res://modules/levels/cafeteria/cafeteria_puzzle_intro.dialogue")
-		DialogueManager.show_dialogue_balloon(dialogue, "start", [self])
+		if !LevelManager.player.dialogue_open:
+			LevelManager.player.dialogue_open = true
+			DialogueManager.show_dialogue_balloon(dialogue, "start", [self])
 	
 func _on_dispense_point_area_entered(area : Node2D, num : int) -> void:
 	var point = get_node("DispensePoints/DispensePoint" + str(num))
