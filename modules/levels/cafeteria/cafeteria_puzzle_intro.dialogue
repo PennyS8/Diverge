@@ -16,7 +16,7 @@ do _move_cutscene_camera(shadehouse.global_position)
 Brick Shadehouse: No, no, let me get it for them!!
 Juniper: Y'all, please, I've got it.
 Shades (in unison): [shake rate=20 level=10][b][speed=0.2]BUT WHAT IF YOU DON'T??[/b][/shake]
-Juniper: [i]No way I can outrun them. But maybe… [color=red]I don’t have to?[/color][/i]
+Juniper: [i]No chance I can outrun them. But maybe… [color=red]maybe I don’t have to?[/color][/i]
 do! LevelManager.player.exit_cutscene()
 do! _unlock_shades()
 => END

@@ -15,7 +15,7 @@ else
 Juniper: Just got to boil it.
 Juniper: ...
 Juniper: ...
-Juniper: This shit's slow.
+Juniper: This is soooo slow.
 Juniper: ...
 Juniper: It's finally done!
 if lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name == "Olive Substance"
@@ -25,8 +25,8 @@ if lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name == "Olive Su
 ~ scale
 Juniper: Okay, I only need a little.
 Juniper: Just a touch more.
-Juniper: Oh fuck, that's too much.
-Juniper: Okay that's enough.
+Juniper: Oh no, that's way too much.
+Juniper: Okay, that's enough.
 Juniper: Awesome, now I can go mix it!
 => END
 
@@ -58,8 +58,8 @@ Juniper: I must have forgotten it when I was completing that lab.
 ~ book
 Juniper: Crap!
 Juniper: I forgot to do that lab for chem.
-Juniper: If I don't do the lab now I'll forget again.
-Juniper: I can grab the book after.
+Juniper: If I don't do the lab now I'll forget again... and it's already a day late.
+Juniper: I'll just do it really fast. I can grab the book after.
 Juniper: The prof probably left the lab instructions up on the board.
 => END
 
@@ -80,7 +80,7 @@ Juniper: I should probably mix these materials before grabbing more.
 => END
 
 ~ one_material_mixer
-Juniper: There doesn't seem to be any materials over here to mix.
+Juniper: There aren't any materials over here to mix.
 Juniper: I guess I should go back to the material closet to get something to mix this with.
 => END
 
