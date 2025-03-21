@@ -28,11 +28,12 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	var possible_follow_targets = agro_region.get_overlapping_bodies()
-	for follow_target in possible_follow_targets:
-		if follow_target.is_in_group("player"):
-			target.follow_target = follow_target
-			change_state("Seeking")
+	if agro_region.monitoring:
+		var possible_follow_targets = agro_region.get_overlapping_bodies()
+		for follow_target in possible_follow_targets:
+			if follow_target.is_in_group("player"):
+				target.follow_target = follow_target
+				change_state("Alerted")
 	
 	if nav_agent.is_navigation_finished():
 		return

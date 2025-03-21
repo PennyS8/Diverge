@@ -838,7 +838,6 @@ texture = SubResource("AtlasTexture_0i42r")
 offset = Vector2(0.5, -11)
 
 [node name="RamenDispenser" type="Node2D" parent="NavigationRegion2D/CheckeredArea"]
-z_index = 1
 y_sort_enabled = true
 position = Vector2(135, -88)
 script = ExtResource("16_5d8ey")
@@ -849,6 +848,7 @@ y_sort_enabled = true
 position = Vector2(-23, -23)
 
 [node name="DispensePoint1" type="Area2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints"]
+z_index = 1
 y_sort_enabled = true
 position = Vector2(-70, 0)
 collision_layer = 8
@@ -859,6 +859,7 @@ script = ExtResource("7_sp0p5")
 shape = SubResource("CircleShape2D_tnl05")
 
 [node name="DispensePoint2" type="Area2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints"]
+z_index = 1
 y_sort_enabled = true
 position = Vector2(-35, 0)
 collision_layer = 8
@@ -869,6 +870,7 @@ script = ExtResource("7_sp0p5")
 shape = SubResource("CircleShape2D_tnl05")
 
 [node name="DispensePoint3" type="Area2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints"]
+z_index = 1
 y_sort_enabled = true
 collision_layer = 8
 collision_mask = 8
@@ -878,6 +880,7 @@ script = ExtResource("7_sp0p5")
 shape = SubResource("CircleShape2D_tnl05")
 
 [node name="DispensePoint4" type="Area2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints"]
+z_index = 1
 y_sort_enabled = true
 position = Vector2(35, 0)
 collision_layer = 8
@@ -888,6 +891,7 @@ script = ExtResource("7_sp0p5")
 shape = SubResource("CircleShape2D_tnl05")
 
 [node name="DispensePoint5" type="Area2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints"]
+z_index = 1
 y_sort_enabled = true
 position = Vector2(70, 0)
 collision_layer = 8
@@ -908,6 +912,7 @@ position = Vector2(-6, -9.5)
 shape = SubResource("RectangleShape2D_5d8ey")
 
 [node name="LunchShady" type="Area2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser"]
+z_index = 1
 y_sort_enabled = true
 position = Vector2(65, -19)
 collision_layer = 8

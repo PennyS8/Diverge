@@ -3,13 +3,13 @@ if quest_done == true
 	=> done
 if talked_to == true:
 	=> come_back
-Juniper: Hello! You're not attacking me!
+Juniper: Hello! You're not attacking me! Currently.
 Shaded Figure: i feel awful. why do i feel awful. i did everything right.
 Shaded Figure: i came to class. i studied. i went for a walk. everything. i've exhausted my options.
 if _test_if_ramen():
 	=> got_ramen
 else:
-	Juniper: [i]Do these things need... [wave amp=25 freq=5]sustenance?[/wave][/i]
+	Juniper: [i]Do these things need... [wave amp=25 freq=5]sustenance?[/wave][/i] Probably, right?
 	- Have you eaten anything?
 		Shaded Figure: i looked at the food. someone took the last of the good food before i could get to them. so i'm having water for lunch.
 		Juniper: I think that's why you're feeling poorly.
@@ -18,7 +18,7 @@ else:
 		Shaded Figure: anyway... i couldn't get the only good food. all the other food has an awful texture.
 		Shaded Figure: well, except for the chicken burger. but i ate that every day last semester and it tastes like metal now.
 		Juniper: Hey, same here!
-	Juniper: Pro tip: I recently found out that the noodles here are pretty good if you give them a chance.
+	Juniper: Just my opinion, but I recently found out that the noodles here are pretty good, if you give them a chance.
 	Shaded Figure: i'm fine with water, thanks. but i need to figure out why i feel so badly.
 	Juniper: ...
 	Juniper: [i] I should see if I can find any noodles for them. [/i]
@@ -55,8 +55,5 @@ Juniper: I've got some ramen...
 	=> END
 	
 ~ done
-The Shaded Figure looks to be happily chowing down on the noodles, carefree of their overdue book anymore.
+The Shaded Figure looks to be happily chowing down on the noodles, carefree of their overdue book.
 => END
-
-
-

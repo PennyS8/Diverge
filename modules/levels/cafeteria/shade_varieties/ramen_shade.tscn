@@ -45,7 +45,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Alerted")
 
 [node name="FoundRamen" type="Node" parent="ShadeFSM" index="8"]
 script = ExtResource("4_wn67w")
@@ -53,9 +53,9 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Alerted")
 
-[node name="Alerted" type="Node" parent="ShadeFSM" index="9"]
+[node name="Alerted2" type="Node" parent="ShadeFSM" index="9"]
 script = ExtResource("7_buh3d")
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "surprise"
@@ -65,7 +65,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Seeking")
 metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 
 [node name="NavAgent" parent="." index="2"]
@@ -74,6 +74,9 @@ debug_enabled = false
 [node name="TetherableArea2D" parent="." index="8"]
 monitoring = false
 monitorable = false
+
+[node name="SmokeFX" parent="Display" index="1"]
+emitting = true
 
 [node name="Sprite2D" parent="Display" index="2"]
 material = SubResource("ShaderMaterial_buh3d")

@@ -6,16 +6,28 @@ extends StateAnimation
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
 
+# This additionnal callback allows you to act at the end
+# of an animation
+func _on_anim_finished() -> void:
+	pass
+
+
+# This additionnal callback allows you to act at the end
+# of an animation loop (after the nb of times it should play)
+func _on_loop_finished() -> void:
+	pass
+
+
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	pass
-		
+
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
 func _after_enter(_args) -> void:
-	target.get_node("ShadeFSM").disabled = true
+	pass
 
 
 # This function is called each frame if the state is ACTIVE
@@ -33,7 +45,8 @@ func _after_update(_delta: float) -> void:
 # This function is called before the State exits
 # XSM before_exits the root first, then the children
 func _before_exit(_args) -> void:
-	pass
+	target.follow_target = get_tree().get_first_node_in_group("player")
+
 
 
 # This function is called when the State exits

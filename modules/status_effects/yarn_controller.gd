@@ -31,7 +31,7 @@ func _process(delta):
 			yarn_end_pos = Vector2(current_dist, 0.0)
 			
 			# Rotate the yarn projectile toward the mouse
-			var tethered_body_dir = tethered_body.global_position - Vector2(0, -8)
+			var tethered_body_dir = tethered_body.global_position
 			var dir = get_parent().global_position.direction_to(tethered_body_dir).normalized()
 			global_rotation = Vector2.ZERO.angle_to_point(dir)
 		else:

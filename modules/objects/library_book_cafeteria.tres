@@ -11,7 +11,7 @@ description = "One of three overdue library books I need to return to the librar
 I obtained this one from the hungry Shaded Figure in the [color=\"green\"]cafeteria.[/color]
 
 It looks like it has some teeth marks on it?"
-tags = Array[StringName]([])
+tags = Array[StringName]([&"book"])
 texture = ExtResource("2_cubc4")
 texture_scale = 1.0
 max_stack_count = 1
