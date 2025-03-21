@@ -40,7 +40,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			dialogue_type = "puzzle_completed"
 		elif chem_inventory.lab_inventory.count_all_items() == { }:
 			dialogue_type = "no_materials"
-		elif chem_inventory.lab_inventory.count_all_items().size() == 1:
+		elif chem_inventory.lab_inventory.items.size() == 1:
 			dialogue_type = "one_material_mixer"
 		elif chem_inventory.stations["scale"] == 0:
 			dialogue_type = "not_measured"
