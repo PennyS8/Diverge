@@ -43,6 +43,6 @@ func _state_timeout() -> void:
 		
 
 func _before_exit(_args):
-	
+	%Stunned.hide()
 	pass
 	

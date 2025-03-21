@@ -33,7 +33,7 @@ func _on_update(_delta: float) -> void:
 		for follow_target in possible_follow_targets:
 			if follow_target.is_in_group("player"):
 				target.follow_target = follow_target
-				change_state("Seeking")
+				change_state("Alerted")
 	
 	if nav_agent.is_navigation_finished():
 		return
