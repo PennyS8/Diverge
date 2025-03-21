@@ -2,7 +2,7 @@
 
 importer="wav"
 type="AudioStreamWAV"
-uid="uid://b54tuj6k2ochs"
+uid="uid://b26ed7nqlhmts"
 path="res://.godot/imported/talk.wav-b08b0c3b71354f0f54313f5b84c4977a.sample"
 
 [deps]
@@ -21,4 +21,4 @@ edit/normalize=false
 edit/loop_mode=0
 edit/loop_begin=0
 edit/loop_end=-1
-compress/mode=0
+compress/mode=2

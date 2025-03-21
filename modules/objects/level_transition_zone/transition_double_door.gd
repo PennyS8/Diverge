@@ -48,4 +48,12 @@ func check_keys():
 	else: return false
 	
 func you_shall_pass():
+	var dir = DirAccess.open("user://")
+	var file_name = "player_inventory"
+	
+	if dir.file_exists(file_name):
+		dir.remove(file_name)
+	else:
+		print("File " + file_name + " does not exist")
+	
 	LevelManager.change_level(next_level_path, entrance_name)
