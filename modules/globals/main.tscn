@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://c8qxb50jimxvj" path="res://modules/globals/inventory_panel.gd" id="8_02pmu"]
 [ext_resource type="PackedScene" uid="uid://ms4bp1b33wt2" path="res://modules/ui/hud/wyvern_inv/notebook_panel.tscn" id="8_dbv5s"]
 [ext_resource type="Shader" uid="uid://c7ga40mwai0hs" path="res://modules/globals/blur.gdshader" id="9_nlpsi"]
-[ext_resource type="Shader" path="res://modules/globals/fisheyeCRT.gdshader" id="11_2825a"]
+[ext_resource type="Shader" uid="uid://bqvwhxrfa0vww" path="res://modules/globals/fisheyeCRT.gdshader" id="11_2825a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yc34w"]
 shader = ExtResource("9_nlpsi")
@@ -21,7 +21,10 @@ shader_parameter/color_over = Color(0.255659, 0.255659, 0.255659, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kx56x"]
 shader = ExtResource("11_2825a")
-shader_parameter/fisheye_strength = 1.0
+shader_parameter/ShakeStrength = 0.5
+shader_parameter/FactorA = Vector2(25, 25)
+shader_parameter/FactorB = Vector2(1, 1)
+shader_parameter/magnitude = Vector2(0.02, 0.02)
 
 [node name="Main" type="Node2D"]
 z_as_relative = false
