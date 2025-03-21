@@ -12,12 +12,20 @@ else
 => END
 
 ~ burner
-Juniper: Just got to boil it.
-Juniper: ...
-Juniper: ...
-Juniper: This is soooo slow.
-Juniper: ...
-Juniper: It's finally done!
+%
+	Juniper: Just got to boil it.
+	Juniper: ...
+	Juniper: ...
+	Juniper: This is soooo slow.
+	Juniper: ...
+	Juniper: It's finally done!
+%
+	Juniper: Alright, time to boil it.
+	Juniper: ...
+	Juniper: ...
+	Juniper: Should it be taking this long?
+	Juniper: ...
+	Juniper: Finally!
 if combine_items("burner") == true
 	do station_complete("burner")
 	# Set the mixer to be incomplete again for the second round of mixing
@@ -30,10 +38,16 @@ if lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name == "Olive Su
 => END
 
 ~ scale
-Juniper: Okay, I only need a little.
-Juniper: Just a touch more.
-Juniper: Oh no, that's way too much.
-Juniper: Okay, that's enough.
+%
+	Juniper: Okay, I only need a little.
+	Juniper: Just a touch more.
+	Juniper: Oh no, that's way too much.
+	Juniper: Okay, that's enough.
+%
+	Juniper: Right, not too much.
+	Juniper: Is that too little?
+	Juniper: That's definitely too much.
+	Juniper: Alright, that looks good.s
 do station_complete("scale")
 do station_incomplete("materials")
 Juniper: Awesome, now I can go mix it!
@@ -112,7 +126,7 @@ Juniper: It looks like there are some left over materials in there.
 ~ mess_up
 Juniper: Oh no! I messed up the lab.
 Juniper: ...
-Juniper: I guess I have to start over now...
+Juniper: I guess I have to start over now... I'm never gonna get this lab done, and I'm never gonna be able to get the to the library.
 do failed_lab()
 => END
 
