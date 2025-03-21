@@ -8,6 +8,7 @@ font = ExtResource("2_bkqsp")
 font_size = 8
 
 [node name="Item" instance=ExtResource("1_d8rvq")]
+mouse_filter = 2
 
 [node name="Count" parent="." index="2"]
 label_settings = SubResource("LabelSettings_bkqsp")

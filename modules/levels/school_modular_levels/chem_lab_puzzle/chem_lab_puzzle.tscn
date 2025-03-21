@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://wwrw6hyhhicu" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/materials_station.tscn" id="19_n07ws"]
 [ext_resource type="PackedScene" uid="uid://c02hclv07w7cs" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/chem_inventory.tscn" id="20_0jtan"]
 [ext_resource type="Script" uid="uid://bmrc6kgne6fhf" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/entrance_dialogue.gd" id="20_7r4fh"]
-[ext_resource type="PackedScene" uid="uid://crx2yh5r8pj50" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/lab_trash_can.tscn" id="20_mor7r"]
+[ext_resource type="PackedScene" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/lab_trash_can.tscn" id="20_mor7r"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
@@ -3273,6 +3273,7 @@ offset_right = 16.0
 offset_bottom = -18.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="ChemInventory" parent="ChemLab/Tiles/Stations/ChalkBoard/Inventory" instance=ExtResource("20_0jtan")]
@@ -3284,10 +3285,17 @@ offset_bottom = -14.0
 
 [node name="Equipment" parent="ChemLab/Tiles/Stations/ChalkBoard/Inventory/ChemInventory" index="0"]
 material = ExtResource("1_0bwgv")
+mouse_filter = 2
 item_scene = ExtResource("18_fmkvf")
 
 [node name="Cells" parent="ChemLab/Tiles/Stations/ChalkBoard/Inventory/ChemInventory/Equipment" index="0"]
 use_parent_material = true
+
+[node name="One" parent="ChemLab/Tiles/Stations/ChalkBoard/Inventory/ChemInventory/Equipment/Cells" index="0"]
+mouse_filter = 0
+
+[node name="Two" parent="ChemLab/Tiles/Stations/ChalkBoard/Inventory/ChemInventory/Equipment/Cells" index="1"]
+mouse_filter = 0
 
 [node name="Label" type="Label" parent="ChemLab/Tiles/Stations/ChalkBoard/Inventory"]
 texture_filter = 1

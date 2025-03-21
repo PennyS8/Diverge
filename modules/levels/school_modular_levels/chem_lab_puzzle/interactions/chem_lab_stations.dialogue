@@ -3,9 +3,9 @@ Juniper: Time to mix these.
 Juniper: Where is the on switch for this? Ah there it is!
 Juniper: ...
 if combine_items("mixer") == true
-	do station_complete("mixer")
+	do! station_complete("mixer")
 	# Set the scale to be incomplete again for the second round of measuring
-	do station_incomplete("scale")
+	do! station_incomplete("scale")
 	Juniper: Nice it changed to a {{lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name}}!
 else
 	=> mess_up
@@ -27,9 +27,9 @@ else
 	Juniper: ...
 	Juniper: Finally!
 if combine_items("burner") == true
-	do station_complete("burner")
+	do! station_complete("burner")
 	# Set the mixer to be incomplete again for the second round of mixing
-	do station_incomplete("mixer")
+	do! station_incomplete("mixer")
 	Juniper: Nice it changed to a {{lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name}}!
 else
 	=> mess_up
@@ -47,38 +47,38 @@ if lab_inventory.get_item_at_positionv(Vector2(0,0)).item_type.name == "Olive Su
 	Juniper: Right, not too much.
 	Juniper: Is that too little?
 	Juniper: That's definitely too much.
-	Juniper: Alright, that looks good.s
-do station_complete("scale")
-do station_incomplete("materials")
+	Juniper: Alright, that looks good.
+do! station_complete("scale")
+do! station_incomplete("materials")
 Juniper: Awesome, now I can go mix it!
 => END
 
 ~ materials
 Juniper: What was it that I needed?
 - Orange Substance
-	do add_inventory_item("orange_substance")
+	do! add_inventory_item("orange_substance")
 - Yellow Substance
-	do add_inventory_item("yellow_substance")
+	do! add_inventory_item("yellow_substance")
 - Green Substance
-	do add_inventory_item("green_substance")
+	do! add_inventory_item("green_substance")
 - Blue Substance
-	do add_inventory_item("blue_substance")
+	do! add_inventory_item("blue_substance")
 - Nothing
 	=> END
 
 Juniper: Ah, there it is!
-do station_complete("materials")
-do station_incomplete("burner")
+do! station_complete("materials")
+do! station_incomplete("burner")
 Juniper: I should weigh just the right amount.
 => END
 
 ~ instructions
-[left]1) Measure 2 grams of orange substance and 1 gram of the blue substance.\n2) Mix the orange substance into the blue substance.\n3) Boil the mixture for a total of 10 seconds.\n\n4) Measure 3 grams of yellow substance.\n5) Mix the yellow substance into the existing solution.\n6) Boil the mixture for another 10 seconds.\n\n7) Observe the results. You should be left with an olive substance.
+[left]1) Measure a quantity of orange substance and a quantity of the blue substance at the scale.\n2) Mix the orange substance into the blue substance at the mixing station. The solution should turn purple.\n3) Boil the mixture at the hot plate. It should turn light purple.\n\n4) Measure a quantity of yellow substance at the scale.\n5) Mix the yellow substance into the existing solution. It should turn brown.\n6) Boil the mixture again at the hot plate.\n\n7) Observe the results. You should be left with an olive substance.
 => END
 
 ~ trash
 Juniper: I hope this is the right place for these!
-do delete_items()
+do! delete_items()
 => END
 
 ~ entrance
@@ -127,13 +127,13 @@ Juniper: It looks like there are some left over materials in there.
 Juniper: Oh no! I messed up the lab.
 Juniper: ...
 Juniper: I guess I have to start over now... I'm never gonna get this lab done, and I'm never gonna be able to get the to the library.
-do failed_lab()
+do! failed_lab()
 => END
 
 ~ grab_book
 Juniper: Since the lab is done I can grab the book!
-do delete_items()
-do pick_up_book()
+do! delete_items()
+do! pick_up_book()
 Juniper: Time to head out now I guess!
 => END
 

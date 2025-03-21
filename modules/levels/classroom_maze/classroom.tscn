@@ -393,6 +393,7 @@ visible = true
 shape = SubResource("CircleShape2D_q5rug")
 
 [node name="HoverRect" parent="NatesGroundItem/Item" index="3"]
+mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="CameraBoundry" type="Area2D" parent="."]

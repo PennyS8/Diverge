@@ -1,4 +1,4 @@
-[gd_scene load_steps=98 format=4 uid="uid://dibtck8dlixm1"]
+[gd_scene load_steps=99 format=4 uid="uid://dibtck8dlixm1"]
 
 [ext_resource type="Texture2D" uid="uid://ce10vjgkrj5nk" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png" id="1_453bp"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="2_at4ji"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://hj6wkvsg717m" path="res://assets/environment/downtown_dungeon/custom_sprites/science_door.png" id="15_mee8l"]
 [ext_resource type="Texture2D" uid="uid://dr0cvjhys8cx7" path="res://assets/environment/downtown_dungeon/custom_sprites/anxiety_door.png" id="16_mee8l"]
 [ext_resource type="Resource" uid="uid://v46rcraqdjre" path="res://modules/objects/library_book_cafeteria.tres" id="16_uy203"]
+[ext_resource type="Resource" path="res://modules/objects/library_book_classroom.tres" id="21_0knhu"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
@@ -9432,7 +9433,7 @@ z_index = 1
 position = Vector2(72, -48)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "DarkRoomEntrance"
-keys_needed = Array[ExtResource("15_l83xx")]([ExtResource("16_uy203")])
+keys_needed = Array[ExtResource("15_l83xx")]([ExtResource("21_0knhu"), ExtResource("16_uy203"), ExtResource("14_vrsc7")])
 
 [node name="EndRoomWest" parent="EndRoom/Exits" instance=ExtResource("11_xknx3")]
 position = Vector2(-84, 42)
