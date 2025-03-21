@@ -936,12 +936,6 @@ position = Vector2(-27, 43)
 [node name="Shadely" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
 position = Vector2(-71, 128)
 
-[node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeFSM" index="7"]
-next_state = NodePath("../FoundRamen")
-
-[node name="FoundRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeFSM" index="8"]
-next_state = NodePath("../Alerted")
-
 [node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely" index="5"]
 collision_mask = 0
 
@@ -950,12 +944,6 @@ material = SubResource("ShaderMaterial_anitv")
 
 [node name="Melisshade" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
 position = Vector2(13, 127)
-
-[node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeFSM" index="7"]
-next_state = NodePath("../FoundRamen")
-
-[node name="FoundRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeFSM" index="8"]
-next_state = NodePath("../Alerted")
 
 [node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade" index="5"]
 collision_mask = 0

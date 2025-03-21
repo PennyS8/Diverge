@@ -28,6 +28,8 @@ func _unhandled_input(_event: InputEvent) -> void:
 		return
 	
 	if Input.is_action_just_pressed("interact"):
+		get_viewport().set_input_as_handled()
+
 		player.dir = Vector2.ZERO
 		
 		if chem_inventory.stations["book"] == 1:
@@ -49,8 +51,6 @@ func _unhandled_input(_event: InputEvent) -> void:
 			
 		DialogueManager.show_dialogue_balloon(dialogue, dialogue_type, [chem_inventory])
 		
-		get_viewport().set_input_as_handled()
-
 func _on_mixer_body_entered(_body: Node2D) -> void:
 	interactable = true
 	$Glint.show()

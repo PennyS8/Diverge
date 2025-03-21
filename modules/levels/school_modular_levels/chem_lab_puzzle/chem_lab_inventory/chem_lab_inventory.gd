@@ -24,10 +24,10 @@ var recipes = {
 
 @export var enemy_locations : Array[Vector2]
 
-func add_inventory_item(item_name: String):
+func add_inventory_item(item_name: String, quantity : int = 1):
 	# Path to all of the chemistry lab material resources
 	var resource = load(resource_path + item_name + ".tres")
-	var item_stack = ItemStack.new(resource, 1)
+	var item_stack = ItemStack.new(resource, quantity)
 	
 	if lab_inventory.try_add_item(item_stack):
 		print("Item successfully added")
@@ -68,8 +68,8 @@ func failed_lab():
 		var enemy_scene = load("res://modules/entities/enemies/shades/shade/melee_shade.tscn")
 		var enemy_node = enemy_scene.instantiate()
 		
+		get_tree().current_scene.add_child(enemy_node)
 		enemy_node.global_position = enemy_node.global_position + enemy_locations[spawn_counter]
-		node.add_child(enemy_node)
 		spawn_counter = spawn_counter + 1
 
 func delete_items():
