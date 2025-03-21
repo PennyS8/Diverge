@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_v6xuq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2upq"]
-size = Vector2(42, 24)
+size = Vector2(22, 24)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a66n6"]
 load_path = "res://.godot/imported/DD_Interior-School_B.png-9f9cf1230dd3afdb4652488dfa3bf2f7.ctex"
@@ -46,23 +46,24 @@ offset = Vector2(0.5, 0)
 
 [node name="Desk" type="Sprite2D" parent="."]
 visible = false
+y_sort_enabled = true
 material = ExtResource("1_v6xuq")
-position = Vector2(5.5, -16)
+position = Vector2(11, -16)
 rotation = -3.14159
 scale = Vector2(1, -1)
 texture = SubResource("AtlasTexture_7ubbj")
-offset = Vector2(0.5, 0)
 
 [node name="Desk2" type="Sprite2D" parent="."]
 visible = false
+y_sort_enabled = true
 material = ExtResource("1_v6xuq")
-position = Vector2(5.5, -16)
+position = Vector2(11, -16)
 rotation = -3.14159
 scale = Vector2(1, -1)
 texture = SubResource("AtlasTexture_din4k")
-offset = Vector2(0.5, 0)
 
 [node name="Desk3" type="Sprite2D" parent="."]
+y_sort_enabled = true
 material = ExtResource("1_v6xuq")
 position = Vector2(11.5, -16)
 rotation = -3.14159

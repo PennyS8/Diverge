@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://bfr6wkxria5p7"]
+[gd_scene load_steps=10 format=3 uid="uid://bfr6wkxria5p7"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_m6ufn"]
+[ext_resource type="PackedScene" uid="uid://8ds5ebuunucj" path="res://modules/levels/classroom_maze/components/desk_chair_out.tscn" id="2_fiyrt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2upq"]
 size = Vector2(30, 24)
@@ -28,6 +29,9 @@ atlas = SubResource("CompressedTexture2D_a66n6")
 region = Rect2(96, 275, 23, 32)
 filter_clip = true
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ac1c7"]
+size = Vector2(20, 15)
+
 [node name="DeskChairIn" type="StaticBody2D"]
 z_index = 1
 y_sort_enabled = true
@@ -35,10 +39,12 @@ collision_layer = 2
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(15, -12)
 shape = SubResource("RectangleShape2D_b2upq")
 
 [node name="ChairIn" type="Sprite2D" parent="."]
+visible = false
 material = ExtResource("1_m6ufn")
 position = Vector2(27, -18)
 rotation = 3.14159
@@ -48,26 +54,61 @@ offset = Vector2(0.5, 0.5)
 
 [node name="Desk" type="Sprite2D" parent="."]
 visible = false
+y_sort_enabled = true
 material = ExtResource("1_m6ufn")
 position = Vector2(12, -18)
 rotation = 3.14159
 scale = Vector2(1, -1)
 texture = SubResource("AtlasTexture_d7y1j")
-offset = Vector2(0.5, 0.5)
+offset = Vector2(0.5, -8)
 
 [node name="Desk2" type="Sprite2D" parent="."]
 visible = false
+y_sort_enabled = true
 material = ExtResource("1_m6ufn")
 position = Vector2(12, -16)
 rotation = 3.14159
 scale = Vector2(1, -1)
 texture = SubResource("AtlasTexture_xgr26")
-offset = Vector2(0.5, 0.5)
+offset = Vector2(0.5, -8)
 
 [node name="Desk3" type="Sprite2D" parent="."]
+visible = false
+y_sort_enabled = true
 material = ExtResource("1_m6ufn")
-position = Vector2(12, -16)
+position = Vector2(12, -8)
 rotation = 3.14159
 scale = Vector2(1, -1)
 texture = SubResource("AtlasTexture_eh1bj")
-offset = Vector2(0.5, 0)
+offset = Vector2(0.5, -8)
+
+[node name="DeskChairOut" parent="." instance=ExtResource("2_fiyrt")]
+z_index = 0
+
+[node name="CollisionShape2D" parent="DeskChairOut" index="0"]
+position = Vector2(11, -12)
+
+[node name="ChairOut" parent="DeskChairOut" index="1"]
+y_sort_enabled = true
+position = Vector2(26, -18)
+
+[node name="Desk" parent="DeskChairOut" index="2"]
+position = Vector2(11, -6)
+offset = Vector2(0, -10)
+
+[node name="Desk2" parent="DeskChairOut" index="3"]
+position = Vector2(11, -6)
+offset = Vector2(0, -10)
+
+[node name="Desk3" parent="DeskChairOut" index="4"]
+position = Vector2(11, -6)
+offset = Vector2(0, -10)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="DeskChairOut"]
+position = Vector2(5, 0.5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeskChairOut/StaticBody2D"]
+position = Vector2(19, -13)
+shape = SubResource("RectangleShape2D_ac1c7")
+
+[editable path="DeskChairOut"]

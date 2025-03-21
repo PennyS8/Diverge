@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=4 uid="uid://cfqgwnxrjxs7m"]
+[gd_scene load_steps=16 format=4 uid="uid://cfqgwnxrjxs7m"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_10qxe"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="1_fc0v8"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" uid="uid://c2nhsh8ddib3q" path="res://modules/levels/classroom_maze/components/auto_dialogue.gd" id="4_c6yy0"]
 [ext_resource type="Script" uid="uid://cfqoj1ax1uqul" path="res://modules/levels/classroom_maze/fuzz_dialogue.gd" id="5_absf4"]
 [ext_resource type="PackedScene" uid="uid://8ds5ebuunucj" path="res://modules/levels/classroom_maze/components/desk_chair_out.tscn" id="5_lw440"]
+[ext_resource type="PackedScene" uid="uid://0g1yvcadp4ib" path="res://modules/levels/classroom_maze/components/seated_classmates.tscn" id="6_ks26a"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="8_lw440"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_c6yy0"]
@@ -119,10 +120,6 @@ rotation = 1.5708
 [node name="MazeWall5" parent="NavigationRegion2D/MazeWalls" instance=ExtResource("2_ajujk")]
 position = Vector2(512, 283)
 rotation = -1.5708
-
-[node name="MazeWall16" parent="NavigationRegion2D/MazeWalls" instance=ExtResource("2_ajujk")]
-position = Vector2(369, 276)
-rotation = -0.563601
 
 [node name="MazeWall19" parent="NavigationRegion2D/MazeWalls" instance=ExtResource("2_ajujk")]
 position = Vector2(436, 509)
@@ -260,6 +257,75 @@ position = Vector2(721, 403)
 [node name="DeskChairOut4" parent="NavigationRegion2D/Desks/BackRow" instance=ExtResource("5_lw440")]
 position = Vector2(721, 475)
 
+[node name="SeatedClassmate" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(603, 319)
+
+[node name="SeatedClassmate2" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(674, 320)
+
+[node name="SeatedClassmate3" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(752, 320)
+
+[node name="SeatedClassmate4" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(751, 249)
+
+[node name="SeatedClassmate5" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(674, 248)
+
+[node name="SeatedClassmate6" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(601, 249)
+
+[node name="SeatedClassmate7" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(530, 250)
+
+[node name="SeatedClassmate8" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(530, 321)
+
+[node name="SeatedClassmate9" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(458, 322)
+
+[node name="SeatedClassmate10" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(459, 396)
+
+[node name="SeatedClassmate11" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(458, 468)
+
+[node name="SeatedClassmate12" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(456, 561)
+
+[node name="SeatedClassmate13" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(530, 562)
+
+[node name="SeatedClassmate14" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(530, 469)
+
+[node name="SeatedClassmate15" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(531, 393)
+
+[node name="SeatedClassmate16" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(603, 395)
+
+[node name="SeatedClassmate17" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(602, 468)
+
+[node name="SeatedClassmate18" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(601, 561)
+
+[node name="SeatedClassmate19" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(674, 561)
+
+[node name="SeatedClassmate20" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(675, 467)
+
+[node name="SeatedClassmate21" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(675, 395)
+
+[node name="SeatedClassmate22" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(752, 395)
+
+[node name="SeatedClassmate23" parent="." instance=ExtResource("6_ks26a")]
+position = Vector2(752, 466)
+
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
 position = Vector2(756, 588)
 
@@ -308,24 +374,43 @@ scale = Vector2(4, 4)
 [connection signal="body_exited" from="fuzz_dialogue" to="fuzz_dialogue" method="_on_body_exited"]
 
 [editable path="NavigationRegion2D/Desks/FrontRow/DeskChairIn"]
+[editable path="NavigationRegion2D/Desks/FrontRow/DeskChairIn/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/FrontRow/DeskChairIn2"]
+[editable path="NavigationRegion2D/Desks/FrontRow/DeskChairIn2/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/FrontRow/DeskChairIn3"]
+[editable path="NavigationRegion2D/Desks/FrontRow/DeskChairIn3/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/FrontRow/DeskChairIn4"]
+[editable path="NavigationRegion2D/Desks/FrontRow/DeskChairIn4/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/SecondRow/DeskChairIn5"]
+[editable path="NavigationRegion2D/Desks/SecondRow/DeskChairIn5/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/SecondRow/DeskChairIn6"]
+[editable path="NavigationRegion2D/Desks/SecondRow/DeskChairIn6/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/SecondRow/DeskChairIn7"]
+[editable path="NavigationRegion2D/Desks/SecondRow/DeskChairIn7/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/SecondRow/DeskChairIn8"]
+[editable path="NavigationRegion2D/Desks/SecondRow/DeskChairIn8/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/SecondRow/DeskChairIn9"]
+[editable path="NavigationRegion2D/Desks/SecondRow/DeskChairIn9/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/ThridRow/DeskChairIn10"]
+[editable path="NavigationRegion2D/Desks/ThridRow/DeskChairIn10/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/ThridRow/DeskChairIn11"]
+[editable path="NavigationRegion2D/Desks/ThridRow/DeskChairIn11/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/ThridRow/DeskChairIn12"]
+[editable path="NavigationRegion2D/Desks/ThridRow/DeskChairIn12/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/ThridRow/DeskChairIn13"]
+[editable path="NavigationRegion2D/Desks/ThridRow/DeskChairIn13/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/ThridRow/DeskChairIn14"]
+[editable path="NavigationRegion2D/Desks/ThridRow/DeskChairIn14/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/ForthRow/DeskChairIn15"]
+[editable path="NavigationRegion2D/Desks/ForthRow/DeskChairIn15/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/ForthRow/DeskChairIn16"]
+[editable path="NavigationRegion2D/Desks/ForthRow/DeskChairIn16/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/ForthRow/DeskChairIn17"]
+[editable path="NavigationRegion2D/Desks/ForthRow/DeskChairIn17/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/ForthRow/DeskChairIn18"]
+[editable path="NavigationRegion2D/Desks/ForthRow/DeskChairIn18/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/ForthRow/DeskChairIn19"]
+[editable path="NavigationRegion2D/Desks/ForthRow/DeskChairIn19/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/BackRow/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/BackRow/DeskChairOut2"]
 [editable path="NavigationRegion2D/Desks/BackRow/DeskChairOut3"]
