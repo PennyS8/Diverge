@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://bwvk0fmen7rw3"]
+
+[ext_resource type="Script" uid="uid://bmrc6kgne6fhf" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/entrance_dialogue.gd" id="1_jmsom"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0jtan"]
+size = Vector2(72, 12)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7r4fh"]
+size = Vector2(12, 48)
+
+[node name="EntranceDialogue" type="Area2D"]
+z_index = 2
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_jmsom")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -48)
+rotation = -3.14159
+shape = SubResource("RectangleShape2D_0jtan")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(-36, -18)
+rotation = 1.46071e-05
+shape = SubResource("RectangleShape2D_7r4fh")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="."]
+position = Vector2(36, -18)
+rotation = 2.92142e-05
+shape = SubResource("RectangleShape2D_7r4fh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

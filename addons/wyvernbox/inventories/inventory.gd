@@ -304,10 +304,15 @@ func count_items(items_patterns, into_dict : Dictionary = {}, prepacked_reqs : D
 ## Returns [code]true[/code] if the counts of [code]items_patterns[/code] items and patterns are no less that those in [code]item_type_counts[/code].
 func has_items(items_patterns, item_type_counts : Dictionary) -> bool:
 	var owned_counts := count_items(items_patterns)
+	# NATE HOPPER - 3/19/25
+	# if owned counts is not seen, we're not gonna return true lol
+	if !owned_counts:
+		return false
+		
 	for k in owned_counts:
 		if owned_counts[k] < item_type_counts[k]:
 			return false
-			
+	
 	return true
 
 ## Consumes items matching [code]item_type_counts[/code]. Keys of the dictionary must be [ItemType] and [ItemPattern] objects, and values must the the counts of each.[br]

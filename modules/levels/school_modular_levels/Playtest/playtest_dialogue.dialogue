@@ -1,0 +1,19 @@
+~ double_door
+#if player has 3 books in inventory:
+#	transition to DarkRoom
+if check_keys():
+	do you_shall_pass()
+	Yippie you completed the playtest!\nTYSM
+else:
+	=> need_books
+#else:
+#	=> need_books
+=> END
+
+~ need_books
+Juniper: I need to get my library books before I can look the librarian in the eye! She'd be so mad at me!
+=> END
+
+~ puzzle_complete
+Juniper: I've already got the library book from this room!
+=> END

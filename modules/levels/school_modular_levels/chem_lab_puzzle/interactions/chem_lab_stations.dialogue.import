@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://c2vmnohuxn8y6"
+path="res://.godot/imported/chem_lab_stations.dialogue-1bee6fa43b433bd217bb9c6a3171055d.tres"
+
+[deps]
+
+source_file="res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue"
+dest_files=["res://.godot/imported/chem_lab_stations.dialogue-1bee6fa43b433bd217bb9c6a3171055d.tres"]
+
+[params]
+
+defaults=true

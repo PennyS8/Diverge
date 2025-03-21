@@ -18,7 +18,7 @@ const SKIP_ACTION = &"ui_cancel"
 @onready var notification_label: RichTextLabel = %NotificationLabel
 @onready var animation_player: AnimationPlayer = %AnimationPlayer
 @onready var audio_stream_player: AudioStreamPlayer = %AudioStreamPlayer
-
+@onready var portrait_container : PanelContainer = %PortraitContainer
 var portrait: BasePortrait
 
 ## The dialogue resource
@@ -70,6 +70,7 @@ var dialogue_line: DialogueLine:
 		if has_character:
 			# Show our balloon
 			balloon.show()
+			portrait_container.show()
 			portrait_position.show()
 		else:
 			notification_balloon.show()
@@ -115,6 +116,7 @@ var mutation_cooldown: Timer = Timer.new()
 func _ready() -> void:
 	balloon.hide()
 	notification_balloon.hide()
+	portrait_container.hide()
 	DialogueManager.mutated.connect(_on_mutated)
 
 	mutation_cooldown.timeout.connect(_on_mutation_cooldown_timeout)
@@ -146,8 +148,9 @@ func next(next_id: String) -> void:
 
 func hide_character() -> void:
 	if is_instance_valid(portrait):
-		animation_player.play("hide_character")
-		await animation_player.animation_finished
+		#animation_player.play("hide_character")
+		#await animation_player.animation_finished
+		%PortraitBox.hide()
 		portrait_position.remove_child(portrait)
 		portrait.queue_free()
 
@@ -161,10 +164,13 @@ func show_character(character_name: String) -> void:
 	var portraitpath = "res://modules/dialogue/character/%s/portrait.tscn" % character_name.to_lower()
 	if FileAccess.file_exists(portraitpath):
 		var portrait_scene: PackedScene = load(portraitpath)
+		
+		%PortraitBox.show()
+		
 		portrait = portrait_scene.instantiate()
 		portrait_position.add_child(portrait)
-		animation_player.play("show_character")
-		await animation_player.animation_finished
+		#animation_player.play("show_character")
+		#await animation_player.animation_finished
 
 
 #endregion

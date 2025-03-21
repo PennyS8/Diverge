@@ -6,11 +6,17 @@
 script = ExtResource("1_tuhxn")
 favorites = {
 "res://modules/levels/cafeteria/props": {
-&"allow_nonscene_files": false,
 &"color": "#0e1521",
-&"instantiate_scenes_for_previews": true,
+&"instantiate_scenes_for_previews": false,
 &"minimized_dirs": {},
-&"scene_preview_scale": 0.96,
+&"scene_preview_scale": 1,
+&"show_labels": true
+},
+"res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props": {
+&"color": "#0e1521",
+&"instantiate_scenes_for_previews": false,
+&"minimized_dirs": {},
+&"scene_preview_scale": 1,
 &"show_labels": true
 }
 }

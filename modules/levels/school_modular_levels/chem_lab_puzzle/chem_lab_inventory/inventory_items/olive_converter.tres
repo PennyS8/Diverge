@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="ItemConversion" load_steps=4 format=3 uid="uid://cmlplfto04m1f"]
+
+[ext_resource type="Script" uid="uid://4xo2ri3sytl3" path="res://addons/wyvernbox/crafting/item_conversion.gd" id="1_1fjg1"]
+[ext_resource type="Resource" uid="uid://dvp7l276ke3qh" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/brown_substance.tres" id="1_xgb0f"]
+[ext_resource type="Resource" uid="uid://dlm415yvfdyp0" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/olive_substance.tres" id="2_pdn7v"]
+
+[resource]
+script = ExtResource("1_1fjg1")
+name = "Oliver Converter"
+tags = Array[StringName]([&"burner"])
+input_types = Array[Resource]([ExtResource("1_xgb0f")])
+input_counts = Array[int]([1])
+output_types = Array[Resource]([ExtResource("2_pdn7v")])
+output_ranges = Array[Vector2]([Vector2(1, 1)])
+metadata/_custom_type_script = "uid://4xo2ri3sytl3"

@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemType" load_steps=3 format=3 uid="uid://v46rcraqdjre"]
+
+[ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="1_7q888"]
+[ext_resource type="Texture2D" uid="uid://dc6nffbm4146i" path="res://assets/environment/downtown_dungeon/custom_sprites/cafeteria_book.png" id="2_cubc4"]
+
+[resource]
+script = ExtResource("1_7q888")
+name = "Library Book"
+description = "One of three overdue library books I need to return to the library before I can enter.
+
+I obtained this one from the hungry Shaded Figure in the [color=\"green\"]cafeteria.[/color]
+
+It looks like it has some teeth marks on it?"
+tags = Array[StringName]([])
+texture = ExtResource("2_cubc4")
+texture_scale = 1.0
+max_stack_count = 1
+in_inventory_width = 1
+in_inventory_height = 1
+slot_flags = 256
+default_properties_string = "{}"
+default_properties = {}
+metadata/_custom_type_script = "uid://cgg102c222rfg"

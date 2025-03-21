@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://c4f5tcvmt380f"]
+
+[ext_resource type="Script" uid="uid://c6q6080bnw84g" path="res://modules/objects/level_transition_zone/transition_door.gd" id="1_3ij6u"]
+[ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="2_1ry3b"]
+[ext_resource type="Texture2D" uid="uid://bp72ou4t3d6yt" path="res://assets/environment/downtown_dungeon/Door.png" id="3_3yaq0"]
+[ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="4_xe10q"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_38vbv"]
+size = Vector2(36, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_63x3j"]
+atlas = ExtResource("3_3yaq0")
+region = Rect2(0, 0, 40, 52)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_e7frr"]
+shader = ExtResource("4_xe10q")
+shader_parameter/size_effect = 1.0
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 0.5
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = false
+shader_parameter/pause_duration = 0.5
+shader_parameter/texture_size = Vector2(17, 12)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8rd2v"]
+radius = 12.0
+height = 36.0
+
+[node name="TransitionDoor" type="StaticBody2D"]
+script = ExtResource("1_3ij6u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -12)
+shape = SubResource("RectangleShape2D_38vbv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("2_1ry3b")
+position = Vector2(0, -24)
+scale = Vector2(-1, 1)
+texture = SubResource("AtlasTexture_63x3j")
+
+[node name="Glint" type="CanvasGroup" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_e7frr")
+position = Vector2(0, -24)
+fit_margin = 0.0
+clear_margin = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Glint"]
+material = ExtResource("2_1ry3b")
+scale = Vector2(-1, 1)
+texture = SubResource("AtlasTexture_63x3j")
+
+[node name="Area2D" type="Area2D" parent="."]
+z_index = -1
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_8rd2v")
+debug_color = Color(0.908494, 0.230311, 0.491003, 0.42)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
