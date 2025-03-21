@@ -842,6 +842,8 @@ y_sort_enabled = true
 position = Vector2(135, -88)
 script = ExtResource("16_5d8ey")
 ramen_item = ExtResource("17_nd65k")
+ramen_type = ExtResource("25_esxpl")
+book_item = ExtResource("28_anitv")
 
 [node name="DispensePoints" type="Node2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser"]
 y_sort_enabled = true
@@ -939,7 +941,7 @@ item_scene = ExtResource("23_roxoq")
 position = Vector2(-27, 43)
 
 [node name="Shadely" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
-position = Vector2(-71, 128)
+position = Vector2(-71.1309, 110.331)
 
 [node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely" index="5"]
 collision_mask = 0
@@ -948,7 +950,7 @@ collision_mask = 0
 material = SubResource("ShaderMaterial_anitv")
 
 [node name="Melisshade" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
-position = Vector2(13, 127)
+position = Vector2(12.8691, 109.331)
 
 [node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade" index="5"]
 collision_mask = 0
@@ -957,7 +959,7 @@ collision_mask = 0
 material = SubResource("ShaderMaterial_ocqtp")
 
 [node name="BrickShadehouse" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
-position = Vector2(-28, 133)
+position = Vector2(-28.1309, 115.331)
 
 [node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="7"]
 next_state = NodePath("../Seeking")

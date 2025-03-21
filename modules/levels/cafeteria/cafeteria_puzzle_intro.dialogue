@@ -51,3 +51,11 @@ Juniper: ...Uh oh.
 do! LevelManager.player.exit_cutscene()
 do! shades_attack():
 => END
+
+~ reenter
+Juniper: [i]I've already got the book from this room! I should go back to the hallway when I'm done exploring.[/i]
+=> END
+
+~ leave_with_ramen
+Juniper: [i]Now that I've got the noodles, I should return to the little dude from earlier.[/i]
+=> END

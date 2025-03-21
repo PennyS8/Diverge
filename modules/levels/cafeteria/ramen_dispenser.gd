@@ -9,6 +9,9 @@ extends Node2D
 
 @onready var camera_lock_pos = $CameraLock.global_position
 
+@export var ramen_type : ItemType
+@export var book_item : ItemType
+
 var end_cutscene : bool = false
 var shade_who_got
 var cutscene_watched : bool = false
@@ -20,6 +23,9 @@ func dispense(point, wanderer_spawn):
 	ramen_instance.name = "RamenTray"
 
 func _on_debug_area_body_entered(body: Node2D) -> void:
+	var inv = GameManager.inventory_node.inventory
+	if InventoryHelper.is_itemtype_in_inventory(inv, ramen_type) or InventoryHelper.is_itemtype_in_inventory(inv, book_item):
+		return
 	if !cutscene_watched:
 		_move_cutscene_camera(camera_lock_pos)
 		cutscene_watched = true

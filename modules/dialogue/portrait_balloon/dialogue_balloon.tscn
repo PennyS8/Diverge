@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://covyosa222o3j"]
 
 [ext_resource type="Script" uid="uid://d3umiakbyorkt" path="res://modules/dialogue/portrait_balloon/dialogue_balloon.gd" id="1_ndejj"]
-[ext_resource type="AudioStream" uid="uid://oqqmbm8k1cbl" path="res://modules/dialogue/portrait_balloon/talk-old.wav" id="2_73577"]
+[ext_resource type="AudioStream" uid="uid://btdy85tcuoeex" path="res://modules/dialogue/portrait_balloon/talk.wav" id="2_73577"]
 [ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_hudaw"]
 [ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_2hpv4"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="3_uhdg3"]

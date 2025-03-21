@@ -60,10 +60,17 @@ shape = SubResource("CircleShape2D_hy37e")
 [node name="Item" parent="." instance=ExtResource("9_i8hlk")]
 collision_layer = 0
 collision_mask = 12
+input_pickable = false
 monitoring = false
 monitorable = false
 
 [node name="VisItem" parent="Item" index="0"]
+visible = false
+
+[node name="HoverRect" parent="Item" index="3"]
+mouse_filter = 2
+
+[node name="Label" parent="Item" index="4"]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
