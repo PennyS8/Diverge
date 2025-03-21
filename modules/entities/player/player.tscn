@@ -27,6 +27,7 @@
 [ext_resource type="Script" uid="uid://dmux7vy5y0hk4" path="res://modules/entities/player/xsm/grapple.gd" id="15_trbfo"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Script" uid="uid://8u175eaigjct" path="res://modules/entities/player/xsm/recall.gd" id="17_qcq68"]
+[ext_resource type="Script" uid="uid://bkr3e1t0a8kwu" path="res://modules/entities/player/death.gd" id="21_xyfbm"]
 [ext_resource type="Texture2D" uid="uid://bomlp67c0exnm" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Down.png" id="28_lqgfc"]
 [ext_resource type="Texture2D" uid="uid://da2cbhqa5c2t7" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Left.png" id="29_dhsgn"]
 [ext_resource type="Texture2D" uid="uid://dqnemhskws1vm" path="res://modules/entities/player/placeholder_sprites/Idle/Spear/Idle_Spear_Left_Down.png" id="30_7yfd7"]
@@ -42,6 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://chpbdfsf6jyng" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Up.png" id="38_h3vdm"]
 [ext_resource type="Texture2D" uid="uid://d2k5ylavgktxb" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Left_Down.png" id="39_av2sy"]
 [ext_resource type="Texture2D" uid="uid://bqlnm1rdma2s0" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Right.png" id="42_ixb32"]
+[ext_resource type="Texture2D" uid="uid://c4eyhwt0schwv" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Up.png" id="43_cjsq4"]
 [ext_resource type="Texture2D" uid="uid://benoslp55jhin" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Up.png" id="43_fgoev"]
 [ext_resource type="Texture2D" uid="uid://c5mbf4fv8dv3m" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Down.png" id="43_y78jc"]
 [ext_resource type="Shader" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
@@ -52,6 +54,9 @@
 [ext_resource type="Texture2D" uid="uid://de3bjixgf5a3q" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Left_Down.png" id="48_7h8sm"]
 [ext_resource type="Texture2D" uid="uid://b08xtnscca7is" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Right_Down.png" id="49_bif3w"]
 [ext_resource type="Texture2D" uid="uid://dmii5kjwq04lx" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Up.png" id="50_0wufa"]
+[ext_resource type="Texture2D" uid="uid://dspd847cbn8mr" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Down.png" id="44_xyfbm"]
+[ext_resource type="Texture2D" uid="uid://rtnt5gwn4rkj" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Left_Down.png" id="45_fnwuu"]
+[ext_resource type="Texture2D" uid="uid://ct1xahfqvg584" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Right_Down.png" id="46_gejbx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
@@ -1120,6 +1125,119 @@ tracks/1/keys = {
 "values": [0, 7]
 }
 
+[sub_resource type="Animation" id="Animation_netii"]
+resource_name = "death_up"
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("43_cjsq4")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_y78jc"]
+resource_name = "death_down"
+length = 1.5
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("44_xyfbm")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_rl8eg"]
+resource_name = "death_left"
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("45_fnwuu")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
+[sub_resource type="Animation" id="Animation_l84k2"]
+resource_name = "death_right"
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("46_gejbx")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
 _data = {
 &"RESET": SubResource("Animation_6qj3b"),
@@ -1131,6 +1249,10 @@ _data = {
 &"dash_down": SubResource("Animation_raqis"),
 &"dash_left": SubResource("Animation_vvsia"),
 &"dash_up": SubResource("Animation_e1vlg"),
+&"death_down": SubResource("Animation_y78jc"),
+&"death_left": SubResource("Animation_rl8eg"),
+&"death_right": SubResource("Animation_l84k2"),
+&"death_up": SubResource("Animation_netii"),
 &"fall": SubResource("Animation_vkkf0"),
 &"hop_down": SubResource("Animation_0g430"),
 &"hop_left": SubResource("Animation_8lscu"),
@@ -1792,13 +1914,61 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
+[node name="Death" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("21_xyfbm")
+metadata/_custom_type_script = "uid://gptykq0qp1fx"
+
+[node name="DeathUp" type="Node" parent="PlayerFSM/Movement/Death"]
+script = ExtResource("12_e6mu1")
+animation_player = NodePath("../../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://sgbgpy8s08d3"
+
+[node name="DeathRight" type="Node" parent="PlayerFSM/Movement/Death"]
+script = ExtResource("12_e6mu1")
+animation_player = NodePath("../../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://sgbgpy8s08d3"
+
+[node name="DeathDown" type="Node" parent="PlayerFSM/Movement/Death"]
+script = ExtResource("12_e6mu1")
+animation_player = NodePath("../../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://sgbgpy8s08d3"
+
+[node name="DeathLeft" type="Node" parent="PlayerFSM/Movement/Death"]
+script = ExtResource("12_e6mu1")
+animation_player = NodePath("../../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://sgbgpy8s08d3"
+
 [node name="MovementDisabled" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("1_q2vpm")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Death")
 
 [node name="Hook" type="Area2D" parent="." groups=["hook"]]
 z_index = 1
