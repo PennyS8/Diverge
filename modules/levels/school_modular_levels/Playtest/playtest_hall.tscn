@@ -20,7 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://hj6wkvsg717m" path="res://assets/environment/downtown_dungeon/custom_sprites/science_door.png" id="15_mee8l"]
 [ext_resource type="Texture2D" uid="uid://dr0cvjhys8cx7" path="res://assets/environment/downtown_dungeon/custom_sprites/anxiety_door.png" id="16_mee8l"]
 [ext_resource type="Resource" uid="uid://v46rcraqdjre" path="res://modules/objects/library_book_cafeteria.tres" id="16_uy203"]
-[ext_resource type="Resource" path="res://modules/objects/library_book_classroom.tres" id="21_0knhu"]
+[ext_resource type="Resource" uid="uid://ruaqo31f3ul2" path="res://modules/objects/library_book_classroom.tres" id="21_0knhu"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)

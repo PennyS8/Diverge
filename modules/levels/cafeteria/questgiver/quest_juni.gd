@@ -17,9 +17,18 @@ func _unhandled_input(_event: InputEvent) -> void:
 		return
 	
 	if Input.is_action_just_pressed("interact"):
+		if get_tree().current_scene.get_node_or_null("DialogueBalloon"):
+			return
+		if LevelManager.player.dialogue_open:
+			return
+		
 		player.dir = Vector2.ZERO
 		var dialogue = load("res://modules/levels/cafeteria/questgiver/juni_hungry.dialogue")
-		DialogueManager.show_dialogue_balloon(dialogue, "start", [self])
+		
+		if !LevelManager.player.dialogue_open:
+			LevelManager.player.dialogue_open = true
+			DialogueManager.show_dialogue_balloon(dialogue, "start", [self])
+		
 		get_viewport().set_input_as_handled()
 
 	
