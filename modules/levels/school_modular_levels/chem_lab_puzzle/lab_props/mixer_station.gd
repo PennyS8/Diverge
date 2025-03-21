@@ -29,6 +29,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
 		player.dir = Vector2.ZERO
+		
+		if chem_inventory.stations["book"] == 1:
+			puzzle_complete = true
+		
 		var dialogue = load("res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue")
 		
 		var dialogue_type
@@ -38,10 +42,14 @@ func _unhandled_input(_event: InputEvent) -> void:
 			dialogue_type = "no_materials"
 		elif chem_inventory.lab_inventory.count_all_items().size() == 1:
 			dialogue_type = "one_material_mixer"
+		elif chem_inventory.stations["scale"] == 0:
+			dialogue_type = "not_measured"
 		else: 
 			dialogue_type = "mixer"
 			
 		DialogueManager.show_dialogue_balloon(dialogue, dialogue_type, [chem_inventory])
+		
+		get_viewport().set_input_as_handled()
 
 func _on_mixer_body_entered(_body: Node2D) -> void:
 	interactable = true

@@ -1,0 +1,63 @@
+[gd_scene load_steps=10 format=3 uid="uid://crx2yh5r8pj50"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_tjv8r"]
+[ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="2_hsdix"]
+[ext_resource type="Script" uid="uid://ix8r4p45ooby" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/lab_trash_can.gd" id="2_lmea8"]
+[ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="4_fudjr"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lmea8"]
+atlas = ExtResource("2_hsdix")
+region = Rect2(7, 90, 11, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tjv8r"]
+size = Vector2(11, 9)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_isxxq"]
+shader = ExtResource("4_fudjr")
+shader_parameter/size_effect = 1.0
+shader_parameter/speed = 1.0
+shader_parameter/highlight_strength = 0.5
+shader_parameter/color_mode_toggle = false
+shader_parameter/is_horizontal = false
+shader_parameter/pause_duration = 0.5
+shader_parameter/texture_size = Vector2(16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f146v"]
+atlas = ExtResource("2_hsdix")
+region = Rect2(7, 90, 11, 16)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lmea8"]
+radius = 6.0
+
+[node name="LabTrashCan" type="StaticBody2D"]
+material = ExtResource("1_tjv8r")
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("2_lmea8")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = SubResource("AtlasTexture_lmea8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.5)
+shape = SubResource("RectangleShape2D_tjv8r")
+
+[node name="Glint" type="CanvasGroup" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_isxxq")
+
+[node name="Sprite2D" type="Sprite2D" parent="Glint"]
+material = ExtResource("1_tjv8r")
+texture = SubResource("AtlasTexture_f146v")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 4
+
+[node name="InteractableArea" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 7)
+shape = SubResource("CircleShape2D_lmea8")
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_trash_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_trash_body_exited"]

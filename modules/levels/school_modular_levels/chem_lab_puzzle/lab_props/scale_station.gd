@@ -29,17 +29,23 @@ func _unhandled_input(_event: InputEvent) -> void:
 	
 	if Input.is_action_just_pressed("interact"):
 		player.dir = Vector2.ZERO
+		
+		if chem_inventory.stations["book"] == 1:
+			puzzle_complete = true
+		
 		var dialogue = load("res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue")
 		
 		var dialogue_type
 		if puzzle_complete == true:
 			dialogue_type = "puzzle_completed"
-		if chem_inventory.lab_inventory.count_all_items() == { }:
+		elif chem_inventory.lab_inventory.count_all_items() == { }:
 			dialogue_type = "no_materials"
 		else: 
 			dialogue_type = "scale"
 		
 		DialogueManager.show_dialogue_balloon(dialogue, dialogue_type, [chem_inventory])
+		
+		get_viewport().set_input_as_handled()
 
 func _on_scale_body_entered(_body: Node2D) -> void:
 	interactable = true
