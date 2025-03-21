@@ -4,7 +4,6 @@ var iteration = 0
 
 @onready var playerNoise
 var dialogue = load("res://modules/levels/classroom_maze/anxious_classroom.dialogue")
-			
 
 func _on_body_entered(body: Node2D) -> void:
 	if !playerNoise:

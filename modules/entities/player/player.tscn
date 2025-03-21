@@ -1143,6 +1143,7 @@ b = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5jg5w"]
 shader = ExtResource("44_5jg5w")
+shader_parameter/band_strength = 2.0
 shader_parameter/noise_intensity = 0.05
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
@@ -1631,6 +1632,7 @@ shape = SubResource("SegmentShape2D_rc6ld")
 radius = 8.0
 
 [node name="stressEffect" type="ColorRect" parent="."]
+visible = false
 material = SubResource("ShaderMaterial_5jg5w")
 offset_left = -950.0
 offset_top = -546.0
