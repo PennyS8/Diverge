@@ -14,7 +14,6 @@ config/name="Project Diverge"
 run/main_scene="res://modules/levels/school_modular_levels/school_dungeon_dec18/school_dungeon_dec18.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=120
-config/icon="res://assets/RatStompers.png"
 
 [autoload]
 
