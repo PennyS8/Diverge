@@ -1,0 +1,15 @@
+~ start
+Juniper: Oh no, I didn't realize there was a class in session here.
+Juniper: I think I see my book on the teacher's desk... but that's across the room.
+Juniper: I don't want everyone to look at me while I walk across the room, but I don't want to get in people's way either.
+Juniper: What's the best way to cross this room?
+=> END
+
+~ fuzz
+Juniper: I'm starting to feel anxious. It feels like everyone is looking at me.
+Juniper: They're all probably mad I'm interrupting...
+=> END
+
+~ complete
+Juniper: Whew.
+=> END
