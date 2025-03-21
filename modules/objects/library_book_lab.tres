@@ -11,7 +11,7 @@ description = "One of three overdue library books I need to return to the librar
 I obtained this one after completing my overdue lab in the [color=\"green\"]chemistry lab.[/color]
 
 It looks like it has some chemical spills on it?"
-tags = Array[StringName]([])
+tags = Array[StringName]([&"book"])
 texture = ExtResource("2_lrb8c")
 texture_scale = 1.0
 max_stack_count = 1

@@ -45,6 +45,7 @@ func take_ramen():
 		inv.consume_items({item_type: 1})
 		quest_done = true
 		InventoryHelper.add_itemtype_to_inventory(inv, return_item, 1)
+		inv.save_state("player_inventory")
 		return true
 	else:
 		return false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://gpeishkjbb60"]
+[gd_scene load_steps=18 format=3 uid="uid://gpeishkjbb60"]
 
 [ext_resource type="Script" uid="uid://bvm3c5gk8ux70" path="res://addons/wyvernbox/inventory_view.gd" id="1_igakj"]
 [ext_resource type="Script" uid="uid://fp2iki0mkowk" path="res://addons/wyvernbox/inventories/restricted_inventory.gd" id="2_u5gh5"]
@@ -8,9 +8,7 @@
 [ext_resource type="StyleBox" uid="uid://cqx3opxr50d2o" path="res://addons/wyvernbox_prefabs/graphics/selected_cell.tres" id="4_djypq"]
 [ext_resource type="PackedScene" uid="uid://b7jlucsddt6dg" path="res://addons/wyvernbox_prefabs/inventory_cell.tscn" id="5_ele7e"]
 [ext_resource type="Script" uid="uid://d1a114hwwhdiu" path="res://addons/wyvernbox/item_instantiator.gd" id="6_ojqjg"]
-[ext_resource type="Resource" uid="uid://v46rcraqdjre" path="res://modules/objects/library_book_cafeteria.tres" id="6_vpxuf"]
 [ext_resource type="Texture2D" uid="uid://bibwfg1e2rajp" path="res://assets/debug/Juni.JPG" id="6_x6ee3"]
-[ext_resource type="Resource" path="res://modules/objects/library_book_lab.tres" id="7_57iw6"]
 [ext_resource type="Texture2D" uid="uid://bdkrtjyq7nxcc" path="res://assets/debug/TESTPENCILBOX.png" id="10_u08uh"]
 
 [sub_resource type="Resource" id="Resource_vpxuf"]
@@ -58,9 +56,9 @@ default_properties = {}
 
 [sub_resource type="Resource" id="Resource_eedmd"]
 script = ExtResource("6_ojqjg")
-items_to_add = Array[ExtResource("3_1i8ug")]([SubResource("Resource_xjeog"), SubResource("Resource_v2uwl"), ExtResource("6_vpxuf"), ExtResource("7_57iw6")])
-item_repeat_ranges = Array[Vector2]([Vector2(1, 1), Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)])
-item_chances = Array[float]([100.0, 100.0, 100.0, 100.0])
+items_to_add = Array[ExtResource("3_1i8ug")]([SubResource("Resource_xjeog"), SubResource("Resource_v2uwl")])
+item_repeat_ranges = Array[Vector2]([Vector2(1, 1), Vector2(1, 1)])
+item_chances = Array[float]([100.0, 100.0])
 repeat_post_chance = false
 randomize_locations = false
 delay_between_items = 0.0

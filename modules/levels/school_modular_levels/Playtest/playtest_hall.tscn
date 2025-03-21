@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c4f5tcvmt380f" path="res://modules/objects/level_transition_zone/transition_door.tscn" id="12_w3j1q"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_at4ji"]
 [ext_resource type="PackedScene" uid="uid://bme0largcnr4h" path="res://modules/objects/level_transition_zone/transition_double_door.tscn" id="13_usixv"]
-[ext_resource type="Resource" path="res://modules/objects/library_book_lab.tres" id="14_vrsc7"]
+[ext_resource type="Resource" uid="uid://fgga6obgfqb6" path="res://modules/objects/library_book_lab.tres" id="14_vrsc7"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="14_x3qlk"]
 [ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="15_l83xx"]
 [ext_resource type="Texture2D" uid="uid://hj6wkvsg717m" path="res://assets/environment/downtown_dungeon/custom_sprites/science_door.png" id="15_mee8l"]

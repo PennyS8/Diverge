@@ -53,13 +53,10 @@ focus_mode = 2
 mouse_filter = 0
 texture = ExtResource("7_ijf6v")
 
-[node name="Two" type="TextureRect" parent="Equipment/Cells" instance=ExtResource("8_pvj2d")]
+[node name="Two" parent="Equipment/Cells" instance=ExtResource("8_pvj2d")]
 modulate = Color(3, 3, 3, 1)
-texture_filter = 1
-custom_minimum_size = Vector2(14, 14)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
 texture = ExtResource("7_ijf6v")
-expand_mode = 1
