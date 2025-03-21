@@ -55,9 +55,9 @@ func _physics_process(_delta: float) -> void:
 			velocity += $SoftCollision.get_push_vector() * _delta * 200
 	
 
-func _on_health_component_died() -> void:
-	drop_ramen()
-	$ShadeFSM.change_state("Dead")
+#func _on_health_component_died() -> void:
+	#drop_ramen()
+	#$ShadeFSM.change_state("Dead")
 
 func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	if $HealthComponent.health > 0:
