@@ -1631,7 +1631,6 @@ shape = SubResource("SegmentShape2D_rc6ld")
 radius = 8.0
 
 [node name="stressEffect" type="ColorRect" parent="."]
-visible = false
 material = SubResource("ShaderMaterial_5jg5w")
 offset_left = -950.0
 offset_top = -546.0

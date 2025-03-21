@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://boeuvpr028sg6"
+path="res://.godot/imported/anxious_classroom.dialogue-d8e5649cd059e2af455924d8d647b97b.tres"
+
+[deps]
+
+source_file="res://modules/levels/classroom_maze/anxious_classroom.dialogue"
+dest_files=["res://.godot/imported/anxious_classroom.dialogue-d8e5649cd059e2af455924d8d647b97b.tres"]
+
+[params]
+
+defaults=true

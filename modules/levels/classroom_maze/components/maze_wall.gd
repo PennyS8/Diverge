@@ -16,7 +16,6 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 	playerNoise.hide()
 
 func _on_spawing_area_body_entered(body: Node2D) -> void:
-	print('Collision ended with: ', body)
 	var instance : CharacterBody2D = scene.instantiate()
 	instance.set_collision_mask_value(2, false)
 	get_tree().current_scene.call_deferred("add_child", instance)
