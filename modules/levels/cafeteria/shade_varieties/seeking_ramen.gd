@@ -66,7 +66,7 @@ func _on_update(_delta: float) -> void:
 	if !target.follow_target:
 		if _check_player_inv():
 			target.follow_target = get_tree().get_first_node_in_group("player")
-			change_state("Alerted")
+			change_state("Alerted2")
 		else:
 			change_state("NoMoreRamen")
 #
@@ -79,7 +79,7 @@ func _on_update(_delta: float) -> void:
 	else:
 		if _check_player_inv():
 			target.follow_target = get_tree().get_first_node_in_group("player")
-			change_state("Alerted")
+			change_state("Alerted2")
 		else:
 			change_state("NoMoreRamen")
 
