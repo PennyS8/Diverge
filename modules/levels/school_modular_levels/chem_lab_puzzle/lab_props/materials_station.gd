@@ -38,7 +38,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 		var dialogue_type
 		if puzzle_complete == true:
 			dialogue_type = "puzzle_completed"
-		elif chem_inventory.lab_inventory.count_all_items().size() != 2:
+		elif chem_inventory.lab_inventory.items.size() != 2:
 			dialogue_type = "materials"
 		else: 
 			dialogue_type = "full_inventory"
