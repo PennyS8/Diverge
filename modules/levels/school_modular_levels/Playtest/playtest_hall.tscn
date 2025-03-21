@@ -9350,6 +9350,8 @@ material = SubResource("ShaderMaterial_0knhu")
 
 [node name="PuzzleDoorC" parent="Hallway/Exits" instance=ExtResource("12_w3j1q")]
 position = Vector2(84, -24)
+next_level_path = "uid://cfqgwnxrjxs7m"
+entrance_name = "ClassroomSouth"
 
 [node name="Sprite2D" parent="Hallway/Exits/PuzzleDoorC" index="1"]
 material = SubResource("ShaderMaterial_kgxs5")
