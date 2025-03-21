@@ -61,6 +61,8 @@ func shades_attack():
 		fsm.change_state("Seeking")
 
 func player_got_ramen():
+	LevelManager.player.dir = Vector2.ZERO
+	
 	if !end_cutscene:
 		_move_cutscene_camera(LevelManager.player.global_position)
 		var dialogue = load("res://modules/levels/cafeteria/cafeteria_puzzle_intro.dialogue")
@@ -68,6 +70,8 @@ func player_got_ramen():
 		end_cutscene = true
 	
 func shade_got_ramen(shade):
+	LevelManager.player.dir = Vector2.ZERO
+	
 	if !end_cutscene:
 		#set name for dialogue's sake
 		shade_who_got = shade.name
