@@ -1,4 +1,4 @@
-[gd_scene load_steps=71 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=69 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="2_nel61"]
@@ -32,8 +32,6 @@
 [ext_resource type="Texture2D" uid="uid://kyv7yk10fodg" path="res://assets/environment/downtown_dungeon/custom_sprites/table_water.png" id="29_clobj"]
 [ext_resource type="Texture2D" uid="uid://deyw8rhivgppt" path="res://assets/environment/downtown_dungeon/custom_sprites/table_book.png" id="30_vas0v"]
 [ext_resource type="Texture2D" uid="uid://xif0g3urgtv1" path="res://assets/environment/downtown_dungeon/custom_sprites/ramen.png" id="31_vas0v"]
-[ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="33_e56cj"]
-[ext_resource type="Texture2D" uid="uid://d1i2h41pm54o2" path="res://assets/debug/2d_lights_and_shadows_neutral_point_light.webp" id="34_rtr6j"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3djk"]
 atlas = ExtResource("9_vgalx")
@@ -938,6 +936,12 @@ position = Vector2(-27, 43)
 [node name="Shadely" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
 position = Vector2(-71, 128)
 
+[node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeFSM" index="7"]
+next_state = NodePath("../FoundRamen")
+
+[node name="FoundRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeFSM" index="8"]
+next_state = NodePath("../Alerted")
+
 [node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely" index="5"]
 collision_mask = 0
 
@@ -946,6 +950,12 @@ material = SubResource("ShaderMaterial_anitv")
 
 [node name="Melisshade" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
 position = Vector2(13, 127)
+
+[node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeFSM" index="7"]
+next_state = NodePath("../FoundRamen")
+
+[node name="FoundRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeFSM" index="8"]
+next_state = NodePath("../Alerted")
 
 [node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade" index="5"]
 collision_mask = 0
@@ -1042,51 +1052,6 @@ offset = Vector2(0.5, 0.5)
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
 position = Vector2(-399, 4)
 
-[node name="Player" parent="." instance=ExtResource("33_e56cj")]
-
-[node name="DashTimer" parent="Player/PlayerFSM/DashPossible" index="1"]
-next_state = NodePath("../CanDash")
-
-[node name="WalkDown" parent="Player/PlayerFSM/Movement/Walk" index="0"]
-next_state = NodePath("../WalkRight")
-
-[node name="WalkRight" parent="Player/PlayerFSM/Movement/Walk" index="1"]
-next_state = NodePath("../WalkUp")
-
-[node name="WalkUp" parent="Player/PlayerFSM/Movement/Walk" index="2"]
-next_state = NodePath("../WalkLeft")
-
-[node name="DashDown" parent="Player/PlayerFSM/Movement/Dash" index="0"]
-next_state = NodePath("../DashRight")
-
-[node name="DashRight" parent="Player/PlayerFSM/Movement/Dash" index="1"]
-next_state = NodePath("../DashUp")
-
-[node name="DashUp" parent="Player/PlayerFSM/Movement/Dash" index="2"]
-next_state = NodePath("../DashLeft")
-
-[node name="AttackUp" parent="Player/PlayerFSM/Movement/AttackMelee" index="0"]
-next_state = NodePath("../AttackRight")
-
-[node name="AttackRight" parent="Player/PlayerFSM/Movement/AttackMelee" index="1"]
-next_state = NodePath("../AttackDown")
-
-[node name="AttackDown" parent="Player/PlayerFSM/Movement/AttackMelee" index="2"]
-next_state = NodePath("../AttackLeft")
-
-[node name="HopUp" parent="Player/PlayerFSM/Movement/Hop" index="0"]
-next_state = NodePath("../HopLeft")
-
-[node name="HopLeft" parent="Player/PlayerFSM/Movement/Hop" index="1"]
-next_state = NodePath("../HopRight")
-
-[node name="HopRight" parent="Player/PlayerFSM/Movement/Hop" index="2"]
-next_state = NodePath("../HopDown")
-
-[node name="PointLight2D" type="PointLight2D" parent="Player"]
-blend_mode = 2
-texture = ExtResource("34_rtr6j")
-
 [connection signal="area_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints/DispensePoint1" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [1]]
 [connection signal="area_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints/DispensePoint2" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [2]]
 [connection signal="area_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints/DispensePoint3" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [3]]
@@ -1097,4 +1062,3 @@ texture = ExtResource("34_rtr6j")
 [editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely"]
 [editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade"]
 [editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse"]
-[editable path="Player"]
