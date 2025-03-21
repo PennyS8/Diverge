@@ -75,5 +75,8 @@ debug_enabled = false
 monitoring = false
 monitorable = false
 
+[node name="SmokeFX" parent="Display" index="1"]
+emitting = true
+
 [node name="Sprite2D" parent="Display" index="2"]
 material = SubResource("ShaderMaterial_buh3d")

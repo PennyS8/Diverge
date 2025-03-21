@@ -32,6 +32,14 @@ position = Vector2(0, -29)
 texture = SubResource("AtlasTexture_wdpv1")
 offset = Vector2(0, 0.5)
 
+[node name="ColorRect" type="ColorRect" parent="."]
+texture_filter = 1
+offset_left = -22.0
+offset_top = -37.0
+offset_right = 23.0
+offset_bottom = -18.0
+color = Color(0, 0.407843, 0.345098, 1)
+
 [node name="Glint" type="CanvasGroup" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_ilx5c")
@@ -43,6 +51,13 @@ clear_margin = 0.0
 material = ExtResource("2_a2ce8")
 texture = SubResource("AtlasTexture_wdpv1")
 offset = Vector2(0, 0.5)
+
+[node name="ColorRect" type="ColorRect" parent="Glint"]
+offset_left = -22.0
+offset_top = -8.0
+offset_right = 23.0
+offset_bottom = 11.0
+color = Color(0, 0.407843, 0.345098, 1)
 
 [node name="ChalkBoard" type="Area2D" parent="."]
 collision_layer = 0
