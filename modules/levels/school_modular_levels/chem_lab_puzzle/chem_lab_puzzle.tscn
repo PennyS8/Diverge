@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://cp53bw4fgv7b2"]
+[gd_scene load_steps=79 format=4 uid="uid://cp53bw4fgv7b2"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_0bwgv"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_beb0c"]
@@ -19,6 +19,7 @@
 [ext_resource type="PackedScene" uid="uid://dg1buhv8sgv7m" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/item_stack_littlefontcrayon.tscn" id="18_fmkvf"]
 [ext_resource type="FontFile" uid="uid://o386rfu4rprn" path="res://assets/fonts/CrayonLibre.ttf" id="18_mor7r"]
 [ext_resource type="PackedScene" uid="uid://0xji2upguay6" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/chalk_board.tscn" id="19_7r4fh"]
+[ext_resource type="StyleBox" uid="uid://cqx3opxr50d2o" path="res://addons/wyvernbox_prefabs/graphics/selected_cell.tres" id="19_246ub"]
 [ext_resource type="PackedScene" uid="uid://wwrw6hyhhicu" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/materials_station.tscn" id="19_n07ws"]
 [ext_resource type="PackedScene" uid="uid://c02hclv07w7cs" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/chem_inventory.tscn" id="20_0jtan"]
 [ext_resource type="Script" uid="uid://bmrc6kgne6fhf" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/entrance_dialogue.gd" id="20_7r4fh"]
@@ -3287,6 +3288,7 @@ offset_bottom = -14.0
 material = ExtResource("1_0bwgv")
 mouse_filter = 2
 item_scene = ExtResource("18_fmkvf")
+selected_item_style = ExtResource("19_246ub")
 
 [node name="Cells" parent="ChemLab/Tiles/Stations/ChalkBoard/Inventory/ChemInventory/Equipment" index="0"]
 use_parent_material = true

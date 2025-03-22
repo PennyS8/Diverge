@@ -10,6 +10,8 @@ func _on_body_entered(body: Node2D) -> void:
 	if !playerNoise:
 		playerNoise = LevelManager.player.get_node("stressEffect")
 	body.dir = Vector2.ZERO
+	if InventoryHelper.is_itemtype_in_inventory(GameManager.inventory_node.inventory, book):
+		iteration = 1
 	match iteration:
 		0:
 			LevelManager.player.enter_cutscene(camera_location.global_position)
@@ -20,4 +22,3 @@ func _on_body_entered(body: Node2D) -> void:
 				playerNoise.hide()
 				DialogueManager.show_dialogue_balloon(dialogue, "complete")
 				self.queue_free()
-	iteration = iteration + 1

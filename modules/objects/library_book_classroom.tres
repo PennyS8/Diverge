@@ -1,18 +1,18 @@
-[gd_resource type="Resource" script_class="ItemType" load_steps=3 format=3 uid="uid://ruaqo31f3ul2"]
+[gd_resource type="Resource" script_class="ItemType" load_steps=3 format=3 uid="uid://cw25ojt8dsl75"]
 
 [ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="1_6a80n"]
-[ext_resource type="Texture2D" uid="uid://bynsv2a0huw21" path="res://assets/environment/downtown_dungeon/custom_sprites/generic_book.png" id="2_cj440"]
+[ext_resource type="Texture2D" uid="uid://cli3h77rpylrd" path="res://assets/environment/downtown_dungeon/custom_sprites/class_book.png" id="2_6a80n"]
 
 [resource]
 script = ExtResource("1_6a80n")
 name = "Library Book"
 description = "One of three overdue library books I need to return to the library before I can enter.
 
-I obtained this one after completing my overdue lab in the [color=\"green\"]chemistry lab.[/color]
+I obtained this one after navigating the hell-spawn anxiety devil maze in the [color=\"green\"]classroom.[/color]
 
-It looks like it has some chemical spills on it?"
+It looks like it has a tear or two on it?"
 tags = Array[StringName]([&"book"])
-texture = ExtResource("2_cj440")
+texture = ExtResource("2_6a80n")
 texture_scale = 1.0
 max_stack_count = 1
 in_inventory_width = 1
