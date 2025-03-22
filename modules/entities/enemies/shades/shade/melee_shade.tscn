@@ -403,7 +403,7 @@ _data = {
 &"RESET": SubResource("Animation_0l2b6")
 }
 
-[node name="MeleeShade" type="CharacterBody2D" groups=["enemy", "saved_data", "tetherable_body"]]
+[node name="MeleeShade" type="CharacterBody2D" groups=["enemy", "tetherable_body"]]
 z_index = 1
 y_sort_enabled = true
 material = ExtResource("1_1u68j")
