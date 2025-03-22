@@ -57,6 +57,7 @@ func _on_item_body_entered(body: Node2D) -> void:
 		var deinv = GameManager.inventory_node.inventory
 		$Item.try_pickup(deinv)
 		dispenser_node.player_got_ramen()
+		deinv.save_state("player_inventory")
 		queue_free()
 		
 	

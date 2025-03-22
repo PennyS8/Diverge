@@ -48,6 +48,7 @@ Juniper: I've got some ramen...
 	Shaded Figure: it's a good one! i keep forgetting to return it so it's probably better in your hands.
 	do table_book.hide()
 	Juniper: [i] I got one of the three books I need! [/i]
+	do GameManager.inventory_node.inventory.save_state("player_inventory")
 	=> END
 - But I think I'll keep it.
 	Shaded Figure: oh, alright. but, now that you mention it, those noodles sound pretty good.
