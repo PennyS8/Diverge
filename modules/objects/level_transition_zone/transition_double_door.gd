@@ -43,9 +43,13 @@ func check_keys():
 	if !inv:
 		inv = GameManager.inventory_node.inventory
 	
-	if inv.has_items(keys_needed, count_dict):
-		return true
-	else: return false
+	var all_counts = inv.count_all_items()
+	for key in keys_needed:
+		if !all_counts.has(key):
+			return false
+		if all_counts[key] < 1:
+			return false
+	return true
 	
 func you_shall_pass():
 	var dir = DirAccess.open("user://")
