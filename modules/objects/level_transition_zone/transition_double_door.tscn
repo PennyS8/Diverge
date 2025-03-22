@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://bme0largcnr4h"]
+[gd_scene load_steps=11 format=3 uid="uid://bme0largcnr4h"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_a8bu3"]
 [ext_resource type="Script" uid="uid://jdbescwh43bj" path="res://modules/objects/level_transition_zone/transition_double_door.gd" id="1_pilwa"]
 [ext_resource type="Texture2D" uid="uid://inw5h7c1ds0q" path="res://modules/objects/school_dungeon/key_doubledoor_blue/school_keydoubledoor_locked_blue.png" id="2_pilwa"]
 [ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="3_r7ma5"]
+[ext_resource type="Texture2D" uid="uid://hj1bru2y4txy" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_C.png" id="4_r7ma5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2upq"]
 size = Vector2(48, 24)
@@ -11,6 +12,14 @@ size = Vector2(48, 24)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5plkm"]
 radius = 12.0
 height = 48.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2upq"]
+atlas = ExtResource("4_r7ma5")
+region = Rect2(18, 288, 6, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5plkm"]
+atlas = ExtResource("4_r7ma5")
+region = Rect2(48, 288, 6, 48)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_x4p05"]
 shader = ExtResource("3_r7ma5")
@@ -43,6 +52,20 @@ texture_filter = 2
 material = ExtResource("1_a8bu3")
 position = Vector2(0, -24)
 texture = ExtResource("2_pilwa")
+region_rect = Rect2(0, 112, 32, 96)
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+texture_filter = 2
+material = ExtResource("1_a8bu3")
+position = Vector2(-27, -24)
+texture = SubResource("AtlasTexture_b2upq")
+region_rect = Rect2(0, 112, 32, 96)
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+texture_filter = 2
+material = ExtResource("1_a8bu3")
+position = Vector2(27, -24)
+texture = SubResource("AtlasTexture_5plkm")
 region_rect = Rect2(0, 112, 32, 96)
 
 [node name="Glint" type="CanvasGroup" parent="."]
