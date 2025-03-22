@@ -160,7 +160,9 @@ func show_character(character_name: String) -> void:
 	var soundpath = "res://modules/dialogue/character/%s/talk.wav" % character_name.to_lower()
 	if FileAccess.file_exists(soundpath):
 		talk_sound = load(soundpath)
-	
+	else:
+		talk_sound = load("res://modules/dialogue/portrait_balloon/talk.wav")
+		
 	var portraitpath = "res://modules/dialogue/character/%s/portrait.tscn" % character_name.to_lower()
 	if FileAccess.file_exists(portraitpath):
 		var portrait_scene: PackedScene = load(portraitpath)
