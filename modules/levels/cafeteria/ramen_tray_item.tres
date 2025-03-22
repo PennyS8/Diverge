@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemType" load_steps=3 format=3 uid="uid://ddkfnyew6hgco"]
 
-[ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="1_vf8e1"]
+[ext_resource type="Script" uid="uid://gqwsqi3kosag" path="res://addons/wyvernbox/item_type.gd" id="1_vf8e1"]
 [ext_resource type="Texture2D" uid="uid://xif0g3urgtv1" path="res://assets/environment/downtown_dungeon/custom_sprites/ramen.png" id="2_08d4m"]
 
 [resource]
