@@ -1,26 +1,35 @@
-[gd_scene load_steps=12 format=3 uid="uid://d3sf450spmn7n"]
+[gd_scene load_steps=15 format=3 uid="uid://d3sf450spmn7n"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_8ekeg"]
 [ext_resource type="Script" uid="uid://cwy011go7t5hu" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/burner_station.gd" id="2_w0sba"]
 [ext_resource type="Texture2D" uid="uid://bdt8ath5tkth" path="res://assets/environment/downtown_dungeon/custom_sprites/chem_table_1.png" id="3_x1byi"]
 [ext_resource type="Texture2D" uid="uid://be3amrdk8btgi" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior_C.png" id="4_i0qio"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="5_3ht4c"]
+[ext_resource type="Texture2D" uid="uid://bv5b4hkv5byij" path="res://assets/environment/BDragon1727/All_Fire_Bullet_Pixel_16x16.png" id="5_w0sba"]
 [ext_resource type="Material" uid="uid://y5hi1gddgtr5" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glintshader.tres" id="6_8ekeg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_je3f8"]
 size = Vector2(48, 20)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_hjke7"]
-atlas = ExtResource("4_i0qio")
-region = Rect2(349, 208, 8, 5)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_oty1h"]
 atlas = ExtResource("4_i0qio")
-region = Rect2(148, 278, 16, 12)
+region = Rect2(148, 278, 7, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x1byi"]
+atlas = ExtResource("4_i0qio")
+region = Rect2(156, 278, 8, 12)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3ht4c"]
+atlas = ExtResource("5_w0sba")
+region = Rect2(301, 299, 9, 9)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ttj2h"]
 atlas = ExtResource("5_3ht4c")
 region = Rect2(281, 312, 7, 10)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i0qio"]
+atlas = ExtResource("5_w0sba")
+region = Rect2(97, 166, 6, 7)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bhhqs"]
 radius = 24.0
@@ -43,27 +52,43 @@ shape = SubResource("RectangleShape2D_je3f8")
 [node name="Station" type="Node2D" parent="."]
 position = Vector2(13, -21)
 
-[node name="Burner" type="Sprite2D" parent="Station"]
-material = ExtResource("1_8ekeg")
-texture = SubResource("AtlasTexture_hjke7")
-
 [node name="Burner2" type="Sprite2D" parent="Station"]
 material = ExtResource("1_8ekeg")
+position = Vector2(-5, 1)
 texture = SubResource("AtlasTexture_oty1h")
+offset = Vector2(0.5, 0)
+
+[node name="Burner3" type="Sprite2D" parent="Station"]
+material = ExtResource("1_8ekeg")
+position = Vector2(3, 1)
+texture = SubResource("AtlasTexture_x1byi")
+
+[node name="Flame4" type="Sprite2D" parent="Station"]
+material = ExtResource("1_8ekeg")
+position = Vector2(-0.5, -2)
+rotation = 1.5708
+texture = SubResource("AtlasTexture_3ht4c")
+offset = Vector2(0.5, 0)
 
 [node name="Flask" type="Sprite2D" parent="Station"]
 material = ExtResource("1_8ekeg")
-position = Vector2(0, -4)
+position = Vector2(-0.5, -4)
 texture = SubResource("AtlasTexture_ttj2h")
+
+[node name="Flame3" type="Sprite2D" parent="Station"]
+material = ExtResource("1_8ekeg")
+position = Vector2(-0.5, 1)
+rotation = 1.5708
+texture = SubResource("AtlasTexture_i0qio")
 
 [node name="Flask2" type="Sprite2D" parent="Station"]
 material = ExtResource("1_8ekeg")
-position = Vector2(16.5, -5)
+position = Vector2(14, 0)
 texture = SubResource("AtlasTexture_ttj2h")
 
 [node name="Flask3" type="Sprite2D" parent="Station"]
 material = ExtResource("1_8ekeg")
-position = Vector2(24, 0)
+position = Vector2(21, -5)
 texture = SubResource("AtlasTexture_ttj2h")
 
 [node name="Glint" type="CanvasGroup" parent="."]
@@ -76,27 +101,43 @@ clear_margin = 0.0
 [node name="Station" type="Node2D" parent="Glint"]
 position = Vector2(5, -22)
 
-[node name="Burner" type="Sprite2D" parent="Glint/Station"]
-material = ExtResource("1_8ekeg")
-texture = SubResource("AtlasTexture_hjke7")
-
 [node name="Burner2" type="Sprite2D" parent="Glint/Station"]
 material = ExtResource("1_8ekeg")
+position = Vector2(-5, 1)
 texture = SubResource("AtlasTexture_oty1h")
+offset = Vector2(0.5, 0)
+
+[node name="Burner3" type="Sprite2D" parent="Glint/Station"]
+material = ExtResource("1_8ekeg")
+position = Vector2(3, 1)
+texture = SubResource("AtlasTexture_x1byi")
+
+[node name="Flame4" type="Sprite2D" parent="Glint/Station"]
+material = ExtResource("1_8ekeg")
+position = Vector2(-0.5, -2)
+rotation = 1.5708
+texture = SubResource("AtlasTexture_3ht4c")
+offset = Vector2(0.5, 0)
 
 [node name="Flask" type="Sprite2D" parent="Glint/Station"]
 material = ExtResource("1_8ekeg")
-position = Vector2(0, -4)
+position = Vector2(-0.5, -4)
 texture = SubResource("AtlasTexture_ttj2h")
+
+[node name="Flame3" type="Sprite2D" parent="Glint/Station"]
+material = ExtResource("1_8ekeg")
+position = Vector2(-0.5, 1)
+rotation = 1.5708
+texture = SubResource("AtlasTexture_i0qio")
 
 [node name="Flask2" type="Sprite2D" parent="Glint/Station"]
 material = ExtResource("1_8ekeg")
-position = Vector2(16.5, -5)
+position = Vector2(14, 0)
 texture = SubResource("AtlasTexture_ttj2h")
 
 [node name="Flask3" type="Sprite2D" parent="Glint/Station"]
 material = ExtResource("1_8ekeg")
-position = Vector2(24, 0)
+position = Vector2(21, -5)
 texture = SubResource("AtlasTexture_ttj2h")
 
 [node name="Area2D" type="Area2D" parent="."]
