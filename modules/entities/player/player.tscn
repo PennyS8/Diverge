@@ -43,7 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://d2k5ylavgktxb" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Left_Down.png" id="39_av2sy"]
 [ext_resource type="Texture2D" uid="uid://bqlnm1rdma2s0" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Right.png" id="42_ixb32"]
 [ext_resource type="Texture2D" uid="uid://benoslp55jhin" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Up.png" id="43_fgoev"]
-[ext_resource type="Shader" uid="uid://cay2138tmvvxx" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
+[ext_resource type="Shader" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
@@ -1189,7 +1189,7 @@ target_path = NodePath("")
 timed = true
 waiting_time = 0.5
 on_timer_finished = 3
-next_state = NodePath("")
+next_state = NodePath("../CanDash")
 
 [node name="CanDash" type="Node" parent="PlayerFSM/DashPossible"]
 script = ExtResource("5_parbs")
@@ -1273,7 +1273,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../WalkRight")
 
 [node name="WalkRight" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -1285,7 +1285,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../WalkUp")
 
 [node name="WalkUp" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -1297,7 +1297,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../WalkLeft")
 
 [node name="WalkLeft" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -1334,7 +1334,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../DashRight")
 
 [node name="DashRight" type="Node" parent="PlayerFSM/Movement/Dash"]
 script = ExtResource("12_e6mu1")
@@ -1346,7 +1346,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../DashUp")
 
 [node name="DashUp" type="Node" parent="PlayerFSM/Movement/Dash"]
 script = ExtResource("12_e6mu1")
@@ -1358,7 +1358,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../DashLeft")
 
 [node name="DashLeft" type="Node" parent="PlayerFSM/Movement/Dash"]
 script = ExtResource("12_e6mu1")
@@ -1437,7 +1437,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../AttackRight")
 
 [node name="AttackRight" type="Node" parent="PlayerFSM/Movement/AttackMelee"]
 script = ExtResource("12_e6mu1")
@@ -1449,7 +1449,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../AttackDown")
 
 [node name="AttackDown" type="Node" parent="PlayerFSM/Movement/AttackMelee"]
 script = ExtResource("12_e6mu1")
@@ -1461,7 +1461,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../AttackLeft")
 
 [node name="AttackLeft" type="Node" parent="PlayerFSM/Movement/AttackMelee"]
 script = ExtResource("12_e6mu1")
@@ -1518,7 +1518,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../HopLeft")
 
 [node name="HopLeft" type="Node" parent="PlayerFSM/Movement/Hop"]
 script = ExtResource("12_e6mu1")
@@ -1530,7 +1530,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../HopRight")
 
 [node name="HopRight" type="Node" parent="PlayerFSM/Movement/Hop"]
 script = ExtResource("12_e6mu1")
@@ -1542,7 +1542,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../HopDown")
 
 [node name="HopDown" type="Node" parent="PlayerFSM/Movement/Hop"]
 script = ExtResource("12_e6mu1")
