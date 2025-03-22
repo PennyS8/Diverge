@@ -158,13 +158,13 @@ func hide_character() -> void:
 func show_character(character_name: String) -> void:
 	if not character_name: return
 	var soundpath = "res://modules/dialogue/character/%s/talk.wav" % character_name.to_lower()
-	if FileAccess.file_exists(soundpath):
+	if ResourceLoader.exists(soundpath):
 		talk_sound = load(soundpath)
 	else:
 		talk_sound = load("res://modules/dialogue/portrait_balloon/talk.wav")
 		
 	var portraitpath = "res://modules/dialogue/character/%s/portrait.tscn" % character_name.to_lower()
-	if FileAccess.file_exists(portraitpath):
+	if ResourceLoader.exists(portraitpath):
 		var portrait_scene: PackedScene = load(portraitpath)
 		
 		%PortraitBox.show()
