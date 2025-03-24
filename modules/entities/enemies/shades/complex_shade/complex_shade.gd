@@ -13,7 +13,7 @@ var default_position
 @onready var nav_agent = %NavAgent
 
 func on_save_game(saved_data:Array[SavedData]):
-	if $HealthComponent.health <= 0: 
+	if %Health.health <= 0: 
 		return
 	
 	var my_data = SavedData.new()
@@ -34,22 +34,22 @@ func _ready() -> void:
 	default_position = global_position
 
 func _physics_process(_delta: float) -> void:
-	$AgroRegion.look_at(to_global(velocity))
+	%AgroRegion.look_at(to_global(velocity))
 
 func _on_health_component_died() -> void:
 	$ShadeFSM.change_state("Dead")
 
 func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
-	if $HealthComponent.health > 0:
+	if %Health.health > 0:
 		knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
 		$ShadeFSM.change_state("Stunned")
-		$CPUParticles2D.restart()
+		$Display/CPUParticles2D.restart()
 		
 		# If the attacking _area is the players thread apply the tethered status effect
 		if _area.is_in_group("thread"):
 			add_tethered_status()
 	else:
-		$CPUParticles2D.restart()
+		$Display/CPUParticles2D.restart()
 		$ShadeFSM.change_state("Dead")
 
 func _on_agro_region_body_exited(_body):

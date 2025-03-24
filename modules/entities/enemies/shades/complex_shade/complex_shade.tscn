@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_7xwuo"]
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
 [ext_resource type="Texture2D" uid="uid://d4ml0vjhqwsbo" path="res://modules/entities/enemies/shades/ShadeWIP_64x64.png" id="3_g1pll"]
-[ext_resource type="Script" uid="uid://cagepw2wjjl3j" path="res://addons/xsm/state.gd" id="4_e4b7j"]
+[ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="4_e4b7j"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="4_kcpdx"]
 [ext_resource type="Script" uid="uid://bx6jvvpiqokkf" path="res://modules/entities/enemies/shades/complex_shade/xsm/patrol.gd" id="6_2ptfn"]
 [ext_resource type="Script" uid="uid://cxnxkuahbhhlb" path="res://modules/entities/enemies/shades/complex_shade/movement.gd" id="6_twtcd"]
@@ -16,6 +16,18 @@
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_e3xrx"]
+radius = 13.0384
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_36sd6"]
+radius = 36.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xa74g"]
+size = Vector2(24, 39)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_54508"]
+radius = 16.0
+
 [sub_resource type="Gradient" id="Gradient_ih2li"]
 offsets = PackedFloat32Array(0, 0.431487)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
@@ -27,9 +39,6 @@ height = 16
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_36sd6"]
-radius = 36.0
-
 [sub_resource type="Curve" id="Curve_x568u"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
 point_count = 2
@@ -40,19 +49,13 @@ colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
 [sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
 radius = 12.0
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_xa74g"]
-size = Vector2(24, 39)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_54508"]
-radius = 16.0
-
 [sub_resource type="Animation" id="Animation_0nojc"]
 resource_name = "Melee"
 step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HitBoxComponent2D/CollisionShape2D:disabled")
+tracks/0/path = NodePath("BehaviorComponents/AttackBox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -67,7 +70,7 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HitBoxComponent2D/CollisionShape2D:disabled")
+tracks/0/path = NodePath("BehaviorComponents/AttackBox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -79,7 +82,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("HurtBoxComponent2D/CollisionShape2D:disabled")
+tracks/1/path = NodePath("BehaviorComponents/HurtBox/CollisionShape2D:disabled")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -91,7 +94,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:modulate")
+tracks/2/path = NodePath("DisplayComponents/Sprite2D:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -108,7 +111,7 @@ step = 0.5
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("HurtBoxComponent2D/CollisionShape2D:disabled")
+tracks/0/path = NodePath("BehaviorComponents/HurtBox/CollisionShape2D:disabled")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
@@ -125,7 +128,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/path = NodePath("DisplayComponents/Sprite2D:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -157,9 +160,6 @@ _data = {
 &"die": SubResource("Animation_4xl6e")
 }
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_lei1k"]
-radius = 12.0
-
 [node name="ComplexShade" type="CharacterBody2D" groups=["enemy", "saved_data", "tetherable_body"]]
 z_index = 1
 y_sort_enabled = true
@@ -169,57 +169,6 @@ collision_layer = 8
 collision_mask = 87
 motion_mode = 1
 script = ExtResource("2_knfav")
-
-[node name="Shadow" type="Sprite2D" parent="."]
-texture = SubResource("GradientTexture2D_ia2jp")
-
-[node name="AgroRegion" type="Area2D" parent="."]
-unique_name_in_owner = true
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="AgroRegion"]
-polygon = PackedVector2Array(72, 0, 70, -19, 63, -36, 51, -51, 37, -62, 18, -70, 0, -8, 0, 10, 19, 70, 36, 63, 51, 51, 63, 36, 70, 19)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AgroRegion"]
-shape = SubResource("CircleShape2D_36sd6")
-debug_color = Color(0, 0.760784, 0.886275, 0)
-
-[node name="CPUParticles2D2" type="CPUParticles2D" parent="."]
-position = Vector2(0, -12)
-amount = 10
-lifetime = 2.0
-emission_shape = 1
-emission_sphere_radius = 10.0
-particle_flag_align_y = true
-direction = Vector2(0, -1)
-spread = 20.0
-gravity = Vector2(0, -5)
-initial_velocity_min = 10.0
-initial_velocity_max = 10.0
-angle_max = 270.0
-scale_amount_min = 2.0
-scale_amount_max = 2.0
-scale_amount_curve = SubResource("Curve_x568u")
-color = Color(0.214103, 0.214103, 0.214103, 1)
-color_ramp = SubResource("Gradient_00tmr")
-hue_variation_min = -0.51
-hue_variation_max = 1.0
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-texture = ExtResource("3_g1pll")
-offset = Vector2(0, -21)
-region_rect = Rect2(21, 14, 22, 40)
-
-[node name="SoftCollision" parent="." instance=ExtResource("4_kcpdx")]
-unique_name_in_owner = true
-position = Vector2(0, -6)
-
-[node name="CollisionShape" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(0, -6)
-shape = SubResource("CircleShape2D_56qhg")
 
 [node name="ShadeFSM" type="Node" parent="."]
 script = ExtResource("4_e4b7j")
@@ -241,8 +190,8 @@ next_state = NodePath("../StateAnimation")
 [node name="Movement" type="Node" parent="ShadeFSM/Alive" node_paths=PackedStringArray("nav_agent", "soft_collision")]
 editor_description = "The enemy has a location to move towards, whether that be the player or a patrol path."
 script = ExtResource("6_twtcd")
-nav_agent = NodePath("../../../NavAgent")
-soft_collision = NodePath("../../../SoftCollision")
+nav_agent = NodePath("../../../BehaviorComponents/NavAgent")
+soft_collision = NodePath("../../../BehaviorComponents/SoftCollision")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -251,8 +200,7 @@ next_state = NodePath("..")
 
 [node name="Patrol_Idle" type="Node" parent="ShadeFSM/Alive/Movement" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("6_2ptfn")
-nav_agent = NodePath("../../../../NavAgent")
-state_speed = null
+nav_agent = NodePath("../../../../BehaviorComponents/NavAgent")
 sample = null
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = ""
@@ -264,10 +212,6 @@ next_state = NodePath(".")
 
 [node name="Chase" type="Node" parent="ShadeFSM/Alive/Movement"]
 script = ExtResource("7_8fy0v")
-state_speed = null
-sample = null
-animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -293,6 +237,7 @@ next_state = NodePath("../WaitNearPlayer")
 [node name="WaitNearPlayer" type="Node" parent="ShadeFSM/Alive/Movement"]
 editor_description = "This state is for enemies that aren't allowed to engage yet."
 script = ExtResource("9_e3xrx")
+desired_distance = null
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -305,7 +250,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Reaction")
 
 [node name="Attack" type="Node" parent="ShadeFSM/Alive/Combat"]
 script = ExtResource("8_pitir")
@@ -361,42 +306,71 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("10_5ojq5")
-max_health = 20
+[node name="TetherableArea2D" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
 
-[node name="HurtBoxComponent2D" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
+position = Vector2(0, -10)
+shape = SubResource("CircleShape2D_e3xrx")
+
+[node name="BehaviorComponents" type="Node2D" parent="."]
+
+[node name="SoftCollision" parent="BehaviorComponents" instance=ExtResource("4_kcpdx")]
+unique_name_in_owner = true
+position = Vector2(0, -6)
+
+[node name="AgroRegion" type="Area2D" parent="BehaviorComponents"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BehaviorComponents/AgroRegion"]
+polygon = PackedVector2Array(72, 0, 70, -19, 63, -36, 51, -51, 37, -62, 18, -70, 0, -8, 0, 10, 19, 70, 36, 63, 51, 51, 63, 36, 70, 19)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviorComponents/AgroRegion"]
+shape = SubResource("CircleShape2D_36sd6")
+debug_color = Color(0, 0.760784, 0.886275, 0)
+
+[node name="HurtBox" type="Area2D" parent="BehaviorComponents" node_paths=PackedStringArray("health_component")]
+unique_name_in_owner = true
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("11_mqmca")
-health_component = NodePath("../HealthComponent")
+health_component = NodePath("../Health")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviorComponents/HurtBox"]
 position = Vector2(0, -19.5)
 shape = SubResource("RectangleShape2D_xa74g")
 
-[node name="HitBoxComponent2D" type="Area2D" parent="."]
+[node name="AttackBox" type="Area2D" parent="BehaviorComponents"]
+unique_name_in_owner = true
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("12_rteho")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviorComponents/AttackBox"]
 position = Vector2(0, -8)
 shape = SubResource("CircleShape2D_54508")
 disabled = true
 debug_color = Color(1, 0, 1, 0.262745)
 
-[node name="NavAgent" type="NavigationAgent2D" parent="."]
+[node name="Health" type="Node" parent="BehaviorComponents"]
+unique_name_in_owner = true
+script = ExtResource("10_5ojq5")
+max_health = 20
+
+[node name="NavAgent" type="NavigationAgent2D" parent="BehaviorComponents"]
 unique_name_in_owner = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.788235, 0, 0.517647, 1)
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_1um1b")
-}
+[node name="DisplayComponents" type="Node2D" parent="."]
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+[node name="Shadow" type="Sprite2D" parent="DisplayComponents"]
+texture = SubResource("GradientTexture2D_ia2jp")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="DisplayComponents"]
 z_index = 2
 position = Vector2(0, -12)
 emitting = false
@@ -420,15 +394,45 @@ color = Color(0.227451, 0, 0, 1)
 color_ramp = SubResource("Gradient_00tmr")
 hue_variation_max = 0.4
 
-[node name="TetherableArea2D" type="Area2D" parent="."]
-collision_layer = 256
-collision_mask = 0
+[node name="CPUParticles2D2" type="CPUParticles2D" parent="DisplayComponents"]
+position = Vector2(0, -12)
+amount = 10
+lifetime = 2.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angle_max = 270.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_x568u")
+color = Color(0.214103, 0.214103, 0.214103, 1)
+color_ramp = SubResource("Gradient_00tmr")
+hue_variation_min = -0.51
+hue_variation_max = 1.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
-shape = SubResource("CircleShape2D_lei1k")
+[node name="Sprite2D" type="Sprite2D" parent="DisplayComponents"]
+texture_filter = 1
+texture = ExtResource("3_g1pll")
+offset = Vector2(0, -21)
+region_rect = Rect2(21, 14, 22, 40)
 
-[connection signal="body_exited" from="AgroRegion" to="." method="_on_agro_region_body_exited"]
-[connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
-[connection signal="Hit" from="HurtBoxComponent2D" to="." method="_on_hurt_box_component_2d_hit"]
+[node name="CollisionShape" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_56qhg")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_1um1b")
+}
+
 [connection signal="mouse_entered" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_exited"]
+[connection signal="body_exited" from="BehaviorComponents/AgroRegion" to="." method="_on_agro_region_body_exited"]
+[connection signal="Hit" from="BehaviorComponents/HurtBox" to="." method="_on_hurt_box_component_2d_hit"]
+[connection signal="Died" from="BehaviorComponents/Health" to="." method="_on_health_component_died"]

@@ -1,7 +1,8 @@
 @tool
 extends State
 
-
+@export var desired_distance : int
+@onready var nav_agent = %NavAgent
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
@@ -21,7 +22,20 @@ func _after_enter(_args):
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta):
-	pass
+	var enemy_position : Vector2 = target.global_position
+	var player_position : Vector2 = target.follow_object.global_position
+	if player_position.distance_to(enemy_position) < desired_distance:
+		# desired location is straight backward +- 20degrees
+		var desired_location = player_position.direction_to(enemy_position).normalized()
+		desired_location = desired_location * desired_distance
+	else:
+		# desired location a point on circle of radius=desired_distance from player
+		pass
+	
+	# if we've reached our desired point
+	if nav_agent.is_navigation_finished():
+		# chase checks if we can engage; if not, it transitions back to this state
+		change_state("Chase")
 
 
 # This function is called each frame after all the update calls
