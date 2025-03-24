@@ -3,14 +3,14 @@
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_7xwuo"]
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
 [ext_resource type="Texture2D" uid="uid://d4ml0vjhqwsbo" path="res://modules/entities/enemies/shades/ShadeWIP_64x64.png" id="3_g1pll"]
-[ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="4_e4b7j"]
-[ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="4_ga5u4"]
+[ext_resource type="Script" uid="uid://cagepw2wjjl3j" path="res://addons/xsm/state.gd" id="4_e4b7j"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="4_kcpdx"]
-[ext_resource type="Script" uid="uid://bx6jvvpiqokkf" path="res://modules/entities/enemies/shades/complex_shade/xsm/roaming.gd" id="6_2ptfn"]
-[ext_resource type="Script" uid="uid://bfvba1oo0iob7" path="res://modules/entities/enemies/shades/complex_shade/xsm/seeking.gd" id="7_8fy0v"]
-[ext_resource type="Script" uid="uid://d07o421syyh25" path="res://modules/entities/enemies/shades/complex_shade/xsm/melee.gd" id="8_pitir"]
+[ext_resource type="Script" uid="uid://bx6jvvpiqokkf" path="res://modules/entities/enemies/shades/complex_shade/xsm/patrol.gd" id="6_2ptfn"]
+[ext_resource type="Script" uid="uid://cxnxkuahbhhlb" path="res://modules/entities/enemies/shades/complex_shade/movement.gd" id="6_twtcd"]
+[ext_resource type="Script" uid="uid://bfvba1oo0iob7" path="res://modules/entities/enemies/shades/complex_shade/xsm/chase.gd" id="7_8fy0v"]
+[ext_resource type="Script" uid="uid://d07o421syyh25" path="res://modules/entities/enemies/shades/complex_shade/xsm/attack.gd" id="8_pitir"]
 [ext_resource type="Script" uid="uid://dftanwwuon216" path="res://modules/entities/enemies/shades/complex_shade/xsm/stunned.gd" id="9_6lwy3"]
-[ext_resource type="Script" uid="uid://b0iwoais0ilj2" path="res://modules/entities/enemies/shades/complex_shade/xsm/can_attack.gd" id="10_3d4nf"]
+[ext_resource type="Script" uid="uid://cxiitcbiwanvf" path="res://modules/entities/enemies/shades/complex_shade/wait_near_player.gd" id="9_e3xrx"]
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_5ojq5"]
 [ext_resource type="Script" uid="uid://cggi1jq1vgh8q" path="res://modules/entities/enemies/shades/complex_shade/xsm/dead.gd" id="10_m6rex"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
@@ -174,6 +174,7 @@ script = ExtResource("2_knfav")
 texture = SubResource("GradientTexture2D_ia2jp")
 
 [node name="AgroRegion" type="Area2D" parent="."]
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 4
 
@@ -212,6 +213,7 @@ offset = Vector2(0, -21)
 region_rect = Rect2(21, 14, 22, 40)
 
 [node name="SoftCollision" parent="." instance=ExtResource("4_kcpdx")]
+unique_name_in_owner = true
 position = Vector2(0, -6)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
@@ -220,40 +222,39 @@ position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_56qhg")
 
 [node name="ShadeFSM" type="Node" parent="."]
-script = ExtResource("4_ga5u4")
+script = ExtResource("4_e4b7j")
 history_size = 0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("Alive/Movement/Patrol_Idle")
 
-[node name="Movement" type="Node" parent="ShadeFSM"]
+[node name="Alive" type="Node" parent="ShadeFSM"]
 script = ExtResource("4_e4b7j")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../StateAnimation")
 
-[node name="Roaming" type="Node" parent="ShadeFSM/Movement" node_paths=PackedStringArray("nav_agent")]
-script = ExtResource("6_2ptfn")
-nav_agent = NodePath("../../../NavigationAgent2D")
-sample = null
-animation_player = NodePath("../../../AnimationPlayer")
-anim_on_enter = ""
+[node name="Movement" type="Node" parent="ShadeFSM/Alive" node_paths=PackedStringArray("nav_agent", "soft_collision")]
+editor_description = "The enemy has a location to move towards, whether that be the player or a patrol path."
+script = ExtResource("6_twtcd")
+nav_agent = NodePath("../../../NavAgent")
+soft_collision = NodePath("../../../SoftCollision")
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Roaming")
+next_state = NodePath("..")
 
-[node name="Seeking" type="Node" parent="ShadeFSM/Movement" node_paths=PackedStringArray("nav_agent")]
-script = ExtResource("7_8fy0v")
-nav_agent = NodePath("../../../NavigationAgent2D")
-movement_speed = 30.0
+[node name="Patrol_Idle" type="Node" parent="ShadeFSM/Alive/Movement" node_paths=PackedStringArray("nav_agent")]
+script = ExtResource("6_2ptfn")
+nav_agent = NodePath("../../../../NavAgent")
+state_speed = null
 sample = null
-animation_player = NodePath("../../../AnimationPlayer")
+animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = ""
 disabled = false
 debug_mode = false
@@ -261,10 +262,55 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath(".")
 
-[node name="Melee" type="Node" parent="ShadeFSM/Movement"]
+[node name="Chase" type="Node" parent="ShadeFSM/Alive/Movement"]
+script = ExtResource("7_8fy0v")
+state_speed = null
+sample = null
+animation_player = NodePath("../../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath(".")
+
+[node name="Evade" type="Node" parent="ShadeFSM/Alive/Movement"]
+script = ExtResource("4_e4b7j")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../ReturnToPost")
+
+[node name="ReturnToPost" type="Node" parent="ShadeFSM/Alive/Movement"]
+script = ExtResource("4_e4b7j")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../WaitNearPlayer")
+
+[node name="WaitNearPlayer" type="Node" parent="ShadeFSM/Alive/Movement"]
+editor_description = "This state is for enemies that aren't allowed to engage yet."
+script = ExtResource("9_e3xrx")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="Combat" type="Node" parent="ShadeFSM/Alive"]
+script = ExtResource("4_e4b7j")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="Attack" type="Node" parent="ShadeFSM/Alive/Combat"]
 script = ExtResource("8_pitir")
 sample = null
-animation_player = NodePath("../../../AnimationPlayer")
+animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "Melee"
 loop_mode = 0
 on_finished = 1
@@ -272,12 +318,20 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Seeking")
+next_state = NodePath("../../Movement/Chase")
 
-[node name="Stunned" type="Node" parent="ShadeFSM/Movement"]
+[node name="Reaction" type="Node" parent="ShadeFSM/Alive"]
+script = ExtResource("4_e4b7j")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="Stunned" type="Node" parent="ShadeFSM/Alive/Reaction"]
 script = ExtResource("9_6lwy3")
 sample = null
-animation_player = NodePath("../../../AnimationPlayer")
+animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "Stunned"
 loop_mode = 0
 on_finished = 1
@@ -285,39 +339,22 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Roaming")
+next_state = NodePath("../../Movement/Patrol_Idle")
 
-[node name="Dead" type="Node" parent="ShadeFSM/Movement"]
+[node name="Surprised" type="Node" parent="ShadeFSM/Alive/Reaction"]
+script = ExtResource("4_e4b7j")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="Dead" type="Node" parent="ShadeFSM"]
 script = ExtResource("10_m6rex")
-sample = null
-animation_player = NodePath("../../../AnimationPlayer")
+animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "die"
 loop_mode = 0
-on_finished = 1
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("")
-
-[node name="AttackPossible" type="Node" parent="ShadeFSM"]
-script = ExtResource("4_e4b7j")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("")
-
-[node name="NoAttack" type="Node" parent="ShadeFSM/AttackPossible"]
-script = ExtResource("4_e4b7j")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath(".")
-
-[node name="CanAttack" type="Node" parent="ShadeFSM/AttackPossible"]
-script = ExtResource("10_3d4nf")
+on_finished = 0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -349,7 +386,8 @@ shape = SubResource("CircleShape2D_54508")
 disabled = true
 debug_color = Color(1, 0, 1, 0.262745)
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+[node name="NavAgent" type="NavigationAgent2D" parent="."]
+unique_name_in_owner = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.788235, 0, 0.517647, 1)
 

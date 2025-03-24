@@ -1,13 +1,16 @@
 extends TetherableBody
 
-@export var hitpoints = 20
-@export var movement_speed : float = 30.0
+## this value acts as the "current movement speed" - to change the speed of individual[br]
+## states, change the state_movespeed variable on the cooresponding state
+var movement_speed : float = 30.0
 
-var follow_target
+var follow_object
 var knockback : Vector2 = Vector2.ZERO
 var crowd_control := false
 
 var default_position
+
+@onready var nav_agent = %NavAgent
 
 func on_save_game(saved_data:Array[SavedData]):
 	if $HealthComponent.health <= 0: 
@@ -50,7 +53,7 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 		$ShadeFSM.change_state("Dead")
 
 func _on_agro_region_body_exited(_body):
-	follow_target = null
+	follow_object = null
 	$ShadeFSM.change_state("Roaming")
 
 func _on_tetherable_area_2d_mouse_entered() -> void:
@@ -58,3 +61,7 @@ func _on_tetherable_area_2d_mouse_entered() -> void:
 
 func _on_tetherable_area_2d_mouse_exited() -> void:
 	deselect()
+
+# called by movement substates to set the end pos
+func set_movement_goal(target_pos: Vector2):
+	nav_agent.target_position = target_pos
