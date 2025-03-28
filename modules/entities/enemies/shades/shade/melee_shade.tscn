@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://bpgun2i5o6ru"]
 
-[ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="1_0ntyj"]
+[ext_resource type="Script" uid="uid://cagepw2wjjl3j" path="res://addons/xsm/state.gd" id="1_0ntyj"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_1u68j"]
 [ext_resource type="Script" uid="uid://cxw1ndyc6mkbk" path="res://modules/entities/enemies/shades/shade.gd" id="1_305ye"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="2_7t42n"]

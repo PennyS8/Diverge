@@ -2,6 +2,7 @@
 extends State
 
 @export var desired_distance : int
+@export var state_speed : float
 @onready var nav_agent = %NavAgent
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
@@ -10,7 +11,7 @@ extends State
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args):
-	pass
+	target.movement_speed = state_speed
 
 
 # This function is called just after the state enters
@@ -29,7 +30,7 @@ func _on_update(_delta):
 		# desired location is straight backward +- 20degrees
 		var desired_location = player_position.direction_to(enemy_position).normalized()
 		desired_location = desired_location * (desired_distance-player_distance)
-		target.set_movement_goal(desired_location)
+		target.set_movement_goal(target.to_local(desired_location))
 
 	else:
 		# desired location a point on circle of radius=desired_distance from player

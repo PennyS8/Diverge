@@ -52,9 +52,9 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 		$DisplayComponents/CPUParticles2D.restart()
 		$ShadeFSM.change_state("Dead")
 
-func _on_agro_region_body_exited(_body):
-	follow_object = null
-	$ShadeFSM.change_state("Roaming")
+#func _on_agro_region_body_exited(_body):
+	#follow_object = null
+	#$ShadeFSM.change_state("Roaming")
 
 func _on_tetherable_area_2d_mouse_entered() -> void:
 	select()
