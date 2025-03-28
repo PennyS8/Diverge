@@ -24,14 +24,18 @@ func _after_enter(_args):
 func _on_update(_delta):
 	var enemy_position : Vector2 = target.global_position
 	var player_position : Vector2 = target.follow_object.global_position
-	if player_position.distance_to(enemy_position) < desired_distance:
+	var player_distance : float = player_position.distance_to(enemy_position)
+	if player_distance < desired_distance:
 		# desired location is straight backward +- 20degrees
 		var desired_location = player_position.direction_to(enemy_position).normalized()
-		desired_location = desired_location * desired_distance
+		desired_location = desired_location * (desired_distance-player_distance)
+		target.set_movement_goal(desired_location)
+
 	else:
 		# desired location a point on circle of radius=desired_distance from player
 		pass
 	
+
 	# if we've reached our desired point
 	if nav_agent.is_navigation_finished():
 		# chase checks if we can engage; if not, it transitions back to this state

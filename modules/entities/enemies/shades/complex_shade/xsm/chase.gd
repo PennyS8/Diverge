@@ -28,7 +28,7 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	target.set_movement_target(target.follow_object)
+	target.set_movement_goal(target.follow_object.global_position)
 
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root

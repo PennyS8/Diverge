@@ -1,5 +1,5 @@
 @tool
-extends StateSound
+extends State
 
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES

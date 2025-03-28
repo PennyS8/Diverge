@@ -43,13 +43,13 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	if %Health.health > 0:
 		knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
 		$ShadeFSM.change_state("Stunned")
-		$Display/CPUParticles2D.restart()
+		$DisplayComponents/CPUParticles2D.restart()
 		
 		# If the attacking _area is the players thread apply the tethered status effect
 		if _area.is_in_group("thread"):
 			add_tethered_status()
 	else:
-		$Display/CPUParticles2D.restart()
+		$DisplayComponents/CPUParticles2D.restart()
 		$ShadeFSM.change_state("Dead")
 
 func _on_agro_region_body_exited(_body):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dx5na7ufncxg3"]
+[gd_scene load_steps=35 format=3 uid="uid://dx5na7ufncxg3"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_7xwuo"]
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
@@ -13,8 +13,10 @@
 [ext_resource type="Script" uid="uid://cxiitcbiwanvf" path="res://modules/entities/enemies/shades/complex_shade/wait_near_player.gd" id="9_e3xrx"]
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_5ojq5"]
 [ext_resource type="Script" uid="uid://cggi1jq1vgh8q" path="res://modules/entities/enemies/shades/complex_shade/xsm/dead.gd" id="10_m6rex"]
+[ext_resource type="Script" uid="uid://d1od6kbhhnppb" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
+[ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_dnu80"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3xrx"]
 radius = 13.0384
@@ -27,6 +29,9 @@ size = Vector2(24, 39)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_54508"]
 radius = 16.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dnu80"]
+radius = 25.0
 
 [sub_resource type="Gradient" id="Gradient_ih2li"]
 offsets = PackedFloat32Array(0, 0.431487)
@@ -45,6 +50,10 @@ point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_00tmr"]
 colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ces7d"]
+font = ExtResource("17_dnu80")
+font_color = Color(0.180392, 0, 0.384314, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
 radius = 12.0
@@ -152,12 +161,64 @@ tracks/1/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_dnu80"]
+resource_name = "surprise_2"
+length = 0.8
+step = 0.01
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DisplayComponents/Exclaim:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.02),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-19, -60)]
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DisplayComponents/Sprite2D:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 3, 2),
+"points": PackedFloat32Array(0, 0, 0, 0.05, 0, -6, -0.0375, 0, 0.0375, 0, -0.45909, -0.0333333, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DisplayComponents/Shadow:texture:width")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(2, 2, 2),
+"points": PackedFloat32Array(48, 0, 0, 0.0333333, 0, 40, -0.0333333, 0, 0.0333333, 0, 48, -0.0333333, 0, 0, 0),
+"times": PackedFloat32Array(0, 0.1, 0.2)
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DisplayComponents/Exclaim:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
 _data = {
 &"Melee": SubResource("Animation_0nojc"),
 &"RESET": SubResource("Animation_6qj3b"),
 &"Stunned": SubResource("Animation_741tg"),
-&"die": SubResource("Animation_4xl6e")
+&"die": SubResource("Animation_4xl6e"),
+&"surprise_2": SubResource("Animation_dnu80")
 }
 
 [node name="ComplexShade" type="CharacterBody2D" groups=["enemy", "saved_data", "tetherable_body"]]
@@ -201,9 +262,7 @@ next_state = NodePath("..")
 [node name="Patrol_Idle" type="Node" parent="ShadeFSM/Alive/Movement" node_paths=PackedStringArray("nav_agent")]
 script = ExtResource("6_2ptfn")
 nav_agent = NodePath("../../../../BehaviorComponents/NavAgent")
-sample = null
-animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = ""
+state_speed = 10.0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -212,11 +271,13 @@ next_state = NodePath(".")
 
 [node name="Chase" type="Node" parent="ShadeFSM/Alive/Movement"]
 script = ExtResource("7_8fy0v")
+state_speed = 30.0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath(".")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
 [node name="Evade" type="Node" parent="ShadeFSM/Alive/Movement"]
 script = ExtResource("4_e4b7j")
@@ -224,7 +285,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../ReturnToPost")
+next_state = NodePath("../State")
 
 [node name="ReturnToPost" type="Node" parent="ShadeFSM/Alive/Movement"]
 script = ExtResource("4_e4b7j")
@@ -232,17 +293,16 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../WaitNearPlayer")
+next_state = NodePath("../State")
 
 [node name="WaitNearPlayer" type="Node" parent="ShadeFSM/Alive/Movement"]
 editor_description = "This state is for enemies that aren't allowed to engage yet."
 script = ExtResource("9_e3xrx")
-desired_distance = null
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../State")
 
 [node name="Combat" type="Node" parent="ShadeFSM/Alive"]
 script = ExtResource("4_e4b7j")
@@ -250,15 +310,19 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Reaction")
+next_state = NodePath("")
+
+[node name="ChargeAttack" type="Node" parent="ShadeFSM/Alive/Combat"]
+script = ExtResource("4_e4b7j")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../../Movement/Chase")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
 [node name="Attack" type="Node" parent="ShadeFSM/Alive/Combat"]
 script = ExtResource("8_pitir")
-sample = null
-animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "Melee"
-loop_mode = 0
-on_finished = 1
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -275,11 +339,6 @@ next_state = NodePath("")
 
 [node name="Stunned" type="Node" parent="ShadeFSM/Alive/Reaction"]
 script = ExtResource("9_6lwy3")
-sample = null
-animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "Stunned"
-loop_mode = 0
-on_finished = 1
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -287,12 +346,16 @@ timed = false
 next_state = NodePath("../../Movement/Patrol_Idle")
 
 [node name="Surprised" type="Node" parent="ShadeFSM/Alive/Reaction"]
-script = ExtResource("4_e4b7j")
+script = ExtResource("10_twtcd")
+animation_player = NodePath("../../../../AnimationPlayer")
+anim_on_enter = "surprise_2"
+loop_mode = 0
+on_finished = 1
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../../Movement/Chase")
 
 [node name="Dead" type="Node" parent="ShadeFSM"]
 script = ExtResource("10_m6rex")
@@ -307,7 +370,7 @@ timed = false
 next_state = NodePath("")
 
 [node name="TetherableArea2D" type="Area2D" parent="."]
-collision_layer = 256
+collision_layer = 0
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
@@ -322,6 +385,7 @@ position = Vector2(0, -6)
 
 [node name="AgroRegion" type="Area2D" parent="BehaviorComponents"]
 unique_name_in_owner = true
+visible = false
 collision_layer = 0
 collision_mask = 4
 
@@ -330,10 +394,11 @@ polygon = PackedVector2Array(72, 0, 70, -19, 63, -36, 51, -51, 37, -62, 18, -70,
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviorComponents/AgroRegion"]
 shape = SubResource("CircleShape2D_36sd6")
-debug_color = Color(0, 0.760784, 0.886275, 0)
+debug_color = Color(0.6, 0.215686, 0.2, 0.619608)
 
 [node name="HurtBox" type="Area2D" parent="BehaviorComponents" node_paths=PackedStringArray("health_component")]
 unique_name_in_owner = true
+visible = false
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("11_mqmca")
@@ -345,6 +410,7 @@ shape = SubResource("RectangleShape2D_xa74g")
 
 [node name="AttackBox" type="Area2D" parent="BehaviorComponents"]
 unique_name_in_owner = true
+visible = false
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("12_rteho")
@@ -364,6 +430,15 @@ max_health = 20
 unique_name_in_owner = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.788235, 0, 0.517647, 1)
+
+[node name="AttackDetector" type="Area2D" parent="BehaviorComponents"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviorComponents/AttackDetector"]
+shape = SubResource("CircleShape2D_dnu80")
+debug_color = Color(0.851987, 0.000843636, 0.895261, 0.42)
 
 [node name="DisplayComponents" type="Node2D" parent="."]
 
@@ -420,6 +495,20 @@ texture_filter = 1
 texture = ExtResource("3_g1pll")
 offset = Vector2(0, -21)
 region_rect = Rect2(21, 14, 22, 40)
+
+[node name="Exclaim" type="Label" parent="DisplayComponents"]
+unique_name_in_owner = true
+offset_left = -19.0
+offset_top = -60.0
+offset_right = 21.0
+offset_bottom = -37.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "!"
+label_settings = SubResource("LabelSettings_ces7d")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 visible = false

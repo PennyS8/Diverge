@@ -43,7 +43,7 @@
 [ext_resource type="Texture2D" uid="uid://d2k5ylavgktxb" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Left_Down.png" id="39_av2sy"]
 [ext_resource type="Texture2D" uid="uid://bqlnm1rdma2s0" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Right.png" id="42_ixb32"]
 [ext_resource type="Texture2D" uid="uid://benoslp55jhin" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Up.png" id="43_fgoev"]
-[ext_resource type="Shader" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
+[ext_resource type="Shader" uid="uid://d0p05imkhnhst" path="res://modules/objects/stress_causer/stress_effect.gdshader" id="44_5jg5w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
@@ -1143,8 +1143,12 @@ b = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5jg5w"]
 shader = ExtResource("44_5jg5w")
-shader_parameter/band_strength = 2.0
-shader_parameter/noise_intensity = 0.05
+shader_parameter/r_displacement = Vector2(16, 0)
+shader_parameter/g_displacement = Vector2(-12, 0)
+shader_parameter/b_displacement = Vector2(7, 0)
+shader_parameter/height = 0.4
+shader_parameter/width = 0.2
+shader_parameter/fade = 0.4
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
@@ -1628,16 +1632,22 @@ collision_mask = 512
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("SegmentShape2D_rc6ld")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-radius = 8.0
-
 [node name="stressEffect" type="ColorRect" parent="."]
 visible = false
+z_index = 3
 material = SubResource("ShaderMaterial_5jg5w")
-offset_left = -950.0
-offset_top = -546.0
-offset_right = 970.0
-offset_bottom = 534.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -480.0
+offset_top = -240.0
+offset_right = 480.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+radius = 8.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]

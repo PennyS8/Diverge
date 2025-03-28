@@ -1,5 +1,5 @@
 @tool
-extends State
+extends StateAnimation
 
 
 #
@@ -10,6 +10,7 @@ extends State
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	pass
+
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
@@ -39,6 +40,7 @@ func _before_exit(_args) -> void:
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
 	pass
+
 
 # when StateAutomaticTimer timeout()
 func _state_timeout() -> void:

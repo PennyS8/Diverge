@@ -14,19 +14,11 @@ extends State
 func _on_enter(_args):
 	pass
 
-
-# This function is called just after the state enters
-# XSM after_enters the children first, then the parent
-func _after_enter(_args):
-	pass
-
-
-# This function is called each frame if the state is ACTIVE
-# XSM updates the root first, then the children
 func _on_update(_delta):
-	pass
-
-
+	var bodies = %AttackDetector.get_overlapping_bodies()
+	if bodies != []:
+		pass
+	
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root
 func _after_update(_delta):

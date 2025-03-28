@@ -1,6 +1,6 @@
 [gd_scene load_steps=40 format=3 uid="uid://bpgun2i5o6ru"]
 
-[ext_resource type="Script" uid="uid://cagepw2wjjl3j" path="res://addons/xsm/state.gd" id="1_0ntyj"]
+[ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="1_0ntyj"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_1u68j"]
 [ext_resource type="Script" uid="uid://cxw1ndyc6mkbk" path="res://modules/entities/enemies/shades/shade.gd" id="1_305ye"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="2_7t42n"]
@@ -20,6 +20,7 @@
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_i2khm"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="17_jlwt1"]
 [ext_resource type="LabelSettings" uid="uid://li7joahtc8st" path="res://modules/entities/enemies/shades/shade/starstun.tres" id="19_61njc"]
+[ext_resource type="Animation" uid="uid://dvkemfiwl1mh8" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprise.res" id="20_rpbg0"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
 radius = 6.0
@@ -321,57 +322,6 @@ tracks/1/keys = {
 }]
 }
 
-[sub_resource type="Animation" id="Animation_61njc"]
-resource_name = "surprise"
-length = 0.8
-step = 0.01
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Display/Exclaim:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-19, -44)]
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Display/Sprite2D:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 3, 2),
-"points": PackedFloat32Array(0, 0, 0, 0.05, 0, -6, -0.0375, 0, 0.0375, 0, -0.45909, -0.0333333, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.1, 0.2)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Display/Shadow:texture:width")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(2, 2, 2),
-"points": PackedFloat32Array(48, 0, 0, 0.0333333, 0, 40, -0.0333333, 0, 0.0333333, 0, 48, -0.0333333, 0, 0, 0),
-"times": PackedFloat32Array(0, 0.1, 0.2)
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Display/Exclaim:visible")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.3),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
 _data = {
 &"ChargeMelee": SubResource("Animation_165la"),
@@ -379,7 +329,7 @@ _data = {
 &"RESET": SubResource("Animation_6qj3b"),
 &"Stunned": SubResource("Animation_741tg"),
 &"die": SubResource("Animation_4xl6e"),
-&"surprise": SubResource("Animation_61njc")
+&"surprise": ExtResource("20_rpbg0")
 }
 
 [sub_resource type="Animation" id="Animation_0l2b6"]
@@ -538,7 +488,6 @@ path_desired_distance = 8.0
 target_desired_distance = 24.0
 radius = 8.0
 max_speed = 40.0
-debug_enabled = true
 debug_use_custom = true
 debug_path_custom_color = Color(0.788235, 0, 0.517647, 1)
 

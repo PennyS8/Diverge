@@ -1,5 +1,5 @@
 @tool
-extends StateSound
+extends State
 
 
 #
@@ -9,7 +9,7 @@ extends StateSound
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	change_state("NoAttack")
+	pass
 
 
 # This function is called just after the state enters
@@ -46,7 +46,7 @@ func _before_exit(_args) -> void:
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
-	change_state("CanAttack")
+	pass
 
 
 # when StateAutomaticTimer timeout()
