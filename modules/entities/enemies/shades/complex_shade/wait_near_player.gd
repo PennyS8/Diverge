@@ -45,7 +45,7 @@ func _pick_next_move():
 		# desired location a point on circle of radius=desired_distance from player
 		var angle_relative_player = player_position.angle_to_point(enemy_position)
 		var coin_flip = randi_range(0, 1)
-		var angle_shift : int
+		var angle_shift : float
 		match coin_flip:
 			0:
 				# 20 degrees in radians

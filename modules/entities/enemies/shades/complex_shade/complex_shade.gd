@@ -12,6 +12,12 @@ var default_position
 
 @onready var nav_agent = %NavAgent
 
+
+## NATE - STEERING BEHAVIORS
+var ai_steering := AISteering.new()
+var strafe_factor := 0.25
+##############
+
 func on_save_game(saved_data:Array[SavedData]):
 	if %Health.health <= 0: 
 		return
