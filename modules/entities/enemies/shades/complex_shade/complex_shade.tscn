@@ -3,7 +3,7 @@
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_7xwuo"]
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
 [ext_resource type="Texture2D" uid="uid://d4ml0vjhqwsbo" path="res://modules/entities/enemies/shades/ShadeWIP_64x64.png" id="3_g1pll"]
-[ext_resource type="Script" uid="uid://cagepw2wjjl3j" path="res://addons/xsm/state.gd" id="4_e4b7j"]
+[ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="4_e4b7j"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="4_kcpdx"]
 [ext_resource type="Script" uid="uid://bx6jvvpiqokkf" path="res://modules/entities/enemies/shades/complex_shade/xsm/patrol.gd" id="6_2ptfn"]
 [ext_resource type="Script" uid="uid://cxnxkuahbhhlb" path="res://modules/entities/enemies/shades/complex_shade/movement.gd" id="6_twtcd"]
@@ -309,7 +309,8 @@ next_state = NodePath("../State")
 [node name="WaitNearPlayer" type="Node" parent="ShadeFSM/Alive/Movement"]
 editor_description = "This state is for enemies that aren't allowed to engage yet."
 script = ExtResource("9_e3xrx")
-desired_distance = 30
+desired_distance = 72.0
+personal_bubble_radius = 48.0
 state_speed = 50.0
 disabled = false
 debug_mode = false
