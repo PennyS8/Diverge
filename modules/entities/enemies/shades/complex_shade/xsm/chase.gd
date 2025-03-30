@@ -12,9 +12,9 @@ const MIN_SEEK_DISTANCE := 24.0
 const MAX_SEEK_DISTANCE := 32.0
 
 ## Will move towards target if greater than this distance
-var pursue_distance_max := randf_range(48.0, 64.0)
+var pursue_distance_max := randf_range(56.0, 72.0)
 ## Will move away from target if less than this distance
-var pursue_distance_min := randf_range(16.0, 32.0)
+var pursue_distance_min := randf_range(24.0, 48.0)
 @export var strafe_factor := 0.25
 
 # This function is called when the state enters
@@ -41,10 +41,6 @@ func _on_update(_delta: float) -> void:
 	var target_position = target.follow_object.global_position
 	var displacement = target_position - target.global_position
 	
-	# Used to determine what we should push away from
-	var neighbors = soft_collision.get_overlapping_bodies()
-	neighbors.erase(target)
-	
 	var distance = displacement.length()
 	var target_angle = displacement.angle()
 	
@@ -57,34 +53,25 @@ func _on_update(_delta: float) -> void:
 		
 	# Move towards target if too far away
 	if distance > pursue_distance_max:
-		target.ai_steering.apply_seek(target_angle)
-		target.ai_steering.apply_strafe(target_angle, strafe_factor)
+		change_state_node_force($Pursue, target_angle)
 	# Move away from target if too close
 	elif distance < pursue_distance_min:
-		target.ai_steering.apply_flee(target_angle)
+		change_state_node_force($Backpedal, target_angle)
 	# Within normal range, so just strafe
 	else:
-		target.ai_steering.apply_strafe(target_angle, strafe_factor)
-	
-	# Use a bias if seeking so we prefer our current direction
-	target.ai_steering.apply_seek(target.velocity.angle(), 0.1)
-	# Move away from nearby entities
-	target.ai_steering.apply_separation(target.global_position, neighbors, 8.0)
-	
-	# Get the direction we want to move
-	var normal = target.ai_steering.get_desired_normal()
-	var desired_velocity = normal * target.movement_speed
-	
-	target.velocity = target.velocity.lerp(desired_velocity, 0.3)
-	
-	target.set_velocity(target.velocity)
-	target.move_and_slide()
-	target.velocity = target.velocity
+		change_state_node_force($Encircle, target_angle)
 
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root
 func _after_update(_delta: float) -> void:
-	pass
+	# Used to determine what we should push away from
+	var neighbors = soft_collision.get_overlapping_bodies()
+	neighbors.erase(target)
+	
+	# Use a bias if seeking so we prefer our current direction
+	target.ai_steering.apply_seek(target.velocity.angle(), 0.1)
+	# Move away from nearby entities
+	target.ai_steering.apply_separation(target.global_position, neighbors, 4.0)
 
 
 # This function is called before the State exits

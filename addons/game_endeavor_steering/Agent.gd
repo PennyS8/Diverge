@@ -35,7 +35,7 @@ func _physics_process(delta):
 		
 	# Move towards target if too far away
 	if distance > pursue_distance_max:
-		ai_steering.apply_seek(target_angle)
+		ai_steering.apply_seek(target_angle, seek_weight)
 		ai_steering.apply_strafe(target_angle, strafe_factor)
 	# Move away from target if too close
 	elif distance < pursue_distance_min:
