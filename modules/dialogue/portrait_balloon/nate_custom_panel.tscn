@@ -1,0 +1,149 @@
+[gd_scene load_steps=9 format=3 uid="uid://kvpre6gciyav"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_6a6gw"]
+[ext_resource type="Theme" uid="uid://bbxsjeowhx3sp" path="res://modules/dialogue/portrait_balloon/nate_custom_panel.tres" id="2_7n516"]
+[ext_resource type="Texture2D" uid="uid://b3s37boe6rfch" path="res://assets/hud/kenney_ui-pack-pixel-adventure/Tilesheets/Large tiles/Thick outline/portrait_dialoguebox.png" id="2_i44a8"]
+[ext_resource type="Texture2D" uid="uid://c1bxhj1plofkn" path="res://assets/hud/kenney_ui-pack-pixel-adventure/Tilesheets/Large tiles/Thick outline/tilemap_packed.png" id="2_kjl50"]
+[ext_resource type="Texture2D" uid="uid://d3opljmbc2koy" path="res://assets/hud/kenney_ui-pack-pixel-adventure/Tilesheets/Large tiles/Thick outline/noportrait_dialoguebox.png" id="3_kjl50"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="4_7n516"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="7_7n516"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kjl50"]
+texture = ExtResource("2_kjl50")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(32, 0, 32, 32)
+
+[node name="Balloon" type="Control"]
+material = ExtResource("1_6a6gw")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1440.0
+offset_bottom = -810.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("2_7n516")
+
+[node name="PortraitDialogue" type="TextureRect" parent="."]
+use_parent_material = true
+layout_mode = 2
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("2_i44a8")
+
+[node name="NoPortraitDialogue" type="TextureRect" parent="."]
+use_parent_material = true
+layout_mode = 2
+offset_right = 480.0
+offset_bottom = 270.0
+texture = ExtResource("3_kjl50")
+
+[node name="DialogueContainer" type="MarginContainer" parent="."]
+visible = false
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 129.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 34
+theme_override_constants/margin_top = 171
+theme_override_constants/margin_right = 127
+theme_override_constants/margin_bottom = 18
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+use_parent_material = true
+layout_mode = 0
+offset_left = 24.0
+offset_top = 166.0
+offset_right = 456.0
+offset_bottom = 257.0
+theme_override_constants/separation = -2
+
+[node name="Dialogue" type="Panel" parent="HBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="HBoxContainer/Dialogue"]
+texture_filter = 1
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 6.0
+offset_top = 6.0
+offset_right = -6.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -3
+
+[node name="CharacterLabel" type="RichTextLabel" parent="HBoxContainer/Dialogue/VBoxContainer2"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.501961)
+use_parent_material = true
+layout_mode = 2
+mouse_filter = 1
+theme_override_font_sizes/normal_font_size = 16
+bbcode_enabled = true
+text = "Character"
+fit_content = true
+scroll_active = false
+
+[node name="DialogueLabel" parent="HBoxContainer/Dialogue/VBoxContainer2" instance=ExtResource("4_7n516")]
+unique_name_in_owner = true
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 14
+text = "Dialogue..."
+fit_content = false
+scroll_following = true
+
+[node name="Portrait" type="Panel" parent="HBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+theme_override_styles/panel = SubResource("StyleBoxTexture_kjl50")
+
+[node name="Responses" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -229.0
+offset_top = -176.0
+offset_right = 30.0
+offset_bottom = -26.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.55, 0.55)
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Responses" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 15
+script = ExtResource("7_7n516")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Responses/ResponsesMenu"]
+layout_mode = 2
+text = "Response example"

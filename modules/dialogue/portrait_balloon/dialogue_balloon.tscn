@@ -1,0 +1,249 @@
+[gd_scene load_steps=15 format=3 uid="uid://covyosa222o3j"]
+
+[ext_resource type="Script" uid="uid://d3umiakbyorkt" path="res://modules/dialogue/portrait_balloon/dialogue_balloon.gd" id="1_ndejj"]
+[ext_resource type="AudioStream" uid="uid://btdy85tcuoeex" path="res://modules/dialogue/portrait_balloon/talk.wav" id="2_73577"]
+[ext_resource type="PackedScene" uid="uid://ckvgyvclnwggo" path="res://addons/dialogue_manager/dialogue_label.tscn" id="2_hudaw"]
+[ext_resource type="Script" uid="uid://bb52rsfwhkxbn" path="res://addons/dialogue_manager/dialogue_responses_menu.gd" id="3_2hpv4"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="3_uhdg3"]
+[ext_resource type="Texture2D" uid="uid://c1bxhj1plofkn" path="res://assets/hud/kenney_ui-pack-pixel-adventure/Tilesheets/Large tiles/Thick outline/tilemap_packed.png" id="4_oan6x"]
+[ext_resource type="Theme" uid="uid://bbxsjeowhx3sp" path="res://modules/dialogue/portrait_balloon/nate_custom_panel.tres" id="4_uhdg3"]
+[ext_resource type="Theme" uid="uid://bdm22f77we4ma" path="res://modules/dialogue/portrait_balloon/notif-theme.tres" id="8_uhdg3"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kjl50"]
+texture = ExtResource("4_oan6x")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+axis_stretch_horizontal = 2
+axis_stretch_vertical = 2
+region_rect = Rect2(32, 0, 32, 32)
+
+[sub_resource type="Animation" id="Animation_xp3hu"]
+length = 0.001
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PortraitContainer/PortraitPosition:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(268, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+
+[sub_resource type="Animation" id="Animation_1kboi"]
+resource_name = "hide_character"
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PortraitContainer/PortraitPosition:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(268, -0.25, 0, 0.0915459, -1.63977, 564, -0.0348299, -325.265, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+
+[sub_resource type="Animation" id="Animation_wl3v2"]
+resource_name = "show_character"
+length = 0.2
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PortraitContainer/PortraitPosition:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(564, -0.25, 0, 0.0426245, -368.062, 64, -0.1, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 0.2)
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gdt14"]
+_data = {
+&"RESET": SubResource("Animation_xp3hu"),
+&"hide_character": SubResource("Animation_1kboi"),
+&"show_character": SubResource("Animation_wl3v2")
+}
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_5e3vs"]
+
+[node name="DialogueBalloon" type="CanvasLayer"]
+layer = 100
+script = ExtResource("1_ndejj")
+talk_sound = ExtResource("2_73577")
+
+[node name="Balloon" type="Control" parent="."]
+unique_name_in_owner = true
+material = ExtResource("3_uhdg3")
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -1440.0
+offset_bottom = -810.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(4, 4)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("4_uhdg3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Balloon"]
+use_parent_material = true
+layout_mode = 0
+offset_left = 24.0
+offset_top = 166.0
+offset_right = 456.0
+offset_bottom = 257.0
+theme_override_constants/separation = -2
+
+[node name="Dialogue" type="Panel" parent="Balloon/HBoxContainer"]
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Balloon/HBoxContainer/Dialogue"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 12.0
+offset_top = 8.0
+offset_right = -5.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = -1
+
+[node name="CharacterLabel" type="RichTextLabel" parent="Balloon/HBoxContainer/Dialogue/VBoxContainer2"]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.501961)
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("4_uhdg3")
+bbcode_enabled = true
+text = "Character"
+fit_content = true
+scroll_active = false
+
+[node name="DialogueLabel" parent="Balloon/HBoxContainer/Dialogue/VBoxContainer2" instance=ExtResource("2_hudaw")]
+unique_name_in_owner = true
+use_parent_material = true
+layout_mode = 2
+size_flags_vertical = 3
+text = "Dialogue..."
+fit_content = false
+scroll_following = true
+
+[node name="PortraitBox" type="Panel" parent="Balloon/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+use_parent_material = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.25
+theme_override_styles/panel = SubResource("StyleBoxTexture_kjl50")
+
+[node name="Responses" type="MarginContainer" parent="Balloon"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -229.0
+offset_top = -313.0
+offset_right = 30.0
+offset_bottom = 87.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(0.55, 0.55)
+
+[node name="ResponsesMenu" type="VBoxContainer" parent="Balloon/Responses" node_paths=PackedStringArray("response_template")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_constants/separation = 9
+script = ExtResource("3_2hpv4")
+response_template = NodePath("ResponseExample")
+
+[node name="ResponseExample" type="Button" parent="Balloon/Responses/ResponsesMenu"]
+layout_mode = 2
+text = "Response example"
+
+[node name="Notification" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("8_uhdg3")
+
+[node name="PanelContainer" type="PanelContainer" parent="Notification"]
+layout_mode = 2
+offset_left = 610.0
+offset_top = 292.0
+offset_right = 1310.0
+offset_bottom = 392.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 6
+
+[node name="Panel" type="Panel" parent="Notification/PanelContainer"]
+clip_contents = true
+custom_minimum_size = Vector2(700, 100)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Notification/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 30
+theme_override_constants/margin_bottom = 20
+
+[node name="NotificationLabel" type="RichTextLabel" parent="Notification/PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 35)
+layout_mode = 2
+bbcode_enabled = true
+fit_content = true
+scroll_active = false
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
+libraries = {
+&"": SubResource("AnimationLibrary_gdt14")
+}
+
+[node name="PortraitContainer" type="PanelContainer" parent="."]
+unique_name_in_owner = true
+clip_contents = true
+offset_left = 1492.0
+offset_top = 412.0
+offset_right = 1808.0
+offset_bottom = 1012.0
+theme_override_styles/panel = SubResource("StyleBoxEmpty_5e3vs")
+
+[node name="PortraitPosition" type="Marker2D" parent="PortraitContainer"]
+unique_name_in_owner = true
+position = Vector2(156, 268)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+
+[connection signal="gui_input" from="Balloon" to="." method="_on_balloon_gui_input"]
+[connection signal="spoke" from="Balloon/HBoxContainer/Dialogue/VBoxContainer2/DialogueLabel" to="." method="_on_dialogue_label_spoke"]
+[connection signal="response_selected" from="Balloon/Responses/ResponsesMenu" to="." method="_on_responses_menu_response_selected"]
+[connection signal="gui_input" from="Notification" to="." method="_on_balloon_gui_input"]

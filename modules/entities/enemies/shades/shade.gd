@@ -7,6 +7,8 @@ var follow_target
 var knockback : Vector2 = Vector2.ZERO
 var crowd_control := false
 
+signal pick_up(body)
+
 var default_position
 
 func on_save_game(saved_data:Array[SavedData]):
@@ -53,8 +55,9 @@ func _physics_process(_delta: float) -> void:
 			velocity += $SoftCollision.get_push_vector() * _delta * 200
 	
 
-func _on_health_component_died() -> void:
-	$ShadeFSM.change_state("Dead")
+#func _on_health_component_died() -> void:
+	#drop_ramen()
+	#$ShadeFSM.change_state("Dead")
 
 func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	if $HealthComponent.health > 0:
@@ -68,6 +71,7 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 		$HitflashPlayer.play("Hitflash")
 	else:
 		$Display/HitFX.restart()
+		drop_ramen()
 		$HitflashPlayer.play("Hitflash")
 		$ShadeFSM.change_state("Dead")
 
@@ -88,3 +92,17 @@ func tethered_stun():
 	
 	# turns crowd control back off for future
 	crowd_control = false
+
+func fade_in():
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, 2.0)
+	await tween.finished
+
+func drop_ramen():
+	var ramen = get_node_or_null("RamenTray")
+	if ramen:
+		ramen.get_node("Sprite2D").call_deferred("reparent", ramen.get_node("CanvasGroup"))
+		ramen.get_node("Item").call_deferred("set_collision_mask_value", 4, false)
+		ramen.get_node("Item").set_deferred("monitoring", true)
+		ramen.call_deferred("reparent", get_parent())
+		#starts shining shader

@@ -15,9 +15,21 @@ var dash_states : Dictionary = {
 	Vector2.LEFT: "DashLeft"
 	}
 
+var dust_anims : Dictionary = {
+	Vector2.UP: "up", 
+	Vector2(-1, -1): "left_up",
+	Vector2(1, -1): "right_up",
+	Vector2.RIGHT: "right_down",
+	Vector2(1, 1): "right_down",
+	Vector2.DOWN: "down",
+	Vector2(-1, 1): "left_down",
+	Vector2.LEFT: "left_down",
+}
+
 @export var dash_shadow : Texture2D
 @export var normal_shadow : Texture2D
 
+var dash_dust : PackedScene = preload("res://modules/entities/player/dash_dust.tscn")
 var idle_dir
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
@@ -39,6 +51,9 @@ func _on_enter(_args):
 	var component_y = abs(dash_direction.y)
 	
 	var swing_dir = dash_direction
+	
+	var dust_dir = swing_dir.snapped(Vector2.ONE)
+	
 	if component_x > component_y:
 		swing_dir.y = 0
 	if component_y > component_x:
@@ -48,7 +63,7 @@ func _on_enter(_args):
 	# 8 cardinal dirs, but since we got rid of the non-major component it will
 	# only be the 4 main cardinals (up, down, left, right)
 	swing_dir = swing_dir.snapped(Vector2.ONE)
-	
+
 	target.swing_dir = swing_dir
 	# our four cardinals are:
 	# UP: (0,-1)
@@ -57,6 +72,11 @@ func _on_enter(_args):
 	# LEFT: (-1, 0)
 	# the dictionary initialized at the top of this script assigns each vector2
 	# value to the corresponding state node name
+	
+	var dust = dash_dust.instantiate()
+	get_tree().current_scene.add_child(dust)
+	dust.global_position = target.global_position
+	dust.play(dust_anims[dust_dir])
 	
 	idle_dir = swing_dir
 	change_state(dash_states[swing_dir])

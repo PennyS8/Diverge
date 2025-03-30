@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bisbatw7pxu6r"]
 
-[ext_resource type="Shader" path="res://assets/debug/pixel_perfect_styling/SmoothPixel.gdshader" id="1_poumf"]
+[ext_resource type="Shader" uid="uid://145awv4gjeoq" path="res://assets/debug/pixel_perfect_styling/SmoothPixel.gdshader" id="1_poumf"]
 
 [resource]
 shader = ExtResource("1_poumf")

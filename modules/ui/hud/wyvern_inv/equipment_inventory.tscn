@@ -1,21 +1,21 @@
 [gd_scene load_steps=18 format=3 uid="uid://gpeishkjbb60"]
 
 [ext_resource type="Script" uid="uid://bvm3c5gk8ux70" path="res://addons/wyvernbox/inventory_view.gd" id="1_igakj"]
-[ext_resource type="Script" uid="uid://fp2iki0mkowk" path="res://addons/wyvernbox/inventories/restricted_inventory.gd" id="2_u5gh5"]
-[ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="3_1i8ug"]
+[ext_resource type="Script" uid="uid://b2anle78q5g1k" path="res://addons/wyvernbox/inventories/restricted_inventory.gd" id="2_u5gh5"]
+[ext_resource type="Script" uid="uid://wyldudd8woh0" path="res://addons/wyvernbox/crafting/item_like.gd" id="3_1i8ug"]
 [ext_resource type="PackedScene" uid="uid://co5ok1mm2s7vu" path="res://addons/wyvernbox_prefabs/item_stack_view.tscn" id="3_vtxtt"]
-[ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="4_5om5x"]
+[ext_resource type="Script" uid="uid://gqwsqi3kosag" path="res://addons/wyvernbox/item_type.gd" id="4_5om5x"]
 [ext_resource type="StyleBox" uid="uid://cqx3opxr50d2o" path="res://addons/wyvernbox_prefabs/graphics/selected_cell.tres" id="4_djypq"]
 [ext_resource type="PackedScene" uid="uid://b7jlucsddt6dg" path="res://addons/wyvernbox_prefabs/inventory_cell.tscn" id="5_ele7e"]
-[ext_resource type="Script" uid="uid://d1a114hwwhdiu" path="res://addons/wyvernbox/item_instantiator.gd" id="6_ojqjg"]
+[ext_resource type="Script" uid="uid://cwlexecikl8nc" path="res://addons/wyvernbox/item_instantiator.gd" id="6_ojqjg"]
 [ext_resource type="Texture2D" uid="uid://bibwfg1e2rajp" path="res://assets/debug/Juni.JPG" id="6_x6ee3"]
 [ext_resource type="Texture2D" uid="uid://bdkrtjyq7nxcc" path="res://assets/debug/TESTPENCILBOX.png" id="10_u08uh"]
 
-[sub_resource type="Resource" id="3"]
+[sub_resource type="Resource" id="Resource_vpxuf"]
 resource_name = "RestrictedInventory"
 script = ExtResource("2_u5gh5")
 allow_rotation = true
-restricted_to_types = Array[int]([131072, 65536, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+restricted_to_types = Array[int]([131072, 65536, 0, 256, 256, 256, 0, 0, 0, 0, 0, 0, 0])
 width = 13
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ibjd1"]
@@ -71,6 +71,7 @@ atlas = ExtResource("6_x6ee3")
 region = Rect2(75, 18, 896, 1767)
 
 [node name="Equip" type="Control" groups=["inventory_view"]]
+texture_filter = 1
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -79,7 +80,7 @@ offset_left = -320.0
 offset_right = -320.0
 grow_horizontal = 2
 script = ExtResource("1_igakj")
-inventory = SubResource("3")
+inventory = SubResource("Resource_vpxuf")
 contents = SubResource("Resource_eedmd")
 item_scene = ExtResource("3_vtxtt")
 interaction_mode = 0
@@ -87,6 +88,7 @@ cell_size = Vector2(48, 48)
 selected_item_style = ExtResource("4_djypq")
 
 [node name="Cells" type="Control" parent="."]
+texture_filter = 1
 anchors_preset = 0
 mouse_filter = 2
 
@@ -258,15 +260,15 @@ focus_mode = 2
 mouse_filter = 0
 texture = ExtResource("10_u08uh")
 
-[node name="Gen10" parent="Cells" instance=ExtResource("5_ele7e")]
+[node name="Offhand2" parent="Cells" instance=ExtResource("5_ele7e")]
 layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 38.0
-offset_top = 117.0
-offset_right = 62.0
-offset_bottom = 141.0
+offset_left = -60.0
+offset_top = 36.0
+offset_right = -28.0
+offset_bottom = 88.0
 size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0

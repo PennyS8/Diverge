@@ -377,7 +377,7 @@ func _connect_cell(cell : Control):
 		return
 
 	cell.focus_mode = Control.FOCUS_ALL
-	cell.mouse_filter = Control.MOUSE_FILTER_STOP
+	#cell.mouse_filter = Control.MOUSE_FILTER_STOP
 	var enter_handler := func():
 		selected_cell = Vector2(cell.get_index(), 0)
 	var exit_handler := func():

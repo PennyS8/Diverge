@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://co5ok1mm2s7vu"]
+[gd_scene load_steps=6 format=3 uid="uid://co5ok1mm2s7vu"]
 
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_bua77"]
 [ext_resource type="Script" uid="uid://ckpf4p8s5giej" path="res://addons/wyvernbox/view_extra/item_stack_view.gd" id="3"]
 
 [sub_resource type="Gradient" id="Gradient_wd551"]
@@ -18,6 +19,7 @@ outline_size = 4
 outline_color = Color(0, 0, 0, 0.752941)
 
 [node name="Item" type="Control"]
+material = ExtResource("1_bua77")
 layout_mode = 3
 anchors_preset = 0
 offset_right = 72.0
@@ -28,6 +30,7 @@ script = ExtResource("3")
 
 [node name="BackColor" type="TextureRect" parent="."]
 unique_name_in_owner = true
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -43,6 +46,7 @@ texture = SubResource("GradientTexture2D_kjert")
 expand_mode = 1
 
 [node name="Crop" type="Control" parent="."]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -52,6 +56,7 @@ grow_vertical = 2
 mouse_filter = 2
 
 [node name="Center" type="Control" parent="Crop"]
+use_parent_material = true
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -63,6 +68,7 @@ grow_vertical = 2
 
 [node name="Texture" type="Sprite2D" parent="Crop/Center"]
 unique_name_in_owner = true
+use_parent_material = true
 
 [node name="Count" type="Label" parent="."]
 unique_name_in_owner = true

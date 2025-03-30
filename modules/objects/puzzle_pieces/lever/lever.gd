@@ -24,7 +24,8 @@ func on_load_game(saved_data:SavedData):
 	key_id = saved_data.puzzle_key_id
 	
 	if saved_data.puzzle_completed == true:
-		flip()
+		#flip()
+		pass
 
 func hit(_area : HitBoxComponent2D):
 	if _area.is_in_group("hook"):
@@ -41,7 +42,7 @@ func fling(): #func fling(fling_point : Vector2):
 	# if the lever is being pulled left or right enough to be flipped
 	if abs(fling_dir.x) > abs(fling_dir.y):
 		# if lever is right and pulled left, or if lever is left and pulled right, flip the lever
-		if toggled and fling_dir.x > 0 or !toggled and fling_dir.x < 0:
+		if toggled and fling_dir.x > 0 or !toggled:
 			flip() # if lever is right and pulled left, flip
 
 # Override

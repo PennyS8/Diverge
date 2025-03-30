@@ -28,7 +28,7 @@ size = Vector2(480, 456)
 size = Vector2(408, 168)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_821of"]
-size = Vector2(528, 192)
+size = Vector2(528, 236)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iku7r"]
 size = Vector2(288, 264)
@@ -122,6 +122,7 @@ tile_map_data = PackedByteArray("AAD0/x8AAAAKABAAAAD1/x8AAAAKABAAAAD2/x8AAAAKABA
 tile_set = ExtResource("2_2bp75")
 
 [node name="Lighting" type="Node2D" parent="."]
+visible = false
 
 [node name="PointLight2D" type="PointLight2D" parent="Lighting"]
 position = Vector2(833, 936)
@@ -362,6 +363,7 @@ collision_layer = 512
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/HallRight/CameraBoundry"]
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_821of")
 
 [node name="LimitBottomLeft" type="Marker2D" parent="Rooms/HallRight/CameraBoundry"]

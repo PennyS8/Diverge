@@ -1,0 +1,60 @@
+~ start
+if quest_done == true
+	=> done
+if talked_to == true:
+	=> come_back
+Juniper: Hello! You're not attacking me! Currently.
+Shaded Figure: i feel awful. why do i feel awful. i did everything right.
+Shaded Figure: i came to class. i studied. i went for a walk. everything. i've exhausted my options.
+if _test_if_ramen():
+	=> got_ramen
+else:
+	Juniper: [i]Do these things need... [wave amp=25 freq=5]sustenance?[/wave][/i] Probably, right?
+	- Have you eaten anything?
+		Shaded Figure: i looked at the food. someone took the last of the good food before i could get to them. so i'm having water for lunch.
+		Juniper: I think that's why you're feeling poorly.
+	- Aren't you missing something?
+		Shaded Figure: ohhh... that's right. i'm in the cafeteria, aren't i?
+		Shaded Figure: anyway... i couldn't get the only good food. all the other food has an awful texture.
+		Shaded Figure: well, except for the chicken burger. but i ate that every day last semester and it tastes like metal now.
+		Juniper: Hey, same here!
+	Juniper: Just my opinion, but I recently found out that the noodles here are pretty good, if you give them a chance.
+	Shaded Figure: i'm fine with water, thanks. but i need to figure out why i feel so badly.
+	Juniper: ...
+	Juniper: [i] I should see if I can find any noodles for them. [/i]
+	set talked_to = true
+	=> END
+
+~ come_back
+Shaded Figure: oh hey! it's you again.
+if _test_if_ramen():
+	=> got_ramen
+else:
+	Juniper: Yep! I'm still on the hunt for some food for you.
+	Shaded Figure: oh, that sounds wonderful. i will continue snacking on this book until you get back
+	Juniper: Please don't!
+	Juniper: [i] I should see if I can find any noodles for them. [/i]
+	=> END
+	
+~ got_ramen
+Juniper: I've got some ramen...
+- You want it? 
+	do! take_ramen()
+	do! move_book()
+	do table_ramen.show()
+	Shaded Figure: ...i mean, if you're offering, i guess. that sounds pretty okay.
+	Shaded Figure: [speed=0.2][shake rate=20 level=10][i]om[/i]  [i]nom[/i]  [i]nom[/i][/shake]
+	Shaded Figure: wow. thank you! here, take this book i've been meaning to the return to the library. 
+	Shaded Figure: it's a good one! i keep forgetting to return it so it's probably better in your hands.
+	do table_book.hide()
+	Juniper: [i] I got one of the three books I need! [/i]
+	do GameManager.inventory_node.inventory.save_state("player_inventory")
+	=> END
+- But I think I'll keep it.
+	Shaded Figure: oh, alright. but, now that you mention it, those noodles sound pretty good.
+	Juniper: ...
+	=> END
+	
+~ done
+The Shaded Figure looks to be happily chowing down on the noodles, carefree of their overdue book.
+=> END

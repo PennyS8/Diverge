@@ -1,0 +1,23 @@
+[gd_resource type="Resource" script_class="ItemType" load_steps=4 format=3 uid="uid://dlm415yvfdyp0"]
+
+[ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="1_72o7q"]
+[ext_resource type="Texture2D" uid="uid://dr6yg0cbfnltd" path="res://assets/environment/downtown_dungeon/custom_sprites/olive_substance.png" id="2_u0424"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_esevk"]
+atlas = ExtResource("2_u0424")
+region = Rect2(1, 1, 7, 10)
+
+[resource]
+script = ExtResource("1_72o7q")
+name = "Olive Substance"
+description = ""
+tags = Array[StringName]([])
+texture = SubResource("AtlasTexture_esevk")
+texture_scale = 1.0
+max_stack_count = 1
+in_inventory_width = 1
+in_inventory_height = 1
+slot_flags = 16
+default_properties_string = "{}"
+default_properties = {}
+metadata/_custom_type_script = "uid://cgg102c222rfg"
