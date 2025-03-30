@@ -25,7 +25,6 @@ func _on_update(_delta):
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root
 func _after_update(_delta):
-	pass
 	## NATE: This is in after_update because we wait for any changes to 
 	## the end position we make in child states before moving that way
 #
@@ -44,7 +43,7 @@ func _after_update(_delta):
 	#target.set_velocity(target.velocity)
 	#target.move_and_slide()
 	#target.velocity = target.velocity
-	#animate_movement()
+	animate_movement()
 
 func animate_movement():
 	var dir = target.velocity.normalized()

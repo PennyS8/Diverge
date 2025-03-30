@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dro6c7m8116v4"]
 
-[ext_resource type="Texture2D" uid="uid://bk100jx8kbder" path="res://agent.png" id="1"]
-[ext_resource type="Script" uid="uid://dve0xwc8pb7wr" path="res://Agent.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://bk100jx8kbder" path="res://addons/game_endeavor_steering/agent.png" id="1"]
+[ext_resource type="Script" uid="uid://dve0xwc8pb7wr" path="res://addons/game_endeavor_steering/Agent.gd" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 size = Vector2(16, 12)

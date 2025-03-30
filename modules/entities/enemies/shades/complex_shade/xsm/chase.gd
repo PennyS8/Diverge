@@ -15,7 +15,7 @@ const MAX_SEEK_DISTANCE := 32.0
 var pursue_distance_max := randf_range(48.0, 64.0)
 ## Will move away from target if less than this distance
 var pursue_distance_min := randf_range(16.0, 32.0)
-var strafe_factor := 0.1
+@export var strafe_factor := 0.25
 
 # This function is called when the state enters
 # XSM enters the root first, the the children

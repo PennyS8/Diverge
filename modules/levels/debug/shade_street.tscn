@@ -21,7 +21,9 @@ tile_map_data = PackedByteArray("AAAAAAAACQAOAAMAAAAAAAEACQAOAAMAAAAAAAIACQAOAAM
 tile_set = ExtResource("1_dipkh")
 
 [node name="ComplexShade" parent="NavigationRegion2D" instance=ExtResource("3_t7bno")]
+position = Vector2(44, -28)
 
 [node name="ComplexShade2" parent="NavigationRegion2D" instance=ExtResource("3_t7bno")]
+position = Vector2(-56, 39)
 
 [node name="ComplexShade3" parent="NavigationRegion2D" instance=ExtResource("3_t7bno")]
