@@ -25,6 +25,8 @@ signal unhandled_input_received(event)
 
 var curr_camera_boundry : Area2D
 
+@onready var camera = $Camera2D
+
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(dialogue_done)
 	
@@ -78,17 +80,19 @@ func fling():
 # Override
 func pull():
 	pass
-	
+
 func enter_cutscene(camera_pos):
 	$PlayerFSM.change_state("MovementDisabled")
 	velocity = Vector2.ZERO
 	lock_camera = true
 	in_cutscene = true
-	var cam_tween = create_tween()
-	cam_tween.tween_property($Camera2D, "global_position", camera_pos, 2.0)
-	
+	camera.position_smoothing_enabled = true
+	camera.position_smoothing_speed = 1
+	camera.global_position = camera_pos
+
 func exit_cutscene():
 	$PlayerFSM.change_state("Idle")
 	lock_camera = false
 	in_cutscene = false
-	$Camera2D.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25
+	camera.position_smoothing_speed = 16
+	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25

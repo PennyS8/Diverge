@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=74 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bl8vcpeu60p0q" path="res://modules/entities/player/xsm/idle.gd" id="6_p1gyv"]
 [ext_resource type="Script" uid="uid://vmjglki3j80d" path="res://modules/entities/player/xsm/walk.gd" id="6_rn5yy"]
 [ext_resource type="Script" uid="uid://chm5jdso2fvbw" path="res://modules/entities/player/xsm/can_attack.gd" id="6_yyqig"]
+[ext_resource type="Script" uid="uid://bi00868skhp1y" path="res://modules/entities/player/abilities.gd" id="8_lle26"]
 [ext_resource type="Script" uid="uid://b52l2mfpn8xxu" path="res://modules/entities/player/xsm/dash.gd" id="9_x3ix7"]
 [ext_resource type="Script" uid="uid://cd13uijgbv68l" path="res://modules/entities/player/xsm/attack_melee.gd" id="10_v37cr"]
 [ext_resource type="Script" uid="uid://cim5cquo2x5ig" path="res://modules/entities/player/xsm/lasso.gd" id="12_ds73y"]
@@ -27,6 +28,7 @@
 [ext_resource type="Script" uid="uid://dmux7vy5y0hk4" path="res://modules/entities/player/xsm/grapple.gd" id="15_trbfo"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Script" uid="uid://8u175eaigjct" path="res://modules/entities/player/xsm/recall.gd" id="17_qcq68"]
+[ext_resource type="Script" uid="uid://yaywue3qai2t" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
 [ext_resource type="Texture2D" uid="uid://bomlp67c0exnm" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Down.png" id="28_lqgfc"]
 [ext_resource type="Texture2D" uid="uid://da2cbhqa5c2t7" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Left.png" id="29_dhsgn"]
 [ext_resource type="Texture2D" uid="uid://dqnemhskws1vm" path="res://modules/entities/player/placeholder_sprites/Idle/Spear/Idle_Spear_Left_Down.png" id="30_7yfd7"]
@@ -43,7 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://d2k5ylavgktxb" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Left_Down.png" id="39_av2sy"]
 [ext_resource type="Texture2D" uid="uid://bqlnm1rdma2s0" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Right.png" id="42_ixb32"]
 [ext_resource type="Texture2D" uid="uid://benoslp55jhin" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Up.png" id="43_fgoev"]
-[ext_resource type="Shader" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
+[ext_resource type="Shader" uid="uid://cay2138tmvvxx" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
@@ -1160,7 +1162,7 @@ editor_description = "Is a state region - we can be in multiple states underneat
 script = ExtResource("1_mpvpn")
 history_size = 0
 disabled = false
-debug_mode = false
+debug_mode = true
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
@@ -1230,6 +1232,33 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("../AttackLocked")
+
+[node name="Abilities" type="Node" parent="PlayerFSM"]
+script = ExtResource("8_lle26")
+disabled = false
+debug_mode = true
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
+[node name="Inactive" type="Node" parent="PlayerFSM/Abilities"]
+script = ExtResource("1_q2vpm")
+disabled = false
+debug_mode = true
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
+[node name="DeepBreath" type="Node" parent="PlayerFSM/Abilities"]
+script = ExtResource("21_1lef0")
+disabled = false
+debug_mode = true
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
 [node name="Movement" type="Node" parent="PlayerFSM"]
 script = ExtResource("4_xto71")

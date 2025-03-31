@@ -43,7 +43,6 @@ func _main_ready():
 	else:
 		_swap_level(default_level.resource_path)
 
-
 func change_level(path : String, entrance_name : String = "0"):
 	if transitioning:
 		return
@@ -61,7 +60,6 @@ func change_level(path : String, entrance_name : String = "0"):
 	tween.tween_callback(_swap_level.bind(path, entrance_name))
 	tween.tween_property(fade_screen, "color:a", 0, fade_time)
 	tween.finished.connect(_transition_complete)
-
 
 func _swap_level(path : String, entrance_name : String = "0"):
 	var packed = load(path)
@@ -97,3 +95,13 @@ func _get_entrances():
 func _transition_complete():
 	player.lock_camera = false
 	transitioning = false
+
+func deep_breath_overlay():
+	var tween = get_tree().create_tween()
+	var blink_time = 1
+	
+	tween.set_parallel(true) # Perform next steps at the same time
+	tween.tween_callback(player.enter_cutscene.bind(player.global_position))
+	tween.tween_property(fade_screen, "color:a", 1, blink_time)
+	tween.chain().tween_callback(player.exit_cutscene)
+	tween.tween_property(fade_screen, "color:a", 0, blink_time)
