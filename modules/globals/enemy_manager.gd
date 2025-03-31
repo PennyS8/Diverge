@@ -30,4 +30,4 @@ func mark_for_disengage(enemy : CharacterBody2D):
 	timer.one_shot = true
 	timer.timeout.connect(release_engagement.bind(enemy, timer), CONNECT_ONE_SHOT)
 	get_tree().current_scene.add_child(timer)
-	timer.start(randf_range(2.0, 5.0))
+	timer.start(randf_range(1.0, 3.0))

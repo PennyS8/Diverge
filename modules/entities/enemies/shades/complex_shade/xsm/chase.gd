@@ -70,7 +70,7 @@ func _after_update(_delta: float) -> void:
 	# Use a bias if seeking so we prefer our current direction
 	target.ai_steering.apply_seek(target.velocity.angle(), 0.1)
 	# Move away from nearby entities
-	target.ai_steering.apply_separation(target.global_position, neighbors, 4.0)
+	target.ai_steering.apply_separation(target.global_position, neighbors, 24.0, 0.5)
 
 
 # This function is called before the State exits

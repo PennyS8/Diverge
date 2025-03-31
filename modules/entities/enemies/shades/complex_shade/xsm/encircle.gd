@@ -18,7 +18,7 @@ var fallback_attack_timer := randf_range(2.0, 4.0)
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	target.ai_steering.apply_strafe(_args, strafe_factor)
-	
+	target.ai_steering.apply_seek(_args, 0.15)
 	
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
