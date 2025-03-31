@@ -33,4 +33,4 @@ position = Vector2(44, -28)
 position = Vector2(-56, 39)
 
 [node name="ComplexShade3" parent="NavigationRegion2D" instance=ExtResource("3_t7bno")]
-position = Vector2(-65, 39)
+position = Vector2(-44, -22)

@@ -10,12 +10,16 @@ var target_angle
 
 @export var strafe_factor := 0.25
 
+## Hopefully we enter backpedal before here, but in case we don't, [br]
+## Then transition off of this timer
+var fallback_attack_timer := randf_range(2.0, 4.0)
+
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	target.ai_steering.apply_strafe(_args, strafe_factor)
-	target.ai_steering.apply_flee(_args, 0.1)
-
+	
+	
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
 func _after_enter(_args) -> void:
@@ -25,7 +29,7 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	pass
+	fallback_attack_timer -= _delta
 
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root

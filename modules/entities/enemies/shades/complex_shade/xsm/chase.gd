@@ -2,7 +2,6 @@
 extends State
 
 @onready var soft_collision = %SoftCollision
-
 @export var state_speed : float
 
 @onready var movement_target_pos : Vector2
@@ -12,9 +11,9 @@ const MIN_SEEK_DISTANCE := 24.0
 const MAX_SEEK_DISTANCE := 32.0
 
 ## Will move towards target if greater than this distance
-var pursue_distance_max := randf_range(56.0, 72.0)
+var pursue_distance_max := randf_range(36.0, 48.0)
 ## Will move away from target if less than this distance
-var pursue_distance_min := randf_range(24.0, 48.0)
+var pursue_distance_min := randf_range(24.0, 32.0)
 @export var strafe_factor := 0.25
 
 # This function is called when the state enters
@@ -49,7 +48,7 @@ func _on_update(_delta: float) -> void:
 	# Needs to be cleared at the start to reset data from last frame
 	target.ai_steering.clear()
 	# Avoid walls
-	target.ai_steering.apply_collision_avoidance(target, 12.0)
+	target.ai_steering.apply_collision_avoidance(target, 8.0)
 		
 	# Move towards target if too far away
 	if distance > pursue_distance_max:

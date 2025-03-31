@@ -11,7 +11,10 @@ var target_angle
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	target.ai_steering.apply_flee(_args)
+	if EnemyManager.request_engagement(target):
+		change_state("ChargeAttack")
+	else:
+		target.ai_steering.apply_flee(_args)
 	
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
