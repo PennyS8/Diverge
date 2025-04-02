@@ -136,3 +136,6 @@ func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 	await cutscene_marker.body_entered
 	dir = Vector2.ZERO
 	return
+
+func _on_health_component_died() -> void:
+	$PlayerFSM.change_state("Death", dir)
