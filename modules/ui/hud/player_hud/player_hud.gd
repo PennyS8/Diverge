@@ -30,6 +30,7 @@ func heart_damage(amount : int):
 			damage = 0
 
 func heart_heal(amount : int):
+	
 	var heal = amount
 
 	for heart in hearts:

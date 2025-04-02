@@ -7,6 +7,7 @@ var lock_camera := false
 var in_cutscene := false
 var dir : Vector2 = Vector2.ZERO
 
+var dialogue_open : bool = false
 # swing_dir is a variable updated by our hook swing that gets the 
 # nearest cardinal direction to our mouse click (n, e, s, w)
 # we keep it in here to use it to push blocks in that direction
@@ -23,6 +24,12 @@ signal unhandled_input_received(event)
 @onready var health_component = $HealthComponent
 
 var curr_camera_boundry : Area2D
+
+func _ready() -> void:
+	DialogueManager.dialogue_ended.connect(dialogue_done)
+	
+func dialogue_done(resource : Resource) -> void:
+	dialogue_open = false
 
 func _unhandled_input(event: InputEvent) -> void:
 	unhandled_input_received.emit(event)

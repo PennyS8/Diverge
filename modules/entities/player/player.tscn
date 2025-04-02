@@ -48,6 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://dspd847cbn8mr" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Down.png" id="44_xyfbm"]
 [ext_resource type="Texture2D" uid="uid://rtnt5gwn4rkj" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Left_Down.png" id="45_fnwuu"]
 [ext_resource type="Texture2D" uid="uid://ct1xahfqvg584" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Right_Down.png" id="46_gejbx"]
+[ext_resource type="Shader" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
@@ -1262,6 +1263,11 @@ _data = {
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rc6ld"]
 b = Vector2(0, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5jg5w"]
+shader = ExtResource("44_5jg5w")
+shader_parameter/band_strength = 2.0
+shader_parameter/noise_intensity = 0.05
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 z_index = 1
 y_sort_enabled = true
@@ -1811,4 +1817,15 @@ shape = SubResource("SegmentShape2D_rc6ld")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 radius = 8.0
 
+[node name="stressEffect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_5jg5w")
+offset_left = -950.0
+offset_top = -546.0
+offset_right = 970.0
+offset_bottom = 534.0
+mouse_filter = 2
+
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]

@@ -22,6 +22,7 @@ do! _unlock_shades()
 => END
 
 ~ got_ramen
+do! _move_cutscene_camera(LevelManager.player.global_position)
 Juniper: I got it! I'm a genius!
 Melisshade: Hey, no fair!
 Shadely: I wanted to be the one to give it to you!
@@ -32,6 +33,7 @@ do! shades_attack():
 => END
 
 ~ lost_ramen
+do! _move_cutscene_camera(LevelManager.player.global_position)
 if shade_who_got == "BrickShadehouse"
 	Brick Shadehouse: I got it!! Come here, let me give it to you now!
 	Melisshade: No!! I want to give it to them!!
@@ -48,4 +50,12 @@ if shade_who_got == "Melisshade"
 Juniper: ...Uh oh.
 do! LevelManager.player.exit_cutscene()
 do! shades_attack():
+=> END
+
+~ reenter
+Juniper: [i]I've already got the book from this room! I should go back to the hallway when I'm done exploring.[/i]
+=> END
+
+~ leave_with_ramen
+Juniper: [i]Now that I've got the noodles, I should return to the little dude from earlier.[/i]
 => END

@@ -24,6 +24,7 @@ offset_right = -1892.0
 offset_bottom = -1068.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_5kw1c")
 enemy_locations = Array[Vector2]([Vector2(0, -36), Vector2(-48, 20), Vector2(48, 20), Vector2(0, 72)])
 
@@ -50,7 +51,6 @@ modulate = Color(3, 3, 3, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 2
-mouse_filter = 0
 texture = ExtResource("7_ijf6v")
 
 [node name="Two" parent="Equipment/Cells" instance=ExtResource("8_pvj2d")]
@@ -58,5 +58,4 @@ modulate = Color(3, 3, 3, 1)
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 2
-mouse_filter = 0
 texture = ExtResource("7_ijf6v")

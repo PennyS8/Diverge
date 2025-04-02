@@ -9,6 +9,9 @@ extends Node2D
 
 @onready var camera_lock_pos = $CameraLock.global_position
 
+@export var ramen_type : ItemType
+@export var book_item : ItemType
+
 var end_cutscene : bool = false
 var shade_who_got
 var cutscene_watched : bool = false
@@ -20,6 +23,14 @@ func dispense(point, wanderer_spawn):
 	ramen_instance.name = "RamenTray"
 
 func _on_debug_area_body_entered(body: Node2D) -> void:
+	if get_tree().current_scene.get_node_or_null("DialogueBalloon"):
+		return
+	if LevelManager.player.dialogue_open:
+		return
+	
+	var inv = GameManager.inventory_node.inventory
+	if InventoryHelper.is_itemtype_in_inventory(inv, ramen_type) or InventoryHelper.is_itemtype_in_inventory(inv, book_item):
+		return
 	if !cutscene_watched:
 		_move_cutscene_camera(camera_lock_pos)
 		cutscene_watched = true
@@ -32,7 +43,9 @@ func _on_debug_area_body_entered(body: Node2D) -> void:
 		disabled_area.spawns_wanderer = false
 		
 		var dialogue = load("res://modules/levels/cafeteria/cafeteria_puzzle_intro.dialogue")
-		DialogueManager.show_dialogue_balloon(dialogue, "start", [self])
+		if !LevelManager.player.dialogue_open:
+			LevelManager.player.dialogue_open = true
+			DialogueManager.show_dialogue_balloon(dialogue, "start", [self])
 	
 func _on_dispense_point_area_entered(area : Node2D, num : int) -> void:
 	var point = get_node("DispensePoints/DispensePoint" + str(num))
@@ -61,6 +74,8 @@ func shades_attack():
 		fsm.change_state("Seeking")
 
 func player_got_ramen():
+	LevelManager.player.dir = Vector2.ZERO
+	
 	if !end_cutscene:
 		_move_cutscene_camera(LevelManager.player.global_position)
 		var dialogue = load("res://modules/levels/cafeteria/cafeteria_puzzle_intro.dialogue")
@@ -68,6 +83,8 @@ func player_got_ramen():
 		end_cutscene = true
 	
 func shade_got_ramen(shade):
+	LevelManager.player.dir = Vector2.ZERO
+	
 	if !end_cutscene:
 		#set name for dialogue's sake
 		shade_who_got = shade.name

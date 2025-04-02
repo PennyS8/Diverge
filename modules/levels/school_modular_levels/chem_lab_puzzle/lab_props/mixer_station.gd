@@ -28,6 +28,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 		return
 	
 	if Input.is_action_just_pressed("interact"):
+		if get_tree().current_scene.get_node_or_null("DialogueBalloon"):
+			return
+		if LevelManager.player.dialogue_open:
+			return
 		get_viewport().set_input_as_handled()
 
 		player.dir = Vector2.ZERO
@@ -48,8 +52,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 			dialogue_type = "not_measured"
 		else: 
 			dialogue_type = "mixer"
-			
-		DialogueManager.show_dialogue_balloon(dialogue, dialogue_type, [chem_inventory])
+		
+		if !LevelManager.player.dialogue_open:
+			LevelManager.player.dialogue_open = true
+			print("Showing dialogue!:" + dialogue_type)
+			DialogueManager.show_dialogue_balloon(dialogue, dialogue_type, [chem_inventory])
 		
 func _on_mixer_body_entered(_body: Node2D) -> void:
 	interactable = true

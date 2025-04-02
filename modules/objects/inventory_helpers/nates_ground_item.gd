@@ -13,3 +13,4 @@ func _on_item_body_entered(body):
 	# adds to juni's main inventory. if want to change this let me know and we'll figure it out
 	var deinv = GameManager.inventory_node.inventory
 	$Item.try_pickup(deinv)
+	deinv.save_state("player_inventory")

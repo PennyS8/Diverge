@@ -1,0 +1,72 @@
+[gd_scene load_steps=8 format=3 uid="uid://8ds5ebuunucj"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_v6xuq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b2upq"]
+size = Vector2(22, 24)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_a66n6"]
+load_path = "res://.godot/imported/DD_Interior-School_B.png-9f9cf1230dd3afdb4652488dfa3bf2f7.ctex"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gefm"]
+atlas = SubResource("CompressedTexture2D_a66n6")
+region = Rect2(172, 324, 15, 26)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ubbj"]
+atlas = SubResource("CompressedTexture2D_a66n6")
+region = Rect2(49, 275, 22, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_din4k"]
+atlas = SubResource("CompressedTexture2D_a66n6")
+region = Rect2(25, 275, 22, 32)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t2nai"]
+atlas = SubResource("CompressedTexture2D_a66n6")
+region = Rect2(1, 275, 22, 32)
+filter_clip = true
+
+[node name="DeskChairOut" type="StaticBody2D"]
+z_index = 1
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(21, -12)
+shape = SubResource("RectangleShape2D_b2upq")
+
+[node name="ChairOut" type="Sprite2D" parent="."]
+material = ExtResource("1_v6xuq")
+position = Vector2(34, -19)
+texture = SubResource("AtlasTexture_2gefm")
+offset = Vector2(0.5, 0)
+
+[node name="Desk" type="Sprite2D" parent="."]
+visible = false
+y_sort_enabled = true
+material = ExtResource("1_v6xuq")
+position = Vector2(11, -16)
+rotation = -3.14159
+scale = Vector2(1, -1)
+texture = SubResource("AtlasTexture_7ubbj")
+
+[node name="Desk2" type="Sprite2D" parent="."]
+visible = false
+y_sort_enabled = true
+material = ExtResource("1_v6xuq")
+position = Vector2(11, -16)
+rotation = -3.14159
+scale = Vector2(1, -1)
+texture = SubResource("AtlasTexture_din4k")
+
+[node name="Desk3" type="Sprite2D" parent="."]
+y_sort_enabled = true
+material = ExtResource("1_v6xuq")
+position = Vector2(11.5, -16)
+rotation = -3.14159
+scale = Vector2(1, -1)
+texture = SubResource("AtlasTexture_t2nai")
+offset = Vector2(0.5, 0)
