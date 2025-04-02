@@ -85,3 +85,7 @@ func exit_cutscene():
 	lock_camera = false
 	in_cutscene = false
 	$Camera2D.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25
+
+
+func _on_health_component_died() -> void:
+	$PlayerFSM.change_state("Death", dir)
