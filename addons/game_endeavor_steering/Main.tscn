@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://o712ky5x82e3"]
 
-[ext_resource type="PackedScene" uid="uid://dro6c7m8116v4" path="res://Agent.tscn" id="1"]
-[ext_resource type="Texture2D" uid="uid://bg85mca2ixvnm" path="res://wall.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://dro6c7m8116v4" path="res://addons/game_endeavor_steering/Agent.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://bg85mca2ixvnm" path="res://addons/game_endeavor_steering/wall.png" id="2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1sg1i"]
 texture = ExtResource("2")

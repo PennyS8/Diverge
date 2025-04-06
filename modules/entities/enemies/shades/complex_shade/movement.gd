@@ -29,6 +29,17 @@ func _after_update(_delta):
 	## the end position we make in child states before moving that way
 #
 	## Used to determine what we should push away from
+	# Get the direction we want to move
+	var normal = target.ai_steering.get_desired_normal()
+	var desired_velocity = normal * target.movement_speed
+	
+	target.velocity = target.velocity.lerp(desired_velocity, 0.3)
+	
+	target.set_velocity(target.velocity)
+	target.move_and_slide()
+	target.velocity = target.velocity
+	
+	
 	#var neighbors = soft_collision.get_overlapping_bodies()
 	#neighbors.erase(self)
 	#
@@ -46,7 +57,10 @@ func _after_update(_delta):
 	animate_movement()
 
 func animate_movement():
-	var dir = target.velocity.normalized()
+	if !target.follow_object:
+		return
+	
+	var dir = target.global_position.direction_to(target.follow_object.global_position).normalized()
 	var xdir = dir.snapped(Vector2.ONE).x
 	var ydir = dir.snapped(Vector2.ONE).y
 	
