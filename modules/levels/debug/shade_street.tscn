@@ -10,8 +10,19 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-359, -238, 563, -226, 524, 516, -521, 505)])
 
 [node name="ShadeStreet" type="Node2D"]
+y_sort_enabled = true
+
+[node name="ComplexShade" parent="." instance=ExtResource("3_t7bno")]
+position = Vector2(44, -28)
+
+[node name="ComplexShade2" parent="." instance=ExtResource("3_t7bno")]
+position = Vector2(-56, 39)
+
+[node name="ComplexShade3" parent="." instance=ExtResource("3_t7bno")]
+position = Vector2(-44, -22)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+y_sort_enabled = true
 navigation_polygon = SubResource("NavigationPolygon_rldev")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="NavigationRegion2D"]
@@ -22,15 +33,9 @@ tile_set = ExtResource("1_dipkh")
 collision_visibility_mode = 1
 
 [node name="TileMapLayer2" type="TileMapLayer" parent="NavigationRegion2D"]
+z_index = 1
+y_sort_enabled = true
+material = ExtResource("1_rldev")
 tile_map_data = PackedByteArray("AAADAAEAAAAWACMAAAAGAP7/AAAWACMAAAAHAAUAAAAWACMAAAD7/wUAAAAWACMAAAD7//7/AAAWACMAAAD6/wEAAAAWACMAAAD///z/AAAWACMAAAAAAAIAAAAWACMAAAD9/wQAAAAWACMAAAACAP3/AAAWACMAAAA=")
 tile_set = ExtResource("1_dipkh")
 collision_visibility_mode = 1
-
-[node name="ComplexShade" parent="NavigationRegion2D" instance=ExtResource("3_t7bno")]
-position = Vector2(44, -28)
-
-[node name="ComplexShade2" parent="NavigationRegion2D" instance=ExtResource("3_t7bno")]
-position = Vector2(-56, 39)
-
-[node name="ComplexShade3" parent="NavigationRegion2D" instance=ExtResource("3_t7bno")]
-position = Vector2(-44, -22)

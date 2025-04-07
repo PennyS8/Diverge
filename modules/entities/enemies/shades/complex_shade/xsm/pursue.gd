@@ -1,6 +1,7 @@
 @tool
 extends State
 
+@export var chase_speed := 60.0
 
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
@@ -14,6 +15,8 @@ var target_angle
 func _on_enter(_args) -> void:
 	if !_args:
 		return
+		
+	target.movement_speed = chase_speed
 	
 	target.ai_steering.apply_seek(_args)
 	target.ai_steering.apply_strafe(_args, strafe_factor)

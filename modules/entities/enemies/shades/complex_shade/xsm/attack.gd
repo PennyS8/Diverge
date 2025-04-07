@@ -37,11 +37,11 @@ func _on_enter(_args) -> void:
 	pick_attack_anim()
 
 	#uncomment once dash implemented
-	#var dust_dir = swing_dir.snapped(Vector2.ONE)
+	var dust_dir = attack_direction.snapped(Vector2.ONE)
 	var dust = dash_dust.instantiate()
 	get_tree().current_scene.add_child(dust)
 	dust.global_position = target.global_position
-	#dust.play(dust_anims[dust_dir])
+	dust.play(dust_anims[dust_dir])
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent

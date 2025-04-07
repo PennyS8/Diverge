@@ -11,9 +11,10 @@ const MIN_SEEK_DISTANCE := 24.0
 const MAX_SEEK_DISTANCE := 32.0
 
 ## Will move towards target if greater than this distance
-var pursue_distance_max := randf_range(36.0, 48.0)
+var pursue_distance_max := randf_range(56.0, 64.0)
 ## Will move away from target if less than this distance
-var pursue_distance_min := randf_range(24.0, 32.0)
+var pursue_distance_min := randf_range(36.0, 48.0)
+
 @export var strafe_factor := 0.25
 
 # This function is called when the state enters
@@ -43,13 +44,11 @@ func _on_update(_delta: float) -> void:
 	var distance = displacement.length()
 	var target_angle = displacement.angle()
 	
-	var seek_weight = Utils.map_value(distance, MIN_SEEK_DISTANCE, MAX_SEEK_DISTANCE)
-	
 	# Needs to be cleared at the start to reset data from last frame
 	target.ai_steering.clear()
 	# Avoid walls
 	target.ai_steering.apply_collision_avoidance(target, 8.0)
-		
+	
 	# Move towards target if too far away
 	if distance > pursue_distance_max:
 		change_state_node_force($Pursue, target_angle)
