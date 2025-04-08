@@ -34,7 +34,7 @@ func _on_enter(_args):
 func _on_update(_delta):
 	if target.dir == Vector2.ZERO:
 		change_state("Idle", idle_dir)
-	
+
 	target.velocity = lerp(target.velocity, target.dir * ground_speed, acceleration * _delta)
 	
 	var xdir = target.dir.snapped(Vector2.ONE).x
