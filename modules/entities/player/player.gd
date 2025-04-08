@@ -18,7 +18,7 @@ var swing_dir : Vector2
 # if player is currently inside a "ledge" area, the reference to that is stored here
 var ledge_collision : Area2D
 
-var hook_locked := true
+var hook_locked := false
 
 # this is to pass unhandled input to states
 signal unhandled_input_received(event)
@@ -66,7 +66,7 @@ func _process(_delta):
 
 func check_unlock_hook():
 	var deinv : RestrictedInventory = load("res://modules/ui/hud/wyvern_inv/equipment_inventory.tres")
-	hook_locked = false
+	#hook_locked = false
 #	can_attack()
 	
 func _camera_move():
@@ -87,6 +87,9 @@ func pull():
 	pass
 	
 func enter_cutscene(camera_pos):
+	# hide hp
+	get_tree().get_first_node_in_group("gui").hide()
+	
 	fsm.change_state("NoAttack")
 	fsm.change_state("NoDash")
 	
@@ -109,6 +112,8 @@ func enter_cutscene(camera_pos):
 	return
 	
 func exit_cutscene():
+	get_tree().get_first_node_in_group("gui").show()
+
 	$PlayerFSM.change_state("Idle")
 	fsm.change_state("CanAttack")
 	fsm.change_state("CanDash")

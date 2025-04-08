@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ddewnajb6ga0f" path="res://assets/debug/prototype-textures/PNG/Purple/texture_09.png" id="2_76yxe"]
 
 [node name="CutsceneTest" type="Node2D"]
+position = Vector2(0, 294)
 script = ExtResource("1_xq57i")
 
 [node name="Texture09" type="Sprite2D" parent="."]
