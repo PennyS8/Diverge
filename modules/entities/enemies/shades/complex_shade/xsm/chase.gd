@@ -27,7 +27,7 @@ func _on_enter(_args) -> void:
 		## the name finding thing runs at the start of each frame
 		#change_state_node_force($"../WaitNearPlayer")
 	#else:
-	
+	target.follow_object = get_tree().get_first_node_in_group("player")
 	target.movement_speed = state_speed
 
 # This function is called just after the state enters

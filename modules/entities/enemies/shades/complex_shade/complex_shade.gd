@@ -23,7 +23,24 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	# Vision Cone rotates to direction walked
 	%AgroRegion.look_at(to_global(velocity))
+	super(_delta)
+	
+# Removes the knockback from the enemy for tethering but still stuns enemy
+func tethered_stun():
+	crowd_control = true
+	$ShadeFSM.change_state("Stunned")
+	
+	# turns crowd control back off for future
+	crowd_control = false
+	
+func fling(): 
+	$ShadeFSM.change_state("Stunned")
+	super.fling()
 
+func pull():
+	$ShadeFSM.change_state("Stunned")
+	super.pull()
+	
 #region Savegame
 func on_save_game(saved_data:Array[SavedData]):
 	if %Health.health <= 0: 

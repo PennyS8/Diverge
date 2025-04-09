@@ -71,13 +71,15 @@ func check_unlock_hook():
 	
 func _camera_move():
 	if !lock_camera:
-		$Camera2D.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25
+		$Camera2D.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
 		$Camera2D.position_smoothing_enabled = true
 		
 func can_attack():
 	$PlayerFSM.change_state("CanAttack")
 	$PlayerFSM.change_state("Idle")
 
+func _physics_process(delta: float) -> void:
+	pass
 # Override
 func fling():
 	pass

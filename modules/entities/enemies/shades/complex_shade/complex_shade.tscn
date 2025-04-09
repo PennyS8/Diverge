@@ -3,18 +3,18 @@
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
 [ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="4_e4b7j"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="4_kcpdx"]
-[ext_resource type="Script" uid="uid://bx6jvvpiqokkf" path="res://modules/entities/enemies/shades/complex_shade/xsm/patrol.gd" id="6_2ptfn"]
-[ext_resource type="Script" uid="uid://b8scr65cberb6" path="res://modules/entities/enemies/shades/complex_shade/xsm/pursue.gd" id="6_hvs5h"]
-[ext_resource type="Script" uid="uid://cxnxkuahbhhlb" path="res://modules/entities/enemies/shades/complex_shade/movement.gd" id="6_twtcd"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/patrol.gd" id="6_2ptfn"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/pursue.gd" id="6_hvs5h"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/movement.gd" id="6_twtcd"]
 [ext_resource type="Script" uid="uid://bfvba1oo0iob7" path="res://modules/entities/enemies/shades/complex_shade/xsm/chase.gd" id="7_8fy0v"]
-[ext_resource type="Script" uid="uid://bsn0ly8evlqph" path="res://modules/entities/enemies/shades/complex_shade/xsm/backpedal.gd" id="7_hw5jo"]
-[ext_resource type="Script" uid="uid://d07o421syyh25" path="res://modules/entities/enemies/shades/complex_shade/xsm/attack.gd" id="8_pitir"]
-[ext_resource type="Script" uid="uid://bmicck7syduld" path="res://modules/entities/enemies/shades/complex_shade/xsm/encircle.gd" id="8_tvkt4"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/backpedal.gd" id="7_hw5jo"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/attack.gd" id="8_pitir"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/encircle.gd" id="8_tvkt4"]
 [ext_resource type="Script" uid="uid://dftanwwuon216" path="res://modules/entities/enemies/shades/complex_shade/xsm/stunned.gd" id="9_6lwy3"]
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_5ojq5"]
-[ext_resource type="Script" uid="uid://judy3seldx6h" path="res://modules/entities/enemies/shades/complex_shade/xsm/charge_attack.gd" id="10_iug1g"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/charge_attack.gd" id="10_iug1g"]
 [ext_resource type="Script" uid="uid://cggi1jq1vgh8q" path="res://modules/entities/enemies/shades/complex_shade/xsm/dead.gd" id="10_m6rex"]
-[ext_resource type="Script" uid="uid://d1od6kbhhnppb" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_dnu80"]
@@ -1582,7 +1582,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../ReturnToPost")
+next_state = NodePath("")
 
 [node name="ReturnToPost" type="Node" parent="ShadeFSM/Alive/Movement"]
 editor_description = "TODO: Not implemented"
@@ -1599,7 +1599,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Reaction")
+next_state = NodePath("")
 
 [node name="ChargeAttack" type="Node" parent="ShadeFSM/Alive/Combat"]
 script = ExtResource("10_iug1g")
@@ -1671,7 +1671,7 @@ timed = false
 next_state = NodePath("")
 
 [node name="TetherableArea2D" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 256
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
@@ -1728,7 +1728,7 @@ shape = SubResource("RectangleShape2D_xa74g")
 [node name="Health" type="Node" parent="BehaviorComponents"]
 unique_name_in_owner = true
 script = ExtResource("10_5ojq5")
-max_health = 50
+max_health = 40
 
 [node name="NavAgent" type="NavigationAgent2D" parent="BehaviorComponents"]
 unique_name_in_owner = true
