@@ -138,4 +138,18 @@ func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 	return
 
 func _on_health_component_died() -> void:
-	$PlayerFSM.change_state("Death", dir)
+	var current_dir : Vector2
+	var idle := false
+	
+	for state in $PlayerFSM/Movement.active_states:
+		if state == "Idle":
+			idle = true
+			break;
+	
+	if idle == true:
+		print("Idle Found")
+		current_dir = $PlayerFSM/Movement/Idle.idle_dir
+	else: 
+		current_dir = dir
+	
+	$PlayerFSM.change_state("Death", current_dir)

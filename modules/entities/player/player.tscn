@@ -2069,5 +2069,14 @@ mouse_filter = 2
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 radius = 8.0
 
+[node name="stressEffect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_5jg5w")
+offset_left = -950.0
+offset_top = -546.0
+offset_right = 970.0
+offset_bottom = 534.0
+mouse_filter = 2
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
