@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=91 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -1483,7 +1483,7 @@ disabled = false
 debug_mode = true
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
 [node name="Inactive" type="Node" parent="PlayerFSM/Abilities"]
