@@ -102,19 +102,29 @@ func deep_breath_overlay():
 	var blink_time = 1
 	
 	tween.set_parallel(true) # Perform next steps at the same time
+	
+	# Take away player control, fade to black (placeholder for "blink")
 	tween.tween_callback(player.enter_cutscene)
 	tween.tween_property(fade_screen, "color:a", 1, blink_time)
+	
+	# Next, once eyes are closed, begin to open eyes and set screen saturation to grayscale
 	tween.chain().tween_property(fade_screen, "color:a", 0, blink_time)
-	tween.chain().tween_callback(deep_breath)
-	tween.chain().tween_callback(player.exit_cutscene)
+	tween.tween_callback(black_white)
+	
+	# Wait for tween to be done fading in
+	await tween.finished
+	
+	# Begin timer for deadeye mode, wait for timer to be done
+	await start_deadeye()
+	
+	# Return control back to player
+	player.exit_cutscene()
 
-func deep_breath():
+func black_white():
 	if !overlay:
 		overlay = get_tree().get_first_node_in_group("deep_breath")
 	overlay.show()
+
+func start_deadeye():
+	overlay.start_mode()
 	await overlay.done
-	
-func exhale():
-	if !overlay:
-		overlay = get_tree().get_first_node_in_group("deep_breath")
-	overlay.hide()

@@ -1393,6 +1393,7 @@ shader_parameter/band_strength = 2.0
 shader_parameter/noise_intensity = 0.05
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+process_mode = 1
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4
@@ -1882,6 +1883,7 @@ libraries = {
 autoplay = "idle_down"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
 zoom = Vector2(5.5, 5.5)
 process_callback = 0
 position_smoothing_enabled = true

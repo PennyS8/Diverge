@@ -55,9 +55,9 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 
-[node name="CanvasLayer" type="CanvasLayer" parent="GUI2"]
+[node name="CopingOverlays" type="CanvasLayer" parent="GUI2"]
 
-[node name="BreathMode" type="ColorRect" parent="GUI2/CanvasLayer" groups=["deep_breath"]]
+[node name="BreathMode" type="ColorRect" parent="GUI2/CopingOverlays" groups=["deep_breath"]]
 process_mode = 3
 visible = false
 z_index = 4
@@ -72,7 +72,8 @@ size_flags_vertical = 3
 mouse_filter = 1
 script = ExtResource("10_tdd3g")
 
-[node name="TimeRemaining" type="Label" parent="GUI2/CanvasLayer/BreathMode"]
+[node name="TimeRemaining" type="Label" parent="GUI2/CopingOverlays/BreathMode"]
+visible = false
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -87,7 +88,7 @@ label_settings = SubResource("LabelSettings_2825a")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Timer" type="Timer" parent="GUI2/CanvasLayer/BreathMode"]
+[node name="Timer" type="Timer" parent="GUI2/CopingOverlays/BreathMode"]
 wait_time = 2.0
 one_shot = true
 
@@ -131,8 +132,8 @@ script = ExtResource("5_jmjhv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
-[connection signal="visibility_changed" from="GUI2/CanvasLayer/BreathMode" to="GUI2/CanvasLayer/BreathMode" method="_on_visibility_changed"]
-[connection signal="timeout" from="GUI2/CanvasLayer/BreathMode/Timer" to="GUI2/CanvasLayer/BreathMode" method="_on_timer_timeout"]
+[connection signal="visibility_changed" from="GUI2/CopingOverlays/BreathMode" to="GUI2/CopingOverlays/BreathMode" method="_on_visibility_changed"]
+[connection signal="timeout" from="GUI2/CopingOverlays/BreathMode/Timer" to="GUI2/CopingOverlays/BreathMode" method="_on_timer_timeout"]
 [connection signal="check_hook" from="GUI2/InventoryPanel/EquipmentPanel" to="." method="_on_equipment_panel_check_hook"]
 [connection signal="item_stack_added" from="GUI2/InventoryPanel/EquipmentPanel/Equip" to="." method="_on_equip_item_stack_added"]
 

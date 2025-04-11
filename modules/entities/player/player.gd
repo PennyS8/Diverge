@@ -117,6 +117,7 @@ func enter_cutscene(camera_pos : Vector2 = Vector2.INF):
 	return
 	
 func exit_cutscene():
+	print("hello!!")
 	get_tree().get_first_node_in_group("gui").show()
 
 	$PlayerFSM.change_state("Idle")
