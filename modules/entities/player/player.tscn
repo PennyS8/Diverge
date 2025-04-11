@@ -1406,7 +1406,7 @@ editor_description = "Is a state region - we can be in multiple states underneat
 script = ExtResource("1_mpvpn")
 history_size = 0
 disabled = false
-debug_mode = true
+debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
@@ -1480,7 +1480,7 @@ next_state = NodePath("../AttackLocked")
 [node name="Abilities" type="Node" parent="PlayerFSM"]
 script = ExtResource("8_lle26")
 disabled = false
-debug_mode = true
+debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("Idle")

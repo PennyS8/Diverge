@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b8d2txpebdt2f" path="res://modules/levels/debug/testing_grounds/debug_gym.tscn" id="2_fk1pd"]
 
 [node name="LevelManager" type="Node2D"]
+process_mode = 3
 z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("1_dvekp")
