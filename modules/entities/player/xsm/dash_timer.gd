@@ -8,4 +8,5 @@ extends State
 
 # when StateAutomaticTimer timeout()
 func _state_timeout():
-	change_state("CanDash")
+	if !target.in_cutscene:
+		change_state("CanDash")
