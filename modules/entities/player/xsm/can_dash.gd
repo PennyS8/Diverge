@@ -12,7 +12,7 @@ func _on_enter(_args):
 func _on_update(_delta):
 	pass
 
-func state_unhandled_input(event):
+func state_unhandled_input(_event):
 	if Input.is_action_just_pressed("dash"):
 		change_state("Recall")
 		change_state("Dash")

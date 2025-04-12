@@ -2,6 +2,7 @@ extends Node
 
 var inventory_node : Control
 
+@warning_ignore("unused_signal")
 signal last_ramen_picked_up()
 
 # Called when the node enters the scene tree for the first time.

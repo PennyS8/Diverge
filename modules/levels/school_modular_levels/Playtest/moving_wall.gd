@@ -41,10 +41,10 @@ func on_load_game(saved_data:SavedData):
 		first_played = true
 		second_played = true
 
-func _on_camera_boundry_2_body_entered(body):
+func _on_camera_boundry_2_body_entered(_body):
 	first_played = true
 	second_played = true
 
 
-func _on_camera_boundry_body_entered(body):
+func _on_camera_boundry_body_entered(_body):
 	pass # Replace with function body.

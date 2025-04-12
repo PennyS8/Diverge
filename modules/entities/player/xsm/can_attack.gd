@@ -5,7 +5,7 @@ func _on_enter(_args) -> void:
 	target.unhandled_input_received.connect(state_unhandled_input)
 
 	
-func state_unhandled_input(event : InputEvent):
+func state_unhandled_input(_event : InputEvent):
 	if is_active("MovementDisabled"):
 		return
 		

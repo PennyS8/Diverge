@@ -34,7 +34,7 @@ var cutscene_marker_packed = preload("res://modules/objects/debug/cutscene_walk_
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(dialogue_done)
 	
-func dialogue_done(resource : Resource) -> void:
+func dialogue_done(_resource : Resource) -> void:
 	dialogue_open = false
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -65,9 +65,10 @@ func _process(_delta):
 			$Camera2D.limit_left = bottom_left.x
 
 func check_unlock_hook():
+	@warning_ignore("unused_variable")
 	var deinv : RestrictedInventory = load("res://modules/ui/hud/wyvern_inv/equipment_inventory.tres")
 	#hook_locked = false
-#	can_attack()
+	#can_attack()
 	
 func _camera_move():
 	if !lock_camera:
@@ -78,7 +79,7 @@ func can_attack():
 	$PlayerFSM.change_state("CanAttack")
 	$PlayerFSM.change_state("Idle")
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	pass
 # Override
 func fling():
@@ -124,7 +125,7 @@ func exit_cutscene():
 	in_cutscene = false
 	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25
 	
-func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
+func do_walk(global_point : Vector2, _speed_percentage : float = 1.0):
 	# setting dir puts player into walk state; this manages all our animations and logic and stuff
 	dir = global_position.direction_to(global_point)
 	
