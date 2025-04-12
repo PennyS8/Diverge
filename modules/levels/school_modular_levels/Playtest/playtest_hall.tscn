@@ -34,6 +34,7 @@
 [ext_resource type="PackedScene" uid="uid://bii7n4y5k0hsf" path="res://modules/entities/enemies/shades/complex_shade/weak_shade.tscn" id="28_j0vq7"]
 [ext_resource type="Script" uid="uid://hxdnggturjhp" path="res://modules/levels/school_modular_levels/Playtest/deep_breath_tutorial_zone.gd" id="29_j0vq7"]
 [ext_resource type="Script" uid="uid://cnafmmtqskci4" path="res://modules/levels/school_modular_levels/Playtest/library_barrier.gd" id="30_wly3n"]
+[ext_resource type="PackedScene" uid="uid://e7mplq2c2c5" path="res://modules/objects/interactable.tscn" id="23_usixv"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
@@ -9557,6 +9558,28 @@ script = ExtResource("23_wly3n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/NewAreaDialogueTrigger"]
 shape = SubResource("RectangleShape2D_vp17h")
+[node name="Interactables" type="Node2D" parent="Hallway"]
+position = Vector2(12, 0)
+
+[node name="Interactable" parent="Hallway/Interactables" instance=ExtResource("23_usixv")]
+position = Vector2(-132, -23)
+start_word = "locker_messy"
+
+[node name="Interactable4" parent="Hallway/Interactables" instance=ExtResource("23_usixv")]
+position = Vector2(-227, -23)
+start_word = "default_locker"
+
+[node name="Interactable2" parent="Hallway/Interactables" instance=ExtResource("23_usixv")]
+position = Vector2(-84, -23)
+start_word = "locker_locked"
+
+[node name="Interactable5" parent="Hallway/Interactables" instance=ExtResource("23_usixv")]
+position = Vector2(12, -23)
+start_word = "locker_locked"
+
+[node name="Interactable3" parent="Hallway/Interactables" instance=ExtResource("23_usixv")]
+position = Vector2(156, -23)
+start_word = "locker_empty"
 
 [node name="EndRoom" type="Node2D" parent="." groups=["room_with_dynamic_transitions"]]
 y_sort_enabled = true
