@@ -1,0 +1,45 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjtvynn63jb2r"]
+
+[ext_resource type="Script" uid="uid://c02mguuo4jocx" path="res://modules/ui/coping_overlays/selectable_body.gd" id="1_kf1ud"]
+[ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="2_7v3qk"]
+
+[sub_resource type="Gradient" id="Gradient_vtdgj"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.7, 0, 0, 1, 0.99, 0, 0, 1, 0.435294, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_27tcd"]
+gradient = SubResource("Gradient_vtdgj")
+width = 16
+height = 16
+fill_from = Vector2(0.25, 0.25)
+fill_to = Vector2(0.75, 0.75)
+repeat = 1
+
+[node name="SelectableBody" type="Node2D"]
+z_as_relative = false
+script = ExtResource("1_kf1ud")
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+z_index = 4
+texture_repeat = 2
+material = ExtResource("2_7v3qk")
+position = Vector2(0, -17)
+points = PackedVector2Array(0, 0, 0, 0, 8, 4, 12, 12, 8, 20, 0, 24, -8, 20, -12, 12, -8, 4, 0, 0)
+width = 6.0
+texture = SubResource("GradientTexture2D_27tcd")
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -12.0
+offset_top = -17.0
+offset_right = 12.0
+offset_bottom = 7.0
+mouse_filter = 1
+
+[connection signal="mouse_entered" from="ColorRect" to="." method="_on_color_rect_mouse_entered"]

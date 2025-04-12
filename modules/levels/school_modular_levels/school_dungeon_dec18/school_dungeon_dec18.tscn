@@ -251,6 +251,18 @@ position = Vector2(-24, -108)
 [node name="MeleeShade" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]
 position = Vector2(-48, 96)
 
+[node name="MeleeShade3" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]
+position = Vector2(-12, 148)
+
+[node name="MeleeShade4" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]
+position = Vector2(-80, 145)
+
+[node name="MeleeShade5" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]
+position = Vector2(35, 50)
+
+[node name="MeleeShade6" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]
+position = Vector2(-92, 48)
+
 [node name="MeleeShade2" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]
 position = Vector2(72, 120)
 

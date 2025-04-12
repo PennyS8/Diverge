@@ -5,11 +5,21 @@ extends ColorRect
 @export var deadeye_time := 10.0
 signal done
 
+var current_selectables : Array[Node2D]
+var current_bodies_selected : Array[TetherableBody]
+
+var selectable_body_selector : PackedScene = preload("res://modules/ui/coping_overlays/selectable_body.tscn")
+
+var yarn_controller_packed : PackedScene = preload("res://modules/status_effects/yarn_controller.tscn")
+
 func _on_visibility_changed() -> void:
 	if visible:
-		get_tree().paused = true
+		if is_inside_tree():
+			get_tree().paused = true
 	else:
-		get_tree().paused = false
+		if is_inside_tree():
+			get_tree().paused = false
+			_yank_all_yarn()
 
 func _process(delta: float) -> void:
 	if visible:
@@ -29,13 +39,54 @@ func start_mode():
 	# \ that keeps track of how many shades are inside of it, and when struck, explodes them out 
 	# \ and does massive damage.
 	# 6. If breakables are pulled into Shades or Shade piles, break the breakable and damage
+	for body : TetherableBody in get_tree().get_nodes_in_group("enemy"):
+		# Generate UI element that can be selected with mouse hover
+		var selector : Node2D = selectable_body_selector.instantiate()
+		
+		# Add under canvaslayer that excludes the grayscale-filter
+		get_parent().get_parent().get_node("ScreenFXExclusion").add_child(selector)
+		
+		selector.global_position = body.global_position
+		selector.mouse_entered.connect(select_body.bind(body))
+		
+		# add to list to free when done
+		current_selectables.append(selector)
+
 	
-	
+func select_body(body : TetherableBody):
+	current_bodies_selected.append(body)
+
 func _on_timer_timeout() -> void:
 	done.emit()
 	
 	# Set time to equal the default time so it doesn't visibly jump from 0.00 to time when shown
 	time_remaining.text = "%.2f" % [deadeye_time]
-
 	time_remaining.hide()
+	
+	_set_yarn()
+	
+	# remove all selectors for nodes
+	for node in current_selectables:
+		node.queue_free()
+		
 	hide()
+
+func _set_yarn():
+	var first_tetherable : TetherableBody = current_bodies_selected[0]
+	
+	for selected_tether in current_bodies_selected:
+		# Make a new instance of visual yarn, end point set to this tetherbody
+		var yarn = yarn_controller_packed.instantiate()
+		yarn.can_collide = false
+		yarn.tethered_body = selected_tether
+		
+		# Set the pull target for all other ones
+		selected_tether.leash_owner = first_tetherable
+		
+		# Set the start point of the yarn to be the first tetherbody selected
+		# (This makes all nodes selected become yanked to the first one)
+		first_tetherable.add_child(yarn)
+		
+func _yank_all_yarn():
+	for selected_tether in current_bodies_selected:
+		selected_tether.fling()

@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var player = get_tree().get_first_node_in_group("player")
 var sliding_to_target := false
 
+var leash_owner : Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -29,11 +30,15 @@ func remove_tethered_status():
 	remove_from_group("status_tethered")
 
 func _physics_process(_delta):
-	if player:
-		var dist = global_position.distance_to(player.global_position)
-	
+	# this is sooo ugly -- this is the case where player IS pulling towards themselves
+	if !leash_owner:
+		leash_owner = player
+	# else, deadeye has given us a leash owner (another tetherablebody)
+	if leash_owner:
+		var dist = global_position.distance_to(leash_owner.global_position)
+
 		if sliding_to_target and dist > 16:
-			global_position = global_position.move_toward(player.global_position, 100*_delta)
+			global_position = global_position.move_toward(leash_owner.global_position, 100*_delta)
 		elif dist <= 16:
 			sliding_to_target = false
 

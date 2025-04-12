@@ -1,25 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://b8ywe7vivb1en"]
+[gd_scene load_steps=13 format=3 uid="uid://b8ywe7vivb1en"]
 
 [ext_resource type="Script" uid="uid://hrfgvn40midl" path="res://modules/globals/main.gd" id="1_2uu7l"]
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="2_wwsun"]
 [ext_resource type="PackedScene" uid="uid://gna64jq1jkf1" path="res://modules/ui/debug/num_keys/num_keys.tscn" id="3_wjh11"]
 [ext_resource type="PackedScene" uid="uid://dlgu6ii31q1ht" path="res://modules/ui/hud/player_hud/player_hud.tscn" id="4_1al8n"]
+[ext_resource type="PackedScene" uid="uid://ddv7xdgy2vjt" path="res://modules/ui/coping_overlays/breath_mode.tscn" id="4_c8snn"]
 [ext_resource type="Script" uid="uid://t66eoi8gmq5o" path="res://modules/globals/saving/save_load.gd" id="5_jmjhv"]
 [ext_resource type="Script" uid="uid://c8qxb50jimxvj" path="res://modules/globals/inventory_panel.gd" id="8_02pmu"]
 [ext_resource type="PackedScene" uid="uid://ms4bp1b33wt2" path="res://modules/ui/hud/wyvern_inv/notebook_panel.tscn" id="8_dbv5s"]
-[ext_resource type="Shader" uid="uid://hpx4oj7ke2hm" path="res://assets/debug/grayscale.gdshader" id="9_c8snn"]
 [ext_resource type="Shader" uid="uid://c7ga40mwai0hs" path="res://modules/globals/blur.gdshader" id="9_nlpsi"]
-[ext_resource type="Script" uid="uid://bcr45pjwtp6hj" path="res://modules/globals/breath_mode.gd" id="10_tdd3g"]
 [ext_resource type="Shader" path="res://modules/globals/fisheyeCRT.gdshader" id="11_2825a"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_tdd3g"]
-shader = ExtResource("9_c8snn")
-shader_parameter/brightness = 1.0
-shader_parameter/contrast = 1.0
-shader_parameter/saturation = 0.0
-
-[sub_resource type="LabelSettings" id="LabelSettings_2825a"]
-font_size = 48
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yc34w"]
 shader = ExtResource("9_nlpsi")
@@ -57,40 +47,11 @@ mouse_filter = 2
 
 [node name="CopingOverlays" type="CanvasLayer" parent="GUI2"]
 
-[node name="BreathMode" type="ColorRect" parent="GUI2/CopingOverlays" groups=["deep_breath"]]
-process_mode = 3
+[node name="BreathMode" parent="GUI2/CopingOverlays" instance=ExtResource("4_c8snn")]
 visible = false
-z_index = 4
-material = SubResource("ShaderMaterial_tdd3g")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 1
-script = ExtResource("10_tdd3g")
 
-[node name="TimeRemaining" type="Label" parent="GUI2/CopingOverlays/BreathMode"]
-visible = false
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_top = 100.0
-offset_right = 11.0
-offset_bottom = 123.0
-grow_horizontal = 2
-text = "0.0s"
-label_settings = SubResource("LabelSettings_2825a")
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Timer" type="Timer" parent="GUI2/CopingOverlays/BreathMode"]
-wait_time = 2.0
-one_shot = true
+[node name="ScreenFXExclusion" type="CanvasLayer" parent="GUI2"]
+follow_viewport_enabled = true
 
 [node name="Health" parent="GUI2" groups=["gui"] instance=ExtResource("4_1al8n")]
 
@@ -132,8 +93,6 @@ script = ExtResource("5_jmjhv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
-[connection signal="visibility_changed" from="GUI2/CopingOverlays/BreathMode" to="GUI2/CopingOverlays/BreathMode" method="_on_visibility_changed"]
-[connection signal="timeout" from="GUI2/CopingOverlays/BreathMode/Timer" to="GUI2/CopingOverlays/BreathMode" method="_on_timer_timeout"]
 [connection signal="check_hook" from="GUI2/InventoryPanel/EquipmentPanel" to="." method="_on_equipment_panel_check_hook"]
 [connection signal="item_stack_added" from="GUI2/InventoryPanel/EquipmentPanel/Equip" to="." method="_on_equip_item_stack_added"]
 
