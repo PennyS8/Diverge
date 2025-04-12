@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dpfuj111akwtu"
+path="res://.godot/imported/EFX SD Fire in Metal Stove 03.wav-689a7a4a5b1332f0287f04679f07e3ef.sample"
+
+[deps]
+
+source_file="res://modules/sfx/Sonniss/EFX SD Fire in Metal Stove 03.wav"
+dest_files=["res://.godot/imported/EFX SD Fire in Metal Stove 03.wav-689a7a4a5b1332f0287f04679f07e3ef.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
