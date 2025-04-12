@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=4 uid="uid://dibtck8dlixm1"]
+[gd_scene load_steps=104 format=4 uid="uid://dibtck8dlixm1"]
 
 [ext_resource type="Texture2D" uid="uid://ce10vjgkrj5nk" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png" id="1_453bp"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="2_at4ji"]
@@ -15,7 +15,7 @@
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_at4ji"]
 [ext_resource type="PackedScene" uid="uid://dywn8ybv2xl4i" path="res://modules/objects/puzzle_pieces/lever/lever.tscn" id="13_kgxs5"]
 [ext_resource type="PackedScene" uid="uid://bme0largcnr4h" path="res://modules/objects/level_transition_zone/transition_double_door.tscn" id="13_usixv"]
-[ext_resource type="PackedScene" path="res://modules/levels/school_modular_levels/Playtest/moving_wall.tscn" id="13_xknx3"]
+[ext_resource type="PackedScene" uid="uid://bus3juxuqyq0d" path="res://modules/levels/school_modular_levels/Playtest/moving_wall.tscn" id="13_xknx3"]
 [ext_resource type="Resource" uid="uid://fgga6obgfqb6" path="res://modules/objects/library_book_lab.tres" id="14_vrsc7"]
 [ext_resource type="FontFile" uid="uid://bgveetmypd20b" path="res://assets/hud/sf-pixelate/TrueType/SFPixelate-Bold.ttf" id="14_w3j1q"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="14_x3qlk"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://dr0cvjhys8cx7" path="res://assets/environment/downtown_dungeon/custom_sprites/anxiety_door.png" id="16_mee8l"]
 [ext_resource type="Resource" uid="uid://v46rcraqdjre" path="res://modules/objects/library_book_cafeteria.tres" id="16_uy203"]
 [ext_resource type="Resource" uid="uid://cw25ojt8dsl75" path="res://modules/objects/library_book_classroom.tres" id="21_0knhu"]
+[ext_resource type="PackedScene" uid="uid://e7mplq2c2c5" path="res://modules/objects/interactable.tscn" id="23_usixv"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
@@ -9370,7 +9371,7 @@ tile_set = ExtResource("10_kgxs5")
 z_index = 1
 y_sort_enabled = true
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD5/wAAAgAOAAEAAAD5/wEAAgAPAAIAAAD6/wAAAgAPAAEAAAD6/wEAAgAPAAIAAAADAAAAAgAOAAUAAAADAAEAAgAOAAYAAAAEAAAAAgAPAAUAAAAEAAEAAgAPAAYAAADz/wAAAgANAAEAAADz/wEAAgANAAIAAAD0/wAAAgAOAAMAAAD0/wEAAgAOAAQAAAD1/wAAAgAPAAEAAAD1/wEAAgAPAAIAAAD+/wAAAgAOAAEAAAD+/wEAAgAOAAIAAAD9/wAAAgANAAMAAAD9/wEAAgANAAQAAAD4/wAAAgANAAUAAAD4/wEAAgANAAYAAAACAAAAAgANAAEAAAACAAEAAgANAAIAAAD//wAAAgAPAAMAAAD//wEAAgAPAAQAAADy/wEAAQABAA8AAAAFAAEAAQAAAA8AAAA=")
+tile_map_data = PackedByteArray("AAD5/wAAAgAOAAEAAAD5/wEAAgAPAAIAAAD6/wAAAgAPAAEAAAD6/wEAAgAPAAIAAAADAAAAAgAOAAUAAAADAAEAAgAOAAYAAAAEAAAAAgAPAAUAAAAEAAEAAgAPAAYAAADz/wAAAgANAAEAAADz/wEAAgANAAIAAAD0/wAAAgAOAAMAAAD1/wAAAgAPAAEAAAD+/wAAAgAOAAEAAAD+/wEAAgAOAAIAAAD9/wAAAgANAAMAAAD9/wEAAgANAAQAAAD4/wAAAgANAAUAAAD4/wEAAgANAAYAAAACAAAAAgANAAEAAAACAAEAAgANAAIAAAD//wAAAgAPAAMAAAD//wEAAgAPAAQAAADy/wEAAQABAA8AAAAFAAEAAQAAAA8AAAD0/wEAAgAOAAQAAAD0/wIAEgAAAAAAAQD1/wEAAgAPAAIAAAD1/wIAEgAAAAAAAQA=")
 tile_set = ExtResource("10_kgxs5")
 
 [node name="TopLayerVoid" type="TileMapLayer" parent="Hallway/Tiles"]
@@ -9472,6 +9473,29 @@ position = Vector2(-324, 42)
 scale = Vector2(8, 14)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "StartRoomEast"
+
+[node name="Interactables" type="Node2D" parent="Hallway"]
+position = Vector2(12, 0)
+
+[node name="Interactable" parent="Hallway/Interactables" instance=ExtResource("23_usixv")]
+position = Vector2(-132, -23)
+start_word = "locker_messy"
+
+[node name="Interactable4" parent="Hallway/Interactables" instance=ExtResource("23_usixv")]
+position = Vector2(-227, -23)
+start_word = "default_locker"
+
+[node name="Interactable2" parent="Hallway/Interactables" instance=ExtResource("23_usixv")]
+position = Vector2(-84, -23)
+start_word = "locker_locked"
+
+[node name="Interactable5" parent="Hallway/Interactables" instance=ExtResource("23_usixv")]
+position = Vector2(12, -23)
+start_word = "locker_locked"
+
+[node name="Interactable3" parent="Hallway/Interactables" instance=ExtResource("23_usixv")]
+position = Vector2(156, -23)
+start_word = "locker_empty"
 
 [node name="EndRoom" type="Node2D" parent="." groups=["room_with_dynamic_transitions"]]
 y_sort_enabled = true

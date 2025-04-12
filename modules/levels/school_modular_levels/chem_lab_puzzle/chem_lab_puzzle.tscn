@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=4 uid="uid://cp53bw4fgv7b2"]
+[gd_scene load_steps=79 format=4 uid="uid://cp53bw4fgv7b2"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_0bwgv"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_beb0c"]
@@ -22,7 +22,8 @@
 [ext_resource type="PackedScene" uid="uid://wwrw6hyhhicu" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/materials_station.tscn" id="19_n07ws"]
 [ext_resource type="PackedScene" uid="uid://c02hclv07w7cs" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/chem_inventory.tscn" id="20_0jtan"]
 [ext_resource type="Script" uid="uid://bmrc6kgne6fhf" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/entrance_dialogue.gd" id="20_7r4fh"]
-[ext_resource type="PackedScene" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/lab_trash_can.tscn" id="20_mor7r"]
+[ext_resource type="PackedScene" uid="uid://crx2yh5r8pj50" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/lab_trash_can.tscn" id="20_mor7r"]
+[ext_resource type="PackedScene" uid="uid://e7mplq2c2c5" path="res://modules/objects/interactable.tscn" id="24_246ub"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
@@ -3349,6 +3350,25 @@ next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "PuzzleDoorA"
 
 [node name="Entities" type="Node2D" parent="ChemLab"]
+
+[node name="Interactables" type="Node2D" parent="ChemLab"]
+position = Vector2(12, 0)
+
+[node name="Interactable" parent="ChemLab/Interactables" instance=ExtResource("24_246ub")]
+position = Vector2(-120, -58)
+start_word = "cabinet_extra"
+
+[node name="Interactable4" parent="ChemLab/Interactables" instance=ExtResource("24_246ub")]
+position = Vector2(72, -58)
+start_word = "cabinet_extra"
+
+[node name="Interactable2" parent="ChemLab/Interactables" instance=ExtResource("24_246ub")]
+position = Vector2(-168, -58)
+start_word = "cabinet_extra"
+
+[node name="Interactable3" parent="ChemLab/Interactables" instance=ExtResource("24_246ub")]
+position = Vector2(-96, -64)
+start_word = "locker_empty"
 
 [connection signal="body_entered" from="ChemLab/Tiles/Stations/EntranceDialogue" to="ChemLab/Tiles/Stations/EntranceDialogue" method="_on_body_entered"]
 

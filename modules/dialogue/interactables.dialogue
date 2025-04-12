@@ -1,0 +1,46 @@
+#lockers
+~ locker_messy
+% Juniper: This locker is kinda messy... I don't wanna keep looking at it.
+% Juniper: My locker gets messy sometimes, too.
+
+=> END
+
+~ locker_locked
+Juniper: Ugh. Locked.
+=> END
+
+~ locker_empty
+Juniper: Who would leave an entirely empty locker open?
+=> END
+
+~ default_locker
+%
+	Juniper: Looks like books. Is that [i]The Adventures of Tom Sawyer[/i]?
+	Juniper: [i]Huck Finn[/i] is better.
+% 
+	Juniper: Just books. I'm not sure if an Algebra textbook is going to help me right now.
+%
+	Juniper: Well, those are books.
+%
+	Juniper: I don't think a half-eaten granola bar is going to help right now. Plus, shouldn't they be worried about bugs?
+=> END
+
+#cabinets
+
+~ cabinet_extra
+%
+	Juniper: This is where the extra beakers are stored. Not what I'm looking for, right now.
+%
+	Juniper: I don't think this is the right cabinet.
+%
+	Juniper: This cabinet is locked... I think this is where Mr. Ellis puts the extra dangerous chemicals.
+=> END
+
+~ wrong_machine
+%
+	Juniper: I don't have any cash on me...
+%
+	Juniper: Nothing in here looks good.
+%
+	Juniper: They only have gummy bears, not gummy worms. Not worth it.
+=> END
