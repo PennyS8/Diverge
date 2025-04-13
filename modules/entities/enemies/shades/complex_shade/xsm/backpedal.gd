@@ -1,17 +1,21 @@
 @tool
-extends StateAnimation
+extends State
 
 
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
 
+var target_angle
+
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	# Removes enemy from current engagers upon death
-	EnemyManager.release_engagement(target)
-
+	if EnemyManager.request_engagement(target):
+		change_state("ChargeAttack")
+	else:
+		target.ai_steering.apply_flee(_args)
+	
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
 func _after_enter(_args) -> void:
@@ -22,7 +26,6 @@ func _after_enter(_args) -> void:
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
 	pass
-
 
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root

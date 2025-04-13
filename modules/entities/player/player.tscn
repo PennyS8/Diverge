@@ -1862,18 +1862,17 @@ position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_n7koy")
 
+[node name="Shadow" type="Sprite2D" parent="."]
+material = ExtResource("13_41n4o")
+texture = ExtResource("15_257pe")
+offset = Vector2(0, -11)
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
 material = ExtResource("13_41n4o")
 texture = ExtResource("14_iekqc")
 offset = Vector2(0, -11)
 hframes = 8
-
-[node name="Shadow" type="Sprite2D" parent="."]
-z_index = -1
-material = ExtResource("13_41n4o")
-texture = ExtResource("15_257pe")
-offset = Vector2(0, -11)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1897,16 +1896,22 @@ collision_mask = 512
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("SegmentShape2D_rc6ld")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-radius = 8.0
-
 [node name="stressEffect" type="ColorRect" parent="."]
 visible = false
+z_index = 3
 material = SubResource("ShaderMaterial_5jg5w")
-offset_left = -950.0
-offset_top = -546.0
-offset_right = 970.0
-offset_bottom = 534.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -480.0
+offset_top = -240.0
+offset_right = 480.0
+offset_bottom = 300.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+radius = 8.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
