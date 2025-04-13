@@ -114,3 +114,11 @@ texture_scale = 0.4
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
 position = Vector2(1391, 399)
+
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="Marker2D" type="Marker2D" parent="Spikes"]
+position = Vector2(1312, 360)
+
+[node name="Marker2D2" type="Marker2D" parent="Spikes"]
+position = Vector2(1392, 314)
