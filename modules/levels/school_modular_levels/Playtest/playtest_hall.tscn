@@ -9574,6 +9574,16 @@ shape = SubResource("RectangleShape2D_at4ji")
 position = Vector2(132.5, -41)
 shape = SubResource("RectangleShape2D_m5qk1")
 
+[node name="Interactables" type="Node2D" parent="EndRoom"]
+
+[node name="Interactable" parent="EndRoom/Interactables" instance=ExtResource("23_usixv")]
+position = Vector2(12, -33)
+start_word = "plant"
+
+[node name="Interactable2" parent="EndRoom/Interactables" instance=ExtResource("23_usixv")]
+position = Vector2(132, -33)
+start_word = "plant"
+
 [node name="DarkRoom" type="Node2D" parent="."]
 position = Vector2(492, -456)
 
