@@ -44,5 +44,8 @@ func _state_timeout() -> void:
 
 func _before_exit(_args):
 	#%Stunned.hide()
-	pass
+	var hurtbox = $"../../Hurtbox"
+	hurtbox.set_collision_mask_value(13, false)
+	hurtbox.set_collision_mask_value(3, true)
+	
 	

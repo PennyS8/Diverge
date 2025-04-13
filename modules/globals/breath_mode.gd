@@ -7,6 +7,7 @@ signal done
 
 var current_selectables : Array[Node2D]
 var current_bodies_selected : Array[TetherableBody]
+var main_body_selected
 
 var selectable_body_selector : PackedScene = preload("res://modules/ui/coping_overlays/selectable_body.tscn")
 
@@ -72,8 +73,8 @@ func _on_timer_timeout() -> void:
 	hide()
 
 func _set_yarn():
-	var first_tetherable : TetherableBody = current_bodies_selected[0]
-	
+	var first_tetherable : TetherableBody = current_bodies_selected.pop_at(0)
+		
 	for selected_tether in current_bodies_selected:
 		# Make a new instance of visual yarn, end point set to this tetherbody
 		var yarn = yarn_controller_packed.instantiate()
@@ -90,3 +91,7 @@ func _set_yarn():
 func _yank_all_yarn():
 	for selected_tether in current_bodies_selected:
 		selected_tether.fling()
+		
+func update_tethers_to_cocoon(cocoon):
+	for selected_tether in current_bodies_selected:
+		selected_tether.leash_owner = cocoon

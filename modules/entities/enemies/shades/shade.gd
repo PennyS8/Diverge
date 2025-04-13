@@ -63,7 +63,11 @@ func _on_health_component_died() -> void:
 
 func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	var hp_component = $HealthComponent
+	
+	# Apply knockback from the Hitbox's "knockback_coefficient"
 	knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
+	
+	# If, after damaging, we'll still be alive, stun us
 	if (hp_component.health - _area.damage) > 0:
 		if _area.get_parent().is_in_group("player"):
 			$ShadeFSM.call_deferred("change_state", "Stunned", _area.get_parent())

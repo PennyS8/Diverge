@@ -13,42 +13,6 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_nef4p"]
 radius = 6.08276
 
-[sub_resource type="Gradient" id="Gradient_ih2li"]
-offsets = PackedFloat32Array(0, 0.431487)
-colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_n6dng"]
-gradient = SubResource("Gradient_ih2li")
-width = 48
-height = 16
-fill = 1
-fill_from = Vector2(0.5, 0.5)
-
-[sub_resource type="Curve" id="Curve_74mok"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_nef4p"]
-colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
-
-[sub_resource type="LabelSettings" id="LabelSettings_w6oec"]
-font = ExtResource("3_8rbq4")
-font_color = Color(0.180392, 0, 0.384314, 1)
-
-[sub_resource type="Gradient" id="Gradient_ibglu"]
-interpolation_mode = 1
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0.43606, 0, 0, 1, 0.552962, 1.35969e-06, 4.81307e-07, 1, 0.435294, 0, 0, 1)
-metadata/_snap_enabled = true
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ccc72"]
-gradient = SubResource("Gradient_ibglu")
-width = 16
-height = 16
-fill_from = Vector2(0.25, 0.25)
-fill_to = Vector2(0.75, 0.75)
-repeat = 1
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w6oec"]
 radius = 9.0
 
@@ -98,6 +62,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
 
 [sub_resource type="Animation" id="Animation_ge41j"]
 resource_name = "attack"
@@ -115,6 +91,34 @@ tracks/0/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Display")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3125),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o6p16"]
 _data = {
@@ -123,15 +127,96 @@ _data = {
 &"hit": SubResource("Animation_c2l3t")
 }
 
-[node name="ShadeStack" type="CharacterBody2D"]
+[sub_resource type="Gradient" id="Gradient_ibglu"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.43606, 0, 0, 1, 0.552962, 1.35969e-06, 4.81307e-07, 1, 0.435294, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ccc72"]
+gradient = SubResource("Gradient_ibglu")
+width = 16
+height = 16
+fill_from = Vector2(0.25, 0.25)
+fill_to = Vector2(0.75, 0.75)
+repeat = 1
+
+[sub_resource type="Gradient" id="Gradient_ih2li"]
+offsets = PackedFloat32Array(0, 0.431487)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n6dng"]
+gradient = SubResource("Gradient_ih2li")
+width = 48
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_74mok"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nef4p"]
+colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
+
+[sub_resource type="LabelSettings" id="LabelSettings_w6oec"]
+font = ExtResource("3_8rbq4")
+font_color = Color(0.180392, 0, 0.384314, 1)
+
+[node name="ShadeStack" type="CharacterBody2D" groups=["cocoon"]]
 script = ExtResource("1_tm3xj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_nef4p")
 
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("7_n6dng")
+metadata/_custom_type_script = "uid://ct6vby56i820l"
+
+[node name="HurtBoxComponent2D" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+position = Vector2(0, -15)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("8_74mok")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://b1svtud75bya4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent2D"]
+shape = SubResource("CapsuleShape2D_w6oec")
+
+[node name="HitBoxComponent2D" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 4096
+script = ExtResource("9_ge41j")
+damage = 8
+knockback_coef = 300.0
+metadata/_custom_type_script = "uid://dc7k3kwq0lbts"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent2D"]
+shape = SubResource("CircleShape2D_n6dng")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o6p16")
+}
+
 [node name="Display" type="Node2D" parent="."]
 use_parent_material = true
+
+[node name="Line2D" type="Line2D" parent="Display"]
+z_index = 1
+texture_repeat = 2
+material = ExtResource("6_ge41j")
+position = Vector2(-6, -1)
+points = PackedVector2Array(0, 0, 11, 0, 0, -1, 11, -1, 0, -3, 10, -3, 11, -4, 0, -5, 11, -5, 11, -6, 0, -7, 7.6111, -7.69192, 11, -8, 10, -8, 0, -9, 12, -10, 12, -10, -1, -11, 13, -12, 7.40301, -12.4179, 0, -13, 11, -14, 9.21397, -14.1624, 0, -15, 12, -16, 1, -17, 0, -17)
+width = 2.0
+texture = SubResource("GradientTexture2D_ccc72")
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
 
 [node name="Shadow" type="Sprite2D" parent="Display"]
 texture = SubResource("GradientTexture2D_n6dng")
@@ -244,51 +329,6 @@ scale = Vector2(0.75, 0.75)
 theme_override_font_sizes/font_size = 16
 text = "✦"
 label_settings = ExtResource("4_tm3xj")
-
-[node name="Line2D" type="Line2D" parent="."]
-z_index = 1
-texture_repeat = 2
-material = ExtResource("6_ge41j")
-position = Vector2(-6, -1)
-points = PackedVector2Array(0, 0, 11, 0, 0, -1, 11, -1, 0, -3, 10, -3, 11, -4, 0, -5, 11, -5, 11, -6, 0, -7, 7.6111, -7.69192, 11, -8, 10, -8, 0, -9, 12, -10, 12, -10, -1, -11, 13, -12, 7.40301, -12.4179, 0, -13, 11, -14, 9.21397, -14.1624, 0, -15, 12, -16, 1, -17, 0, -17)
-width = 2.0
-texture = SubResource("GradientTexture2D_ccc72")
-texture_mode = 1
-joint_mode = 2
-begin_cap_mode = 2
-end_cap_mode = 2
-
-[node name="HealthComponent" type="Node" parent="."]
-script = ExtResource("7_n6dng")
-metadata/_custom_type_script = "uid://ct6vby56i820l"
-
-[node name="HurtBoxComponent2D" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
-position = Vector2(0, -15)
-collision_layer = 0
-collision_mask = 4
-script = ExtResource("8_74mok")
-health_component = NodePath("../HealthComponent")
-metadata/_custom_type_script = "uid://b1svtud75bya4"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent2D"]
-shape = SubResource("CapsuleShape2D_w6oec")
-
-[node name="HitBoxComponent2D" type="Area2D" parent="."]
-collision_layer = 4096
-collision_mask = 4096
-script = ExtResource("9_ge41j")
-damage = 200
-knockback_coef = 300.0
-metadata/_custom_type_script = "uid://dc7k3kwq0lbts"
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent2D"]
-shape = SubResource("CircleShape2D_n6dng")
-disabled = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_o6p16")
-}
 
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="Hit" from="HurtBoxComponent2D" to="." method="_on_hurt_box_component_2d_hit"]

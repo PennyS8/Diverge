@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=4 uid="uid://8va60gkf6ldr"]
+[gd_scene load_steps=23 format=4 uid="uid://8va60gkf6ldr"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_uygv4"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_2bp75"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bmjl2guxmrnp4" path="res://modules/objects/school_dungeon/key_doubledoor_blue/key_doubledoor_blue.tscn" id="3_vil02"]
 [ext_resource type="PackedScene" uid="uid://bpgun2i5o6ru" path="res://modules/entities/enemies/shades/shade/melee_shade.tscn" id="4_d68o0"]
 [ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.tscn" id="4_qw1hv"]
+[ext_resource type="PackedScene" uid="uid://dywn8ybv2xl4i" path="res://modules/objects/puzzle_pieces/lever/lever.tscn" id="7_pfffn"]
 [ext_resource type="PackedScene" uid="uid://bi6255tx4u0jr" path="res://modules/entities/enemies/shades/ranged_shade/ranged_shade.tscn" id="7_wn6ak"]
 [ext_resource type="PackedScene" uid="uid://lbhb1gemkets" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.tscn" id="8_2hfae"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="8_df0qr"]
@@ -248,23 +249,14 @@ y_sort_enabled = true
 z_index = 1
 position = Vector2(-24, -108)
 
-[node name="MeleeShade" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]
-position = Vector2(-48, 96)
+[node name="MeleeShade8" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]
+position = Vector2(0, 110)
 
 [node name="MeleeShade3" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]
-position = Vector2(-12, 148)
+position = Vector2(-76, 100)
 
-[node name="MeleeShade4" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]
-position = Vector2(-80, 145)
-
-[node name="MeleeShade5" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]
-position = Vector2(35, 50)
-
-[node name="MeleeShade6" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]
-position = Vector2(-92, 48)
-
-[node name="MeleeShade2" parent="Rooms/Foyer/Entities" instance=ExtResource("4_d68o0")]
-position = Vector2(72, 120)
+[node name="Lever" parent="Rooms/Foyer/Entities" instance=ExtResource("7_pfffn")]
+position = Vector2(76, 94)
 
 [node name="HallLeft" type="Node2D" parent="Rooms"]
 y_sort_enabled = true

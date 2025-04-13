@@ -31,16 +31,56 @@ func remove_tethered_status():
 
 func _physics_process(_delta):
 	# this is sooo ugly -- this is the case where player IS pulling towards themselves
-	if !leash_owner:
+	if !leash_owner:	
 		leash_owner = player
+		
 	# else, deadeye has given us a leash owner (another tetherablebody)
 	if leash_owner:
+		if leash_owner == self:
+			sliding_to_target = false
+			return
+		
 		var dist = global_position.distance_to(leash_owner.global_position)
-
+		
 		if sliding_to_target and dist > 16:
 			global_position = global_position.move_toward(leash_owner.global_position, 100*_delta)
-		elif dist <= 16:
+		elif sliding_to_target and dist <= 16:
+			# If we get to our target
 			sliding_to_target = false
+			
+			# If it's another shade:
+			#   check if shade is child of node in group cocoon
+			#     if it is, increment cocoon, free self and yarn instance
+			#     if it is not, create cocoon, delete self, hide leash owner's displays
+
+				
+			if leash_owner.is_in_group("enemy"):
+				# If cocoon doesn't exist, make one as the parent of our Main Shade
+				var cocoon = load("res://modules/entities/enemies/shades/shade_bundle/shade_stack.tscn")
+				cocoon = cocoon.instantiate()
+				leash_owner.add_sibling(cocoon)
+				var trigger_health = get_node("HealthComponent").health
+				var main_health = leash_owner.get_node("HealthComponent").health
+				cocoon.shade_healths_stored.append(trigger_health)
+				cocoon.shade_healths_stored.append(main_health)
+				
+				cocoon.global_position = leash_owner.global_position
+				leash_owner.reparent(cocoon)
+				
+				leash_owner.get_node("Display").hide()
+				# Lobotomize Main Shade
+				leash_owner.get_node("ShadeFSM").disabled = true
+				
+				# Update the "leash_owners" of all of the other tetherables after reparenting
+				var breath_manager = get_tree().get_first_node_in_group("deep_breath")
+				breath_manager.update_tethers_to_cocoon(cocoon)
+				
+				# Remove the enemy that just reached the newly created cocoon
+				self.queue_free()
+			elif leash_owner.is_in_group("cocoon"):
+				# if our cocoon already exists, add self to the stack
+				leash_owner.shade_healths_stored.append(get_node("HealthComponent").health)
+				self.queue_free()
 
 # Retracts the length of the yarn, pulling the tethered body to the player
 # TODO: replace tween position with a force on body in dir

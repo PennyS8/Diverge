@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://d1i2h41pm54o2" path="res://assets/debug/2d_lights_and_shadows_neutral_point_light.webp" id="3_6b6k6"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="4_p07fd"]
 [ext_resource type="PackedScene" uid="uid://bmjl2guxmrnp4" path="res://modules/objects/school_dungeon/key_doubledoor_blue/key_doubledoor_blue.tscn" id="5_77340"]
-[ext_resource type="PackedScene" uid="uid://cey0ldawaolll" path="res://modules/objects/level_transition_zone/transition_door.tscn" id="6_cf32e"]
+[ext_resource type="PackedScene" uid="uid://c4f5tcvmt380f" path="res://modules/objects/level_transition_zone/transition_door.tscn" id="6_cf32e"]
 [ext_resource type="PackedScene" uid="uid://bpgun2i5o6ru" path="res://modules/entities/enemies/shades/shade/melee_shade.tscn" id="6_cpccl"]
 [ext_resource type="PackedScene" uid="uid://bi6255tx4u0jr" path="res://modules/entities/enemies/shades/ranged_shade/ranged_shade.tscn" id="7_5muuw"]
 [ext_resource type="PackedScene" uid="uid://lbhb1gemkets" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.tscn" id="8_e5ij6"]

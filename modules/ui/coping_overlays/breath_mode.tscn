@@ -25,6 +25,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 script = ExtResource("2_wd1eu")
+deadeye_time = 4.0
 
 [node name="TimeRemaining" type="Label" parent="."]
 visible = false

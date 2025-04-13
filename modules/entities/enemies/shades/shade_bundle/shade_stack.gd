@@ -1,14 +1,14 @@
 extends TetherableBody
 
-@export var num_shades := 12
+@export var shade_healths_stored : Array[int]
 var shade_packed = preload("res://modules/entities/enemies/shades/shade/melee_shade.tscn")
 
 @onready var sprite = $Display/Sprite2D
-func _on_health_component_died() -> void:
-	
-	var angle_offset = deg_to_rad(360/(num_shades-1))
 
-	for i in range(0, num_shades):
+func _on_health_component_died() -> void:
+	var angle_offset = deg_to_rad(360/shade_healths_stored.size())
+
+	for i in range(1, shade_healths_stored.size()+1):
 		var shade = shade_packed.instantiate()
 		var hurtbox : HurtBoxComponent2D = shade.get_node("Hurtbox")
 		hurtbox.call_deferred("set_collision_mask_value", 3, false)
@@ -17,9 +17,8 @@ func _on_health_component_died() -> void:
 		call_deferred("add_sibling", shade)
 		
 		var split_pos = Vector2(cos(angle_offset*i), sin(angle_offset*i))
-		split_pos.x += randf_range(-1, 1)
-		split_pos.y += randi_range(-1, 1)
-		shade.global_position = global_position + split_pos
+		shade.set_deferred("global_position", global_position + split_pos)
+		shade.get_node("HealthComponent").set_deferred("health", shade_healths_stored[i-1])
 	$AnimationPlayer.play("attack")
 
 	
