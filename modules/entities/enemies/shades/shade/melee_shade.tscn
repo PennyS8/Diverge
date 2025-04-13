@@ -512,14 +512,12 @@ next_state = NodePath("../Roaming")
 [node name="Dead" type="Node" parent="ShadeFSM"]
 script = ExtResource("5_fnale")
 animation_player = NodePath("../../AnimationPlayer")
-anim_on_enter = "die"
-loop_mode = 0
-on_finished = 0
+anim_on_enter = "NONE"
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Backstep")
+next_state = NodePath("../Seeking")
 
 [node name="Alerted" type="Node" parent="ShadeFSM"]
 script = ExtResource("12_bubim")
