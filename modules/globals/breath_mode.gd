@@ -10,8 +10,8 @@ var current_bodies_selected : Array[TetherableBody]
 var main_body_selected
 
 var selectable_body_selector : PackedScene = preload("res://modules/ui/coping_overlays/selectable_body.tscn")
-
 var yarn_controller_packed : PackedScene = preload("res://modules/status_effects/yarn_controller.tscn")
+var first_tetherable : TetherableBody
 
 func _on_visibility_changed() -> void:
 	if visible:
@@ -40,7 +40,7 @@ func start_mode():
 	# \ that keeps track of how many shades are inside of it, and when struck, explodes them out 
 	# \ and does massive damage.
 	# 6. If breakables are pulled into Shades or Shade piles, break the breakable and damage
-	for body : TetherableBody in get_tree().get_nodes_in_group("enemy"):
+	for body : TetherableBody in get_tree().get_nodes_in_group("tetherable_body"):
 		# Generate UI element that can be selected with mouse hover
 		var selector : Node2D = selectable_body_selector.instantiate()
 		
@@ -50,7 +50,7 @@ func start_mode():
 		selector.global_position = body.global_position
 		selector.mouse_entered.connect(select_body.bind(body))
 		
-		# add to list to free when done
+		# Add to list to free when done
 		current_selectables.append(selector)
 
 	
@@ -69,17 +69,18 @@ func _on_timer_timeout() -> void:
 	# remove all selectors for nodes
 	for node in current_selectables:
 		node.queue_free()
-		
+	
 	hide()
 
 func _set_yarn():
-	var first_tetherable : TetherableBody = current_bodies_selected.pop_at(0)
-		
+	first_tetherable = current_bodies_selected.pop_at(0)
+	
 	for selected_tether in current_bodies_selected:
 		# Make a new instance of visual yarn, end point set to this tetherbody
 		var yarn = yarn_controller_packed.instantiate()
 		yarn.can_collide = false
 		yarn.tethered_body = selected_tether
+		selected_tether.yarn_instance = yarn
 		
 		# Set the pull target for all other ones
 		selected_tether.leash_owner = first_tetherable
@@ -88,6 +89,8 @@ func _set_yarn():
 		# (This makes all nodes selected become yanked to the first one)
 		first_tetherable.add_child(yarn)
 		
+		
+
 func _yank_all_yarn():
 	for selected_tether in current_bodies_selected:
 		selected_tether.fling()

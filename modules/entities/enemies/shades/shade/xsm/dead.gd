@@ -22,7 +22,7 @@ func _after_enter(_args) -> void:
 func _on_update(_delta: float) -> void:
 	target.velocity = target.knockback
 	target.move_and_slide()
-	target.knockback = lerp(target.knockback, Vector2.ZERO, 0.1)
+	target.knockback = lerp(target.knockback, Vector2.ZERO, _delta*10)
 
 
 

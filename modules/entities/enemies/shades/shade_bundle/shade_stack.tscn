@@ -19,23 +19,6 @@ radius = 9.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_n6dng"]
 radius = 25.0799
 
-[sub_resource type="Animation" id="Animation_c2l3t"]
-resource_name = "hit"
-length = 0.375006
-step = 0.0625
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Display/Sprite2D:material:shader_parameter/Flash")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
-}
-
 [sub_resource type="Animation" id="Animation_p62yo"]
 length = 0.001
 tracks/0/type = "value"
@@ -120,6 +103,23 @@ tracks/2/keys = {
 }]
 }
 
+[sub_resource type="Animation" id="Animation_c2l3t"]
+resource_name = "hit"
+length = 0.375006
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display/Sprite2D:material:shader_parameter/Flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_o6p16"]
 _data = {
 &"RESET": SubResource("Animation_p62yo"),
@@ -164,6 +164,8 @@ font = ExtResource("3_8rbq4")
 font_color = Color(0.180392, 0, 0.384314, 1)
 
 [node name="ShadeStack" type="CharacterBody2D" groups=["cocoon"]]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_tm3xj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -189,8 +191,7 @@ shape = SubResource("CapsuleShape2D_w6oec")
 collision_layer = 4096
 collision_mask = 4096
 script = ExtResource("9_ge41j")
-damage = 8
-knockback_coef = 300.0
+knockback_coef = 500.0
 metadata/_custom_type_script = "uid://dc7k3kwq0lbts"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent2D"]

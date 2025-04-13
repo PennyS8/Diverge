@@ -6,6 +6,10 @@ var shade_packed = preload("res://modules/entities/enemies/shades/shade/melee_sh
 @onready var sprite = $Display/Sprite2D
 
 func _on_health_component_died() -> void:
+	if shade_healths_stored.is_empty():
+		shade_healths_stored.append(10)
+		shade_healths_stored.append(10)
+	
 	var angle_offset = deg_to_rad(360/shade_healths_stored.size())
 
 	for i in range(1, shade_healths_stored.size()+1):
@@ -21,6 +25,6 @@ func _on_health_component_died() -> void:
 		shade.get_node("HealthComponent").set_deferred("health", shade_healths_stored[i-1])
 	$AnimationPlayer.play("attack")
 
-	
 func _on_hurt_box_component_2d_hit(_area) -> void:
 	$AnimationPlayer.play("hit")
+	GameManager.hitlag()
