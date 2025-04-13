@@ -48,7 +48,7 @@ fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Curve" id="Curve_x568u"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.78777), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_00tmr"]
@@ -630,23 +630,21 @@ region_rect = Rect2(21, 14, 22, 40)
 z_index = 2
 position = Vector2(0, -12)
 emitting = false
-amount = 30
+amount = 6
+lifetime = 0.3
 one_shot = true
-explosiveness = 1.0
-randomness = 1.0
-lifetime_randomness = 1.0
-emission_shape = 3
-emission_rect_extents = Vector2(10, 20)
-particle_flag_align_y = true
-direction = Vector2(0, -1)
-spread = 10.0
-gravity = Vector2(0, -5)
-initial_velocity_min = 10.0
-initial_velocity_max = 10.0
+explosiveness = 0.85
+randomness = 0.4
+local_coords = true
+spread = 80.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+damping_min = 300.0
+damping_max = 300.0
 scale_amount_min = 2.0
 scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_x568u")
-color = Color(0.227451, 0, 0, 1)
 color_ramp = SubResource("Gradient_00tmr")
 hue_variation_max = 0.4
 

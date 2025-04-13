@@ -57,6 +57,7 @@ func _physics_process(_delta: float) -> void:
 
 func _on_health_component_died() -> void:
 	drop_ramen()
+	$Display/HitFX.rotation = get_angle_to(-knockback) + PI
 	$Display/HitFX.restart()
 	$HitflashPlayer.play("Hitflash")
 	$ShadeFSM.change_state("Dead")
@@ -73,7 +74,7 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 			$ShadeFSM.call_deferred("change_state", "Stunned", _area.get_parent())
 		else:
 			$ShadeFSM.call_deferred("change_state","Stunned")
-
+		$Display/HitFX.rotation = get_angle_to(-knockback) + PI
 		$Display/HitFX.restart()
 		$HitflashPlayer.play("Hitflash")
 
