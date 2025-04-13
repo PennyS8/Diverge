@@ -4,6 +4,7 @@
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="2_7v3qk"]
 
 [sub_resource type="Gradient" id="Gradient_vtdgj"]
+resource_local_to_scene = true
 interpolation_mode = 1
 offsets = PackedFloat32Array(0, 0.5, 1)
 colors = PackedColorArray(0.7, 0, 0, 1, 0.99, 0, 0, 1, 0.435294, 0, 0, 1)
@@ -28,7 +29,8 @@ texture_repeat = 2
 material = ExtResource("2_7v3qk")
 position = Vector2(0, -17)
 points = PackedVector2Array(0, 0, 0, 0, 8, 4, 12, 12, 8, 20, 0, 24, -8, 20, -12, 12, -8, 4, 0, 0)
-width = 6.0
+closed = true
+width = 2.0
 texture = SubResource("GradientTexture2D_27tcd")
 texture_mode = 1
 joint_mode = 2
@@ -41,5 +43,6 @@ offset_top = -17.0
 offset_right = 12.0
 offset_bottom = 7.0
 mouse_filter = 1
+color = Color(1, 1, 1, 0)
 
 [connection signal="mouse_entered" from="ColorRect" to="." method="_on_color_rect_mouse_entered"]

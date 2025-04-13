@@ -191,6 +191,7 @@ shape = SubResource("CapsuleShape2D_w6oec")
 collision_layer = 4096
 collision_mask = 4096
 script = ExtResource("9_ge41j")
+damage = 20
 knockback_coef = 500.0
 metadata/_custom_type_script = "uid://dc7k3kwq0lbts"
 
@@ -211,7 +212,7 @@ z_index = 1
 texture_repeat = 2
 material = ExtResource("6_ge41j")
 position = Vector2(-6, -1)
-points = PackedVector2Array(0, 0, 11, 0, 0, -1, 11, -1, 0, -3, 10, -3, 11, -4, 0, -5, 11, -5, 11, -6, 0, -7, 7.6111, -7.69192, 11, -8, 10, -8, 0, -9, 12, -10, 12, -10, -1, -11, 13, -12, 7.40301, -12.4179, 0, -13, 11, -14, 9.21397, -14.1624, 0, -15, 12, -16, 1, -17, 0, -17)
+points = PackedVector2Array(-1, 0, 11, 0, -1, -1, 9.90509, -0.999999, 11, -1, 0, -3, 10, -3, 11, -4, 0, -5, 11, -5, 11, -6, 0, -7, 7.6111, -7.69192, 12, -8, 10, -8, -1, -9, 13, -10, 12, -10, -1, -11, 13, -11, 13, -12, 7.40301, -12.4179, -1, -13, 12, -14, 9.21397, -14.1624, 0, -15, 12, -16, 1, -17, 0, -17)
 width = 2.0
 texture = SubResource("GradientTexture2D_ccc72")
 texture_mode = 1

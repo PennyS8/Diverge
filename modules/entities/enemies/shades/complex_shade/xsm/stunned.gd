@@ -28,7 +28,7 @@ func _on_update(_delta: float) -> void:
 		# No knockback if the enemy is trapped
 		target.knockback = lerp(Vector2.ZERO, Vector2.ZERO, 0.0)
 	else:
-		target.knockback = lerp(target.knockback, Vector2.ZERO, 0.2)
+		target.knockback = lerp(target.knockback, Vector2.ZERO, _delta*10)
 
 
 # This function is called each frame after all the update calls
@@ -40,7 +40,9 @@ func _after_update(_delta: float) -> void:
 # This function is called before the State exits
 # XSM before_exits the root first, then the children
 func _before_exit(_args) -> void:
-	pass
+	var hurtbox = target.hurtbox
+	hurtbox.set_collision_mask_value(13, false)
+	hurtbox.set_collision_mask_value(3, true)
 
 
 # This function is called when the State exits

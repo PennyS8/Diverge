@@ -25,7 +25,10 @@ func request_engagement(enemy : CharacterBody2D):
 func release_engagement(enemy : CharacterBody2D, timer : Timer = null):
 	if timer:
 		timer.queue_free()
-	
+	else:
+		if marked_for_disengage.has(enemy):
+			marked_for_disengage[enemy].queue_free()
+			
 	if current_engagers.has(enemy):
 		current_engagers.erase(enemy)
 	
