@@ -36,6 +36,8 @@ Juniper: Who would leave an entirely empty locker open?
 	Juniper: This cabinet is locked... I think this is where Mr. Ellis puts the extra dangerous chemicals.
 => END
 
+#cafeteria
+
 ~ wrong_machine
 %
 	Juniper: I don't have any cash on me...
@@ -43,4 +45,14 @@ Juniper: Who would leave an entirely empty locker open?
 	Juniper: Nothing in here looks good.
 %
 	Juniper: They only have gummy bears, not gummy worms. Not worth it.
+=> END
+
+#plant
+~ plant
+%
+	Juniper: Plant.
+%
+	Juniper: It's fake. I don't think our school could keep a real one alive.
+%
+	Juniper: Plastic. Bad texture.
 => END
