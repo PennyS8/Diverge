@@ -3,29 +3,21 @@ extends TetherableBody
 # Most logic is handled by the xsm below
 # Player keeps it own velocity, as well as vars that can be used by many different states
 
+var hook_locked := false
 var lock_camera := false
 var in_cutscene := false
+var dialogue_open := false
 var cutscene_walk_to_position := Vector2.ZERO
-
-var dir : Vector2 = Vector2.ZERO
-
-var dialogue_open : bool = false
-# swing_dir is a variable updated by our hook swing that gets the 
-# nearest cardinal direction to our mouse click (n, e, s, w)
-# we keep it in here to use it to push blocks in that direction
-var swing_dir : Vector2
-
-# if player is currently inside a "ledge" area, the reference to that is stored here
-var ledge_collision : Area2D
-
-var hook_locked := false
+var dir := Vector2.ZERO
+var swing_dir : Vector2 # Cardinal dir of attack
+var ledge_collision : Area2D # reference to the ledge_area player is in
+var curr_camera_boundry : Area2D
 
 # this is to pass unhandled input to states
 signal unhandled_input_received(event)
 
 @onready var health_component = $HealthComponent
-var curr_camera_boundry : Area2D
-@onready var anim_player = $AnimationPlayer
+@onready var anim_player : AnimationPlayer = $AnimationPlayer
 @onready var camera : Camera2D = $Camera2D
 @onready var fsm : State = $PlayerFSM
 
@@ -43,10 +35,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		_camera_move()
 		dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
-func _process(_delta):	
-	# Camera Boundries MUST NOT overlap eachother, and must have the collision\
-	# layer 9 (i.e., "CameraBoundryCollider").
-	
+func _process(_delta):
 	# if we're in cutscene or scene transition
 	if !lock_camera:
 		var areas = $Area2D.get_overlapping_areas()
@@ -59,28 +48,27 @@ func _process(_delta):
 			
 			var top_right : Vector2 = area.get_node("LimitTopRight").global_position
 			var bottom_left : Vector2 = area.get_node("LimitBottomLeft").global_position
-			$Camera2D.limit_top = top_right.y
-			$Camera2D.limit_right = top_right.x
-			$Camera2D.limit_bottom = bottom_left.y
-			$Camera2D.limit_left = bottom_left.x
+			camera.limit_top = top_right.y
+			camera.limit_right = top_right.x
+			camera.limit_bottom = bottom_left.y
+			camera.limit_left = bottom_left.x
 
 func check_unlock_hook():
 	@warning_ignore("unused_variable")
 	var deinv : RestrictedInventory = load("res://modules/ui/hud/wyvern_inv/equipment_inventory.tres")
 	#hook_locked = false
 	#can_attack()
-	
+
 func _camera_move():
 	if !lock_camera:
-		$Camera2D.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
-		$Camera2D.position_smoothing_enabled = true
+		var relative_mouse_pos = get_global_mouse_position() - global_position
+		camera.global_position = global_position + (0.1*relative_mouse_pos)
+		camera.position_smoothing_enabled = true
 		
 func can_attack():
-	$PlayerFSM.change_state("CanAttack")
-	$PlayerFSM.change_state("Idle")
+	fsm.change_state("CanAttack")
+	fsm.change_state("Idle")
 
-func _physics_process(_delta: float) -> void:
-	pass
 # Override
 func fling():
 	pass
@@ -88,7 +76,7 @@ func fling():
 # Override
 func pull():
 	pass
-	
+
 func enter_cutscene(camera_pos):
 	# hide hp
 	get_tree().get_first_node_in_group("gui").hide()
@@ -108,7 +96,7 @@ func enter_cutscene(camera_pos):
 	var cam_tween_time = cam_tween_vector.length() / 48.0
 	
 	var cam_tween = create_tween()
-	cam_tween.tween_property($Camera2D, "global_position", camera_pos, cam_tween_time)
+	cam_tween.tween_property(camera, "global_position", camera_pos, cam_tween_time)
 	await cam_tween.finished
 	
 	camera.position_smoothing_enabled = true
@@ -116,14 +104,14 @@ func enter_cutscene(camera_pos):
 	
 func exit_cutscene():
 	get_tree().get_first_node_in_group("gui").show()
-
-	$PlayerFSM.change_state("Idle")
+	fsm.change_state("Idle")
 	fsm.change_state("CanAttack")
 	fsm.change_state("CanDash")
 	
 	lock_camera = false
 	in_cutscene = false
-	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25
+	var relative_mouse_pos = get_global_mouse_position() - global_position
+	camera.global_position = global_position + (0.25*relative_mouse_pos)
 	
 func do_walk(global_point : Vector2, _speed_percentage : float = 1.0):
 	# setting dir puts player into walk state; this manages all our animations and logic and stuff
@@ -136,4 +124,3 @@ func do_walk(global_point : Vector2, _speed_percentage : float = 1.0):
 	
 	await cutscene_marker.body_entered
 	dir = Vector2.ZERO
-	return

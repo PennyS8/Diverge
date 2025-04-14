@@ -1,30 +1,15 @@
 @tool
 extends StateAnimation
 
-@export var nav_agent : NavigationAgent2D
 @export var soft_collision : Area2D
 
 const MIN_SEEK_DISTANCE := 24.0
 const MAX_SEEK_DISTANCE := 32.0
 
-#
-# FUNCTIONS TO INHERIT IN YOUR STATES
-#
-
-# This function is called when the state enters
-# XSM enters the root first, the the children
-func _on_enter(_args):
-	pass
-
-func _on_update(_delta):
-	pass
-	
-# This function is called each frame after all the update calls
-# XSM after_updates the children first, then the root
 func _after_update(_delta):
-	## NATE: This is in after_update because we wait for any changes to 
+	## This is in after_update because we wait for any changes to 
 	## the end position we make in child states before moving that way
-#
+	
 	# Get the direction we want to move
 	var normal = target.ai_steering.get_desired_normal()
 	var desired_velocity = normal * target.movement_speed
@@ -34,7 +19,7 @@ func _after_update(_delta):
 	target.set_velocity(target.velocity)
 	target.move_and_slide()
 	target.velocity = target.velocity
-
+	
 	animate_movement()
 
 func animate_movement():
@@ -61,24 +46,3 @@ func animate_movement():
 			idle_dir = "up"
 		[0.0, 0.0]:
 			play_blend("idle_"+idle_dir, 0.0)
-
-# This function is called before the State exits
-# XSM before_exits the root first, then the children
-func _before_exit(_args):
-	pass
-
-
-# This function is called when the State exits
-# XSM before_exits the children first, then the root
-func _on_exit(_args):
-	pass
-
-
-# when StateAutomaticTimer timeout()
-func _state_timeout():
-	pass
-
-
-# Called when any other Timer times out
-func _on_timeout(_name):
-	pass

@@ -37,7 +37,7 @@ func _on_body_exited(_body: Node2D) -> void:
 			
 		if _body.is_in_group("block"):
 			_body.puzzle_completed = false
-	
+
 func _key_toggle(id, state):
 	if id == key_id and !state:
 		pop_up()

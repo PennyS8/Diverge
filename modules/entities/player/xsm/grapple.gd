@@ -1,10 +1,9 @@
 @tool
 extends StateSound
 
-# This function is called when the state enters
-# XSM enters the root first, then the children
 func _on_enter(_args) -> void:
 	change_state("NoAttack")
+	play_sound()
 	
 	var player_pos = target.global_position
 	var anchor_body = _args

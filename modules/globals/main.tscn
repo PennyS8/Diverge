@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b8ywe7vivb1en"]
+[gd_scene load_steps=15 format=3 uid="uid://b8ywe7vivb1en"]
 
 [ext_resource type="Script" uid="uid://hrfgvn40midl" path="res://modules/globals/main.gd" id="1_2uu7l"]
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="2_wwsun"]
@@ -8,7 +8,9 @@
 [ext_resource type="Script" uid="uid://c8qxb50jimxvj" path="res://modules/globals/inventory_panel.gd" id="8_02pmu"]
 [ext_resource type="PackedScene" uid="uid://ms4bp1b33wt2" path="res://modules/ui/hud/wyvern_inv/notebook_panel.tscn" id="8_dbv5s"]
 [ext_resource type="Shader" uid="uid://c7ga40mwai0hs" path="res://modules/globals/blur.gdshader" id="9_nlpsi"]
-[ext_resource type="Shader" path="res://modules/globals/fisheyeCRT.gdshader" id="11_2825a"]
+[ext_resource type="AudioStream" uid="uid://btwbusjjnsfg5" path="res://assets/sfx/Sonniss/pop_1.wav" id="10_tdd3g"]
+[ext_resource type="Shader" uid="uid://bqvwhxrfa0vww" path="res://modules/globals/fisheyeCRT.gdshader" id="11_2825a"]
+[ext_resource type="AudioStream" uid="uid://ck772bbyuikiy" path="res://assets/sfx/Sonniss/pop_2.wav" id="11_kx56x"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yc34w"]
 shader = ExtResource("9_nlpsi")
@@ -22,6 +24,14 @@ shader_parameter/ShakeStrength = 0.5
 shader_parameter/FactorA = Vector2(25, 25)
 shader_parameter/FactorB = Vector2(1, 1)
 shader_parameter/magnitude = Vector2(0.02, 0.02)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_61b6o"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("10_tdd3g")
+stream_0/weight = 2.5
+stream_1/stream = ExtResource("11_kx56x")
 
 [node name="Main" type="Node2D"]
 z_as_relative = false
@@ -83,6 +93,10 @@ unique_name_in_owner = true
 script = ExtResource("5_jmjhv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_61b6o")
+max_polyphony = 100
 
 [connection signal="check_hook" from="GUI2/InventoryPanel/EquipmentPanel" to="." method="_on_equipment_panel_check_hook"]
 [connection signal="item_stack_added" from="GUI2/InventoryPanel/EquipmentPanel/Equip" to="." method="_on_equip_item_stack_added"]

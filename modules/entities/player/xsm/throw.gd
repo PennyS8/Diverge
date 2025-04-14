@@ -4,22 +4,19 @@ extends StateSound
 var yarn_aim_guide = preload("res://modules/status_effects/yarn_aim_guide.tscn")
 var guide_arrow
 var arrow_point
-
 var tethered_node
 var selected_node
+const YARN_LENGTH := 96.0 # 64 + 32
 
+var hold : bool
 var hold_counter : float = 0.0
 const HOLD_TIME : float = 0.15
-var hold : bool
-
-const YARN_LENGTH := 96.0 # 64 + 32
 
 var interupt : bool
 
-# This function is called when the state enters
-# XSM enters the root first, then the children
 func _on_enter(_args) -> void:
 	change_state("NoAttack")
+	play_sound()
 	hold_counter = 0.0
 	interupt = false
 	hold = false

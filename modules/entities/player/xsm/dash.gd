@@ -1,19 +1,12 @@
 @tool
 extends StateSound
 
-@export var dash_speed := 400
-@export var dash_distance := 128
-var dash_direction := Vector2()
-var start_location := Vector2()
-var distance_travelled := 0
-var walled : bool
-
 @onready var dash_states : Dictionary = {
 	Vector2.UP: "dash_up", 
 	Vector2.RIGHT: "dash",
 	Vector2.DOWN: "dash_down",
 	Vector2.LEFT: "dash_left"
-	}
+}
 
 var dust_anims : Dictionary = {
 	Vector2.UP: "up", 
@@ -26,18 +19,22 @@ var dust_anims : Dictionary = {
 	Vector2.LEFT: "left_down",
 }
 
+@export var dash_speed := 400
+@export var dash_distance := 128
 @export var dash_shadow : Texture2D
 @export var normal_shadow : Texture2D
 
-var dash_dust : PackedScene = preload("res://modules/entities/player/dash_dust.tscn")
+var dash_direction := Vector2()
+var start_location := Vector2()
+var distance_travelled := 0
+var walled : bool
 var idle_dir
 
-#
-# FUNCTIONS TO INHERIT IN YOUR STATES
-#
+var dash_dust : PackedScene = preload("res://modules/entities/player/dash_dust.tscn")
 
 func _on_enter(_args):
 	change_state("NoAttack")
+	play_sound()
 	
 	start_location = target.global_position
 	# TODO: when implementing controller, override this with analog stick direction instead of mouse pos
@@ -52,7 +49,6 @@ func _on_enter(_args):
 	var component_y = abs(dash_direction.y)
 	
 	var swing_dir = dash_direction
-	
 	var dust_dir = swing_dir.snapped(Vector2.ONE)
 	
 	if component_x > component_y:
@@ -64,15 +60,7 @@ func _on_enter(_args):
 	# 8 cardinal dirs, but since we got rid of the non-major component it will
 	# only be the 4 main cardinals (up, down, left, right)
 	swing_dir = swing_dir.snapped(Vector2.ONE)
-
 	target.swing_dir = swing_dir
-	# our four cardinals are:
-	# UP: (0,-1)
-	# RIGHT: (1,0)
-	# DOWN: (0, 1)
-	# LEFT: (-1, 0)
-	# the dictionary initialized at the top of this script assigns each vector2
-	# value to the corresponding state node name
 	
 	var dust = dash_dust.instantiate()
 	get_tree().current_scene.add_child(dust)

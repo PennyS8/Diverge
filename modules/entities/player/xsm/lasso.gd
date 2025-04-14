@@ -3,10 +3,9 @@ extends StateSound
 
 var yarn_controller = preload("res://modules/status_effects/yarn_controller.tscn")
 
-# This function is called when the state enters
-# XSM enters the root first, then the children
 func _on_enter(_args) -> void:
 	change_state("NoAttack")
+	play_sound()
 	
 	var yarn = yarn_controller.instantiate()
 	

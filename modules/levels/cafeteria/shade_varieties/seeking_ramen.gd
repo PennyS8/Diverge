@@ -5,39 +5,31 @@ extends State
 @export var movement_speed : float
 @export var STEER_SPEED : float
 @export var MAX_SPEED : float
-@onready var movement_target_pos : Vector2
 @export var ramen_pattern : Array[ItemLike]
 
 @export_group("Behavioral Variables")
 @export_range(0.0,40.0, 0.25) var backstep_random_mintime : float
 @export_range(0.0,40.0, 0.25) var backstep_random_maxtime : float
 
+@onready var movement_target_pos : Vector2
+
 var backstep_timer : Timer
 var offset_vector : Vector2
-# FUNCTIONS TO INHERIT IN YOUR STATES
-#
-# Code related to nav_agent & tilemap integration are inspired by: 
-# "Shifty the Dev"
-# https://blog.shiftythedev.com/posts/GodotTilemapNavigation/
-#
 
-# This function is called when the state enters
-# XSM enters the root first, the the children
+## Code related to nav_agent & tilemap integration are inspired by: 
+## "Shifty the Dev"
+## https://blog.shiftythedev.com/posts/GodotTilemapNavigation/
+
 func _on_enter(_args) -> void:
 	target.velocity = Vector2.ZERO
 	#var random_rad = deg_to_rad(randi_range(0,360))
 	#var random_vec_x = cos(random_rad)
 	#var random_vec_y = sin(random_rad)
 	#offset_vector = Vector2(random_vec_x, random_vec_y).normalized() * 24.0
-
+	
 	nav_agent.target_desired_distance = 24
 	nav_agent.path_desired_distance = 10
 
-# This function is called just after the state enters
-# XSM after_enters the children first, then the parent
-func _after_enter(_args) -> void:
-	pass
-	
 func set_movement_target(target_pos: Vector2):
 	nav_agent.target_position = target_pos
 
@@ -57,19 +49,17 @@ func get_nearest_edible_ramen():
 			nearest_ramen = ramen
 			nearest_distance = distance
 	return nearest_ramen
-	
-# This function is called each frame if the state is ACTIVE
-# XSM updates the root first, then the children
+
 func _on_update(_delta: float) -> void:
 	target.follow_target = get_nearest_edible_ramen()
-		
+	
 	if !target.follow_target:
 		if _check_player_inv():
 			target.follow_target = get_tree().get_first_node_in_group("player")
 			change_state("Alerted2")
 		else:
 			change_state("NoMoreRamen")
-#
+	
 	#if !target.follow_target.is_in_group("edible_ramen"):
 		#target.follow_target = null
 	
@@ -82,7 +72,7 @@ func _on_update(_delta: float) -> void:
 			change_state("Alerted2")
 		else:
 			change_state("NoMoreRamen")
-
+	
 	if nav_agent.is_navigation_finished():
 		var item : Area2D = target.follow_target.get_node_or_null("Item")
 		if item:
@@ -95,7 +85,7 @@ func _on_update(_delta: float) -> void:
 	var next_path_position: Vector2 = nav_agent.get_next_path_position()
 	
 	var desired_velocity = current_agent_position.direction_to(next_path_position) * movement_speed
-
+	
 	target.velocity = target.velocity.lerp(desired_velocity, 0.035).normalized()
 	target.velocity *= movement_speed
 	

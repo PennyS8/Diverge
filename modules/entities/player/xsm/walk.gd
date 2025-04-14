@@ -10,25 +10,23 @@ var idle_dir := Vector2.DOWN
 # the number of physics frames for walking against a wall to count as pushing
 @export var push_frames := 20
 var curr_push_frame := push_frames
-#
-# FUNCTIONS TO INHERIT IN YOUR STATES
-#
 
-#var directions : Dictionary = {Vector2(0,1): "Down",
-								#Vector2(0,-1): "Up",
-								#Vector2(1,0): "Right",
-								#Vector2(1, -1): "Right",
-								#Vector2(1, 1): "Right",
-								#Vector2(-1,0): "Left",
-								#Vector2(-1,-1): "Left",
-								#Vector2(-1, 1): "Left",
-								#Vector2(0, 0): "Down"}
+# NOTE: Var is not being used
+#var directions : Dictionary = {
+	#Vector2( 0, 1): "Down",
+	#Vector2( 0,-1): "Up",
+	#Vector2( 1, 0): "Right",
+	#Vector2( 1,-1): "Right",
+	#Vector2( 1, 1): "Right",
+	#Vector2(-1, 0): "Left",
+	#Vector2(-1,-1): "Left",
+	#Vector2(-1, 1): "Left",
+	#Vector2( 0, 0): "Down"
+#}
 
-# This function is called when the state enters
-# XSM enters the root first, the the children
 func _on_enter(_args):
 	push_frames = 30
-	
+
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta):
@@ -59,20 +57,21 @@ func _on_update(_delta):
 			play_blend(no_hook + "walk_up", 0.0)
 			idle_dir = Vector2.UP
 	
+	# NOTE: Commenting out push/hop/fall states
 	# get_wall_normal returns the direction the wall's collision is to us;
 	# i.e. newton's second law, opposite reaction to our action
 	# basically if we're on a collision & get_wall_normal matches the negative of our direction,
 	# we're "pushing" against that object :) physics mf
-	if target.is_on_wall():
-		if target.get_wall_normal() == -target.dir:
-			curr_push_frame -= 1
-			if curr_push_frame <= 0:
-				curr_push_frame = push_frames
-				change_state("Push", target.dir)
-		else:
-			# reset to default
-			curr_push_frame = push_frames
-			
+	#if target.is_on_wall():
+		#if target.get_wall_normal() == -target.dir:
+			#curr_push_frame -= 1
+			#if curr_push_frame <= 0:
+				#curr_push_frame = push_frames
+				#change_state("Push", target.dir)
+		#else:
+			## reset to default
+			#curr_push_frame = push_frames
+	
 # when another state (such as attack or dash) transitions us out of this,
 # set our velocity to zero so we don't get weird sliding
 # if we have like, an ice level or slippery path, we prob wanna change this

@@ -61,4 +61,3 @@ Wake up as _____ and navigate through their day. In a world that isn't built for
 [Follow our development on Miro!](https://miro.com/app/board/uXjVKjSALNs=/)
 
 [See what is in progress right now on Trello!](https://trello.com/invite/b/66d4a6ca39e640fe1c7f6c5e/ATTIf1882a0775bf8acf424c84aa974d5da81A5455BD/milestones)
-

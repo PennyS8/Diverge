@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://cvv5p33y5revs"
+path="res://.godot/imported/Turning liquid.wav-86a416d59f62d0e0b602e0521d32671b.sample"
+
+[deps]
+
+source_file="res://assets/sfx/mayragandra/Turning liquid.wav"
+dest_files=["res://.godot/imported/Turning liquid.wav-86a416d59f62d0e0b602e0521d32671b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

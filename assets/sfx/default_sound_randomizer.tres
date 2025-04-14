@@ -1,0 +1,12 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://u60ddj5kprnc"]
+
+[ext_resource type="AudioStream" uid="uid://btwbusjjnsfg5" path="res://assets/sfx/Sonniss/pop_1.wav" id="1_85keh"]
+[ext_resource type="AudioStream" uid="uid://ck772bbyuikiy" path="res://assets/sfx/Sonniss/pop_2.wav" id="2_ddnv5"]
+
+[resource]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("1_85keh")
+stream_0/weight = 2.5
+stream_1/stream = ExtResource("2_ddnv5")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=3 uid="uid://dx5na7ufncxg3"]
+[gd_scene load_steps=86 format=3 uid="uid://dx5na7ufncxg3"]
 
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
 [ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="4_e4b7j"]
@@ -14,9 +14,10 @@
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_5ojq5"]
 [ext_resource type="Script" uid="uid://judy3seldx6h" path="res://modules/entities/enemies/shades/complex_shade/xsm/charge_attack.gd" id="10_iug1g"]
 [ext_resource type="Script" uid="uid://cggi1jq1vgh8q" path="res://modules/entities/enemies/shades/complex_shade/xsm/dead.gd" id="10_m6rex"]
-[ext_resource type="Script" uid="uid://d1od6kbhhnppb" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
+[ext_resource type="AudioStream" uid="uid://btwbusjjnsfg5" path="res://assets/sfx/Sonniss/pop_1.wav" id="12_iug1g"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
+[ext_resource type="AudioStream" uid="uid://ck772bbyuikiy" path="res://assets/sfx/Sonniss/pop_2.wav" id="13_dvtn2"]
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_dnu80"]
 [ext_resource type="FontFile" uid="uid://dx7pho86vkti5" path="res://assets/hud/open-sans/OpenSans-Bold.ttf" id="18_1e20k"]
 [ext_resource type="Script" uid="uid://b5gptums252wm" path="res://modules/entities/fsm_debug_label.gd" id="18_mjkpu"]
@@ -40,6 +41,74 @@
 [ext_resource type="Texture2D" uid="uid://b701mify6jeo4" path="res://modules/entities/player/placeholder_sprites/Walk/Spear/walk_Spear_Right_Down.png" id="35_agr3b"]
 [ext_resource type="Texture2D" uid="uid://glo1ikvhpxqh" path="res://modules/entities/player/placeholder_sprites/Walk/Spear/walk_Spear_Up.png" id="36_ts514"]
 [ext_resource type="Texture2D" uid="uid://buckcxr2vfcw6" path="res://modules/entities/player/placeholder_sprites/Death/Normal/death_Down.png" id="41_dvtn2"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pra3i"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("12_iug1g")
+stream_0/weight = 2.5
+stream_1/stream = ExtResource("13_dvtn2")
+
+[sub_resource type="GDScript" id="GDScript_tvkt4"]
+script/source = "@tool
+extends StateSound
+
+# This function is called just after the state enters
+# XSM after_enters the children first, then the parent
+func _after_enter(_args) -> void:
+	pass
+
+
+# This function is called each frame if the state is ACTIVE
+# XSM updates the root first, then the children
+func _on_update(_delta: float) -> void:
+	pass
+
+
+# This function is called each frame after all the update calls
+# XSM after_updates the children first, then the root
+func _after_update(_delta: float) -> void:
+	pass
+
+
+# This function is called before the State exits
+# XSM before_exits the root first, then the children
+func _before_exit(_args) -> void:
+	pass
+
+
+# This function is called when the State exits
+# XSM before_exits the children first, then the root
+func _on_exit(_args) -> void:
+	pass
+
+
+# when StateAutomaticTimer timeout()
+func _state_timeout() -> void:
+	pass
+
+
+# Called when any other Timer times out
+func _on_timeout(_name) -> void:
+	pass
+"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wyc7l"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("12_iug1g")
+stream_0/weight = 2.5
+stream_1/stream = ExtResource("13_dvtn2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pufi2"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("12_iug1g")
+stream_0/weight = 2.5
+stream_1/stream = ExtResource("13_dvtn2")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3xrx"]
 radius = 13.0384
@@ -1516,10 +1585,9 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("Movement/Idle")
 
-[node name="Movement" type="Node" parent="ShadeFSM/Alive" node_paths=PackedStringArray("nav_agent", "soft_collision")]
+[node name="Movement" type="Node" parent="ShadeFSM/Alive" node_paths=PackedStringArray("soft_collision")]
 editor_description = "The enemy has a location to move towards, whether that be the player or a patrol path."
 script = ExtResource("6_twtcd")
-nav_agent = NodePath("../../../BehaviorComponents/NavAgent")
 soft_collision = NodePath("../../../BehaviorComponents/SoftCollision")
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = "NONE"
@@ -1615,9 +1683,8 @@ metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 
 [node name="Attack" type="Node" parent="ShadeFSM/Alive/Combat"]
 script = ExtResource("8_pitir")
-dash_distance = 48.0
 animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "NONE"
+anim_on_enter = ""
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -1634,6 +1701,16 @@ next_state = NodePath("")
 
 [node name="Stunned" type="Node" parent="ShadeFSM/Alive/Reaction"]
 script = ExtResource("9_6lwy3")
+sample = SubResource("AudioStreamRandomizer_pra3i")
+sound_loop_mode = 0
+on_sounds_finished = 0
+volume_db = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+max_polyphony = 5
+bus = "From Parent"
+positional = 0
+positional_mix_target = 0
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "damaged"
 loop_mode = 0
@@ -1645,9 +1722,20 @@ timed = true
 waiting_time = 0.25
 on_timer_finished = 3
 next_state = NodePath("../../Movement/Chase")
+metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="Surprised" type="Node" parent="ShadeFSM/Alive/Reaction"]
-script = ExtResource("10_twtcd")
+script = SubResource("GDScript_tvkt4")
+sample = SubResource("AudioStreamRandomizer_wyc7l")
+sound_loop_mode = 0
+on_sounds_finished = 0
+volume_db = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+max_polyphony = 5
+bus = "From Parent"
+positional = 0
+positional_mix_target = 0
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "surprise"
 loop_mode = 0
@@ -1657,9 +1745,20 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("../../Movement/Chase")
+metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="Dead" type="Node" parent="ShadeFSM"]
 script = ExtResource("10_m6rex")
+sample = SubResource("AudioStreamRandomizer_pufi2")
+sound_loop_mode = 0
+on_sounds_finished = 0
+volume_db = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+max_polyphony = 5
+bus = "From Parent"
+positional = 0
+positional_mix_target = 0
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "die"
 loop_mode = 0
@@ -1669,6 +1768,7 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
+metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="TetherableArea2D" type="Area2D" parent="."]
 collision_layer = 256

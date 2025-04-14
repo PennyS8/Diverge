@@ -5,18 +5,12 @@ extends StateAnimation
 
 ## Unit: Pixels
 @export var dash_distance : float
-
 @export var dash_speed : float
 
 ## Unit: seconds
 @export var dash_time : float
 var dashing
-#
-# FUNCTIONS TO INHERIT IN YOUR STATES
-#
 
-# This function is called when the state enters
-# XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	nav_agent.target_desired_distance = 5
 	nav_agent.path_desired_distance = 10
@@ -47,8 +41,6 @@ func _on_update(_delta: float) -> void:
 		
 		target.velocity = current_agent_position.direction_to(next_path_position) * dash_speed
 		target.move_and_slide()
-	
+
 func _on_exit(_args) -> void:
 	play("RESET")
-
-	

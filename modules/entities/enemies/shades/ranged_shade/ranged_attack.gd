@@ -2,15 +2,8 @@
 extends StateAnimation
 
 @onready var agro_region : Area2D = $"../../AgroRegion"
-
-#
-# FUNCTIONS TO INHERIT IN YOUR STATES
-#
-
 @export var projectile_scene : PackedScene
 
-# This function is called when the state enters
-# XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	var shot_loc = _args
 	var parent_loc : Vector2 = target.global_position + Vector2(0, -12)
@@ -31,14 +24,9 @@ func _state_timeout() -> void:
 	for follow_target in possible_follow_targets:
 		if follow_target.is_in_group("player"):
 			player_found = true
-			
+	
 	# If player's not inside AgroRegion, transition back to Roaming
 	if !player_found:
 		change_state("Roaming")
 	else:
 		change_state("Seeking")
-
-
-# Called when any other Timer times out
-func _on_timeout(_name) -> void:
-	pass

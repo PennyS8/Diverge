@@ -1,32 +1,18 @@
 @tool
 extends State
 
-#
-# FUNCTIONS TO INHERIT IN YOUR STATES
-#
-
 @onready var agro_region : Area2D = $"../../AgroRegion"
-
 @onready var movement_target_pos : Vector2
 @export var nav_agent : NavigationAgent2D
 @export var movement_speed : float = 25
 
 var roam_timer : Timer
-# This function is called when the state enters
-# XSM enters the root first, the the children
+
 func _on_enter(_args) -> void:
 	_roam_timer()
 	nav_agent.target_desired_distance = 10
 	nav_agent.path_desired_distance = 20
 
-# This function is called just after the state enters
-# XSM after_enters the children first, then the parent
-func _after_enter(_args) -> void:
-	pass
-
-
-# This function is called each frame if the state is ACTIVE
-# XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
 	if agro_region.monitoring:
 		var possible_follow_targets = agro_region.get_overlapping_bodies()
@@ -63,29 +49,5 @@ func _roam_random():
 	nav_agent.target_position = goal
 	_roam_timer()
 
-# This function is called each frame after all the update calls
-# XSM after_updates the children first, then the root
-func _after_update(_delta: float) -> void:
-	pass
-
-
-# This function is called before the State exits
-# XSM before_exits the root first, then the children
-func _before_exit(_args) -> void:
-	pass
-
-
-# This function is called when the State exits
-# XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
 	roam_timer.queue_free()
-
-
-# when StateAutomaticTimer timeout()
-func _state_timeout() -> void:
-	pass
-
-
-# Called when any other Timer times out
-func _on_timeout(_name) -> void:
-	pass

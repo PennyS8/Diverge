@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://che640ini57d8"
+path="res://.godot/imported/Sink water drop.wav-f6aa7ec9093bd8e6873645e8a0335ac8.sample"
+
+[deps]
+
+source_file="res://assets/sfx/mayragandra/Sink water drop.wav"
+dest_files=["res://.godot/imported/Sink water drop.wav-f6aa7ec9093bd8e6873645e8a0335ac8.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

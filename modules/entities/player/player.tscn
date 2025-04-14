@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=95 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -22,11 +22,12 @@
 [ext_resource type="Script" uid="uid://cbki1wx5sldj2" path="res://modules/entities/player/xsm/throw.gd" id="14_7pa4m"]
 [ext_resource type="Texture2D" uid="uid://bc8n7gftbf85i" path="res://modules/entities/player/placeholder_sprites/Idle/Spear/Idle_Spear_Down.png" id="14_iekqc"]
 [ext_resource type="Script" uid="uid://35wultrt2jyq" path="res://modules/entities/player/xsm/hop.gd" id="14_l3d1o"]
-[ext_resource type="Script" uid="uid://d3k8myw5l01oe" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="15_257pe"]
 [ext_resource type="Script" uid="uid://dmux7vy5y0hk4" path="res://modules/entities/player/xsm/grapple.gd" id="15_trbfo"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Script" uid="uid://8u175eaigjct" path="res://modules/entities/player/xsm/recall.gd" id="17_qcq68"]
+[ext_resource type="AudioStream" uid="uid://btwbusjjnsfg5" path="res://assets/sfx/Sonniss/pop_1.wav" id="18_l84k2"]
+[ext_resource type="AudioStream" uid="uid://ck772bbyuikiy" path="res://assets/sfx/Sonniss/pop_2.wav" id="19_hfpac"]
 [ext_resource type="Texture2D" uid="uid://bomlp67c0exnm" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Down.png" id="28_lqgfc"]
 [ext_resource type="Texture2D" uid="uid://da2cbhqa5c2t7" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Left.png" id="29_dhsgn"]
 [ext_resource type="Texture2D" uid="uid://dqnemhskws1vm" path="res://modules/entities/player/placeholder_sprites/Idle/Spear/Idle_Spear_Left_Down.png" id="30_7yfd7"]
@@ -44,7 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://bqlnm1rdma2s0" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Right.png" id="42_ixb32"]
 [ext_resource type="Texture2D" uid="uid://benoslp55jhin" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Up.png" id="43_fgoev"]
 [ext_resource type="Texture2D" uid="uid://c5mbf4fv8dv3m" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Down.png" id="43_y78jc"]
-[ext_resource type="Shader" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
+[ext_resource type="Shader" uid="uid://cay2138tmvvxx" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
 [ext_resource type="Texture2D" uid="uid://b6yn0x7w86oiv" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Left_Down.png" id="44_rl8eg"]
 [ext_resource type="Texture2D" uid="uid://b2mrmf71f3pf5" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Right_Down.png" id="45_l84k2"]
 [ext_resource type="Texture2D" uid="uid://v5inwgonhfty" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Up.png" id="46_hfpac"]
@@ -52,6 +53,46 @@
 [ext_resource type="Texture2D" uid="uid://de3bjixgf5a3q" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Left_Down.png" id="48_7h8sm"]
 [ext_resource type="Texture2D" uid="uid://b08xtnscca7is" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Right_Down.png" id="49_bif3w"]
 [ext_resource type="Texture2D" uid="uid://dmii5kjwq04lx" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Up.png" id="50_0wufa"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_rl8eg"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("18_l84k2")
+stream_0/weight = 2.5
+stream_1/stream = ExtResource("19_hfpac")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l84k2"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("18_l84k2")
+stream_0/weight = 2.5
+stream_1/stream = ExtResource("19_hfpac")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hfpac"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("18_l84k2")
+stream_0/weight = 2.5
+stream_1/stream = ExtResource("19_hfpac")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_2irlg"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("18_l84k2")
+stream_0/weight = 2.5
+stream_1/stream = ExtResource("19_hfpac")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7h8sm"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("18_l84k2")
+stream_0/weight = 2.5
+stream_1/stream = ExtResource("19_hfpac")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
@@ -1498,6 +1539,7 @@ next_state = NodePath(".")
 script = ExtResource("6_rn5yy")
 ground_speed = 60.0
 acceleration = 20.0
+push_frames = null
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = ""
@@ -1559,7 +1601,16 @@ next_state = NodePath("")
 script = ExtResource("9_x3ix7")
 dash_speed = 640
 dash_distance = 64
-sample = null
+sample = SubResource("AudioStreamRandomizer_rl8eg")
+sound_loop_mode = 0
+on_sounds_finished = 0
+volume_db = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+max_polyphony = 5
+bus = "From Parent"
+positional = 0
+positional_mix_target = 0
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = "NONE"
 disabled = false
@@ -1610,7 +1661,16 @@ next_state = NodePath("")
 
 [node name="Lasso" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("12_ds73y")
-sample = null
+sample = SubResource("AudioStreamRandomizer_l84k2")
+sound_loop_mode = 0
+on_sounds_finished = 0
+volume_db = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+max_polyphony = 5
+bus = "From Parent"
+positional = 0
+positional_mix_target = 0
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = "NONE"
 disabled = false
@@ -1621,18 +1681,16 @@ next_state = NodePath("../Idle")
 
 [node name="Throw" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("14_7pa4m")
-sample = null
-animation_player = NodePath("../../../AnimationPlayer")
-anim_on_enter = ""
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("../Idle")
-
-[node name="Grapple" type="Node" parent="PlayerFSM/Movement"]
-script = ExtResource("15_trbfo")
-sample = null
+sample = SubResource("AudioStreamRandomizer_hfpac")
+sound_loop_mode = 0
+on_sounds_finished = 0
+volume_db = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+max_polyphony = 5
+bus = "From Parent"
+positional = 0
+positional_mix_target = 0
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = ""
 disabled = false
@@ -1654,7 +1712,16 @@ next_state = NodePath("../Idle")
 
 [node name="AttackMelee" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("10_v37cr")
-sample = null
+sample = SubResource("AudioStreamRandomizer_2irlg")
+sound_loop_mode = 0
+on_sounds_finished = 0
+volume_db = 5.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+max_polyphony = 5
+bus = "From Parent"
+positional = 0
+positional_mix_target = 0
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = "NONE"
 disabled = false
@@ -1711,7 +1778,28 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
+[node name="Grapple" type="Node" parent="PlayerFSM/Movement"]
+script = ExtResource("15_trbfo")
+sample = SubResource("AudioStreamRandomizer_7h8sm")
+sound_loop_mode = 0
+on_sounds_finished = 0
+volume_db = 0.0
+pitch_scale = 1.0
+pitch_randomness = 0.0
+max_polyphony = 5
+bus = "From Parent"
+positional = 0
+positional_mix_target = 0
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Idle")
+
 [node name="Push" type="Node" parent="PlayerFSM/Movement"]
+process_mode = 4
 script = ExtResource("13_xr8le")
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = ""
@@ -1722,6 +1810,7 @@ timed = false
 next_state = NodePath("../Idle")
 
 [node name="Fall" type="Node" parent="PlayerFSM/Movement"]
+process_mode = 4
 script = ExtResource("13_upq7c")
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = "fall"
@@ -1734,6 +1823,7 @@ timed = false
 next_state = NodePath("../Lasso")
 
 [node name="Hop" type="Node" parent="PlayerFSM/Movement"]
+process_mode = 4
 script = ExtResource("14_l3d1o")
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
@@ -1856,7 +1946,6 @@ zoom = Vector2(5.5, 5.5)
 process_callback = 0
 position_smoothing_enabled = true
 position_smoothing_speed = 16.0
-script = ExtResource("15_25a4m")
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

@@ -13,6 +13,7 @@ extends State
 
 var backstep_timer : Timer
 var offset_vector : Vector2
+
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
 # Code related to nav_agent & tilemap integration are inspired by: 
@@ -20,8 +21,6 @@ var offset_vector : Vector2
 # https://blog.shiftythedev.com/posts/GodotTilemapNavigation/
 #
 
-# This function is called when the state enters
-# XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	target.velocity = Vector2.ZERO
 	#var random_rad = deg_to_rad(randi_range(0,360))
@@ -44,24 +43,16 @@ func _on_enter(_args) -> void:
 	backstep_timer.autostart = true
 	target.add_child(backstep_timer)
 
-# This function is called just after the state enters
-# XSM after_enters the children first, then the parent
-func _after_enter(_args) -> void:
-	pass
-
 func _backstep_timeout() -> void:
 	change_state("Backstep")
-	
+
 func set_movement_target(target_pos: Vector2):
 	nav_agent.target_position = target_pos
 
-
-# This function is called each frame if the state is ACTIVE
-# XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
 	if !target.follow_target:
 		change_state("Roaming")
-		
+	
 	movement_target_pos = target.follow_target.to_global(target.follow_target.velocity * 0.2)
 	movement_target_pos += offset_vector
 	set_movement_target(movement_target_pos)
@@ -81,29 +72,5 @@ func _on_update(_delta: float) -> void:
 	$"../../Display/DebugActualVelocity".target_position = target.velocity
 	target.move_and_slide()
 
-# This function is called each frame after all the update calls
-# XSM after_updates the children first, then the root
-func _after_update(_delta: float) -> void:
-	pass
-
-
-# This function is called before the State exits
-# XSM before_exits the root first, then the children
-func _before_exit(_args) -> void:
-	pass
-
-
-# This function is called when the State exits
-# XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
 	backstep_timer.queue_free()
-
-
-# when StateAutomaticTimer timeout()
-func _state_timeout() -> void:
-	pass
-
-
-# Called when any other Timer times out
-func _on_timeout(_name) -> void:
-	pass
