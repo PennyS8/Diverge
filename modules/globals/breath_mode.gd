@@ -27,6 +27,9 @@ func _process(delta: float) -> void:
 		time_remaining.text = "%.2f" % [timer.time_left]
 
 func start_mode():
+	current_selectables.clear()
+	current_bodies_selected.clear()
+	
 	timer.start(deadeye_time)
 	time_remaining.show()
 	
