@@ -27,7 +27,7 @@ visible = false
 z_index = 4
 texture_repeat = 2
 material = ExtResource("2_7v3qk")
-position = Vector2(0, -17)
+position = Vector2(0, -22)
 points = PackedVector2Array(0, 0, 0, 0, 8, 4, 12, 12, 8, 20, 0, 24, -8, 20, -12, 12, -8, 4, 0, 0)
 closed = true
 width = 2.0
@@ -39,9 +39,9 @@ end_cap_mode = 2
 
 [node name="ColorRect" type="ColorRect" parent="."]
 offset_left = -12.0
-offset_top = -17.0
+offset_top = -21.0
 offset_right = 12.0
-offset_bottom = 7.0
+offset_bottom = 3.0
 mouse_filter = 1
 color = Color(1, 1, 1, 0)
 

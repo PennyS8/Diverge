@@ -92,4 +92,5 @@ func _after_update(_delta):
 		change_state("Idle", idle_dir)
 
 func _on_exit(_args):
+	target.velocity = Vector2.ZERO
 	change_state("DashTimer")
