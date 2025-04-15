@@ -22,6 +22,7 @@
 [ext_resource type="LabelSettings" uid="uid://li7joahtc8st" path="res://modules/entities/enemies/shades/shade/starstun.tres" id="19_61njc"]
 [ext_resource type="Animation" uid="uid://dvkemfiwl1mh8" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprise.res" id="20_rpbg0"]
 
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
 radius = 6.0
 
