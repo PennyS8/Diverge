@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=66 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="2_nel61"]
@@ -212,6 +212,12 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_axqkd"]
 radius = 6.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjkpu"]
+resource_local_to_scene = true
+shader = ExtResource("7_ikyt7")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vas0v"]
 resource_local_to_scene = true
@@ -901,20 +907,8 @@ position = Vector2(8, 110)
 [node name="BrickShadehouse" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("26_nel61")]
 position = Vector2(-30, 123)
 
-[node name="Sprite2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeHPIndicator" index="0"]
-material = SubResource("ShaderMaterial_vas0v")
-
-[node name="Sprite2D2" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeHPIndicator" index="1"]
-material = SubResource("ShaderMaterial_vas0v")
-
-[node name="Sprite2D3" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeHPIndicator" index="2"]
-material = SubResource("ShaderMaterial_vas0v")
-
-[node name="Sprite2D4" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeHPIndicator" index="3"]
-material = SubResource("ShaderMaterial_vas0v")
-
-[node name="Combat" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive" index="1"]
-next_state = NodePath("")
+[node name="ShadeHPIndicator" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="0"]
+material = SubResource("ShaderMaterial_mjkpu")
 
 [node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/SoftCollision" index="0"]
 scale = Vector2(1.5, 1.5)

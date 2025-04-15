@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://33hybnusvk8d"]
+[gd_scene load_steps=11 format=3 uid="uid://33hybnusvk8d"]
 
 [ext_resource type="PackedScene" uid="uid://dx5na7ufncxg3" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn" id="1_54xym"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="2_hqaxx"]
@@ -9,6 +9,12 @@
 [ext_resource type="Script" uid="uid://emamwtxvsy5h" path="res://modules/levels/cafeteria/shade_varieties/found_ramen.gd" id="7_dfrlf"]
 [ext_resource type="Script" uid="uid://d1od6kbhhnppb" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="8_moxqa"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjkpu"]
+resource_local_to_scene = true
+shader = ExtResource("2_hqaxx")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6q02m"]
 resource_local_to_scene = true
 shader = ExtResource("2_hqaxx")
@@ -18,17 +24,8 @@ shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 [node name="ComplexRamenShade" instance=ExtResource("1_54xym")]
 modulate = Color(1, 1, 1, 0)
 
-[node name="Sprite2D" parent="ShadeHPIndicator" index="0"]
-material = SubResource("ShaderMaterial_6q02m")
-
-[node name="Sprite2D2" parent="ShadeHPIndicator" index="1"]
-material = SubResource("ShaderMaterial_6q02m")
-
-[node name="Sprite2D3" parent="ShadeHPIndicator" index="2"]
-material = SubResource("ShaderMaterial_6q02m")
-
-[node name="Sprite2D4" parent="ShadeHPIndicator" index="3"]
-material = SubResource("ShaderMaterial_6q02m")
+[node name="ShadeHPIndicator" parent="." index="0"]
+material = SubResource("ShaderMaterial_mjkpu")
 
 [node name="ShadeFSM" parent="." index="1"]
 disabled = true
@@ -70,6 +67,9 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
+next_state = NodePath("")
+
+[node name="Combat" parent="ShadeFSM/Alive" index="1"]
 next_state = NodePath("")
 
 [node name="Surprised" parent="ShadeFSM/Alive/Reaction" index="1"]

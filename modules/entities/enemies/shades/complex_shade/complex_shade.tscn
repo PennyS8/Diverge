@@ -1,6 +1,8 @@
-[gd_scene load_steps=77 format=3 uid="uid://dx5na7ufncxg3"]
+[gd_scene load_steps=79 format=3 uid="uid://dx5na7ufncxg3"]
 
+[ext_resource type="PackedScene" uid="uid://8xtoptvgrpqi" path="res://modules/entities/enemies/hp_bar/shade_hp_indicator.tscn" id="2_88af2"]
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
+[ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="3_o0472"]
 [ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="4_e4b7j"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="4_kcpdx"]
 [ext_resource type="Script" uid="uid://bx6jvvpiqokkf" path="res://modules/entities/enemies/shades/complex_shade/xsm/patrol.gd" id="6_2ptfn"]
@@ -33,7 +35,12 @@
 [ext_resource type="Texture2D" uid="uid://na43h01jh8sq" path="res://modules/entities/enemies/shades/complex_shade/sprites/Death/Death_LR_Combined.png" id="29_iug1g"]
 [ext_resource type="Texture2D" uid="uid://chpbdfsf6jyng" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Up.png" id="29_xu3ac"]
 [ext_resource type="Texture2D" uid="uid://08y4slel3t1j" path="res://modules/entities/enemies/shades/complex_shade/sprites/Idle/IDLE_LR_Base.png" id="35_dvtn2"]
-[ext_resource type="Texture2D" uid="uid://bnpreafn6hy00" path="res://assets/hud/enemy_hp_variations.png" id="41_iug1g"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjkpu"]
+resource_local_to_scene = true
+shader = ExtResource("3_o0472")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3xrx"]
 radius = 13.0384
@@ -2252,37 +2259,10 @@ collision_mask = 83
 motion_mode = 1
 script = ExtResource("2_knfav")
 
-[node name="ShadeHPIndicator" type="Node2D" parent="."]
-visible = false
-z_index = 2
-position = Vector2(0, 5)
-
-[node name="Sprite2D" type="Sprite2D" parent="ShadeHPIndicator"]
-material = ExtResource("19_mjkpu")
-position = Vector2(-16, 1)
-texture = ExtResource("41_iug1g")
-hframes = 4
-frame = 2
-
-[node name="Sprite2D2" type="Sprite2D" parent="ShadeHPIndicator"]
-material = ExtResource("19_mjkpu")
-position = Vector2(-5, 1)
-texture = ExtResource("41_iug1g")
-hframes = 4
-frame = 3
-
-[node name="Sprite2D3" type="Sprite2D" parent="ShadeHPIndicator"]
-material = ExtResource("19_mjkpu")
-position = Vector2(6, 1)
-texture = ExtResource("41_iug1g")
-hframes = 4
-
-[node name="Sprite2D4" type="Sprite2D" parent="ShadeHPIndicator"]
-material = ExtResource("19_mjkpu")
-position = Vector2(17, 1)
-texture = ExtResource("41_iug1g")
-hframes = 4
-frame = 1
+[node name="ShadeHPIndicator" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("2_88af2")]
+material = SubResource("ShaderMaterial_mjkpu")
+position = Vector2(1, 5)
+health_component = NodePath("../BehaviorComponents/Health")
 
 [node name="ShadeFSM" type="Node" parent="."]
 script = ExtResource("4_e4b7j")
@@ -2365,7 +2345,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../ReturnToPost")
+next_state = NodePath("")
 
 [node name="ReturnToPost" type="Node" parent="ShadeFSM/Alive/Movement"]
 editor_description = "TODO: Not implemented"
@@ -2382,7 +2362,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Reaction")
+next_state = NodePath("")
 
 [node name="ChargeAttack" type="Node" parent="ShadeFSM/Alive/Combat"]
 script = ExtResource("10_iug1g")
