@@ -53,15 +53,15 @@ func _physics_process(_delta):
 			# If we get to our target
 			sliding_to_target = false
 			
-			if leash_owner.is_in_group("enemy"):
+			if leash_owner.is_in_group("enemy") and self.is_in_group("enemy"):
 				# If cocoon doesn't exist, make one as the parent of our Main Shade
 				var cocoon = load("res://modules/entities/enemies/shades/shade_bundle/shade_stack.tscn")
 				cocoon = cocoon.instantiate()
 				leash_owner.add_sibling(cocoon)
 				
 				# Store the healths of each shade to be re-instantiated later
-				var trigger_health = get_node("HealthComponent").health
-				var main_health = leash_owner.get_node("HealthComponent").health
+				var trigger_health = get_node("%Health").health
+				var main_health = leash_owner.get_node("%Health").health
 				cocoon.shade_healths_stored.append(trigger_health)
 				cocoon.shade_healths_stored.append(main_health)
 				
@@ -70,7 +70,7 @@ func _physics_process(_delta):
 				leash_owner.reparent(cocoon)
 				
 				# Lobotomize and Hide Main Shade
-				leash_owner.get_node("Display").hide()
+				leash_owner.get_node("%DisplayComponents").hide()
 				leash_owner.get_node("ShadeFSM").disabled = true
 				
 				# Update the "leash_owners" of all of the other tetherables after reparenting
@@ -81,7 +81,7 @@ func _physics_process(_delta):
 				self.queue_free()
 			elif leash_owner.is_in_group("cocoon"):
 				# If our cocoon already exists, add self to the stack
-				leash_owner.shade_healths_stored.append(get_node("HealthComponent").health)
+				leash_owner.shade_healths_stored.append(get_node("%Health").health)
 				self.queue_free()
 
 # Retracts the length of the yarn, pulling the tethered body to the player

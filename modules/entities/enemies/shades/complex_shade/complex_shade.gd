@@ -77,10 +77,10 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
 	
 	damaged_particles.set_deferred("rotation", get_angle_to(-knockback) + PI)
-	%AnimationPlayer.call_deferred("play", "damaged")
 	
 	# If, after damaging, we'll still be alive, stun us
 	if (health_component.health - _area.damage) > 0:
+		%AnimationPlayer.call_deferred("play", "damaged")
 		fsm.call_deferred("change_state", "Stunned")
 
 		damaged_particles.restart()
@@ -97,3 +97,8 @@ func _on_tetherable_area_2d_mouse_entered() -> void:
 func _on_tetherable_area_2d_mouse_exited() -> void:
 	deselect()
 #endregion
+
+func fade_in():
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, 2.0)
+	await tween.finished

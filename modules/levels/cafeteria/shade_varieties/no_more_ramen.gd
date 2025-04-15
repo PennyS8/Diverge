@@ -1,7 +1,6 @@
 @tool
 extends State
 
-@export var nav_agent : NavigationAgent2D
 @export var ramen_pattern : Array[ItemLike]
 
 ## Unit: Pixels
@@ -18,7 +17,7 @@ var dashing
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	if _check_player_inv():
-		change_state("Alerted")
+		change_state("Surprised")
 	else:
 		var tween = target.create_tween().set_parallel(true)
 		var end_position = target.global_position + Vector2(randi_range(-24, 24), randi_range(24, 32))
