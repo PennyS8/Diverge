@@ -10,9 +10,7 @@ func _on_enter(_args) -> void:
 		
 		var node = get_node(target.get_parent().get_path())
 		node.add_child(hand_node)
-		
-		# TODO: Figure out how to set a randomize location around the boss
-		
+				
 		
 		var boss_location = target.global_position
 		var hand_location = boss_location + Vector2(48,24)
@@ -24,8 +22,8 @@ func _on_enter(_args) -> void:
 		EnemyManager.add_hand(hand_node, hand_location)
 
 func get_spawn_point(center : Vector2, radius : float) -> Vector2:
+	# TAU = 2 * pi
 	var angle = randf() * TAU
-	# cos(angle) = x cord & sin(angle) = y cord
 	var point = center + Vector2(cos(angle), sin(angle)) * radius
 	
 	return point
