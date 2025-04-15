@@ -11,7 +11,6 @@ extends StateAnimation
 func _on_enter(_args) -> void:
 	pass
 
-
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
 func _after_enter(_args) -> void:
