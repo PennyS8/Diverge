@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="5_66m4e"]
 [ext_resource type="Resource" uid="uid://ddkfnyew6hgco" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="6_njc7s"]
 [ext_resource type="Script" uid="uid://emamwtxvsy5h" path="res://modules/levels/cafeteria/shade_varieties/found_ramen.gd" id="7_dfrlf"]
-[ext_resource type="Script" uid="uid://d1od6kbhhnppb" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="8_moxqa"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="8_moxqa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mjkpu"]
 resource_local_to_scene = true
@@ -67,9 +67,6 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
-
-[node name="Combat" parent="ShadeFSM/Alive" index="1"]
 next_state = NodePath("")
 
 [node name="Surprised" parent="ShadeFSM/Alive/Reaction" index="1"]
