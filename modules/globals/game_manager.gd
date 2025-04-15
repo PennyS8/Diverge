@@ -9,7 +9,9 @@ var overlay : Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Lock mouse and also ensure that we can unlock mouse even during game pauses
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	process_mode = Node.PROCESS_MODE_ALWAYS
 	pass
 	
 func _input(event: InputEvent) -> void:

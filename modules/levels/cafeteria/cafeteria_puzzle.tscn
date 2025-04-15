@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=65 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="2_nel61"]
@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://dvtffhw0gd00f" path="res://modules/levels/cafeteria/dispense_point.gd" id="7_sp0p5"]
 [ext_resource type="PackedScene" uid="uid://p7qdhlen8ym6" path="res://modules/levels/cafeteria/props/chair_down.tscn" id="7_tevex"]
 [ext_resource type="Texture2D" uid="uid://cyn8w8jju8h5k" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Normal/Dash.png" id="8_sp0p5"]
-[ext_resource type="Script" path="res://modules/levels/cafeteria/lunch_shady.gd" id="8_ykebp"]
+[ext_resource type="Script" uid="uid://drw3svexl0ume" path="res://modules/levels/cafeteria/lunch_shady.gd" id="8_ykebp"]
 [ext_resource type="Texture2D" uid="uid://xuw5y0dlb1d8" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_B.png" id="9_vgalx"]
 [ext_resource type="Script" uid="uid://kfndxak1lwjf" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/camera_boundry_region.gd" id="12_roxoq"]
 [ext_resource type="Texture2D" uid="uid://nbp0b5x6771i" path="res://assets/environment/downtown_dungeon/custom_sprites/lunch_line.png" id="13_tevex"]
@@ -213,19 +213,7 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_axqkd"]
 radius = 6.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_nel61"]
-resource_local_to_scene = true
-shader = ExtResource("7_ikyt7")
-shader_parameter/Flash = false
-shader_parameter/ColorParameter = Color(1, 1, 1, 1)
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vas0v"]
-resource_local_to_scene = true
-shader = ExtResource("7_ikyt7")
-shader_parameter/Flash = false
-shader_parameter/ColorParameter = Color(1, 1, 1, 1)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_i5fmv"]
 resource_local_to_scene = true
 shader = ExtResource("7_ikyt7")
 shader_parameter/Flash = false
@@ -905,126 +893,47 @@ item_scene = ExtResource("23_roxoq")
 position = Vector2(-27, 43)
 
 [node name="Shadely" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("26_nel61")]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(-71.1309, 110.331)
 
-[node name="Sprite2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeHPIndicator" index="0"]
-material = SubResource("ShaderMaterial_nel61")
-
-[node name="Sprite2D2" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeHPIndicator" index="1"]
-material = SubResource("ShaderMaterial_nel61")
-
-[node name="Sprite2D3" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeHPIndicator" index="2"]
-material = SubResource("ShaderMaterial_nel61")
-
-[node name="Sprite2D4" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/ShadeHPIndicator" index="3"]
-material = SubResource("ShaderMaterial_nel61")
-
-[node name="TetherableArea2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely" index="2"]
-collision_layer = 0
-
-[node name="HurtBox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/BehaviorComponents" index="3"]
-collision_mask = 0
-
-[node name="DisplayComponents" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely" index="4"]
-unique_name_in_owner = false
-material = SubResource("ShaderMaterial_nel61")
-
-[node name="Exclaim" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/DisplayComponents" index="2"]
-visible = false
-
-[node name="AttackArc" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/DisplayComponents" index="4"]
-material = SubResource("ShaderMaterial_nel61")
-
-[node name="Shadow" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/DisplayComponents" index="5"]
-material = SubResource("ShaderMaterial_nel61")
-
 [node name="Melisshade" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("26_nel61")]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(8, 110)
 
-[node name="Sprite2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeHPIndicator" index="0"]
-material = SubResource("ShaderMaterial_nel61")
-
-[node name="Sprite2D2" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeHPIndicator" index="1"]
-material = SubResource("ShaderMaterial_nel61")
-
-[node name="Sprite2D3" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeHPIndicator" index="2"]
-material = SubResource("ShaderMaterial_nel61")
-
-[node name="Sprite2D4" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/ShadeHPIndicator" index="3"]
-material = SubResource("ShaderMaterial_nel61")
-
-[node name="TetherableArea2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade" index="2"]
-collision_layer = 0
-
-[node name="HurtBox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/BehaviorComponents" index="3"]
-collision_mask = 0
-
-[node name="DisplayComponents" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade" index="4"]
-unique_name_in_owner = false
-material = SubResource("ShaderMaterial_vas0v")
-
-[node name="Exclaim" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/DisplayComponents" index="2"]
-visible = false
-
-[node name="AttackArc" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/DisplayComponents" index="4"]
-material = SubResource("ShaderMaterial_nel61")
-
-[node name="Shadow" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/DisplayComponents" index="5"]
-material = SubResource("ShaderMaterial_nel61")
-
 [node name="BrickShadehouse" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("26_nel61")]
-modulate = Color(1, 1, 1, 0)
 position = Vector2(-30, 123)
 
 [node name="Sprite2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeHPIndicator" index="0"]
-material = SubResource("ShaderMaterial_nel61")
+material = SubResource("ShaderMaterial_vas0v")
 
 [node name="Sprite2D2" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeHPIndicator" index="1"]
-material = SubResource("ShaderMaterial_nel61")
+material = SubResource("ShaderMaterial_vas0v")
 
 [node name="Sprite2D3" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeHPIndicator" index="2"]
-material = SubResource("ShaderMaterial_nel61")
+material = SubResource("ShaderMaterial_vas0v")
 
 [node name="Sprite2D4" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeHPIndicator" index="3"]
-material = SubResource("ShaderMaterial_nel61")
+material = SubResource("ShaderMaterial_vas0v")
 
-[node name="TetherableArea2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="2"]
-scale = Vector2(1.5, 1.5)
-collision_layer = 0
+[node name="Combat" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive" index="1"]
+next_state = NodePath("")
 
 [node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/SoftCollision" index="0"]
-scale = Vector2(1.5, 1.5)
-
-[node name="CollisionPolygon2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/AgroRegion" index="0"]
-scale = Vector2(1.5, 1.5)
-
-[node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/AgroRegion" index="1"]
 scale = Vector2(1.5, 1.5)
 
 [node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/AttackBox" index="0"]
 scale = Vector2(1.5, 1.5)
 
-[node name="HurtBox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents" index="3"]
-collision_mask = 0
-
 [node name="Health" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents" index="4"]
 max_health = 80
 
 [node name="DisplayComponents" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="4"]
-unique_name_in_owner = false
-material = SubResource("ShaderMaterial_i5fmv")
+material = SubResource("ShaderMaterial_vas0v")
 scale = Vector2(1.5, 1.5)
 
-[node name="Exclaim" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/DisplayComponents" index="2"]
-visible = false
-
 [node name="AttackArc" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/DisplayComponents" index="4"]
-material = SubResource("ShaderMaterial_nel61")
+material = SubResource("ShaderMaterial_vas0v")
 
 [node name="Shadow" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/DisplayComponents" index="5"]
-material = SubResource("ShaderMaterial_nel61")
+material = SubResource("ShaderMaterial_vas0v")
 
 [node name="CameraBoundry" type="Area2D" parent="NavigationRegion2D"]
 visible = false
@@ -1082,9 +991,5 @@ position = Vector2(-399, 4)
 [connection signal="area_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints/DispensePoint5" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [5]]
 [connection signal="body_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/debug area" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_debug_area_body_entered"]
 
-[editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely"]
-[editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/BehaviorComponents/SoftCollision"]
-[editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade"]
-[editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/BehaviorComponents/SoftCollision"]
 [editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse"]
 [editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/SoftCollision"]

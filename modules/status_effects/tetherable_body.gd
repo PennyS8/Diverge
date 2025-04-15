@@ -58,20 +58,20 @@ func _physics_process(_delta):
 				var cocoon = load("res://modules/entities/enemies/shades/shade_bundle/shade_stack.tscn")
 				cocoon = cocoon.instantiate()
 				leash_owner.add_sibling(cocoon)
-				
+				cocoon.global_position = leash_owner.global_position
+
 				# Store the healths of each shade to be re-instantiated later
 				var trigger_health = get_node("%Health").health
 				var main_health = leash_owner.get_node("%Health").health
 				cocoon.shade_healths_stored.append(trigger_health)
 				cocoon.shade_healths_stored.append(main_health)
 				
-				# Spawn cocoon
-				cocoon.global_position = leash_owner.global_position
-				leash_owner.reparent(cocoon)
-				
 				# Lobotomize and Hide Main Shade
 				leash_owner.get_node("%DisplayComponents").hide()
 				leash_owner.get_node("ShadeFSM").disabled = true
+				
+				# Spawn cocoon
+				leash_owner.reparent(cocoon)
 				
 				# Update the "leash_owners" of all of the other tetherables after reparenting
 				var breath_manager = get_tree().get_first_node_in_group("deep_breath")
@@ -79,7 +79,7 @@ func _physics_process(_delta):
 				
 				# Remove the enemy that just reached the newly created cocoon
 				self.queue_free()
-			elif leash_owner.is_in_group("cocoon"):
+			elif leash_owner.is_in_group("cocoon") and self.is_in_group("enemy"):
 				# If our cocoon already exists, add self to the stack
 				leash_owner.shade_healths_stored.append(get_node("%Health").health)
 				self.queue_free()

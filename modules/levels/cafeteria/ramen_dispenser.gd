@@ -52,7 +52,7 @@ func _on_dispense_point_area_entered(area : Node2D, num : int) -> void:
 	call_deferred("dispense", point, point.spawns_wanderer)
 
 func _move_cutscene_camera(pos):
-	LevelManager.player.enter_cutscene(pos)
+	await LevelManager.player.enter_cutscene(pos)
 	
 func _unlock_shades():
 	var shades = [shadely, shadehouse, melisshade]

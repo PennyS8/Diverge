@@ -44,6 +44,10 @@ func start_mode():
 	# \ and does massive damage.
 	# 6. If breakables are pulled into Shades or Shade piles, break the breakable and damage
 	for body : TetherableBody in get_tree().get_nodes_in_group("tetherable_body"):
+		# Don't include ramen in this list
+		if body.is_in_group("ramen_body"):
+			continue
+		
 		# Generate UI element that can be selected with mouse hover
 		var selector : Node2D = selectable_body_selector.instantiate()
 		
