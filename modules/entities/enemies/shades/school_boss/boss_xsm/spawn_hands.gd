@@ -1,6 +1,8 @@
 @tool
 extends StateSound
 
+const SPAWN_RADIUS = 96.0
+
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
@@ -10,10 +12,10 @@ func _on_enter(_args) -> void:
 		
 		var node = get_node(target.get_parent().get_path())
 		node.add_child(hand_node)
-				
 		
 		var boss_location = target.global_position
-		var hand_location = boss_location + Vector2(48,24)
+		
+		var hand_location = get_spawn_point(boss_location, SPAWN_RADIUS)
 		
 		hand_node.global_position = hand_location
 		

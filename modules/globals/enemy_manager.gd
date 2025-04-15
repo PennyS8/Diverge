@@ -7,7 +7,7 @@ const MAX_ENGAGERS = 2
 const MAX_TARGETERS = 1
 
 ## The number of hands the boss is allowed to have
-const MAX_HANDS = 1
+const MAX_HANDS = 5
 
 var current_engagers : Array[CharacterBody2D] = []
 var marked_for_disengage : Dictionary[CharacterBody2D, Timer] = {}
