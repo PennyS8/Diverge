@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://mhjd65car3ej"]
+[gd_scene load_steps=18 format=3 uid="uid://mhjd65car3ej"]
 
 [ext_resource type="Script" uid="uid://cuw0wgpny6ef0" path="res://modules/entities/enemies/shades/school_boss/school_boss.gd" id="1_awdse"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="1_icyt3"]
-[ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="2_e8np5"]
 [ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="3_w7155"]
 [ext_resource type="Script" uid="uid://rhuom8qt1g2" path="res://modules/entities/enemies/shades/school_boss/boss_xsm/idle.gd" id="4_cilaq"]
 [ext_resource type="Script" uid="uid://kn0vl6hyv13l" path="res://modules/entities/enemies/shades/school_boss/boss_xsm/spawn_hands.gd" id="5_ae4fe"]
@@ -66,14 +65,14 @@ collision_mask = 83
 script = ExtResource("1_awdse")
 
 [node name="BossFSM" type="Node" parent="."]
-script = ExtResource("2_e8np5")
+script = ExtResource("3_w7155")
 history_size = 0
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("Alive/Movement/Idle")
-metadata/_custom_type_script = "uid://dw6la50yxyr6j"
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
 [node name="Alive" type="Node" parent="BossFSM"]
 script = ExtResource("3_w7155")
@@ -90,7 +89,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Movement")
+next_state = NodePath("..")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
 [node name="Idle" type="Node" parent="BossFSM/Alive/Movement"]
@@ -133,7 +132,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath(".")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
 [node name="Reaction" type="Node" parent="BossFSM/Alive"]

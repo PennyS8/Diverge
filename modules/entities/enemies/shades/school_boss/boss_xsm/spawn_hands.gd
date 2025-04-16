@@ -14,12 +14,8 @@ func _on_enter(_args) -> void:
 		node.add_child(hand_node)
 		
 		var boss_location = target.global_position
-		
 		var hand_location = get_spawn_point(boss_location, SPAWN_RADIUS)
-		
 		hand_node.global_position = hand_location
-		
-		print("Spawning Hand")
 		
 		EnemyManager.add_hand(hand_node, hand_location)
 

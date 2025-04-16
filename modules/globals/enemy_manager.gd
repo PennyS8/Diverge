@@ -60,4 +60,9 @@ func remove_hand(hand : CharacterBody2D):
 		return false
 
 func remove_all_hands():
+	for enemy in hand_spawn_counter:
+		# Sanity check to make sure enemy still exists
+		if enemy:
+			enemy.queue_free()
+	
 	hand_spawn_counter.clear()

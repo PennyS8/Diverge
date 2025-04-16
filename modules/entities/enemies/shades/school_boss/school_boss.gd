@@ -41,10 +41,8 @@ func on_load_game(saved_data:SavedData):
 
 #region Health Components
 func _on_hurt_box_component_hit(_area : HitBoxComponent2D) -> void:
-	print("Boss hit")
+	pass
 
 func _on_health_component_died() -> void:
 	fsm.change_state("Dead")
-	# TODO: Remove this queue free once dead state is working
-	queue_free()
 #endregion
