@@ -2,6 +2,7 @@ extends Node2D
 
 @onready var spike_list = $Spikes.get_children()
 var player
+var olli
 
 func _ready() -> void:
 	var timer = Timer.new()
@@ -10,4 +11,5 @@ func _ready() -> void:
 	timer.start(1)
 	await timer.timeout
 	player = LevelManager.player
-	DialogueManager.show_dialogue_balloon(load("res://modules/dialogue/demo_scenes.dialogue"), "hiding_away", [self])
+	olli = $Olli
+	DialogueManager.show_dialogue_balloon(load("res://modules/dialogue/demo_scenes.dialogue"), "start", [self])

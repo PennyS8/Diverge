@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=4 uid="uid://befcpvbc62vmw"]
+[gd_scene load_steps=7 format=4 uid="uid://befcpvbc62vmw"]
 
 [ext_resource type="Script" uid="uid://bosvoshrsanko" path="res://modules/levels/outside/outside.gd" id="1_h7lbe"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_nlvm0"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="1_y5g6n"]
 [ext_resource type="TileSet" uid="uid://beeu22p6kg3am" path="res://assets/environment/downtown_dungeon/Tiles 24x24/outdoors.tres" id="2_qwmn5"]
 [ext_resource type="Texture2D" uid="uid://d1i2h41pm54o2" path="res://assets/debug/2d_lights_and_shadows_neutral_point_light.webp" id="3_jgkm2"]
+[ext_resource type="PackedScene" uid="uid://4ybabjj78svj" path="res://modules/entities/npcs/olli/olli.tscn" id="6_oonry"]
 
 [node name="Outside" type="Node2D"]
 y_sort_enabled = true
@@ -124,3 +125,6 @@ position = Vector2(1312, 360)
 
 [node name="Marker2D2" type="Marker2D" parent="Spikes"]
 position = Vector2(1392, 314)
+
+[node name="Olli" parent="." instance=ExtResource("6_oonry")]
+position = Vector2(1342, 364)

@@ -1,6 +1,6 @@
 ~ start
 do player.enter_cutscene(player.global_position)
-Ollie: Juniper! Over here!
+Olli: Juniper! Over here!
 do player.do_walk((player.global_position + Vector2(8,0)), 0.1)
 do wait(0.3)
 do player.do_walk((player.global_position + Vector2(-8,0)), 0.1)
@@ -9,24 +9,26 @@ do player.do_walk((player.global_position + Vector2(0,-8)), 0.1)
 do wait(1)
 do player.do_walk(spike_list[0].global_position, 0.1)
 do player.do_walk((spike_list[0].global_position + Vector2(8,0)), 0.1)
-Ollie: Sorry I couldn't hang out last night. I had practice until 7, and then I was up all-night studying for Mr. Turner's history test.
+Olli: Sorry I couldn't hang out last night. I had practice until 7, and then I was up all-night studying for Mr. Turner's history test.
 Juniper: For Friday?
-Ollie: For today! Remember we voted as a class to move it up? So we could have a pizza party on Friday. [fade start=5 length=35]Which I'm looking forward to, since...[/fade]
+Olli: For today! Remember we voted as a class to move it up? So we could have a pizza party on Friday. [fade start=5 length=35]Which I'm looking forward to, since...[/fade]
 Juniper: [i]Oh crap. It is today. I swear I wrote that down. I should have written that down. I didn't do well on the last test, and if this one doesn't go well because I didn't study again—[/i]
-Ollie: ... and we all know that vegetables are just a culinary term, not botanical one, so technically, fruit not only belongs on pizza, but defines it. You understand.
+Olli: ... and we all know that vegetables are just a culinary term, not botanical one, so technically, fruit not only belongs on pizza, but defines it. You understand.
 Juniper: Sorry, I gotta run. [i]Don't panic don't panic don't panic[/i]
-Ollie: What?
+Olli: What?
 do player.do_walk(spike_list[1].global_position, 0.1)
 Juniper: See you!
 do player.exit_cutscene()
 => END
 
 ~ hiding_away
+do player.enter_cutscene(player.global_position)
 Juniper: It's okay. I'm okay. It's just a test. I just need to go back to class.
 Juniper: ...but it's not just a test and if I fail it my grade is going to down from a C to a D and I've never gotten anything less than an A on my report card and...
 Ping!
-Ollie: Hey where are you? Class starts soon.
+Olli: Hey where are you? Class starts soon.
 Juniper: Shoot. I need to go back.
+do player.exit_cutscene()
 => END
 
 ~ this_changed
@@ -59,8 +61,8 @@ Juniper: Hm. Maybe that will help. What was it again?
 
 ~ taking_the_test
 Juniper: [i] I made it back! [/i]
-Ollie: There you are! Class is about to start!
-Ollie: You're gonna ace it.
+Olli: There you are! Class is about to start!
+Olli: You're gonna ace it.
 Juniper: ...yeah. I just want this over with. [i] Surely a history test will be easier than fighting shadows...Like the librarian said. In...hold...out...hold...[/i]
 => END
 
