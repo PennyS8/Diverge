@@ -14,7 +14,7 @@
 [ext_resource type="Script" uid="uid://dvtffhw0gd00f" path="res://modules/levels/cafeteria/dispense_point.gd" id="7_sp0p5"]
 [ext_resource type="PackedScene" uid="uid://p7qdhlen8ym6" path="res://modules/levels/cafeteria/props/chair_down.tscn" id="7_tevex"]
 [ext_resource type="Texture2D" uid="uid://cyn8w8jju8h5k" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Normal/Dash.png" id="8_sp0p5"]
-[ext_resource type="Script" path="res://modules/levels/cafeteria/lunch_shady.gd" id="8_ykebp"]
+[ext_resource type="Script" uid="uid://drw3svexl0ume" path="res://modules/levels/cafeteria/lunch_shady.gd" id="8_ykebp"]
 [ext_resource type="Texture2D" uid="uid://xuw5y0dlb1d8" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Exterior_B.png" id="9_vgalx"]
 [ext_resource type="Script" uid="uid://kfndxak1lwjf" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/camera_boundry_region.gd" id="12_roxoq"]
 [ext_resource type="Texture2D" uid="uid://nbp0b5x6771i" path="res://assets/environment/downtown_dungeon/custom_sprites/lunch_line.png" id="13_tevex"]
