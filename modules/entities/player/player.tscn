@@ -45,7 +45,7 @@
 [ext_resource type="Texture2D" uid="uid://bqlnm1rdma2s0" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Right.png" id="42_ixb32"]
 [ext_resource type="Texture2D" uid="uid://c4eyhwt0schwv" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Up.png" id="43_cjsq4"]
 [ext_resource type="Texture2D" uid="uid://benoslp55jhin" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Up.png" id="43_fgoev"]
-[ext_resource type="Shader" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
+[ext_resource type="Shader" uid="uid://cay2138tmvvxx" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
 [ext_resource type="Texture2D" uid="uid://dspd847cbn8mr" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Down.png" id="44_xyfbm"]
 [ext_resource type="Texture2D" uid="uid://rtnt5gwn4rkj" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Left_Down.png" id="45_fnwuu"]
 [ext_resource type="Texture2D" uid="uid://ct1xahfqvg584" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Right_Down.png" id="46_gejbx"]
