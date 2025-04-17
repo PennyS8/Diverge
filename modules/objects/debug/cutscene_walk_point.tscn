@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dajv63ful3ri4"]
+
+[ext_resource type="Script" uid="uid://cjokosfq8e8sq" path="res://modules/objects/debug/cutscene_walk_point.gd" id="1_04qyr"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_o7e36"]
+radius = 1.0
+
+[node name="CutsceneWalkPoint" type="Area2D"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("1_04qyr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_o7e36")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
