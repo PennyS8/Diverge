@@ -34,29 +34,24 @@ func _on_enter(_args):
 func _on_update(_delta):
 	if target.dir == Vector2.ZERO:
 		change_state("Idle", idle_dir)
-
-	# if juni has no hook, play no hook animations
-	var no_hook = ""
-	if target.hook_locked:
-		no_hook = "no_spear/"
-		
+	
 	target.velocity = lerp(target.velocity, target.dir * ground_speed, acceleration * _delta)
 	
 	var xdir = target.dir.snapped(Vector2.ONE).x
 	var ydir = target.dir.snapped(Vector2.ONE).y
 	
 	if xdir == 1:
-		play_blend(no_hook + "walk_right", 0.0)
+		play_blend("walk_right", 0.0)
 		idle_dir = Vector2.RIGHT
 	elif xdir == -1:
-		play_blend(no_hook + "walk_left", 0.0)
+		play_blend("walk_left", 0.0)
 		idle_dir = Vector2.LEFT
 	elif xdir == 0:
 		if ydir == 1:
-			play_blend(no_hook + "walk_down", 0.0)
+			play_blend("walk_down", 0.0)
 			idle_dir = Vector2.DOWN
 		elif ydir == -1:
-			play_blend(no_hook + "walk_up", 0.0)
+			play_blend("walk_up", 0.0)
 			idle_dir = Vector2.UP
 	
 	# get_wall_normal returns the direction the wall's collision is to us;

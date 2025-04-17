@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=81 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -49,14 +49,6 @@
 [ext_resource type="Texture2D" uid="uid://dspd847cbn8mr" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Down.png" id="44_xyfbm"]
 [ext_resource type="Texture2D" uid="uid://rtnt5gwn4rkj" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Left_Down.png" id="45_fnwuu"]
 [ext_resource type="Texture2D" uid="uid://ct1xahfqvg584" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Right_Down.png" id="46_gejbx"]
-[ext_resource type="Texture2D" uid="uid://c5mbf4fv8dv3m" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Down.png" id="43_y78jc"]
-[ext_resource type="Texture2D" uid="uid://b6yn0x7w86oiv" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Left_Down.png" id="44_rl8eg"]
-[ext_resource type="Texture2D" uid="uid://b2mrmf71f3pf5" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Right_Down.png" id="45_l84k2"]
-[ext_resource type="Texture2D" uid="uid://v5inwgonhfty" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Up.png" id="46_hfpac"]
-[ext_resource type="Texture2D" uid="uid://bd8kcidgwq840" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Down.png" id="47_2irlg"]
-[ext_resource type="Texture2D" uid="uid://de3bjixgf5a3q" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Left_Down.png" id="48_7h8sm"]
-[ext_resource type="Texture2D" uid="uid://b08xtnscca7is" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Right_Down.png" id="49_bif3w"]
-[ext_resource type="Texture2D" uid="uid://dmii5kjwq04lx" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Up.png" id="50_0wufa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
@@ -462,7 +454,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3125),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [3, 5]
+"values": [3, 7]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -527,7 +519,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3125),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [3, 5]
+"values": [3, 7]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -592,7 +584,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3125),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [3, 5]
+"values": [3, 7]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -657,7 +649,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.3125),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [3, 5]
+"values": [3, 7]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -1268,242 +1260,6 @@ _data = {
 &"walk_up": SubResource("Animation_o4rbi")
 }
 
-[sub_resource type="Animation" id="Animation_5jg5w"]
-resource_name = "idle_down"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("43_y78jc")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_1lef0"]
-resource_name = "idle_left"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("44_rl8eg")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_lle26"]
-resource_name = "idle_right"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("45_l84k2")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_cjsq4"]
-resource_name = "idle_up"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("46_hfpac")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_xyfbm"]
-resource_name = "walk_down"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("47_2irlg")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_fnwuu"]
-resource_name = "walk_left"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("48_7h8sm")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_gejbx"]
-resource_name = "walk_right"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("49_bif3w")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_netii"]
-resource_name = "walk_up"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("50_0wufa")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_y78jc"]
-_data = {
-&"idle_down": SubResource("Animation_5jg5w"),
-&"idle_left": SubResource("Animation_1lef0"),
-&"idle_right": SubResource("Animation_lle26"),
-&"idle_up": SubResource("Animation_cjsq4"),
-&"walk_down": SubResource("Animation_xyfbm"),
-&"walk_left": SubResource("Animation_fnwuu"),
-&"walk_right": SubResource("Animation_gejbx"),
-&"walk_up": SubResource("Animation_netii")
-}
-
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rc6ld"]
 b = Vector2(0, 0)
 
@@ -1516,7 +1272,7 @@ shader_parameter/noise_intensity = 0.05
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4
-collision_mask = 2163
+collision_mask = 115
 motion_mode = 1
 wall_min_slide_angle = 0.0872665
 script = ExtResource("1_ehhf7")
@@ -1537,7 +1293,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("DashTimer")
+next_state = NodePath("CanDash")
 
 [node name="NoDash" type="Node" parent="PlayerFSM/DashPossible"]
 script = ExtResource("1_q2vpm")
@@ -1545,7 +1301,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../NoDash")
 
 [node name="DashTimer" type="Node" parent="PlayerFSM/DashPossible"]
 script = ExtResource("4_j2uqp")
@@ -1632,7 +1388,7 @@ next_state = NodePath("../Idle")
 [node name="WalkDown" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "no_spear/walk_down"
+anim_on_enter = "walk_down"
 loop_mode = 0
 on_finished = 2
 disabled = true
@@ -1644,7 +1400,7 @@ next_state = NodePath("")
 [node name="WalkRight" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "no_spear/walk_right"
+anim_on_enter = "walk_right"
 loop_mode = 0
 on_finished = 2
 disabled = true
@@ -1656,7 +1412,7 @@ next_state = NodePath("")
 [node name="WalkUp" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "no_spear/walk_up"
+anim_on_enter = "walk_up"
 loop_mode = 0
 on_finished = 2
 disabled = true
@@ -1668,7 +1424,7 @@ next_state = NodePath("")
 [node name="WalkLeft" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "no_spear/walk_left"
+anim_on_enter = "walk_left"
 loop_mode = 0
 on_finished = 2
 disabled = true
@@ -1690,20 +1446,24 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../Idle")
 
-[node name="DashRight" type="Node" parent="PlayerFSM/Movement/Dash"]
+[node name="DashDown" type="Node" parent="PlayerFSM/Movement/Dash"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "NONE"
+anim_on_enter = "dash_down"
+loop_mode = 0
+on_finished = 2
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
-[node name="DashDown" type="Node" parent="PlayerFSM/Movement/Dash"]
+[node name="DashRight" type="Node" parent="PlayerFSM/Movement/Dash"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "NONE"
+anim_on_enter = "dash"
+loop_mode = 0
+on_finished = 2
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -1713,7 +1473,9 @@ next_state = NodePath("")
 [node name="DashUp" type="Node" parent="PlayerFSM/Movement/Dash"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "NONE"
+anim_on_enter = "dash_up"
+loop_mode = 0
+on_finished = 2
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -1723,7 +1485,9 @@ next_state = NodePath("")
 [node name="DashLeft" type="Node" parent="PlayerFSM/Movement/Dash"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "NONE"
+anim_on_enter = "dash_left"
+loop_mode = 0
+on_finished = 2
 disabled = false
 debug_mode = false
 target_path = NodePath("")
@@ -2018,11 +1782,6 @@ position = Vector2(0, -3)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_n7koy")
 
-[node name="Shadow" type="Sprite2D" parent="."]
-material = ExtResource("13_41n4o")
-texture = ExtResource("15_257pe")
-offset = Vector2(0, -11)
-
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
 material = ExtResource("13_41n4o")
@@ -2030,10 +1789,14 @@ texture = ExtResource("14_iekqc")
 offset = Vector2(0, -11)
 hframes = 8
 
+[node name="Shadow" type="Sprite2D" parent="."]
+material = ExtResource("13_41n4o")
+texture = ExtResource("15_257pe")
+offset = Vector2(0, -11)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-&"": SubResource("AnimationLibrary_1um1b"),
-&"no_spear": SubResource("AnimationLibrary_y78jc")
+&"": SubResource("AnimationLibrary_1um1b")
 }
 autoplay = "idle_down"
 
@@ -2051,23 +1814,17 @@ collision_mask = 512
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("SegmentShape2D_rc6ld")
 
-[node name="stressEffect" type="ColorRect" parent="."]
-visible = false
-z_index = 3
-material = SubResource("ShaderMaterial_5jg5w")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -480.0
-offset_top = -240.0
-offset_right = 480.0
-offset_bottom = 300.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 radius = 8.0
+
+[node name="stressEffect" type="ColorRect" parent="."]
+visible = false
+material = SubResource("ShaderMaterial_5jg5w")
+offset_left = -950.0
+offset_top = -546.0
+offset_right = 970.0
+offset_bottom = 534.0
+mouse_filter = 2
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]

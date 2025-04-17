@@ -8,11 +8,11 @@ var start_location := Vector2()
 var distance_travelled := 0
 var walled : bool
 
-@onready var dash_states : Dictionary = {
-	Vector2.UP: "dash_up", 
-	Vector2.RIGHT: "dash",
-	Vector2.DOWN: "dash_down",
-	Vector2.LEFT: "dash_left"
+var dash_states : Dictionary = {
+	Vector2.UP: "DashUp", 
+	Vector2.RIGHT: "DashRight",
+	Vector2.DOWN: "DashDown",
+	Vector2.LEFT: "DashLeft"
 	}
 
 var dust_anims : Dictionary = {
@@ -31,7 +31,6 @@ var dust_anims : Dictionary = {
 
 var dash_dust : PackedScene = preload("res://modules/entities/player/dash_dust.tscn")
 var idle_dir
-
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
@@ -80,7 +79,7 @@ func _on_enter(_args):
 	dust.play(dust_anims[dust_dir])
 	
 	idle_dir = swing_dir
-	play(dash_states[swing_dir])
+	change_state(dash_states[swing_dir])
 
 func _on_update(_delta):
 	target.velocity = dash_direction * dash_speed

@@ -18,7 +18,7 @@ func _on_update(_delta):
 			#change_state("Recall")
 
 func state_unhandled_input(event : InputEvent):
-	if is_active("MovementDisabled") or target.in_cutscene:
+	if is_active("MovementDisabled"):
 		return
 	if event is InputEventAction:
 		if event.is_action_just_pressed("override_push"):

@@ -25,7 +25,6 @@ GameManager="*res://modules/globals/game_manager.gd"
 SaveAndLoad="*res://modules/globals/saving/save_load.gd"
 TetherableBody="*res://modules/status_effects/tetherable_body.gd"
 InventoryHelper="*res://modules/globals/inventory_helper.gd"
-EnemyManager="*res://modules/globals/enemy_manager.gd"
 
 [debug]
 

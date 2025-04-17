@@ -9199,7 +9199,7 @@ tile_map_data = PackedByteArray("AADu//b/AAAKABEAAADu//f/AAAKABEAAADu//j/AAAKABE
 tile_set = SubResource("TileSet_xnlxt")
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(-64, 32)
+position = Vector2(-888, 48)
 
 [node name="StartRoom" type="Node2D" parent="." groups=["room_with_dynamic_transitions"]]
 y_sort_enabled = true

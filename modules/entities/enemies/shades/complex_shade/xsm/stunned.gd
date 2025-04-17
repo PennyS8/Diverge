@@ -1,5 +1,5 @@
 @tool
-extends StateAnimation
+extends StateSound
 
 
 #
@@ -9,7 +9,7 @@ extends StateAnimation
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	pass
+	change_state("NoAttack")
 
 
 # This function is called just after the state enters
@@ -46,7 +46,7 @@ func _before_exit(_args) -> void:
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
-	EnemyManager.mark_for_disengage(target)
+	change_state("CanAttack")
 
 
 # when StateAutomaticTimer timeout()
