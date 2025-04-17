@@ -4,7 +4,6 @@ extends State
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	print("I am dead")
 	if EnemyManager.hand_spawn_counter.has(target):
 		EnemyManager.remove_hand(target)
 	#TODO: set up queue_free on death animation

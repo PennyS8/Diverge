@@ -46,3 +46,11 @@ func _on_hurt_box_component_hit(_area : HitBoxComponent2D) -> void:
 func _on_health_component_died() -> void:
 	fsm.change_state("Dead")
 #endregion
+
+#region Tetherable Area
+func _on_tetherable_area_2d_mouse_entered() -> void:
+	select()
+
+func _on_tetherable_area_2d_mouse_exited() -> void:
+	deselect()
+#endregion

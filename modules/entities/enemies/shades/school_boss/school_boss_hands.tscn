@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://e7a8jwpxqmt7"]
+[gd_scene load_steps=22 format=3 uid="uid://e7a8jwpxqmt7"]
 
 [ext_resource type="Script" uid="uid://c12lvnoeuv4j7" path="res://modules/entities/enemies/shades/school_boss/school_boss_hands.gd" id="1_wjpl6"]
 [ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="2_um5sj"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="8_fhnrg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wjpl6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_y2awv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7dah"]
 size = Vector2(27, 15)
@@ -173,15 +175,6 @@ on_timer_finished = 3
 next_state = NodePath("../../Movement/Idle")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
-[node name="CanSlam" type="Node" parent="HandFSM/Alive/Combat"]
-script = ExtResource("2_um5sj")
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("../../Movement/Idle")
-metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
-
 [node name="ChargeSlam" type="Node" parent="HandFSM/Alive/Combat"]
 script = ExtResource("5_lytyo")
 charge_time = 1.0
@@ -219,7 +212,17 @@ next_state = NodePath(".")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
+visible = false
 shape = SubResource("CircleShape2D_wjpl6")
+
+[node name="TetherableArea" type="Area2D" parent="."]
+position = Vector2(0, -10)
+scale = Vector2(2, 2)
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea"]
+shape = SubResource("CircleShape2D_y2awv")
 
 [node name="BehaviorComponents" type="Node2D" parent="."]
 
@@ -251,7 +254,7 @@ shape = SubResource("RectangleShape2D_fgae4")
 
 [node name="Health" type="Node" parent="BehaviorComponents"]
 script = ExtResource("8_fhnrg")
-max_health = 40
+max_health = 5
 metadata/_custom_type_script = "uid://ct6vby56i820l"
 
 [node name="DisplayComponents" type="Node2D" parent="."]
@@ -269,5 +272,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_no8kc")
 }
 
+[connection signal="mouse_entered" from="TetherableArea" to="." method="_on_tetherable_area_mouse_entered"]
+[connection signal="mouse_exited" from="TetherableArea" to="." method="_on_tetherable_area_mouse_exited"]
 [connection signal="Hit" from="BehaviorComponents/HurtBox" to="." method="_on_hurt_box_hit"]
 [connection signal="Died" from="BehaviorComponents/Health" to="." method="_on_health_died"]

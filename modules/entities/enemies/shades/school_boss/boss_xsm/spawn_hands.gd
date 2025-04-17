@@ -2,6 +2,7 @@
 extends StateSound
 
 const SPAWN_RADIUS = 96.0
+const HAND_MARGIN = 12
 
 # This function is called when the state enters
 # XSM enters the root first, the the children
@@ -14,10 +15,22 @@ func _on_enter(_args) -> void:
 		node.add_child(hand_node)
 		
 		var boss_location = target.global_position
+		
 		var hand_location = get_spawn_point(boss_location, SPAWN_RADIUS)
+		var hand_x = hand_location.x
+		var hand_y = hand_location.y
+		
+		# Only called if there are overlapping hands
+		while EnemyManager.check_overlapping_hands(hand_x, hand_y, HAND_MARGIN) == true:
+			hand_location = get_spawn_point(boss_location, SPAWN_RADIUS)
+			hand_x = hand_location.x
+			hand_y = hand_location.y
+			
+		
 		hand_node.global_position = hand_location
 		
 		EnemyManager.add_hand(hand_node, hand_location)
+
 
 func get_spawn_point(center : Vector2, radius : float) -> Vector2:
 	# TAU = 2 * pi

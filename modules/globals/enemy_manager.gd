@@ -66,3 +66,19 @@ func remove_all_hands():
 			enemy.queue_free()
 	
 	hand_spawn_counter.clear()
+
+# Checks if a new hand will overlap with an already existing hand
+func check_overlapping_hands(new_hand_x : int, new_hand_y : int, margin : int) -> bool: 
+	for hand in hand_spawn_counter:
+		var hand_location = hand_spawn_counter[hand]
+		var hand_x = hand_location.x
+		var hand_y = hand_location.y
+		
+		if new_hand_x in range(hand_x-margin, hand_x+margin):
+			return true
+		
+		if new_hand_y in range(hand_y-margin, hand_y+margin):
+			return true
+	
+	# If we haven't found an overlap, return false
+	return false

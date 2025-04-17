@@ -170,6 +170,8 @@ visible = false
 shape = SubResource("CircleShape2D_3uvfc")
 
 [node name="TetherableArea2D" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
 shape = SubResource("CircleShape2D_icyt3")
@@ -213,5 +215,7 @@ libraries = {
 &"": SubResource("AnimationLibrary_awdse")
 }
 
+[connection signal="mouse_entered" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_exited"]
 [connection signal="Hit" from="BehaviorComponents/HurtBox" to="." method="_on_hurt_box_component_hit"]
 [connection signal="Died" from="BehaviorComponents/Health" to="." method="_on_health_component_died"]
