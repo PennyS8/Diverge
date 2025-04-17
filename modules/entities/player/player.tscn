@@ -1,4 +1,4 @@
-[gd_scene load_steps=89 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=82 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -27,7 +27,7 @@
 [ext_resource type="Script" uid="uid://dmux7vy5y0hk4" path="res://modules/entities/player/xsm/grapple.gd" id="15_trbfo"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Script" uid="uid://8u175eaigjct" path="res://modules/entities/player/xsm/recall.gd" id="17_qcq68"]
-[ext_resource type="Script" uid="uid://bkr3e1t0a8kwu" path="res://modules/entities/player/death.gd" id="21_xyfbm"]
+[ext_resource type="Script" path="res://modules/entities/player/death.gd" id="21_xyfbm"]
 [ext_resource type="Texture2D" uid="uid://bomlp67c0exnm" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Down.png" id="28_lqgfc"]
 [ext_resource type="Texture2D" uid="uid://da2cbhqa5c2t7" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Left.png" id="29_dhsgn"]
 [ext_resource type="Texture2D" uid="uid://dqnemhskws1vm" path="res://modules/entities/player/placeholder_sprites/Idle/Spear/Idle_Spear_Left_Down.png" id="30_7yfd7"]
@@ -43,20 +43,13 @@
 [ext_resource type="Texture2D" uid="uid://chpbdfsf6jyng" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Up.png" id="38_h3vdm"]
 [ext_resource type="Texture2D" uid="uid://d2k5ylavgktxb" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Left_Down.png" id="39_av2sy"]
 [ext_resource type="Texture2D" uid="uid://bqlnm1rdma2s0" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Right.png" id="42_ixb32"]
-[ext_resource type="Texture2D" uid="uid://c4eyhwt0schwv" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Up.png" id="43_cjsq4"]
 [ext_resource type="Texture2D" uid="uid://benoslp55jhin" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Up.png" id="43_fgoev"]
-[ext_resource type="Texture2D" uid="uid://c5mbf4fv8dv3m" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Down.png" id="43_y78jc"]
 [ext_resource type="Shader" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
-[ext_resource type="Texture2D" uid="uid://b6yn0x7w86oiv" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Left_Down.png" id="44_rl8eg"]
-[ext_resource type="Texture2D" uid="uid://b2mrmf71f3pf5" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Right_Down.png" id="45_l84k2"]
-[ext_resource type="Texture2D" uid="uid://v5inwgonhfty" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Up.png" id="46_hfpac"]
-[ext_resource type="Texture2D" uid="uid://bd8kcidgwq840" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Down.png" id="47_2irlg"]
-[ext_resource type="Texture2D" uid="uid://de3bjixgf5a3q" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Left_Down.png" id="48_7h8sm"]
-[ext_resource type="Texture2D" uid="uid://b08xtnscca7is" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Right_Down.png" id="49_bif3w"]
-[ext_resource type="Texture2D" uid="uid://dmii5kjwq04lx" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Up.png" id="50_0wufa"]
 [ext_resource type="Texture2D" uid="uid://dspd847cbn8mr" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Down.png" id="44_xyfbm"]
 [ext_resource type="Texture2D" uid="uid://rtnt5gwn4rkj" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Left_Down.png" id="45_fnwuu"]
 [ext_resource type="Texture2D" uid="uid://ct1xahfqvg584" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Right_Down.png" id="46_gejbx"]
+[ext_resource type="AnimationLibrary" uid="uid://vhfpvnlgp11h" path="res://modules/entities/player/no_spear.res" id="48_gejbx"]
+[ext_resource type="Texture2D" uid="uid://dmii5kjwq04lx" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Up.png" id="50_0wufa"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
@@ -782,7 +775,7 @@ tracks/1/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_netii"]
-resource_name = "death_up"
+resource_name = "walk_up"
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -794,19 +787,19 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("43_cjsq4")]
+"values": [ExtResource("50_0wufa")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
 tracks/1/path = NodePath("Sprite2D:frame")
 tracks/1/interp = 1
-tracks/1/loop_wrap = true
+tracks/1/loop_wrap = false
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"times": PackedFloat32Array(0, 0.875),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0, 7]
 }
 
 [sub_resource type="Animation" id="Animation_vkkf0"]
@@ -1266,242 +1259,6 @@ _data = {
 &"walk_left": SubResource("Animation_dq4jc"),
 &"walk_right": SubResource("Animation_0j1ny"),
 &"walk_up": SubResource("Animation_o4rbi")
-}
-
-[sub_resource type="Animation" id="Animation_5jg5w"]
-resource_name = "idle_down"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("43_y78jc")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_1lef0"]
-resource_name = "idle_left"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("44_rl8eg")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_lle26"]
-resource_name = "idle_right"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("45_l84k2")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_cjsq4"]
-resource_name = "idle_up"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("46_hfpac")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_xyfbm"]
-resource_name = "walk_down"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("47_2irlg")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_fnwuu"]
-resource_name = "walk_left"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("48_7h8sm")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_gejbx"]
-resource_name = "walk_right"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("49_bif3w")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="Animation" id="Animation_netii"]
-resource_name = "walk_up"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("50_0wufa")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = false
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.875),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [0, 7]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_y78jc"]
-_data = {
-&"idle_down": SubResource("Animation_5jg5w"),
-&"idle_left": SubResource("Animation_1lef0"),
-&"idle_right": SubResource("Animation_lle26"),
-&"idle_up": SubResource("Animation_cjsq4"),
-&"walk_down": SubResource("Animation_xyfbm"),
-&"walk_left": SubResource("Animation_fnwuu"),
-&"walk_right": SubResource("Animation_gejbx"),
-&"walk_up": SubResource("Animation_netii")
 }
 
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rc6ld"]
@@ -2033,7 +1790,7 @@ hframes = 8
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_1um1b"),
-&"no_spear": SubResource("AnimationLibrary_y78jc")
+&"no_spear": ExtResource("48_gejbx")
 }
 autoplay = "idle_down"
 
@@ -2069,7 +1826,7 @@ mouse_filter = 2
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 radius = 8.0
 
-[node name="stressEffect" type="ColorRect" parent="."]
+[node name="stressEffect2" type="ColorRect" parent="."]
 visible = false
 material = SubResource("ShaderMaterial_5jg5w")
 offset_left = -950.0
