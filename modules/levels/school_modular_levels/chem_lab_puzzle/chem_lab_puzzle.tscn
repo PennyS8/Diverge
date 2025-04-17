@@ -22,7 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://wwrw6hyhhicu" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/materials_station.tscn" id="19_n07ws"]
 [ext_resource type="PackedScene" uid="uid://c02hclv07w7cs" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/chem_inventory.tscn" id="20_0jtan"]
 [ext_resource type="Script" uid="uid://bmrc6kgne6fhf" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/entrance_dialogue.gd" id="20_7r4fh"]
-[ext_resource type="PackedScene" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/lab_trash_can.tscn" id="20_mor7r"]
+[ext_resource type="PackedScene" uid="uid://crx2yh5r8pj50" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/lab_trash_can.tscn" id="20_mor7r"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
