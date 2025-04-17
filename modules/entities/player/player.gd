@@ -49,21 +49,24 @@ func _process(_delta):
 	
 	# if we're in cutscene or scene transition
 	if !lock_camera:
-		var areas = $Area2D.get_overlapping_areas()
-		if !areas: # Check if null (or empty)
-			return
-		
-		var area = areas[0]
-		if area != curr_camera_boundry: # Only set the camera limits once
-			curr_camera_boundry = area
-			
-			var top_right : Vector2 = area.get_node("LimitTopRight").global_position
-			var bottom_left : Vector2 = area.get_node("LimitBottomLeft").global_position
-			$Camera2D.limit_top = top_right.y
-			$Camera2D.limit_right = top_right.x
-			$Camera2D.limit_bottom = bottom_left.y
-			$Camera2D.limit_left = bottom_left.x
+		_camera_limit_update()
 
+func _camera_limit_update():
+	var areas = $Area2D.get_overlapping_areas()
+	if !areas: # Check if null (or empty)
+		return
+	
+	var area = areas[0]
+	if area != curr_camera_boundry: # Only set the camera limits once
+		curr_camera_boundry = area
+		
+		var top_right : Vector2 = area.get_node("LimitTopRight").global_position
+		var bottom_left : Vector2 = area.get_node("LimitBottomLeft").global_position
+		$Camera2D.limit_top = top_right.y
+		$Camera2D.limit_right = top_right.x
+		$Camera2D.limit_bottom = bottom_left.y
+		$Camera2D.limit_left = bottom_left.x
+		
 func check_unlock_hook():
 	var deinv : RestrictedInventory = load("res://modules/ui/hud/wyvern_inv/equipment_inventory.tres")
 	#hook_locked = false
@@ -135,7 +138,7 @@ func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 	dir = global_position.direction_to(global_point)
 	
 	var cutscene_marker : Area2D = cutscene_marker_packed.instantiate()
-	get_tree().current_scene.add_child(cutscene_marker)
+	get_tree().current_scene.call_deferred("add_child", cutscene_marker)
 	
 	cutscene_marker.global_position = global_point
 	

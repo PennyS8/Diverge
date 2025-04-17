@@ -20,6 +20,8 @@ var player
 var transitioning := false
 var found_player := false
 
+signal swap_done
+
 var overlay : Control
 func _ready():
 	var scene = get_tree().current_scene
@@ -40,9 +42,12 @@ func _main_ready():
 		player.queue_free()
 	main = get_tree().current_scene
 	if custom_scene_path:
-		_swap_level(custom_scene_path)
+		await _swap_level(custom_scene_path)
+		player.exit_cutscene()
 	else:
-		_swap_level(default_level.resource_path)
+		await _swap_level(default_level.resource_path)
+		player.exit_cutscene()
+
 
 func change_level(path : String, entrance_name : String = "0"):
 	if transitioning:
@@ -50,7 +55,6 @@ func change_level(path : String, entrance_name : String = "0"):
 	transitioning = true
 	
 	player = get_tree().get_first_node_in_group("player")
-	player.lock_camera = true
 
 	# save level state
 	SaveAndLoad.room_save(current_level.get_name())
@@ -59,8 +63,16 @@ func change_level(path : String, entrance_name : String = "0"):
 	tween.set_parallel(false)
 	tween.tween_property(fade_screen, "color:a", 1, fade_time)
 	tween.tween_callback(_swap_level.bind(path, entrance_name))
-	tween.tween_property(fade_screen, "color:a", 0, fade_time)
-	tween.finished.connect(_transition_complete)
+	
+	await swap_done
+	await player._camera_limit_update()
+	await player.exit_cutscene()
+	
+	var tween_two = get_tree().create_tween()
+	tween_two.tween_property(fade_screen, "color:a", 0, fade_time)
+
+
+	tween_two.finished.connect(_transition_complete)
 
 func _swap_level(path : String, entrance_name : String = "0"):
 	var packed = load(path)
@@ -77,7 +89,7 @@ func _swap_level(path : String, entrance_name : String = "0"):
 
 	if entrances.has(entrance_name):
 		player.global_position = entrances[entrance_name]
-		player.lock_camera = false
+		#player.enter_cutscene()
 	else:
 		player.global_position = Vector2.ZERO
 	
@@ -87,6 +99,7 @@ func _swap_level(path : String, entrance_name : String = "0"):
 	
 	# Loads level while the tween is still happening to prevent player from seeing loading.
 	SaveAndLoad.room_load(new_level_name)
+	swap_done.emit()
 
 func _get_entrances():
 	entrances.clear()
@@ -94,7 +107,7 @@ func _get_entrances():
 		entrances[entrance.name] = entrance.global_position
 
 func _transition_complete():
-	player.lock_camera = false
+	#player.exit_cutscene()
 	transitioning = false
 
 func deep_breath_overlay():

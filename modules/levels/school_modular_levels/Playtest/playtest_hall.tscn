@@ -15,7 +15,7 @@
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_at4ji"]
 [ext_resource type="PackedScene" uid="uid://dywn8ybv2xl4i" path="res://modules/objects/puzzle_pieces/lever/lever.tscn" id="13_kgxs5"]
 [ext_resource type="PackedScene" uid="uid://bme0largcnr4h" path="res://modules/objects/level_transition_zone/transition_double_door.tscn" id="13_usixv"]
-[ext_resource type="PackedScene" uid="uid://bus3juxuqyq0d" path="res://modules/levels/school_modular_levels/Playtest/moving_wall.tscn" id="13_xknx3"]
+[ext_resource type="PackedScene" path="res://modules/levels/school_modular_levels/Playtest/moving_wall.tscn" id="13_xknx3"]
 [ext_resource type="Resource" uid="uid://fgga6obgfqb6" path="res://modules/objects/library_book_lab.tres" id="14_vrsc7"]
 [ext_resource type="FontFile" uid="uid://bgveetmypd20b" path="res://assets/hud/sf-pixelate/TrueType/SFPixelate-Bold.ttf" id="14_w3j1q"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="14_x3qlk"]
@@ -9461,14 +9461,15 @@ texture = ExtResource("16_mee8l")
 
 [node name="HallwayEast" parent="Hallway/Exits" instance=ExtResource("11_xknx3")]
 z_index = 0
-position = Vector2(252, 42)
+position = Vector2(252, 40)
 scale = Vector2(8, 14)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "EndRoomWest"
+transition_direction = 3
 
 [node name="HallwayWest" parent="Hallway/Exits" instance=ExtResource("11_xknx3")]
 z_index = 0
-position = Vector2(-324, 42)
+position = Vector2(-300, 40)
 scale = Vector2(8, 14)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "StartRoomEast"
@@ -9535,10 +9536,11 @@ entrance_name = "DarkRoomEntrance"
 keys_needed = Array[ExtResource("15_l83xx")]([ExtResource("21_0knhu"), ExtResource("16_uy203"), ExtResource("14_vrsc7")])
 
 [node name="EndRoomWest" parent="EndRoom/Exits" instance=ExtResource("11_xknx3")]
-position = Vector2(-96, 42)
+position = Vector2(-96, 40)
 scale = Vector2(8, 14)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "HallwayEast"
+transition_direction = 2
 
 [node name="PlanterCollisions" type="StaticBody2D" parent="EndRoom"]
 
