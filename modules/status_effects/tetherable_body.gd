@@ -59,7 +59,7 @@ func _physics_process(_delta):
 				cocoon = cocoon.instantiate()
 				leash_owner.add_sibling(cocoon)
 				cocoon.global_position = leash_owner.global_position
-
+				
 				# Store the healths of each shade to be re-instantiated later
 				var trigger_health = get_node("%Health").health
 				var main_health = leash_owner.get_node("%Health").health
@@ -69,6 +69,10 @@ func _physics_process(_delta):
 				# Lobotomize and Hide Main Shade
 				leash_owner.get_node("%DisplayComponents").hide()
 				leash_owner.get_node("ShadeFSM").disabled = true
+				leash_owner.get_node("TetherableArea2D").monitoring = false
+				leash_owner.get_node("TetherableArea2D").monitorable = false
+				leash_owner.get_node("%AttackBox").monitorable = false
+				leash_owner.get_node("%HurtBox").monitoring = false
 				
 				# Spawn cocoon
 				leash_owner.reparent(cocoon)
