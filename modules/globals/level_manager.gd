@@ -20,6 +20,7 @@ var player
 var transitioning := false
 var found_player := false
 
+var overlay : Control
 func _ready():
 	var scene = get_tree().current_scene
 	if scene is Control or scene is CanvasLayer:
@@ -28,7 +29,7 @@ func _ready():
 		if get_tree().get_first_node_in_group("player"):
 			found_player = true
 		custom_scene_path = get_tree().current_scene.scene_file_path
-		get_tree().change_scene_to_file("res://modules/globals/main.tscn")
+		get_tree().call_deferred("change_scene_to_file","res://modules/globals/main.tscn")
 	main_ready.connect(_main_ready)
 	await main_ready
 
@@ -42,7 +43,6 @@ func _main_ready():
 		_swap_level(custom_scene_path)
 	else:
 		_swap_level(default_level.resource_path)
-
 
 func change_level(path : String, entrance_name : String = "0"):
 	if transitioning:
@@ -61,7 +61,6 @@ func change_level(path : String, entrance_name : String = "0"):
 	tween.tween_callback(_swap_level.bind(path, entrance_name))
 	tween.tween_property(fade_screen, "color:a", 0, fade_time)
 	tween.finished.connect(_transition_complete)
-
 
 func _swap_level(path : String, entrance_name : String = "0"):
 	var packed = load(path)
@@ -97,3 +96,35 @@ func _get_entrances():
 func _transition_complete():
 	player.lock_camera = false
 	transitioning = false
+
+func deep_breath_overlay():
+	var tween = create_tween()
+	var blink_time = 1
+	
+	tween.set_parallel(true) # Perform next steps at the same time
+	
+	# Take away player control, fade to black (placeholder for "blink")
+	tween.tween_callback(player.enter_cutscene)
+	tween.tween_property(fade_screen, "color:a", 1, blink_time)
+	
+	# Next, once eyes are closed, begin to open eyes and set screen saturation to grayscale
+	tween.chain().tween_property(fade_screen, "color:a", 0, blink_time)
+	tween.tween_callback(black_white)
+	
+	# Wait for tween to be done fading in
+	await tween.finished
+	
+	# Begin timer for deadeye mode, wait for timer to be done
+	await start_deadeye()
+	
+	# Return control back to player
+	player.exit_cutscene()
+
+func black_white():
+	if !overlay:
+		overlay = get_tree().get_first_node_in_group("deep_breath")
+	overlay.show()
+
+func start_deadeye():
+	overlay.start_mode()
+	await overlay.done

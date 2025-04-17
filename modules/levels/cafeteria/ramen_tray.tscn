@@ -20,7 +20,7 @@ size = Vector2(21, 27)
 [sub_resource type="CircleShape2D" id="CircleShape2D_i8hlk"]
 radius = 13.0
 
-[node name="RamenTray" type="CharacterBody2D" groups=["edible_ramen", "tetherable_body"]]
+[node name="RamenTray" type="CharacterBody2D" groups=["edible_ramen", "ramen_body", "tetherable_body"]]
 y_sort_enabled = true
 material = ExtResource("1_p3hce")
 use_parent_material = true

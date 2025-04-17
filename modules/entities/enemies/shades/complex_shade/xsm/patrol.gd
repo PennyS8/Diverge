@@ -31,9 +31,6 @@ func _on_update(_delta: float) -> void:
 		if follow_target.is_in_group("player"):
 			target.follow_object = follow_target
 			change_state("Surprised")
-	
-	if nav_agent.is_navigation_finished():
-		return
 
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root

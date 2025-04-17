@@ -55,25 +55,28 @@ func _physics_process(_delta: float) -> void:
 			velocity += $SoftCollision.get_push_vector() * _delta * 200
 	
 
-#func _on_health_component_died() -> void:
-	#drop_ramen()
-	#$ShadeFSM.change_state("Dead")
+func _on_health_component_died() -> void:
+	drop_ramen()
+	$Display/HitFX.rotation = get_angle_to(-knockback) + PI
+	$Display/HitFX.restart()
+	$HitflashPlayer.play("Hitflash")
+	$ShadeFSM.change_state("Dead")
 
 func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
-	if $HealthComponent.health > 0:
-		knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
+	var hp_component = $HealthComponent
+	
+	# Apply knockback from the Hitbox's "knockback_coefficient"
+	knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
+	
+	# If, after damaging, we'll still be alive, stun us
+	if (hp_component.health - _area.damage) > 0:
 		if _area.get_parent().is_in_group("player"):
-			$ShadeFSM.change_state("Stunned", _area.get_parent())
+			$ShadeFSM.call_deferred("change_state", "Stunned", _area.get_parent())
 		else:
-			$ShadeFSM.change_state("Stunned")
-
+			$ShadeFSM.call_deferred("change_state","Stunned")
+		$Display/HitFX.rotation = get_angle_to(-knockback) + PI
 		$Display/HitFX.restart()
 		$HitflashPlayer.play("Hitflash")
-	else:
-		$Display/HitFX.restart()
-		drop_ramen()
-		$HitflashPlayer.play("Hitflash")
-		$ShadeFSM.change_state("Dead")
 
 #func _on_agro_region_body_exited(_body):
 	#follow_target = null

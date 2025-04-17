@@ -7,7 +7,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	text = "ACTIVE STATES: \n"
 	for item in $"../ShadeFSM".active_states.keys().slice(1):
 		text += item + "\n"

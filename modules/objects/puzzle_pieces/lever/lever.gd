@@ -30,11 +30,12 @@ func on_load_game(saved_data:SavedData):
 func hit(_area : HitBoxComponent2D):
 	if _area.is_in_group("hook"):
 		flip()
+		if yarn_instance:
+			yarn_instance.queue_free()
 
 # Override
 func fling(): #func fling(fling_point : Vector2):
-	remove_tethered_status()
-	var fling_point = Vector2(-1, 0) # TODO: Define fling_point by finding the other tethered_body
+	var fling_point = leash_owner.global_position # TODO: Define fling_point by finding the other tethered_body
 	
 	var fling_dir = global_position.direction_to(fling_point).normalized()
 	#var component_x = abs(fling_dir.x)
@@ -44,7 +45,9 @@ func fling(): #func fling(fling_point : Vector2):
 		# if lever is right and pulled left, or if lever is left and pulled right, flip the lever
 		if toggled and fling_dir.x > 0 or !toggled:
 			flip() # if lever is right and pulled left, flip
+	remove_tethered_status()
 
+	
 # Override
 func pull():
 	pass

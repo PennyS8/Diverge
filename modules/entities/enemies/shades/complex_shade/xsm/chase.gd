@@ -5,7 +5,6 @@ extends State
 @export var state_speed : float
 
 @onready var movement_target_pos : Vector2
-@onready var nav_agent : NavigationAgent2D = %NavAgent
 
 const MIN_SEEK_DISTANCE := 24.0
 const MAX_SEEK_DISTANCE := 32.0

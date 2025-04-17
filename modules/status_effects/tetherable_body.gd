@@ -3,6 +3,9 @@ extends CharacterBody2D
 @onready var player = get_tree().get_first_node_in_group("player")
 var sliding_to_target := false
 
+var leash_owner : Node2D
+var yarn_instance # Mainly so that levers can remove their visual yarn instance
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -29,16 +32,63 @@ func remove_tethered_status():
 	remove_from_group("status_tethered")
 
 func _physics_process(_delta):
-	if player:
-		var dist = global_position.distance_to(player.global_position)
+	# this is sooo ugly -- this is the case where player IS pulling the body towards themselves
+	if self != player:
+		if !leash_owner:
+			leash_owner = player
+	else:
+		leash_owner = null
 	
-		if sliding_to_target and dist > 16:
-			global_position = global_position.move_toward(player.global_position, 100*_delta)
-		elif dist <= 16:
+	# else, deadeye has given us a leash owner (another tetherablebody)
+	if leash_owner:
+		if leash_owner == self:
 			sliding_to_target = false
+			return
+		
+		var dist = global_position.distance_to(leash_owner.global_position)
+		
+		if sliding_to_target and dist > 16:
+			global_position = global_position.move_toward(leash_owner.global_position, 100*_delta)
+		elif sliding_to_target and dist <= 16:
+			# If we get to our target
+			sliding_to_target = false
+			
+			if leash_owner.is_in_group("enemy") and self.is_in_group("enemy"):
+				# If cocoon doesn't exist, make one as the parent of our Main Shade
+				var cocoon = load("res://modules/entities/enemies/shades/shade_bundle/shade_stack.tscn")
+				cocoon = cocoon.instantiate()
+				leash_owner.add_sibling(cocoon)
+				cocoon.global_position = leash_owner.global_position
+				
+				# Store the healths of each shade to be re-instantiated later
+				var trigger_health = get_node("%Health").health
+				var main_health = leash_owner.get_node("%Health").health
+				cocoon.shade_healths_stored.append(trigger_health)
+				cocoon.shade_healths_stored.append(main_health)
+				
+				# Lobotomize and Hide Main Shade
+				leash_owner.get_node("%DisplayComponents").hide()
+				leash_owner.get_node("ShadeFSM").disabled = true
+				leash_owner.get_node("TetherableArea2D").monitoring = false
+				leash_owner.get_node("TetherableArea2D").monitorable = false
+				leash_owner.get_node("%AttackBox").monitorable = false
+				leash_owner.get_node("%HurtBox").monitoring = false
+				
+				# Spawn cocoon
+				leash_owner.reparent(cocoon)
+				
+				# Update the "leash_owners" of all of the other tetherables after reparenting
+				var breath_manager = get_tree().get_first_node_in_group("deep_breath")
+				breath_manager.update_tethers_to_cocoon(cocoon)
+				
+				# Remove the enemy that just reached the newly created cocoon
+				self.queue_free()
+			elif leash_owner.is_in_group("cocoon") and self.is_in_group("enemy"):
+				# If our cocoon already exists, add self to the stack
+				leash_owner.shade_healths_stored.append(get_node("%Health").health)
+				self.queue_free()
 
 # Retracts the length of the yarn, pulling the tethered body to the player
-# TODO: replace tween position with a force on body in dir
 func fling():
 	if is_in_group("lever"):
 		return

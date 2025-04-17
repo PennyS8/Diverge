@@ -1,0 +1,102 @@
+[gd_scene load_steps=11 format=3 uid="uid://33hybnusvk8d"]
+
+[ext_resource type="PackedScene" uid="uid://dx5na7ufncxg3" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn" id="1_54xym"]
+[ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="2_hqaxx"]
+[ext_resource type="Script" uid="uid://bpxwkf4srdu8y" path="res://modules/levels/cafeteria/shade_varieties/complex_seeking_ramen.gd" id="3_jrxwh"]
+[ext_resource type="Script" uid="uid://bmwdqq25gls25" path="res://modules/levels/cafeteria/shade_varieties/no_more_ramen.gd" id="4_moxqa"]
+[ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="5_66m4e"]
+[ext_resource type="Resource" uid="uid://ddkfnyew6hgco" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="6_njc7s"]
+[ext_resource type="Script" uid="uid://emamwtxvsy5h" path="res://modules/levels/cafeteria/shade_varieties/found_ramen.gd" id="7_dfrlf"]
+[ext_resource type="Script" uid="uid://d1od6kbhhnppb" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="8_moxqa"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjkpu"]
+resource_local_to_scene = true
+shader = ExtResource("2_hqaxx")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6q02m"]
+resource_local_to_scene = true
+shader = ExtResource("2_hqaxx")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[node name="ComplexRamenShade" instance=ExtResource("1_54xym")]
+modulate = Color(1, 1, 1, 0)
+
+[node name="ShadeHPIndicator" parent="." index="0"]
+material = SubResource("ShaderMaterial_mjkpu")
+
+[node name="ShadeFSM" parent="." index="1"]
+disabled = true
+next_state = NodePath("Alive/Movement/SeekingRamen")
+
+[node name="Pursue" parent="ShadeFSM/Alive/Movement/Chase" index="0"]
+next_state = NodePath(".")
+
+[node name="Evade" parent="ShadeFSM/Alive/Movement" index="2"]
+next_state = NodePath("../Alerted")
+
+[node name="ReturnToPost" parent="ShadeFSM/Alive/Movement" index="3"]
+next_state = NodePath("../Alerted")
+
+[node name="SeekingRamen" type="Node" parent="ShadeFSM/Alive/Movement" index="4"]
+script = ExtResource("3_jrxwh")
+ramen_pattern = Array[ExtResource("5_66m4e")]([ExtResource("6_njc7s")])
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Alerted")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
+[node name="NoMoreRamen" type="Node" parent="ShadeFSM/Alive/Movement" index="5"]
+script = ExtResource("4_moxqa")
+ramen_pattern = Array[ExtResource("5_66m4e")]([ExtResource("6_njc7s")])
+dash_distance = 36.0
+dash_speed = 24.0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Alerted")
+
+[node name="FoundRamen" type="Node" parent="ShadeFSM/Alive/Movement" index="6"]
+script = ExtResource("7_dfrlf")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="Surprised" parent="ShadeFSM/Alive/Reaction" index="1"]
+next_state = NodePath("../../Movement/FoundRamen")
+
+[node name="RamenSurprised" type="Node" parent="ShadeFSM/Alive/Reaction" index="2"]
+script = ExtResource("8_moxqa")
+animation_player = NodePath("../../../../AnimationPlayer")
+anim_on_enter = "surprise"
+loop_mode = 0
+on_finished = 0
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+
+[node name="TetherableArea2D" parent="." index="2"]
+collision_layer = 0
+
+[node name="HurtBox" parent="BehaviorComponents" index="3"]
+collision_mask = 0
+
+[node name="DisplayComponents" parent="." index="4"]
+material = SubResource("ShaderMaterial_6q02m")
+
+[node name="AttackArc" parent="DisplayComponents" index="4"]
+material = SubResource("ShaderMaterial_6q02m")
+
+[node name="Shadow" parent="DisplayComponents" index="5"]
+material = SubResource("ShaderMaterial_6q02m")
+
+[editable path="BehaviorComponents/SoftCollision"]

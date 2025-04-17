@@ -37,19 +37,19 @@ radius = 44.4072
 [sub_resource type="CircleShape2D" id="CircleShape2D_lei1k"]
 radius = 12.0
 
-[sub_resource type="Gradient" id="Gradient_ih2li"]
+[sub_resource type="Gradient" id="Gradient_61njc"]
 offsets = PackedFloat32Array(0, 0.431487)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ia2jp"]
-gradient = SubResource("Gradient_ih2li")
+gradient = SubResource("Gradient_61njc")
 width = 48
 height = 16
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="Curve" id="Curve_x568u"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.78777), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_00tmr"]
@@ -462,14 +462,12 @@ next_state = NodePath("../Roaming")
 [node name="Dead" type="Node" parent="ShadeFSM"]
 script = ExtResource("5_fnale")
 animation_player = NodePath("../../AnimationPlayer")
-anim_on_enter = "die"
-loop_mode = 0
-on_finished = 0
+anim_on_enter = "NONE"
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Backstep")
+next_state = NodePath("../Seeking")
 
 [node name="Alerted" type="Node" parent="ShadeFSM"]
 script = ExtResource("12_bubim")
@@ -497,6 +495,7 @@ shape = SubResource("CircleShape2D_56qhg")
 
 [node name="HealthComponent" type="Node" parent="."]
 script = ExtResource("3_rx7yw")
+max_health = 20
 
 [node name="Hurtbox" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
 collision_layer = 0
@@ -579,23 +578,21 @@ region_rect = Rect2(21, 14, 22, 40)
 z_index = 2
 position = Vector2(0, -12)
 emitting = false
-amount = 30
+amount = 6
+lifetime = 0.3
 one_shot = true
-explosiveness = 1.0
-randomness = 1.0
-lifetime_randomness = 1.0
-emission_shape = 3
-emission_rect_extents = Vector2(10, 20)
-particle_flag_align_y = true
-direction = Vector2(0, -1)
-spread = 10.0
-gravity = Vector2(0, -5)
-initial_velocity_min = 10.0
-initial_velocity_max = 10.0
+explosiveness = 0.85
+randomness = 0.4
+local_coords = true
+spread = 80.0
+gravity = Vector2(0, 0)
+initial_velocity_min = 100.0
+initial_velocity_max = 100.0
+damping_min = 300.0
+damping_max = 300.0
 scale_amount_min = 2.0
 scale_amount_max = 2.0
 scale_amount_curve = SubResource("Curve_x568u")
-color = Color(0.227451, 0, 0, 1)
 color_ramp = SubResource("Gradient_00tmr")
 hue_variation_max = 0.4
 

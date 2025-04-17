@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=66 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="2_nel61"]
@@ -19,7 +19,6 @@
 [ext_resource type="Script" uid="uid://kfndxak1lwjf" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/camera_boundry_region.gd" id="12_roxoq"]
 [ext_resource type="Texture2D" uid="uid://nbp0b5x6771i" path="res://assets/environment/downtown_dungeon/custom_sprites/lunch_line.png" id="13_tevex"]
 [ext_resource type="PackedScene" uid="uid://crnbqsmdob0o2" path="res://modules/levels/cafeteria/questgiver/quest_juni.tscn" id="13_w1428"]
-[ext_resource type="PackedScene" uid="uid://dbud2iwefc124" path="res://modules/levels/cafeteria/shade_varieties/ramen_shade.tscn" id="13_whr8t"]
 [ext_resource type="Texture2D" uid="uid://cc1e1yrk13kyw" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/18_Jail_Black_Shadow_16x16.png" id="14_mjuao"]
 [ext_resource type="Texture2D" uid="uid://6c4pld4xa5tj" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/26_Condominium_Black_Shadow_16x16.png" id="15_v6hvt"]
 [ext_resource type="Script" uid="uid://db7o735bof8ky" path="res://modules/levels/cafeteria/ramen_dispenser.gd" id="16_5d8ey"]
@@ -27,6 +26,7 @@
 [ext_resource type="Script" uid="uid://cd88j4in2ij0d" path="res://addons/wyvernbox/ground/ground_items_manager.gd" id="22_6mxk6"]
 [ext_resource type="PackedScene" uid="uid://cjdtl6ek4qp7d" path="res://addons/wyvernbox_prefabs/ground_item_stack_view_2d.tscn" id="23_roxoq"]
 [ext_resource type="Resource" uid="uid://ddkfnyew6hgco" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="25_esxpl"]
+[ext_resource type="PackedScene" uid="uid://33hybnusvk8d" path="res://modules/levels/cafeteria/shade_varieties/complex_ramen_shade.tscn" id="26_nel61"]
 [ext_resource type="Resource" uid="uid://v46rcraqdjre" path="res://modules/objects/library_book_cafeteria.tres" id="28_anitv"]
 [ext_resource type="Texture2D" uid="uid://kyv7yk10fodg" path="res://assets/environment/downtown_dungeon/custom_sprites/table_water.png" id="29_clobj"]
 [ext_resource type="Texture2D" uid="uid://deyw8rhivgppt" path="res://assets/environment/downtown_dungeon/custom_sprites/table_book.png" id="30_vas0v"]
@@ -213,22 +213,13 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_axqkd"]
 radius = 6.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_anitv"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjkpu"]
 resource_local_to_scene = true
 shader = ExtResource("7_ikyt7")
 shader_parameter/Flash = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ocqtp"]
-resource_local_to_scene = true
-shader = ExtResource("7_ikyt7")
-shader_parameter/Flash = false
-shader_parameter/ColorParameter = Color(1, 1, 1, 1)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_whr8t"]
-size = Vector2(19, 35)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ykebp"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vas0v"]
 resource_local_to_scene = true
 shader = ExtResource("7_ikyt7")
 shader_parameter/Flash = false
@@ -907,46 +898,36 @@ item_scene = ExtResource("23_roxoq")
 [node name="CameraLock" type="Marker2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser"]
 position = Vector2(-27, 43)
 
-[node name="Shadely" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
+[node name="Shadely" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("26_nel61")]
 position = Vector2(-71.1309, 110.331)
 
-[node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely" index="5"]
-collision_mask = 0
+[node name="Melisshade" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("26_nel61")]
+position = Vector2(8, 110)
 
-[node name="Sprite2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely/Display" index="2"]
-material = SubResource("ShaderMaterial_anitv")
+[node name="BrickShadehouse" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("26_nel61")]
+position = Vector2(-30, 123)
 
-[node name="Melisshade" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
-position = Vector2(12.8691, 109.331)
+[node name="ShadeHPIndicator" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="0"]
+material = SubResource("ShaderMaterial_mjkpu")
 
-[node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade" index="5"]
-collision_mask = 0
-
-[node name="Sprite2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade/Display" index="2"]
-material = SubResource("ShaderMaterial_ocqtp")
-
-[node name="BrickShadehouse" parent="NavigationRegion2D/CheckeredArea/RamenDispenser" instance=ExtResource("13_whr8t")]
-position = Vector2(-28.1309, 115.331)
-
-[node name="NoMoreRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="7"]
-next_state = NodePath("../Seeking")
-
-[node name="FoundRamen" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="8"]
-next_state = NodePath("../Seeking")
-
-[node name="HealthComponent" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="4"]
-max_health = 50
-
-[node name="Hurtbox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="5"]
-collision_mask = 0
-
-[node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/Hurtbox" index="0"]
-position = Vector2(0.5, -17.5)
-shape = SubResource("RectangleShape2D_whr8t")
-
-[node name="Sprite2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/Display" index="2"]
-material = SubResource("ShaderMaterial_ykebp")
+[node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/SoftCollision" index="0"]
 scale = Vector2(1.5, 1.5)
+
+[node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/AttackBox" index="0"]
+scale = Vector2(1.5, 1.5)
+
+[node name="Health" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents" index="4"]
+max_health = 80
+
+[node name="DisplayComponents" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="4"]
+material = SubResource("ShaderMaterial_vas0v")
+scale = Vector2(1.5, 1.5)
+
+[node name="AttackArc" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/DisplayComponents" index="4"]
+material = SubResource("ShaderMaterial_vas0v")
+
+[node name="Shadow" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/DisplayComponents" index="5"]
+material = SubResource("ShaderMaterial_vas0v")
 
 [node name="CameraBoundry" type="Area2D" parent="NavigationRegion2D"]
 visible = false
@@ -1004,6 +985,5 @@ position = Vector2(-399, 4)
 [connection signal="area_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints/DispensePoint5" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [5]]
 [connection signal="body_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/debug area" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_debug_area_body_entered"]
 
-[editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/Shadely"]
-[editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/Melisshade"]
 [editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse"]
+[editable path="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/SoftCollision"]

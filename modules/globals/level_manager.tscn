@@ -4,6 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://b8d2txpebdt2f" path="res://modules/levels/debug/testing_grounds/debug_gym.tscn" id="2_fk1pd"]
 
 [node name="LevelManager" type="Node2D"]
+process_mode = 3
 z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("1_dvekp")
@@ -19,4 +20,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-color = Color(0.054902, 0.054902, 0.0705882, 0)
+color = Color(0.0546, 0.0546, 0.07, 0)

@@ -39,7 +39,7 @@ func _before_exit(_args) -> void:
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
-	pass
+	play("RESET")
 
 
 # when StateAutomaticTimer timeout()
