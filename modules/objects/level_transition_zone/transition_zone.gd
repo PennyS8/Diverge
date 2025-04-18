@@ -22,13 +22,13 @@ func _on_body_entered(body: Node2D) -> void:
 		if dir.file_exists(file_name):
 			GameManager.inventory_node.inventory.load_state("player_inventory")
 		
-		await cutscene_control()
+		start_transition_cutscene()
 		
-		# Heal the player to max
-		var healthComponent = player.get_node_or_null("HealthComponent")
-		player.health_component.heal(healthComponent.max_health)
+		## Heal the player to max
+		#var healthComponent = player.get_node_or_null("HealthComponent")
+		#player.health_component.heal(healthComponent.max_health)
 
-func cutscene_control():
+func start_transition_cutscene():
 	var actual_dir : Vector2
 	match transition_direction:
 		DirectionType.UP:
@@ -40,8 +40,4 @@ func cutscene_control():
 		DirectionType.RIGHT:
 			actual_dir = Vector2.RIGHT
 	
-	var actual_endpoint = player.to_global(actual_dir * 24)
-	player.enter_cutscene()
-	await player.do_walk(actual_endpoint)
-	await LevelManager.change_level(next_level_path, entrance_name)
-	await player.do_walk(player.to_global(actual_dir * 24))
+	LevelManager.player_transition(next_level_path, actual_dir, entrance_name)

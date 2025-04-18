@@ -48,10 +48,9 @@ func _process(_delta):
 	# layer 9 (i.e., "CameraBoundryCollider").
 	
 	# if we're in cutscene or scene transition
-	if !lock_camera:
-		_camera_limit_update()
+	update_cam_limits()
 
-func _camera_limit_update():
+func update_cam_limits():
 	var areas = $Area2D.get_overlapping_areas()
 	if !areas: # Check if null (or empty)
 		return
@@ -62,10 +61,10 @@ func _camera_limit_update():
 		
 		var top_right : Vector2 = area.get_node("LimitTopRight").global_position
 		var bottom_left : Vector2 = area.get_node("LimitBottomLeft").global_position
-		$Camera2D.limit_top = top_right.y
-		$Camera2D.limit_right = top_right.x
-		$Camera2D.limit_bottom = bottom_left.y
-		$Camera2D.limit_left = bottom_left.x
+		camera.limit_top = top_right.y
+		camera.limit_right = top_right.x
+		camera.limit_bottom = bottom_left.y
+		camera.limit_left = bottom_left.x
 		
 func check_unlock_hook():
 	var deinv : RestrictedInventory = load("res://modules/ui/hud/wyvern_inv/equipment_inventory.tres")
@@ -74,12 +73,12 @@ func check_unlock_hook():
 	
 func _camera_move():
 	if !lock_camera:
-		$Camera2D.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
-		$Camera2D.position_smoothing_enabled = true
+		camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
+		camera.position_smoothing_enabled = true
 		
 func can_attack():
-	$PlayerFSM.change_state("CanAttack")
-	$PlayerFSM.change_state("Idle")
+	fsm.change_state("CanAttack")
+	fsm.change_state("Idle")
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -115,23 +114,23 @@ func enter_cutscene(camera_pos : Vector2 = Vector2.INF):
 	var cam_tween_time = cam_tween_vector.length() / 48.0
 	
 	var cam_tween = create_tween()
-	cam_tween.tween_property($Camera2D, "global_position", camera_pos, cam_tween_time)
+	cam_tween.tween_property(camera, "global_position", camera_pos, cam_tween_time)
 	await cam_tween.finished
 	
-	camera.position_smoothing_enabled = true
 	return
 	
 func exit_cutscene():
 	print("hello!!")
 	get_tree().get_first_node_in_group("gui").show()
 
-	$PlayerFSM.change_state("Idle")
+	#fsm.change_state("Idle")
 	fsm.change_state("CanAttack")
 	fsm.change_state("CanDash")
 	
 	lock_camera = false
 	in_cutscene = false
-	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25
+	camera.position_smoothing_enabled = true
+	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
 	
 func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 	# setting dir puts player into walk state; this manages all our animations and logic and stuff

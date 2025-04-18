@@ -6,6 +6,7 @@ var current_level : Node2D
 var custom_scene_path : String
 
 @export var fade_time := 0.5
+@export var transition_walk_animation_distance := 24
 
 @onready var fade_screen = %TransitionOverlay
 
@@ -57,7 +58,7 @@ func change_level(path : String, entrance_name : String = "0"):
 	player = get_tree().get_first_node_in_group("player")
 
 	# save level state
-	SaveAndLoad.room_save(current_level.get_name())
+	await SaveAndLoad.room_save(current_level.get_name())
 	
 	var tween = get_tree().create_tween()
 	tween.set_parallel(false)
@@ -65,14 +66,9 @@ func change_level(path : String, entrance_name : String = "0"):
 	tween.tween_callback(_swap_level.bind(path, entrance_name))
 	
 	await swap_done
-	await player._camera_limit_update()
-	await player.exit_cutscene()
-	
+
 	var tween_two = get_tree().create_tween()
-	
 	tween_two.tween_property(fade_screen, "color:a", 0, fade_time)
-
-
 	tween_two.finished.connect(_transition_complete)
 
 func _swap_level(path : String, entrance_name : String = "0"):
@@ -83,13 +79,15 @@ func _swap_level(path : String, entrance_name : String = "0"):
 	
 	if current_level:
 		main.remove_child(current_level)
-		current_level.call_deferred("queue_free")
+		current_level.queue_free()
 	current_level = level
 	
 	_get_entrances()
 
 	if entrances.has(entrance_name):
 		player.global_position = entrances[entrance_name]
+		player.camera.global_position = entrances[entrance_name]
+		player.camera.force_update_scroll()
 		#player.enter_cutscene()
 	else:
 		player.global_position = Vector2.ZERO
@@ -99,7 +97,7 @@ func _swap_level(path : String, entrance_name : String = "0"):
 		current_level.name = new_level_name
 	
 	# Loads level while the tween is still happening to prevent player from seeing loading.
-	SaveAndLoad.room_load(new_level_name)
+	await SaveAndLoad.room_load(new_level_name)
 	swap_done.emit()
 
 func _get_entrances():
@@ -142,3 +140,19 @@ func black_white():
 func start_deadeye():
 	overlay.start_mode()
 	await overlay.done
+
+func player_transition(level_path : String, direction : Vector2, entrance_name : String = "0"):
+	# Moves camera towards current player position and takes player control away
+	player.enter_cutscene(player.global_position)
+	player.do_walk(player.to_global(direction * transition_walk_animation_distance))
+	
+	change_level(level_path, entrance_name)
+	#player.lock_camera = false
+
+	# Wait until level swap is done, then begin moving player again so
+	#   that they are moving during fade-in
+	await swap_done
+	await player.do_walk(player.to_global(direction * transition_walk_animation_distance / 1.5))
+	player.dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	player.exit_cutscene()
+	
