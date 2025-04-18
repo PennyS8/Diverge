@@ -69,6 +69,7 @@ func change_level(path : String, entrance_name : String = "0"):
 	await player.exit_cutscene()
 	
 	var tween_two = get_tree().create_tween()
+	
 	tween_two.tween_property(fade_screen, "color:a", 0, fade_time)
 
 

@@ -44,3 +44,4 @@ func cutscene_control():
 	player.enter_cutscene()
 	await player.do_walk(actual_endpoint)
 	await LevelManager.change_level(next_level_path, entrance_name)
+	await player.do_walk(player.to_global(actual_dir * 24))
