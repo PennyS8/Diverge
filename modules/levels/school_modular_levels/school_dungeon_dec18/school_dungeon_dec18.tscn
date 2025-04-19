@@ -219,15 +219,17 @@ entrance_name = "FoyerNorth"
 
 [node name="FoyerEast" parent="Rooms/Foyer/Exit" instance=ExtResource("8_df0qr")]
 position = Vector2(216, 186)
-scale = Vector2(1, 8)
+scale = Vector2(1, 11)
 next_level_path = "res://modules/levels/school_modular_levels/school_dungeon_dec18/school_dungeon_dec18.tscn"
 entrance_name = "HallRightWest"
+transition_direction = 3
 
 [node name="FoyerWest" parent="Rooms/Foyer/Exit" instance=ExtResource("8_df0qr")]
 position = Vector2(-216, 186)
 scale = Vector2(1, 8)
 next_level_path = "res://modules/levels/school_modular_levels/school_dungeon_dec18/school_dungeon_dec18.tscn"
 entrance_name = "HallLeftEast"
+transition_direction = 2
 
 [node name="CameraBoundry" type="Area2D" parent="Rooms/Foyer"]
 collision_layer = 512
@@ -237,10 +239,10 @@ collision_mask = 4
 shape = SubResource("RectangleShape2D_v3aq4")
 
 [node name="LimitBottomLeft" type="Marker2D" parent="Rooms/Foyer/CameraBoundry"]
-position = Vector2(-192, 252)
+position = Vector2(-216, 252)
 
 [node name="LimitTopRight" type="Marker2D" parent="Rooms/Foyer/CameraBoundry"]
-position = Vector2(192, -252)
+position = Vector2(216, -228)
 
 [node name="Entities" type="Node2D" parent="Rooms/Foyer"]
 y_sort_enabled = true
@@ -280,6 +282,7 @@ position = Vector2(180, 42)
 scale = Vector2(1, 8)
 next_level_path = "res://modules/levels/school_modular_levels/school_dungeon_dec18/school_dungeon_dec18.tscn"
 entrance_name = "FoyerWest"
+transition_direction = 3
 
 [node name="HallLeftNorthEast" parent="Rooms/HallLeft/Exit" instance=ExtResource("8_df0qr")]
 position = Vector2(48, -12)
@@ -343,6 +346,7 @@ position = Vector2(-240, 30)
 scale = Vector2(1, 8)
 next_level_path = "res://modules/levels/school_modular_levels/school_dungeon_dec18/school_dungeon_dec18.tscn"
 entrance_name = "FoyerEast"
+transition_direction = 2
 
 [node name="HallRightNorthEast" parent="Rooms/HallRight/Exit" instance=ExtResource("8_df0qr")]
 position = Vector2(204, -24)
@@ -361,6 +365,7 @@ position = Vector2(-36, 72)
 scale = Vector2(2, 0.5)
 next_level_path = "res://modules/levels/school_modular_levels/school_dungeon_dec18/school_dungeon_dec18.tscn"
 entrance_name = "ElectricalClosetNorth"
+transition_direction = 1
 
 [node name="CameraBoundry" type="Area2D" parent="Rooms/HallRight"]
 collision_layer = 512
@@ -371,7 +376,7 @@ position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_821of")
 
 [node name="LimitBottomLeft" type="Marker2D" parent="Rooms/HallRight/CameraBoundry"]
-position = Vector2(-216, 72)
+position = Vector2(-240, 96)
 
 [node name="LimitTopRight" type="Marker2D" parent="Rooms/HallRight/CameraBoundry"]
 position = Vector2(288, -120)
@@ -516,10 +521,10 @@ collision_mask = 4
 shape = SubResource("RectangleShape2D_ym7br")
 
 [node name="LimitBottomLeft" type="Marker2D" parent="Rooms/ElectricalCloset/CameraBoundry"]
-position = Vector2(-144, 132)
+position = Vector2(-192, 108)
 
 [node name="LimitTopRight" type="Marker2D" parent="Rooms/ElectricalCloset/CameraBoundry"]
-position = Vector2(144, -132)
+position = Vector2(192, -132)
 
 [node name="Entities" type="Node2D" parent="Rooms/ElectricalCloset"]
 
