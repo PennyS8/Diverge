@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://diusv3400rrfv"
+path="res://.godot/imported/melee_attack_tutorial.dialogue-d4e50dbef3cfac1e6e5b85ba0e349c46.tres"
+
+[deps]
+
+source_file="res://modules/levels/school_modular_levels/tutorials/melee_attack_tutorial.dialogue"
+dest_files=["res://.godot/imported/melee_attack_tutorial.dialogue-d4e50dbef3cfac1e6e5b85ba0e349c46.tres"]
+
+[params]
+
+defaults=true
