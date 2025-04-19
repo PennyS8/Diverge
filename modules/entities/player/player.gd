@@ -132,6 +132,8 @@ func exit_cutscene():
 	camera.position_smoothing_enabled = true
 	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
 	
+## To be called within a cutscene to move the player to a specific point.
+## [param speed_percentage] A value that represents a percentage of the player's normal walk speed
 func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 	# setting dir puts player into walk state; this manages all our animations and logic and stuff
 	dir = global_position.direction_to(global_point)
@@ -148,3 +150,14 @@ func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 	await walk_timer.timeout
 	dir = Vector2.ZERO
 	return
+
+## Checks to see if a player is current standing inside of an EncounterBoundry
+## If so, it returns the boundry itself
+func check_encounter():
+	var areas = $Area2D.get_overlapping_areas()
+	if !areas: # Check if null (or empty)
+		return null
+		
+	var area = areas[0]
+	if area is EncounterBoundry:
+		return area

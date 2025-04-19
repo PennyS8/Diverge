@@ -153,6 +153,14 @@ func player_transition(level_path : String, direction : Vector2, entrance_name :
 	#   that they are moving during fade-in
 	await swap_done
 	await player.do_walk(player.to_global(direction * transition_walk_animation_distance / 1.5))
+	
+	# Handle the case that we're in a new encounter
+	var possible_boundry : EncounterBoundry = player.check_encounter()
+	if possible_boundry:
+		if possible_boundry.encounter_active:
+			possible_boundry.start_encounter()
+	
+	# If player is holding an input direction, keep going that direction. To prevent the one-frame stutterstep
 	player.dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	player.exit_cutscene()
 	
