@@ -66,6 +66,12 @@ func _physics_process(_delta):
 				cocoon.shade_healths_stored.append(trigger_health)
 				cocoon.shade_healths_stored.append(main_health)
 				
+				#Gets the type of enemy being cocooned
+				var trigger_enemy_type = scene_file_path
+				var main_enemy_type = leash_owner.scene_file_path
+				cocoon.enemy_types_stored.append(trigger_enemy_type)
+				cocoon.enemy_types_stored.append(main_enemy_type)
+				
 				# Lobotomize and Hide Main Shade
 				leash_owner.get_node("%DisplayComponents").hide()
 				leash_owner.get_node("ShadeFSM").disabled = true
@@ -86,6 +92,7 @@ func _physics_process(_delta):
 			elif leash_owner.is_in_group("cocoon") and self.is_in_group("enemy"):
 				# If our cocoon already exists, add self to the stack
 				leash_owner.shade_healths_stored.append(get_node("%Health").health)
+				leash_owner.enemy_types_stored.append(scene_file_path)
 				self.queue_free()
 
 # Retracts the length of the yarn, pulling the tethered body to the player
