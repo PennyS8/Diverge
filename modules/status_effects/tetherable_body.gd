@@ -6,6 +6,8 @@ var sliding_to_target := false
 var leash_owner : Node2D
 var yarn_instance # Mainly so that levers can remove their visual yarn instance
 
+var boss_path = "res://modules/entities/enemies/shades/school_boss/school_boss.tscn"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass
@@ -55,7 +57,13 @@ func _physics_process(_delta):
 			
 			if leash_owner.is_in_group("enemy") and self.is_in_group("enemy"):
 				# If cocoon doesn't exist, make one as the parent of our Main Shade
-				var cocoon = load("res://modules/entities/enemies/shades/shade_bundle/shade_stack.tscn")
+				var cocoon
+				if leash_owner.scene_file_path == boss_path:
+					cocoon = load("res://modules/entities/enemies/shades/school_boss_bundle/school_boss_stack.tscn")
+					print("Boss cocoon made")
+				else: # If leash owner isn't boss, create a normal shade stack
+					cocoon = load("res://modules/entities/enemies/shades/shade_bundle/shade_stack.tscn")
+				
 				cocoon = cocoon.instantiate()
 				leash_owner.add_sibling(cocoon)
 				cocoon.global_position = leash_owner.global_position
