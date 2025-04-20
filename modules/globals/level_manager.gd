@@ -7,7 +7,6 @@ var custom_scene_path : String
 
 @export var fade_time := 0.5
 @export var transition_walk_animation_distance := 24
-
 @onready var fade_screen = %TransitionOverlay
 
 @onready var entrances : Dictionary
@@ -22,6 +21,10 @@ var transitioning := false
 var found_player := false
 
 signal swap_done
+
+## Is called when we enter an encounter to tell interactables and doors to lock themselves
+signal enter_encounter
+signal exit_encounter
 
 var overlay : Control
 func _ready():
@@ -155,12 +158,12 @@ func player_transition(level_path : String, direction : Vector2, entrance_name :
 	await player.do_walk(player.to_global(direction * transition_walk_animation_distance / 1.5))
 	
 	# Handle the case that we're in a new encounter
-	var possible_boundry : EncounterBoundry = player.check_encounter()
+	var possible_boundry : EncounterArea = player.check_encounter()
 	if possible_boundry:
 		if possible_boundry.encounter_active:
-			possible_boundry.start_encounter()
-	
-	# If player is holding an input direction, keep going that direction. To prevent the one-frame stutterstep
-	player.dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+			await possible_boundry.start_encounter()
+	else:
+		# If player is holding an input direction, keep going that direction. To prevent the one-frame stutterstep
+		player.dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	player.exit_cutscene()
 	

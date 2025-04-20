@@ -21,6 +21,9 @@ var ai_steering := AISteering.new()
 var strafe_factor := 0.25
 ##############
 
+# For encounters to see when spawn animation is finished
+signal spawned
+
 func _ready() -> void:
 	default_position = global_position
 

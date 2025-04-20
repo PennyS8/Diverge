@@ -154,10 +154,10 @@ func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 ## Checks to see if a player is current standing inside of an EncounterBoundry
 ## If so, it returns the boundry itself
 func check_encounter():
-	var areas = $Area2D.get_overlapping_areas()
+	var areas = $EncounterChecker.get_overlapping_areas()
 	if !areas: # Check if null (or empty)
 		return null
 		
 	var area = areas[0]
-	if area is EncounterBoundry:
+	if area is EncounterArea:
 		return area
