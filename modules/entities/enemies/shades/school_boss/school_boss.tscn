@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://mhjd65car3ej"]
+[gd_scene load_steps=19 format=3 uid="uid://mhjd65car3ej"]
 
 [ext_resource type="Script" uid="uid://cuw0wgpny6ef0" path="res://modules/entities/enemies/shades/school_boss/school_boss.gd" id="1_awdse"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="1_icyt3"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://iudu3ffhiaqs" path="res://modules/entities/enemies/shades/school_boss/boss_xsm/stunned.gd" id="6_cilaq"]
 [ext_resource type="Script" uid="uid://x25f1j23134o" path="res://modules/entities/enemies/shades/school_boss/boss_xsm/death.gd" id="6_den2k"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="9_ae4fe"]
+[ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="9_den2k"]
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_ae4fe"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3uvfc"]
@@ -19,6 +20,8 @@ radius = 14.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m5niu"]
 size = Vector2(18, 27)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cilaq"]
 
 [sub_resource type="Animation" id="Animation_awdse"]
 length = 0.001
@@ -65,7 +68,7 @@ collision_layer = 1032
 collision_mask = 83
 script = ExtResource("1_awdse")
 
-[node name="BossFSM" type="Node" parent="."]
+[node name="ShadeFSM" type="Node" parent="."]
 script = ExtResource("3_w7155")
 history_size = 0
 disabled = false
@@ -75,7 +78,7 @@ timed = false
 next_state = NodePath("Alive/Movement/Idle")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
-[node name="Alive" type="Node" parent="BossFSM"]
+[node name="Alive" type="Node" parent="ShadeFSM"]
 script = ExtResource("3_w7155")
 disabled = false
 debug_mode = false
@@ -84,7 +87,7 @@ timed = false
 next_state = NodePath("Movement/Idle")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
-[node name="Movement" type="Node" parent="BossFSM/Alive"]
+[node name="Movement" type="Node" parent="ShadeFSM/Alive"]
 script = ExtResource("3_w7155")
 disabled = false
 debug_mode = false
@@ -93,7 +96,7 @@ timed = false
 next_state = NodePath("..")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
-[node name="Idle" type="Node" parent="BossFSM/Alive/Movement"]
+[node name="Idle" type="Node" parent="ShadeFSM/Alive/Movement"]
 script = ExtResource("4_cilaq")
 sample = null
 animation_player = NodePath("../../../../AnimationPlayer")
@@ -108,7 +111,7 @@ on_timer_finished = 3
 next_state = NodePath("../../Reaction/Stunned")
 metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
-[node name="Reaction" type="Node" parent="BossFSM/Alive"]
+[node name="Reaction" type="Node" parent="ShadeFSM/Alive"]
 script = ExtResource("3_w7155")
 disabled = false
 debug_mode = false
@@ -117,7 +120,7 @@ timed = false
 next_state = NodePath("../Movement")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
-[node name="Stunned" type="Node" parent="BossFSM/Alive/Reaction"]
+[node name="Stunned" type="Node" parent="ShadeFSM/Alive/Reaction"]
 script = ExtResource("6_cilaq")
 sample = null
 animation_player = NodePath("../../../../AnimationPlayer")
@@ -133,7 +136,7 @@ on_timer_finished = 3
 next_state = NodePath("../../Movement/Idle")
 metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
-[node name="Dead" type="Node" parent="BossFSM"]
+[node name="Dead" type="Node" parent="ShadeFSM"]
 script = ExtResource("6_den2k")
 disabled = false
 debug_mode = false
@@ -154,6 +157,7 @@ collision_mask = 0
 shape = SubResource("CircleShape2D_icyt3")
 
 [node name="BehaviorComponents" type="Node2D" parent="."]
+unique_name_in_owner = true
 
 [node name="SoftCollision" parent="BehaviorComponents" instance=ExtResource("1_icyt3")]
 position = Vector2(0, 5)
@@ -178,7 +182,20 @@ script = ExtResource("10_ae4fe")
 max_health = 40
 metadata/_custom_type_script = "uid://ct6vby56i820l"
 
+[node name="AttackBox" type="Area2D" parent="BehaviorComponents"]
+unique_name_in_owner = true
+visible = false
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("9_den2k")
+metadata/_custom_type_script = "uid://dc7k3kwq0lbts"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviorComponents/AttackBox"]
+visible = false
+shape = SubResource("CircleShape2D_cilaq")
+
 [node name="DisplayComponents" type="Node2D" parent="."]
+unique_name_in_owner = true
 material = ExtResource("5_w7155")
 
 [node name="Sprite2D" type="Sprite2D" parent="DisplayComponents"]

@@ -4,7 +4,7 @@ var follow_object
 var default_position
 var crowd_control := false
 
-@onready var fsm = $BossFSM
+@onready var fsm = $ShadeFSM
 
 func _ready() -> void:
 	default_position = global_position

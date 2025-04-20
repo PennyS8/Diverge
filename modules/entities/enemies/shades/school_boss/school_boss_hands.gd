@@ -5,7 +5,7 @@ var default_position
 var attack_box
 var crowd_control := false
 
-@onready var fsm = $HandFSM
+@onready var fsm = $ShadeFSM
 
 func _ready() -> void:
 	attack_box = %AttackBox
