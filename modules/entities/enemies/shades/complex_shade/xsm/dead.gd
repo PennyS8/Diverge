@@ -11,6 +11,7 @@ extends StateAnimation
 func _on_enter(_args) -> void:
 	# Removes enemy from current engagers upon death
 	EnemyManager.release_engagement(target)
+	$"../Alive".disabled = true
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
@@ -21,8 +22,14 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	pass
-
+	target.velocity = target.knockback
+	target.move_and_slide()
+	
+	if target.crowd_control == true:
+		# No knockback if the enemy is trapped
+		target.knockback = lerp(Vector2.ZERO, Vector2.ZERO, 0.0)
+	else:
+		target.knockback = lerp(target.knockback, Vector2.ZERO, _delta*10)
 
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root

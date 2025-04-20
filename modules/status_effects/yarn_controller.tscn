@@ -5,13 +5,13 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_febas"]
 radius = 5.0
 
-[sub_resource type="Gradient" id="Gradient_jacv5"]
+[sub_resource type="Gradient" id="Gradient_dd7vi"]
 offsets = PackedFloat32Array(0, 0.5, 1)
 colors = PackedColorArray(0.43606, 0, 0, 1, 0.552962, 1.35969e-06, 4.81307e-07, 1, 0.435294, 0, 0, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tiuj8"]
-gradient = SubResource("Gradient_jacv5")
+gradient = SubResource("Gradient_dd7vi")
 width = 16
 height = 16
 fill_from = Vector2(0.25, 0.25)
