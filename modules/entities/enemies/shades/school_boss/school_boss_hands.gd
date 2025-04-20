@@ -10,8 +10,6 @@ var crowd_control := false
 func _ready() -> void:
 	attack_box = %AttackBox
 	default_position = global_position
-	
-	print("Hand exists now")
 
 func tethered_stun():
 	crowd_control = true
