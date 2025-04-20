@@ -87,8 +87,11 @@ func fling():
 # Override
 func pull():
 	pass
+
+func enter_cutscene(camera_pos : Vector2 = Vector2.INF):
+	if camera_pos == Vector2.INF:
+		camera_pos = camera.global_position
 	
-func enter_cutscene(camera_pos):
 	# hide hp
 	get_tree().get_first_node_in_group("gui").hide()
 	
@@ -96,6 +99,8 @@ func enter_cutscene(camera_pos):
 	fsm.change_state("NoDash")
 	
 	velocity = Vector2.ZERO
+	dir = Vector2.ZERO
+	
 	lock_camera = true
 	in_cutscene = true
 	
@@ -114,6 +119,7 @@ func enter_cutscene(camera_pos):
 	return
 	
 func exit_cutscene():
+	print("hello!!")
 	get_tree().get_first_node_in_group("gui").show()
 
 	$PlayerFSM.change_state("Idle")

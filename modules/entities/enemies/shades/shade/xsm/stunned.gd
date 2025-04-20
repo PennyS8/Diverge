@@ -32,7 +32,7 @@ func _on_update(_delta: float) -> void:
 		# No knockback if the enemy is trapped
 		target.knockback = lerp(Vector2.ZERO, Vector2.ZERO, 0.0)
 	else:
-		target.knockback = lerp(target.knockback, Vector2.ZERO, 0.2)
+		target.knockback = lerp(target.knockback, Vector2.ZERO, _delta*10)
 
 func _state_timeout() -> void:
 	if hit_by:
@@ -43,6 +43,9 @@ func _state_timeout() -> void:
 		
 
 func _before_exit(_args):
-	#%Stunned.hide()
-	pass
+	%Stunned.hide()
+	var hurtbox = target.get_node("Hurtbox")
+	hurtbox.set_collision_mask_value(13, false)
+	hurtbox.set_collision_mask_value(3, true)
+	
 	

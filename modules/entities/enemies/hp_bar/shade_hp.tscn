@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://crd8kaihvguwr"]
+
+[ext_resource type="Texture2D" uid="uid://bnpreafn6hy00" path="res://assets/hud/enemy_hp_variations.png" id="1_wt0ev"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_defen"]
+atlas = ExtResource("1_wt0ev")
+region = Rect2(13, 0, 10, 14)
+filter_clip = true
+
+[node name="ShadeHP" type="TextureRect"]
+use_parent_material = true
+texture = SubResource("AtlasTexture_defen")
+stretch_mode = 2
