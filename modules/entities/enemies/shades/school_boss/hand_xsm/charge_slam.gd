@@ -47,6 +47,7 @@ func pick_charge_anim():
 			play_blend("charge_up", 0.0)
 		[_, _]:
 			play_blend("charge_down", 0.0)
+
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
 func _after_enter(_args) -> void:

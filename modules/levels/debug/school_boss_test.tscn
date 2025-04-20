@@ -32,4 +32,3 @@ tile_set = ExtResource("3_tt7yd")
 collision_visibility_mode = 1
 
 [node name="SchoolBoss" parent="." instance=ExtResource("3_k5ds6")]
-z_index = 1

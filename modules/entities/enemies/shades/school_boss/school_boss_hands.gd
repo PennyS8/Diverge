@@ -2,12 +2,16 @@ extends TetherableBody
 
 var follow_object
 var default_position
+var attack_box
 var crowd_control := false
 
 @onready var fsm = $HandFSM
 
 func _ready() -> void:
+	attack_box = %AttackBox
 	default_position = global_position
+	
+	print("Hand exists now")
 
 func tethered_stun():
 	crowd_control = true
@@ -41,7 +45,10 @@ func on_load_game(saved_data:SavedData):
 
 #region Health Components
 func _on_hurt_box_hit(_area : HitBoxComponent2D) -> void:
-	pass
+	fsm.change_state("Stunned")
+	# Disables the Attack box if player hits hand mid attack
+	attack_box.get_child(0).disabled
+	
 
 func _on_health_died() -> void:
 	fsm.change_state("Dead")

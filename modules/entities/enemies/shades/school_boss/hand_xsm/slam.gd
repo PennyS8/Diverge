@@ -1,5 +1,5 @@
 @tool
-extends StateSound
+extends State
 
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
@@ -20,7 +20,7 @@ func _on_loop_finished() -> void:
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	pass
+	pick_attack_anim()
 
 
 # This function is called just after the state enters
@@ -50,7 +50,7 @@ func _before_exit(_args) -> void:
 # This function is called when the State exits
 # XSM before_exits the children first, then the root
 func _on_exit(_args) -> void:
-	change_state("NoSlam")
+	pass
 
 
 # when StateAutomaticTimer timeout()
@@ -61,3 +61,23 @@ func _state_timeout() -> void:
 # Called when any other Timer times out
 func _on_timeout(_name) -> void:
 	pass
+
+func pick_attack_anim():
+	var my_position = target.global_position
+	var attack_position = target.follow_object.global_position
+	
+	var attack_direction = my_position.direction_to(attack_position).normalized()
+	var xdir = attack_direction.snapped(Vector2.ONE).x
+	var ydir = attack_direction.snapped(Vector2.ONE).y
+	
+	match [xdir, ydir]:
+		[1.0, _]:
+			change_state("AttackRight")
+		[-1.0, _]:
+			change_state("AttackLeft")
+		[0.0, 1.0]:
+			change_state("AttackDown")
+		[0.0, -1.0]:
+			change_state("AttackUp")
+		[_, _]:
+			change_state("AttackDown")
