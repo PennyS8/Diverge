@@ -7,6 +7,7 @@ var sliding_to_target := false
 var leash_owner : Node2D
 var yarn_instance # Mainly so that levers can remove their visual yarn instance
 
+# Used for path comparison in coping mechanism
 var boss_path = "res://modules/entities/enemies/shades/school_boss/school_boss.tscn"
 var hand_path = "res://modules/entities/enemies/shades/school_boss/school_boss_hands.tscn"
 
@@ -45,12 +46,12 @@ func _physics_process(_delta):
 	
 	# else, deadeye has given us a leash owner (another tetherablebody)
 	if leash_owner:
-		if leash_owner == self:
-			sliding_to_target = false
-			return
-		
 		# Prevents a cocoon of just hands or if hand is leash owner
 		if leash_owner.scene_file_path == hand_path:
+			return
+		
+		if leash_owner == self:
+			sliding_to_target = false
 			return
 		
 		var dist = global_position.distance_to(leash_owner.global_position)
@@ -66,7 +67,6 @@ func _physics_process(_delta):
 				var cocoon
 				if leash_owner.scene_file_path == boss_path:
 					cocoon = load("res://modules/entities/enemies/shades/school_boss_bundle/school_boss_stack.tscn")
-					print("Boss cocoon made")
 				else: # If leash owner isn't boss, create a normal shade stack
 					cocoon = load("res://modules/entities/enemies/shades/shade_bundle/shade_stack.tscn")
 				

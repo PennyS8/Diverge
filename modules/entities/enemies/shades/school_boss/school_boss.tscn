@@ -105,10 +105,8 @@ loop_mode = 2
 disabled = false
 debug_mode = false
 target_path = NodePath("")
-timed = true
-waiting_time = 1.0
-on_timer_finished = 3
-next_state = NodePath("../../Reaction/Stunned")
+timed = false
+next_state = NodePath(".")
 metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="Reaction" type="Node" parent="ShadeFSM/Alive"]

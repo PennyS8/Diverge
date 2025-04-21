@@ -3,11 +3,14 @@ extends StateSound
 
 const SPAWN_RADIUS = 96.0
 const HAND_MARGIN = 12
+const SHADE_COUNT = 3
+
+var shade_scene = preload("res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn")
 
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	add_timer("TestTimer", 3.0)
+	spawn_shades()
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
@@ -48,6 +51,16 @@ func get_spawn_point(center : Vector2, radius : float) -> Vector2:
 	
 	return point
 
+func spawn_shades(): 
+	for i in range(1, SHADE_COUNT):
+		var shade_node = shade_scene.instantiate()
+		
+		var node = get_node(target.get_parent().get_path())
+		node.add_child(shade_node)
+		
+		var boss_location = target.global_position
+		shade_node.global_position = get_spawn_point(boss_location, SPAWN_RADIUS)
+
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root
 func _after_update(_delta: float) -> void:
@@ -69,4 +82,4 @@ func _state_timeout() -> void:
 
 # Called when any other Timer times out
 func _on_timeout(_name) -> void:
-	change_state("Stunned")
+	pass
