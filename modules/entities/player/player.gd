@@ -19,6 +19,11 @@ var swing_dir : Vector2
 var ledge_collision : Area2D
 
 var hook_locked := false
+@export_category("Check Unlock Item Patterns")
+@export var hook_type : ItemType
+@export var yarn_bag_type : ItemType
+@export var cope_type : ItemType
+@export var dash_type : ItemType
 
 # this is to pass unhandled input to states
 signal unhandled_input_received(event)
@@ -30,6 +35,7 @@ var curr_camera_boundry : Area2D
 @onready var fsm : State = $PlayerFSM
 
 var cutscene_marker_packed = preload("res://modules/objects/debug/cutscene_walk_point.tscn")
+ 
 
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(dialogue_done)
@@ -67,7 +73,20 @@ func update_cam_limits():
 		camera.limit_left = bottom_left.x
 		
 func check_unlock_hook():
-	var deinv : RestrictedInventory = load("res://modules/ui/hud/wyvern_inv/equipment_inventory.tres")
+	if GameManager.inventory_node:
+		var inv : RestrictedInventory = GameManager.inventory_node.inventory
+		if InventoryHelper.is_itemtype_in_inventory(inv, hook_type):
+			$PlayerFSM/Movement/AttackMelee.disabled = false
+		
+		if InventoryHelper.is_itemtype_in_inventory(inv, yarn_bag_type):
+			$PlayerFSM/Movement/Lasso.disabled = false
+			
+		if InventoryHelper.is_itemtype_in_inventory(inv, cope_type):
+			$PlayerFSM/Abilities/DeepBreath.disabled = false
+			
+		if InventoryHelper.is_itemtype_in_inventory(inv, dash_type):
+			$PlayerFSM/Movement/Dash.disabled = false
+	
 	#hook_locked = false
 #	can_attack()
 	
