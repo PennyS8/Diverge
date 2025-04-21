@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cskdnbk5smr03"
-path="res://.godot/imported/Hand_attack.png-e7600e3f0d4024d48af5ec893a3a7014.ctex"
+uid="uid://bx7yui8ens38x"
+path="res://.godot/imported/Hand_D.png-6826b684298471c8e08f905fe554ee14.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://modules/entities/enemies/shades/Hand_attack.png"
-dest_files=["res://.godot/imported/Hand_attack.png-e7600e3f0d4024d48af5ec893a3a7014.ctex"]
+source_file="res://modules/entities/enemies/shades/school_boss/sprites/Hand_D.png"
+dest_files=["res://.godot/imported/Hand_D.png-6826b684298471c8e08f905fe554ee14.ctex"]
 
 [params]
 

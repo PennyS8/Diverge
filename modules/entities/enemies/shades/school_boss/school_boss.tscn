@@ -61,7 +61,7 @@ _data = {
 &"idle": SubResource("Animation_w7155")
 }
 
-[node name="SchoolBoss" type="CharacterBody2D" groups=["enemy", "saved_data", "tetherable_body"]]
+[node name="SchoolBoss" type="CharacterBody2D" groups=["boss", "enemy", "saved_data", "tetherable_body"]]
 z_index = 1
 y_sort_enabled = true
 collision_layer = 1032
@@ -130,9 +130,7 @@ on_finished = 1
 disabled = false
 debug_mode = false
 target_path = NodePath("")
-timed = true
-waiting_time = 3.0
-on_timer_finished = 3
+timed = false
 next_state = NodePath("../../Movement/Idle")
 metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
@@ -166,7 +164,7 @@ collision_layer = 0
 [node name="HurtBox" type="Area2D" parent="BehaviorComponents" node_paths=PackedStringArray("health_component")]
 unique_name_in_owner = true
 collision_layer = 8
-collision_mask = 4
+collision_mask = 4096
 script = ExtResource("9_ae4fe")
 health_component = NodePath("../Health")
 metadata/_custom_type_script = "uid://b1svtud75bya4"
@@ -174,12 +172,11 @@ metadata/_custom_type_script = "uid://b1svtud75bya4"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviorComponents/HurtBox"]
 position = Vector2(1, -0.5)
 shape = SubResource("RectangleShape2D_m5niu")
-disabled = true
 
 [node name="Health" type="Node" parent="BehaviorComponents"]
 unique_name_in_owner = true
 script = ExtResource("10_ae4fe")
-max_health = 40
+max_health = 80
 metadata/_custom_type_script = "uid://ct6vby56i820l"
 
 [node name="AttackBox" type="Area2D" parent="BehaviorComponents"]

@@ -13,7 +13,7 @@ func _ready() -> void:
 
 func tethered_stun():
 	crowd_control = true
-	$HandFSM.change_state("Stunned")
+	fsm.change_state("Stunned")
 	
 	# turns crowd control back off for future
 	crowd_control = false

@@ -59,6 +59,7 @@ status_tethered=""
 selected=""
 anchor=""
 tetherable_body=""
+boss=""
 
 [input]
 

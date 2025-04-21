@@ -1,12 +1,14 @@
 extends CharacterBody2D
 
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var boss = get_tree().get_first_node_in_group("boss")
 var sliding_to_target := false
 
 var leash_owner : Node2D
 var yarn_instance # Mainly so that levers can remove their visual yarn instance
 
 var boss_path = "res://modules/entities/enemies/shades/school_boss/school_boss.tscn"
+var hand_path = "res://modules/entities/enemies/shades/school_boss/school_boss_hands.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -45,6 +47,10 @@ func _physics_process(_delta):
 	if leash_owner:
 		if leash_owner == self:
 			sliding_to_target = false
+			return
+		
+		# Prevents a cocoon of just hands or if hand is leash owner
+		if leash_owner.scene_file_path == hand_path:
 			return
 		
 		var dist = global_position.distance_to(leash_owner.global_position)
