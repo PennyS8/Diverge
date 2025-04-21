@@ -12,6 +12,7 @@ const MAX_HANDS = 5
 var current_engagers : Array[CharacterBody2D] = []
 var marked_for_disengage : Dictionary[CharacterBody2D, Timer] = {}
 var hand_spawn_counter : Dictionary[CharacterBody2D, Vector2] = {}
+var boss_spawned_enemies : Array[CharacterBody2D] = []
 
 ## If an enemy wishes to engage the player, make sure they can
 func request_engagement(enemy : CharacterBody2D):
@@ -68,7 +69,7 @@ func remove_all_hands():
 	for enemy in hand_spawn_counter:
 		# Sanity check to make sure enemy still exists
 		if enemy:
-			enemy.queue_free()
+			enemy.fsm.change_state("Death")
 	
 	hand_spawn_counter.clear()
 
@@ -87,3 +88,14 @@ func check_overlapping_hands(new_hand_x : int, new_hand_y : int, margin : int) -
 	
 	# If we haven't found an overlap, return false
 	return false
+
+func add_enemy(enemy : CharacterBody2D):
+	boss_spawned_enemies.append(enemy)
+
+func remove_remaining_enemies():
+	for enemy in boss_spawned_enemies:
+		# Looks for enemies that are still spawned
+		if enemy:
+			enemy.fsm.change_state("Death")
+	
+	boss_spawned_enemies.clear()

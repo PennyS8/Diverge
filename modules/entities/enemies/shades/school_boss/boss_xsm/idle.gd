@@ -6,6 +6,7 @@ const HAND_MARGIN = 12
 const SHADE_COUNT = 3
 
 var shade_scene = preload("res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn")
+var hand_scene = preload("res://modules/entities/enemies/shades/school_boss/school_boss_hands.tscn")
 
 # This function is called when the state enters
 # XSM enters the root first, the the children
@@ -21,14 +22,14 @@ func _after_enter(_args) -> void:
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
 	while EnemyManager.hand_spawn_counter.size() < EnemyManager.MAX_HANDS:
-		var hand_scene = load("res://modules/entities/enemies/shades/school_boss/school_boss_hands.tscn")
 		var hand_node = hand_scene.instantiate()
 		
+		# Gets path of boss in the tree and adds child to same path
 		var node = get_node(target.get_parent().get_path())
 		node.add_child(hand_node)
 		
+		# Sets hands spawn point to random point on boss's radius 
 		var boss_location = target.global_position
-		
 		var hand_location = get_spawn_point(boss_location, SPAWN_RADIUS)
 		var hand_x = hand_location.x
 		var hand_y = hand_location.y
@@ -43,7 +44,9 @@ func _on_update(_delta: float) -> void:
 		hand_node.global_position = hand_location
 		
 		EnemyManager.add_hand(hand_node, hand_location)
+		EnemyManager.add_enemy(hand_node)
 
+# Helper function to get a randomized point on a radius
 func get_spawn_point(center : Vector2, radius : float) -> Vector2:
 	# TAU = 2 * pi
 	var angle = randf() * TAU
@@ -51,15 +54,19 @@ func get_spawn_point(center : Vector2, radius : float) -> Vector2:
 	
 	return point
 
+# Simple helper method to spawn regular shades
 func spawn_shades(): 
 	for i in range(1, SHADE_COUNT):
 		var shade_node = shade_scene.instantiate()
 		
+		# Gets path of boss in the tree and adds child to same path
 		var node = get_node(target.get_parent().get_path())
 		node.add_child(shade_node)
 		
 		var boss_location = target.global_position
 		shade_node.global_position = get_spawn_point(boss_location, SPAWN_RADIUS)
+		
+		EnemyManager.add_enemy(shade_node)
 
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root

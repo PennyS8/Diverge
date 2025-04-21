@@ -17,6 +17,7 @@ func _on_health_component_died() -> void:
 	for i in range(1, shade_healths_stored.size()+1):
 		var enemy_type = enemy_types_stored[i-1]
 		
+		# Only spawns the boss back in
 		if enemy_type == boss_scene_path:
 			var enemy_packed = load(enemy_type)
 			var enemy = enemy_packed.instantiate()

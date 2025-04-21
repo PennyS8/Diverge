@@ -5,6 +5,14 @@ extends TetherableBody
 
 @onready var sprite = $Display/Sprite2D
 
+func _ready() -> void:
+	var timer = Timer.new()
+	timer.wait_time = 2.0
+	timer.one_shot = true
+	add_child(timer)
+	
+	timer.timeout.connect(_on_timer_timeout)
+
 func _on_health_component_died() -> void:
 	if shade_healths_stored.is_empty():
 		shade_healths_stored.append(40)
@@ -31,3 +39,6 @@ func _on_health_component_died() -> void:
 func _on_hurt_box_component_2d_hit(_area) -> void:
 	$AnimationPlayer.play("hit")
 	GameManager.hitlag()
+
+func _on_timer_timeout() -> void:
+	EnemyManager.remove_remaining_enemies()
