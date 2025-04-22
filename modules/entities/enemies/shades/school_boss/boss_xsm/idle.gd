@@ -11,7 +11,8 @@ var hand_scene = preload("res://modules/entities/enemies/shades/school_boss/scho
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	spawn_shades()
+	pass
+	#spawn_shades()
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
@@ -22,7 +23,7 @@ func _after_enter(_args) -> void:
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
 	while EnemyManager.hand_spawn_counter.size() < EnemyManager.MAX_HANDS:
-		var hand_node = hand_scene.instantiate()
+		var hand_node = shade_scene.instantiate()
 		
 		# Gets path of boss in the tree and adds child to same path
 		var node = get_node(target.get_parent().get_path())
@@ -44,7 +45,7 @@ func _on_update(_delta: float) -> void:
 		hand_node.global_position = hand_location
 		
 		EnemyManager.add_hand(hand_node, hand_location)
-		EnemyManager.add_enemy(hand_node)
+		EnemyManager.add_boss_spawned_enemy(hand_node)
 
 # Helper function to get a randomized point on a radius
 func get_spawn_point(center : Vector2, radius : float) -> Vector2:
@@ -66,7 +67,7 @@ func spawn_shades():
 		var boss_location = target.global_position
 		shade_node.global_position = get_spawn_point(boss_location, SPAWN_RADIUS)
 		
-		EnemyManager.add_enemy(shade_node)
+		EnemyManager.add_boss_spawned_enemy(shade_node)
 
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root

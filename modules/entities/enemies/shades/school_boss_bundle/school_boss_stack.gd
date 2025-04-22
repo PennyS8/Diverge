@@ -7,6 +7,16 @@ extends TetherableBody
 
 var boss_scene_path = "res://modules/entities/enemies/shades/school_boss/school_boss.tscn"
 
+func _ready() -> void:
+	print("School boss stack ready function has been called")
+	var timer = Timer.new()
+	timer.wait_time = 1.0
+	timer.one_shot = true
+	add_child(timer)
+	
+	timer.timeout.connect(_on_timer_timeout)
+	timer.start()
+
 func _on_health_component_died() -> void:
 	if shade_healths_stored.is_empty():
 		shade_healths_stored.append(40)
@@ -39,3 +49,7 @@ func _on_health_component_died() -> void:
 func _on_hurt_box_component_2d_hit(_area) -> void:
 	$AnimationPlayer.play("hit")
 	GameManager.hitlag()
+
+func _on_timer_timeout() -> void:
+	print("Enemy removal timer timeout")
+	EnemyManager.remove_boss_spawned_enemies()

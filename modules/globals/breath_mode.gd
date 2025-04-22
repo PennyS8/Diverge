@@ -87,8 +87,13 @@ func _set_yarn():
 	first_tetherable = current_bodies_selected.pop_at(0)
 	
 	for selected_tether in current_bodies_selected:
+		# Prevents tethering with a hand as leash owner
 		if first_tetherable.scene_file_path == hand_path:
 			return
+		
+		# Prevents boss from being tethered to other shades
+		if selected_tether.scene_file_path == boss_path:
+			continue
 		
 		# Make a new instance of visual yarn, end point set to this tetherbody
 		var yarn = yarn_controller_packed.instantiate()

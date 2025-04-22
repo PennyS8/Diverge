@@ -69,7 +69,8 @@ func remove_all_hands():
 	for enemy in hand_spawn_counter:
 		# Sanity check to make sure enemy still exists
 		if enemy:
-			enemy.fsm.change_state("Death")
+			#enemy.fsm.change_state("Death")
+			enemy.queue_free()
 	
 	hand_spawn_counter.clear()
 
@@ -89,13 +90,19 @@ func check_overlapping_hands(new_hand_x : int, new_hand_y : int, margin : int) -
 	# If we haven't found an overlap, return false
 	return false
 
-func add_enemy(enemy : CharacterBody2D):
+func add_boss_spawned_enemy(enemy : CharacterBody2D):
 	boss_spawned_enemies.append(enemy)
 
-func remove_remaining_enemies():
+func remove_boss_spawned_enemy(enemy : CharacterBody2D):
+	if boss_spawned_enemies.has(enemy):
+		boss_spawned_enemies.erase(enemy)
+
+func remove_boss_spawned_enemies():
 	for enemy in boss_spawned_enemies:
 		# Looks for enemies that are still spawned
 		if enemy:
-			enemy.fsm.change_state("Death")
+			#enemy.fsm.change_state("Death")
+			enemy.died()
+			#enemy.queue_free()
 	
 	boss_spawned_enemies.clear()

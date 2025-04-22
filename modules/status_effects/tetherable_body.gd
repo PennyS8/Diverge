@@ -50,7 +50,7 @@ func _physics_process(_delta):
 		if leash_owner.scene_file_path == hand_path:
 			return
 		
-		if leash_owner == self:
+		if leash_owner == self or self.is_in_group("boss"):
 			sliding_to_target = false
 			return
 		
@@ -62,7 +62,7 @@ func _physics_process(_delta):
 			# If we get to our target
 			sliding_to_target = false
 			
-			if leash_owner.is_in_group("enemy") and self.is_in_group("enemy"):
+			if (leash_owner.is_in_group("enemy") or leash_owner.is_in_group("boss")) and self.is_in_group("enemy"):
 				# If cocoon doesn't exist, make one as the parent of our Main Shade
 				var cocoon
 				if leash_owner.scene_file_path == boss_path:
@@ -102,11 +102,13 @@ func _physics_process(_delta):
 				breath_manager.update_tethers_to_cocoon(cocoon)
 				
 				# Remove the enemy that just reached the newly created cocoon
+				EnemyManager.remove_boss_spawned_enemy(self)
 				self.queue_free()
 			elif leash_owner.is_in_group("cocoon") and self.is_in_group("enemy"):
 				# If our cocoon already exists, add self to the stack
 				leash_owner.shade_healths_stored.append(get_node("%Health").health)
 				leash_owner.enemy_types_stored.append(scene_file_path)
+				EnemyManager.remove_boss_spawned_enemy(self)
 				self.queue_free()
 
 # Retracts the length of the yarn, pulling the tethered body to the player

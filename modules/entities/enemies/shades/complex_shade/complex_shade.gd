@@ -32,19 +32,23 @@ func _physics_process(_delta: float) -> void:
 # Removes the knockback from the enemy for tethering but still stuns enemy
 func tethered_stun():
 	crowd_control = true
-	$ShadeFSM.change_state("Stunned")
+	fsm.change_state("Stunned")
 	
 	# turns crowd control back off for future
 	crowd_control = false
 	
 func fling(): 
-	$ShadeFSM.change_state("Stunned")
+	fsm.change_state("Stunned")
 	super.fling()
 
 func pull():
-	$ShadeFSM.change_state("Stunned")
+	fsm.change_state("Stunned")
 	super.pull()
-	
+
+func died():
+	#fsm.change_state("Dead")
+	queue_free()
+
 #region Savegame
 func on_save_game(saved_data:Array[SavedData]):
 	if %Health.health <= 0: 

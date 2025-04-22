@@ -668,6 +668,7 @@ shape = SubResource("RectangleShape2D_fgae4")
 [node name="Health" type="Node" parent="BehaviorComponents"]
 unique_name_in_owner = true
 script = ExtResource("8_fhnrg")
+max_health = 20
 metadata/_custom_type_script = "uid://ct6vby56i820l"
 
 [node name="DisplayComponents" type="Node2D" parent="."]

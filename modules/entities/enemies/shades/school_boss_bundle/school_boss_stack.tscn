@@ -165,6 +165,7 @@ font_color = Color(0.180392, 0, 0.384314, 1)
 
 [node name="BossStack" type="CharacterBody2D" groups=["cocoon"]]
 y_sort_enabled = true
+scale = Vector2(2, 2)
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_db5gs")
@@ -238,7 +239,6 @@ hue_variation_max = 1.0
 [node name="Sprite2D" type="Sprite2D" parent="Display"]
 material = ExtResource("5_lebl2")
 position = Vector2(0, -4)
-scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_db5gs")
 offset = Vector2(0, -11)
 hframes = 6

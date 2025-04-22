@@ -61,9 +61,10 @@ _data = {
 &"idle": SubResource("Animation_w7155")
 }
 
-[node name="SchoolBoss" type="CharacterBody2D" groups=["boss", "enemy", "saved_data", "tetherable_body"]]
+[node name="SchoolBoss" type="CharacterBody2D" groups=["boss", "saved_data", "tetherable_body"]]
 z_index = 1
 y_sort_enabled = true
+scale = Vector2(1.5, 1.5)
 collision_layer = 1032
 collision_mask = 83
 script = ExtResource("1_awdse")

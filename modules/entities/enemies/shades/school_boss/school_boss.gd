@@ -16,6 +16,13 @@ func tethered_stun():
 	# turns crowd control back off for future
 	crowd_control = false
 
+# Fling and Pull function override from parent. Prevents boss from being pulled by player
+func fling(): 
+	return
+
+func pull():
+	return
+
 #region Save and Load
 func on_save_game(saved_data:Array[SavedData]):
 	# Boss is dead if true
