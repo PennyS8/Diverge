@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://dx5na7ufncxg3"]
+[gd_scene load_steps=88 format=3 uid="uid://dx5na7ufncxg3"]
 
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
 [ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="4_e4b7j"]
@@ -18,6 +18,8 @@
 [ext_resource type="AudioStream" uid="uid://btwbusjjnsfg5" path="res://assets/sfx/Sonniss/pop_1.wav" id="12_iug1g"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
 [ext_resource type="AudioStream" uid="uid://ck772bbyuikiy" path="res://assets/sfx/Sonniss/pop_2.wav" id="13_dvtn2"]
+[ext_resource type="AudioStream" uid="uid://dwpa1lbkxgouw" path="res://assets/sfx/battlemagic/35_Dark_01.wav" id="15_pra3i"]
+[ext_resource type="AudioStream" uid="uid://bjbr4il7x3p5u" path="res://assets/sfx/battlemagic/37_Dark_03.wav" id="16_wyc7l"]
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_dnu80"]
 [ext_resource type="FontFile" uid="uid://dx7pho86vkti5" path="res://assets/hud/open-sans/OpenSans-Bold.ttf" id="18_1e20k"]
 [ext_resource type="Script" uid="uid://b5gptums252wm" path="res://modules/entities/fsm_debug_label.gd" id="18_mjkpu"]
@@ -104,11 +106,9 @@ stream_1/stream = ExtResource("13_dvtn2")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pufi2"]
 playback_mode = 1
-random_pitch = 1.2
 streams_count = 2
-stream_0/stream = ExtResource("12_iug1g")
-stream_0/weight = 2.5
-stream_1/stream = ExtResource("13_dvtn2")
+stream_0/stream = ExtResource("15_pra3i")
+stream_1/stream = ExtResource("16_wyc7l")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3xrx"]
 radius = 13.0384
@@ -1650,7 +1650,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../ReturnToPost")
 
 [node name="ReturnToPost" type="Node" parent="ShadeFSM/Alive/Movement"]
 editor_description = "TODO: Not implemented"
@@ -1667,7 +1667,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Reaction")
 
 [node name="ChargeAttack" type="Node" parent="ShadeFSM/Alive/Combat"]
 script = ExtResource("10_iug1g")
@@ -1757,8 +1757,11 @@ pitch_scale = 1.0
 pitch_randomness = 0.0
 max_polyphony = 5
 bus = "From Parent"
-positional = 0
-positional_mix_target = 0
+positional = 1
+positional_max_distance = 2000.0
+positional_panning_strength = 1.0
+positional_attenuation = 1.0
+positional_area_mask = 1
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "die"
 loop_mode = 0

@@ -9,6 +9,7 @@ var great_grandparent
 
 func _ready():
 	var end_pos = global_position + Vector2(0, 10)
+	$AudioStreamPlayer2D.play()
 	var tween = create_tween()
 	tween.tween_property(self, "global_position", end_pos, 0.2).set_trans(Tween.TRANS_CUBIC)
 	if spawns_wanderer:
@@ -81,5 +82,6 @@ func pull():
 	super.pull()
 	
 func fling():
+	$AudioStreamPlayer2D.play()
 	$Item.set_collision_mask_value(4, false)
 	super.fling()

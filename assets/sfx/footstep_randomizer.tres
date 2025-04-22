@@ -1,0 +1,16 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=6 format=3 uid="uid://o3hvnhy5m155"]
+
+[ext_resource type="AudioStream" uid="uid://cb01i2oc0grla" path="res://assets/sfx/kenney/footstep_concrete_000.ogg" id="1_pi5lt"]
+[ext_resource type="AudioStream" uid="uid://wijl3tjlvfqb" path="res://assets/sfx/kenney/footstep_concrete_001.ogg" id="2_vq2lt"]
+[ext_resource type="AudioStream" uid="uid://fp75edi41vlr" path="res://assets/sfx/kenney/footstep_concrete_002.ogg" id="3_jeome"]
+[ext_resource type="AudioStream" uid="uid://mnishhbv70hc" path="res://assets/sfx/kenney/footstep_concrete_003.ogg" id="4_bru7e"]
+[ext_resource type="AudioStream" uid="uid://dsjpqiop3afro" path="res://assets/sfx/kenney/footstep_concrete_004.ogg" id="5_qarag"]
+
+[resource]
+random_pitch = 1.2
+streams_count = 5
+stream_0/stream = ExtResource("1_pi5lt")
+stream_1/stream = ExtResource("2_vq2lt")
+stream_2/stream = ExtResource("3_jeome")
+stream_3/stream = ExtResource("4_bru7e")
+stream_4/stream = ExtResource("5_qarag")
