@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://dx5na7ufncxg3"]
+[gd_scene load_steps=90 format=3 uid="uid://dx5na7ufncxg3"]
 
 [ext_resource type="PackedScene" uid="uid://8xtoptvgrpqi" path="res://modules/entities/enemies/hp_bar/shade_hp_indicator.tscn" id="2_88af2"]
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
@@ -21,8 +21,6 @@
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
 [ext_resource type="AudioStream" uid="uid://ck772bbyuikiy" path="res://assets/sfx/Sonniss/pop_2.wav" id="13_dvtn2"]
-[ext_resource type="AudioStream" uid="uid://dwpa1lbkxgouw" path="res://assets/sfx/battlemagic/35_Dark_01.wav" id="15_pra3i"]
-[ext_resource type="AudioStream" uid="uid://bjbr4il7x3p5u" path="res://assets/sfx/battlemagic/37_Dark_03.wav" id="16_wyc7l"]
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_dnu80"]
 [ext_resource type="FontFile" uid="uid://dx7pho86vkti5" path="res://assets/hud/open-sans/OpenSans-Bold.ttf" id="18_1e20k"]
 [ext_resource type="Script" uid="uid://b5gptums252wm" path="res://modules/entities/fsm_debug_label.gd" id="18_mjkpu"]
@@ -43,6 +41,7 @@
 [ext_resource type="Texture2D" uid="uid://chpbdfsf6jyng" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Up.png" id="29_xu3ac"]
 [ext_resource type="Texture2D" uid="uid://08y4slel3t1j" path="res://modules/entities/enemies/shades/complex_shade/sprites/Idle/IDLE_LR_Base.png" id="35_dvtn2"]
 [ext_resource type="AudioStream" uid="uid://logbde0okioc" path="res://modules/entities/enemies/shades/complex_shade/sfx/spawn_twinkle.wav" id="39_tvkt4"]
+[ext_resource type="AudioStream" uid="uid://usibjpk6afof" path="res://assets/sfx/battlemagic/25_Wind_01.wav" id="40_dvtn2"]
 [ext_resource type="AudioStream" uid="uid://c1uldj3nuo44y" path="res://modules/entities/enemies/shades/complex_shade/sfx/spawn_sfx.wav" id="40_iug1g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mjkpu"]
@@ -69,12 +68,6 @@ streams_count = 2
 stream_0/stream = ExtResource("12_iug1g")
 stream_0/weight = 2.5
 stream_1/stream = ExtResource("13_dvtn2")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pufi2"]
-playback_mode = 1
-streams_count = 2
-stream_0/stream = ExtResource("15_pra3i")
-stream_1/stream = ExtResource("16_wyc7l")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3xrx"]
 radius = 13.0384
@@ -1531,7 +1524,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_kynnu"]
 resource_name = "die"
-length = 0.750006
+length = 2.0
 step = 0.0625
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -1540,7 +1533,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6875),
+"times": PackedFloat32Array(1.8125),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -1643,6 +1636,21 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(0.101961, 0, 0.243137, 1), Color(0.101961, 0, 0.243137, 0)]
 }
+tracks/9/type = "audio"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Death")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("40_dvtn2")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_shkbt"]
 resource_name = "fall"
@@ -2152,7 +2160,7 @@ tracks/4/keys = {
 tracks/5/type = "audio"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/path = NodePath("Spawn")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
@@ -2609,7 +2617,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../ReturnToPost")
+next_state = NodePath("")
 
 [node name="ReturnToPost" type="Node" parent="ShadeFSM/Alive/Movement"]
 editor_description = "TODO: Not implemented"
@@ -2626,7 +2634,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Reaction")
+next_state = NodePath("")
 
 [node name="ChargeAttack" type="Node" parent="ShadeFSM/Alive/Combat"]
 script = ExtResource("10_iug1g")
@@ -2698,6 +2706,7 @@ next_state = NodePath("../Alive/Movement/Idle")
 
 [node name="Dead" type="Node" parent="ShadeFSM"]
 script = ExtResource("10_m6rex")
+sample = null
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "NONE"
 disabled = false
@@ -2880,7 +2889,10 @@ libraries = {
 &"": SubResource("AnimationLibrary_n2c8b")
 }
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Spawn" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+bus = &"enemydistort"
 
 [connection signal="mouse_entered" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_exited"]

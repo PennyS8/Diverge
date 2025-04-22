@@ -929,6 +929,9 @@ material = SubResource("ShaderMaterial_mjkpu")
 [node name="Spawn" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="1"]
 unique_name_in_owner = false
 
+[node name="Combat" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive" index="1"]
+next_state = NodePath("../Reaction")
+
 [node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/SoftCollision" index="0"]
 scale = Vector2(1.5, 1.5)
 

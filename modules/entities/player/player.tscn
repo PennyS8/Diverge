@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=106 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -51,6 +51,7 @@
 [ext_resource type="AudioStream" uid="uid://ch6n2b05gkn1i" path="res://assets/sfx/sound-digitator/swoosh-1.wav" id="19_4ascy"]
 [ext_resource type="AudioStream" uid="uid://ck772bbyuikiy" path="res://assets/sfx/Sonniss/pop_2.wav" id="19_hfpac"]
 [ext_resource type="AudioStream" uid="uid://dsob1cdrnjblr" path="res://assets/sfx/sound-digitator/swoosh-2.wav" id="20_hudlm"]
+[ext_resource type="Script" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
 [ext_resource type="AudioStream" uid="uid://bowii3wok1ekf" path="res://assets/sfx/sound-digitator/swoosh-3.wav" id="21_ken2u"]
 [ext_resource type="AudioStream" uid="uid://b5b1gnk0g0f3j" path="res://assets/sfx/sound-digitator/swoosh-4.wav" id="22_iaft3"]
 [ext_resource type="AudioStream" uid="uid://86ihnhl0l038" path="res://assets/sfx/sound-digitator/swoosh-5.wav" id="23_fngpe"]
