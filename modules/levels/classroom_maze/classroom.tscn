@@ -41,9 +41,6 @@ size = Vector2(468, 462)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_q5rug"]
 shader = ExtResource("12_24tlu")
-shader_parameter/r_displacement = Vector2(8, -8)
-shader_parameter/g_displacement = Vector2(0, 0)
-shader_parameter/b_displacement = Vector2(-3, 0)
 shader_parameter/height = 0.3
 shader_parameter/width = 0.2
 shader_parameter/fade = 0.28
@@ -198,14 +195,30 @@ y_sort_enabled = true
 [node name="DeskChairIn" parent="NavigationRegion2D/Desks/FrontRow" instance=ExtResource("4_bgmsf")]
 position = Vector2(433, 331)
 
+[node name="SeatedClassmate9" parent="NavigationRegion2D/Desks/FrontRow/DeskChairIn" instance=ExtResource("6_ks26a")]
+z_index = 0
+position = Vector2(25, -9)
+
 [node name="DeskChairIn2" parent="NavigationRegion2D/Desks/FrontRow" instance=ExtResource("4_bgmsf")]
 position = Vector2(433, 403)
+
+[node name="SeatedClassmate10" parent="NavigationRegion2D/Desks/FrontRow/DeskChairIn2" instance=ExtResource("6_ks26a")]
+z_index = 0
+position = Vector2(26, -7)
 
 [node name="DeskChairIn3" parent="NavigationRegion2D/Desks/FrontRow" instance=ExtResource("4_bgmsf")]
 position = Vector2(433, 475)
 
+[node name="SeatedClassmate11" parent="NavigationRegion2D/Desks/FrontRow/DeskChairIn3" instance=ExtResource("6_ks26a")]
+z_index = 0
+position = Vector2(25, -7)
+
 [node name="DeskChairIn4" parent="NavigationRegion2D/Desks/FrontRow" instance=ExtResource("4_bgmsf")]
 position = Vector2(432, 569)
+
+[node name="SeatedClassmate12" parent="NavigationRegion2D/Desks/FrontRow/DeskChairIn4" instance=ExtResource("6_ks26a")]
+z_index = 0
+position = Vector2(24, -8)
 
 [node name="SecondRow" type="Node2D" parent="NavigationRegion2D/Desks"]
 y_sort_enabled = true
@@ -277,7 +290,7 @@ position = Vector2(721, 403)
 position = Vector2(721, 475)
 
 [node name="SeatedClassmate" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(27, -109)
+position = Vector2(26, -109)
 
 [node name="SeatedClassmate2" parent="." instance=ExtResource("6_ks26a")]
 position = Vector2(98, -108)
@@ -299,18 +312,6 @@ position = Vector2(-46, -178)
 
 [node name="SeatedClassmate8" parent="." instance=ExtResource("6_ks26a")]
 position = Vector2(-46, -107)
-
-[node name="SeatedClassmate9" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(-118, -106)
-
-[node name="SeatedClassmate10" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(-117, -32)
-
-[node name="SeatedClassmate11" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(-118, 40)
-
-[node name="SeatedClassmate12" parent="." instance=ExtResource("6_ks26a")]
-position = Vector2(-120, 133)
 
 [node name="SeatedClassmate13" parent="." instance=ExtResource("6_ks26a")]
 position = Vector2(-46, 134)
@@ -407,6 +408,7 @@ mouse_filter = 2
 metadata/_edit_use_anchors_ = true
 
 [node name="CameraBoundry" type="Area2D" parent="."]
+visible = false
 position = Vector2(-229, -92)
 collision_layer = 512
 collision_mask = 4
