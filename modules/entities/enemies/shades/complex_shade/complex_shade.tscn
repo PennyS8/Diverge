@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://dx5na7ufncxg3"]
+[gd_scene load_steps=88 format=3 uid="uid://dx5na7ufncxg3"]
 
 [ext_resource type="PackedScene" uid="uid://8xtoptvgrpqi" path="res://modules/entities/enemies/hp_bar/shade_hp_indicator.tscn" id="2_88af2"]
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
@@ -20,6 +20,9 @@
 [ext_resource type="Script" uid="uid://d1od6kbhhnppb" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
+[ext_resource type="AudioStream" uid="uid://ck772bbyuikiy" path="res://assets/sfx/Sonniss/pop_2.wav" id="13_dvtn2"]
+[ext_resource type="AudioStream" uid="uid://dwpa1lbkxgouw" path="res://assets/sfx/battlemagic/35_Dark_01.wav" id="15_pra3i"]
+[ext_resource type="AudioStream" uid="uid://bjbr4il7x3p5u" path="res://assets/sfx/battlemagic/37_Dark_03.wav" id="16_wyc7l"]
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_dnu80"]
 [ext_resource type="FontFile" uid="uid://dx7pho86vkti5" path="res://assets/hud/open-sans/OpenSans-Bold.ttf" id="18_1e20k"]
 [ext_resource type="Script" uid="uid://b5gptums252wm" path="res://modules/entities/fsm_debug_label.gd" id="18_mjkpu"]
@@ -47,6 +50,31 @@ resource_local_to_scene = true
 shader = ExtResource("3_o0472")
 shader_parameter/Flash = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pra3i"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("12_iug1g")
+stream_0/weight = 2.5
+stream_1/stream = ExtResource("13_dvtn2")
+
+[sub_resource type="GDScript" id="GDScript_tvkt4"]
+script/source = "@tool
+extends StateSound
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wyc7l"]
+playback_mode = 1
+random_pitch = 1.2
+streams_count = 2
+stream_0/stream = ExtResource("12_iug1g")
+stream_0/weight = 2.5
+stream_1/stream = ExtResource("13_dvtn2")
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pufi2"]
+playback_mode = 1
+streams_count = 2
+stream_0/stream = ExtResource("15_pra3i")
+stream_1/stream = ExtResource("16_wyc7l")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3xrx"]
 radius = 13.0384
@@ -2581,7 +2609,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../ReturnToPost")
 
 [node name="ReturnToPost" type="Node" parent="ShadeFSM/Alive/Movement"]
 editor_description = "TODO: Not implemented"
@@ -2598,7 +2626,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Reaction")
 
 [node name="ChargeAttack" type="Node" parent="ShadeFSM/Alive/Combat"]
 script = ExtResource("10_iug1g")

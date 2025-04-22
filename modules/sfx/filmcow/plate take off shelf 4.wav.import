@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dnt87r4aqcnk6"
+path="res://.godot/imported/plate take off shelf 4.wav-ae31566441a6aef8cad56bb1b2f4602b.sample"
+
+[deps]
+
+source_file="res://assets/sfx/filmcow/plate take off shelf 4.wav"
+dest_files=["res://.godot/imported/plate take off shelf 4.wav-ae31566441a6aef8cad56bb1b2f4602b.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
