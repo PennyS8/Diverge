@@ -45,10 +45,6 @@ func pull():
 	fsm.change_state("Stunned")
 	super.pull()
 
-func died():
-	#fsm.change_state("Dead")
-	queue_free()
-
 #region Savegame
 func on_save_game(saved_data:Array[SavedData]):
 	if %Health.health <= 0: 

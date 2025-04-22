@@ -9,12 +9,12 @@ var crowd_control := false
 func _ready() -> void:
 	default_position = global_position
 
-func tethered_stun():
-	crowd_control = true
-	fsm.change_state("Stunned")
-	
-	# turns crowd control back off for future
-	crowd_control = false
+#func tethered_stun():
+	#crowd_control = true
+	#fsm.change_state("Stunned")
+	#
+	## turns crowd control back off for future
+	#crowd_control = false
 
 # Fling and Pull function override from parent. Prevents boss from being pulled by player
 func fling(): 

@@ -101,8 +101,6 @@ func remove_boss_spawned_enemies():
 	for enemy in boss_spawned_enemies:
 		# Looks for enemies that are still spawned
 		if enemy:
-			#enemy.fsm.change_state("Death")
-			enemy.died()
-			#enemy.queue_free()
+			enemy._on_health_component_died()
 	
 	boss_spawned_enemies.clear()
