@@ -6,3 +6,8 @@ extends Resource
 @export var puzzle_completed:bool
 @export var puzzle_key_id:int
 @export var parent_node_path:NodePath
+
+#region Encounter Area
+@export var child_nodes : Array[PackedScene]
+@export var enemy_spawn_points : Array[NodePath]
+#endregion

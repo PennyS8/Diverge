@@ -35,9 +35,8 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../Alerted")
 
-[node name="NoMoreRamen" type="Node" parent="ShadeFSM" index="7" node_paths=PackedStringArray("nav_agent")]
+[node name="NoMoreRamen" type="Node" parent="ShadeFSM" index="7"]
 script = ExtResource("3_4mu2v")
-nav_agent = NodePath("../../NavAgent")
 ramen_pattern = Array[ExtResource("3_v6mmv")]([ExtResource("4_buh3d")])
 dash_distance = 36.0
 dash_speed = 24.0
@@ -66,10 +65,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("../Seeking")
-metadata/_custom_type_script = "uid://sgbgpy8s08d3"
-
-[node name="NavAgent" parent="." index="2"]
-debug_enabled = false
 
 [node name="TetherableArea2D" parent="." index="8"]
 monitoring = false

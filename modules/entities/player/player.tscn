@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=91 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://bl8vcpeu60p0q" path="res://modules/entities/player/xsm/idle.gd" id="6_p1gyv"]
 [ext_resource type="Script" uid="uid://vmjglki3j80d" path="res://modules/entities/player/xsm/walk.gd" id="6_rn5yy"]
 [ext_resource type="Script" uid="uid://chm5jdso2fvbw" path="res://modules/entities/player/xsm/can_attack.gd" id="6_yyqig"]
+[ext_resource type="Script" path="res://modules/entities/player/abilities.gd" id="8_lle26"]
 [ext_resource type="Script" uid="uid://b52l2mfpn8xxu" path="res://modules/entities/player/xsm/dash.gd" id="9_x3ix7"]
 [ext_resource type="Script" uid="uid://cd13uijgbv68l" path="res://modules/entities/player/xsm/attack_melee.gd" id="10_v37cr"]
 [ext_resource type="Script" uid="uid://cim5cquo2x5ig" path="res://modules/entities/player/xsm/lasso.gd" id="12_ds73y"]
@@ -37,6 +38,7 @@
 [ext_resource type="AudioStream" uid="uid://blgci5vdseigh" path="res://assets/sfx/sound-digitator/swoosh-6.wav" id="24_elisq"]
 [ext_resource type="AudioStream" uid="uid://b2roxyvxukxta" path="res://assets/sfx/sound-digitator/swoosh-7.wav" id="25_g0qvg"]
 [ext_resource type="AudioStream" uid="uid://c8xeftggbqden" path="res://assets/sfx/sound-digitator/swoosh-8.wav" id="26_6t0gw"]
+[ext_resource type="Script" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
 [ext_resource type="Texture2D" uid="uid://bomlp67c0exnm" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Down.png" id="28_lqgfc"]
 [ext_resource type="Texture2D" uid="uid://da2cbhqa5c2t7" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Left.png" id="29_dhsgn"]
 [ext_resource type="Texture2D" uid="uid://dqnemhskws1vm" path="res://modules/entities/player/placeholder_sprites/Idle/Spear/Idle_Spear_Left_Down.png" id="30_7yfd7"]
@@ -1515,6 +1517,7 @@ shader_parameter/band_strength = 2.0
 shader_parameter/noise_intensity = 0.05
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+process_mode = 1
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4
@@ -1599,6 +1602,33 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../AttackLocked")
 
+[node name="Abilities" type="Node" parent="PlayerFSM"]
+script = ExtResource("8_lle26")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
+[node name="Inactive" type="Node" parent="PlayerFSM/Abilities"]
+script = ExtResource("1_q2vpm")
+disabled = false
+debug_mode = true
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
+[node name="DeepBreath" type="Node" parent="PlayerFSM/Abilities"]
+script = ExtResource("21_1lef0")
+disabled = false
+debug_mode = true
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
 [node name="Movement" type="Node" parent="PlayerFSM"]
 script = ExtResource("4_xto71")
 disabled = false
@@ -1620,8 +1650,6 @@ next_state = NodePath(".")
 
 [node name="Walk" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("6_rn5yy")
-ground_speed = 60.0
-acceleration = 20.0
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = ""
@@ -2030,8 +2058,10 @@ libraries = {
 autoplay = "idle_down"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
 zoom = Vector2(5.5, 5.5)
 process_callback = 0
+limit_smoothed = true
 position_smoothing_enabled = true
 position_smoothing_speed = 16.0
 
@@ -2040,6 +2070,13 @@ collision_layer = 0
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("SegmentShape2D_rc6ld")
+
+[node name="EncounterChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EncounterChecker"]
 shape = SubResource("SegmentShape2D_rc6ld")
 
 [node name="stressEffect" type="ColorRect" parent="."]

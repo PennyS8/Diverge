@@ -43,7 +43,7 @@ stream_7/stream = ExtResource("15_aa8gn")
 stream_8/stream = ExtResource("16_touwg")
 stream_9/stream = ExtResource("17_4i6ko")
 
-[node name="RamenTray" type="CharacterBody2D" groups=["edible_ramen", "tetherable_body"]]
+[node name="RamenTray" type="CharacterBody2D" groups=["edible_ramen", "ramen_body", "tetherable_body"]]
 y_sort_enabled = true
 material = ExtResource("1_p3hce")
 use_parent_material = true

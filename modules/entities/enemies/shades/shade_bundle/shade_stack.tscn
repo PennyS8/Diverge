@@ -1,0 +1,337 @@
+[gd_scene load_steps=24 format=3 uid="uid://bbkbbvjeig57t"]
+
+[ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="1_ccc72"]
+[ext_resource type="Script" uid="uid://cv76qgfpemgwt" path="res://modules/entities/enemies/shades/shade_bundle/shade_stack.gd" id="1_tm3xj"]
+[ext_resource type="Texture2D" uid="uid://sl51x8oswnsd" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle.png" id="2_b5bdt"]
+[ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="3_8rbq4"]
+[ext_resource type="LabelSettings" uid="uid://li7joahtc8st" path="res://modules/entities/enemies/shades/shade/starstun.tres" id="4_tm3xj"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="6_ge41j"]
+[ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="7_n6dng"]
+[ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="8_74mok"]
+[ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="9_ge41j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nef4p"]
+radius = 6.08276
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_w6oec"]
+radius = 9.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n6dng"]
+radius = 25.0799
+
+[sub_resource type="Animation" id="Animation_p62yo"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display/Sprite2D:material:shader_parameter/Flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("HitBoxComponent2D/CollisionShape2D:disabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:modulate:a")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+
+[sub_resource type="Animation" id="Animation_ge41j"]
+resource_name = "attack"
+length = 0.375006
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("HitBoxComponent2D/CollisionShape2D:disabled")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Display")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"hide"
+}]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.3125),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_c2l3t"]
+resource_name = "hit"
+length = 0.375006
+step = 0.0625
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Display/Sprite2D:material:shader_parameter/Flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o6p16"]
+_data = {
+&"RESET": SubResource("Animation_p62yo"),
+&"attack": SubResource("Animation_ge41j"),
+&"hit": SubResource("Animation_c2l3t")
+}
+
+[sub_resource type="Gradient" id="Gradient_ih2li"]
+offsets = PackedFloat32Array(0, 0.431487)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_n6dng"]
+gradient = SubResource("Gradient_ih2li")
+width = 48
+height = 16
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[sub_resource type="Curve" id="Curve_74mok"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nef4p"]
+colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
+
+[sub_resource type="Gradient" id="Gradient_ibglu"]
+interpolation_mode = 1
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.43606, 0, 0, 1, 0.552962, 1.35969e-06, 4.81307e-07, 1, 0.435294, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ccc72"]
+gradient = SubResource("Gradient_ibglu")
+width = 16
+height = 16
+fill_from = Vector2(0.25, 0.25)
+fill_to = Vector2(0.75, 0.75)
+repeat = 1
+
+[sub_resource type="LabelSettings" id="LabelSettings_w6oec"]
+font = ExtResource("3_8rbq4")
+font_color = Color(0.180392, 0, 0.384314, 1)
+
+[node name="ShadeStack" type="CharacterBody2D" groups=["cocoon"]]
+y_sort_enabled = true
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_tm3xj")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_nef4p")
+
+[node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("7_n6dng")
+metadata/_custom_type_script = "uid://ct6vby56i820l"
+
+[node name="HurtBoxComponent2D" type="Area2D" parent="." node_paths=PackedStringArray("health_component")]
+position = Vector2(0, -15)
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("8_74mok")
+health_component = NodePath("../HealthComponent")
+metadata/_custom_type_script = "uid://b1svtud75bya4"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBoxComponent2D"]
+shape = SubResource("CapsuleShape2D_w6oec")
+
+[node name="HitBoxComponent2D" type="Area2D" parent="."]
+collision_layer = 4096
+collision_mask = 4096
+script = ExtResource("9_ge41j")
+damage = 20
+knockback_coef = 500.0
+metadata/_custom_type_script = "uid://dc7k3kwq0lbts"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBoxComponent2D"]
+shape = SubResource("CircleShape2D_n6dng")
+disabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_o6p16")
+}
+
+[node name="Display" type="Node2D" parent="."]
+z_index = 1
+use_parent_material = true
+
+[node name="Shadow" type="Sprite2D" parent="Display"]
+texture = SubResource("GradientTexture2D_n6dng")
+
+[node name="SmokeFX" type="CPUParticles2D" parent="Display"]
+position = Vector2(0, -12)
+emitting = false
+amount = 10
+lifetime = 2.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angle_max = 270.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_74mok")
+color = Color(0.214103, 0.214103, 0.214103, 1)
+color_ramp = SubResource("Gradient_nef4p")
+hue_variation_min = -0.51
+hue_variation_max = 1.0
+
+[node name="Sprite2D" type="Sprite2D" parent="Display"]
+self_modulate = Color(0.134467, 0.000247055, 0.303661, 1)
+material = ExtResource("1_ccc72")
+position = Vector2(-1, 0)
+scale = Vector2(1.2, 1.5)
+texture = ExtResource("2_b5bdt")
+offset = Vector2(0, -11)
+hframes = 8
+vframes = 6
+region_rect = Rect2(21, 14, 22, 40)
+
+[node name="HitFX" type="CPUParticles2D" parent="Display"]
+z_index = 2
+position = Vector2(0, -12)
+emitting = false
+amount = 30
+one_shot = true
+explosiveness = 1.0
+randomness = 1.0
+lifetime_randomness = 1.0
+emission_shape = 3
+emission_rect_extents = Vector2(10, 20)
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 10.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_74mok")
+color = Color(0.227451, 0, 0, 1)
+color_ramp = SubResource("Gradient_nef4p")
+hue_variation_max = 0.4
+
+[node name="Line2D" type="Line2D" parent="Display"]
+texture_repeat = 2
+material = ExtResource("6_ge41j")
+position = Vector2(-6, -1)
+points = PackedVector2Array(-1, 0, 11, 0, -1, -1, 9.90509, -0.999999, 11, -1, 0, -3, 10, -3, 11, -4, 0, -5, 11, -5, 11, -6, 0, -7, 7.6111, -7.69192, 12, -8, 10, -8, -1, -9, 13, -10, 12, -10, -1, -11, 13, -11, 13, -12, 7.40301, -12.4179, -1, -13, 12, -14, 9.21397, -14.1624, 0, -15, 12, -16, 1, -17, 0, -17)
+width = 2.0
+texture = SubResource("GradientTexture2D_ccc72")
+texture_mode = 1
+joint_mode = 2
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="Exclaim" type="Label" parent="Display"]
+unique_name_in_owner = true
+visible = false
+offset_left = -19.0
+offset_top = -44.0
+offset_right = 21.0
+offset_bottom = -21.0
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+text = "!"
+label_settings = SubResource("LabelSettings_w6oec")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Stunned" type="Label" parent="Display"]
+unique_name_in_owner = true
+visible = false
+offset_left = -15.0
+offset_top = -32.0
+offset_right = 25.0
+offset_bottom = -8.33333
+size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 16
+label_settings = ExtResource("4_tm3xj")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="Display/Stunned"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 7.0
+offset_right = 47.0
+offset_bottom = 30.0
+rotation = -0.0872665
+theme_override_font_sizes/font_size = 16
+text = "✦"
+label_settings = ExtResource("4_tm3xj")
+
+[node name="Label2" type="Label" parent="Display/Stunned"]
+layout_mode = 0
+offset_left = 17.0
+offset_top = 8.0
+offset_right = 57.0
+offset_bottom = 31.0
+rotation = 0.226893
+scale = Vector2(0.75, 0.75)
+theme_override_font_sizes/font_size = 16
+text = "✦"
+label_settings = ExtResource("4_tm3xj")
+
+[connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="Hit" from="HurtBoxComponent2D" to="." method="_on_hurt_box_component_2d_hit"]

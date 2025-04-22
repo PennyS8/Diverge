@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://sek8dppwx6u7"]
+
+[ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="1_7l8np"]
+[ext_resource type="Texture2D" uid="uid://clki05ohorkp6" path="res://assets/environment/downtown_dungeon/custom_sprites/fire-bulb.png" id="2_8htjt"]
+
+[sub_resource type="Gradient" id="Gradient_2eo57"]
+colors = PackedColorArray(0.113725, 0.0627451, 0.258824, 0.94902, 0.517647, 0.156863, 0.458824, 0.752941)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7l8np"]
+gradient = SubResource("Gradient_2eo57")
+width = 24
+height = 1
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_1whhd"]
+gradient = SubResource("Gradient_2eo57")
+width = 24
+height = 1
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 1)
+
+[node name="FirewallHorizontal" type="HBoxContainer"]
+z_index = 2
+offset_right = 58.0
+offset_bottom = 15.0
+theme_override_constants/separation = 0
+
+[node name="Bar" type="TextureRect" parent="."]
+material = ExtResource("1_7l8np")
+layout_mode = 2
+texture = SubResource("GradientTexture2D_7l8np")
+stretch_mode = 3
+flip_v = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+material = ExtResource("1_7l8np")
+layout_mode = 2
+texture = ExtResource("2_8htjt")
+stretch_mode = 3
+
+[node name="Bar2" type="TextureRect" parent="."]
+material = ExtResource("1_7l8np")
+layout_mode = 2
+texture = SubResource("GradientTexture2D_1whhd")
+stretch_mode = 3

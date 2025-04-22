@@ -48,3 +48,8 @@ func _on_camera_boundry_2_body_entered(_body):
 
 func _on_camera_boundry_body_entered(_body):
 	pass # Replace with function body.
+
+
+func _on_hallway_west_body_entered(body):
+	first_played = true
+	second_played = true

@@ -37,22 +37,24 @@ func _unhandled_input(event: InputEvent) -> void:
 
 func _process(_delta):
 	# if we're in cutscene or scene transition
-	if !lock_camera:
-		var areas = $Area2D.get_overlapping_areas()
-		if !areas: # Check if null (or empty)
-			return
-		
-		var area = areas[0]
-		if area != curr_camera_boundry: # Only set the camera limits once
-			curr_camera_boundry = area
-			
-			var top_right : Vector2 = area.get_node("LimitTopRight").global_position
-			var bottom_left : Vector2 = area.get_node("LimitBottomLeft").global_position
-			camera.limit_top = top_right.y
-			camera.limit_right = top_right.x
-			camera.limit_bottom = bottom_left.y
-			camera.limit_left = bottom_left.x
+	update_cam_limits()
 
+func update_cam_limits():
+	var areas = $Area2D.get_overlapping_areas()
+	if !areas: # Check if null (or empty)
+		return
+	
+	var area = areas[0]
+	if area != curr_camera_boundry: # Only set the camera limits once
+		curr_camera_boundry = area
+		
+		var top_right : Vector2 = area.get_node("LimitTopRight").global_position
+		var bottom_left : Vector2 = area.get_node("LimitBottomLeft").global_position
+		camera.limit_top = top_right.y
+		camera.limit_right = top_right.x
+		camera.limit_bottom = bottom_left.y
+		camera.limit_left = bottom_left.x
+		
 func check_unlock_hook():
 	@warning_ignore("unused_variable")
 	var deinv : RestrictedInventory = load("res://modules/ui/hud/wyvern_inv/equipment_inventory.tres")
@@ -61,8 +63,7 @@ func check_unlock_hook():
 
 func _camera_move():
 	if !lock_camera:
-		var relative_mouse_pos = get_global_mouse_position() - global_position
-		camera.global_position = global_position + (0.1*relative_mouse_pos)
+		camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
 		camera.position_smoothing_enabled = true
 		
 func can_attack():
@@ -77,7 +78,10 @@ func fling():
 func pull():
 	pass
 
-func enter_cutscene(camera_pos):
+func enter_cutscene(camera_pos : Vector2 = Vector2.INF):
+	if camera_pos == Vector2.INF:
+		camera_pos = camera.global_position
+	
 	# hide hp
 	get_tree().get_first_node_in_group("gui").hide()
 	
@@ -85,6 +89,8 @@ func enter_cutscene(camera_pos):
 	fsm.change_state("NoDash")
 	
 	velocity = Vector2.ZERO
+	dir = Vector2.ZERO
+	
 	lock_camera = true
 	in_cutscene = true
 	
@@ -99,28 +105,47 @@ func enter_cutscene(camera_pos):
 	cam_tween.tween_property(camera, "global_position", camera_pos, cam_tween_time)
 	await cam_tween.finished
 	
-	camera.position_smoothing_enabled = true
 	return
 	
 func exit_cutscene():
+	print("hello!!")
 	get_tree().get_first_node_in_group("gui").show()
-	fsm.change_state("Idle")
+
+	#fsm.change_state("Idle")
 	fsm.change_state("CanAttack")
 	fsm.change_state("CanDash")
 	
 	lock_camera = false
 	in_cutscene = false
-	var relative_mouse_pos = get_global_mouse_position() - global_position
-	camera.global_position = global_position + (0.25*relative_mouse_pos)
+	camera.position_smoothing_enabled = true
+	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
 	
-func do_walk(global_point : Vector2, _speed_percentage : float = 1.0):
+## To be called within a cutscene to move the player to a specific point.
+## [param speed_percentage] A value that represents a percentage of the player's normal walk speed
+func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 	# setting dir puts player into walk state; this manages all our animations and logic and stuff
 	dir = global_position.direction_to(global_point)
 	
-	var cutscene_marker : Area2D = cutscene_marker_packed.instantiate()
-	get_tree().current_scene.add_child(cutscene_marker)
+	var speed_scaled = $PlayerFSM/Movement/Walk.ground_speed * speed_percentage
+	var distance_to_end = global_position.distance_to(global_point)
 	
-	cutscene_marker.global_position = global_point
+	var walk_timer = get_tree().create_timer(distance_to_end / speed_scaled, true)
+	#var cutscene_marker : Area2D = cutscene_marker_packed.instantiate()
+	#get_tree().current_scene.call_deferred("add_child", cutscene_marker)
+	#
+	#cutscene_marker.global_position = global_point
 	
-	await cutscene_marker.body_entered
+	await walk_timer.timeout
 	dir = Vector2.ZERO
+	return
+
+## Checks to see if a player is current standing inside of an EncounterBoundry
+## If so, it returns the boundry itself
+func check_encounter():
+	var areas = $EncounterChecker.get_overlapping_areas()
+	if !areas: # Check if null (or empty)
+		return null
+		
+	var area = areas[0]
+	if area is EncounterArea:
+		return area
