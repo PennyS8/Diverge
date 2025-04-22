@@ -1,7 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://4ybabjj78svj"]
+[gd_scene load_steps=36 format=3 uid="uid://4ybabjj78svj"]
 
 [ext_resource type="Script" uid="uid://curavygw4hv3p" path="res://modules/entities/npcs/olli/olli.gd" id="1_id1dy"]
-[ext_resource type="Texture2D" uid="uid://brr86qmrhun1m" path="res://modules/entities/npcs/Olli/sprites/Olli-Sheet.png" id="2_0y2nu"]
+[ext_resource type="Texture2D" uid="uid://brr86qmrhun1m" path="res://modules/entities/npcs/olli/sprites/Olli-Sheet.png" id="2_0y2nu"]
+[ext_resource type="Texture2D" uid="uid://brr86qmrhun1m" path="res://modules/entities/npcs/Olli/sprites/Olli-Sheet.png" id="4_q1on1"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="24_el37b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n7koy"]
@@ -15,6 +16,18 @@ region = Rect2(24, 0, 24, 48)
 [sub_resource type="AtlasTexture" id="AtlasTexture_hce6s"]
 atlas = ExtResource("2_0y2nu")
 region = Rect2(24, 1, 24, 47)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vf2nh"]
+atlas = ExtResource("4_q1on1")
+region = Rect2(24, 48, 24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tqtm2"]
+atlas = ExtResource("4_q1on1")
+region = Rect2(24, 96, 24, 48)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mon1a"]
+atlas = ExtResource("4_q1on1")
+region = Rect2(24, 144, 24, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0y2nu"]
 atlas = ExtResource("2_0y2nu")
@@ -124,6 +137,30 @@ animations = [{
 "loop": true,
 "name": &"idle",
 "speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vf2nh")
+}],
+"loop": true,
+"name": &"idle_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tqtm2")
+}],
+"loop": true,
+"name": &"idle_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mon1a")
+}],
+"loop": true,
+"name": &"idle_up",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -251,8 +288,7 @@ shape = SubResource("CapsuleShape2D_n7koy")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = ExtResource("24_el37b")
-position = Vector2(1, -25)
 sprite_frames = SubResource("SpriteFrames_hcb0l")
 animation = &"idle"
 autoplay = "idle"
-frame_progress = 0.816347
+offset = Vector2(0, -24)

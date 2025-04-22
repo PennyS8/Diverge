@@ -9,6 +9,7 @@ do player.do_walk((player.global_position + Vector2(0,-8)), 0.1)
 do wait(1)
 do player.do_walk(spike_list[0].global_position, 0.1)
 do player.do_walk((spike_list[0].global_position + Vector2(8,0)), 0.1)
+do olli.do_walk(spike_list[2].global_position)
 Olli: Sorry I couldn't hang out last night. I had practice until 7, and then I was up all-night studying for Mr. Turner's history test.
 Juniper: For Friday?
 Olli: For today! Remember we voted as a class to move it up? So we could have a pizza party on Friday. [fade start=5 length=35]Which I'm looking forward to, since...[/fade]
@@ -17,6 +18,7 @@ Olli: ... and we all know that vegetables are just a culinary term, not botanica
 Juniper: Sorry, I gotta run. [i]Don't panic don't panic don't panic[/i]
 Olli: What?
 do player.do_walk(spike_list[1].global_position, 0.1)
+do olli.do_walk(spike_list[3].global_position)
 Juniper: See you!
 do player.exit_cutscene()
 => END
