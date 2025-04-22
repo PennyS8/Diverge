@@ -21,6 +21,8 @@ var transitioning := false
 var found_player := false
 
 var overlay : Control
+var freeze_frame_overlay : Control
+
 func _ready():
 	var scene = get_tree().current_scene
 	if scene is Control or scene is CanvasLayer:
@@ -128,3 +130,22 @@ func black_white():
 func start_deadeye():
 	overlay.start_mode()
 	await overlay.done
+
+func enter_tutorial(tutorial:String):
+	var tutorial_overlays : Array[Node] = get_tree().get_nodes_in_group("tutorial_overlay")
+	for tutorial_overlay in tutorial_overlays:
+		if tutorial == tutorial_overlay.name:
+			get_tree().paused = true
+			
+			player.fsm.change_state("NoAttack")
+			player.fsm.change_state("NoDash")
+			
+			player.velocity = Vector2.ZERO
+			player.dir = Vector2.ZERO
+			player.in_cutscene = true
+			
+			match tutorial:
+				"AttackTutorial":
+					tutorial_overlay.start_attack_tutorial()
+				_:
+					return

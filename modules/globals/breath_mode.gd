@@ -60,7 +60,6 @@ func start_mode():
 		# Add to list to free when done
 		current_selectables.append(selector)
 
-	
 func select_body(body : TetherableBody):
 	current_bodies_selected.append(body)
 
