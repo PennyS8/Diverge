@@ -1,9 +1,9 @@
 ~ start
+do! LevelManager.player.enter_cutscene()
 Juniper: Oh Shi--
 Shaded Figure: ...
 Juniper: tf is that?
-=> END
-
-~ instruct
-Point your cursor toward the threat and press [i]Left Click[/i] to attack
+do! LevelManager.player.exit_cutscene()
+do! get_tree().get_first_node_in_group("enemy").get_node("ShadeFSM").disabled = false
+do! get_tree().get_first_node_in_group("enemy").get_node("ShadeFSM").change_state("Chase")
 => END
