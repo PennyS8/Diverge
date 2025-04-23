@@ -1,3 +1,4 @@
+class_name CameraBoundry
 extends Area2D
 
 @onready var top = $LimitTopRight.global_position.y
