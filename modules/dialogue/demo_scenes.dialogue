@@ -67,6 +67,33 @@ Juniper: That's... me.
 Juni: You're sad.
 - No I'm not.
 - What are you talking about?
+Juni: You look sad. And scared.
+- What are you doing here?
+	Juni: Wolf and I are doing quiet time.
+	Juniper: I forgot I named my bear "Wolf."
+	
+- Whatcha got there?
+	Juni: My teddy. Her name is-
+	Juniper: Wolf. Why'd I name her that again?
+
+Juni: You're not doing quiet time right. You're being loud.
+Juniper: Sorry.
+Juni: In...hold...out...hold. In...hold...out...hold... Why aren't you breathing?
+- I am breathing.
+	Juni: Not the right way. During quiet time you're supposed to take a [i][b]deep breath[/b][/i].
+- That doesn't do anything.
+	Juni: It can! 
+	Juniper: We don't even do quiet time anymore.
+	Juni: Why?
+	Juniper: At some point, I--we-- just stop.
+	Juni: That's a silly choice to make.
+	Juniper: Yeah. I guess it was.
+	Juni: You should start again. 
+	Juniper: I don't know if I remember how.
+	Juni: Well, during quiet time you're supposed to take a [i][b]deep breath[/b][/i].
+Juni: In for four, hold for four, out for four, then hold for four. Again and again until you get a little bit bored.
+Juniper: A [i][b]deep breath[/b][/i].
+
 do player.exit_cutscene()
 => END
 
