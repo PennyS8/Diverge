@@ -11,11 +11,14 @@ do player.do_walk(spike_list[0].global_position, 0.1)
 do player.do_walk((spike_list[0].global_position + Vector2(8,0)), 0.1)
 do olli.do_walk(spike_list[2].global_position)
 Olli: Sorry I couldn't hang out last night. I had practice until 7, and then I was up all-night studying for Mr. Turner's history test.
-Juniper: For Friday?
+- For Friday?
+- For later this week?
 Olli: For today! Remember we voted as a class to move it up? So we could have a pizza party on Friday. [fade start=5 length=35]Which I'm looking forward to, since...[/fade]
 Juniper: [i]Oh crap. It is today. I swear I wrote that down. I should have written that down. I didn't do well on the last test, and if this one doesn't go well because I didn't study again—[/i]
 Olli: ... and we all know that vegetables are just a culinary term, not botanical one, so technically, fruit not only belongs on pizza, but defines it. You understand.
-Juniper: Sorry, I gotta run. [i]Don't panic don't panic don't panic[/i]
+-  Sorry, I gotta run.
+-  I have to... do stuff...
+Juniper: [i]Don't panic don't panic don't panic[/i]
 Olli: What?
 do player.do_walk(spike_list[1].global_position, 0.1)
 do olli.do_walk(spike_list[3].global_position)
@@ -47,16 +50,24 @@ Juniper: Oh no. I have overdue books. I need to get my library books before I ca
 
 #library
 ~ library_entry
+do player.enter_cutscene(player.global_position)
 Juniper: It's quiet.
 #goes to favorite corner
 Juniper: And comfy.
-do wait(2)
-Juniper: What's this thing doing here?
-#take a beat
-Juniper: Oh, Ms. Cruz showed me this. It's for breathing.
-#maybe flashback
-Juniper: Hm. Maybe that will help. What was it again?
-#take a beat
+Juniper: And the lights aren't buzzing.
+do wait(1)
+Juniper: I want to go sit in my corner.
+do player.do_walk(spike_list[0].global_position, 0.1)
+Juniper: Who's sitting over there?
+do player.do_walk(spike_list[1].global_position, 0.1)
+do player.do_walk(spike_list[2].global_position, 0.1)
+do player.do_walk(spike_list[3].global_position, 0.1)
+do player.do_walk(spike_list[4].global_position, 0.1)
+Juniper: That's... me.
+Juni: You're sad.
+- No I'm not.
+- What are you talking about?
+do player.exit_cutscene()
 => END
 
 #classroom

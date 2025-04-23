@@ -31,6 +31,9 @@ var curr_camera_boundry : Area2D
 
 var cutscene_marker_packed = preload("res://modules/objects/debug/cutscene_walk_point.tscn")
 
+#makes sure certain dialogue popups only appear once
+var dialogue_tracker = {"closet": false, "library": false}
+
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(dialogue_done)
 	

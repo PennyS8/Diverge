@@ -12,7 +12,8 @@ func _on_body_entered(body: Node2D) -> void:
 	timer.start(1)
 	await timer.timeout
 	player = LevelManager.player
-	DialogueManager.show_dialogue_balloon(load("res://modules/dialogue/demo_scenes.dialogue"), "hiding_away", [self])
-
+	if(player.dialogue_tracker["closet"] == false):
+		DialogueManager.show_dialogue_balloon(load("res://modules/dialogue/demo_scenes.dialogue"), "hiding_away", [self])
+		player.dialogue_tracker["closet"] = true
 func _on_body_exited(body: Node2D) -> void:
 	self.queue_free()

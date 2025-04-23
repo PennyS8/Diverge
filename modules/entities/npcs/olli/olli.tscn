@@ -1,8 +1,7 @@
-[gd_scene load_steps=36 format=3 uid="uid://4ybabjj78svj"]
+[gd_scene load_steps=35 format=3 uid="uid://4ybabjj78svj"]
 
 [ext_resource type="Script" uid="uid://curavygw4hv3p" path="res://modules/entities/npcs/olli/olli.gd" id="1_id1dy"]
 [ext_resource type="Texture2D" uid="uid://brr86qmrhun1m" path="res://modules/entities/npcs/olli/sprites/Olli-Sheet.png" id="2_0y2nu"]
-[ext_resource type="Texture2D" uid="uid://brr86qmrhun1m" path="res://modules/entities/npcs/Olli/sprites/Olli-Sheet.png" id="4_q1on1"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="24_el37b"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_n7koy"]
@@ -18,15 +17,15 @@ atlas = ExtResource("2_0y2nu")
 region = Rect2(24, 1, 24, 47)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vf2nh"]
-atlas = ExtResource("4_q1on1")
+atlas = ExtResource("2_0y2nu")
 region = Rect2(24, 48, 24, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tqtm2"]
-atlas = ExtResource("4_q1on1")
+atlas = ExtResource("2_0y2nu")
 region = Rect2(24, 96, 24, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mon1a"]
-atlas = ExtResource("4_q1on1")
+atlas = ExtResource("2_0y2nu")
 region = Rect2(24, 144, 24, 48)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0y2nu"]
