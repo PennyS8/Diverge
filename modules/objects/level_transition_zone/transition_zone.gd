@@ -102,5 +102,7 @@ func break_blocker():
 		var tween = create_tween()
 		tween.tween_property(blocker, "modulate:a", 0.0, 2.0)
 		await tween.finished
-		blocker.queue_free()
+		# Checks to make sure blocker still exists after await
+		if blocker:
+			blocker.queue_free()
 	

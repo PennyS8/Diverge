@@ -81,9 +81,8 @@ func start_encounter():
 		enemy.fsm.change_state("Spawn")
 
 		enemy.global_position = spawnpoint.global_position
-		enemy.health_component.Died.connect(enemy_defeated.bind(enemy))
 		
-		current_enemies.append(enemy)
+		enemy_added(enemy)
 	
 	await current_enemies[0].spawned
 	#await LevelManager.player.exit_cutscene()
@@ -100,7 +99,18 @@ func enemy_defeated(enemy):
 	
 	current_enemies.erase(enemy)
 	
+	if enemy.name == "ShadeStack" or enemy.name == "BossStack":
+		await get_tree().create_timer(0.5, true).timeout
+	
 	if current_enemies.is_empty():
 		end_encounter()
+	
 
+# Adds enemies to the encounter that are spawned while encounter is active
+func enemy_added(enemy):
+	if current_enemies.has(enemy):
+		return
+	
+	enemy.health_component.Died.connect(enemy_defeated.bind(enemy))
+	current_enemies.append(enemy)
 #endregion

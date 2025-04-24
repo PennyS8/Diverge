@@ -60,6 +60,16 @@ func _physics_process(_delta):
 				leash_owner.add_sibling(cocoon)
 				cocoon.global_position = leash_owner.global_position
 				
+				# Removes both leash owner and shade from encounter
+				var encounter_entrances = get_tree().get_nodes_in_group("encounter_entrance")
+				for entrance in encounter_entrances:
+					if entrance.encounter_active:
+						# Adds cocoon to prevent encounter from being disabled
+						entrance.enemy_added(cocoon)
+						
+						entrance.enemy_defeated(self)
+						entrance.enemy_defeated(leash_owner)
+				
 				# Store the healths of each shade to be re-instantiated later
 				var trigger_health = get_node("%Health").health
 				var main_health = leash_owner.get_node("%Health").health
@@ -86,6 +96,13 @@ func _physics_process(_delta):
 			elif leash_owner.is_in_group("cocoon") and self.is_in_group("enemy"):
 				# If our cocoon already exists, add self to the stack
 				leash_owner.shade_healths_stored.append(get_node("%Health").health)
+				
+				# Removes shade from encounter once it has been cocooned
+				var encounter_entrances = get_tree().get_nodes_in_group("encounter_entrance")
+				for entrance in encounter_entrances:
+					if entrance.encounter_active:
+						entrance.enemy_defeated(self)
+				
 				self.queue_free()
 
 # Retracts the length of the yarn, pulling the tethered body to the player
