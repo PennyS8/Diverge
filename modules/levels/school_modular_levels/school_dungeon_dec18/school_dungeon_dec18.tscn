@@ -214,7 +214,7 @@ position = Vector2(204, 186)
 position = Vector2(-204, 186)
 
 [node name="0" type="Marker2D" parent="Rooms/Foyer/Entrance" groups=["level_entrance"]]
-position = Vector2(-854, 414)
+position = Vector2(594, 404)
 
 [node name="Exit" type="Node2D" parent="Rooms/Foyer"]
 y_sort_enabled = true
