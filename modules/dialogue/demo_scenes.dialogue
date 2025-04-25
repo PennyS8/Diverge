@@ -1,0 +1,123 @@
+~ start
+do player.enter_cutscene(player.global_position)
+Olli: Juniper! Over here!
+do player.do_walk((player.global_position + Vector2(8,0)), 0.1)
+do wait(0.3)
+do player.do_walk((player.global_position + Vector2(-8,0)), 0.1)
+do wait(0.3)
+do player.do_walk((player.global_position + Vector2(0,-8)), 0.1)
+do wait(1)
+do player.do_walk(spike_list[0].global_position, 0.1)
+do player.do_walk((spike_list[0].global_position + Vector2(8,0)), 0.1)
+do olli.do_walk(spike_list[2].global_position)
+Olli: Sorry I couldn't hang out last night. I had practice until 7, and then I was up all-night studying for Mr. Turner's history test.
+- For Friday?
+- For later this week?
+Olli: For today! Remember we voted as a class to move it up? So we could have a pizza party on Friday. [fade start=5 length=35]Which I'm looking forward to, since...[/fade]
+Juniper: [i]Oh crap. It is today. I swear I wrote that down. I should have written that down. I didn't do well on the last test, and if this one doesn't go well because I didn't study again—[/i]
+Olli: ... and we all know that vegetables are just a culinary term, not botanical one, so technically, fruit not only belongs on pizza, but defines it. You understand.
+-  Sorry, I gotta run.
+-  I have to... do stuff...
+Juniper: [i]Don't panic don't panic don't panic[/i]
+Olli: What?
+do player.do_walk(spike_list[1].global_position, 0.1)
+do olli.do_walk(spike_list[3].global_position)
+Juniper: See you!
+do player.exit_cutscene()
+=> END
+
+~ hiding_away
+do player.enter_cutscene(player.global_position)
+Juniper: It's okay. I'm okay. It's just a test. I just need to go back to class...but it's not just a test and if I fail it my grade is going to down from a C to a D and I've never gotten anything less than an A on my report card and...
+Ping!
+Olli: Hey where are you? Class starts soon.
+Juniper: Shoot. I need to go back.
+do player.exit_cutscene()
+=> END
+
+~ this_changed
+Juniper: This... doesn't seem right.
+=> END
+
+#tutorial
+
+#puzzles
+~ safety
+Juniper: I want to go to the library. I need to go to the library. It's quiet and calm and there's books and it'll be alright if I go there.[wait=1]
+Juniper: Oh no. I have overdue books. I need to get my library books before I can look the librarian in the eye! She'd be so mad at me![wait = .5] But I don't remember having them at home last night, so they must be around here somewhere...
+=> END
+
+#library
+~ library_entry
+do player.enter_cutscene(player.global_position)
+Juniper: It's quiet.
+#goes to favorite corner
+Juniper: And comfy.
+Juniper: And the lights aren't buzzing.
+do wait(1)
+Juniper: I want to go sit in my corner.
+do player.do_walk(spike_list[0].global_position, 0.1)
+Juniper: Who's sitting over there?
+do player.do_walk(spike_list[1].global_position, 0.1)
+do player.do_walk(spike_list[2].global_position, 0.1)
+do player.do_walk(spike_list[3].global_position, 0.1)
+do player.do_walk(spike_list[4].global_position, 0.1)
+Juniper: That's... me.
+Juni: You're sad.
+- No I'm not.
+- What are you talking about?
+Juni: You look sad. And scared.
+- What are you doing here?
+	Juni: Wolf and I are doing quiet time.
+	Juniper: I forgot I named my bear "Wolf."
+	
+- Whatcha got there?
+	Juni: My teddy. Her name is-
+	Juniper: Wolf. Why'd I name her that again?
+
+Juni: You're not doing quiet time right. You're being loud.
+Juniper: Sorry.
+Juni: In...hold...out...hold. In...hold...out...hold... Why aren't you breathing?
+- I am breathing.
+	Juni: Not the right way. During quiet time you're supposed to take a [i][b]deep breath[/b][/i].
+- That doesn't do anything.
+	Juni: It can! 
+	Juniper: We don't even do quiet time anymore.
+	Juni: Why?
+	Juniper: At some point, I--we-- just stop.
+	Juni: That's a silly choice to make.
+	Juniper: Yeah. I guess it was.
+	Juni: You should start again. 
+	Juniper: I don't know if I remember how.
+	Juni: Well, during quiet time you're supposed to take a [i][b]deep breath[/b][/i].
+Juni: In for four, hold for four, out for four, then hold for four. Again and again until you get a little bit bored.
+Juniper: A [i][b]deep breath[/b][/i].
+do wait(1)
+Juniper: So why are you doing quiet time right now?
+Juni: Because quiet time helps me slow down. And sometimes, things feel different after I do quiet time. Even if they didn't really change.
+Juniper: Hm.
+do player.exit_cutscene()
+=> END
+
+#classroom
+
+~ taking_the_test
+Juniper: [i] I made it back! [/i]
+Olli: There you are! Class is about to start!
+Olli: You're gonna ace it.
+Juniper: ...yeah. I just want this over with. [i] Surely a history test will be easier than fighting shadows...Like the librarian said. In...hold...out...hold...[/i]
+=> END
+
+#home
+~ to_room
+Juniper: I just want to sit in my room and...
+do wait(1)
+Juniper: [i]It's messy.[/i]
+Juniper: [i]It's messy and it's wrong and I- I- [/i]
+=> END
+
+~ post_battle
+Juniper: I did it! 
+Juniper: I did it.
+Juniper: [i]Sigh.[/i] I think I'm gonna go crochet for a bit.
+=> END
