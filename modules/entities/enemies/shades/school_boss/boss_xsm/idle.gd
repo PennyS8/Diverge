@@ -2,7 +2,7 @@
 extends StateSound
 
 const SPAWN_RADIUS = 96.0
-const HAND_MARGIN = 12
+const SHADE_MARGIN = 12
 const SHADE_COUNT = 3
 
 var shade_scene = preload("res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn")
@@ -12,8 +12,8 @@ var spawn = false
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	add_timer("Test", 1.0)
-	#spawn_shades()
+	# Adds delay to allow for player to load in before boss spawns
+	add_timer("SpawnDelay", 1.0)
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
@@ -23,33 +23,40 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	if spawn:
-		while EnemyManager.hand_spawn_counter.size() < EnemyManager.MAX_HANDS:
-			var hand_node = shade_scene.instantiate()
+	var stack_found = false
+	for enemy in EnemyManager.hand_spawn_counter:
+		if enemy.name == "ShadeStack":
+			stack_found = true
+	
+	if spawn and !stack_found:
+		if EnemyManager.hand_spawn_counter.size() < EnemyManager.MAX_HANDS:
+			## TODO: Change this to spawn hands instead of shades after graduation
+			var shade_node = shade_scene.instantiate()
 			
 			# Gets path of boss in the tree and adds child to same path
 			var node = get_node(target.get_parent().get_path())
-			node.add_child(hand_node)
+			node.add_child(shade_node)
 			
 			# Sets hands spawn point to random point on boss's radius 
 			var boss_location = target.global_position
-			var hand_location = get_spawn_point(boss_location, SPAWN_RADIUS)
-			var hand_x = hand_location.x
-			var hand_y = hand_location.y
+			var shade_location = get_spawn_point(boss_location, SPAWN_RADIUS)
+			var shade_x = shade_location.x
+			var shade_y = shade_location.y
 			
 			# Only called if there are overlapping hands
-			while EnemyManager.check_overlapping_hands(hand_x, hand_y, HAND_MARGIN) == true:
-				hand_location = get_spawn_point(boss_location, SPAWN_RADIUS)
-				hand_x = hand_location.x
-				hand_y = hand_location.y
+			while EnemyManager.check_overlapping_hands(shade_x, shade_y, SHADE_MARGIN) == true:
+				shade_location = get_spawn_point(boss_location, SPAWN_RADIUS)
+				shade_x = shade_location.x
+				shade_y = shade_location.y
 				
 			
-			hand_node.global_position = hand_location
-			hand_node.follow_object = get_tree().get_first_node_in_group("player")
-			hand_node.fsm.change_state("Surprised")
+			shade_node.global_position = shade_location
+			shade_node.follow_object = get_tree().get_first_node_in_group("player")
+			shade_node.fsm.change_state("Surprised")
 			
-			EnemyManager.add_hand(hand_node, hand_location)
-			EnemyManager.add_boss_spawned_enemy(hand_node)
+			EnemyManager.add_hand(shade_node, shade_location)
+			## TODO: Comment this out when hands are properly implemented
+			#EnemyManager.add_boss_spawned_enemy(shade_node)
 
 # Helper function to get a randomized point on a radius
 func get_spawn_point(center : Vector2, radius : float) -> Vector2:
@@ -60,6 +67,7 @@ func get_spawn_point(center : Vector2, radius : float) -> Vector2:
 	return point
 
 # Simple helper method to spawn regular shades
+## NOTE: This function will be used once hands are implemented
 func spawn_shades(): 
 	for i in range(1, SHADE_COUNT):
 		var shade_node = shade_scene.instantiate()

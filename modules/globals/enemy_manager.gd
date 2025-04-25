@@ -54,8 +54,9 @@ func mark_for_disengage(enemy : CharacterBody2D):
 	timer.start(randf_range(1.0, 3.0))
 	marked_for_disengage.set(enemy, timer)
 
+#region Boss Hand spawning / removing functions
 func add_hand(hand : CharacterBody2D, spawn_location : Vector2):
-	if hand_spawn_counter.size() < MAX_HANDS:
+	if !hand_spawn_counter.has(hand):
 		hand_spawn_counter.set(hand, spawn_location)
 
 func remove_hand(hand : CharacterBody2D):
@@ -89,9 +90,12 @@ func check_overlapping_hands(new_hand_x : int, new_hand_y : int, margin : int) -
 	
 	# If we haven't found an overlap, return false
 	return false
+#endregion
 
+#region Boss enemy spawning outside of hands
 func add_boss_spawned_enemy(enemy : CharacterBody2D):
-	boss_spawned_enemies.append(enemy)
+	if !boss_spawned_enemies.has(enemy):
+		boss_spawned_enemies.append(enemy)
 
 func remove_boss_spawned_enemy(enemy : CharacterBody2D):
 	if boss_spawned_enemies.has(enemy):
@@ -104,3 +108,4 @@ func remove_boss_spawned_enemies():
 			enemy._on_health_component_died()
 	
 	boss_spawned_enemies.clear()
+#endregion

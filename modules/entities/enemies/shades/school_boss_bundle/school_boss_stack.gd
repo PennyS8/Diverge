@@ -17,6 +17,8 @@ func _ready() -> void:
 	timer.start()
 
 func _on_health_component_died() -> void:
+	GameManager.hitlag()
+	
 	if shade_healths_stored.is_empty():
 		shade_healths_stored.append(40)
 		shade_healths_stored.append(40)
@@ -47,7 +49,6 @@ func _on_health_component_died() -> void:
 
 func _on_hurt_box_component_2d_hit(_area) -> void:
 	$AnimationPlayer.play("hit")
-	GameManager.hitlag()
 
 func _on_timer_timeout() -> void:
 	EnemyManager.remove_boss_spawned_enemies()

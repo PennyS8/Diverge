@@ -10,6 +10,8 @@ func _on_health_component_died() -> void:
 		shade_healths_stored.append(40)
 		shade_healths_stored.append(40)
 	
+	EnemyManager.remove_hand(self)
+	
 	var angle_offset = deg_to_rad(360.0/shade_healths_stored.size())
 
 	for i in range(1, shade_healths_stored.size()+1):
@@ -26,6 +28,8 @@ func _on_health_component_died() -> void:
 		var split_pos = Vector2(cos(angle_offset*i), sin(angle_offset*i))
 		enemy.set_deferred("global_position", global_position + split_pos)
 		enemy.get_node("%Health").set_deferred("health", shade_healths_stored[i-1])
+		
+		EnemyManager.add_hand(enemy, enemy.global_position)
 	$AnimationPlayer.play("attack")
 
 func _on_hurt_box_component_2d_hit(_area) -> void:
