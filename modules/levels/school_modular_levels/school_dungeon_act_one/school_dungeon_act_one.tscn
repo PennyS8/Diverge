@@ -191,6 +191,9 @@ unlocked_sprite = SubResource("CompressedTexture2D_skfq5")
 [node name="ComplexShade" parent="Rooms/Foyer/Entities" instance=ExtResource("6_0natf")]
 position = Vector2(-48, 96)
 
+[node name="ComplexShade3" parent="Rooms/Foyer/Entities" instance=ExtResource("6_0natf")]
+position = Vector2(40, 55)
+
 [node name="ComplexShade2" parent="Rooms/Foyer/Entities" instance=ExtResource("6_0natf")]
 position = Vector2(72, 120)
 
