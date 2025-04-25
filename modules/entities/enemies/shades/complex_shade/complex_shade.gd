@@ -48,13 +48,6 @@ func pull():
 	$ShadeFSM.change_state("Stunned")
 	super.pull()
 
-# Sets shade to visible without using spawn animation (for shade stacks)
-func set_to_visible():
-	%DisplayComponents/Sprite2D.visible = true
-	%DisplayComponents/Shadow.visible = true
-	%DisplayComponents/SmokeFX.visible = true
-	%DisplayComponents/SpawnFX.visible = false
-
 #region Savegame
 func on_save_game(saved_data:Array[SavedData]):
 	if %Health.health <= 0: 
@@ -83,11 +76,6 @@ func _on_health_component_died() -> void:
 
 
 func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
-	# Hit from shade stack burst interupts spawn animation. This allows shade
-	# to still appear without spawn animation
-	if %DisplayComponents/Sprite2D.visible == false:
-		set_to_visible()
-	
 	# Apply knockback from the Hitbox's "knockback_coefficient"
 	knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
 	

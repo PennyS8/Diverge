@@ -84,6 +84,8 @@ func _physics_process(_delta):
 				leash_owner.get_node("%AttackBox").monitorable = false
 				leash_owner.get_node("%HurtBox").monitoring = false
 				
+				var main = leash_owner
+				
 				# Spawn cocoon
 				leash_owner.reparent(cocoon)
 				
@@ -92,6 +94,7 @@ func _physics_process(_delta):
 				breath_manager.update_tethers_to_cocoon(cocoon)
 				
 				# Remove the enemy that just reached the newly created cocoon
+				main.queue_free()
 				self.queue_free()
 			elif leash_owner.is_in_group("cocoon") and self.is_in_group("enemy"):
 				# If our cocoon already exists, add self to the stack
