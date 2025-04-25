@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=66 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="2_nel61"]
@@ -27,9 +27,7 @@
 [ext_resource type="PackedScene" uid="uid://cjdtl6ek4qp7d" path="res://addons/wyvernbox_prefabs/ground_item_stack_view_2d.tscn" id="23_roxoq"]
 [ext_resource type="Resource" uid="uid://ddkfnyew6hgco" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="25_esxpl"]
 [ext_resource type="PackedScene" uid="uid://33hybnusvk8d" path="res://modules/levels/cafeteria/shade_varieties/complex_ramen_shade.tscn" id="26_nel61"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/pursue.gd" id="27_i5fmv"]
 [ext_resource type="Resource" uid="uid://v46rcraqdjre" path="res://modules/objects/library_book_cafeteria.tres" id="28_anitv"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="28_e56cj"]
 [ext_resource type="Texture2D" uid="uid://kyv7yk10fodg" path="res://assets/environment/downtown_dungeon/custom_sprites/table_water.png" id="29_clobj"]
 [ext_resource type="Texture2D" uid="uid://deyw8rhivgppt" path="res://assets/environment/downtown_dungeon/custom_sprites/table_book.png" id="30_vas0v"]
 [ext_resource type="Texture2D" uid="uid://xif0g3urgtv1" path="res://assets/environment/downtown_dungeon/custom_sprites/ramen.png" id="31_vas0v"]
@@ -912,22 +910,8 @@ position = Vector2(-30, 123)
 [node name="ShadeHPIndicator" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="0"]
 material = SubResource("ShaderMaterial_mjkpu")
 
-[node name="Spawn" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="0"]
-next_state = NodePath("../Alive/Movement/Idle")
-
-[node name="Pursue" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive/Movement/Chase" index="0"]
-script = ExtResource("27_i5fmv")
-
-[node name="Backpedal" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive/Movement/Chase" index="1"]
-next_state = NodePath("../Pursue")
-
-[node name="Combat" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive" index="1"]
-next_state = NodePath("")
-
-[node name="Surprised" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive/Reaction" index="1"]
-script = ExtResource("28_e56cj")
-animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "surprise"
+[node name="Spawn" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="1"]
+unique_name_in_owner = false
 
 [node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/SoftCollision" index="0"]
 scale = Vector2(1.5, 1.5)
