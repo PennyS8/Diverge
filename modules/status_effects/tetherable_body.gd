@@ -65,7 +65,7 @@ func _physics_process(_delta):
 			if (leash_owner.is_in_group("enemy") or leash_owner.is_in_group("boss")) and self.is_in_group("enemy"):
 				# If cocoon doesn't exist, make one as the parent of our Main Shade
 				var cocoon
-				if leash_owner.scene_file_path == boss_path:
+				if leash_owner.is_in_group("boss"):
 					cocoon = load("res://modules/entities/enemies/shades/school_boss_bundle/school_boss_stack.tscn")
 				else: # If leash owner isn't boss, create a normal shade stack
 					cocoon = load("res://modules/entities/enemies/shades/shade_bundle/shade_stack.tscn")
@@ -74,10 +74,16 @@ func _physics_process(_delta):
 				leash_owner.add_sibling(cocoon)
 				cocoon.global_position = leash_owner.global_position
 				
-				# Remove the enemy that just reached the newly created cocoon
-				EnemyManager.add_hand(cocoon, cocoon.global_position)
-				EnemyManager.remove_hand(self)
-				EnemyManager.remove_hand(leash_owner)
+				var boss_spawned = get_tree().get_first_node_in_group("boss")
+				var boss_cocoon_spawned = get_tree().get_first_node_in_group("boss_cocoon")
+				
+				#Checks to see if boss is in scene. If not we don't want to use boss functions
+				if (boss_spawned != null) or (boss_cocoon_spawned != null):
+					EnemyManager.add_hand(cocoon, cocoon.global_position)
+					EnemyManager.remove_hand(self)
+					EnemyManager.remove_hand(leash_owner)
+					EnemyManager.remove_boss_spawned_enemy(self)
+					EnemyManager.remove_boss_spawned_enemy(leash_owner)
 				
 				# Store the healths of each shade to be re-instantiated later
 				var trigger_health = get_node("%Health").health
@@ -107,11 +113,19 @@ func _physics_process(_delta):
 				breath_manager.update_tethers_to_cocoon(cocoon)
 				
 				self.queue_free()
-			elif leash_owner.is_in_group("cocoon") and self.is_in_group("enemy"):
+			elif (leash_owner.is_in_group("cocoon") or leash_owner.is_in_group("boss_cocoon")) and self.is_in_group("enemy"):
 				# If our cocoon already exists, add self to the stack
 				leash_owner.shade_healths_stored.append(get_node("%Health").health)
 				leash_owner.enemy_types_stored.append(scene_file_path)
-				EnemyManager.remove_hand(self)
+				
+				var boss_cocoon_spawned = get_tree().get_first_node_in_group("boss_cocoon")
+				var boss_spawned = get_tree().get_first_node_in_group("boss")
+				
+				#Checks to see if boss is in scene. If not we don't want to use boss functions
+				if (boss_spawned != null) or (boss_cocoon_spawned != null):
+					EnemyManager.remove_hand(self)
+					EnemyManager.remove_boss_spawned_enemy(self)
+					
 				self.queue_free()
 
 # Retracts the length of the yarn, pulling the tethered body to the player

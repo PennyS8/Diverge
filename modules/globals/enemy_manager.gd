@@ -70,8 +70,7 @@ func remove_all_hands():
 	for enemy in hand_spawn_counter:
 		# Sanity check to make sure enemy still exists
 		if enemy:
-			#enemy.fsm.change_state("Death")
-			enemy.queue_free()
+			enemy.fsm.change_state("Death")
 	
 	hand_spawn_counter.clear()
 

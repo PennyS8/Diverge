@@ -163,7 +163,7 @@ repeat = 1
 font = ExtResource("8_wak7w")
 font_color = Color(0.180392, 0, 0.384314, 1)
 
-[node name="BossStack" type="CharacterBody2D" groups=["cocoon"]]
+[node name="BossStack" type="CharacterBody2D" groups=["boss_cocoon"]]
 y_sort_enabled = true
 scale = Vector2(2, 2)
 collision_layer = 0

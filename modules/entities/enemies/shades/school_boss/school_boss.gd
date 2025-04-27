@@ -5,6 +5,11 @@ var default_position
 var crowd_control := false
 
 @onready var fsm = $ShadeFSM
+@onready var damaged_particles = $DisplayComponents/HitFX
+@onready var health_component = %Health
+
+# Used for encounters
+signal spawned
 
 func _ready() -> void:
 	default_position = global_position
@@ -48,10 +53,14 @@ func on_load_game(saved_data:SavedData):
 
 #region Health Components
 func _on_hurt_box_component_hit(_area : HitBoxComponent2D) -> void:
-	pass
+	# If, after damaging, we'll still be alive, stun us
+	if (health_component.health - _area.damage) > 0:
+		%AnimationPlayer.call_deferred("play", "damaged")
+		fsm.call_deferred("change_state", "Stunned")
 
 func _on_health_component_died() -> void:
-	fsm.change_state("Dead")
+	fsm.call_deferred("change_state", "Dead")
+	%AnimationPlayer.call_deferred("play", "die")
 #endregion
 
 #region Tetherable Area

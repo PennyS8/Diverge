@@ -10,7 +10,12 @@ func _on_health_component_died() -> void:
 		shade_healths_stored.append(40)
 		shade_healths_stored.append(40)
 	
-	EnemyManager.remove_hand(self)
+	var boss_spawned = get_tree().get_first_node_in_group("boss")
+	var boss_cocoon_spawned = get_tree().get_first_node_in_group("boss_cocoon")
+	
+	#Checks to see if boss is in scene. If not we don't want to use boss functions
+	if (boss_cocoon_spawned != null) or (boss_spawned != null):
+		EnemyManager.remove_hand(self)
 	
 	var angle_offset = deg_to_rad(360.0/shade_healths_stored.size())
 
@@ -29,7 +34,10 @@ func _on_health_component_died() -> void:
 		enemy.set_deferred("global_position", global_position + split_pos)
 		enemy.get_node("%Health").set_deferred("health", shade_healths_stored[i-1])
 		
-		EnemyManager.add_hand(enemy, enemy.global_position)
+		#Checks to see if boss is in scene. If not we don't want to use boss functions
+		if (boss_cocoon_spawned != null) or (boss_spawned != null):
+			EnemyManager.add_hand(enemy, enemy.global_position)
+			EnemyManager.add_boss_spawned_enemy(enemy)
 	$AnimationPlayer.play("attack")
 
 func _on_hurt_box_component_2d_hit(_area) -> void:

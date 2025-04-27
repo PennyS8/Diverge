@@ -25,8 +25,9 @@ func _after_enter(_args) -> void:
 func _on_update(_delta: float) -> void:
 	var stack_found = false
 	for enemy in EnemyManager.hand_spawn_counter:
-		if enemy.name == "ShadeStack":
-			stack_found = true
+		if enemy:
+			if enemy.name == "ShadeStack":
+				stack_found = true
 	
 	if spawn and !stack_found:
 		if EnemyManager.hand_spawn_counter.size() < EnemyManager.MAX_HANDS:
@@ -55,8 +56,7 @@ func _on_update(_delta: float) -> void:
 			shade_node.fsm.change_state("Surprised")
 			
 			EnemyManager.add_hand(shade_node, shade_location)
-			## TODO: Comment this out when hands are properly implemented
-			#EnemyManager.add_boss_spawned_enemy(shade_node)
+			EnemyManager.add_boss_spawned_enemy(shade_node)
 
 # Helper function to get a randomized point on a radius
 func get_spawn_point(center : Vector2, radius : float) -> Vector2:
