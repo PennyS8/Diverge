@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://ddv7xdgy2vjt"]
 
-[ext_resource type="Shader" uid="uid://hpx4oj7ke2hm" path="res://assets/debug/grayscale.gdshader" id="1_0hnpb"]
-[ext_resource type="Script" uid="uid://bcr45pjwtp6hj" path="res://modules/globals/breath_mode.gd" id="2_wd1eu"]
+[ext_resource type="Shader" path="res://assets/debug/grayscale.gdshader" id="1_0hnpb"]
+[ext_resource type="Script" path="res://modules/globals/breath_mode.gd" id="2_wd1eu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tdd3g"]
 shader = ExtResource("1_0hnpb")

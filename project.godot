@@ -182,6 +182,7 @@ locale/translations_pot_files=PackedStringArray("res://modules/dialogue/dialogue
 2d_physics/layer_10="CameraBoundryCollider"
 2d_physics/layer_11="SoftCollisions"
 2d_physics/layer_13="CocoonHit"
+2d_physics/layer_14="EncounterCheck"
 2d_physics/layer_y="BoxEdge"
 
 [rendering]

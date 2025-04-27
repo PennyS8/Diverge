@@ -21,6 +21,9 @@ var ai_steering := AISteering.new()
 var strafe_factor := 0.25
 ##############
 
+# For encounters to see when spawn animation is finished
+signal spawned
+
 func _ready() -> void:
 	default_position = global_position
 
@@ -56,6 +59,8 @@ func on_save_game(saved_data:Array[SavedData]):
 	# Gets path up to node for reinstantiation
 	my_data.parent_node_path = get_parent().get_path()
 	
+	# Gets path up to node for reinstantiation
+	my_data.parent_node_path = get_parent().get_path()
 	saved_data.append(my_data)
 
 func on_before_load_game():

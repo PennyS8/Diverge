@@ -1,8 +1,8 @@
 @tool
 extends StateSound
 
-@export var ground_speed := 250.0
-@export var acceleration := 6.0
+@export var ground_speed := 60.0
+@export var acceleration := 20.0
 @export var friction := 10
 
 var idle_dir := Vector2.DOWN
