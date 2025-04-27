@@ -49,11 +49,10 @@ func _on_update(_delta: float) -> void:
 				shade_location = get_spawn_point(boss_location, SPAWN_RADIUS)
 				shade_x = shade_location.x
 				shade_y = shade_location.y
-				
 			
-			shade_node.global_position = shade_location
 			shade_node.hurtbox.set_collision_mask_value(3, false)
 			shade_node.fsm.change_state("Spawn")
+			shade_node.global_position = shade_location
 			
 			EnemyManager.add_hand(shade_node, shade_location)
 			EnemyManager.add_boss_spawned_enemy(shade_node)
