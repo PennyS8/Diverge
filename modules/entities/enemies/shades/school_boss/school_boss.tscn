@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://mhjd65car3ej"]
+[gd_scene load_steps=29 format=3 uid="uid://mhjd65car3ej"]
 
 [ext_resource type="Script" uid="uid://cuw0wgpny6ef0" path="res://modules/entities/enemies/shades/school_boss/school_boss.gd" id="1_awdse"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="1_icyt3"]
@@ -11,9 +11,10 @@
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="9_ae4fe"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="9_den2k"]
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_ae4fe"]
-[ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="11_b2rs3"]
+[ext_resource type="Material" uid="uid://c8m31s5vmsyhk" path="res://modules/entities/enemies/shades/fx/better_enemy_shader.tres" id="11_2i40n"]
 [ext_resource type="Texture2D" uid="uid://bl35skok3q2gy" path="res://modules/entities/enemies/shades/complex_shade/sprites/Spawn/Shade_Vortex_FX.png" id="13_b2rs3"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="13_bp3ra"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_hivce"]
 [ext_resource type="Texture2D" uid="uid://na43h01jh8sq" path="res://modules/entities/enemies/shades/complex_shade/sprites/Death/Death_LR_Combined.png" id="15_touv4"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3uvfc"]
@@ -729,7 +730,7 @@ shape = SubResource("CircleShape2D_cilaq")
 
 [node name="DisplayComponents" type="Node2D" parent="."]
 unique_name_in_owner = true
-material = ExtResource("11_b2rs3")
+material = ExtResource("11_2i40n")
 
 [node name="SmokeFX" type="CPUParticles2D" parent="DisplayComponents"]
 modulate = Color(0.101961, 0, 0.243137, 1)
@@ -760,13 +761,13 @@ hframes = 6
 frame = 4
 
 [node name="Shadow" type="Sprite2D" parent="DisplayComponents"]
-use_parent_material = true
+material = ExtResource("13_hivce")
 position = Vector2(0, -11)
 texture = ExtResource("13_bp3ra")
 
 [node name="SpawnFX" type="Sprite2D" parent="DisplayComponents"]
 visible = false
-use_parent_material = true
+material = ExtResource("13_hivce")
 texture = ExtResource("13_b2rs3")
 offset = Vector2(6, -15)
 hframes = 27
