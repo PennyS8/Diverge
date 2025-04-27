@@ -16,6 +16,11 @@ extends State
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	target.movement_speed = state_speed
+	
+	# Checks if enemy was spawned by boss. If so, instantly agro on player
+	if EnemyManager.boss_spawned_enemies.has(target):
+		target.follow_object = get_tree().get_first_node_in_group("player")
+		change_state("Surprised")
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent

@@ -52,8 +52,8 @@ func _on_update(_delta: float) -> void:
 				
 			
 			shade_node.global_position = shade_location
-			shade_node.follow_object = get_tree().get_first_node_in_group("player")
-			shade_node.fsm.change_state("Surprised")
+			shade_node.hurtbox.set_collision_mask_value(3, false)
+			shade_node.fsm.change_state("Spawn")
 			
 			EnemyManager.add_hand(shade_node, shade_location)
 			EnemyManager.add_boss_spawned_enemy(shade_node)
