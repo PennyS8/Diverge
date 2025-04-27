@@ -5,7 +5,6 @@ var default_position
 var crowd_control := false
 
 @onready var fsm = $ShadeFSM
-@onready var damaged_particles = $DisplayComponents/HitFX
 @onready var health_component = %Health
 
 # Used for encounters
