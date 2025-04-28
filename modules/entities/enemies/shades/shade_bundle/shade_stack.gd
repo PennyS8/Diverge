@@ -5,6 +5,8 @@ extends TetherableBody
 
 @onready var sprite = $Display/Sprite2D
 
+@onready var health_component = $HealthComponent
+
 func _on_health_component_died() -> void:
 	if shade_healths_stored.is_empty():
 		shade_healths_stored.append(40)
@@ -38,6 +40,14 @@ func _on_health_component_died() -> void:
 		if (boss_cocoon_spawned != null) or (boss_spawned != null):
 			EnemyManager.add_hand(enemy, enemy.global_position)
 			EnemyManager.add_boss_spawned_enemy(enemy)
+		
+		# Checks if there is an active encounter. Adds shade if it is spawned during it
+		var encounter_entrances = get_tree().get_nodes_in_group("encounter_entrance")
+		for entrance in encounter_entrances: 
+			if entrance.encounter_active:
+				entrance.call_deferred("enemy_added", shade)
+				break
+	
 	$AnimationPlayer.play("attack")
 
 func _on_hurt_box_component_2d_hit(_area) -> void:

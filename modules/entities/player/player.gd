@@ -71,7 +71,8 @@ func update_cam_limits():
 		camera.limit_right = top_right.x
 		camera.limit_bottom = bottom_left.y
 		camera.limit_left = bottom_left.x
-		
+
+# Checks for all player ability unlocks. Unlocks FSM states if item found in inventory
 func check_unlock_hook():
 	if GameManager.inventory_node:
 		var inv : RestrictedInventory = GameManager.inventory_node.inventory
@@ -83,9 +84,10 @@ func check_unlock_hook():
 			
 		if InventoryHelper.is_itemtype_in_inventory(inv, cope_type):
 			$PlayerFSM/Abilities/DeepBreath.disabled = false
-			
-		if InventoryHelper.is_itemtype_in_inventory(inv, dash_type):
-			$PlayerFSM/Movement/Dash.disabled = false
+		
+		# NOTE: This is commented out on purpose. May disable in future.
+		#if InventoryHelper.is_itemtype_in_inventory(inv, dash_type):
+			#$PlayerFSM/Movement/Dash.disabled = false
 	
 	#hook_locked = false
 #	can_attack()

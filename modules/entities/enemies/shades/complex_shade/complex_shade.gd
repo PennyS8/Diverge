@@ -74,6 +74,7 @@ func on_load_game(saved_data:SavedData):
 
 #region Damage Handling
 func _on_health_component_died() -> void:
+	drop_ramen()
 	damaged_particles.restart()
 	fsm.change_state("Dead")
 	%AnimationPlayer.call_deferred("play", "die")
@@ -109,3 +110,12 @@ func fade_in():
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 1.0, 2.0)
 	await tween.finished
+
+func drop_ramen():
+	var ramen = get_node_or_null("RamenTray")
+	if ramen:
+		ramen.get_node("Sprite2D").call_deferred("reparent", ramen.get_node("CanvasGroup"))
+		ramen.get_node("Item").call_deferred("set_collision_mask_value", 4, false)
+		ramen.get_node("Item").set_deferred("monitoring", true)
+		ramen.call_deferred("reparent", get_parent())
+		#starts shining shader

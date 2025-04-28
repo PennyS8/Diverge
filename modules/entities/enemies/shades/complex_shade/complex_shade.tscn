@@ -2838,7 +2838,6 @@ position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_56qhg")
 
 [node name="FSMDebug" type="Label" parent="."]
-visible = false
 offset_left = -29.0
 offset_top = -57.0
 offset_right = 29.0

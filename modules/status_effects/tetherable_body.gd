@@ -85,6 +85,16 @@ func _physics_process(_delta):
 					EnemyManager.remove_boss_spawned_enemy(self)
 					EnemyManager.remove_boss_spawned_enemy(leash_owner)
 				
+        # Removes both leash owner and shade from encounter
+				var encounter_entrances = get_tree().get_nodes_in_group("encounter_entrance")
+				for entrance in encounter_entrances:
+					if entrance.encounter_active:
+						# Adds cocoon to prevent encounter from being disabled
+						entrance.enemy_added(cocoon)
+						
+						entrance.enemy_defeated(self)
+						entrance.enemy_defeated(leash_owner)
+				
 				# Store the healths of each shade to be re-instantiated later
 				var trigger_health = get_node("%Health").health
 				var main_health = leash_owner.get_node("%Health").health
@@ -105,6 +115,8 @@ func _physics_process(_delta):
 				leash_owner.get_node("%AttackBox").monitorable = false
 				leash_owner.get_node("%HurtBox").monitoring = false
 				
+				var main = leash_owner
+				
 				# Spawn cocoon
 				leash_owner.reparent(cocoon)
 				
@@ -112,6 +124,8 @@ func _physics_process(_delta):
 				var breath_manager = get_tree().get_first_node_in_group("deep_breath")
 				breath_manager.update_tethers_to_cocoon(cocoon)
 				
+				# Remove the enemy that just reached the newly created cocoon
+				main.queue_free()
 				self.queue_free()
 			elif (leash_owner.is_in_group("cocoon") or leash_owner.is_in_group("boss_cocoon")) and self.is_in_group("enemy"):
 				# If our cocoon already exists, add self to the stack
@@ -125,8 +139,13 @@ func _physics_process(_delta):
 				if (boss_spawned != null) or (boss_cocoon_spawned != null):
 					EnemyManager.remove_hand(self)
 					EnemyManager.remove_boss_spawned_enemy(self)
-					
-				self.queue_free()
+								
+				# Removes shade from encounter once it has been cocooned
+				var encounter_entrances = get_tree().get_nodes_in_group("encounter_entrance")
+				for entrance in encounter_entrances:
+					if entrance.encounter_active:
+						entrance.enemy_defeated(self)
+								self.queue_free()
 
 # Retracts the length of the yarn, pulling the tethered body to the player
 func fling():
