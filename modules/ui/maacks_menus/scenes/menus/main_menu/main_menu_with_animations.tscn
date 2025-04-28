@@ -1,7 +1,8 @@
-[gd_scene load_steps=20 format=3 uid="uid://dckk4bv55hf05"]
+[gd_scene load_steps=21 format=3 uid="uid://dckk4bv55hf05"]
 
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_4t38d"]
 [ext_resource type="Script" uid="uid://bvofgugpilqu3" path="res://modules/ui/maacks_menus/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_c4gtu"]
+[ext_resource type="PackedScene" uid="uid://b1nvsmlwr435x" path="res://modules/ui/maacks_menus/scenes/credits/credits.tscn" id="3_0w5yg"]
 [ext_resource type="PackedScene" uid="uid://8g6fiydkcauo" path="res://modules/ui/outside_menu.tscn" id="3_bj1hx"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="3_c4gtu"]
 [ext_resource type="Texture2D" uid="uid://bvcmov6th45s7" path="res://assets/environment/downtown_dungeon/custom_sprites/juniperlogo.png" id="4_c4gtu"]
@@ -352,8 +353,11 @@ transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "Open
 graph_offset = Vector2(-180.277, 49)
 
 [node name="MainMenu" instance=ExtResource("1_4t38d")]
+offset_left = -1.0
+offset_right = -1.0
 script = ExtResource("2_c4gtu")
 game_scene_path = "uid://b8ywe7vivb1en"
+credits_packed_scene = ExtResource("3_0w5yg")
 
 [node name="Outside" parent="." index="0" instance=ExtResource("3_bj1hx")]
 z_index = -1
@@ -372,9 +376,6 @@ parameters/conditions/intro_done = false
 
 [node name="VersionContainer" parent="VersionMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
-
-[node name="VersionLabel" parent="VersionMargin/VersionContainer" index="0"]
-text = "v0.1"
 
 [node name="TitleMargin" parent="MenuContainer" index="0"]
 theme_override_constants/margin_top = 274
