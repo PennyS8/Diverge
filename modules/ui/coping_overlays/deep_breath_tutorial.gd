@@ -47,10 +47,5 @@ func cope():
 func exit_deep_breath_tutorial():
 	tutorial_in_progress = false
 	cope_in_progress = false
-	
-	LevelManager.player.fsm.change_state("CanAttack")
-	LevelManager.player.fsm.change_state("CanDash")
-	
 	self.hide()
 	get_tree().paused = false
-	LevelManager.player.in_cutscene = false

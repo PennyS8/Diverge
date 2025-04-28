@@ -29,8 +29,5 @@ func exit_attack_tutorial():
 	for node in icons:
 		node.queue_free()
 	
-	LevelManager.player.in_cutscene = false
-	#LevelManager.player.fsm.change_state("AttackMelee")
-	
 	self.hide()
 	get_tree().paused = false

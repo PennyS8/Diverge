@@ -137,12 +137,8 @@ func enter_tutorial(tutorial:String):
 		if tutorial == tutorial_overlay.name:
 			get_tree().paused = true
 			
-			player.fsm.change_state("NoAttack")
-			player.fsm.change_state("NoDash")
-			
 			player.velocity = Vector2.ZERO
 			player.dir = Vector2.ZERO
-			player.in_cutscene = true
 			
 			match tutorial:
 				"AttackTutorial":
