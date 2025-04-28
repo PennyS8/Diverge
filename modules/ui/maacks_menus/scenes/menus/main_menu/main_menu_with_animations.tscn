@@ -367,6 +367,9 @@ parameters/conditions/intro_done = false
 [node name="VersionContainer" parent="VersionMargin" index="0"]
 modulate = Color(1, 1, 1, 0)
 
+[node name="VersionLabel" parent="VersionMargin/VersionContainer" index="0"]
+text = "v0.1"
+
 [node name="TitleMargin" parent="MenuContainer" index="0"]
 theme_override_constants/margin_top = 274
 
@@ -433,5 +436,11 @@ theme_override_font_sizes/font_size = 32
 custom_minimum_size = Vector2(0, 64)
 theme_override_fonts/font = ExtResource("5_c4gtu")
 theme_override_font_sizes/font_size = 32
+
+[node name="FlowControlContainer" parent="." index="9"]
+theme_override_constants/margin_left = 36
+theme_override_constants/margin_top = 36
+theme_override_constants/margin_right = 36
+theme_override_constants/margin_bottom = 36
 
 [connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]

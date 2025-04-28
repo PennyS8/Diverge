@@ -11,10 +11,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("4")
 attribution_file_path = "res://modules/ui/maacks_menus/ATTRIBUTION.md"
-h1_font_size = 64
-h2_font_size = 48
-h3_font_size = 32
-h4_font_size = 24
+h1_font_size = 88
+h2_font_size = 72
+h3_font_size = 64
+h4_font_size = 48
 
 [node name="ScrollContainer" type="ScrollContainer" parent="."]
 layout_mode = 0

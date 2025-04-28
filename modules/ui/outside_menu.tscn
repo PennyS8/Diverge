@@ -133,4 +133,5 @@ position = Vector2(1338, 364)
 position = Vector2(1338, 355)
 
 [node name="Olli" parent="." instance=ExtResource("6_ohf85")]
+visible = false
 position = Vector2(1342, 364)
