@@ -384,7 +384,6 @@ position = Vector2(-240, 96)
 position = Vector2(288, -120)
 
 [node name="EncounterArea" parent="Rooms/HallRight" node_paths=PackedStringArray("enemy_spawn_points") instance=ExtResource("9_kpiic")]
-collision_layer = 8192
 enemy_spawn_points = [NodePath("EnemySpawn1"), NodePath("EnemySpawn2")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/HallRight/EncounterArea"]

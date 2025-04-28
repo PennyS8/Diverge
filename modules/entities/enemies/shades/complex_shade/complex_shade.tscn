@@ -5,24 +5,24 @@
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="3_o0472"]
 [ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="4_e4b7j"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="4_kcpdx"]
-[ext_resource type="Script" uid="uid://bjenq0tm1bict" path="res://modules/entities/enemies/shades/complex_shade/xsm/spawn.gd" id="5_hvs5h"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/patrol.gd" id="6_2ptfn"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/pursue.gd" id="6_hvs5h"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/movement.gd" id="6_twtcd"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/chase.gd" id="7_8fy0v"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/backpedal.gd" id="7_hw5jo"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/attack.gd" id="8_pitir"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/encircle.gd" id="8_tvkt4"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/spawn.gd" id="5_hvs5h"]
+[ext_resource type="Script" uid="uid://bx6jvvpiqokkf" path="res://modules/entities/enemies/shades/complex_shade/xsm/patrol.gd" id="6_2ptfn"]
+[ext_resource type="Script" uid="uid://b8scr65cberb6" path="res://modules/entities/enemies/shades/complex_shade/xsm/pursue.gd" id="6_hvs5h"]
+[ext_resource type="Script" uid="uid://cxnxkuahbhhlb" path="res://modules/entities/enemies/shades/complex_shade/movement.gd" id="6_twtcd"]
+[ext_resource type="Script" uid="uid://bfvba1oo0iob7" path="res://modules/entities/enemies/shades/complex_shade/xsm/chase.gd" id="7_8fy0v"]
+[ext_resource type="Script" uid="uid://bsn0ly8evlqph" path="res://modules/entities/enemies/shades/complex_shade/xsm/backpedal.gd" id="7_hw5jo"]
+[ext_resource type="Script" uid="uid://d07o421syyh25" path="res://modules/entities/enemies/shades/complex_shade/xsm/attack.gd" id="8_pitir"]
+[ext_resource type="Script" uid="uid://bmicck7syduld" path="res://modules/entities/enemies/shades/complex_shade/xsm/encircle.gd" id="8_tvkt4"]
 [ext_resource type="Script" uid="uid://dftanwwuon216" path="res://modules/entities/enemies/shades/complex_shade/xsm/stunned.gd" id="9_6lwy3"]
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_5ojq5"]
 [ext_resource type="Script" uid="uid://judy3seldx6h" path="res://modules/entities/enemies/shades/complex_shade/xsm/charge_attack.gd" id="10_iug1g"]
 [ext_resource type="Script" uid="uid://cggi1jq1vgh8q" path="res://modules/entities/enemies/shades/complex_shade/xsm/dead.gd" id="10_m6rex"]
-[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
+[ext_resource type="Script" uid="uid://bes5sheuaa4il" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_dnu80"]
 [ext_resource type="FontFile" uid="uid://dx7pho86vkti5" path="res://assets/hud/open-sans/OpenSans-Bold.ttf" id="18_1e20k"]
-[ext_resource type="Script" path="res://modules/entities/fsm_debug_label.gd" id="18_mjkpu"]
+[ext_resource type="Script" uid="uid://b5gptums252wm" path="res://modules/entities/fsm_debug_label.gd" id="18_mjkpu"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="19_mjkpu"]
 [ext_resource type="Texture2D" uid="uid://d1722pdo2nahk" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Down.png" id="19_o0472"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="21_hvs5h"]
@@ -148,7 +148,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -352,7 +352,7 @@ tracks/21/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/22/type = "value"
 tracks/22/imported = false
@@ -364,7 +364,7 @@ tracks/22/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/23/type = "value"
 tracks/23/imported = false
@@ -2058,7 +2058,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_2jpn2"]
 resource_name = "spawn"
-length = 3.33334
+length = 5.00001
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2139,6 +2139,18 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 1.58333)
 }
 tracks/5/use_blend = true
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:visible")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="Animation" id="Animation_n2c8b"]
 resource_name = "surprise"
@@ -2452,6 +2464,7 @@ _data = {
 [node name="ComplexShade" type="CharacterBody2D" groups=["enemy", "saved_data", "tetherable_body"]]
 z_index = 1
 y_sort_enabled = true
+position = Vector2(2, 0)
 collision_layer = 1032
 collision_mask = 83
 motion_mode = 1
@@ -2470,18 +2483,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("Alive/Movement/Idle")
-
-[node name="Spawn" type="Node" parent="ShadeFSM"]
-script = ExtResource("5_hvs5h")
-animation_player = NodePath("../../AnimationPlayer")
-anim_on_enter = "spawn"
-loop_mode = 0
-on_finished = 1
-disabled = false
-debug_mode = false
-target_path = NodePath("")
-timed = false
-next_state = NodePath("../Alive/Movement/Idle")
 
 [node name="Alive" type="Node" parent="ShadeFSM"]
 script = ExtResource("4_e4b7j")
@@ -2629,6 +2630,19 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../../Movement/Chase")
 
+[node name="Spawn" type="Node" parent="ShadeFSM"]
+unique_name_in_owner = true
+script = ExtResource("5_hvs5h")
+animation_player = NodePath("../../AnimationPlayer")
+anim_on_enter = "spawn"
+loop_mode = 0
+on_finished = 1
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Alive/Movement/Idle")
+
 [node name="Dead" type="Node" parent="ShadeFSM"]
 script = ExtResource("10_m6rex")
 animation_player = NodePath("../../AnimationPlayer")
@@ -2728,7 +2742,6 @@ color_ramp = SubResource("Gradient_iug1g")
 hue_variation_max = 0.4
 
 [node name="SmokeFX" type="CPUParticles2D" parent="DisplayComponents"]
-visible = false
 modulate = Color(0.101961, 0, 0.243137, 1)
 position = Vector2(0, -12)
 amount = 10
@@ -2766,7 +2779,6 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DisplayComponents"]
-visible = false
 use_parent_material = true
 texture = ExtResource("35_dvtn2")
 offset = Vector2(0, -11)
@@ -2782,7 +2794,6 @@ texture = ExtResource("22_hvs5h")
 hframes = 2
 
 [node name="Shadow" type="Sprite2D" parent="DisplayComponents"]
-visible = false
 material = ExtResource("19_mjkpu")
 texture = ExtResource("21_hvs5h")
 offset = Vector2(0, -11)
