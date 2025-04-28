@@ -1,14 +1,14 @@
 [gd_scene load_steps=3 format=3 uid="uid://dt2uaqdd4hxiu"]
 
 [ext_resource type="Script" uid="uid://b1koap46pmum5" path="res://modules/globals/level_manager.gd" id="1_dvekp"]
-[ext_resource type="PackedScene" uid="uid://b8d2txpebdt2f" path="res://modules/levels/debug/testing_grounds/debug_gym.tscn" id="2_fk1pd"]
+[ext_resource type="PackedScene" uid="uid://cs2a4pq3yt5l6" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/school_dungeon_act_one.tscn" id="2_f2uir"]
 
 [node name="LevelManager" type="Node2D"]
 process_mode = 3
 z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("1_dvekp")
-default_level = ExtResource("2_fk1pd")
+default_level = ExtResource("2_f2uir")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
