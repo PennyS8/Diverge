@@ -75,10 +75,12 @@ func start_encounter():
 	
 	for spawnpoint in enemy_spawn_points:
 		var enemy = enemy_packed.instantiate()
-
+		
+		enemy.visible = false
+		
 		add_sibling(enemy)
 		
-		enemy.fsm.change_state("Spawn")
+		enemy.fsm.change_state_node_force(enemy.get_node("%Spawn"))
 
 		enemy.global_position = spawnpoint.global_position
 		enemy.health_component.Died.connect(enemy_defeated.bind(enemy))

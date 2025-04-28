@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
 [ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="1_q2vpm"]
-[ext_resource type="Resource" uid="uid://bkepss4eavpi" path="res://modules/ui/hud/wyvern_inv/weaverhook.tres" id="2_2irlg"]
-[ext_resource type="Resource" uid="uid://cdionr5vvbwcs" path="res://modules/ui/hud/wyvern_inv/yarnbag.tres" id="3_7h8sm"]
+[ext_resource type="Resource" uid="uid://2e4es4y4ng4" path="res://modules/ui/hud/wyvern_inv/weaverhook.tres" id="2_2irlg"]
+[ext_resource type="Resource" uid="uid://gmra8hy1uvo" path="res://modules/ui/hud/wyvern_inv/yarnbag.tres" id="3_7h8sm"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="3_c6noe"]
 [ext_resource type="Script" uid="uid://q574b254i248" path="res://modules/entities/player/xsm/dash_possible.gd" id="3_rf1lm"]
-[ext_resource type="Resource" uid="uid://ch4lb8vd1vfas" path="res://modules/ui/hud/wyvern_inv/deep_breath.tres" id="4_7h8sm"]
+[ext_resource type="Resource" uid="uid://4lrnolhua468" path="res://modules/ui/hud/wyvern_inv/deep_breath.tres" id="4_7h8sm"]
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="4_biapr"]
 [ext_resource type="Script" uid="uid://73bl87tdl80f" path="res://modules/entities/player/xsm/dash_timer.gd" id="4_j2uqp"]
 [ext_resource type="Script" uid="uid://cubktjma6htld" path="res://modules/entities/player/xsm/movement.gd" id="4_xto71"]
@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://bl8vcpeu60p0q" path="res://modules/entities/player/xsm/idle.gd" id="6_p1gyv"]
 [ext_resource type="Script" uid="uid://vmjglki3j80d" path="res://modules/entities/player/xsm/walk.gd" id="6_rn5yy"]
 [ext_resource type="Script" uid="uid://chm5jdso2fvbw" path="res://modules/entities/player/xsm/can_attack.gd" id="6_yyqig"]
-[ext_resource type="Script" uid="uid://bi00868skhp1y" path="res://modules/entities/player/abilities.gd" id="8_lle26"]
+[ext_resource type="Script" path="res://modules/entities/player/abilities.gd" id="8_lle26"]
 [ext_resource type="Script" uid="uid://b52l2mfpn8xxu" path="res://modules/entities/player/xsm/dash.gd" id="9_x3ix7"]
 [ext_resource type="Script" uid="uid://cd13uijgbv68l" path="res://modules/entities/player/xsm/attack_melee.gd" id="10_v37cr"]
 [ext_resource type="Script" uid="uid://cim5cquo2x5ig" path="res://modules/entities/player/xsm/lasso.gd" id="12_ds73y"]
@@ -31,7 +31,7 @@
 [ext_resource type="Script" uid="uid://dmux7vy5y0hk4" path="res://modules/entities/player/xsm/grapple.gd" id="15_trbfo"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Script" uid="uid://8u175eaigjct" path="res://modules/entities/player/xsm/recall.gd" id="17_qcq68"]
-[ext_resource type="Script" uid="uid://yaywue3qai2t" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
+[ext_resource type="Script" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
 [ext_resource type="Texture2D" uid="uid://bomlp67c0exnm" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Down.png" id="28_lqgfc"]
 [ext_resource type="Texture2D" uid="uid://da2cbhqa5c2t7" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Left.png" id="29_dhsgn"]
 [ext_resource type="Texture2D" uid="uid://dqnemhskws1vm" path="res://modules/entities/player/placeholder_sprites/Idle/Spear/Idle_Spear_Left_Down.png" id="30_7yfd7"]
@@ -49,7 +49,6 @@
 [ext_resource type="Texture2D" uid="uid://bqlnm1rdma2s0" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Right.png" id="42_ixb32"]
 [ext_resource type="Texture2D" uid="uid://benoslp55jhin" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Up.png" id="43_fgoev"]
 [ext_resource type="Texture2D" uid="uid://c5mbf4fv8dv3m" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Down.png" id="43_y78jc"]
-[ext_resource type="Shader" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
 [ext_resource type="Texture2D" uid="uid://b6yn0x7w86oiv" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Left_Down.png" id="44_rl8eg"]
 [ext_resource type="Texture2D" uid="uid://b2mrmf71f3pf5" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Right_Down.png" id="45_l84k2"]
 [ext_resource type="Texture2D" uid="uid://v5inwgonhfty" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Up.png" id="46_hfpac"]
@@ -57,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://de3bjixgf5a3q" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Left_Down.png" id="48_7h8sm"]
 [ext_resource type="Texture2D" uid="uid://b08xtnscca7is" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Right_Down.png" id="49_bif3w"]
 [ext_resource type="Texture2D" uid="uid://dmii5kjwq04lx" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Up.png" id="50_0wufa"]
+[ext_resource type="Shader" uid="uid://d0p05imkhnhst" path="res://modules/objects/stress_causer/stress_effect.gdshader" id="57_7h8sm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
@@ -1391,9 +1391,10 @@ _data = {
 b = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5jg5w"]
-shader = ExtResource("44_5jg5w")
-shader_parameter/band_strength = 2.0
-shader_parameter/noise_intensity = 0.05
+shader = ExtResource("57_7h8sm")
+shader_parameter/height = 0.2
+shader_parameter/width = 0.2
+shader_parameter/fade = 0.1
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 process_mode = 1
@@ -1912,13 +1913,16 @@ shape = SubResource("SegmentShape2D_rc6ld")
 visible = false
 z_index = 3
 material = SubResource("ShaderMaterial_5jg5w")
+instance_shader_parameters/b_displacement = Vector2(-7, 0)
+instance_shader_parameters/g_displacement = Vector2(0, 7)
+instance_shader_parameters/r_displacement = Vector2(7, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -480.0
-offset_top = -240.0
+offset_top = -288.0
 offset_right = 480.0
-offset_bottom = 300.0
+offset_bottom = 252.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2

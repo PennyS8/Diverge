@@ -1,14 +1,13 @@
-[gd_scene load_steps=30 format=4 uid="uid://cs2a4pq3yt5l6"]
+[gd_scene load_steps=29 format=4 uid="uid://cs2a4pq3yt5l6"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_pt88k"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_yqbfs"]
 [ext_resource type="Texture2D" uid="uid://d1i2h41pm54o2" path="res://assets/debug/2d_lights_and_shadows_neutral_point_light.webp" id="3_6b6k6"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="4_p07fd"]
 [ext_resource type="PackedScene" uid="uid://bmjl2guxmrnp4" path="res://modules/objects/school_dungeon/key_doubledoor_blue/key_doubledoor_blue.tscn" id="5_77340"]
+[ext_resource type="PackedScene" uid="uid://dx5na7ufncxg3" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn" id="6_0natf"]
 [ext_resource type="PackedScene" uid="uid://c4f5tcvmt380f" path="res://modules/objects/level_transition_zone/transition_door.tscn" id="6_cf32e"]
-[ext_resource type="PackedScene" uid="uid://bpgun2i5o6ru" path="res://modules/entities/enemies/shades/shade/melee_shade.tscn" id="6_cpccl"]
 [ext_resource type="PackedScene" uid="uid://cujx50k2x7ox5" path="res://modules/objects/level_transition_zone/encounter_entrance.tscn" id="7_1ddbp"]
-[ext_resource type="PackedScene" uid="uid://bi6255tx4u0jr" path="res://modules/entities/enemies/shades/ranged_shade/ranged_shade.tscn" id="7_5muuw"]
 [ext_resource type="PackedScene" uid="uid://cuti2ni6cxjbq" path="res://modules/levels/school_modular_levels/school_props/fire_alarm.tscn" id="8_0natf"]
 [ext_resource type="PackedScene" uid="uid://lbhb1gemkets" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.tscn" id="8_e5ij6"]
 [ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.tscn" id="9_3mj1j"]
@@ -189,10 +188,13 @@ position = Vector2(-24, -108)
 locked_sprite = SubResource("CompressedTexture2D_0natf")
 unlocked_sprite = SubResource("CompressedTexture2D_skfq5")
 
-[node name="MeleeShade" parent="Rooms/Foyer/Entities" instance=ExtResource("6_cpccl")]
+[node name="ComplexShade" parent="Rooms/Foyer/Entities" instance=ExtResource("6_0natf")]
 position = Vector2(-48, 96)
 
-[node name="MeleeShade2" parent="Rooms/Foyer/Entities" instance=ExtResource("6_cpccl")]
+[node name="ComplexShade3" parent="Rooms/Foyer/Entities" instance=ExtResource("6_0natf")]
+position = Vector2(40, 55)
+
+[node name="ComplexShade2" parent="Rooms/Foyer/Entities" instance=ExtResource("6_0natf")]
 position = Vector2(72, 120)
 
 [node name="HallLeftLeft" type="Node2D" parent="Rooms"]
@@ -391,16 +393,16 @@ position = Vector2(216, -156)
 [node name="Entities" type="Node2D" parent="Rooms/Admin"]
 y_sort_enabled = true
 
-[node name="RangedShade" parent="Rooms/Admin/Entities" instance=ExtResource("7_5muuw")]
+[node name="ComplexShade4" parent="Rooms/Admin/Entities" instance=ExtResource("6_0natf")]
 position = Vector2(-108, 0)
 
-[node name="MeleeShade" parent="Rooms/Admin/Entities" instance=ExtResource("6_cpccl")]
+[node name="ComplexShade" parent="Rooms/Admin/Entities" instance=ExtResource("6_0natf")]
 position = Vector2(18, 36)
 
-[node name="MeleeShade2" parent="Rooms/Admin/Entities" instance=ExtResource("6_cpccl")]
+[node name="ComplexShade2" parent="Rooms/Admin/Entities" instance=ExtResource("6_0natf")]
 position = Vector2(78, -36)
 
-[node name="MeleeShade3" parent="Rooms/Admin/Entities" instance=ExtResource("6_cpccl")]
+[node name="ComplexShade3" parent="Rooms/Admin/Entities" instance=ExtResource("6_0natf")]
 position = Vector2(156, -42)
 
 [node name="ElectricalCloset" type="Node2D" parent="Rooms"]
@@ -527,10 +529,10 @@ position = Vector2(204, -108)
 [node name="Entities" type="Node2D" parent="UnusedNodes/HallLeft"]
 y_sort_enabled = true
 
-[node name="RangedShade" parent="UnusedNodes/HallLeft/Entities" instance=ExtResource("7_5muuw")]
+[node name="ComplexShade2" parent="UnusedNodes/HallLeft/Entities" instance=ExtResource("6_0natf")]
 position = Vector2(-108, 36)
 
-[node name="MeleeShade" parent="UnusedNodes/HallLeft/Entities" instance=ExtResource("6_cpccl")]
+[node name="ComplexShade" parent="UnusedNodes/HallLeft/Entities" instance=ExtResource("6_0natf")]
 position = Vector2(-24, 24)
 
 [node name="Classroom" type="Node2D" parent="UnusedNodes"]

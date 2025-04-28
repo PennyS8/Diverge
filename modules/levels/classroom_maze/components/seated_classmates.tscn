@@ -1,8 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://0g1yvcadp4ib"]
+[gd_scene load_steps=15 format=3 uid="uid://0g1yvcadp4ib"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_oanxg"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="3_jfe1s"]
 [ext_resource type="Texture2D" uid="uid://sl51x8oswnsd" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle.png" id="4_neybn"]
+[ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="5_5vg1w"]
+[ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="6_23yfg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
 radius = 6.0
@@ -31,6 +33,16 @@ shader = ExtResource("3_jfe1s")
 shader_parameter/Flash = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
+[sub_resource type="Curve" id="Curve_gcfxk"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.479661), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_nqq4f"]
+colors = PackedColorArray(1, 1, 1, 1, 2, 2, 2, 0.5)
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_d2q0p"]
+load_path = "res://.godot/imported/IDLE_LR_Base.png-2551c465f9280b4604d7940e24484cdd.ctex"
+
 [node name="SeatedClassmate" type="StaticBody2D"]
 z_index = 1
 y_sort_enabled = true
@@ -46,9 +58,11 @@ shape = SubResource("CircleShape2D_56qhg")
 use_parent_material = true
 
 [node name="Shadow" type="Sprite2D" parent="Display"]
+visible = false
 texture = SubResource("GradientTexture2D_ia2jp")
 
 [node name="SmokeFX" type="CPUParticles2D" parent="Display"]
+visible = false
 position = Vector2(0, -12)
 amount = 10
 lifetime = 2.0
@@ -70,6 +84,7 @@ hue_variation_min = -0.51
 hue_variation_max = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="Display"]
+visible = false
 self_modulate = Color(0.134467, 0.000247055, 0.303661, 1)
 material = SubResource("ShaderMaterial_mjuao")
 position = Vector2(-1, 0)
@@ -79,3 +94,38 @@ hframes = 8
 vframes = 6
 frame = 8
 region_rect = Rect2(21, 14, 22, 40)
+
+[node name="SmokeFX2" type="CPUParticles2D" parent="Display"]
+modulate = Color(0.101961, 0, 0.243137, 1)
+position = Vector2(0, -12)
+amount = 10
+lifetime = 2.0
+emission_shape = 1
+emission_sphere_radius = 10.0
+particle_flag_align_y = true
+direction = Vector2(0, -1)
+spread = 20.0
+gravity = Vector2(0, -5)
+initial_velocity_min = 10.0
+initial_velocity_max = 10.0
+angle_max = 270.0
+scale_amount_min = 2.0
+scale_amount_max = 2.0
+scale_amount_curve = SubResource("Curve_gcfxk")
+color = Color(0.214103, 0.214103, 0.214103, 1)
+color_ramp = SubResource("Gradient_nqq4f")
+hue_variation_min = -0.51
+hue_variation_max = 1.0
+
+[node name="Sprite2D2" type="Sprite2D" parent="Display"]
+use_parent_material = true
+texture = SubResource("CompressedTexture2D_d2q0p")
+offset = Vector2(0, -11)
+hframes = 6
+frame = 5
+region_rect = Rect2(21, 14, 22, 40)
+
+[node name="Shadow2" type="Sprite2D" parent="Display"]
+material = ExtResource("5_5vg1w")
+texture = ExtResource("6_23yfg")
+offset = Vector2(0, -11)
