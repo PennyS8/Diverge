@@ -926,6 +926,9 @@ position = Vector2(-30, 123)
 [node name="ShadeHPIndicator" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="0"]
 material = SubResource("ShaderMaterial_mjkpu")
 
+[node name="Combat" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive" index="1"]
+next_state = NodePath("../Reaction")
+
 [node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/SoftCollision" index="0"]
 scale = Vector2(1.5, 1.5)
 
