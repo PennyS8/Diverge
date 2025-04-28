@@ -1,33 +1,36 @@
-[gd_scene load_steps=79 format=3 uid="uid://dx5na7ufncxg3"]
+[gd_scene load_steps=85 format=3 uid="uid://dx5na7ufncxg3"]
 
 [ext_resource type="PackedScene" uid="uid://8xtoptvgrpqi" path="res://modules/entities/enemies/hp_bar/shade_hp_indicator.tscn" id="2_88af2"]
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="3_o0472"]
 [ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="4_e4b7j"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="4_kcpdx"]
-[ext_resource type="Script" uid="uid://bx6jvvpiqokkf" path="res://modules/entities/enemies/shades/complex_shade/xsm/patrol.gd" id="6_2ptfn"]
-[ext_resource type="Script" uid="uid://b8scr65cberb6" path="res://modules/entities/enemies/shades/complex_shade/xsm/pursue.gd" id="6_hvs5h"]
-[ext_resource type="Script" uid="uid://cxnxkuahbhhlb" path="res://modules/entities/enemies/shades/complex_shade/movement.gd" id="6_twtcd"]
-[ext_resource type="Script" uid="uid://bfvba1oo0iob7" path="res://modules/entities/enemies/shades/complex_shade/xsm/chase.gd" id="7_8fy0v"]
-[ext_resource type="Script" uid="uid://bsn0ly8evlqph" path="res://modules/entities/enemies/shades/complex_shade/xsm/backpedal.gd" id="7_hw5jo"]
-[ext_resource type="Script" uid="uid://d07o421syyh25" path="res://modules/entities/enemies/shades/complex_shade/xsm/attack.gd" id="8_pitir"]
-[ext_resource type="Script" uid="uid://bmicck7syduld" path="res://modules/entities/enemies/shades/complex_shade/xsm/encircle.gd" id="8_tvkt4"]
+[ext_resource type="Script" uid="uid://bjenq0tm1bict" path="res://modules/entities/enemies/shades/complex_shade/xsm/spawn.gd" id="5_hvs5h"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/patrol.gd" id="6_2ptfn"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/pursue.gd" id="6_hvs5h"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/movement.gd" id="6_twtcd"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/chase.gd" id="7_8fy0v"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/backpedal.gd" id="7_hw5jo"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/attack.gd" id="8_pitir"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/encircle.gd" id="8_tvkt4"]
 [ext_resource type="Script" uid="uid://dftanwwuon216" path="res://modules/entities/enemies/shades/complex_shade/xsm/stunned.gd" id="9_6lwy3"]
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_5ojq5"]
 [ext_resource type="Script" uid="uid://judy3seldx6h" path="res://modules/entities/enemies/shades/complex_shade/xsm/charge_attack.gd" id="10_iug1g"]
 [ext_resource type="Script" uid="uid://cggi1jq1vgh8q" path="res://modules/entities/enemies/shades/complex_shade/xsm/dead.gd" id="10_m6rex"]
-[ext_resource type="Script" uid="uid://d1od6kbhhnppb" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
+[ext_resource type="Script" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_dnu80"]
 [ext_resource type="FontFile" uid="uid://dx7pho86vkti5" path="res://assets/hud/open-sans/OpenSans-Bold.ttf" id="18_1e20k"]
-[ext_resource type="Script" uid="uid://b5gptums252wm" path="res://modules/entities/fsm_debug_label.gd" id="18_mjkpu"]
+[ext_resource type="Script" path="res://modules/entities/fsm_debug_label.gd" id="18_mjkpu"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="19_mjkpu"]
 [ext_resource type="Texture2D" uid="uid://d1722pdo2nahk" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Down.png" id="19_o0472"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="21_hvs5h"]
 [ext_resource type="Texture2D" uid="uid://bshmraj3f7qqo" path="res://modules/entities/enemies/shades/complex_shade/sprites/Lunge/Lunge_LR_MotionTrails.png" id="22_hvs5h"]
 [ext_resource type="Texture2D" uid="uid://c76phvuy7wnqn" path="res://modules/entities/enemies/shades/complex_shade/sprites/Lunge/Lunge_D_Combined.png" id="26_hw5jo"]
 [ext_resource type="Texture2D" uid="uid://dt1njlc33r2km" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Right_Down.png" id="26_pra3i"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="26_tvkt4"]
+[ext_resource type="Texture2D" uid="uid://bl35skok3q2gy" path="res://modules/entities/enemies/shades/complex_shade/sprites/Spawn/Shade_Vortex_FX.png" id="27_iug1g"]
 [ext_resource type="Texture2D" uid="uid://b480qgeyhrihj" path="res://modules/entities/enemies/shades/complex_shade/sprites/Lunge/Lunge_LR_Base.png" id="27_tvkt4"]
 [ext_resource type="Texture2D" uid="uid://vi4l2mqbmlla" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Dash_Shadow.png" id="27_wyc7l"]
 [ext_resource type="Texture2D" uid="uid://dypuumhsy1aqk" path="res://modules/entities/enemies/shades/complex_shade/sprites/Lunge/Lunge_U_Base.png" id="28_iug1g"]
@@ -35,6 +38,8 @@
 [ext_resource type="Texture2D" uid="uid://na43h01jh8sq" path="res://modules/entities/enemies/shades/complex_shade/sprites/Death/Death_LR_Combined.png" id="29_iug1g"]
 [ext_resource type="Texture2D" uid="uid://chpbdfsf6jyng" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Up.png" id="29_xu3ac"]
 [ext_resource type="Texture2D" uid="uid://08y4slel3t1j" path="res://modules/entities/enemies/shades/complex_shade/sprites/Idle/IDLE_LR_Base.png" id="35_dvtn2"]
+[ext_resource type="AudioStream" uid="uid://logbde0okioc" path="res://modules/entities/enemies/shades/complex_shade/sfx/spawn_twinkle.wav" id="39_tvkt4"]
+[ext_resource type="AudioStream" uid="uid://c1uldj3nuo44y" path="res://modules/entities/enemies/shades/complex_shade/sfx/spawn_sfx.wav" id="40_iug1g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mjkpu"]
 resource_local_to_scene = true
@@ -143,7 +148,7 @@ tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
@@ -320,6 +325,90 @@ tracks/19/path = NodePath("DisplayComponents/Exclaim:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/20/type = "value"
+tracks/20/imported = false
+tracks/20/enabled = true
+tracks/20/path = NodePath("DisplayComponents/SpawnFX:frame")
+tracks/20/interp = 1
+tracks/20/loop_wrap = true
+tracks/20/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/21/type = "value"
+tracks/21/imported = false
+tracks/21/enabled = true
+tracks/21/path = NodePath("DisplayComponents/Sprite2D:visible")
+tracks/21/interp = 1
+tracks/21/loop_wrap = true
+tracks/21/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/22/type = "value"
+tracks/22/imported = false
+tracks/22/enabled = true
+tracks/22/path = NodePath("DisplayComponents/SmokeFX:visible")
+tracks/22/interp = 1
+tracks/22/loop_wrap = true
+tracks/22/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("DisplayComponents/SpawnFX:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("DisplayComponents/Shadow:modulate")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/25/type = "value"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("DisplayComponents/SmokeFX:modulate")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.101961, 0, 0.243137, 1)]
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("DisplayComponents:material:shader_parameter/Flash")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -1501,6 +1590,30 @@ tracks/6/keys = {
 "update": 0,
 "values": [Vector2(0, -11)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("DisplayComponents/Shadow:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.4375),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("DisplayComponents/SmokeFX:modulate")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.6875),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.101961, 0, 0.243137, 1), Color(0.101961, 0, 0.243137, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_shkbt"]
 resource_name = "fall"
@@ -1943,6 +2056,90 @@ tracks/3/keys = {
 "values": [Vector2(0, -11)]
 }
 
+[sub_resource type="Animation" id="Animation_2jpn2"]
+resource_name = "spawn"
+length = 3.33334
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DisplayComponents/SpawnFX:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [26, 0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DisplayComponents/Sprite2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.91667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DisplayComponents/Shadow:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1.91667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("DisplayComponents/SmokeFX:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.91667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("DisplayComponents/SpawnFX:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 2.25),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 1.0,
+"stream": ExtResource("39_tvkt4")
+}, {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("40_iug1g")
+}],
+"times": PackedFloat32Array(0, 1.58333)
+}
+tracks/5/use_blend = true
+
 [sub_resource type="Animation" id="Animation_n2c8b"]
 resource_name = "surprise"
 length = 0.8
@@ -2244,6 +2441,7 @@ _data = {
 &"idle_left": SubResource("Animation_pra3i"),
 &"idle_right": SubResource("Animation_o61v4"),
 &"idle_up": SubResource("Animation_mjkpu"),
+&"spawn": SubResource("Animation_2jpn2"),
 &"surprise": SubResource("Animation_n2c8b"),
 &"walk_down": SubResource("Animation_hvs5h"),
 &"walk_left": SubResource("Animation_hw5jo"),
@@ -2272,6 +2470,18 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("Alive/Movement/Idle")
+
+[node name="Spawn" type="Node" parent="ShadeFSM"]
+script = ExtResource("5_hvs5h")
+animation_player = NodePath("../../AnimationPlayer")
+anim_on_enter = "spawn"
+loop_mode = 0
+on_finished = 1
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("../Alive/Movement/Idle")
 
 [node name="Alive" type="Node" parent="ShadeFSM"]
 script = ExtResource("4_e4b7j")
@@ -2427,7 +2637,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Spawn")
 
 [node name="TetherableArea2D" type="Area2D" parent="."]
 visible = false
@@ -2518,6 +2728,7 @@ color_ramp = SubResource("Gradient_iug1g")
 hue_variation_max = 0.4
 
 [node name="SmokeFX" type="CPUParticles2D" parent="DisplayComponents"]
+visible = false
 modulate = Color(0.101961, 0, 0.243137, 1)
 position = Vector2(0, -12)
 amount = 10
@@ -2555,6 +2766,7 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="DisplayComponents"]
+visible = false
 use_parent_material = true
 texture = ExtResource("35_dvtn2")
 offset = Vector2(0, -11)
@@ -2570,9 +2782,18 @@ texture = ExtResource("22_hvs5h")
 hframes = 2
 
 [node name="Shadow" type="Sprite2D" parent="DisplayComponents"]
+visible = false
 material = ExtResource("19_mjkpu")
 texture = ExtResource("21_hvs5h")
 offset = Vector2(0, -11)
+
+[node name="SpawnFX" type="Sprite2D" parent="DisplayComponents"]
+visible = false
+material = ExtResource("26_tvkt4")
+texture = ExtResource("27_iug1g")
+offset = Vector2(6, -15)
+hframes = 27
+frame = 4
 
 [node name="CollisionShape" type="CollisionShape2D" parent="."]
 visible = false
@@ -2593,6 +2814,8 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_n2c8b")
 }
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="mouse_entered" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_exited"]

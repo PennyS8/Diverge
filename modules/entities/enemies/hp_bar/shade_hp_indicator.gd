@@ -18,7 +18,7 @@ func _ready():
 		return
 	
 	health_component.update_complete.connect(hp_update)
-	num_hp_max = ceil(health_component.max_health / 10)
+	num_hp_max = ceil(health_component.max_health / 10.0)
 	
 	for i in range(1, num_hp_max+1):
 		var heart : TextureRect = shade_hp.instantiate()
@@ -34,7 +34,7 @@ func _process(delta):
 	
 func hp_update():
 	$AnimationPlayer.play("fade_in")
-	num_current = ceil(health_component.health / 10)
+	num_current = ceil(health_component.health / 10.0)
 	for heart : TextureRect in current_heart_nodes.slice(num_current, num_hp_max):
 		var tween = create_tween()
 		tween.tween_property(heart, "modulate:a", 0, 0.1)
