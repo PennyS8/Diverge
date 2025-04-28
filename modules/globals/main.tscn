@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b8ywe7vivb1en"]
+[gd_scene load_steps=15 format=3 uid="uid://b8ywe7vivb1en"]
 
 [ext_resource type="Script" uid="uid://hrfgvn40midl" path="res://modules/globals/main.gd" id="1_2uu7l"]
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="2_wwsun"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ddv7xdgy2vjt" path="res://modules/ui/coping_overlays/breath_mode.tscn" id="4_c8snn"]
 [ext_resource type="Script" uid="uid://t66eoi8gmq5o" path="res://modules/globals/saving/save_load.gd" id="5_jmjhv"]
 [ext_resource type="PackedScene" uid="uid://c57dyngu35ntf" path="res://modules/ui/coping_overlays/attack_tutorial.tscn" id="5_tdd3g"]
+[ext_resource type="PackedScene" uid="uid://c3op3a42rmxl4" path="res://modules/ui/coping_overlays/deep_breath_tutorial.tscn" id="6_2825a"]
 [ext_resource type="Script" uid="uid://c8qxb50jimxvj" path="res://modules/globals/inventory_panel.gd" id="8_02pmu"]
 [ext_resource type="PackedScene" uid="uid://ms4bp1b33wt2" path="res://modules/ui/hud/wyvern_inv/notebook_panel.tscn" id="8_dbv5s"]
 [ext_resource type="Shader" uid="uid://c7ga40mwai0hs" path="res://modules/globals/blur.gdshader" id="9_nlpsi"]
@@ -54,6 +55,8 @@ visible = false
 [node name="TutorialOverlays" type="CanvasLayer" parent="GUI2"]
 
 [node name="AttackTutorial" parent="GUI2/TutorialOverlays" instance=ExtResource("5_tdd3g")]
+
+[node name="DeepBreathTutorial" parent="GUI2/TutorialOverlays" instance=ExtResource("6_2825a")]
 
 [node name="ScreenFXExclusion" type="CanvasLayer" parent="GUI2"]
 process_mode = 3

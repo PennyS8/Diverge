@@ -5,14 +5,13 @@ var tutorial_in_progress := false
 
 func start_attack_tutorial():
 	get_tree().paused = true
-	#self.show()
+	self.show()
 
-	var icon_path = "res://modules/ui/freeze_frame_overlay/left_click.tscn"
+	var icon_path = "res://modules/ui/input_button_overlays/left_click.tscn"
 	var icon : Node2D = load(icon_path).instantiate()
 	
 	get_parent().get_parent().get_node("ScreenFXExclusion").add_child(icon)
 	icon.global_position = get_tree().get_first_node_in_group("enemy").global_position
-	icon.get_node("AnimationPlayer").play("left_click")
 	icons.append(icon)
 	
 	tutorial_in_progress = true
@@ -31,7 +30,7 @@ func exit_attack_tutorial():
 		node.queue_free()
 	
 	LevelManager.player.in_cutscene = false
-	LevelManager.player.fsm.change_state("AttackMelee")
+	#LevelManager.player.fsm.change_state("AttackMelee")
 	
 	self.hide()
 	get_tree().paused = false

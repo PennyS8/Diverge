@@ -13,5 +13,5 @@ func _on_body_entered(_body: Node2D) -> void:
 	shade.get_node("ShadeFSM").disabled = true
 	player.dir = Vector2.ZERO
 	
-	var dialogue = load("res://modules/levels/school_modular_levels/tutorials/melee_attack_tutorial.dialogue")
+	var dialogue = load("res://modules/levels/school_modular_levels/tutorials/attack_tutorial.dialogue")
 	await DialogueManager.show_dialogue_balloon(dialogue, "start")

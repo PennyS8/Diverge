@@ -99,7 +99,7 @@ func _transition_complete():
 	player.lock_camera = false
 	transitioning = false
 
-func deep_breath_overlay():
+func deep_breath_overlay(timer_override:bool = false):
 	var tween = create_tween()
 	var blink_time = 1
 	
@@ -117,7 +117,7 @@ func deep_breath_overlay():
 	await tween.finished
 	
 	# Begin timer for deadeye mode, wait for timer to be done
-	await start_deadeye()
+	await start_deadeye(timer_override)
 	
 	# Return control back to player
 	player.exit_cutscene()
@@ -127,8 +127,8 @@ func black_white():
 		overlay = get_tree().get_first_node_in_group("deep_breath")
 	overlay.show()
 
-func start_deadeye():
-	overlay.start_mode()
+func start_deadeye(timer_override:bool = false):
+	overlay.start_mode(timer_override)
 	await overlay.done
 
 func enter_tutorial(tutorial:String):
@@ -147,5 +147,5 @@ func enter_tutorial(tutorial:String):
 			match tutorial:
 				"AttackTutorial":
 					tutorial_overlay.start_attack_tutorial()
-				_:
-					return
+				"DeepBreathTutorial":
+					tutorial_overlay.start_deep_breath_tutorial()
