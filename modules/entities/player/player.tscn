@@ -1,10 +1,13 @@
-[gd_scene load_steps=82 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=94 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
 [ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="1_q2vpm"]
+[ext_resource type="Resource" uid="uid://2e4es4y4ng4" path="res://modules/ui/hud/wyvern_inv/weaverhook.tres" id="2_2irlg"]
+[ext_resource type="Resource" uid="uid://gmra8hy1uvo" path="res://modules/ui/hud/wyvern_inv/yarnbag.tres" id="3_7h8sm"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="3_c6noe"]
 [ext_resource type="Script" uid="uid://q574b254i248" path="res://modules/entities/player/xsm/dash_possible.gd" id="3_rf1lm"]
+[ext_resource type="Resource" uid="uid://4lrnolhua468" path="res://modules/ui/hud/wyvern_inv/deep_breath.tres" id="4_7h8sm"]
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="4_biapr"]
 [ext_resource type="Script" uid="uid://73bl87tdl80f" path="res://modules/entities/player/xsm/dash_timer.gd" id="4_j2uqp"]
 [ext_resource type="Script" uid="uid://cubktjma6htld" path="res://modules/entities/player/xsm/movement.gd" id="4_xto71"]
@@ -12,6 +15,7 @@
 [ext_resource type="Script" uid="uid://bl8vcpeu60p0q" path="res://modules/entities/player/xsm/idle.gd" id="6_p1gyv"]
 [ext_resource type="Script" uid="uid://vmjglki3j80d" path="res://modules/entities/player/xsm/walk.gd" id="6_rn5yy"]
 [ext_resource type="Script" uid="uid://chm5jdso2fvbw" path="res://modules/entities/player/xsm/can_attack.gd" id="6_yyqig"]
+[ext_resource type="Script" path="res://modules/entities/player/abilities.gd" id="8_lle26"]
 [ext_resource type="Script" uid="uid://b52l2mfpn8xxu" path="res://modules/entities/player/xsm/dash.gd" id="9_x3ix7"]
 [ext_resource type="Script" uid="uid://cd13uijgbv68l" path="res://modules/entities/player/xsm/attack_melee.gd" id="10_v37cr"]
 [ext_resource type="Script" uid="uid://cim5cquo2x5ig" path="res://modules/entities/player/xsm/lasso.gd" id="12_ds73y"]
@@ -28,6 +32,7 @@
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Script" uid="uid://8u175eaigjct" path="res://modules/entities/player/xsm/recall.gd" id="17_qcq68"]
 [ext_resource type="Script" path="res://modules/entities/player/death.gd" id="21_xyfbm"]
+[ext_resource type="Script" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
 [ext_resource type="Texture2D" uid="uid://bomlp67c0exnm" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Down.png" id="28_lqgfc"]
 [ext_resource type="Texture2D" uid="uid://da2cbhqa5c2t7" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Left.png" id="29_dhsgn"]
 [ext_resource type="Texture2D" uid="uid://dqnemhskws1vm" path="res://modules/entities/player/placeholder_sprites/Idle/Spear/Idle_Spear_Left_Down.png" id="30_7yfd7"]
@@ -45,11 +50,18 @@
 [ext_resource type="Texture2D" uid="uid://c4eyhwt0schwv" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Up.png" id="40_gejbx"]
 [ext_resource type="Texture2D" uid="uid://bqlnm1rdma2s0" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Right.png" id="42_ixb32"]
 [ext_resource type="Texture2D" uid="uid://benoslp55jhin" path="res://modules/entities/player/placeholder_sprites/Attack/Spear/Attack_Spear_Up.png" id="43_fgoev"]
-[ext_resource type="Shader" path="res://modules/globals/tv_static.gdshader" id="44_5jg5w"]
 [ext_resource type="Texture2D" uid="uid://dspd847cbn8mr" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Down.png" id="44_xyfbm"]
 [ext_resource type="Texture2D" uid="uid://rtnt5gwn4rkj" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Left_Down.png" id="45_fnwuu"]
 [ext_resource type="Texture2D" uid="uid://ct1xahfqvg584" path="res://modules/entities/player/placeholder_sprites/Death/Spear/death_Spear_Right_Down.png" id="46_gejbx"]
-[ext_resource type="AnimationLibrary" uid="uid://vhfpvnlgp11h" path="res://modules/entities/player/no_spear.res" id="48_gejbx"]
+[ext_resource type="Texture2D" uid="uid://c5mbf4fv8dv3m" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Down.png" id="43_y78jc"]
+[ext_resource type="Texture2D" uid="uid://b6yn0x7w86oiv" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Left_Down.png" id="44_rl8eg"]
+[ext_resource type="Texture2D" uid="uid://b2mrmf71f3pf5" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Right_Down.png" id="45_l84k2"]
+[ext_resource type="Texture2D" uid="uid://v5inwgonhfty" path="res://modules/entities/player/placeholder_sprites/Idle/Normal/Idle_Up.png" id="46_hfpac"]
+[ext_resource type="Texture2D" uid="uid://bd8kcidgwq840" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Down.png" id="47_2irlg"]
+[ext_resource type="Texture2D" uid="uid://de3bjixgf5a3q" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Left_Down.png" id="48_7h8sm"]
+[ext_resource type="Texture2D" uid="uid://b08xtnscca7is" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Right_Down.png" id="49_bif3w"]
+[ext_resource type="Texture2D" uid="uid://dmii5kjwq04lx" path="res://modules/entities/player/placeholder_sprites/Walk/Normal/walk_Up.png" id="50_0wufa"]
+[ext_resource type="Shader" uid="uid://d0p05imkhnhst" path="res://modules/objects/stress_causer/stress_effect.gdshader" id="57_7h8sm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
@@ -1265,11 +1277,13 @@ _data = {
 b = Vector2(0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_5jg5w"]
-shader = ExtResource("44_5jg5w")
-shader_parameter/band_strength = 2.0
-shader_parameter/noise_intensity = 0.05
+shader = ExtResource("57_7h8sm")
+shader_parameter/height = 0.2
+shader_parameter/width = 0.2
+shader_parameter/fade = 0.1
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
+process_mode = 1
 z_index = 1
 y_sort_enabled = true
 collision_layer = 4
@@ -1277,6 +1291,10 @@ collision_mask = 2163
 motion_mode = 1
 wall_min_slide_angle = 0.0872665
 script = ExtResource("1_ehhf7")
+hook_type = ExtResource("2_2irlg")
+yarn_bag_type = ExtResource("3_7h8sm")
+cope_type = ExtResource("4_7h8sm")
+dash_type = ExtResource("3_7h8sm")
 
 [node name="PlayerFSM" type="Node" parent="."]
 editor_description = "Is a state region - we can be in multiple states underneath this node (i.e., both CanDash & CanAttack can both be active states)"
@@ -1354,6 +1372,33 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../AttackLocked")
 
+[node name="Abilities" type="Node" parent="PlayerFSM"]
+script = ExtResource("8_lle26")
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("Idle")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
+[node name="Inactive" type="Node" parent="PlayerFSM/Abilities"]
+script = ExtResource("1_q2vpm")
+disabled = false
+debug_mode = true
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
+[node name="DeepBreath" type="Node" parent="PlayerFSM/Abilities"]
+script = ExtResource("21_1lef0")
+disabled = true
+debug_mode = true
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
+metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
 [node name="Movement" type="Node" parent="PlayerFSM"]
 script = ExtResource("4_xto71")
 disabled = false
@@ -1375,8 +1420,6 @@ next_state = NodePath(".")
 
 [node name="Walk" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("6_rn5yy")
-ground_speed = 60.0
-acceleration = 20.0
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = ""
@@ -1492,7 +1535,7 @@ script = ExtResource("12_ds73y")
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = "NONE"
-disabled = false
+disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
@@ -1536,7 +1579,7 @@ script = ExtResource("10_v37cr")
 sample = null
 animation_player = NodePath("../../../AnimationPlayer")
 anim_on_enter = "NONE"
-disabled = false
+disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
@@ -1795,6 +1838,7 @@ libraries = {
 autoplay = "idle_down"
 
 [node name="Camera2D" type="Camera2D" parent="."]
+process_mode = 3
 zoom = Vector2(5.5, 5.5)
 process_callback = 0
 position_smoothing_enabled = true
@@ -1808,17 +1852,27 @@ collision_mask = 512
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("SegmentShape2D_rc6ld")
 
+[node name="EncounterChecker" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 8192
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EncounterChecker"]
+shape = SubResource("SegmentShape2D_rc6ld")
+
 [node name="stressEffect" type="ColorRect" parent="."]
 visible = false
 z_index = 3
 material = SubResource("ShaderMaterial_5jg5w")
+instance_shader_parameters/b_displacement = Vector2(-7, 0)
+instance_shader_parameters/g_displacement = Vector2(0, 7)
+instance_shader_parameters/r_displacement = Vector2(7, 0)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -480.0
-offset_top = -240.0
+offset_top = -288.0
 offset_right = 480.0
-offset_bottom = 300.0
+offset_bottom = 252.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
@@ -1834,6 +1888,9 @@ offset_top = -546.0
 offset_right = 970.0
 offset_bottom = 534.0
 mouse_filter = 2
+
+[node name="AudioListener2D" type="AudioListener2D" parent="."]
+current = true
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]

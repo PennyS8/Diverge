@@ -52,7 +52,7 @@ func _on_dispense_point_area_entered(area : Node2D, num : int) -> void:
 	call_deferred("dispense", point, point.spawns_wanderer)
 
 func _move_cutscene_camera(pos):
-	LevelManager.player.enter_cutscene(pos)
+	await LevelManager.player.enter_cutscene(pos)
 	
 func _unlock_shades():
 	var shades = [shadely, shadehouse, melisshade]
@@ -66,12 +66,12 @@ func shades_attack():
 	for shade in shades:
 		var fsm = shade.get_node("ShadeFSM")
 		fsm.disabled = false
-		shade.get_node("Hurtbox").set_collision_mask_value(3, true)
+		shade.get_node("%HurtBox").set_collision_mask_value(3, true)
 		shade.get_node("TetherableArea2D").set_collision_layer_value(9, true)
 		shade.get_node("TetherableArea2D").monitoring = true
 		shade.get_node("TetherableArea2D").monitorable = true
-		shade.follow_target = LevelManager.player
-		fsm.change_state("Seeking")
+		shade.follow_object = LevelManager.player
+		fsm.change_state("Pursue")
 
 func player_got_ramen():
 	LevelManager.player.dir = Vector2.ZERO

@@ -1,0 +1,35 @@
+~ attack_tutorial
+do! LevelManager.player.enter_cutscene()
+Juniper: Oh Shi--
+Shaded Figure: ...
+Juniper: tf is that?
+do! LevelManager.player.exit_cutscene()
+do! get_tree().get_first_node_in_group("enemy").get_node("ShadeFSM").disabled = false
+do! get_tree().get_first_node_in_group("enemy").get_node("ShadeFSM").change_state("Chase")
+=> END
+
+~ deep_breath_tutorial
+do! LevelManager.player.enter_cutscene()
+Juniper: Ah crap.
+Shaded Figure: You're late to the test!
+Shaded Figure: What if you fail it?
+Shaded Figure: There's no point in even going now.
+Juniper: Alright, just like you learned it.
+Juniper: 5 in ...
+Juniper: 7 out ...
+Juniper: 5 in ...
+Juniper: Aaand here we go.
+do! LevelManager.player.exit_cutscene()
+do! LevelManager.enter_tutorial("DeepBreathTutorial")
+=> END
+
+~ deep_breathed
+do! LevelManager.player.enter_cutscene()
+Juniper: Thanks lil J
+do! LevelManager.player.exit_cutscene()
+=> END
+
+~ return_library_blocked
+Juniper: [i]I think I can handle the test now! I don't need to go back to the library.[/i]
+Juniper: [i]Plus, even though little me was cute, I'm honestly kind of freaked out.[/i]
+=> END

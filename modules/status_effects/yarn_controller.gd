@@ -7,7 +7,7 @@ var current_dist := 0.0
 var speed := 325.0
 
 var hold_projectile := false
-var can_collide := true
+@export var can_collide := true
 var tethered_body
 
 @onready var player = get_tree().get_first_node_in_group("player")
@@ -23,9 +23,7 @@ func _process(delta):
 		$Projectile.position.x += speed * delta
 		current_dist += speed * delta
 		yarn_end_pos = $Projectile.position
-	
-	# Yarn has collided with a body
-	else:
+	else: # Yarn has collided with a body
 		if is_instance_valid(tethered_body):
 			current_dist = global_position.distance_to(tethered_body.global_position)
 			yarn_end_pos = Vector2(current_dist, 0.0)

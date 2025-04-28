@@ -10,12 +10,19 @@ var crowd_control := false
 
 var default_position
 
-@onready var damaged_particles = $DisplayComponents/CPUParticles2D
+@onready var damaged_particles = $DisplayComponents/HitFX
 @onready var fsm = $ShadeFSM
+
+@onready var health_component = %Health
+@onready var hurtbox = %HurtBox
+
 ## NATE - STEERING BEHAVIORS
 var ai_steering := AISteering.new()
 var strafe_factor := 0.25
 ##############
+
+# For encounters to see when spawn animation is finished
+signal spawned
 
 func _ready() -> void:
 	default_position = global_position
@@ -50,6 +57,8 @@ func on_save_game(saved_data:Array[SavedData]):
 	my_data.position = global_position
 	my_data.scene_path = scene_file_path
 	
+	# Gets path up to node for reinstantiation
+	my_data.parent_node_path = get_parent().get_path()
 	saved_data.append(my_data)
 
 func on_before_load_game():
@@ -63,13 +72,23 @@ func on_load_game(saved_data:SavedData):
 
 #region Damage Handling
 func _on_health_component_died() -> void:
+	drop_ramen()
 	damaged_particles.restart()
 	fsm.change_state("Dead")
+	%AnimationPlayer.call_deferred("play", "die")
+
 
 func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
-	if %Health.health > 0:
-		knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
-		fsm.change_state("Stunned")
+	# Apply knockback from the Hitbox's "knockback_coefficient"
+	knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
+	
+	damaged_particles.set_deferred("rotation", get_angle_to(-knockback) + PI)
+	
+	# If, after damaging, we'll still be alive, stun us
+	if (health_component.health - _area.damage) > 0:
+		%AnimationPlayer.call_deferred("play", "damaged")
+		fsm.call_deferred("change_state", "Stunned")
+
 		damaged_particles.restart()
 		
 		# If the attacking _area is the players thread apply the tethered status effect
@@ -84,3 +103,17 @@ func _on_tetherable_area_2d_mouse_entered() -> void:
 func _on_tetherable_area_2d_mouse_exited() -> void:
 	deselect()
 #endregion
+
+func fade_in():
+	var tween = create_tween()
+	tween.tween_property(self, "modulate:a", 1.0, 2.0)
+	await tween.finished
+
+func drop_ramen():
+	var ramen = get_node_or_null("RamenTray")
+	if ramen:
+		ramen.get_node("Sprite2D").call_deferred("reparent", ramen.get_node("CanvasGroup"))
+		ramen.get_node("Item").call_deferred("set_collision_mask_value", 4, false)
+		ramen.get_node("Item").set_deferred("monitoring", true)
+		ramen.call_deferred("reparent", get_parent())
+		#starts shining shader

@@ -9199,7 +9199,7 @@ tile_map_data = PackedByteArray("AADu//b/AAAKABEAAADu//f/AAAKABEAAADu//j/AAAKABE
 tile_set = SubResource("TileSet_xnlxt")
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(-64, 32)
+position = Vector2(-166, 33)
 
 [node name="StartRoom" type="Node2D" parent="." groups=["room_with_dynamic_transitions"]]
 y_sort_enabled = true
@@ -9461,10 +9461,11 @@ texture = ExtResource("16_mee8l")
 
 [node name="HallwayEast" parent="Hallway/Exits" instance=ExtResource("11_xknx3")]
 z_index = 0
-position = Vector2(252, 42)
+position = Vector2(252, 40)
 scale = Vector2(8, 14)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "EndRoomWest"
+transition_direction = 3
 
 [node name="HallwayWest" parent="Hallway/Exits" instance=ExtResource("11_xknx3")]
 z_index = 0
@@ -9472,6 +9473,12 @@ position = Vector2(-324, 42)
 scale = Vector2(8, 14)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "StartRoomEast"
+
+[node name="HallwayWest2" parent="Hallway/Exits" instance=ExtResource("11_xknx3")]
+z_index = 0
+position = Vector2(-276, 42)
+scale = Vector2(8, 14)
+script = null
 
 [node name="EndRoom" type="Node2D" parent="." groups=["room_with_dynamic_transitions"]]
 y_sort_enabled = true
@@ -9535,10 +9542,11 @@ entrance_name = "DarkRoomEntrance"
 keys_needed = Array[ExtResource("15_l83xx")]([ExtResource("21_0knhu"), ExtResource("16_uy203"), ExtResource("14_vrsc7")])
 
 [node name="EndRoomWest" parent="EndRoom/Exits" instance=ExtResource("11_xknx3")]
-position = Vector2(-96, 42)
+position = Vector2(-96, 40)
 scale = Vector2(8, 14)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "HallwayEast"
+transition_direction = 2
 
 [node name="PlanterCollisions" type="StaticBody2D" parent="EndRoom"]
 
@@ -9645,6 +9653,8 @@ position = Vector2(-96, 120)
 position = Vector2(216, -168)
 
 [connection signal="body_entered" from="StartRoom/CameraBoundry" to="StartRoom/MovingWall" method="_on_camera_boundry_body_entered"]
+[connection signal="body_entered" from="Hallway/Exits/HallwayWest" to="StartRoom/MovingWall" method="_on_hallway_west_body_entered"]
+[connection signal="body_entered" from="Hallway/Exits/HallwayWest2" to="StartRoom/MovingWall" method="_on_hallway_west_body_entered"]
 
 [editable path="Hallway/Exits/PuzzleDoorA"]
 [editable path="Hallway/Exits/PuzzleDoorB"]

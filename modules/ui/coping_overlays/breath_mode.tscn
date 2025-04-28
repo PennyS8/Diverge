@@ -1,0 +1,51 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddv7xdgy2vjt"]
+
+[ext_resource type="Shader" path="res://assets/debug/grayscale.gdshader" id="1_0hnpb"]
+[ext_resource type="Script" path="res://modules/globals/breath_mode.gd" id="2_wd1eu"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tdd3g"]
+shader = ExtResource("1_0hnpb")
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 0.0
+
+[sub_resource type="LabelSettings" id="LabelSettings_2825a"]
+font_size = 48
+
+[node name="BreathMode" type="ColorRect" groups=["deep_breath"]]
+process_mode = 3
+z_index = 4
+material = SubResource("ShaderMaterial_tdd3g")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("2_wd1eu")
+deadeye_time = 4.0
+
+[node name="TimeRemaining" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 100.0
+offset_right = 11.0
+offset_bottom = 123.0
+grow_horizontal = 2
+text = "0.0s"
+label_settings = SubResource("LabelSettings_2825a")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -9,7 +9,7 @@ size = Vector2(40, 39)
 size = Vector2(40, 7)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_manro"]
-size = Vector2(40, 16)
+size = Vector2(40, 18)
 
 [node name="MazeWall" type="Node2D"]
 script = ExtResource("1_manro")
@@ -35,7 +35,7 @@ collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SpawingArea"]
-position = Vector2(0, 2)
+position = Vector2(0, 3)
 shape = SubResource("RectangleShape2D_manro")
 
 [connection signal="body_entered" from="EffectArea" to="." method="_on_area_2d_body_entered"]
