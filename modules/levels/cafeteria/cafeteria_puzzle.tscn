@@ -622,11 +622,27 @@ position = Vector2(-84, -275)
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_nel61")
 
+[node name="StaticBody2D5" type="StaticBody2D" parent="Tiles/OtherCollisions"]
+z_index = 2
+position = Vector2(156, -275)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/OtherCollisions/StaticBody2D5"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_nel61")
+
 [node name="StaticBody2D2" type="StaticBody2D" parent="Tiles/OtherCollisions"]
 z_index = 2
 position = Vector2(-84, -299)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/OtherCollisions/StaticBody2D2"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_nel61")
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="Tiles/OtherCollisions"]
+z_index = 2
+position = Vector2(156, -299)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Tiles/OtherCollisions/StaticBody2D6"]
 position = Vector2(0, -1)
 shape = SubResource("RectangleShape2D_nel61")
 
@@ -909,6 +925,9 @@ position = Vector2(-30, 123)
 
 [node name="ShadeHPIndicator" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="0"]
 material = SubResource("ShaderMaterial_mjkpu")
+
+[node name="Combat" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive" index="1"]
+next_state = NodePath("../Reaction")
 
 [node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/SoftCollision" index="0"]
 scale = Vector2(1.5, 1.5)
