@@ -102,6 +102,8 @@ func _swap_level(path : String, entrance_name : String = "0"):
 	# Loads level while the tween is still happening to prevent player from seeing loading.
 	await SaveAndLoad.room_load(new_level_name)
 	swap_done.emit()
+	player.check_unlock_hook()
+
 
 func _get_entrances():
 	entrances.clear()
@@ -111,6 +113,7 @@ func _get_entrances():
 func _transition_complete():
 	#player.exit_cutscene()
 	transitioning = false
+	player.check_unlock_hook()
 
 func deep_breath_overlay():
 	var tween = create_tween()

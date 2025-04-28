@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bj5kaqckv260e"
-path="res://.godot/imported/crochet_hook_inventory.png-b906e0c36fb81aef96af8b73a556d016.ctex"
+uid="uid://crw313hpftog0"
+path="res://.godot/imported/Glimmer Fx.png-d6133bdb5262b4ff6060ef4b3c6d4d78.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/environment/downtown_dungeon/custom_sprites/crochet_hook_inventory.png"
-dest_files=["res://.godot/imported/crochet_hook_inventory.png-b906e0c36fb81aef96af8b73a556d016.ctex"]
+source_file="res://assets/environment/downtown_dungeon/custom_sprites/Glimmer Fx.png"
+dest_files=["res://.godot/imported/Glimmer Fx.png-d6133bdb5262b4ff6060ef4b3c6d4d78.ctex"]
 
 [params]
 
