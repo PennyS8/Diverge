@@ -29,7 +29,8 @@ func _on_body_entered(body: Node2D) -> void:
 		var file_name = "player_inventory"
 		
 		if dir.file_exists(file_name):
-			GameManager.inventory_node.inventory.load_state("player_inventory")
+			pass
+			#GameManager.inventory_node.inventory.load_state("player_inventory")
 		
 		start_transition_cutscene()
 		

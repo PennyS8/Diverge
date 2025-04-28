@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://dx5na7ufncxg3" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn" id="1_54xym"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="2_hqaxx"]
-[ext_resource type="Script" uid="uid://bpxwkf4srdu8y" path="res://modules/levels/cafeteria/shade_varieties/complex_seeking_ramen.gd" id="3_jrxwh"]
+[ext_resource type="Script" path="res://modules/levels/cafeteria/shade_varieties/complex_seeking_ramen.gd" id="3_jrxwh"]
 [ext_resource type="Script" uid="uid://bmwdqq25gls25" path="res://modules/levels/cafeteria/shade_varieties/no_more_ramen.gd" id="4_moxqa"]
 [ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="5_66m4e"]
 [ext_resource type="Resource" uid="uid://ddkfnyew6hgco" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="6_njc7s"]
 [ext_resource type="Script" uid="uid://emamwtxvsy5h" path="res://modules/levels/cafeteria/shade_varieties/found_ramen.gd" id="7_dfrlf"]
-[ext_resource type="Script" uid="uid://d1od6kbhhnppb" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="8_moxqa"]
+[ext_resource type="Script" uid="uid://bes5sheuaa4il" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="8_moxqa"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mjkpu"]
 resource_local_to_scene = true
