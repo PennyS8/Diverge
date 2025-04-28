@@ -1,16 +1,22 @@
-[gd_scene load_steps=13 format=4 uid="uid://cxbgdwps7aaf"]
+[gd_scene load_steps=15 format=4 uid="uid://cxbgdwps7aaf"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_cq1t1"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_d37c4"]
 [ext_resource type="Script" uid="uid://b6joa45vascw1" path="res://modules/levels/school_modular_levels/tutorials/deep_breath_tutorial_scene.gd" id="2_nryje"]
 [ext_resource type="PackedScene" uid="uid://c4f5tcvmt380f" path="res://modules/objects/level_transition_zone/transition_door.tscn" id="3_46nd3"]
-[ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="4_oxbfs"]
 [ext_resource type="PackedScene" uid="uid://dx5na7ufncxg3" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn" id="5_2pc1f"]
+[ext_resource type="Script" uid="uid://t1bdhvqaasx7" path="res://modules/levels/school_modular_levels/tutorials/return_blocker.gd" id="5_jjud4"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="7_jjud4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qgpn2"]
 parsed_collision_mask = 4294966355
 agent_radius = 8.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjud4"]
+size = Vector2(6, 5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j76cr"]
+size = Vector2(6, 6)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_821of"]
 size = Vector2(480, 216)
@@ -100,11 +106,23 @@ position = Vector2(180, -24)
 next_level_path = "uid://cs2a4pq3yt5l6"
 entrance_name = "LabSouth"
 
-[node name="HallRightSouth" parent="Exit" instance=ExtResource("4_oxbfs")]
+[node name="HallRightSouth" type="Area2D" parent="Exit"]
+z_index = 1
 position = Vector2(-36, 84)
 scale = Vector2(4, 4)
-next_level_path = "uid://cs2a4pq3yt5l6"
-entrance_name = "ElectricalClosetNorth"
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("5_jjud4")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Exit/HallRightSouth"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/HallRightSouth/StaticBody2D"]
+shape = SubResource("RectangleShape2D_jjud4")
+debug_color = Color(0.908494, 0.230311, 0.491003, 0.42)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Exit/HallRightSouth"]
+shape = SubResource("RectangleShape2D_j76cr")
+debug_color = Color(0.908494, 0.230311, 0.491003, 0.42)
 
 [node name="CameraBoundry" type="Area2D" parent="."]
 position = Vector2(0, -6)
@@ -415,6 +433,7 @@ shape = SubResource("RectangleShape2D_nryje")
 
 [node name="0" type="Marker2D" parent="Area2D" groups=["level_entrance"]]
 
+[connection signal="body_entered" from="Exit/HallRightSouth" to="Exit/HallRightSouth" method="_on_body_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 
 [editable path="ComplexShade"]

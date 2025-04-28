@@ -28,3 +28,8 @@ do! LevelManager.player.enter_cutscene()
 Juniper: Thanks lil J
 do! LevelManager.player.exit_cutscene()
 => END
+
+~ return_library_blocked
+Juniper: [i]I think I can handle the test now! I don't need to go back to the library.[/i]
+Juniper: [i]Plus, even though little me was cute, I'm honestly kind of freaked out.[/i]
+=> END
