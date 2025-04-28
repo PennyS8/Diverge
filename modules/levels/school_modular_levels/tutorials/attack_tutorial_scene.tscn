@@ -89,7 +89,7 @@ position = Vector2(-55, -29)
 [node name="HallRightNorthEast" parent="." instance=ExtResource("4_2c6sg")]
 z_index = 1
 position = Vector2(-60, -42)
-next_level_path = "uid://cs2a4pq3yt5l6"
+next_level_path = "uid://cxbgdwps7aaf"
 entrance_name = "HallRightSouth"
 
 [node name="CameraBoundry" type="Area2D" parent="."]
@@ -114,12 +114,6 @@ material = SubResource("ShaderMaterial_mjkpu")
 
 [node name="Pursue" parent="ComplexShade/ShadeFSM/Alive/Movement/Chase" index="0"]
 next_state = NodePath(".")
-
-[node name="Evade" parent="ComplexShade/ShadeFSM/Alive/Movement" index="2"]
-next_state = NodePath("../ReturnToPost")
-
-[node name="Combat" parent="ComplexShade/ShadeFSM/Alive" index="1"]
-next_state = NodePath("../Reaction")
 
 [node name="DisplayComponents" parent="ComplexShade" index="4"]
 material = SubResource("ShaderMaterial_h7nfj")
