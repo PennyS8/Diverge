@@ -1,6 +1,5 @@
-[gd_scene load_steps=7 format=4 uid="uid://8g6fiydkcauo"]
+[gd_scene load_steps=6 format=4 uid="uid://8g6fiydkcauo"]
 
-[ext_resource type="Script" path="res://modules/levels/outside/outside.gd" id="1_qy4vh"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="2_5ydov"]
 [ext_resource type="TileSet" uid="uid://beeu22p6kg3am" path="res://assets/environment/downtown_dungeon/Tiles 24x24/outdoors.tres" id="3_4wjc4"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="4_cge8o"]
@@ -9,7 +8,6 @@
 
 [node name="Outside" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_qy4vh")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 material = ExtResource("2_5ydov")

@@ -160,10 +160,13 @@ func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 	# setting dir puts player into walk state; this manages all our animations and logic and stuff
 	dir = global_position.direction_to(global_point)
 	
-	var speed_scaled = $PlayerFSM/Movement/Walk.ground_speed * speed_percentage
+	## TODO: Push changes on desktop to fix this, actually scale player speed
+	var speed_scaled = $PlayerFSM/Movement/Walk.ground_speed #* speed_percentage
 	var distance_to_end = global_position.distance_to(global_point)
 	
 	var walk_timer = get_tree().create_timer(distance_to_end / speed_scaled, true)
+	#var walk_timer = get_tree().create_timer(distance_to_end, true)
+
 	#var cutscene_marker : Area2D = cutscene_marker_packed.instantiate()
 	#get_tree().current_scene.call_deferred("add_child", cutscene_marker)
 	#

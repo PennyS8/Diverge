@@ -81,7 +81,8 @@ func _check_loading_screen() -> bool:
 	return true
 
 func reload_current_scene() -> void:
-	get_tree().reload_current_scene()
+	await get_tree().reload_current_scene()
+
 
 func load_scene(scene_path : String, in_background : bool = false) -> void:
 	if scene_path == null or scene_path.is_empty():
@@ -92,7 +93,7 @@ func load_scene(scene_path : String, in_background : bool = false) -> void:
 	if ResourceLoader.has_cached(_scene_path):
 		call_deferred("emit_signal", "scene_loaded")
 		if not _background_loading:
-			LevelManager.change_level(scene_path, "0")
+			change_scene_to_resource()
 		return
 	ResourceLoader.load_threaded_request(_scene_path)
 	if _background_loading or not _check_loading_screen():

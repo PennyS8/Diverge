@@ -8,7 +8,7 @@
 process_mode = 3
 script = ExtResource("2_0ln3r")
 options_packed_scene = ExtResource("3_kv70e")
-main_menu_scene = "res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn"
+main_menu_scene = "uid://dckk4bv55hf05"
 pauses_game = true
 
 [node name="MarginContainer" parent="MenuPanelContainer" index="0"]
@@ -26,6 +26,7 @@ theme_override_constants/margin_bottom = 16
 text = "Resume"
 
 [node name="RestartButton" type="Button" parent="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1"]
+visible = false
 layout_mode = 2
 text = "Restart"
 
@@ -52,7 +53,9 @@ dialog_text = "Restart the game?"
 [node name="ConfirmMainMenu" type="ConfirmationDialog" parent="." index="3"]
 unique_name_in_owner = true
 auto_translate_mode = 1
-dialog_text = "Go back to main menu?"
+dialog_text = "Go back to main menu?
+
+Anything unsaved will be lost!"
 
 [node name="ConfirmExit" type="ConfirmationDialog" parent="." index="4"]
 unique_name_in_owner = true

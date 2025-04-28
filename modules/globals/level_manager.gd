@@ -2,7 +2,7 @@ extends Node2D
 
 signal main_ready
 
-var current_level : Node2D
+var current_level : Node
 var custom_scene_path : String
 
 @export var fade_time := 0.5
@@ -48,7 +48,7 @@ func menu_helper():
 	if scene.name != "Main":
 		get_tree().call_deferred("change_scene_to_file","res://modules/globals/main.tscn")
 		custom_scene_path = ""
-	main_ready.connect(_main_ready)
+	main_ready.connect(_main_ready, CONNECT_ONE_SHOT)
 	await main_ready
 	
 func _main_ready():
@@ -125,7 +125,8 @@ func _get_entrances():
 func _transition_complete():
 	#player.exit_cutscene()
 	transitioning = false
-	player.check_unlock_hook()
+	if player:
+		player.check_unlock_hook()
 
 func deep_breath_overlay():
 	var tween = create_tween()

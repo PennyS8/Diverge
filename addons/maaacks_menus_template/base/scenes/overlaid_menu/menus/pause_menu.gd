@@ -71,7 +71,8 @@ func _on_exit_button_pressed() -> void:
 	popup_open = %ConfirmExit
 
 func _on_confirm_restart_confirmed() -> void:
-	SceneLoader.reload_current_scene()
+	await SceneLoader.reload_current_scene()
+	await LevelManager.menu_helper()
 	close()
 
 func _on_confirm_main_menu_confirmed() -> void:
