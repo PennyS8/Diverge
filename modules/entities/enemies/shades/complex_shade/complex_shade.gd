@@ -47,7 +47,7 @@ func fling():
 func pull():
 	$ShadeFSM.change_state("Stunned")
 	super.pull()
-	
+
 #region Savegame
 func on_save_game(saved_data:Array[SavedData]):
 	if %Health.health <= 0: 

@@ -5,6 +5,8 @@ var shade_packed = preload("res://modules/entities/enemies/shades/complex_shade/
 
 @onready var sprite = $Display/Sprite2D
 
+@onready var health_component = $HealthComponent
+
 func _on_health_component_died() -> void:
 	if shade_healths_stored.is_empty():
 		shade_healths_stored.append(40)
@@ -23,6 +25,14 @@ func _on_health_component_died() -> void:
 		var split_pos = Vector2(cos(angle_offset*i), sin(angle_offset*i))
 		shade.set_deferred("global_position", global_position + split_pos)
 		shade.get_node("%Health").set_deferred("health", shade_healths_stored[i-1])
+		
+		# Checks if there is an active encounter. Adds shade if it is spawned during it
+		var encounter_entrances = get_tree().get_nodes_in_group("encounter_entrance")
+		for entrance in encounter_entrances: 
+			if entrance.encounter_active:
+				entrance.call_deferred("enemy_added", shade)
+				break
+	
 	$AnimationPlayer.play("attack")
 
 func _on_hurt_box_component_2d_hit(_area) -> void:
