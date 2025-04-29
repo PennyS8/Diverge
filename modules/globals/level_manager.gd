@@ -199,4 +199,3 @@ func player_transition(level_path : String, direction : Vector2, entrance_name :
 		# If player is holding an input direction, keep going that direction. To prevent the one-frame stutterstep
 		player.dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	player.exit_cutscene()
-
