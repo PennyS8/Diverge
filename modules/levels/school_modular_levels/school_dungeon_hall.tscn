@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="4_ho251"]
 [ext_resource type="PackedScene" uid="uid://c4f5tcvmt380f" path="res://modules/objects/level_transition_zone/transition_door.tscn" id="5_84osc"]
 [ext_resource type="PackedScene" uid="uid://cuti2ni6cxjbq" path="res://modules/levels/school_modular_levels/school_props/fire_alarm.tscn" id="8_ke34t"]
-[ext_resource type="Script" uid="uid://cm343vu1neuso" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/exit_closet_dialogue_trigger.gd" id="9_r6r12"]
+[ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/exit_closet_dialogue_trigger.gd" id="9_r6r12"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_od3ie"]
 size = Vector2(528, 192)
