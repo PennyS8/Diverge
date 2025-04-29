@@ -796,6 +796,7 @@ position = Vector2(84, 0)
 position = Vector2(84, -24)
 
 [node name="Notes" type="Node2D" parent="UnusedNodes"]
+visible = false
 
 [node name="ReferenceRect" type="ReferenceRect" parent="UnusedNodes/Notes"]
 offset_left = 1221.0
