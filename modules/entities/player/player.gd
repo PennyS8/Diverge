@@ -208,3 +208,7 @@ func check_encounter():
 	var area = areas[0]
 	if area is EncounterArea:
 		return area
+
+# Flashes player to signal they were hit
+func _on_health_component_update_complete() -> void:
+	$HitflashPlayer.play("Hitflash")

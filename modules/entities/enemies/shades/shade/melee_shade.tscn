@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://bpgun2i5o6ru"]
+[gd_scene load_steps=37 format=3 uid="uid://bpgun2i5o6ru"]
 
 [ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="1_0ntyj"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_1u68j"]
@@ -16,12 +16,10 @@
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="10_pm2cd"]
 [ext_resource type="Script" uid="uid://dnyjn1a788382" path="res://modules/entities/enemies/shades/shade/alerted.gd" id="12_bubim"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="13_wre0s"]
-[ext_resource type="Animation" uid="uid://dcw7163r0gdii" path="res://assets/Hitflash.res" id="15_swih5"]
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_i2khm"]
 [ext_resource type="PackedScene" uid="uid://6tybdjnr6y0c" path="res://modules/entities/enemies/soft_collisions/soft_collision.tscn" id="17_jlwt1"]
 [ext_resource type="LabelSettings" uid="uid://li7joahtc8st" path="res://modules/entities/enemies/shades/shade/starstun.tres" id="19_61njc"]
 [ext_resource type="Animation" uid="uid://dvkemfiwl1mh8" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprise.res" id="20_rpbg0"]
-
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_56qhg"]
 radius = 6.0
@@ -333,27 +331,6 @@ _data = {
 &"surprise": ExtResource("20_rpbg0")
 }
 
-[sub_resource type="Animation" id="Animation_0l2b6"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Display/Sprite2D:material:shader_parameter/Flash")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_nkxn5"]
-_data = {
-&"Hitflash": ExtResource("15_swih5"),
-&"RESET": SubResource("Animation_0l2b6")
-}
-
 [node name="MeleeShade" type="CharacterBody2D" groups=["enemy", "tetherable_body"]]
 z_index = 1
 y_sort_enabled = true
@@ -658,11 +635,6 @@ label_settings = ExtResource("19_61njc")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_1um1b")
-}
-
-[node name="HitflashPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_nkxn5")
 }
 
 [connection signal="velocity_computed" from="NavAgent" to="." method="_on_nav_agent_velocity_computed"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=79 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=83 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -31,9 +31,10 @@
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Script" uid="uid://8u175eaigjct" path="res://modules/entities/player/xsm/recall.gd" id="17_qcq68"]
 [ext_resource type="Script" uid="uid://yaywue3qai2t" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
-[ext_resource type="Script" path="res://modules/entities/player/death.gd" id="21_xyfbm"]
+[ext_resource type="Script" uid="uid://bkr3e1t0a8kwu" path="res://modules/entities/player/death.gd" id="21_xyfbm"]
 [ext_resource type="Texture2D" uid="uid://cw6e3445io3hb" path="res://modules/entities/player/real_sprites/idle_walk/idle_walk_down.png" id="31_l84k2"]
 [ext_resource type="Texture2D" uid="uid://b0tjbksbiy8k3" path="res://modules/entities/player/real_sprites/crochet_swing/crochet_swing_down.png" id="32_l84k2"]
+[ext_resource type="Material" uid="uid://c8m31s5vmsyhk" path="res://modules/entities/enemies/shades/fx/better_enemy_shader.tres" id="32_lle26"]
 [ext_resource type="Texture2D" uid="uid://dl44tw5ka1vsf" path="res://modules/entities/player/real_sprites/crochet_swing/crochet_swing_left.png" id="33_hfpac"]
 [ext_resource type="Texture2D" uid="uid://bx6nnhee68tq4" path="res://modules/entities/player/real_sprites/crochet_swing/crochet_swing_right.png" id="34_2irlg"]
 [ext_resource type="Texture2D" uid="uid://wcjkinfn7l2" path="res://modules/entities/player/real_sprites/crochet_swing/crochet_swing_up.png" id="35_7h8sm"]
@@ -43,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://c44dp778jni1o" path="res://modules/entities/player/real_sprites/death.png" id="42_cjsq4"]
 [ext_resource type="Texture2D" uid="uid://c17lfyx7v4yqj" path="res://modules/entities/player/real_sprites/crochet_walk/crochet_walk_left.png" id="43_7h8sm"]
 [ext_resource type="Texture2D" uid="uid://bppqlbcdivykt" path="res://modules/entities/player/real_sprites/crochet_walk/crochet_walk_right.png" id="44_bif3w"]
+[ext_resource type="Animation" uid="uid://dcw7163r0gdii" path="res://assets/Hitflash.res" id="44_cjsq4"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="46_lle26"]
 [ext_resource type="Shader" uid="uid://d0p05imkhnhst" path="res://modules/objects/stress_causer/stress_effect.gdshader" id="57_7h8sm"]
 
@@ -1787,6 +1789,27 @@ _data = {
 &"walk_up": SubResource("Animation_fngpe")
 }
 
+[sub_resource type="Animation" id="Animation_0l2b6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:material:shader_parameter/Flash")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cjsq4"]
+_data = {
+&"Hitflash": ExtResource("44_cjsq4"),
+&"RESET": SubResource("Animation_0l2b6")
+}
+
 [sub_resource type="SegmentShape2D" id="SegmentShape2D_rc6ld"]
 b = Vector2(0, 0)
 
@@ -2240,7 +2263,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Death")
 metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="DeathUp" type="Node" parent="PlayerFSM/Movement/Death"]
@@ -2343,7 +2366,7 @@ offset = Vector2(0, -11)
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 2
-material = ExtResource("13_41n4o")
+material = ExtResource("32_lle26")
 texture = ExtResource("31_l84k2")
 offset = Vector2(0, -14)
 hframes = 3
@@ -2353,6 +2376,11 @@ libraries = {
 &"": SubResource("AnimationLibrary_1um1b")
 }
 autoplay = "idle_down"
+
+[node name="HitflashPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cjsq4")
+}
 
 [node name="Camera2D" type="Camera2D" parent="."]
 process_mode = 3
@@ -2422,4 +2450,6 @@ color = Color(1, 1, 1, 0.129412)
 color_ramp = SubResource("Gradient_xyfbm")
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="Hit" from="HurtBoxComponent2D" to="." method="_on_hurt_box_component_2d_hit"]
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="update_complete" from="HealthComponent" to="." method="_on_health_component_update_complete"]
