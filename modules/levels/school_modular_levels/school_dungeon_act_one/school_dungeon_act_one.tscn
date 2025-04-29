@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://cs2a4pq3yt5l6"]
+[gd_scene load_steps=36 format=4 uid="uid://cs2a4pq3yt5l6"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_pt88k"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_yqbfs"]
@@ -8,9 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://dx5na7ufncxg3" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn" id="6_0natf"]
 [ext_resource type="PackedScene" uid="uid://c4f5tcvmt380f" path="res://modules/objects/level_transition_zone/transition_door.tscn" id="6_cf32e"]
 [ext_resource type="PackedScene" uid="uid://cujx50k2x7ox5" path="res://modules/objects/level_transition_zone/encounter_entrance.tscn" id="7_1ddbp"]
+[ext_resource type="Script" uid="uid://cyamu3k7rpuu6" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/shades_walking_cutscene.gd" id="7_skfq5"]
 [ext_resource type="PackedScene" uid="uid://cuti2ni6cxjbq" path="res://modules/levels/school_modular_levels/school_props/fire_alarm.tscn" id="8_0natf"]
+[ext_resource type="Script" uid="uid://b5b2mf7sbne8i" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/notgoindatway.gd" id="8_dkp6j"]
 [ext_resource type="PackedScene" uid="uid://lbhb1gemkets" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.tscn" id="8_e5ij6"]
 [ext_resource type="Script" uid="uid://cm343vu1neuso" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/exit_closet_dialogue_trigger.gd" id="9_0natf"]
+[ext_resource type="Script" uid="uid://jftftlnkvyoo" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/cutscene_checker_gotta_fight.gd" id="9_3ccj6"]
 [ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.tscn" id="9_3mj1j"]
 [ext_resource type="PackedScene" uid="uid://c0xn1iqitvhmq" path="res://modules/objects/puzzle_pieces/key/key.tscn" id="10_0c127"]
 
@@ -31,6 +34,9 @@ load_path = "res://.godot/imported/school_keydoubledoor_unlocked_blue.png-69021e
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0natf"]
 size = Vector2(454, 436)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3ccj6"]
+size = Vector2(20, 72)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgpn2"]
 size = Vector2(312, 216)
@@ -173,6 +179,7 @@ entrance_name = "HallLeftLeftEast"
 transition_direction = 2
 
 [node name="CameraBoundry" type="Area2D" parent="Rooms/Foyer"]
+visible = false
 collision_layer = 512
 collision_mask = 4
 
@@ -194,20 +201,56 @@ position = Vector2(-24, -108)
 locked_sprite = SubResource("CompressedTexture2D_0natf")
 unlocked_sprite = SubResource("CompressedTexture2D_skfq5")
 
-[node name="EncounterEntrance2" parent="Rooms/Foyer" node_paths=PackedStringArray("enemy_spawn_points") instance=ExtResource("7_1ddbp")]
+[node name="EncounterEntrance" parent="Rooms/Foyer" node_paths=PackedStringArray("enemy_spawn_points") instance=ExtResource("7_1ddbp")]
+visible = false
+position = Vector2(-40, 91)
 enemy_spawn_points = [NodePath("EnemySpawn"), NodePath("EnemySpawn2"), NodePath("EnemySpawn3")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Foyer/EncounterEntrance2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Foyer/EncounterEntrance"]
+position = Vector2(41, -72)
 shape = SubResource("RectangleShape2D_0natf")
 
-[node name="EnemySpawn" type="Marker2D" parent="Rooms/Foyer/EncounterEntrance2"]
-position = Vector2(72, 121)
+[node name="EnemySpawn" type="Marker2D" parent="Rooms/Foyer/EncounterEntrance"]
+position = Vector2(-46, 89)
 
-[node name="EnemySpawn2" type="Marker2D" parent="Rooms/Foyer/EncounterEntrance2"]
-position = Vector2(-48, 96)
+[node name="EnemySpawn2" type="Marker2D" parent="Rooms/Foyer/EncounterEntrance"]
+position = Vector2(-20, 71)
 
-[node name="EnemySpawn3" type="Marker2D" parent="Rooms/Foyer/EncounterEntrance2"]
-position = Vector2(39, 55)
+[node name="EnemySpawn3" type="Marker2D" parent="Rooms/Foyer/EncounterEntrance"]
+position = Vector2(12, 87)
+
+[node name="ShadesWalkingCutscene" type="Area2D" parent="Rooms/Foyer" node_paths=PackedStringArray("juniper_spikes", "shade_end_location")]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("7_skfq5")
+juniper_spikes = [NodePath("JuniperPoint1"), NodePath("JuniperPoint2")]
+shade_end_location = NodePath("../Exit/FoyerWest")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Foyer/ShadesWalkingCutscene"]
+position = Vector2(15, 4)
+shape = SubResource("RectangleShape2D_0natf")
+
+[node name="JuniperPoint1" type="Marker2D" parent="Rooms/Foyer/ShadesWalkingCutscene"]
+position = Vector2(2, 186)
+
+[node name="JuniperPoint2" type="Marker2D" parent="Rooms/Foyer/ShadesWalkingCutscene"]
+position = Vector2(0, -71)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Rooms/Foyer"]
+position = Vector2(-142, 169)
+script = ExtResource("8_dkp6j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Foyer/StaticBody2D"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_3ccj6")
+
+[node name="Area2D" type="Area2D" parent="Rooms/Foyer/StaticBody2D"]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Foyer/StaticBody2D/Area2D"]
+position = Vector2(10, -2)
+shape = SubResource("RectangleShape2D_3ccj6")
 
 [node name="HallLeftLeft" type="Node2D" parent="Rooms"]
 y_sort_enabled = true
@@ -302,6 +345,14 @@ scale = Vector2(4, 4)
 next_level_path = "uid://cs2a4pq3yt5l6"
 entrance_name = "ElectricalClosetNorth"
 transition_direction = 1
+
+[node name="CutsceneChecker-GottaFight" type="Area2D" parent="Rooms/HallRight"]
+collision_layer = 0
+collision_mask = 4
+script = ExtResource("9_3ccj6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/HallRight/CutsceneChecker-GottaFight"]
+shape = SubResource("RectangleShape2D_821of")
 
 [node name="EncounterEntrance" parent="Rooms/HallRight" node_paths=PackedStringArray("enemy_spawn_points") instance=ExtResource("7_1ddbp")]
 enemy_spawn_points = [NodePath("EnemySpawn"), NodePath("EnemySpawn2")]
@@ -876,6 +927,9 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AABFABAABQAPAAkAAABIABAABQAPAAkAAABIAA8ABQAPAAkAAABFAA8ABQAPAAkAAABLABQABQAPAAkAAABLABMABQAPAAkAAABIABMABQAPAAkAAABIABQABQAPAAkAAABFABQABQAPAAkAAABFABMABQAPAAkAAABMABAAAQAOAAsAAABDAAUAAQANAA0AAEBEAAgABQAPAAkAADBEAAkABQAPAAkAADBHAAkABQAPAAkAADBHAAgABQAPAAkAADBHAAQABQAPAAkAADBHAAUABQAPAAkAADBKAAUABQAPAAkAADBKAAQABQAPAAkAADBKAAkABQAPAAkAADBKAAgABQAPAAkAADBWAAkABQAPAA8AAABXAAkABQAPAA8AAABWAAcABQAPAA8AAABXAAcABQAPAA8AAABWAAUABQAPAA8AAABXAAUABQAPAA8AAABaAAcABQAPAA8AAABbAAcABQAPAA8AAABaAAkABQAPAA8AAABbAAkABQAPAA8AAABaAAQAAQAOAAsAAFBDACwAAQAPAA8AABBJACEAAQAPAA8AAABRACIAAQAKAA8AAGAWAAQAAQAOAA8AAAAcAAIAAQAOAAsAAADf/ywAAQANAAwAAADh/ywAAQANAA8AAADj/ywAAQAPAAwAAAA=")
 tile_set = ExtResource("2_yqbfs")
 
+[connection signal="body_entered" from="Rooms/Foyer/ShadesWalkingCutscene" to="Rooms/Foyer/ShadesWalkingCutscene" method="_on_body_entered"]
+[connection signal="body_entered" from="Rooms/Foyer/StaticBody2D/Area2D" to="Rooms/Foyer/StaticBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Rooms/HallRight/CutsceneChecker-GottaFight" to="Rooms/HallRight/CutsceneChecker-GottaFight" method="_on_body_entered"]
 [connection signal="body_entered" from="Rooms/HallRight/ExitClosetDialogueTrigger" to="Rooms/HallRight/ExitClosetDialogueTrigger" method="_on_body_entered"]
 
-[editable path="Rooms/Foyer/EncounterEntrance2"]
+[editable path="Rooms/Foyer/EncounterEntrance"]

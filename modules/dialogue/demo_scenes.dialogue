@@ -71,8 +71,26 @@ Juniper: I don't think this hallway looked like this??? I've got to be losing my
 => END
 
 ~ foyer_encounter
-Juniper: I am getting out of this
-#tutorial
+do move_shades(-86)
+do player.do_walk(juniper_spikes[0].global_position)
+Juniper: Okay, so I wasn't hallucinating.
+Juniper: I am getting out of this place.
+Juniper: I'm in the foyer. I see the front door directly to my North.
+do player.do_walk(juniper_spikes[1].global_position)
+Juniper: You've GOT to be kidding me.
+Juniper: The only place I can think of a big, disproportiate, cartoony key being located is the admin office, which should have been one of the doors in the hallway I came from.
+=> END
+
+~ hall1_encounter
+Juniper: [i] I... guess I have to fight these guys. They're blocking the admin room with this fire alarm crap.[/i]
+Juniper: [i] Just like a video game, right? Heh. [/i]
+Juniper: [i] Here goes nothing, I guess. [/i]
+=> END
+
+~ not_goin_dat_way
+Juniper: Nope. Not going the way the creepy shadow things went. Nope.
+Juniper: Nopenopenopenopenopenopenope.
+=> END
 
 #puzzles
 ~ safety
