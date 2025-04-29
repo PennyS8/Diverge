@@ -170,7 +170,6 @@ deep_breath={
 
 locale/translations_pot_files=PackedStringArray("res://modules/dialogue/dialogue.dialogue", "res://modules/levels/cafeteria/questgiver/juni_hungry.dialogue", "res://modules/levels/cafeteria/cafeteria_puzzle_intro.dialogue", "res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue", "res://modules/levels/school_modular_levels/Playtest/playtest_dialogue.dialogue", "res://modules/levels/classroom_maze/anxious_classroom.dialogue", "res://modules/dialogue/demo_scenes.dialogue", "res://modules/levels/school_modular_levels/tutorials/tutorials.dialogue")
 
-
 [layer_names]
 
 2d_physics/layer_1="Ledge"
