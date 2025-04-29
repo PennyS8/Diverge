@@ -73,4 +73,4 @@ tile_set = ExtResource("2_5qqrf")
 y_sort_enabled = true
 
 [node name="SchoolBoss" parent="GymItems" instance=ExtResource("4_18pen")]
-position = Vector2(374, 199)
+position = Vector2(374, 204)
