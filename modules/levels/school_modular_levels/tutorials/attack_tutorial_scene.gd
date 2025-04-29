@@ -6,8 +6,9 @@ extends Node2D
 var read : bool = false
 
 func _physics_process(delta: float) -> void:
-	if !player or !shade or read:
-		return
-	elif player.global_position.distance_to(shade.global_position) <= 48:
-		read = true
-		LevelManager.enter_tutorial("AttackTutorial")
+	pass
+	#if !player or !shade or read:
+		#return
+	#elif player.global_position.distance_to(shade.global_position) <= 48:
+		#read = true
+		#LevelManager.enter_tutorial("AttackTutorial")

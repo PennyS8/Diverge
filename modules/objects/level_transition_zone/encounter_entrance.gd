@@ -9,6 +9,8 @@ extends Area2D
 ## The door blockers for enabled encounter
 @export var door_closures : Array[StaticBody2D]
 
+signal begin_encounter
+
 var current_enemies : Array[CharacterBody2D]
 var enemy_packed : PackedScene = preload("res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn")
 
@@ -87,6 +89,7 @@ func start_encounter():
 		enemy_added(enemy)
 	
 	await current_enemies[0].spawned
+	begin_encounter.emit()
 	#await LevelManager.player.exit_cutscene()
 
 func end_encounter():

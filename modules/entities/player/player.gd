@@ -10,6 +10,9 @@ var cutscene_walk_to_position := Vector2.ZERO
 var dir : Vector2 = Vector2.ZERO
 
 var dialogue_open : bool = false
+
+var moon_walk : bool = false
+
 # swing_dir is a variable updated by our hook swing that gets the 
 # nearest cardinal direction to our mouse click (n, e, s, w)
 # we keep it in here to use it to push blocks in that direction
@@ -18,7 +21,7 @@ var swing_dir : Vector2
 # if player is currently inside a "ledge" area, the reference to that is stored here
 var ledge_collision : Area2D
 
-var hook_locked := false
+var hook_locked := true
 @export_category("Check Unlock Item Patterns")
 @export var hook_type : ItemType
 @export var yarn_bag_type : ItemType
@@ -75,12 +78,18 @@ func update_cam_limits():
 		camera.limit_bottom = bottom_left.y
 		camera.limit_left = bottom_left.x
 
+func give_hook():
+	if GameManager.inventory_node:
+		var inv : RestrictedInventory = GameManager.inventory_node.inventory
+		InventoryHelper.add_itemtype_to_inventory(inv, hook_type, 1)
+		
 # Checks for all player ability unlocks. Unlocks FSM states if item found in inventory
 func check_unlock_hook():
 	if GameManager.inventory_node:
 		var inv : RestrictedInventory = GameManager.inventory_node.inventory
 		if InventoryHelper.is_itemtype_in_inventory(inv, hook_type):
 			$PlayerFSM/Movement/AttackMelee.disabled = false
+			hook_locked = false
 		
 		if InventoryHelper.is_itemtype_in_inventory(inv, yarn_bag_type):
 			$PlayerFSM/Movement/Lasso.disabled = false
@@ -153,6 +162,7 @@ func exit_cutscene():
 	
 	lock_camera = false
 	in_cutscene = false
+
 	camera.position_smoothing_enabled = true
 	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
 	
@@ -181,6 +191,9 @@ func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 	walk_state.ground_speed = orig_speed
 	return
 
+func start_movement_tutorial():
+	$MovementKeys.start_tutorial()
+	
 func _on_health_component_died() -> void:
 	var current_dir : Vector2
 	var idle := false

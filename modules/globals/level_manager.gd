@@ -24,6 +24,11 @@ signal swap_done
 
 ## Is called when we enter an encounter to tell interactables and doors to lock themselves
 signal enter_encounter
+
+## Is called when player regains control
+signal encounter_begun
+
+## Is called when all shades are dead
 signal exit_encounter
 
 var overlay : Control
@@ -195,6 +200,7 @@ func player_transition(level_path : String, direction : Vector2, entrance_name :
 	if possible_boundry:
 		if possible_boundry.encounter_active:
 			await possible_boundry.start_encounter()
+			encounter_begun.emit()
 	else:
 		# If player is holding an input direction, keep going that direction. To prevent the one-frame stutterstep
 		player.dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")

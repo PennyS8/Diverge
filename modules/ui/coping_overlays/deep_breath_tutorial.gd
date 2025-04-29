@@ -49,3 +49,5 @@ func exit_deep_breath_tutorial():
 	cope_in_progress = false
 	self.hide()
 	get_tree().paused = false
+	LevelManager.player.get_node("PlayerFSM").call_deferred("change_state", "CanDash")
+	LevelManager.player.get_node("PlayerFSM").call_deferred("change_state", "CanAttack")
