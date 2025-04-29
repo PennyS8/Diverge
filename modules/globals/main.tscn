@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b8ywe7vivb1en"]
+[gd_scene load_steps=18 format=3 uid="uid://b8ywe7vivb1en"]
 
 [ext_resource type="Script" uid="uid://hrfgvn40midl" path="res://modules/globals/main.gd" id="1_2uu7l"]
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="2_wwsun"]
@@ -8,12 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://ddv7xdgy2vjt" path="res://modules/ui/coping_overlays/breath_mode.tscn" id="4_c8snn"]
 [ext_resource type="PackedScene" uid="uid://c33qufye8x8ng" path="res://modules/ui/maacks_menus/scenes/overlaid_menus/pause_menu.tscn" id="5_gvmbe"]
 [ext_resource type="Script" uid="uid://t66eoi8gmq5o" path="res://modules/globals/saving/save_load.gd" id="5_jmjhv"]
-[ext_resource type="PackedScene" uid="uid://c57dyngu35ntf" path="res://modules/ui/coping_overlays/attack_tutorial.tscn" id="5_tdd3g"]
-[ext_resource type="PackedScene" uid="uid://c3op3a42rmxl4" path="res://modules/ui/coping_overlays/deep_breath_tutorial.tscn" id="6_2825a"]
+[ext_resource type="PackedScene" path="res://modules/ui/coping_overlays/attack_tutorial.tscn" id="5_tdd3g"]
+[ext_resource type="PackedScene" path="res://modules/ui/coping_overlays/deep_breath_tutorial.tscn" id="6_2825a"]
 [ext_resource type="Script" uid="uid://c8qxb50jimxvj" path="res://modules/globals/inventory_panel.gd" id="8_02pmu"]
 [ext_resource type="PackedScene" uid="uid://ms4bp1b33wt2" path="res://modules/ui/hud/wyvern_inv/notebook_panel.tscn" id="8_dbv5s"]
 [ext_resource type="Shader" uid="uid://c7ga40mwai0hs" path="res://modules/globals/blur.gdshader" id="9_nlpsi"]
-[ext_resource type="Shader" path="res://modules/globals/fisheyeCRT.gdshader" id="11_2825a"]
+[ext_resource type="Shader" uid="uid://bqvwhxrfa0vww" path="res://modules/globals/fisheyeCRT.gdshader" id="11_2825a"]
+[ext_resource type="AudioStream" uid="uid://qx3fehf72rtq" path="res://modules/sfx/music/Composure_v1.wav" id="15_gvmbe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yc34w"]
 shader = ExtResource("9_nlpsi")
@@ -114,6 +115,11 @@ unique_name_in_owner = true
 script = ExtResource("5_jmjhv")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_gvmbe")
+autoplay = true
+bus = &"soundtrack"
 
 [connection signal="check_hook" from="GUI2/InventoryPanel/EquipmentPanel" to="." method="_on_equipment_panel_check_hook"]
 [connection signal="item_stack_added" from="GUI2/InventoryPanel/EquipmentPanel/Equip" to="." method="_on_equip_item_stack_added"]
