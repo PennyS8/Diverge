@@ -6,34 +6,84 @@ signal main_ready
 var player
 var main : Node2D
 
+#region Ready Functions
 func _ready() -> void:
 	main_ready.connect(_main_ready)
 
 func _main_ready():
 	player = get_tree().get_first_node_in_group("player")
 	main = get_tree().current_scene
+#endregion
 
+#region Full game saving, loading, and deleting
+# Saves all data from the game (rooms, player data, etc)
 func save_game():
-	var saved_game:SavedGame = SavedGame.new()
+	print("Saved game")
 	
-	saved_game.player_health = player.health_component.health
-	saved_game.player_position = player.global_position
+	## TODO: Comment this out once save_game() is needed for save button (after
+	## graduation). Also make sure that all necessary player information is 
+	## being saved.
+	#var saved_game:SavedGame = SavedGame.new()
+	#
+	#saved_game.player_health = player.health_component.health
+	#saved_game.player_position = player.global_position
+	#
+	#ResourceSaver.save(saved_game, "user://savegame.tres")
 	
-	var saved_data:Array[SavedData] = []
-	# Calls the 'on_save_game' function on all entities with the 'saved_data' group.
-	# This being enemies, items, etc.
-	get_tree().call_group("saved_data", "on_save_game", saved_data)
-	saved_game.saved_data = saved_data
+	var temp_dir_path = "user://temp"
+	var dir_path = "user://saves"
 	
-	ResourceSaver.save(saved_game, "user://savegame.tres")
+	# Attempts to open permanent save path. If it doesn't exist, create it
+	var dir
+	if dir_exists(dir_path):
+		dir = DirAccess.open(dir_path)
+		
+		# Makes sure save directory properly opened. If not we return
+		if !dir:
+			print("Save directory could not be opened")
+			return
+	else:
+		DirAccess.make_dir_absolute(dir_path)
+	
+	# Checks if there are current room saves. If so we load them into the permanent dir
+	if dir_exists(temp_dir_path):
+		var temp_dir = DirAccess.open(temp_dir_path)
+		
+		if temp_dir:
+			temp_dir.list_dir_begin()
+			var file_name = temp_dir.get_next()
+				
+			while file_name != "":
+				var temp_file_path = temp_dir_path + "/" + file_name
+				var perm_file_path = dir_path + "/" + file_name
+				
+				if temp_dir.file_exists(temp_file_path):
+					DirAccess.copy_absolute(temp_file_path, perm_file_path)
+				else:
+					print("File " + file_name + " does not exist")
+					
+				file_name = temp_dir.get_next()
+			
+			temp_dir.list_dir_end()
+		else:
+			print("Temp folder could not be opened for game save")
+	else:
+		print("Temp folder does not exist")
 
-func load_game():
+## TODO: Have this load the specific save file that is saved in the save_game() function. 
+## This will be an after graduation thing when we want to implement save & load buttons.
+# Loads all data from the game (rooms, player data, etc)
+func load_game(room_id):
+	print("Load game")
+	
+	var save_file = "user://savegame.tres"
+	
 	# Makes sure to not load if save file doesn't exist
-	if !(save_exists("user://savegame.tres")):
+	if !(save_exists(save_file)):
 		print("No existing save file.")
 		return
 
-	var saved_game:SavedGame = load("user://savegame.tres")
+	var saved_game:SavedGame = load(save_file)
 	
 	player.health_component.health = saved_game.player_health
 	player.global_position = saved_game.player_position
@@ -45,8 +95,12 @@ func load_game():
 		var restored_node = scene.instantiate()
 		var node = get_node(item.parent_node_path)
 		
+		# Gets node name before resinstantiation. This is to prevent us from having
+		# "CharacterBody@12" or some randomized name similar to that in Remote
+		var item_name = restored_node.name
+		
 		# If the node path does not exist, add the item to main
-		# NOTE: This shouldn't ever occur but is moreso a sanity check to be safe
+		# NOTE: This should never occur but is more so a sanity check to be safe
 		if node != null:
 			node.add_child(restored_node)
 		else:
@@ -55,21 +109,51 @@ func load_game():
 		if restored_node.has_method("on_load_game"):
 			restored_node.on_load_game(item)
 		
-		if restored_node.has_method("on_load_game"):
-			restored_node.on_load_game(item)
+		# Checks if the restored node name has been set to randomized unique name. If
+		# so, it renames it to what the item is and Godot adds a unique identifier
+		if restored_node.name != item_name:
+			restored_node.name = item_name
 
-func delete_game_save():
-	var format_path = "user://savegame.tres"
+# Deletes a full game save
+func delete_game_saves():
+	var save_path = "user://saves"
 	
-	if save_exists(format_path):
-		DirAccess.remove_absolute(format_path)
+	if dir_exists(save_path):
+		var dir = DirAccess.open(save_path)
+		
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			
+			while file_name != "":
+				var file_path = save_path + "/" + file_name
+				
+				if dir.file_exists(file_path):
+					dir.remove(file_path)
+				else:
+					print("File " + file_name + " does not exist")
+				
+				file_name = dir.get_next()
+			
+			dir.list_dir_end()
+		else:
+			print("Saves directory could not be opened")
+		
+		# Removes the saves directory once we have deleted all files within it
+		DirAccess.remove_absolute(save_path)
 	else:
-		print("File doesn't exist")
-		return
+		print("Saves directory does not exist")
+#endregion
 
+#region Room saving, loading, and deleting
+# Saves data of a given room into a temporary directory 
 func room_save(room_id):
-	if DirAccess.open("user://temp") == null:
-		DirAccess.make_dir_absolute("user://temp")
+	# TODO: Once full game save is implemented for save buttons, change this to 
+	# a temp folder
+	var save_path = "user://saves"
+	
+	if DirAccess.open(save_path) == null:
+		DirAccess.make_dir_absolute(save_path)
 	
 	print("Saved Level: " + room_id)
 	
@@ -85,6 +169,7 @@ func room_save(room_id):
 	var format_path = save_room_path.format({"id": room_id})
 	ResourceSaver.save(saved_room, format_path)
 
+# Loads data of a given room from the temporary directory if it exists
 func room_load(room_id):
 	var save_room_path = "user://temp/saveroom_{id}.tres"
 	var format_path = save_room_path.format({"id": room_id})
@@ -125,6 +210,7 @@ func room_load(room_id):
 		if restored_node.name != item_name:
 			restored_node.name = item_name
 
+# Deletes all room save files before deleting the temp directory as a whole
 func delete_room_saves():
 	var room_save_path = "user://temp"
 	
@@ -155,6 +241,7 @@ func delete_room_saves():
 		DirAccess.remove_absolute(room_save_path)
 	else:
 		print("Temp folder does not exist")
+#endregion
 
 # Helper functions checking if save files / folders exist.
 func save_exists(save_file : String):
