@@ -225,3 +225,8 @@ func check_encounter():
 
 func _on_animation_player_current_animation_changed(name: String) -> void:
 	$Hook/CollisionPolygon2D.set_deferred("disabled", true)
+
+func respawn():
+	LevelManager.player_transition(LevelManager.current_level.scene_file_path, Vector2.ZERO)
+	await LevelManager.swap_done
+	SaveAndLoad.load_player(LevelManager.current_level)
