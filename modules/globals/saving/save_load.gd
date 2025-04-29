@@ -278,11 +278,14 @@ func load_player(loaded_level):
 	
 	# Sets the player's hud to visibly show health
 	var hud = get_tree().get_first_node_in_group("gui")
-	var damage_amount = saved_player.player_max_health - saved_player.player_health
-	if player.health_component.health <= 0:
-		hud.heart_heal(saved_player.player_health)
-	else:
-		hud.heart_damage(damage_amount)
+	#TODO: Get player health reseting fully working in future
+	#var damage_amount = saved_player.player_max_health - saved_player.player_health
+	#if player.health_component.health <= 0:
+		#hud.heart_heal(saved_player.player_health)
+	#else:
+		#hud.heart_damage(damage_amount)
+	
+	hud.heart_heal(saved_player.player_max_health)
 	
 	# Loads player's health and position
 	player.health_component.health = saved_player.player_health
