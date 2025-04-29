@@ -118,10 +118,10 @@ next_state = NodePath(".")
 [node name="DisplayComponents" parent="ComplexShade" index="4"]
 material = SubResource("ShaderMaterial_h7nfj")
 
-[node name="AttackArc" parent="ComplexShade/DisplayComponents" index="4"]
+[node name="Shadow" parent="ComplexShade/DisplayComponents" index="3"]
 material = SubResource("ShaderMaterial_h7nfj")
 
-[node name="Shadow" parent="ComplexShade/DisplayComponents" index="5"]
+[node name="AttackArc" parent="ComplexShade/DisplayComponents" index="5"]
 material = SubResource("ShaderMaterial_h7nfj")
 
 [node name="FSMDebug" parent="ComplexShade" index="6"]

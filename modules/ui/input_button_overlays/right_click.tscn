@@ -1,7 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://chxuugdc16mcw"]
+[gd_scene load_steps=8 format=3 uid="uid://ouhylxqig8h1"]
 
-[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_n3nb1"]
-[ext_resource type="Texture2D" uid="uid://m0pepru6ehj6" path="res://assets/hud/input_prompts/input_prompts.png" id="2_djm3l"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_kxv27"]
+[ext_resource type="Texture2D" uid="uid://m0pepru6ehj6" path="res://assets/hud/input_prompts/input_prompts.png" id="2_n0cv0"]
 
 [sub_resource type="Animation" id="Animation_cmcwv"]
 length = 0.001
@@ -37,18 +37,18 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ww3iy"]
 _data = {
 &"RESET": SubResource("Animation_cmcwv"),
-&"left_click": SubResource("Animation_lggqi")
+&"right_click": SubResource("Animation_lggqi")
 }
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_388dt"]
-atlas = ExtResource("2_djm3l")
+atlas = ExtResource("2_n0cv0")
 region = Rect2(138, 34, 12, 16)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_whdlb"]
-atlas = ExtResource("2_djm3l")
-region = Rect2(155, 34, 12, 16)
+atlas = ExtResource("2_n0cv0")
+region = Rect2(172, 34, 12, 16)
 
-[node name="LeftClick" type="Node2D"]
+[node name="RightClick" type="Node2D"]
 process_mode = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -57,16 +57,16 @@ reset_on_save = false
 libraries = {
 &"": SubResource("AnimationLibrary_ww3iy")
 }
-autoplay = "left_click"
+autoplay = "right_click"
 
 [node name="Depressed" type="Sprite2D" parent="."]
 process_mode = 3
-material = ExtResource("1_n3nb1")
+material = ExtResource("1_kxv27")
 position = Vector2(0, 5)
 texture = SubResource("AtlasTexture_388dt")
 
 [node name="Pressed" type="Sprite2D" parent="."]
 process_mode = 3
-material = ExtResource("1_n3nb1")
+material = ExtResource("1_kxv27")
 position = Vector2(0, 5)
 texture = SubResource("AtlasTexture_whdlb")

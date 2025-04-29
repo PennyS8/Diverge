@@ -1,8 +1,5 @@
 extends Node2D
 
-@onready var shade = $ComplexShade
-@onready var player = get_tree().get_first_node_in_group("player")
-
 var read : bool = false
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
