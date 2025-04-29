@@ -141,6 +141,8 @@ func drop_heart():
 				var node = get_node(get_parent().get_path())
 				node.call_deferred("add_child",heart)
 				heart.set_deferred("global_position", self.global_position)
-				
-	
-	
+
+func release_player():
+	EnemyManager.release_engagement(self)
+	follow_object = null
+	fsm.change_state("Idle")

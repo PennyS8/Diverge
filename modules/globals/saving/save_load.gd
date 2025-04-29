@@ -276,6 +276,14 @@ func load_player(loaded_level):
 	
 	var saved_player:SavedGame = load(player_save)
 	
+	# Sets the player's hud to visibly show health
+	var hud = get_tree().get_first_node_in_group("gui")
+	var damage_amount = saved_player.player_max_health - saved_player.player_health
+	if player.health_component.health <= 0:
+		hud.heart_heal(saved_player.player_health)
+	else:
+		hud.heart_damage(damage_amount)
+	
 	# Loads player's health and position
 	player.health_component.health = saved_player.player_health
 	player.health_component.max_health = saved_player.player_max_health
@@ -283,11 +291,7 @@ func load_player(loaded_level):
 	# they were saved from
 	if loaded_level.scene_file_path == saved_player.level_path:
 		player.global_position = saved_player.player_position
-	
-	# Sets the player's hud to visibly show health
-	var hud = get_tree().get_first_node_in_group("gui")
-	var damage_amount = saved_player.player_max_health - saved_player.player_health
-	hud.heart_damage(damage_amount)
+		
 #endregion
 
 # Helper functions checking if save files / folders exist.

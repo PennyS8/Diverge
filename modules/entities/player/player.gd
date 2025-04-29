@@ -37,6 +37,7 @@ var curr_camera_boundry : Area2D
 @onready var anim_player = $AnimationPlayer
 @onready var camera : Camera2D = $Camera2D
 @onready var fsm : State = $PlayerFSM
+@onready var hurtbox = $HurtBoxComponent2D
 
 var cutscene_marker_packed = preload("res://modules/objects/debug/cutscene_walk_point.tscn")
  
@@ -196,6 +197,8 @@ func start_movement_tutorial():
 	$MovementKeys.start_tutorial()
 	
 func _on_health_component_died() -> void:
+	set_collision_layer_value(3, false)
+	
 	var current_dir : Vector2
 	var idle := false
 	
@@ -229,4 +232,7 @@ func _on_animation_player_current_animation_changed(name: String) -> void:
 func respawn():
 	LevelManager.player_transition(LevelManager.current_level.scene_file_path, Vector2.ZERO)
 	await LevelManager.swap_done
-	SaveAndLoad.load_player(LevelManager.current_level)
+	anim_player.play("RESET")
+	fsm.change_state("Idle")
+	await SaveAndLoad.load_player(LevelManager.current_level)
+	set_collision_layer_value(3, true)

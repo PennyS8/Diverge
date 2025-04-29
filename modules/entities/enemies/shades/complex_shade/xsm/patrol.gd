@@ -35,6 +35,7 @@ func _on_update(_delta: float) -> void:
 	for follow_target in possible_follow_targets:
 		if follow_target.is_in_group("player"):
 			target.follow_object = follow_target
+			follow_target.health_component.Died.connect(target.release_player)
 			change_state("Surprised")
 
 # This function is called each frame after all the update calls
