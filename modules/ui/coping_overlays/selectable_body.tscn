@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjtvynn63jb2r"]
+[gd_scene load_steps=7 format=3 uid="uid://cjtvynn63jb2r"]
 
 [ext_resource type="Script" uid="uid://c02mguuo4jocx" path="res://modules/ui/coping_overlays/selectable_body.gd" id="1_kf1ud"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="2_7v3qk"]
 [ext_resource type="Shader" uid="uid://d0p05imkhnhst" path="res://modules/objects/stress_causer/stress_effect.gdshader" id="3_7v3qk"]
-[ext_resource type="PackedScene" uid="uid://dtl2xvpka5wmn" path="res://modules/ui/input_button_overlays/pointer.tscn" id="4_6o6f5"]
 
 [sub_resource type="Gradient" id="Gradient_vtdgj"]
 resource_local_to_scene = true
@@ -67,10 +66,5 @@ offset_right = 25.0
 offset_bottom = 14.0
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
-
-[node name="Pointer" parent="." instance=ExtResource("4_6o6f5")]
-visible = false
-position = Vector2(0, -23)
-rotation = 3.14159
 
 [connection signal="mouse_entered" from="MouseDetector" to="." method="_on_control_mouse_entered"]

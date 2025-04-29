@@ -5,14 +5,14 @@
 [ext_resource type="Texture2D" uid="uid://ceivns3460sja" path="res://assets/hud/notebook.png" id="2_hc3us"]
 [ext_resource type="PackedScene" uid="uid://gpeishkjbb60" path="res://modules/ui/hud/wyvern_inv/equipment_inventory.tscn" id="3_u7xja"]
 [ext_resource type="PackedScene" uid="uid://cqa45c6lfsffv" path="res://addons/wyvernbox_prefabs/tooltip.tscn" id="4_stxl0"]
-[ext_resource type="FontFile" uid="uid://o386rfu4rprn" path="res://assets/fonts/CrayonLibre.ttf" id="4_tg7a7"]
 [ext_resource type="Script" uid="uid://bjciyjxxotjid" path="res://addons/wyvernbox/extension/tooltip_property_stats.gd" id="5_sb6jk"]
 [ext_resource type="Script" uid="uid://bmhxkcy7lv2mv" path="res://addons/wyvernbox/extension/tooltip_property_description.gd" id="6_1alct"]
+[ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="8_sikor"]
 
 [sub_resource type="Theme" id="Theme_btflt"]
 
 [sub_resource type="FontVariation" id="FontVariation_srxg3"]
-base_font = ExtResource("4_tg7a7")
+base_font = ExtResource("8_sikor")
 variation_embolden = 0.75
 
 [node name="EquipmentPanel" type="Panel"]
@@ -48,42 +48,30 @@ layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.59375
 anchor_top = 0.211111
-anchor_right = 0.822538
-anchor_bottom = 0.888422
-offset_right = 215.576
-offset_bottom = 368.168
+anchor_right = 0.821275
+anchor_bottom = 0.550651
+offset_right = 216.384
+offset_bottom = 185.766
 grow_horizontal = 2
 grow_vertical = 2
 rotation = -0.00664901
 scale = Vector2(0.4, 0.4)
 theme_override_colors/default_color = Color(0, 0, 0, 1)
 theme_override_constants/line_separation = -4
-theme_override_fonts/normal_font = ExtResource("4_tg7a7")
+theme_override_fonts/normal_font = ExtResource("8_sikor")
 theme_override_fonts/bold_font = SubResource("FontVariation_srxg3")
 theme_override_font_sizes/normal_font_size = 24
 theme_override_font_sizes/bold_font_size = 24
 bbcode_enabled = true
-text = "thank you for being you
+text = "this right side may have:
 
+- current dungeon map
 
+- current dungeon keys
 
+- objectives
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+& more!
 
 [b]press tab to close this panel"
 scroll_active = false

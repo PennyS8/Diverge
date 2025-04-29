@@ -62,7 +62,7 @@ region_rect = Rect2(0, 0, 32, 32)
 
 [resource]
 default_base_scale = 1.0
-Button/font_sizes/font_size = 16
+Button/font_sizes/font_size = 12
 Button/fonts/font = ExtResource("5_inq81")
 Button/styles/disabled = SubResource("StyleBoxFlat_spyqn")
 Button/styles/focus = SubResource("StyleBoxFlat_ri4m3")
@@ -90,11 +90,11 @@ RichTextLabel/constants/table_h_separation = 0
 RichTextLabel/constants/table_v_separation = 0
 RichTextLabel/constants/text_highlight_h_padding = 0
 RichTextLabel/constants/text_highlight_v_padding = 0
-RichTextLabel/font_sizes/bold_font_size = 10
-RichTextLabel/font_sizes/bold_italics_font_size = 10
-RichTextLabel/font_sizes/italics_font_size = 10
-RichTextLabel/font_sizes/mono_font_size = 10
-RichTextLabel/font_sizes/normal_font_size = 10
+RichTextLabel/font_sizes/bold_font_size = 8
+RichTextLabel/font_sizes/bold_italics_font_size = 8
+RichTextLabel/font_sizes/italics_font_size = 8
+RichTextLabel/font_sizes/mono_font_size = 8
+RichTextLabel/font_sizes/normal_font_size = 8
 RichTextLabel/fonts/bold_font = ExtResource("2_qdmdk")
 RichTextLabel/fonts/bold_italics_font = ExtResource("3_yiihp")
 RichTextLabel/fonts/italics_font = ExtResource("4_e2o8g")

@@ -4,7 +4,6 @@ extends StateSound
 func _on_enter(_args) -> void:
 	# Removes enemy from current engagers upon death
 	EnemyManager.release_engagement(target)
-	EnemyManager.remove_hand(target)
 	$"../Alive".disabled = true
 
 # This function is called just after the state enters

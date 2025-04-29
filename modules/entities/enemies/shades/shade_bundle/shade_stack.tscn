@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bbkbbvjeig57t"]
+[gd_scene load_steps=24 format=3 uid="uid://bbkbbvjeig57t"]
 
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="1_ccc72"]
 [ext_resource type="Script" uid="uid://cv76qgfpemgwt" path="res://modules/entities/enemies/shades/shade_bundle/shade_stack.gd" id="1_tm3xj"]
@@ -9,7 +9,6 @@
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="7_n6dng"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="8_74mok"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="9_ge41j"]
-[ext_resource type="PackedScene" uid="uid://chxuugdc16mcw" path="res://modules/ui/input_button_overlays/left_click.tscn" id="10_n6dng"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_nef4p"]
 radius = 6.08276
@@ -333,9 +332,6 @@ scale = Vector2(0.75, 0.75)
 theme_override_font_sizes/font_size = 16
 text = "✦"
 label_settings = ExtResource("4_tm3xj")
-
-[node name="LeftClick" parent="." instance=ExtResource("10_n6dng")]
-z_index = 2
 
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="Hit" from="HurtBoxComponent2D" to="." method="_on_hurt_box_component_2d_hit"]

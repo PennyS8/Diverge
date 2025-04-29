@@ -6,5 +6,5 @@
 resource_name = "RestrictedInventory"
 script = ExtResource("1_j2cdp")
 allow_rotation = true
-restricted_to_types = Array[int]([131072, 65536, 262144, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
+restricted_to_types = Array[int]([131072, 65536, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 width = 13

@@ -7,4 +7,3 @@ func _input(_event: InputEvent) -> void:
 			hide()
 		else:
 			show()
-			LevelManager.player.check_unlock_hook()

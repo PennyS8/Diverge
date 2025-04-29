@@ -29,8 +29,7 @@ func _on_body_entered(body: Node2D) -> void:
 		var file_name = "player_inventory"
 		
 		if dir.file_exists(file_name):
-			pass
-			#GameManager.inventory_node.inventory.load_state("player_inventory")
+			GameManager.inventory_node.inventory.load_state("player_inventory")
 		
 		start_transition_cutscene()
 		
@@ -103,7 +102,5 @@ func break_blocker():
 		var tween = create_tween()
 		tween.tween_property(blocker, "modulate:a", 0.0, 2.0)
 		await tween.finished
-		# Checks to make sure blocker still exists after await
-		if blocker:
-			blocker.queue_free()
+		blocker.queue_free()
 	

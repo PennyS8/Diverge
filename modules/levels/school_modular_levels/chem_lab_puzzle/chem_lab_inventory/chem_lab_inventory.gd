@@ -65,7 +65,7 @@ func failed_lab():
 	
 	var spawn_counter = 0
 	while spawn_counter < 4:
-		var enemy_scene = load("res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn")
+		var enemy_scene = load("res://modules/entities/enemies/shades/shade/melee_shade.tscn")
 		var enemy_node = enemy_scene.instantiate()
 		
 		get_tree().current_scene.add_child(enemy_node)

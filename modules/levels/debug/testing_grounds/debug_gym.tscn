@@ -1,9 +1,8 @@
-[gd_scene load_steps=5 format=4 uid="uid://b8d2txpebdt2f"]
+[gd_scene load_steps=4 format=4 uid="uid://b8d2txpebdt2f"]
 
 [ext_resource type="PackedScene" uid="uid://m6shqoju2l67" path="res://modules/levels/placeholder_gym/school_gym.tscn" id="1_7w8lo"]
 [ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="2_f5k0d"]
 [ext_resource type="PackedScene" uid="uid://lbhb1gemkets" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.tscn" id="3_rl8tq"]
-[ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="4_bv4iv"]
 
 [node name="DebugGym" instance=ExtResource("1_7w8lo")]
 
@@ -22,7 +21,3 @@ position = Vector2(217, 104)
 
 [node name="PushableDesk3" parent="Objects" index="2" instance=ExtResource("3_rl8tq")]
 position = Vector2(191, 199)
-
-[node name="Player" parent="." index="2" instance=ExtResource("4_bv4iv")]
-
-[editable path="Player"]

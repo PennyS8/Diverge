@@ -8,18 +8,10 @@ var lock_camera := false
 var in_cutscene := false
 var dialogue_open := false
 var cutscene_walk_to_position := Vector2.ZERO
-var curr_camera_boundry : Area2D
-var dir : Vector2 = Vector2.ZERO
-var dialogue_open : bool = false
-var moon_walk : bool = false
+var dir := Vector2.ZERO
 var swing_dir : Vector2 # Cardinal dir of attack
-
-var hook_locked := true
-@export_category("Check Unlock Item Patterns")
-@export var hook_type : ItemType
-@export var yarn_bag_type : ItemType
-@export var cope_type : ItemType
-@export var dash_type : ItemType
+var ledge_collision : Area2D # reference to the ledge_area player is in
+var curr_camera_boundry : Area2D
 
 # this is to pass unhandled input to states
 signal unhandled_input_received(event)
@@ -30,10 +22,6 @@ signal unhandled_input_received(event)
 @onready var fsm : State = $PlayerFSM
 
 var cutscene_marker_packed = preload("res://modules/objects/debug/cutscene_walk_point.tscn")
- 
-
-#makes sure certain dialogue popups only appear once
-var dialogue_tracker = {"closet": false, "library": false}
 
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(dialogue_done)
@@ -66,30 +54,10 @@ func update_cam_limits():
 		camera.limit_right = top_right.x
 		camera.limit_bottom = bottom_left.y
 		camera.limit_left = bottom_left.x
-
-func give_hook():
-	if GameManager.inventory_node:
-		var inv : RestrictedInventory = GameManager.inventory_node.inventory
-		InventoryHelper.add_itemtype_to_inventory(inv, hook_type, 1)
 		
-# Checks for all player ability unlocks. Unlocks FSM states if item found in inventory
 func check_unlock_hook():
-	if GameManager.inventory_node:
-		var inv : RestrictedInventory = GameManager.inventory_node.inventory
-		if InventoryHelper.is_itemtype_in_inventory(inv, hook_type):
-			$PlayerFSM/Movement/AttackMelee.disabled = false
-			hook_locked = false
-		
-		if InventoryHelper.is_itemtype_in_inventory(inv, yarn_bag_type):
-			$PlayerFSM/Movement/Lasso.disabled = false
-			
-		if InventoryHelper.is_itemtype_in_inventory(inv, cope_type):
-			$PlayerFSM/Abilities/DeepBreath.disabled = false
-		
-		# NOTE: This is commented out on purpose. May disable in future.
-		#if InventoryHelper.is_itemtype_in_inventory(inv, dash_type):
-			#$PlayerFSM/Movement/Dash.disabled = false
-	
+	@warning_ignore("unused_variable")
+	var deinv : RestrictedInventory = load("res://modules/ui/hud/wyvern_inv/equipment_inventory.tres")
 	#hook_locked = false
 	#can_attack()
 
@@ -149,54 +117,27 @@ func exit_cutscene():
 	
 	lock_camera = false
 	in_cutscene = false
-
 	camera.position_smoothing_enabled = true
 	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
 	
 ## To be called within a cutscene to move the player to a specific point.
 ## [param speed_percentage] A value that represents a percentage of the player's normal walk speed
 func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
-	# Setting the direction puts player into walk state; this manages all our animations and movement logic
+	# setting dir puts player into walk state; this manages all our animations and logic and stuff
 	dir = global_position.direction_to(global_point)
 	
-	# Scale our player speed based on speed_scaled
-	var walk_state = $PlayerFSM/Movement/Walk
-	var orig_speed = walk_state.ground_speed
-	var speed_scaled = orig_speed * speed_percentage
-	walk_state.ground_speed = speed_scaled
-
-	# Calculate how long it will take to get to end based on speed_scaled
-	# We do this with a timer so that if player hits a wall on the way, they will still move to the next point
+	var speed_scaled = $PlayerFSM/Movement/Walk.ground_speed * speed_percentage
 	var distance_to_end = global_position.distance_to(global_point)
+	
 	var walk_timer = get_tree().create_timer(distance_to_end / speed_scaled, true)
-
-	# Wait until we "should have" reached the point specified
+	#var cutscene_marker : Area2D = cutscene_marker_packed.instantiate()
+	#get_tree().current_scene.call_deferred("add_child", cutscene_marker)
+	#
+	#cutscene_marker.global_position = global_point
+	
 	await walk_timer.timeout
-	
-	# Stop moving & reset speed back to default
 	dir = Vector2.ZERO
-	walk_state.ground_speed = orig_speed
 	return
-
-func start_movement_tutorial():
-	$MovementKeys.start_tutorial()
-	
-func _on_health_component_died() -> void:
-	var current_dir : Vector2
-	var idle := false
-	
-	for state in $PlayerFSM/Movement.active_states:
-		if state == "Idle":
-			idle = true
-			break;
-	
-	if idle == true:
-		print("Idle Found")
-		current_dir = $PlayerFSM/Movement/Idle.idle_dir
-	else: 
-		current_dir = dir
-	
-	$PlayerFSM.change_state("Death", current_dir)
 
 ## Checks to see if a player is current standing inside of an EncounterBoundry
 ## If so, it returns the boundry itself

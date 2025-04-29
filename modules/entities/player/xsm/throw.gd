@@ -87,11 +87,7 @@ func _on_exit(_args) -> void:
 		tethered_node.remove_tethered_status()
 		if selected_node:
 			selected_node.remove_tethered_status()
-		
-		var yarn_controller = target.get_node_or_null("YarnController")
-		if yarn_controller:
-			yarn_controller.queue_free()
-		
+		target.get_node_or_null("YarnController").queue_free()
 		change_state("CanAttack")
 		return
 	

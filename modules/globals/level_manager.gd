@@ -2,7 +2,7 @@ extends Node2D
 
 signal main_ready
 
-var current_level : Node
+var current_level : Node2D
 var custom_scene_path : String
 
 @export var fade_time := 0.5
@@ -24,16 +24,9 @@ signal swap_done
 
 ## Is called when we enter an encounter to tell interactables and doors to lock themselves
 signal enter_encounter
-
-## Is called when player regains control
-signal encounter_begun
-
-## Is called when all shades are dead
 signal exit_encounter
 
 var overlay : Control
-var freeze_frame_overlay : Control
-
 func _ready():
 	var scene = get_tree().current_scene
 	if scene is Control or scene is CanvasLayer:
@@ -46,18 +39,6 @@ func _ready():
 	main_ready.connect(_main_ready)
 	await main_ready
 
-func menu_helper():
-	var scene = get_tree().current_scene
-
-	## Menu addon we got is a bit wonky; calls its own scene loader
-	## Meaning our level_manager ready doesn't load main properly
-	## This just calls the stuff in ready again
-	if scene.name != "Main":
-		get_tree().call_deferred("change_scene_to_file","res://modules/globals/main.tscn")
-		custom_scene_path = ""
-	main_ready.connect(_main_ready, CONNECT_ONE_SHOT)
-	await main_ready
-	
 func _main_ready():
 	player = get_tree().get_first_node_in_group("player")
 	if found_player:
@@ -121,8 +102,6 @@ func _swap_level(path : String, entrance_name : String = "0"):
 	# Loads level while the tween is still happening to prevent player from seeing loading.
 	await SaveAndLoad.room_load(new_level_name)
 	swap_done.emit()
-	player.check_unlock_hook()
-
 
 func _get_entrances():
 	entrances.clear()
@@ -132,10 +111,8 @@ func _get_entrances():
 func _transition_complete():
 	#player.exit_cutscene()
 	transitioning = false
-	if player:
-		player.check_unlock_hook()
 
-func deep_breath_overlay(timer_override:bool = false):
+func deep_breath_overlay():
 	var tween = create_tween()
 	var blink_time = 1
 	
@@ -153,7 +130,7 @@ func deep_breath_overlay(timer_override:bool = false):
 	await tween.finished
 	
 	# Begin timer for deadeye mode, wait for timer to be done
-	await start_deadeye(timer_override)
+	await start_deadeye()
 	
 	# Return control back to player
 	player.exit_cutscene()
@@ -163,24 +140,9 @@ func black_white():
 		overlay = get_tree().get_first_node_in_group("deep_breath")
 	overlay.show()
 
-func start_deadeye(timer_override:bool = false):
-	overlay.start_mode(timer_override)
+func start_deadeye():
+	overlay.start_mode()
 	await overlay.done
-
-func enter_tutorial(tutorial:String):
-	var tutorial_overlays : Array[Node] = get_tree().get_nodes_in_group("tutorial_overlay")
-	for tutorial_overlay in tutorial_overlays:
-		if tutorial == tutorial_overlay.name:
-			get_tree().paused = true
-			
-			player.velocity = Vector2.ZERO
-			player.dir = Vector2.ZERO
-			
-			match tutorial:
-				"AttackTutorial":
-					tutorial_overlay.start_attack_tutorial()
-				"DeepBreathTutorial":
-					tutorial_overlay.start_deep_breath_tutorial()
 
 func player_transition(level_path : String, direction : Vector2, entrance_name : String = "0"):
 	# Moves camera towards current player position and takes player control away
@@ -200,8 +162,8 @@ func player_transition(level_path : String, direction : Vector2, entrance_name :
 	if possible_boundry:
 		if possible_boundry.encounter_active:
 			await possible_boundry.start_encounter()
-			encounter_begun.emit()
 	else:
 		# If player is holding an input direction, keep going that direction. To prevent the one-frame stutterstep
 		player.dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	player.exit_cutscene()
+	
