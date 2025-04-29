@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=4 uid="uid://cs2a4pq3yt5l6"]
+[gd_scene load_steps=32 format=4 uid="uid://cs2a4pq3yt5l6"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_pt88k"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_yqbfs"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cujx50k2x7ox5" path="res://modules/objects/level_transition_zone/encounter_entrance.tscn" id="7_1ddbp"]
 [ext_resource type="PackedScene" uid="uid://cuti2ni6cxjbq" path="res://modules/levels/school_modular_levels/school_props/fire_alarm.tscn" id="8_0natf"]
 [ext_resource type="PackedScene" uid="uid://lbhb1gemkets" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.tscn" id="8_e5ij6"]
+[ext_resource type="Script" uid="uid://cm343vu1neuso" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/exit_closet_dialogue_trigger.gd" id="9_0natf"]
 [ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.tscn" id="9_3mj1j"]
 [ext_resource type="PackedScene" uid="uid://c0xn1iqitvhmq" path="res://modules/objects/puzzle_pieces/key/key.tscn" id="10_0c127"]
 
@@ -28,11 +29,16 @@ load_path = "res://.godot/imported/school_keydoubledoor_locked_blue.png-bd4f0cec
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_skfq5"]
 load_path = "res://.godot/imported/school_keydoubledoor_unlocked_blue.png-69021e694d582ec411dd35da2cf30b12.ctex"
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0natf"]
+size = Vector2(454, 436)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qgpn2"]
 size = Vector2(312, 216)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_821of"]
 size = Vector2(528, 192)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_skfq5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cf32e"]
 size = Vector2(312, 288)
@@ -73,7 +79,7 @@ material = ExtResource("1_pt88k")
 metadata/_edit_vertical_guides_ = [-840.0]
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(388, 720)
+position = Vector2(804, 756)
 
 [node name="Tiles" type="NavigationRegion2D" parent="."]
 y_sort_enabled = true
@@ -188,14 +194,20 @@ position = Vector2(-24, -108)
 locked_sprite = SubResource("CompressedTexture2D_0natf")
 unlocked_sprite = SubResource("CompressedTexture2D_skfq5")
 
-[node name="ComplexShade" parent="Rooms/Foyer/Entities" instance=ExtResource("6_0natf")]
+[node name="EncounterEntrance2" parent="Rooms/Foyer" node_paths=PackedStringArray("enemy_spawn_points") instance=ExtResource("7_1ddbp")]
+enemy_spawn_points = [NodePath("EnemySpawn"), NodePath("EnemySpawn2"), NodePath("EnemySpawn3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Foyer/EncounterEntrance2"]
+shape = SubResource("RectangleShape2D_0natf")
+
+[node name="EnemySpawn" type="Marker2D" parent="Rooms/Foyer/EncounterEntrance2"]
+position = Vector2(72, 121)
+
+[node name="EnemySpawn2" type="Marker2D" parent="Rooms/Foyer/EncounterEntrance2"]
 position = Vector2(-48, 96)
 
-[node name="ComplexShade3" parent="Rooms/Foyer/Entities" instance=ExtResource("6_0natf")]
-position = Vector2(40, 55)
-
-[node name="ComplexShade2" parent="Rooms/Foyer/Entities" instance=ExtResource("6_0natf")]
-position = Vector2(72, 120)
+[node name="EnemySpawn3" type="Marker2D" parent="Rooms/Foyer/EncounterEntrance2"]
+position = Vector2(39, 55)
 
 [node name="HallLeftLeft" type="Node2D" parent="Rooms"]
 y_sort_enabled = true
@@ -323,6 +335,14 @@ y_sort_enabled = true
 visible = false
 z_index = 2
 position = Vector2(-84, -65)
+
+[node name="ExitClosetDialogueTrigger" type="Area2D" parent="Rooms/HallRight"]
+position = Vector2(-36, 60)
+collision_mask = 4
+script = ExtResource("9_0natf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/HallRight/ExitClosetDialogueTrigger"]
+shape = SubResource("CircleShape2D_skfq5")
 
 [node name="Library" type="Node2D" parent="Rooms"]
 y_sort_enabled = true
@@ -474,7 +494,6 @@ position = Vector2(216, -156)
 [node name="Entities" type="Node2D" parent="Rooms/Lab"]
 
 [node name="UnusedNodes" type="Node2D" parent="."]
-visible = false
 
 [node name="HallLeft" type="Node2D" parent="UnusedNodes"]
 y_sort_enabled = true
@@ -773,6 +792,7 @@ text = "start area"
 label_settings = SubResource("LabelSettings_nh665")
 
 [node name="Lighting" type="Node2D" parent="UnusedNodes"]
+visible = false
 
 [node name="PointLight2D" type="PointLight2D" parent="UnusedNodes/Lighting"]
 position = Vector2(833, 936)
@@ -855,3 +875,7 @@ y_sort_enabled = true
 use_parent_material = true
 tile_map_data = PackedByteArray("AABFABAABQAPAAkAAABIABAABQAPAAkAAABIAA8ABQAPAAkAAABFAA8ABQAPAAkAAABLABQABQAPAAkAAABLABMABQAPAAkAAABIABMABQAPAAkAAABIABQABQAPAAkAAABFABQABQAPAAkAAABFABMABQAPAAkAAABMABAAAQAOAAsAAABDAAUAAQANAA0AAEBEAAgABQAPAAkAADBEAAkABQAPAAkAADBHAAkABQAPAAkAADBHAAgABQAPAAkAADBHAAQABQAPAAkAADBHAAUABQAPAAkAADBKAAUABQAPAAkAADBKAAQABQAPAAkAADBKAAkABQAPAAkAADBKAAgABQAPAAkAADBWAAkABQAPAA8AAABXAAkABQAPAA8AAABWAAcABQAPAA8AAABXAAcABQAPAA8AAABWAAUABQAPAA8AAABXAAUABQAPAA8AAABaAAcABQAPAA8AAABbAAcABQAPAA8AAABaAAkABQAPAA8AAABbAAkABQAPAA8AAABaAAQAAQAOAAsAAFBDACwAAQAPAA8AABBJACEAAQAPAA8AAABRACIAAQAKAA8AAGAWAAQAAQAOAA8AAAAcAAIAAQAOAAsAAADf/ywAAQANAAwAAADh/ywAAQANAA8AAADj/ywAAQAPAAwAAAA=")
 tile_set = ExtResource("2_yqbfs")
+
+[connection signal="body_entered" from="Rooms/HallRight/ExitClosetDialogueTrigger" to="Rooms/HallRight/ExitClosetDialogueTrigger" method="_on_body_entered"]
+
+[editable path="Rooms/Foyer/EncounterEntrance2"]

@@ -27,18 +27,51 @@ do player.exit_cutscene()
 => END
 
 ~ hiding_away
-do player.enter_cutscene(player.global_position)
+do darken_lighting()
 Juniper: It's okay. I'm okay. It's just a test. I just need to go back to class...but it's not just a test and if I fail it my grade is going to down from a C to a D and I've never gotten anything less than an A on my report card and...
 Ping!
 Olli: Hey where are you? Class starts soon.
 Juniper: Shoot. I need to go back.
+do player.do_walk(juniper_spikes[0])
+# Door SFX, shade inside
+do shade.show()
+
+Juniper: ...Hello? ...Is that you, Olli?
+do move_shade(shade_spikes[0], 20.0)
+# Shade walks towards Juni
+Juniper: AAAAAH!
+set player.moon_walk = true
+do player.do_walk(juniper_spikes[1])
+Juniper: Whoev-whatever you are, please step away from me. Oh, wait, you don't have legs, uh, float? Please float away from me.
+do! move_shade(shade_spikes[1])
+do player.do_walk(juniper_spikes[2])
+Juniper: FLOAT AWAY RIGHT NOW!!!
+do! move_shade(shade_spikes[2])
+do player.do_walk(juniper_spikes[3])
+Juniper: [i]This is it. This is where I die. I'm never gonna get to go to college. I'll never have a future. I'll be a failure.[/i]
+Juniper: [i]Quick Juniper, think!! Something to defend yourself! Anything![/i]
+do player.give_hook()
+# Tutorial time
+set player.moon_walk = false
 do player.exit_cutscene()
+=> END
+
+~ tutorial_done
+Juniper: AHHHHHHHHH!!!!!!
+Juniper: Oh. It's gone.
+Juniper: Am I hallucinating?
+Juniper: [i]Last I checked, my sanity was wholly intact. But then again, last I checked as well, my crochet hook was not [b]TWO FEET LONG.[/b][/i]
+Juniper: [i]Honestly, actually, this is pretty cool. It's like a frickin' sword![/i] 
+Juniper: [i]Heck, class is probably starting now. I really need to get back in time.[/i]
 => END
 
 ~ this_changed
 Juniper: This... doesn't seem right.
+Juniper: I don't think this hallway looked like this??? I've got to be losing my mind.
 => END
 
+~ foyer_encounter
+Juniper: I am getting out of this
 #tutorial
 
 #puzzles

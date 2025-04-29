@@ -189,10 +189,10 @@ max_health = 10
 [node name="DisplayComponents" parent="ComplexShade" index="4"]
 material = SubResource("ShaderMaterial_uvrxp")
 
-[node name="AttackArc" parent="ComplexShade/DisplayComponents" index="4"]
+[node name="Shadow" parent="ComplexShade/DisplayComponents" index="3"]
 material = SubResource("ShaderMaterial_uvrxp")
 
-[node name="Shadow" parent="ComplexShade/DisplayComponents" index="5"]
+[node name="AttackArc" parent="ComplexShade/DisplayComponents" index="5"]
 material = SubResource("ShaderMaterial_uvrxp")
 
 [node name="ComplexShade5" parent="." instance=ExtResource("5_2pc1f")]
@@ -246,10 +246,10 @@ max_health = 10
 [node name="DisplayComponents" parent="ComplexShade5" index="4"]
 material = SubResource("ShaderMaterial_uvrxp")
 
-[node name="AttackArc" parent="ComplexShade5/DisplayComponents" index="4"]
+[node name="Shadow" parent="ComplexShade5/DisplayComponents" index="3"]
 material = SubResource("ShaderMaterial_uvrxp")
 
-[node name="Shadow" parent="ComplexShade5/DisplayComponents" index="5"]
+[node name="AttackArc" parent="ComplexShade5/DisplayComponents" index="5"]
 material = SubResource("ShaderMaterial_uvrxp")
 
 [node name="ComplexShade6" parent="." instance=ExtResource("5_2pc1f")]
@@ -303,10 +303,10 @@ max_health = 10
 [node name="DisplayComponents" parent="ComplexShade6" index="4"]
 material = SubResource("ShaderMaterial_uvrxp")
 
-[node name="AttackArc" parent="ComplexShade6/DisplayComponents" index="4"]
+[node name="Shadow" parent="ComplexShade6/DisplayComponents" index="3"]
 material = SubResource("ShaderMaterial_uvrxp")
 
-[node name="Shadow" parent="ComplexShade6/DisplayComponents" index="5"]
+[node name="AttackArc" parent="ComplexShade6/DisplayComponents" index="5"]
 material = SubResource("ShaderMaterial_uvrxp")
 
 [node name="ComplexShade7" parent="." instance=ExtResource("5_2pc1f")]
@@ -360,10 +360,10 @@ max_health = 10
 [node name="DisplayComponents" parent="ComplexShade7" index="4"]
 material = SubResource("ShaderMaterial_uvrxp")
 
-[node name="AttackArc" parent="ComplexShade7/DisplayComponents" index="4"]
+[node name="Shadow" parent="ComplexShade7/DisplayComponents" index="3"]
 material = SubResource("ShaderMaterial_uvrxp")
 
-[node name="Shadow" parent="ComplexShade7/DisplayComponents" index="5"]
+[node name="AttackArc" parent="ComplexShade7/DisplayComponents" index="5"]
 material = SubResource("ShaderMaterial_uvrxp")
 
 [node name="ComplexShade8" parent="." instance=ExtResource("5_2pc1f")]
@@ -417,10 +417,10 @@ max_health = 10
 [node name="DisplayComponents" parent="ComplexShade8" index="4"]
 material = SubResource("ShaderMaterial_uvrxp")
 
-[node name="AttackArc" parent="ComplexShade8/DisplayComponents" index="4"]
+[node name="Shadow" parent="ComplexShade8/DisplayComponents" index="3"]
 material = SubResource("ShaderMaterial_uvrxp")
 
-[node name="Shadow" parent="ComplexShade8/DisplayComponents" index="5"]
+[node name="AttackArc" parent="ComplexShade8/DisplayComponents" index="5"]
 material = SubResource("ShaderMaterial_uvrxp")
 
 [node name="Area2D" type="Area2D" parent="."]

@@ -13,3 +13,9 @@ func _ready() -> void:
 	player = LevelManager.player
 	olli = $Olli
 	DialogueManager.show_dialogue_balloon(load("res://modules/dialogue/demo_scenes.dialogue"), "start", [self])
+	
+	await DialogueManager.dialogue_ended
+	LevelManager.player_transition(
+		"res://modules/levels/school_modular_levels/tutorials/attack_tutorial_scene.tscn", 
+		Vector2.ZERO,
+		"0")
