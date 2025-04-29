@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=4 uid="uid://8va60gkf6ldr"]
+[gd_scene load_steps=36 format=4 uid="uid://8va60gkf6ldr"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_uygv4"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_2bp75"]
@@ -11,13 +11,13 @@
 [ext_resource type="PackedScene" uid="uid://bi6255tx4u0jr" path="res://modules/entities/enemies/shades/ranged_shade/ranged_shade.tscn" id="7_wn6ak"]
 [ext_resource type="PackedScene" uid="uid://lbhb1gemkets" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.tscn" id="8_2hfae"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="8_df0qr"]
-[ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/exit_closet_dialogue_trigger.gd" id="8_kpiic"]
+[ext_resource type="Script" uid="uid://cm343vu1neuso" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/exit_closet_dialogue_trigger.gd" id="8_kpiic"]
 [ext_resource type="PackedScene" uid="uid://cujx50k2x7ox5" path="res://modules/objects/level_transition_zone/encounter_entrance.tscn" id="9_kpiic"]
 [ext_resource type="Script" uid="uid://kfndxak1lwjf" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/camera_boundry_region.gd" id="10_o1405"]
-[ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/dialogue_trigger.gd" id="10_pfffn"]
-[ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/library_dialogue_trigger.gd" id="13_o1405"]
+[ext_resource type="Script" uid="uid://b8hon1wm4ertt" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/dialogue_trigger.gd" id="10_pfffn"]
+[ext_resource type="Script" uid="uid://ddgkvrl2idccb" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/library_dialogue_trigger.gd" id="13_o1405"]
 [ext_resource type="PackedScene" uid="uid://rimaeod8hr56" path="res://modules/entities/npcs/little_juni/little_juni.tscn" id="14_e2g70"]
-[ext_resource type="Shader" path="res://modules/entities/enemies/shades/fx/compiled_enemy_shader.gdshader" id="17_3ff3w"]
+[ext_resource type="Shader" uid="uid://gcwt752b74cd" path="res://modules/entities/enemies/shades/fx/compiled_enemy_shader.gdshader" id="17_3ff3w"]
 [ext_resource type="Resource" uid="uid://c45f072eocqyr" path="res://modules/ui/hud/wyvern_inv/deep_breath.tres" id="19_yecjj"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_nv2xa"]
@@ -63,6 +63,17 @@ resource_local_to_scene = true
 shader = ExtResource("17_3ff3w")
 shader_parameter/Flash = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_bekm1"]
+offsets = PackedFloat32Array(0.505176, 0.515528, 1)
+colors = PackedColorArray(0, 0, 0, 0.572549, 0, 0, 0, 0.572549, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_yecjj"]
+gradient = SubResource("Gradient_bekm1")
+width = 5
+height = 4
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="LabelSettings" id="LabelSettings_nh665"]
 font_size = 81
@@ -224,7 +235,7 @@ position = Vector2(204, 186)
 position = Vector2(-204, 186)
 
 [node name="0" type="Marker2D" parent="Rooms/Foyer/Entrance" groups=["level_entrance"]]
-position = Vector2(538, 384)
+position = Vector2(-948, 424)
 
 [node name="Exit" type="Node2D" parent="Rooms/Foyer"]
 y_sort_enabled = true
@@ -672,13 +683,21 @@ position = Vector2(-12, 48)
 position = Vector2(84, 0)
 
 [node name="Library" type="Node2D" parent="Rooms"]
+y_sort_enabled = true
 
 [node name="LittleJuni" parent="Rooms/Library" instance=ExtResource("14_e2g70")]
-position = Vector2(-487, 1067)
+z_index = 1
+position = Vector2(-487, 1069)
 
 [node name="Sprite2D" parent="Rooms/Library/LittleJuni" index="2"]
 material = SubResource("ShaderMaterial_yecjj")
-position = Vector2(0, -8)
+position = Vector2(0, -1)
+offset = Vector2(0, -6)
+
+[node name="Sprite2D2" type="Sprite2D" parent="Rooms/Library/LittleJuni"]
+material = SubResource("ShaderMaterial_yecjj")
+position = Vector2(-7, -1)
+texture = SubResource("GradientTexture2D_yecjj")
 
 [node name="JuniperSpikes" type="Node2D" parent="Rooms/Library"]
 

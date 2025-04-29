@@ -9257,7 +9257,7 @@ tile_map_data = PackedByteArray("AADu//b/AAAKABEAAADu//f/AAAKABEAAADu//j/AAAKABE
 tile_set = SubResource("TileSet_xnlxt")
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(534, 30)
+position = Vector2(1488, -396)
 
 [node name="StartRoom" type="Node2D" parent="." groups=["room_with_dynamic_transitions"]]
 visible = false
@@ -9614,6 +9614,7 @@ position = Vector2(132.5, -41)
 shape = SubResource("RectangleShape2D_m5qk1")
 
 [node name="URoom" type="Node2D" parent="."]
+y_sort_enabled = true
 use_parent_material = true
 position = Vector2(480, -456)
 
@@ -9672,6 +9673,7 @@ entrance_name = "LibraryEntrance"
 transition_direction = 1
 
 [node name="URoom2" type="Node2D" parent="."]
+y_sort_enabled = true
 use_parent_material = true
 position = Vector2(1320, -456)
 
