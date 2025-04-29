@@ -21,7 +21,7 @@ var swing_dir : Vector2
 # if player is currently inside a "ledge" area, the reference to that is stored here
 var ledge_collision : Area2D
 
-var hook_locked := false
+var hook_locked := true
 @export_category("Check Unlock Item Patterns")
 @export var hook_type : ItemType
 @export var yarn_bag_type : ItemType

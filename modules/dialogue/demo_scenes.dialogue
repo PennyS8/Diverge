@@ -155,6 +155,7 @@ Juni: In...hold...out...hold. In...hold...out...hold... Why aren't you breathing
 	Juni: Well, during quiet time you're supposed to take a [i][b]deep breath[/b][/i].
 Juni: In for four, hold for four, out for four, then hold for four. Again and again until you get a little bit bored.
 Juniper: A [i][b]deep breath[/b][/i].
+do add_item()
 do wait(1)
 Juniper: So why are you doing quiet time right now?
 Juni: Because quiet time helps me slow down. And sometimes, things feel different after I do quiet time. Even if they didn't really change.
