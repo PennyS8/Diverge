@@ -3,7 +3,7 @@ extends Node2D
 @export var inventory_path : NodePath
 func _ready():
 	# Deletes 'temp' save folder if it exists
-	#SaveAndLoad.delete_game_saves()
+	SaveAndLoad.delete_game_saves()
 	LevelManager.main_ready.emit()
 	SaveAndLoad.main_ready.emit()
 	# We pass in the current level to prevent player's position being set outside of map
