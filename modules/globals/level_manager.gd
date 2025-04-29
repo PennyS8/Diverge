@@ -27,6 +27,8 @@ signal enter_encounter
 signal exit_encounter
 
 var overlay : Control
+var freeze_frame_overlay : Control
+
 func _ready():
 	var scene = get_tree().current_scene
 	if scene is Control or scene is CanvasLayer:
@@ -128,7 +130,7 @@ func _transition_complete():
 	if player:
 		player.check_unlock_hook()
 
-func deep_breath_overlay():
+func deep_breath_overlay(timer_override:bool = false):
 	var tween = create_tween()
 	var blink_time = 1
 	
@@ -146,7 +148,7 @@ func deep_breath_overlay():
 	await tween.finished
 	
 	# Begin timer for deadeye mode, wait for timer to be done
-	await start_deadeye()
+	await start_deadeye(timer_override)
 	
 	# Return control back to player
 	player.exit_cutscene()
@@ -156,9 +158,24 @@ func black_white():
 		overlay = get_tree().get_first_node_in_group("deep_breath")
 	overlay.show()
 
-func start_deadeye():
-	overlay.start_mode()
+func start_deadeye(timer_override:bool = false):
+	overlay.start_mode(timer_override)
 	await overlay.done
+
+func enter_tutorial(tutorial:String):
+	var tutorial_overlays : Array[Node] = get_tree().get_nodes_in_group("tutorial_overlay")
+	for tutorial_overlay in tutorial_overlays:
+		if tutorial == tutorial_overlay.name:
+			get_tree().paused = true
+			
+			player.velocity = Vector2.ZERO
+			player.dir = Vector2.ZERO
+			
+			match tutorial:
+				"AttackTutorial":
+					tutorial_overlay.start_attack_tutorial()
+				"DeepBreathTutorial":
+					tutorial_overlay.start_deep_breath_tutorial()
 
 func player_transition(level_path : String, direction : Vector2, entrance_name : String = "0"):
 	# Moves camera towards current player position and takes player control away
@@ -182,4 +199,4 @@ func player_transition(level_path : String, direction : Vector2, entrance_name :
 		# If player is holding an input direction, keep going that direction. To prevent the one-frame stutterstep
 		player.dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	player.exit_cutscene()
-	
+

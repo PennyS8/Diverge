@@ -74,7 +74,8 @@ func update_cam_limits():
 		camera.limit_right = top_right.x
 		camera.limit_bottom = bottom_left.y
 		camera.limit_left = bottom_left.x
-		
+
+# Checks for all player ability unlocks. Unlocks FSM states if item found in inventory
 func check_unlock_hook():
 	if GameManager.inventory_node:
 		var inv : RestrictedInventory = GameManager.inventory_node.inventory
@@ -86,9 +87,10 @@ func check_unlock_hook():
 			
 		if InventoryHelper.is_itemtype_in_inventory(inv, cope_type):
 			$PlayerFSM/Abilities/DeepBreath.disabled = false
-			
-		if InventoryHelper.is_itemtype_in_inventory(inv, dash_type):
-			$PlayerFSM/Movement/Dash.disabled = false
+		
+		# NOTE: This is commented out on purpose. May disable in future.
+		#if InventoryHelper.is_itemtype_in_inventory(inv, dash_type):
+			#$PlayerFSM/Movement/Dash.disabled = false
 	
 	#hook_locked = false
 #	can_attack()
@@ -157,23 +159,26 @@ func exit_cutscene():
 ## To be called within a cutscene to move the player to a specific point.
 ## [param speed_percentage] A value that represents a percentage of the player's normal walk speed
 func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
-	# setting dir puts player into walk state; this manages all our animations and logic and stuff
+	# Setting the direction puts player into walk state; this manages all our animations and movement logic
 	dir = global_position.direction_to(global_point)
 	
-	## TODO: Push changes on desktop to fix this, actually scale player speed
-	var speed_scaled = $PlayerFSM/Movement/Walk.ground_speed #* speed_percentage
-	var distance_to_end = global_position.distance_to(global_point)
-	
-	var walk_timer = get_tree().create_timer(distance_to_end / speed_scaled, true)
-	#var walk_timer = get_tree().create_timer(distance_to_end, true)
+	# Scale our player speed based on speed_scaled
+	var walk_state = $PlayerFSM/Movement/Walk
+	var orig_speed = walk_state.ground_speed
+	var speed_scaled = orig_speed * speed_percentage
+	walk_state.ground_speed = speed_scaled
 
-	#var cutscene_marker : Area2D = cutscene_marker_packed.instantiate()
-	#get_tree().current_scene.call_deferred("add_child", cutscene_marker)
-	#
-	#cutscene_marker.global_position = global_point
-	
+	# Calculate how long it will take to get to end based on speed_scaled
+	# We do this with a timer so that if player hits a wall on the way, they will still move to the next point
+	var distance_to_end = global_position.distance_to(global_point)
+	var walk_timer = get_tree().create_timer(distance_to_end / speed_scaled, true)
+
+	# Wait until we "should have" reached the point specified
 	await walk_timer.timeout
+	
+	# Stop moving & reset speed back to default
 	dir = Vector2.ZERO
+	walk_state.ground_speed = orig_speed
 	return
 
 ## Checks to see if a player is current standing inside of an EncounterBoundry
