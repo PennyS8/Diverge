@@ -92,7 +92,7 @@ position = Vector2(-55, -29)
 [node name="HallRightNorthEast" parent="." instance=ExtResource("4_2c6sg")]
 z_index = 1
 position = Vector2(-60, -42)
-next_level_path = "uid://cs2a4pq3yt5l6"
+next_level_path = "uid://ch5cr2nm4vosg"
 entrance_name = "HallRightSouth"
 
 [node name="CameraBoundry" type="Area2D" parent="."]

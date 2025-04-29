@@ -21,6 +21,15 @@ var space_read := false
 var tutorial_started := false
 var key_update_counter = 0.0
 
+func _ready():
+	tutorial_started = true
+	w.show()
+	a.show()
+	s.show()
+	d.show()
+	space.show()
+	check_completeness()
+
 func start_tutorial():
 	tutorial_started = true
 	w.show()

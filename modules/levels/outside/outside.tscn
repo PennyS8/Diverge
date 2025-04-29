@@ -1,15 +1,33 @@
-[gd_scene load_steps=7 format=4 uid="uid://befcpvbc62vmw"]
+[gd_scene load_steps=13 format=4 uid="uid://befcpvbc62vmw"]
 
-[ext_resource type="Script" path="res://modules/levels/outside/outside.gd" id="1_h7lbe"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_nlvm0"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="1_y5g6n"]
 [ext_resource type="TileSet" uid="uid://beeu22p6kg3am" path="res://assets/environment/downtown_dungeon/Tiles 24x24/outdoors.tres" id="2_qwmn5"]
 [ext_resource type="Texture2D" uid="uid://d1i2h41pm54o2" path="res://assets/debug/2d_lights_and_shadows_neutral_point_light.webp" id="3_jgkm2"]
 [ext_resource type="PackedScene" uid="uid://4ybabjj78svj" path="res://modules/entities/npcs/olli/olli.tscn" id="6_oonry"]
+[ext_resource type="Script" uid="uid://dufsldjxltqe1" path="res://modules/levels/outside/olli_dialogue_trigger.gd" id="7_snlqb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oonry"]
+size = Vector2(256, 109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_snlqb"]
+size = Vector2(240, 109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nfpgm"]
+size = Vector2(240, 109)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nkm0v"]
+size = Vector2(36, 109.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oonry"]
+a = Vector2(-1, -61)
+b = Vector2(-1, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yenue"]
+size = Vector2(1078, 754)
 
 [node name="Outside" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("1_h7lbe")
 
 [node name="Ground" type="TileMapLayer" parent="."]
 material = ExtResource("1_y5g6n")
@@ -31,10 +49,10 @@ tile_map_data = PackedByteArray("AABBAAYADQADAAEAAABCAAYADQAEAAEAAABDAAYADQAFAAE
 tile_set = ExtResource("2_qwmn5")
 
 [node name="Stuff on Tippy Top" type="TileMapLayer" parent="."]
-z_index = 1
+z_index = 3
 y_sort_enabled = true
 material = ExtResource("1_nlvm0")
-tile_map_data = PackedByteArray("AAAwAAoACwAAAAUAAAAxAAoACwABAAUAAAAyAAoACwACAAUAAAAzAAoACwADAAUAAAAwAAsACwAAAAcAAAAxAAsACwABAAcAAAAyAAsACwACAAcAAAAzAAsACwADAAcAAAAwAAwACwAAAAgAAAAxAAwACwABAAgAAAAyAAwACwACAAgAAAAzAAwACwADAAgAAABAAAwACwAAAAgAAABBAAwACwABAAgAAABCAAwACwACAAgAAABDAAwACwADAAgAAABAAAsACwAAAAcAAABCAAsACwACAAcAAABDAAsACwADAAcAAABAAAoACwAAAAUAAABBAAoACwABAAUAAABCAAoACwACAAUAAABDAAoACwADAAUAAABBAAsACwABAAcAAAAzAA4ACwAFAAoAAAAxAA4ACwADAAoAAAAyAA0ACwAGAAoAAABDAA0ACwAEAAoAAAA/AA4ACwAEAAoAAAAoABEACwALAAwAAAAoABIACwALAA0AAAAoABMACwALAA4AAAAoABAACwALAAsAAAApABAACwAMAAsAAAAtABAACwALAAsAAAAtABEACwALAAwAAAAtABIACwALAA0AAAAtABMACwALAA4AAAAuABAACwAMAAsAAAAyABAACwALAAsAAAAyABEACwALAAwAAAAyABIACwALAA0AAAAyABMACwALAA4AAAAzABAACwAMAAsAAAA3ABAACwALAAsAAAA3ABEACwALAAwAAAA3ABIACwALAA0AAAA3ABMACwALAA4AAAA4ABAACwAMAAsAAAA8ABAACwALAAsAAAA8ABEACwALAAwAAAA8ABIACwALAA0AAAA8ABMACwALAA4AAAA9ABAACwAMAAsAAABBABAACwALAAsAAABBABEACwALAAwAAABBABIACwALAA0AAABBABMACwALAA4AAABCABAACwAMAAsAAABGABAACwALAAsAAABGABEACwALAAwAAABGABIACwALAA0AAABGABMACwALAA4AAABHABAACwAMAAsAAABLABAACwALAAsAAABLABEACwALAAwAAABLABIACwALAA0AAABLABMACwALAA4AAABMABAACwAMAAsAAAAqAA4ACwAIAA0AAAAqAA8ACwAIAA4AAAAqABAACwAIAA8AAAA=")
+tile_map_data = PackedByteArray("AAAwAAoACwAAAAUAAAAxAAoACwABAAUAAAAyAAoACwACAAUAAAAzAAoACwADAAUAAAAwAAsACwAAAAcAAAAxAAsACwABAAcAAAAyAAsACwACAAcAAAAzAAsACwADAAcAAAAwAAwACwAAAAgAAAAxAAwACwABAAgAAAAyAAwACwACAAgAAAAzAAwACwADAAgAAABAAAwACwAAAAgAAABBAAwACwABAAgAAABCAAwACwACAAgAAABDAAwACwADAAgAAABAAAsACwAAAAcAAABCAAsACwACAAcAAABDAAsACwADAAcAAABAAAoACwAAAAUAAABBAAoACwABAAUAAABCAAoACwACAAUAAABDAAoACwADAAUAAABBAAsACwABAAcAAAAzAA4ACwAFAAoAAAAxAA4ACwADAAoAAAAyAA0ACwAGAAoAAABDAA0ACwAEAAoAAAA/AA4ACwAEAAoAAAAoABEACwALAAwAAAAoABIACwALAA0AAAAoABMACwALAA4AAAAoABAACwALAAsAAAApABAACwAMAAsAAAAtABAACwALAAsAAAAtABEACwALAAwAAAAtABIACwALAA0AAAAtABMACwALAA4AAAAuABAACwAMAAsAAAAyABAACwALAAsAAAAyABEACwALAAwAAAAyABIACwALAA0AAAAyABMACwALAA4AAAAzABAACwAMAAsAAAA3ABAACwALAAsAAAA3ABEACwALAAwAAAA3ABIACwALAA0AAAA3ABMACwALAA4AAAA4ABAACwAMAAsAAAA8ABAACwALAAsAAAA8ABEACwALAAwAAAA8ABIACwALAA0AAAA8ABMACwALAA4AAAA9ABAACwAMAAsAAABBABAACwALAAsAAABBABEACwALAAwAAABBABIACwALAA0AAABBABMACwALAA4AAABCABAACwAMAAsAAABGABAACwALAAsAAABGABEACwALAAwAAABGABIACwALAA0AAABGABMACwALAA4AAABHABAACwAMAAsAAABLABAACwALAAsAAABLABEACwALAAwAAABLABIACwALAA0AAABLABMACwALAA4AAABMABAACwAMAAsAAAA=")
 tile_set = ExtResource("2_qwmn5")
 
 [node name="Node2D" type="Node2D" parent="."]
@@ -116,7 +134,7 @@ texture = ExtResource("3_jgkm2")
 texture_scale = 0.4
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(1391, 399)
+position = Vector2(1021, 416)
 
 [node name="Spikes" type="Node2D" parent="."]
 
@@ -134,3 +152,71 @@ position = Vector2(1338, 355)
 
 [node name="Olli" parent="." instance=ExtResource("6_oonry")]
 position = Vector2(1342, 364)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+z_index = 2
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1392, 256)
+shape = SubResource("RectangleShape2D_oonry")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1216, 216)
+shape = SubResource("RectangleShape2D_snlqb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1568, 216)
+shape = SubResource("RectangleShape2D_nfpgm")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1326, 269)
+shape = SubResource("RectangleShape2D_nkm0v")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1458, 269)
+shape = SubResource("RectangleShape2D_nkm0v")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1296, 384, 864, 384, 1296, 312)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="StaticBody2D"]
+polygon = PackedVector2Array(1920, 456, 864, 456, 864, 480, 1920, 480)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(2783, 0)
+scale = Vector2(-1, 1)
+polygon = PackedVector2Array(1296, 384, 864, 384, 1296, 312)
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(865, 445)
+shape = SubResource("SegmentShape2D_oonry")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1489, 445)
+shape = SubResource("SegmentShape2D_oonry")
+
+[node name="OlliDialogueTrigger" type="Area2D" parent="."]
+collision_mask = 4
+script = ExtResource("7_snlqb")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OlliDialogueTrigger"]
+polygon = PackedVector2Array(1296, 384, 1487, 384, 1487, 456, 1400, 456, 1400, 399, 1296, 399)
+
+[node name="CameraBoundry" type="Area2D" parent="."]
+position = Vector2(-554, 984)
+collision_layer = 512
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBoundry"]
+position = Vector2(1943, -619)
+shape = SubResource("RectangleShape2D_yenue")
+
+[node name="LimitBottomLeft" type="Marker2D" parent="CameraBoundry"]
+position = Vector2(1419, -268)
+
+[node name="LimitTopRight" type="Marker2D" parent="CameraBoundry"]
+position = Vector2(2463, -984)
+
+[connection signal="body_entered" from="OlliDialogueTrigger" to="OlliDialogueTrigger" method="_on_body_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=4 uid="uid://cs2a4pq3yt5l6"]
+[gd_scene load_steps=46 format=4 uid="uid://cs2a4pq3yt5l6"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_pt88k"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_yqbfs"]
@@ -15,8 +15,7 @@
 [ext_resource type="Resource" uid="uid://bn04a8c828d0e" path="res://modules/objects/puzzle_pieces/key/foyerkey.tres" id="8_bffxx"]
 [ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/notgoindatway.gd" id="8_dkp6j"]
 [ext_resource type="PackedScene" uid="uid://lbhb1gemkets" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.tscn" id="8_e5ij6"]
-[ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/exit_closet_dialogue_trigger.gd" id="9_0natf"]
-[ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/cutscene_checker_gotta_fight.gd" id="9_3ccj6"]
+[ext_resource type="Script" uid="uid://jftftlnkvyoo" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/cutscene_checker_gotta_fight.gd" id="9_3ccj6"]
 [ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.tscn" id="9_3mj1j"]
 [ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/admin.gd" id="9_skfq5"]
 [ext_resource type="PackedScene" uid="uid://c0xn1iqitvhmq" path="res://modules/objects/puzzle_pieces/key/key.tscn" id="10_0c127"]
@@ -48,8 +47,6 @@ size = Vector2(312, 216)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_821of"]
 size = Vector2(528, 192)
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_skfq5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cf32e"]
 size = Vector2(312, 288)
@@ -426,14 +423,6 @@ y_sort_enabled = true
 visible = false
 z_index = 2
 position = Vector2(-84, -65)
-
-[node name="ExitClosetDialogueTrigger" type="Area2D" parent="Rooms/HallRight"]
-position = Vector2(-36, 60)
-collision_mask = 4
-script = ExtResource("9_0natf")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/HallRight/ExitClosetDialogueTrigger"]
-shape = SubResource("CircleShape2D_skfq5")
 
 [node name="Library" type="Node2D" parent="Rooms"]
 y_sort_enabled = true
@@ -1007,7 +996,6 @@ tile_set = ExtResource("2_yqbfs")
 [connection signal="body_entered" from="Rooms/Foyer/ShadesWalkingCutscene" to="Rooms/Foyer/ShadesWalkingCutscene" method="_on_body_entered"]
 [connection signal="body_entered" from="Rooms/Foyer/StaticBody2D/Area2D" to="Rooms/Foyer/StaticBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Rooms/HallRight/CutsceneChecker-GottaFight" to="Rooms/HallRight/CutsceneChecker-GottaFight" method="_on_body_entered"]
-[connection signal="body_entered" from="Rooms/HallRight/ExitClosetDialogueTrigger" to="Rooms/HallRight/ExitClosetDialogueTrigger" method="_on_body_entered"]
 [connection signal="body_entered" from="Rooms/Admin/Area2D" to="Rooms/Admin" method="_on_area_2d_body_entered"]
 
 [editable path="Rooms/Foyer/EncounterEntrance"]
