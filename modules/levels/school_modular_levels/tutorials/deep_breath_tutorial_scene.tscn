@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b6joa45vascw1" path="res://modules/levels/school_modular_levels/tutorials/deep_breath_tutorial_scene.gd" id="2_nryje"]
 [ext_resource type="PackedScene" uid="uid://c4f5tcvmt380f" path="res://modules/objects/level_transition_zone/transition_door.tscn" id="3_46nd3"]
 [ext_resource type="PackedScene" uid="uid://dx5na7ufncxg3" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn" id="5_2pc1f"]
-[ext_resource type="Script" uid="uid://t1bdhvqaasx7" path="res://modules/levels/school_modular_levels/tutorials/return_blocker.gd" id="5_jjud4"]
+[ext_resource type="Script" path="res://modules/levels/school_modular_levels/tutorials/return_blocker.gd" id="5_jjud4"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="7_jjud4"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qgpn2"]

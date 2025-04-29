@@ -162,6 +162,7 @@ func exit_cutscene():
 	
 	lock_camera = false
 	in_cutscene = false
+
 	camera.position_smoothing_enabled = true
 	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
 	
@@ -190,6 +191,9 @@ func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 	walk_state.ground_speed = orig_speed
 	return
 
+func start_movement_tutorial():
+	$MovementKeys.start_tutorial()
+
 ## Checks to see if a player is current standing inside of an EncounterBoundry
 ## If so, it returns the boundry itself
 func check_encounter():
@@ -200,3 +204,4 @@ func check_encounter():
 	var area = areas[0]
 	if area is EncounterArea:
 		return area
+
