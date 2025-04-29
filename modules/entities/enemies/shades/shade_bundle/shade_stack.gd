@@ -45,7 +45,7 @@ func _on_health_component_died() -> void:
 		var encounter_entrances = get_tree().get_nodes_in_group("encounter_entrance")
 		for entrance in encounter_entrances: 
 			if entrance.encounter_active:
-				entrance.call_deferred("enemy_added", shade)
+				entrance.call_deferred("enemy_added", enemy)
 				break
 	
 	$AnimationPlayer.play("attack")
