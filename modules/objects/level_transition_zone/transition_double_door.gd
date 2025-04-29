@@ -26,8 +26,11 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed("interact"):
 		player.dir = Vector2.ZERO
 
-		var dialogue = load("res://modules/levels/school_modular_levels/Playtest/playtest_dialogue.dialogue")
-		DialogueManager.show_dialogue_balloon(dialogue, "double_door", [self])
+		#var dialogue = load("res://modules/levels/school_modular_levels/Playtest/playtest_dialogue.dialogue")
+		#DialogueManager.show_dialogue_balloon(dialogue, "double_door", [self])
+		
+		if check_keys():
+			you_shall_pass()
 		
 		get_viewport().set_input_as_handled()
 
