@@ -9594,6 +9594,7 @@ z_index = 1
 position = Vector2(72, -48)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "DarkRoomEntrance"
+door_name = "book_door"
 keys_needed = Array[ExtResource("15_l83xx")]([ExtResource("21_0knhu"), ExtResource("16_uy203"), ExtResource("14_vrsc7")])
 
 [node name="EndRoomWest" parent="EndRoom/Exits" instance=ExtResource("11_xknx3")]
@@ -9724,6 +9725,7 @@ z_index = 1
 position = Vector2(288, 0)
 script = ExtResource("25_4lksq")
 next_level_path = "uid://m6shqoju2l67"
+door_name = "gym_door"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="URoom2/TransitionDoubleDoor"]
 position = Vector2(0, -12)

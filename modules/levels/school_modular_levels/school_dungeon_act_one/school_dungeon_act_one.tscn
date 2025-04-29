@@ -10,14 +10,14 @@
 [ext_resource type="PackedScene" uid="uid://bme0largcnr4h" path="res://modules/objects/level_transition_zone/transition_double_door.tscn" id="6_h3dec"]
 [ext_resource type="PackedScene" uid="uid://cujx50k2x7ox5" path="res://modules/objects/level_transition_zone/encounter_entrance.tscn" id="7_1ddbp"]
 [ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="7_ntqx1"]
-[ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/shades_walking_cutscene.gd" id="7_skfq5"]
+[ext_resource type="Script" uid="uid://cyamu3k7rpuu6" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/shades_walking_cutscene.gd" id="7_skfq5"]
 [ext_resource type="PackedScene" uid="uid://cuti2ni6cxjbq" path="res://modules/levels/school_modular_levels/school_props/fire_alarm.tscn" id="8_0natf"]
 [ext_resource type="Resource" uid="uid://bn04a8c828d0e" path="res://modules/objects/puzzle_pieces/key/foyerkey.tres" id="8_bffxx"]
 [ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/notgoindatway.gd" id="8_dkp6j"]
 [ext_resource type="PackedScene" uid="uid://lbhb1gemkets" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.tscn" id="8_e5ij6"]
 [ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/cutscene_checker_gotta_fight.gd" id="9_3ccj6"]
 [ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.tscn" id="9_3mj1j"]
-[ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/admin.gd" id="9_skfq5"]
+[ext_resource type="Script" uid="uid://b23yh1ti1utiv" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/admin.gd" id="9_skfq5"]
 [ext_resource type="PackedScene" uid="uid://c0xn1iqitvhmq" path="res://modules/objects/puzzle_pieces/key/key.tscn" id="10_0c127"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="10_0natf"]
 
@@ -234,6 +234,7 @@ z_index = 1
 position = Vector2(0, -108)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "Foyer"
+door_name = "foyer_door"
 keys_needed = Array[ExtResource("7_ntqx1")]([ExtResource("8_bffxx")])
 
 [node name="EncounterEntrance" parent="Rooms/Foyer" node_paths=PackedStringArray("enemy_spawn_points") instance=ExtResource("7_1ddbp")]

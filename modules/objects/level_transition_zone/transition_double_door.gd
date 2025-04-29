@@ -4,6 +4,7 @@ var interactable : bool = false
 @onready var player = get_tree().get_first_node_in_group("player")
 @export_file("*.tscn","*.scn") var next_level_path
 @export var entrance_name : String
+@export var door_name : String
 
 var inv : Inventory
 var count_dict : Dictionary
@@ -20,14 +21,22 @@ func _ready():
 func _unhandled_input(_event: InputEvent) -> void:
 	if !interactable:
 		return
-
+	
 	# TODO: check player inventory for 3 books
 	
 	if Input.is_action_just_pressed("interact"):
 		player.dir = Vector2.ZERO
-
+		
 		var dialogue = load("res://modules/levels/school_modular_levels/Playtest/playtest_dialogue.dialogue")
-		DialogueManager.show_dialogue_balloon(dialogue, "double_door", [self])
+
+		if check_keys():
+			you_shall_pass()
+		elif door_name == "book_door":
+			DialogueManager.show_dialogue_balloon(dialogue, "need_books", [self])
+		elif door_name == "foyer_door":
+			DialogueManager.show_dialogue_balloon(dialogue, "need_key", [self])
+		elif door_name == "gym_door":
+			pass
 		
 		get_viewport().set_input_as_handled()
 

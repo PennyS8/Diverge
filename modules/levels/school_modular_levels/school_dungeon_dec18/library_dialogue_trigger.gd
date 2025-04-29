@@ -16,6 +16,7 @@ func _on_body_entered(body: Node2D) -> void:
 	player = LevelManager.player
 	if(player.dialogue_tracker["library"] == false):
 		DialogueManager.show_dialogue_balloon(load("res://modules/dialogue/demo_scenes.dialogue"), "library_entry", [self])
+		$"../block exit".queue_free()
 		player.dialogue_tracker["library"] = true
 
 func add_item():
