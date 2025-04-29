@@ -1,64 +1,30 @@
-[gd_scene load_steps=18 format=3 uid="uid://gpeishkjbb60"]
+[gd_scene load_steps=16 format=3 uid="uid://gpeishkjbb60"]
 
 [ext_resource type="Script" uid="uid://bvm3c5gk8ux70" path="res://addons/wyvernbox/inventory_view.gd" id="1_igakj"]
-[ext_resource type="Script" uid="uid://b2anle78q5g1k" path="res://addons/wyvernbox/inventories/restricted_inventory.gd" id="2_u5gh5"]
-[ext_resource type="Script" uid="uid://wyldudd8woh0" path="res://addons/wyvernbox/crafting/item_like.gd" id="3_1i8ug"]
+[ext_resource type="Script" uid="uid://fp2iki0mkowk" path="res://addons/wyvernbox/inventories/restricted_inventory.gd" id="2_u5gh5"]
+[ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="3_1i8ug"]
 [ext_resource type="PackedScene" uid="uid://co5ok1mm2s7vu" path="res://addons/wyvernbox_prefabs/item_stack_view.tscn" id="3_vtxtt"]
-[ext_resource type="Script" uid="uid://gqwsqi3kosag" path="res://addons/wyvernbox/item_type.gd" id="4_5om5x"]
 [ext_resource type="StyleBox" uid="uid://cqx3opxr50d2o" path="res://addons/wyvernbox_prefabs/graphics/selected_cell.tres" id="4_djypq"]
+[ext_resource type="Resource" uid="uid://2e4es4y4ng4" path="res://modules/ui/hud/wyvern_inv/weaverhook.tres" id="4_vpxuf"]
+[ext_resource type="Resource" uid="uid://gmra8hy1uvo" path="res://modules/ui/hud/wyvern_inv/yarnbag.tres" id="5_57iw6"]
 [ext_resource type="PackedScene" uid="uid://b7jlucsddt6dg" path="res://addons/wyvernbox_prefabs/inventory_cell.tscn" id="5_ele7e"]
-[ext_resource type="Script" uid="uid://cwlexecikl8nc" path="res://addons/wyvernbox/item_instantiator.gd" id="6_ojqjg"]
+[ext_resource type="Resource" uid="uid://4lrnolhua468" path="res://modules/ui/hud/wyvern_inv/deep_breath.tres" id="6_57iw6"]
+[ext_resource type="Script" uid="uid://d1a114hwwhdiu" path="res://addons/wyvernbox/item_instantiator.gd" id="6_ojqjg"]
 [ext_resource type="Texture2D" uid="uid://bibwfg1e2rajp" path="res://assets/debug/Juni.JPG" id="6_x6ee3"]
 [ext_resource type="Texture2D" uid="uid://bdkrtjyq7nxcc" path="res://assets/debug/TESTPENCILBOX.png" id="10_u08uh"]
 
 [sub_resource type="Resource" id="Resource_vpxuf"]
 resource_name = "RestrictedInventory"
 script = ExtResource("2_u5gh5")
-allow_rotation = true
-restricted_to_types = Array[int]([131072, 65536, 0, 256, 256, 256, 0, 0, 0, 0, 0, 0, 0])
+allow_rotation = false
+restricted_to_types = Array[int]([131072, 65536, 262144, 256, 256, 256, 0, 0, 0, 0, 0, 0, 0])
 width = 13
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ibjd1"]
-atlas = ExtResource("6_x6ee3")
-region = Rect2(676, 940, 676, 470)
-
-[sub_resource type="Resource" id="Resource_xjeog"]
-script = ExtResource("4_5om5x")
-name = "Weaver's Hook"
-description = "Bead and block, until it is done."
-tags = Array[StringName]([&"mainhand"])
-texture = SubResource("AtlasTexture_ibjd1")
-texture_scale = 0.04
-max_stack_count = 1
-in_inventory_width = 1
-in_inventory_height = 1
-slot_flags = 65536
-default_properties_string = "{}"
-default_properties = {}
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_2s3jh"]
-atlas = ExtResource("6_x6ee3")
-region = Rect2(303, 732, 170, 174)
-
-[sub_resource type="Resource" id="Resource_v2uwl"]
-script = ExtResource("4_5om5x")
-name = "Unraveled Satchel"
-description = ""
-tags = Array[StringName]([])
-texture = SubResource("AtlasTexture_2s3jh")
-texture_scale = 0.15
-max_stack_count = 1
-in_inventory_width = 1
-in_inventory_height = 1
-slot_flags = 131072
-default_properties_string = "{}"
-default_properties = {}
 
 [sub_resource type="Resource" id="Resource_eedmd"]
 script = ExtResource("6_ojqjg")
-items_to_add = Array[ExtResource("3_1i8ug")]([SubResource("Resource_xjeog"), SubResource("Resource_v2uwl")])
-item_repeat_ranges = Array[Vector2]([Vector2(1, 1), Vector2(1, 1)])
-item_chances = Array[float]([100.0, 100.0])
+items_to_add = Array[ExtResource("3_1i8ug")]([ExtResource("4_vpxuf"), ExtResource("5_57iw6"), ExtResource("6_57iw6")])
+item_repeat_ranges = Array[Vector2]([Vector2(1, 1), Vector2(1, 1), Vector2(1, 1)])
+item_chances = Array[float]([100.0, 100.0, 100.0])
 repeat_post_chance = false
 randomize_locations = false
 delay_between_items = 0.0
@@ -86,6 +52,8 @@ item_scene = ExtResource("3_vtxtt")
 interaction_mode = 0
 cell_size = Vector2(48, 48)
 selected_item_style = ExtResource("4_djypq")
+autosave_file_path = "player_inventory"
+autosave_intensity = 3
 
 [node name="Cells" type="Control" parent="."]
 texture_filter = 1

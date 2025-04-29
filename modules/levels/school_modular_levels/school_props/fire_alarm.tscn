@@ -1,0 +1,77 @@
+[gd_scene load_steps=8 format=3 uid="uid://cuti2ni6cxjbq"]
+
+[ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="1_0cvdu"]
+[ext_resource type="Script" uid="uid://xiulsni76bbr" path="res://modules/levels/school_modular_levels/school_props/fire_alarm.gd" id="1_gpyxa"]
+[ext_resource type="Texture2D" uid="uid://ctgr6tdinavn4" path="res://assets/environment/downtown_dungeon/custom_sprites/fire_alarm.png" id="2_t4em0"]
+[ext_resource type="AudioStream" uid="uid://bly3y0vs11odt" path="res://assets/environment/custom_soundfx/fire_alarm.wav" id="3_t4em0"]
+
+[sub_resource type="Animation" id="Animation_gpyxa"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_y3jd7"]
+resource_name = "ring ring"
+length = 0.66667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2, 0.266667, 0.333333, 0.4, 0.466667, 0.533333, 0.6, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, -0.349066, 0.139626, -0.20944, 0.349066, -0.20944, 0.244346, -0.279253, 0.174533, -0.383972, -5.15094e-06]
+}
+tracks/1/type = "audio"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("3_t4em0")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/1/use_blend = true
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7k5hv"]
+_data = {
+&"RESET": SubResource("Animation_gpyxa"),
+&"ring ring": SubResource("Animation_y3jd7")
+}
+
+[node name="FireAlarm" type="Node2D"]
+z_index = 1
+script = ExtResource("1_gpyxa")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = ExtResource("1_0cvdu")
+position = Vector2(0, -5)
+texture = ExtResource("2_t4em0")
+offset = Vector2(0.5, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../AudioStreamPlayer2D")
+libraries = {
+&"": SubResource("AnimationLibrary_7k5hv")
+}
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+max_distance = 320.0

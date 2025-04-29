@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://cujx50k2x7ox5"]
+
+[ext_resource type="Script" uid="uid://dqnaro4aycm2o" path="res://modules/objects/level_transition_zone/encounter_entrance.gd" id="1_yy1du"]
+
+[node name="EncounterEntrance" type="Area2D" groups=["encounter_entrance", "saved_data"]]
+collision_layer = 8192
+collision_mask = 4
+script = ExtResource("1_yy1du")
+metadata/_custom_type_script = "uid://kfndxak1lwjf"

@@ -19,6 +19,11 @@ var swing_dir : Vector2
 var ledge_collision : Area2D
 
 var hook_locked := false
+@export_category("Check Unlock Item Patterns")
+@export var hook_type : ItemType
+@export var yarn_bag_type : ItemType
+@export var cope_type : ItemType
+@export var dash_type : ItemType
 
 # this is to pass unhandled input to states
 signal unhandled_input_received(event)
@@ -30,6 +35,10 @@ var curr_camera_boundry : Area2D
 @onready var fsm : State = $PlayerFSM
 
 var cutscene_marker_packed = preload("res://modules/objects/debug/cutscene_walk_point.tscn")
+ 
+
+#makes sure certain dialogue popups only appear once
+var dialogue_tracker = {"closet": false, "library": false}
 
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(dialogue_done)
@@ -48,35 +57,52 @@ func _process(_delta):
 	# layer 9 (i.e., "CameraBoundryCollider").
 	
 	# if we're in cutscene or scene transition
-	if !lock_camera:
-		var areas = $Area2D.get_overlapping_areas()
-		if !areas: # Check if null (or empty)
-			return
-		
-		var area = areas[0]
-		if area != curr_camera_boundry: # Only set the camera limits once
-			curr_camera_boundry = area
-			
-			var top_right : Vector2 = area.get_node("LimitTopRight").global_position
-			var bottom_left : Vector2 = area.get_node("LimitBottomLeft").global_position
-			$Camera2D.limit_top = top_right.y
-			$Camera2D.limit_right = top_right.x
-			$Camera2D.limit_bottom = bottom_left.y
-			$Camera2D.limit_left = bottom_left.x
+	update_cam_limits()
 
+func update_cam_limits():
+	var areas = $Area2D.get_overlapping_areas()
+	if !areas: # Check if null (or empty)
+		return
+	
+	var area = areas[0]
+	if area != curr_camera_boundry: # Only set the camera limits once
+		curr_camera_boundry = area
+		
+		var top_right : Vector2 = area.get_node("LimitTopRight").global_position
+		var bottom_left : Vector2 = area.get_node("LimitBottomLeft").global_position
+		camera.limit_top = top_right.y
+		camera.limit_right = top_right.x
+		camera.limit_bottom = bottom_left.y
+		camera.limit_left = bottom_left.x
+
+# Checks for all player ability unlocks. Unlocks FSM states if item found in inventory
 func check_unlock_hook():
-	var deinv : RestrictedInventory = load("res://modules/ui/hud/wyvern_inv/equipment_inventory.tres")
+	if GameManager.inventory_node:
+		var inv : RestrictedInventory = GameManager.inventory_node.inventory
+		if InventoryHelper.is_itemtype_in_inventory(inv, hook_type):
+			$PlayerFSM/Movement/AttackMelee.disabled = false
+		
+		if InventoryHelper.is_itemtype_in_inventory(inv, yarn_bag_type):
+			$PlayerFSM/Movement/Lasso.disabled = false
+			
+		if InventoryHelper.is_itemtype_in_inventory(inv, cope_type):
+			$PlayerFSM/Abilities/DeepBreath.disabled = false
+		
+		# NOTE: This is commented out on purpose. May disable in future.
+		#if InventoryHelper.is_itemtype_in_inventory(inv, dash_type):
+			#$PlayerFSM/Movement/Dash.disabled = false
+	
 	#hook_locked = false
 #	can_attack()
 	
 func _camera_move():
 	if !lock_camera:
-		$Camera2D.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
-		$Camera2D.position_smoothing_enabled = true
+		camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
+		camera.position_smoothing_enabled = true
 		
 func can_attack():
-	$PlayerFSM.change_state("CanAttack")
-	$PlayerFSM.change_state("Idle")
+	fsm.change_state("CanAttack")
+	fsm.change_state("Idle")
 
 func _physics_process(delta: float) -> void:
 	pass
@@ -112,37 +138,61 @@ func enter_cutscene(camera_pos : Vector2 = Vector2.INF):
 	var cam_tween_time = cam_tween_vector.length() / 48.0
 	
 	var cam_tween = create_tween()
-	cam_tween.tween_property($Camera2D, "global_position", camera_pos, cam_tween_time)
+	cam_tween.tween_property(camera, "global_position", camera_pos, cam_tween_time)
 	await cam_tween.finished
 	
-	camera.position_smoothing_enabled = true
 	return
 	
 func exit_cutscene():
 	print("hello!!")
 	get_tree().get_first_node_in_group("gui").show()
 
-	$PlayerFSM.change_state("Idle")
+	#fsm.change_state("Idle")
 	fsm.change_state("CanAttack")
 	fsm.change_state("CanDash")
 	
 	lock_camera = false
 	in_cutscene = false
-	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25
 
+	camera.position_smoothing_enabled = true
+	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
+	
+## To be called within a cutscene to move the player to a specific point.
+## [param speed_percentage] A value that represents a percentage of the player's normal walk speed
 func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
-	# setting dir puts player into walk state; this manages all our animations and logic and stuff
+	# Setting the direction puts player into walk state; this manages all our animations and movement logic
 	dir = global_position.direction_to(global_point)
 	
-	var cutscene_marker : Area2D = cutscene_marker_packed.instantiate()
-	get_tree().current_scene.add_child(cutscene_marker)
+	# Scale our player speed based on speed_scaled
+	var walk_state = $PlayerFSM/Movement/Walk
+	var orig_speed = walk_state.ground_speed
+	var speed_scaled = orig_speed * speed_percentage
+	walk_state.ground_speed = speed_scaled
+
+	# Calculate how long it will take to get to end based on speed_scaled
+	# We do this with a timer so that if player hits a wall on the way, they will still move to the next point
+	var distance_to_end = global_position.distance_to(global_point)
+	var walk_timer = get_tree().create_timer(distance_to_end / speed_scaled, true)
+
+	# Wait until we "should have" reached the point specified
+	await walk_timer.timeout
 	
-	cutscene_marker.global_position = global_point
-	
-	await cutscene_marker.body_entered
+	# Stop moving & reset speed back to default
 	dir = Vector2.ZERO
+	walk_state.ground_speed = orig_speed
 	return
 
-## Ensure this function is only ever called once, it will crash otherwise.
 func start_movement_tutorial():
 	$MovementKeys.start_tutorial()
+
+## Checks to see if a player is current standing inside of an EncounterBoundry
+## If so, it returns the boundry itself
+func check_encounter():
+	var areas = $EncounterChecker.get_overlapping_areas()
+	if !areas: # Check if null (or empty)
+		return null
+		
+	var area = areas[0]
+	if area is EncounterArea:
+		return area
+

@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://c4f5tcvmt380f"]
+[gd_scene load_steps=12 format=3 uid="uid://c4f5tcvmt380f"]
 
 [ext_resource type="Script" uid="uid://c6q6080bnw84g" path="res://modules/objects/level_transition_zone/transition_door.gd" id="1_3ij6u"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="2_1ry3b"]
 [ext_resource type="Texture2D" uid="uid://bp72ou4t3d6yt" path="res://assets/environment/downtown_dungeon/Door.png" id="3_3yaq0"]
 [ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="4_xe10q"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="5_hu4tb"]
+[ext_resource type="Texture2D" uid="uid://d1ewbo84vqt8s" path="res://assets/environment/downtown_dungeon/custom_sprites/lock.png" id="6_bjtih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38vbv"]
 size = Vector2(36, 24)
@@ -25,6 +27,9 @@ shader_parameter/texture_size = Vector2(17, 12)
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8rd2v"]
 radius = 12.0
 height = 36.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6adpx"]
+size = Vector2(8, 8)
 
 [node name="TransitionDoor" type="StaticBody2D"]
 script = ExtResource("1_3ij6u")
@@ -60,6 +65,23 @@ collision_mask = 4
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_8rd2v")
 debug_color = Color(0.908494, 0.230311, 0.491003, 0.42)
+
+[node name="Blocker" type="StaticBody2D" parent="."]
+process_mode = 4
+visible = false
+position = Vector2(0, -16)
+collision_layer = 2
+collision_mask = 8
+
+[node name="Sprite2D" type="Sprite2D" parent="Blocker"]
+material = ExtResource("5_hu4tb")
+texture = ExtResource("6_bjtih")
+offset = Vector2(0, 0.5)
+region_enabled = true
+region_rect = Rect2(12, 17, 24, 21)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Blocker"]
+shape = SubResource("RectangleShape2D_6adpx")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

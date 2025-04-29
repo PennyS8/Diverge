@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://hmx6o472ropw"]
+
+[ext_resource type="PackedScene" uid="uid://bvwl11s2p0hd" path="res://addons/maaacks_menus_template/base/scenes/menus/options_menu/master_options_menu.tscn" id="1_uaidt"]
+[ext_resource type="PackedScene" uid="uid://dp3rgqaehb3xu" path="res://addons/maaacks_menus_template/base/scenes/menus/options_menu/input/input_options_menu.tscn" id="2_15wl6"]
+[ext_resource type="FontFile" uid="uid://dtyn18rtxvf8u" path="res://assets/hud/Jersey_10/Jersey10-Regular.ttf" id="2_yiu5s"]
+[ext_resource type="PackedScene" uid="uid://c8vnncjwqcpab" path="res://addons/maaacks_menus_template/base/scenes/menus/options_menu/audio/audio_options_menu.tscn" id="3_qg4me"]
+[ext_resource type="PackedScene" uid="uid://b2numvphf2kau" path="res://addons/maaacks_menus_template/base/scenes/menus/options_menu/video/video_options_menu.tscn" id="4_1t848"]
+
+[node name="MasterOptionsMenu" instance=ExtResource("1_uaidt")]
+
+[node name="TabContainer" parent="." index="0"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -640.0
+offset_top = -349.0
+offset_right = 640.0
+offset_bottom = 350.0
+theme_override_fonts/font = ExtResource("2_yiu5s")
+theme_override_font_sizes/font_size = 38
+current_tab = 1
+
+[node name="Controls" parent="TabContainer" index="1" instance=ExtResource("2_15wl6")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Audio" parent="TabContainer" index="2" instance=ExtResource("3_qg4me")]
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Video" parent="TabContainer" index="3" instance=ExtResource("4_1t848")]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[editable path="TabContainer/Audio"]

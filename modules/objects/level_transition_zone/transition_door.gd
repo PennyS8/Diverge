@@ -10,9 +10,14 @@ var interactable : bool = false
 @export var anti_key : ItemLike
 var inv : Inventory
 
+var encounter_active
+
 func _ready():
 	if GameManager.inventory_node:
 		inv = GameManager.inventory_node.inventory
+	
+	LevelManager.enter_encounter.connect(encounter_state.bind(true))
+	LevelManager.exit_encounter.connect(encounter_state.bind(false))
 	
 func _unhandled_input(_event: InputEvent) -> void:
 	if !interactable:
@@ -31,12 +36,27 @@ func _unhandled_input(_event: InputEvent) -> void:
 		get_viewport().set_input_as_handled()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
+	if encounter_active:
+		return
+	
 	interactable = true
 	$Glint.show()
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
 	interactable = false
 	$Glint.hide()
+
+func encounter_state(state):
+	var blocker = $Blocker
+	match state:
+		true:
+			blocker.process_mode = Node.PROCESS_MODE_INHERIT
+			blocker.show()
+			encounter_active = true
+		false:
+			blocker.process_mode = Node.PROCESS_MODE_DISABLED
+			blocker.hide()
+			encounter_active = false
 
 func check_books():
 	if !inv:

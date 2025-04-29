@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=3 uid="uid://dd01ak0uq50yh"]
+
+[ext_resource type="PackedScene" uid="uid://sek8dppwx6u7" path="res://modules/objects/level_transition_zone/firewall_horizontal.tscn" id="1_l8ay5"]
+[ext_resource type="PackedScene" uid="uid://dlx8tur6oue4g" path="res://modules/objects/level_transition_zone/firewall_vertical.tscn" id="2_2p0r0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvr3"]
+size = Vector2(6, 6)
+
+[node name="Blocker" type="StaticBody2D"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+collision_layer = 2
+collision_mask = 8
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_jjvr3")
+
+[node name="FirewallHorizontal" parent="." instance=ExtResource("1_l8ay5")]
+z_index = 0
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -29.0
+offset_top = -7.5
+offset_right = 29.0
+offset_bottom = 7.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="FirewallVertical" parent="." instance=ExtResource("2_2p0r0")]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -42.0
+offset_right = 20.0
+offset_bottom = 21.0
+grow_horizontal = 2
+grow_vertical = 2
