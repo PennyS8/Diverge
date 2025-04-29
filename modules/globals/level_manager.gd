@@ -74,7 +74,7 @@ func change_level(path : String, entrance_name : String = "0"):
 	
 	player = get_tree().get_first_node_in_group("player")
 
-	# save level state and player state
+	# save level state
 	await SaveAndLoad.room_save(current_level.get_name())
 	
 	var tween = get_tree().create_tween()
