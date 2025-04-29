@@ -52,13 +52,15 @@ func pick_up_tray(body):
 	$Item.set_deferred("monitoring", false)
 
 func _on_item_body_entered(body: Node2D) -> void:
-
+	# stops being tetherable
+	$TetherableArea2D.set_deferred("monitorable", false)
+		
 	if body.is_in_group("player"):
 		$Item.set_deferred("monitoring", false)
 		var deinv = GameManager.inventory_node.inventory
 		$Item.try_pickup(deinv)
 		dispenser_node.player_got_ramen()
-		deinv.save_state("player_inventory")
+		#deinv.save_state("player_inventory")
 		queue_free()
 		
 	

@@ -35,19 +35,19 @@ func _physics_process(_delta: float) -> void:
 # Removes the knockback from the enemy for tethering but still stuns enemy
 func tethered_stun():
 	crowd_control = true
-	$ShadeFSM.change_state("Stunned")
+	fsm.change_state("Stunned")
 	
 	# turns crowd control back off for future
 	crowd_control = false
 	
 func fling(): 
-	$ShadeFSM.change_state("Stunned")
+	fsm.change_state("Stunned")
 	super.fling()
 
 func pull():
-	$ShadeFSM.change_state("Stunned")
+	fsm.change_state("Stunned")
 	super.pull()
-	
+
 #region Savegame
 func on_save_game(saved_data:Array[SavedData]):
 	if %Health.health <= 0: 
@@ -56,7 +56,11 @@ func on_save_game(saved_data:Array[SavedData]):
 	var my_data = SavedData.new()
 	my_data.position = global_position
 	my_data.scene_path = scene_file_path
+	# Gets path up to node for reinstantiation
+	my_data.parent_node_path = get_parent().get_path()
 	
+	# Gets path up to node for reinstantiation
+	my_data.parent_node_path = get_parent().get_path()
 	saved_data.append(my_data)
 
 func on_before_load_game():
@@ -70,6 +74,7 @@ func on_load_game(saved_data:SavedData):
 
 #region Damage Handling
 func _on_health_component_died() -> void:
+	drop_ramen()
 	damaged_particles.restart()
 	fsm.change_state("Dead")
 	%AnimationPlayer.call_deferred("play", "die")
@@ -105,3 +110,12 @@ func fade_in():
 	var tween = create_tween()
 	tween.tween_property(self, "modulate:a", 1.0, 2.0)
 	await tween.finished
+
+func drop_ramen():
+	var ramen = get_node_or_null("RamenTray")
+	if ramen:
+		ramen.get_node("Sprite2D").call_deferred("reparent", ramen.get_node("CanvasGroup"))
+		ramen.get_node("Item").call_deferred("set_collision_mask_value", 4, false)
+		ramen.get_node("Item").set_deferred("monitoring", true)
+		ramen.call_deferred("reparent", get_parent())
+		#starts shining shader

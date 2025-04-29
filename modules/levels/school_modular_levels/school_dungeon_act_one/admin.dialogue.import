@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://bntcrloco8cle"
+path="res://.godot/imported/admin.dialogue-deaed6664d1ff3e3afd5a73ec51be659.tres"
+
+[deps]
+
+source_file="res://modules/levels/school_modular_levels/school_dungeon_act_one/admin.dialogue"
+dest_files=["res://.godot/imported/admin.dialogue-deaed6664d1ff3e3afd5a73ec51be659.tres"]
+
+[params]
+
+defaults=true

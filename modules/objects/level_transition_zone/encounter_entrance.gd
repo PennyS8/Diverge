@@ -9,6 +9,8 @@ extends Area2D
 ## The door blockers for enabled encounter
 @export var door_closures : Array[StaticBody2D]
 
+signal begin_encounter
+
 var current_enemies : Array[CharacterBody2D]
 var enemy_packed : PackedScene = preload("res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn")
 
@@ -75,17 +77,19 @@ func start_encounter():
 	
 	for spawnpoint in enemy_spawn_points:
 		var enemy = enemy_packed.instantiate()
-
+		
+		enemy.visible = false
+		
 		add_sibling(enemy)
 		
-		enemy.fsm.change_state("Spawn")
+		enemy.fsm.change_state_node_force(enemy.get_node("%Spawn"))
 
 		enemy.global_position = spawnpoint.global_position
-		enemy.health_component.Died.connect(enemy_defeated.bind(enemy))
 		
-		current_enemies.append(enemy)
+		enemy_added(enemy)
 	
 	await current_enemies[0].spawned
+	begin_encounter.emit()
 	#await LevelManager.player.exit_cutscene()
 
 func end_encounter():
@@ -100,7 +104,18 @@ func enemy_defeated(enemy):
 	
 	current_enemies.erase(enemy)
 	
+	if enemy.name == "ShadeStack" or enemy.name == "BossStack":
+		await get_tree().create_timer(0.5, true).timeout
+	
 	if current_enemies.is_empty():
 		end_encounter()
+	
 
+# Adds enemies to the encounter that are spawned while encounter is active
+func enemy_added(enemy):
+	if current_enemies.has(enemy):
+		return
+	
+	enemy.health_component.Died.connect(enemy_defeated.bind(enemy))
+	current_enemies.append(enemy)
 #endregion

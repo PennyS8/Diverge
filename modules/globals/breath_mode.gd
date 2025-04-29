@@ -7,11 +7,16 @@ signal done
 
 var current_selectables : Array[Node2D]
 var current_bodies_selected : Array[TetherableBody]
+var tutorial_bodies : Array[Node]
 var main_body_selected
 
 var selectable_body_selector : PackedScene = preload("res://modules/ui/coping_overlays/selectable_body.tscn")
 var yarn_controller_packed : PackedScene = preload("res://modules/status_effects/yarn_controller.tscn")
 var first_tetherable : TetherableBody
+
+# Used for path comparison in coping mechanism
+var boss_path = "res://modules/entities/enemies/shades/school_boss/school_boss.tscn"
+var hand_path = "res://modules/entities/enemies/shades/school_boss/school_boss_hands.tscn"
 
 func _on_visibility_changed() -> void:
 	if visible:
@@ -26,12 +31,16 @@ func _process(delta: float) -> void:
 	if visible:
 		time_remaining.text = "%.2f" % [timer.time_left]
 
-func start_mode():
+func start_mode(timer_override:bool = false):
 	current_selectables.clear()
 	current_bodies_selected.clear()
 	
-	timer.start(deadeye_time)
-	time_remaining.show()
+	if !timer_override:
+		timer.start(deadeye_time)
+		time_remaining.show()
+	else:
+		time_remaining.text = "10.0"
+		time_remaining.show()
 	
 	# Intended logic:
 	# 1. For each TetherableBody shown on screen, create a GUI element as a child of BreathMode \
@@ -54,17 +63,26 @@ func start_mode():
 		# Add under canvaslayer that excludes the grayscale-filter
 		get_parent().get_parent().get_node("ScreenFXExclusion").add_child(selector)
 		
+		if body in tutorial_bodies:
+			selector.pointer.show()
+		
 		selector.global_position = body.global_position
 		selector.mouse_entered.connect(select_body.bind(body))
 		
 		# Add to list to free when done
 		current_selectables.append(selector)
 
-	
 func select_body(body : TetherableBody):
 	current_bodies_selected.append(body)
+	if body in tutorial_bodies:
+		tutorial_bodies.erase(body)
+		if tutorial_bodies.is_empty():
+			deadeye_timeout()
 
 func _on_timer_timeout() -> void:
+	deadeye_timeout()
+
+func deadeye_timeout():
 	done.emit()
 	
 	# Set time to equal the default time so it doesn't visibly jump from 0.00 to time when shown
@@ -83,6 +101,14 @@ func _set_yarn():
 	first_tetherable = current_bodies_selected.pop_at(0)
 	
 	for selected_tether in current_bodies_selected:
+		# Prevents tethering with a hand as leash owner
+		if first_tetherable.scene_file_path == hand_path:
+			return
+		
+		# Prevents boss from being tethered to other shades
+		if selected_tether.scene_file_path == boss_path:
+			continue
+		
 		# Make a new instance of visual yarn, end point set to this tetherbody
 		var yarn = yarn_controller_packed.instantiate()
 		yarn.can_collide = false

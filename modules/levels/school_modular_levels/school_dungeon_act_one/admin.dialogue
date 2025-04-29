@@ -1,0 +1,13 @@
+~ start
+do! LevelManager.player.enter_cutscene()
+Juniper: No one is here..
+Juniper: I guess no one would mind if I slip past the front desk and find that key
+do! LevelManager.player.exit_cutscene()
+=> END
+
+~ got_it
+do! LevelManager.player.enter_cutscene()
+Juniper: WOAH, I'm a wizard!
+Juniper: [font size="4"]I knew it![/font]
+do! LevelManager.player.exit_cutscene()
+=> END

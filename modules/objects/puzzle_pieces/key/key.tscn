@@ -1,26 +1,73 @@
-[gd_scene load_steps=5 format=3 uid="uid://c0xn1iqitvhmq"]
+[gd_scene load_steps=9 format=3 uid="uid://c0xn1iqitvhmq"]
 
 [ext_resource type="Script" uid="uid://21jmwhis3x46" path="res://modules/objects/puzzle_pieces/key/key.gd" id="1_5a3x4"]
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_sqpx4"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_tx0ap"]
+[ext_resource type="PackedScene" uid="uid://bmnk17c835wi4" path="res://modules/objects/inventory_helpers/NatesGroundItem.tscn" id="4_d54k8"]
+[ext_resource type="Resource" uid="uid://br4t7nyfx77ur" path="res://modules/objects/puzzle_pieces/key/foyerkey.tres" id="5_tcohm"]
+[ext_resource type="PackedScene" path="res://modules/ui/input_button_overlays/right_click.tscn" id="6_tcohm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utre4"]
 size = Vector2(12, 7)
 
-[node name="Key" type="Area2D" groups=["saved_data"]]
-collision_layer = 32
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ybhxb"]
+size = Vector2(14, 8.75)
+
+[node name="Key" type="CharacterBody2D" groups=["saved_data", "tetherable_body"]]
+collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_5a3x4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = ExtResource("2_tx0ap")
-position = Vector2(8, -8)
+scale = Vector2(2, 2)
 texture = ExtResource("2_sqpx4")
 region_enabled = true
 region_rect = Rect2(34, 68, 12, 7)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(8, -8)
 shape = SubResource("RectangleShape2D_utre4")
 
-[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[node name="TetherableBody2D" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableBody2D"]
+shape = SubResource("RectangleShape2D_utre4")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_ybhxb")
+
+[node name="NatesGroundItem" parent="." instance=ExtResource("4_d54k8")]
+ground_item = ExtResource("5_tcohm")
+
+[node name="Glow2" parent="NatesGroundItem/Item/VisItem/Glow" index="0"]
+visible = false
+
+[node name="Sprite2" parent="NatesGroundItem/Item/VisItem/Glimmer" index="0"]
+visible = false
+
+[node name="Sprite3" parent="NatesGroundItem/Item/VisItem/Glimmer" index="1"]
+visible = false
+
+[node name="Icons" parent="NatesGroundItem/Item/VisItem" index="2"]
+scale = Vector2(2, 2)
+
+[node name="HoverRect" parent="NatesGroundItem/Item" index="3"]
+visible = false
+
+[node name="Label" parent="NatesGroundItem/Item" index="4"]
+visible = false
+
+[node name="RightClick" parent="." instance=ExtResource("6_tcohm")]
+position = Vector2(0, 11)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="NatesGroundItem/Item" to="." method="_on_item_body_entered"]
+
+[editable path="NatesGroundItem"]
+[editable path="NatesGroundItem/Item"]

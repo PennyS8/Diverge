@@ -40,8 +40,14 @@ func _on_update(_delta):
 		
 	target.velocity = lerp(target.velocity, target.dir * ground_speed, acceleration * _delta)
 	
-	var xdir = target.dir.snapped(Vector2.ONE).x
-	var ydir = target.dir.snapped(Vector2.ONE).y
+	var moonwalk_scalar
+	if target.moon_walk:
+		moonwalk_scalar = -1
+	else:
+		moonwalk_scalar = 1
+	
+	var xdir = target.dir.snapped(Vector2.ONE).x * moonwalk_scalar
+	var ydir = target.dir.snapped(Vector2.ONE).y * moonwalk_scalar
 	
 	if xdir == 1:
 		play_blend(no_hook + "walk_right", 0.0)
