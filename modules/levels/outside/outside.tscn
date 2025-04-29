@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=4 uid="uid://befcpvbc62vmw"]
+[gd_scene load_steps=13 format=4 uid="uid://befcpvbc62vmw"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_nlvm0"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="1_y5g6n"]
@@ -18,6 +18,13 @@ size = Vector2(240, 109)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nkm0v"]
 size = Vector2(36, 109.5)
+
+[sub_resource type="SegmentShape2D" id="SegmentShape2D_oonry"]
+a = Vector2(-1, -61)
+b = Vector2(-1, 11)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yenue"]
+size = Vector2(1078, 754)
 
 [node name="Outside" type="Node2D"]
 y_sort_enabled = true
@@ -182,11 +189,34 @@ position = Vector2(2783, 0)
 scale = Vector2(-1, 1)
 polygon = PackedVector2Array(1296, 384, 864, 384, 1296, 312)
 
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(865, 445)
+shape = SubResource("SegmentShape2D_oonry")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(1489, 445)
+shape = SubResource("SegmentShape2D_oonry")
+
 [node name="OlliDialogueTrigger" type="Area2D" parent="."]
 collision_mask = 4
 script = ExtResource("7_snlqb")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="OlliDialogueTrigger"]
 polygon = PackedVector2Array(1296, 384, 1487, 384, 1487, 456, 1400, 456, 1400, 399, 1296, 399)
+
+[node name="CameraBoundry" type="Area2D" parent="."]
+position = Vector2(-554, 984)
+collision_layer = 512
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBoundry"]
+position = Vector2(1943, -619)
+shape = SubResource("RectangleShape2D_yenue")
+
+[node name="LimitBottomLeft" type="Marker2D" parent="CameraBoundry"]
+position = Vector2(1419, -268)
+
+[node name="LimitTopRight" type="Marker2D" parent="CameraBoundry"]
+position = Vector2(2463, -984)
 
 [connection signal="body_entered" from="OlliDialogueTrigger" to="OlliDialogueTrigger" method="_on_body_entered"]
