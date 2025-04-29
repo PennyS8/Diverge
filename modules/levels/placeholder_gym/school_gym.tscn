@@ -31,7 +31,7 @@ sources/1 = SubResource("TileSetAtlasSource_b1h0j")
 y_sort_enabled = true
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(371, 383)
+position = Vector2(372, 396)
 
 [node name="Gym" type="Node2D" parent="."]
 y_sort_enabled = true

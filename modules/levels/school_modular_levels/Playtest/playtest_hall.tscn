@@ -9726,6 +9726,7 @@ z_index = 1
 position = Vector2(288, 0)
 script = ExtResource("25_4lksq")
 next_level_path = "uid://m6shqoju2l67"
+entrance_name = "0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="URoom2/TransitionDoubleDoor"]
 position = Vector2(0, -12)

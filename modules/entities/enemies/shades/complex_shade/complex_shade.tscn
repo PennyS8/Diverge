@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://dx5na7ufncxg3"]
+[gd_scene load_steps=88 format=3 uid="uid://dx5na7ufncxg3"]
 
 [ext_resource type="PackedScene" uid="uid://8xtoptvgrpqi" path="res://modules/entities/enemies/hp_bar/shade_hp_indicator.tscn" id="2_88af2"]
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
@@ -415,6 +415,30 @@ tracks/26/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Spawn:stream")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Death:volume_db")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_88af2"]
@@ -1241,6 +1265,35 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Death")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Death:volume_db")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ts514"]
 resource_name = "dash"
@@ -1504,7 +1557,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_kynnu"]
 resource_name = "die"
-length = 2.0
+length = 1.25001
 step = 0.0625
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -1513,7 +1566,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(1.8125),
+"times": PackedFloat32Array(1.125),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -1616,21 +1669,20 @@ tracks/8/keys = {
 "update": 0,
 "values": [Color(0.101961, 0, 0.243137, 1), Color(0.101961, 0, 0.243137, 0)]
 }
-tracks/9/type = "audio"
+tracks/9/type = "method"
 tracks/9/imported = false
 tracks/9/enabled = true
 tracks/9/path = NodePath("Death")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("40_dvtn2")
-}],
-"times": PackedFloat32Array(0)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
-tracks/9/use_blend = true
 
 [sub_resource type="Animation" id="Animation_shkbt"]
 resource_name = "fall"
@@ -1893,6 +1945,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_pra3i"]
 resource_name = "idle_left"
 length = 1.50001
+loop_mode = 1
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1958,6 +2011,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_o61v4"]
 resource_name = "idle_right"
 length = 1.50001
+loop_mode = 1
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2075,7 +2129,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_2jpn2"]
 resource_name = "spawn"
-length = 5.00001
+length = 2.50001
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2137,48 +2191,58 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/5/type = "audio"
+tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Spawn")
+tracks/5/path = NodePath(".:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 1.0,
-"stream": ExtResource("39_tvkt4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("40_iug1g")
-}],
-"times": PackedFloat32Array(0, 1.58333)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
-tracks/5/use_blend = true
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath(".:visible")
+tracks/6/path = NodePath("DisplayComponents:material:shader_parameter/Flash")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("DisplayComponents:material:shader_parameter/Flash")
+tracks/7/path = NodePath("Spawn:stream")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.58333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [ExtResource("39_tvkt4"), ExtResource("40_iug1g")]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Spawn")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.58333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [1.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_n2c8b"]
@@ -2501,6 +2565,11 @@ _data = {
 &"walk_right": SubResource("Animation_iug1g"),
 &"walk_up": SubResource("Animation_tvkt4")
 }
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dvtn2"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("40_dvtn2")
 
 [node name="ComplexShade" type="CharacterBody2D" groups=["enemy", "saved_data", "tetherable_body"]]
 z_index = 1
@@ -2867,10 +2936,12 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_n2c8b")
 }
+autoplay = "idle_left"
 
 [node name="Spawn" type="AudioStreamPlayer2D" parent="."]
 
 [node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_dvtn2")
 bus = &"enemydistort"
 
 [connection signal="mouse_entered" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_entered"]
