@@ -70,13 +70,25 @@ Juniper: This... doesn't seem right.
 Juniper: I don't think this hallway looked like this??? I've got to be losing my mind.
 => END
 
+~ not_open_admin
+Juniper: Is this my classroom?
+Juniper: Nope. Admin office. What the heck?
+=> END 
+
+~ not_open_lab
+Juniper: Is this class?
+Juniper: Nope. Physics Lab?? What is going on?
+Juniper: Ahhh... How I wish I was doing a physics lab right now and not a history test.
+Juniper: Crap, gotta run.
+=> END
+
 ~ foyer_encounter
 do move_shades(-86)
 do player.do_walk(juniper_spikes[0].global_position)
 Juniper: Okay, so I wasn't hallucinating.
-Juniper: I am getting out of this place.
+Juniper: Screw class. I am getting out of this place.
 Juniper: I'm in the foyer. I see the front door directly to my North.
-do player.do_walk(juniper_spikes[1].global_position)
+do player.do_walk(juniper_spikes[1].global_position, 1.5)
 Juniper: You've GOT to be kidding me.
 Juniper: The only place I can think of a big, disproportiate, cartoony key being located is the admin office, which should have been one of the doors in the hallway I came from.
 => END

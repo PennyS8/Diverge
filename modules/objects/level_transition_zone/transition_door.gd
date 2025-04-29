@@ -8,6 +8,11 @@ var interactable : bool = false
 # for playtesting
 @export var puzzle_door : bool
 @export var anti_key : ItemLike
+
+@export var locked : bool
+@export_file("*.dialogue") var locked_dialogue_file
+@export var locked_dialogue_name : String
+
 var inv : Inventory
 
 var encounter_active
@@ -31,6 +36,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 				DialogueManager.show_dialogue_balloon(dialogue, "puzzle_complete")
 			else:
 				LevelManager.change_level(next_level_path, entrance_name)
+		elif locked:
+			var dialogue = load(locked_dialogue_file)
+			DialogueManager.show_dialogue_balloon(dialogue, locked_dialogue_name)
 		else:
 			LevelManager.change_level(next_level_path, entrance_name)
 		get_viewport().set_input_as_handled()
