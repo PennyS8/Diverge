@@ -140,7 +140,7 @@ unique_name_in_owner = true
 use_parent_material = true
 layout_mode = 2
 size_flags_vertical = 3
-text = "Dialogue..."
+text = "Di[i]alogue..."
 fit_content = false
 scroll_following = true
 

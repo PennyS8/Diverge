@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://cujx50k2x7ox5" path="res://modules/objects/level_transition_zone/encounter_entrance.tscn" id="9_kpiic"]
 [ext_resource type="Script" uid="uid://kfndxak1lwjf" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/camera_boundry_region.gd" id="10_o1405"]
 [ext_resource type="Script" uid="uid://b8hon1wm4ertt" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/dialogue_trigger.gd" id="10_pfffn"]
-[ext_resource type="Script" uid="uid://ddgkvrl2idccb" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/library_dialogue_trigger.gd" id="13_o1405"]
+[ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/library_dialogue_trigger.gd" id="13_o1405"]
 [ext_resource type="PackedScene" uid="uid://rimaeod8hr56" path="res://modules/entities/npcs/little_juni/little_juni.tscn" id="14_e2g70"]
 [ext_resource type="Shader" uid="uid://gcwt752b74cd" path="res://modules/entities/enemies/shades/fx/compiled_enemy_shader.gdshader" id="17_3ff3w"]
 
@@ -140,6 +140,7 @@ tile_map_data = PackedByteArray("AAD0/x8AAAAKABAAAAD1/x8AAAAKABAAAAD2/x8AAAAKABA
 tile_set = ExtResource("2_2bp75")
 
 [node name="Lighting" type="Node2D" parent="."]
+visible = false
 
 [node name="PointLight2D" type="PointLight2D" parent="Lighting"]
 z_index = 1

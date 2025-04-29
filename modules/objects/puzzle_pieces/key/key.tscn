@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://c0xn1iqitvhmq"]
+[gd_scene load_steps=9 format=3 uid="uid://c0xn1iqitvhmq"]
 
 [ext_resource type="Script" uid="uid://21jmwhis3x46" path="res://modules/objects/puzzle_pieces/key/key.gd" id="1_5a3x4"]
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_sqpx4"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_tx0ap"]
 [ext_resource type="PackedScene" uid="uid://bmnk17c835wi4" path="res://modules/objects/inventory_helpers/NatesGroundItem.tscn" id="4_d54k8"]
-[ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="5_tcohm"]
+[ext_resource type="Resource" uid="uid://br4t7nyfx77ur" path="res://modules/objects/puzzle_pieces/key/foyerkey.tres" id="5_tcohm"]
 [ext_resource type="PackedScene" path="res://modules/ui/input_button_overlays/right_click.tscn" id="6_tcohm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utre4"]
@@ -13,33 +13,14 @@ size = Vector2(12, 7)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ybhxb"]
 size = Vector2(14, 8.75)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_jkin7"]
-atlas = ExtResource("2_sqpx4")
-region = Rect2(34, 68, 12, 7)
-
-[sub_resource type="Resource" id="Resource_60vru"]
-script = ExtResource("5_tcohm")
-name = "FoyerKey"
-description = "A big dumb cartoonish key."
-tags = Array[StringName]([])
-texture = SubResource("AtlasTexture_jkin7")
-texture_scale = 1.0
-max_stack_count = 1
-in_inventory_width = 1
-in_inventory_height = 1
-slot_flags = 256
-default_properties_string = "{}"
-default_properties = {}
-metadata/_custom_type_script = "uid://cgg102c222rfg"
-
 [node name="Key" type="CharacterBody2D" groups=["saved_data", "tetherable_body"]]
 collision_layer = 0
 collision_mask = 4
 script = ExtResource("1_5a3x4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
 material = ExtResource("2_tx0ap")
+scale = Vector2(2, 2)
 texture = ExtResource("2_sqpx4")
 region_enabled = true
 region_rect = Rect2(34, 68, 12, 7)
@@ -62,7 +43,7 @@ collision_mask = 4
 shape = SubResource("RectangleShape2D_ybhxb")
 
 [node name="NatesGroundItem" parent="." instance=ExtResource("4_d54k8")]
-ground_item = SubResource("Resource_60vru")
+ground_item = ExtResource("5_tcohm")
 
 [node name="Glow2" parent="NatesGroundItem/Item/VisItem/Glow" index="0"]
 visible = false
