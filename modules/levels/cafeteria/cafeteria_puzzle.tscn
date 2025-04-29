@@ -240,6 +240,7 @@ position = Vector2(-314, 21)
 scale = Vector2(4, 12)
 next_level_path = "uid://d0oqu04cc5tr8"
 entrance_name = "AEast"
+transition_direction = 3
 
 [node name="Props" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -926,11 +927,11 @@ position = Vector2(-30, 123)
 [node name="ShadeHPIndicator" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="0"]
 material = SubResource("ShaderMaterial_mjkpu")
 
+[node name="Combat" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive" index="1"]
+next_state = NodePath("")
+
 [node name="Spawn" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="1"]
 unique_name_in_owner = false
-
-[node name="Combat" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive" index="1"]
-next_state = NodePath("../Reaction")
 
 [node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/SoftCollision" index="0"]
 scale = Vector2(1.5, 1.5)
@@ -945,10 +946,10 @@ max_health = 80
 material = SubResource("ShaderMaterial_vas0v")
 scale = Vector2(1.5, 1.5)
 
-[node name="AttackArc" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/DisplayComponents" index="4"]
+[node name="Shadow" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/DisplayComponents" index="3"]
 material = SubResource("ShaderMaterial_vas0v")
 
-[node name="Shadow" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/DisplayComponents" index="5"]
+[node name="AttackArc" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/DisplayComponents" index="5"]
 material = SubResource("ShaderMaterial_vas0v")
 
 [node name="CameraBoundry" type="Area2D" parent="NavigationRegion2D"]
