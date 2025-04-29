@@ -1,0 +1,15 @@
+[remap]
+
+importer="dialogue_manager_compiler_14"
+type="Resource"
+uid="uid://huxhmlg64ol8"
+path="res://.godot/imported/gym_boss.dialogue-0850d874747176d18444f3a60d257ba0.tres"
+
+[deps]
+
+source_file="res://modules/levels/placeholder_gym/gym_boss.dialogue"
+dest_files=["res://.godot/imported/gym_boss.dialogue-0850d874747176d18444f3a60d257ba0.tres"]
+
+[params]
+
+defaults=true

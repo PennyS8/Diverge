@@ -15,6 +15,7 @@ var default_position
 
 @onready var health_component = %Health
 @onready var hurtbox = %HurtBox
+@onready var tetherable_area = $TetherableArea2D
 
 ## This edits our max health variable
 @export var max_health := 40
