@@ -86,7 +86,7 @@ func _physics_process(_delta):
 					EnemyManager.remove_boss_spawned_enemy(self)
 					EnemyManager.remove_boss_spawned_enemy(leash_owner)
 				
-		# Removes both leash owner and shade from encounter
+				# Removes both leash owner and shade from encounter
 				var encounter_entrances = get_tree().get_nodes_in_group("encounter_entrance")
 				for entrance in encounter_entrances:
 					if entrance.encounter_active:

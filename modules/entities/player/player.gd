@@ -193,6 +193,23 @@ func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 
 func start_movement_tutorial():
 	$MovementKeys.start_tutorial()
+	
+func _on_health_component_died() -> void:
+	var current_dir : Vector2
+	var idle := false
+	
+	for state in $PlayerFSM/Movement.active_states:
+		if state == "Idle":
+			idle = true
+			break;
+	
+	if idle == true:
+		print("Idle Found")
+		current_dir = $PlayerFSM/Movement/Idle.idle_dir
+	else: 
+		current_dir = dir
+	
+	$PlayerFSM.change_state("Death", current_dir)
 
 ## Checks to see if a player is current standing inside of an EncounterBoundry
 ## If so, it returns the boundry itself
