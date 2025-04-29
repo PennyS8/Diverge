@@ -37,6 +37,9 @@ var curr_camera_boundry : Area2D
 var cutscene_marker_packed = preload("res://modules/objects/debug/cutscene_walk_point.tscn")
  
 
+#makes sure certain dialogue popups only appear once
+var dialogue_tracker = {"closet": false, "library": false}
+
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(dialogue_done)
 	
@@ -156,20 +159,26 @@ func exit_cutscene():
 ## To be called within a cutscene to move the player to a specific point.
 ## [param speed_percentage] A value that represents a percentage of the player's normal walk speed
 func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
-	# setting dir puts player into walk state; this manages all our animations and logic and stuff
+	# Setting the direction puts player into walk state; this manages all our animations and movement logic
 	dir = global_position.direction_to(global_point)
 	
-	var speed_scaled = $PlayerFSM/Movement/Walk.ground_speed * speed_percentage
+	# Scale our player speed based on speed_scaled
+	var walk_state = $PlayerFSM/Movement/Walk
+	var orig_speed = walk_state.ground_speed
+	var speed_scaled = orig_speed * speed_percentage
+	walk_state.ground_speed = speed_scaled
+
+	# Calculate how long it will take to get to end based on speed_scaled
+	# We do this with a timer so that if player hits a wall on the way, they will still move to the next point
 	var distance_to_end = global_position.distance_to(global_point)
-	
 	var walk_timer = get_tree().create_timer(distance_to_end / speed_scaled, true)
-	#var cutscene_marker : Area2D = cutscene_marker_packed.instantiate()
-	#get_tree().current_scene.call_deferred("add_child", cutscene_marker)
-	#
-	#cutscene_marker.global_position = global_point
-	
+
+	# Wait until we "should have" reached the point specified
 	await walk_timer.timeout
+	
+	# Stop moving & reset speed back to default
 	dir = Vector2.ZERO
+	walk_state.ground_speed = orig_speed
 	return
 
 ## Checks to see if a player is current standing inside of an EncounterBoundry
