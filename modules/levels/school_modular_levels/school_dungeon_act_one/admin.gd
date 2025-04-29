@@ -8,6 +8,7 @@ func _on_area_2d_body_entered(_body: Node2D) -> void:
 		return
 	read1 = true
 	
+	_body.dir = Vector2.ZERO
 	var dialogue = load("res://modules/levels/school_modular_levels/school_dungeon_act_one/admin.dialogue")
 	DialogueManager.show_dialogue_balloon(dialogue, "start")
 
@@ -16,5 +17,6 @@ func got_key():
 		return
 	read2 = true
 	
+	LevelManager.player.dir = Vector2.ZERO
 	var dialogue = load("res://modules/levels/school_modular_levels/school_dungeon_act_one/admin.dialogue")
 	DialogueManager.show_dialogue_balloon(dialogue, "got_it")

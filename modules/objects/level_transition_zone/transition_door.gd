@@ -32,11 +32,13 @@ func _unhandled_input(_event: InputEvent) -> void:
 		player.dir = Vector2.ZERO
 		if puzzle_door:
 			if check_books():
+				player.dir = Vector2.ZERO
 				var dialogue = load("res://modules/levels/school_modular_levels/Playtest/playtest_dialogue.dialogue")
 				DialogueManager.show_dialogue_balloon(dialogue, "puzzle_complete")
 			else:
 				LevelManager.change_level(next_level_path, entrance_name)
 		elif locked:
+			player.dir = Vector2.ZERO
 			var dialogue = load(locked_dialogue_file)
 			DialogueManager.show_dialogue_balloon(dialogue, locked_dialogue_name)
 		else:

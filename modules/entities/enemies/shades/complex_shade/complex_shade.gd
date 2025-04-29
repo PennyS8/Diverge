@@ -139,7 +139,7 @@ func drop_heart():
 				print("Dropping heart")
 				var heart = heart_node.instantiate()
 				var node = get_node(get_parent().get_path())
-				node.add_child(heart)
+				node.call_deferred("add_child",heart)
 				heart.global_position = global_position
 				
 	

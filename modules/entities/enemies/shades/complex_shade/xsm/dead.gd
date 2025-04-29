@@ -12,6 +12,13 @@ func _on_enter(_args) -> void:
 	# Removes enemy from current engagers upon death
 	EnemyManager.release_engagement(target)
 	EnemyManager.remove_hand(target)
+	
+	if target.leash_owner:
+		if target.leash_owner.is_in_group("player"):
+			target.leash_owner.fsm.change_state("Recall")
+		
+	target.tetherable_area.monitorable = false
+	
 	$"../Alive".disabled = true
 
 # This function is called just after the state enters

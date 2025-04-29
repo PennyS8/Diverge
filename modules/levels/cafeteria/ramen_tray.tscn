@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bw5puypn7f5nx"]
+[gd_scene load_steps=12 format=3 uid="uid://bw5puypn7f5nx"]
 
 [ext_resource type="Material" uid="uid://b3i67aukbsan1" path="res://modules/levels/cafeteria/ramen_tray.tres" id="1_i8hlk"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_p3hce"]
@@ -6,17 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://xif0g3urgtv1" path="res://assets/environment/downtown_dungeon/custom_sprites/ramen.png" id="3_26siq"]
 [ext_resource type="Resource" uid="uid://ddkfnyew6hgco" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="3_pxv47"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="7_i8hlk"]
-[ext_resource type="AudioStream" uid="uid://bs2sdpntbeq5h" path="res://assets/sfx/filmcow/plate placed on shelf 1.wav" id="8_ghaut"]
 [ext_resource type="PackedScene" uid="uid://cjdtl6ek4qp7d" path="res://addons/wyvernbox_prefabs/ground_item_stack_view_2d.tscn" id="9_i8hlk"]
-[ext_resource type="AudioStream" uid="uid://bkpcm1c8gp62s" path="res://assets/sfx/filmcow/plate placed on shelf 2.wav" id="9_iomgv"]
-[ext_resource type="AudioStream" uid="uid://me1lbsa4gt68" path="res://assets/sfx/filmcow/plate placed on shelf 3.wav" id="10_r06aw"]
-[ext_resource type="AudioStream" uid="uid://bch7rgr8vx7je" path="res://assets/sfx/filmcow/plate placed on shelf 4.wav" id="11_eq0ah"]
-[ext_resource type="AudioStream" uid="uid://bklkp5m66x4lr" path="res://assets/sfx/filmcow/plate placed on shelf 5.wav" id="12_8xhlw"]
-[ext_resource type="AudioStream" uid="uid://bya3jyao3f252" path="res://assets/sfx/filmcow/plate take off shelf 1.wav" id="13_61qit"]
-[ext_resource type="AudioStream" uid="uid://b0vcwwt6gg14c" path="res://assets/sfx/filmcow/plate take off shelf 2.wav" id="14_ucapj"]
-[ext_resource type="AudioStream" uid="uid://wf7q8lqpmlon" path="res://assets/sfx/filmcow/plate take off shelf 3.wav" id="15_aa8gn"]
-[ext_resource type="AudioStream" uid="uid://dnt87r4aqcnk6" path="res://assets/sfx/filmcow/plate take off shelf 4.wav" id="16_touwg"]
-[ext_resource type="AudioStream" uid="uid://d07q3cq8yl8b5" path="res://assets/sfx/filmcow/plate take off shelf 5.wav" id="17_4i6ko"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0i42r"]
 radius = 17.1172
@@ -38,7 +28,6 @@ collision_layer = 0
 collision_mask = 128
 script = ExtResource("2_hy37e")
 item_stack = ExtResource("3_pxv47")
-
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 material = ExtResource("1_i8hlk")

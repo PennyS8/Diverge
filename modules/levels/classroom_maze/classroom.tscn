@@ -393,6 +393,7 @@ position = Vector2(756, 612)
 scale = Vector2(4, 4)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "PuzzleDoorC"
+transition_direction = 1
 
 [node name="NatesGroundItem" parent="." instance=ExtResource("10_qkcgf")]
 z_index = 2

@@ -19,6 +19,8 @@ func start_cutscene():
 		if node.is_in_group("enemy"):
 			shades.append(node)
 	
+	player.dir = Vector2.ZERO
+	
 	DialogueManager.show_dialogue_balloon(load("res://modules/dialogue/demo_scenes.dialogue"), "foyer_encounter", [self])
 	
 

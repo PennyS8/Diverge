@@ -3347,6 +3347,7 @@ position = Vector2(-60, 132)
 scale = Vector2(4, 4)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "PuzzleDoorA"
+transition_direction = 1
 
 [node name="Entities" type="Node2D" parent="ChemLab"]
 
