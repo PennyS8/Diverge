@@ -1,16 +1,12 @@
 extends Node2D
 
 @onready var line2d := $Line2D
+@onready var pointer := $Pointer
 @onready var colorrect := $ColorRect
 
 var locked_in := false
 
 signal mouse_entered
-
-func _on_mouse_entered() -> void:
-	colorrect.hide()
-	line2d.show()
-	
 
 func _process(delta: float) -> void:
 	if !locked_in:
@@ -27,5 +23,6 @@ func _on_control_mouse_entered() -> void:
 	$MouseDetector.hide()
 	colorrect.hide()
 	line2d.show()
+	pointer.hide()
 	locked_in = true
 	mouse_entered.emit()

@@ -53,6 +53,11 @@ func _before_exit(_args) -> void:
 func _on_exit(_args) -> void:
 	# So that encounters see we finished animation to unlock player
 	target.spawned.emit()
+	
+	# Checks if enemy was spawned by boss. If so, sets its collision back to player
+	if EnemyManager.boss_spawned_enemies.has(target):
+		var hurtbox = target.hurtbox
+		hurtbox.set_collision_mask_value(3, true)
 
 
 # when StateAutomaticTimer timeout()
