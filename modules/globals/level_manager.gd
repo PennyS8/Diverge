@@ -133,6 +133,9 @@ func _transition_complete():
 	#player.exit_cutscene()
 	transitioning = false
 	if player:
+		var inv = GameManager.inventory_node.inventory
+		if inv:
+			InventoryHelper.add_itemtype_to_inventory(inv,load("res://modules/ui/hud/wyvern_inv/yarnbag.tres"), 1)
 		player.check_unlock_hook()
 
 func deep_breath_overlay(timer_override:bool = false):

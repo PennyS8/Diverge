@@ -135,9 +135,6 @@ material = SubResource("ShaderMaterial_h7nfj")
 [node name="AttackArc" parent="ComplexShade/DisplayComponents" index="5"]
 material = SubResource("ShaderMaterial_h7nfj")
 
-[node name="FSMDebug" parent="ComplexShade" index="6"]
-visible = false
-
 [node name="EntranceDialgoue" type="Area2D" parent="."]
 position = Vector2(72, 24)
 collision_layer = 0

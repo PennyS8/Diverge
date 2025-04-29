@@ -20,9 +20,9 @@ width = 13
 
 [sub_resource type="Resource" id="Resource_c2qd2"]
 script = ExtResource("6_ojqjg")
-items_to_add = Array[ExtResource("3_1i8ug")]([ExtResource("5_57iw6")])
-item_repeat_ranges = Array[Vector2]([Vector2(1, 1)])
-item_chances = Array[float]([100.0])
+items_to_add = Array[ExtResource("3_1i8ug")]([ExtResource("5_57iw6"), ExtResource("5_57iw6")])
+item_repeat_ranges = Array[Vector2]([Vector2(1, 1), Vector2(1, 1)])
+item_chances = Array[float]([100.0, 100.0])
 repeat_post_chance = true
 randomize_locations = true
 delay_between_items = 0.0
