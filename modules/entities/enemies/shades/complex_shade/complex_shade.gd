@@ -35,19 +35,19 @@ func _physics_process(_delta: float) -> void:
 # Removes the knockback from the enemy for tethering but still stuns enemy
 func tethered_stun():
 	crowd_control = true
-	$ShadeFSM.change_state("Stunned")
+	fsm.change_state("Stunned")
 	
 	# turns crowd control back off for future
 	crowd_control = false
 	
 func fling(): 
-	$ShadeFSM.change_state("Stunned")
+	fsm.change_state("Stunned")
 	super.fling()
 
 func pull():
-	$ShadeFSM.change_state("Stunned")
+	fsm.change_state("Stunned")
 	super.pull()
-	
+
 #region Savegame
 func on_save_game(saved_data:Array[SavedData]):
 	if %Health.health <= 0: 
@@ -56,6 +56,8 @@ func on_save_game(saved_data:Array[SavedData]):
 	var my_data = SavedData.new()
 	my_data.position = global_position
 	my_data.scene_path = scene_file_path
+	# Gets path up to node for reinstantiation
+	my_data.parent_node_path = get_parent().get_path()
 	
 	# Gets path up to node for reinstantiation
 	my_data.parent_node_path = get_parent().get_path()

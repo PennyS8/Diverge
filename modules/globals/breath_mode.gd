@@ -14,6 +14,10 @@ var selectable_body_selector : PackedScene = preload("res://modules/ui/coping_ov
 var yarn_controller_packed : PackedScene = preload("res://modules/status_effects/yarn_controller.tscn")
 var first_tetherable : TetherableBody
 
+# Used for path comparison in coping mechanism
+var boss_path = "res://modules/entities/enemies/shades/school_boss/school_boss.tscn"
+var hand_path = "res://modules/entities/enemies/shades/school_boss/school_boss_hands.tscn"
+
 func _on_visibility_changed() -> void:
 	if visible:
 		if is_inside_tree():
@@ -97,6 +101,14 @@ func _set_yarn():
 	first_tetherable = current_bodies_selected.pop_at(0)
 	
 	for selected_tether in current_bodies_selected:
+		# Prevents tethering with a hand as leash owner
+		if first_tetherable.scene_file_path == hand_path:
+			return
+		
+		# Prevents boss from being tethered to other shades
+		if selected_tether.scene_file_path == boss_path:
+			continue
+		
 		# Make a new instance of visual yarn, end point set to this tetherbody
 		var yarn = yarn_controller_packed.instantiate()
 		yarn.can_collide = false

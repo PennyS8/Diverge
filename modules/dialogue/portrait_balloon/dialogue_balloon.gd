@@ -74,6 +74,7 @@ var dialogue_line: DialogueLine:
 			portrait_position.show()
 		else:
 			notification_balloon.show()
+			balloon.hide()
 			notification_label.text = "[center]%s" % dialogue_line.text
 
 		if is_changing_character:
