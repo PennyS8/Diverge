@@ -213,9 +213,19 @@ func check_encounter():
 		return area
 
 func respawn():
+	EnemyManager.remove_all_hands()
+	EnemyManager.remove_boss_spawned_enemies()
+	
+	SaveAndLoad.room_load(LevelManager.current_level.name)
 	LevelManager.player_transition(LevelManager.current_level.scene_file_path, Vector2.ZERO)
 	await LevelManager.swap_done
 	anim_player.play("RESET")
 	fsm.change_state("Idle")
 	await SaveAndLoad.load_player(LevelManager.current_level)
+	
 	set_collision_layer_value(3, true)
+	var hud = get_tree().get_first_node_in_group("gui")
+
+	health_component.alive = true
+	health_component.health = health_component.max_health
+	hud.heart_heal(health_component.max_health)

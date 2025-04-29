@@ -114,5 +114,6 @@ func enemy_added(enemy):
 		return
 	
 	enemy.health_component.Died.connect(enemy_defeated.bind(enemy))
+	
 	current_enemies.append(enemy)
 #endregion
