@@ -258,12 +258,14 @@ func save_player():
 	saved_player.player_health = player.health_component.health
 	saved_player.player_max_health = player.health_component.max_health
 	saved_player.player_position = player.global_position
+	# Gets name of level player is being saved in
+	saved_player.level_path = LevelManager.current_level.scene_file_path
 	
 	var save_player_path = save_path + "/player_save.tres"
 	ResourceSaver.save(saved_player, save_player_path)
 
 # Loads the player's health and position upon loading up the game
-func load_player():
+func load_player(loaded_level):
 	var player_save = "user://saves/player_save.tres"
 	
 	print("Load player save information")
@@ -277,7 +279,10 @@ func load_player():
 	# Loads player's health and position
 	player.health_component.health = saved_player.player_health
 	player.health_component.max_health = saved_player.player_max_health
-	player.global_position = saved_player.player_position
+	# Only loads players global_position if they are loaded into the same room
+	# they were saved from
+	if loaded_level == saved_player.level_path:
+		player.global_position = saved_player.player_position
 	
 	# Sets the player's hud to visibly show health
 	var hud = get_tree().get_first_node_in_group("gui")
