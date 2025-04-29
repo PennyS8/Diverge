@@ -129,7 +129,7 @@ func exit_cutscene():
 	lock_camera = false
 	in_cutscene = false
 	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.25
-	
+
 func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 	# setting dir puts player into walk state; this manages all our animations and logic and stuff
 	dir = global_position.direction_to(global_point)
@@ -142,3 +142,7 @@ func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 	await cutscene_marker.body_entered
 	dir = Vector2.ZERO
 	return
+
+## Ensure this function is only ever called once, it will crash otherwise.
+func start_movement_tutorial():
+	$MovementKeys.start_tutorial()
