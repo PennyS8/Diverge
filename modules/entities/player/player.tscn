@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=83 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -15,7 +15,7 @@
 [ext_resource type="Script" uid="uid://bl8vcpeu60p0q" path="res://modules/entities/player/xsm/idle.gd" id="6_p1gyv"]
 [ext_resource type="Script" uid="uid://vmjglki3j80d" path="res://modules/entities/player/xsm/walk.gd" id="6_rn5yy"]
 [ext_resource type="Script" uid="uid://chm5jdso2fvbw" path="res://modules/entities/player/xsm/can_attack.gd" id="6_yyqig"]
-[ext_resource type="Script" uid="uid://bi00868skhp1y" path="res://modules/entities/player/abilities.gd" id="8_lle26"]
+[ext_resource type="Script" path="res://modules/entities/player/abilities.gd" id="8_lle26"]
 [ext_resource type="Script" uid="uid://b52l2mfpn8xxu" path="res://modules/entities/player/xsm/dash.gd" id="9_x3ix7"]
 [ext_resource type="Script" uid="uid://cd13uijgbv68l" path="res://modules/entities/player/xsm/attack_melee.gd" id="10_v37cr"]
 [ext_resource type="Script" uid="uid://cim5cquo2x5ig" path="res://modules/entities/player/xsm/lasso.gd" id="12_ds73y"]
@@ -26,21 +26,14 @@
 [ext_resource type="Script" uid="uid://c44tfmii554el" path="res://modules/entities/player/xsm/push.gd" id="13_xr8le"]
 [ext_resource type="Script" uid="uid://cbki1wx5sldj2" path="res://modules/entities/player/xsm/throw.gd" id="14_7pa4m"]
 [ext_resource type="Script" uid="uid://35wultrt2jyq" path="res://modules/entities/player/xsm/hop.gd" id="14_l3d1o"]
-[ext_resource type="Script" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
+[ext_resource type="Script" uid="uid://d3k8myw5l01oe" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="15_257pe"]
 [ext_resource type="Script" uid="uid://dmux7vy5y0hk4" path="res://modules/entities/player/xsm/grapple.gd" id="15_trbfo"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Script" uid="uid://8u175eaigjct" path="res://modules/entities/player/xsm/recall.gd" id="17_qcq68"]
-[ext_resource type="AudioStream" uid="uid://ch6n2b05gkn1i" path="res://modules/sfx/sound-digitator/swoosh-1.wav" id="19_4ascy"]
-[ext_resource type="AudioStream" uid="uid://dsob1cdrnjblr" path="res://modules/sfx/sound-digitator/swoosh-2.wav" id="20_hudlm"]
-[ext_resource type="Script" uid="uid://yaywue3qai2t" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
-[ext_resource type="AudioStream" uid="uid://bowii3wok1ekf" path="res://modules/sfx/sound-digitator/swoosh-3.wav" id="21_ken2u"]
+[ext_resource type="Script" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
 [ext_resource type="Script" path="res://modules/entities/player/death.gd" id="21_xyfbm"]
-[ext_resource type="AudioStream" uid="uid://b5b1gnk0g0f3j" path="res://modules/sfx/sound-digitator/swoosh-4.wav" id="22_iaft3"]
-[ext_resource type="AudioStream" uid="uid://86ihnhl0l038" path="res://modules/sfx/sound-digitator/swoosh-5.wav" id="23_fngpe"]
-[ext_resource type="AudioStream" uid="uid://blgci5vdseigh" path="res://modules/sfx/sound-digitator/swoosh-6.wav" id="24_elisq"]
-[ext_resource type="AudioStream" uid="uid://b2roxyvxukxta" path="res://modules/sfx/sound-digitator/swoosh-7.wav" id="25_g0qvg"]
-[ext_resource type="AudioStream" uid="uid://c8xeftggbqden" path="res://modules/sfx/sound-digitator/swoosh-8.wav" id="26_6t0gw"]
+[ext_resource type="AudioStream" uid="uid://dgi52d11jrqrf" path="res://modules/entities/player/attack_woosh_randomizer.tres" id="24_xyfbm"]
 [ext_resource type="Texture2D" uid="uid://cw6e3445io3hb" path="res://modules/entities/player/real_sprites/idle_walk/idle_walk_down.png" id="31_l84k2"]
 [ext_resource type="Texture2D" uid="uid://b0tjbksbiy8k3" path="res://modules/entities/player/real_sprites/crochet_swing/crochet_swing_down.png" id="32_l84k2"]
 [ext_resource type="Texture2D" uid="uid://dl44tw5ka1vsf" path="res://modules/entities/player/real_sprites/crochet_swing/crochet_swing_left.png" id="33_hfpac"]
@@ -53,20 +46,9 @@
 [ext_resource type="Texture2D" uid="uid://c17lfyx7v4yqj" path="res://modules/entities/player/real_sprites/crochet_walk/crochet_walk_left.png" id="43_7h8sm"]
 [ext_resource type="Texture2D" uid="uid://bppqlbcdivykt" path="res://modules/entities/player/real_sprites/crochet_walk/crochet_walk_right.png" id="44_bif3w"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="46_lle26"]
+[ext_resource type="AudioStream" uid="uid://o3hvnhy5m155" path="res://modules/sfx/footstep_randomizer.tres" id="49_fnwuu"]
 [ext_resource type="PackedScene" uid="uid://72t5en3w3lah" path="res://modules/ui/input_button_overlays/movement_keys.tscn" id="55_hfpac"]
 [ext_resource type="Shader" uid="uid://d0p05imkhnhst" path="res://modules/objects/stress_causer/stress_effect.gdshader" id="57_7h8sm"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bif3w"]
-playback_mode = 1
-streams_count = 8
-stream_0/stream = ExtResource("19_4ascy")
-stream_1/stream = ExtResource("20_hudlm")
-stream_2/stream = ExtResource("21_ken2u")
-stream_3/stream = ExtResource("22_iaft3")
-stream_4/stream = ExtResource("23_fngpe")
-stream_5/stream = ExtResource("24_elisq")
-stream_6/stream = ExtResource("25_g0qvg")
-stream_7/stream = ExtResource("26_6t0gw")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
@@ -374,6 +356,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [8]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/AudioStreamPlayer2D2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_xyfbm")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_w8kox"]
 resource_name = "attack_left"
@@ -439,6 +436,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [6]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/AudioStreamPlayer2D2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_xyfbm")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_chu8g"]
 resource_name = "attack_right_2"
@@ -504,6 +516,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [6]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/AudioStreamPlayer2D2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_xyfbm")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_254d0"]
 resource_name = "attack_up_2"
@@ -569,6 +596,21 @@ tracks/4/keys = {
 "update": 1,
 "values": [5]
 }
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Audio/AudioStreamPlayer2D2")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("24_xyfbm")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
 
 [sub_resource type="Animation" id="Animation_vvkh0"]
 resource_name = "dash"
@@ -694,6 +736,21 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(4, -15)]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Audio/Dash")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_ken2u")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_fnwuu"]
 resource_name = "dash_down"
@@ -819,6 +876,21 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(4, -15)]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Audio/Dash")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_ken2u")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_cjsq4"]
 resource_name = "dash_left"
@@ -956,6 +1028,21 @@ tracks/10/keys = {
 "update": 0,
 "values": [Vector2(-4, -15)]
 }
+tracks/11/type = "audio"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Audio/Dash")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_ken2u")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/11/use_blend = true
 
 [sub_resource type="Animation" id="Animation_xyfbm"]
 resource_name = "dash_up"
@@ -1081,6 +1168,21 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector2(-4, -15)]
 }
+tracks/10/type = "audio"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Audio/Dash")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("13_ken2u")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/10/use_blend = true
 
 [sub_resource type="Animation" id="Animation_y78jc"]
 resource_name = "death_down"
@@ -1640,17 +1742,22 @@ tracks/1/keys = {
 "update": 1,
 "values": [1, 0, 2, 0]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("Audio/Footsteps")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_iaft3"]
@@ -1682,17 +1789,22 @@ tracks/1/keys = {
 "update": 1,
 "values": [1, 0, 2, 0]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("Audio/Footsteps")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ken2u"]
@@ -1724,17 +1836,22 @@ tracks/1/keys = {
 "update": 1,
 "values": [1, 0, 2, 0]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("Audio/Footsteps")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_fngpe"]
@@ -1766,17 +1883,22 @@ tracks/1/keys = {
 "update": 1,
 "values": [1, 0, 2, 0]
 }
-tracks/2/type = "value"
+tracks/2/type = "method"
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/path = NodePath("Audio/Footsteps")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [3]
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
@@ -2127,7 +2249,7 @@ next_state = NodePath("../Idle")
 
 [node name="AttackMelee" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("10_v37cr")
-sample = SubResource("AudioStreamRandomizer_bif3w")
+sample = ExtResource("24_xyfbm")
 sound_loop_mode = 0
 on_sounds_finished = 0
 volume_db = 0.0
@@ -2474,12 +2596,16 @@ color_ramp = SubResource("Gradient_xyfbm")
 current = true
 
 [node name="Footsteps" type="AudioStreamPlayer2D" parent="Audio"]
-max_distance = 150.0
+stream = ExtResource("49_fnwuu")
 attenuation = 3.0
-max_polyphony = 2
+max_polyphony = 6
 bus = &"footstep"
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="Audio"]
+volume_db = -5.0
+
+[node name="Dash" type="AudioStreamPlayer2D" parent="Audio"]
+volume_db = -5.0
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
