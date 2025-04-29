@@ -48,7 +48,7 @@ position = Vector2(383, 196.5)
 shape = SubResource("RectangleShape2D_v64th")
 
 [node name="LimitBottomLeft" type="Marker2D" parent="Gym/CameraBoundry"]
-position = Vector2(-82, 449)
+position = Vector2(-84, 430)
 
 [node name="LimitTopRight" type="Marker2D" parent="Gym/CameraBoundry"]
 position = Vector2(829, -121)
