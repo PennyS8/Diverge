@@ -1,18 +1,27 @@
 @tool
-extends StateAnimation
-
+extends State
 
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
 #
 
+# This additionnal callback allows you to act at the end
+# of an animation
+func _on_anim_finished() -> void:
+	pass
+
+
+# This additionnal callback allows you to act at the end
+# of an animation loop (after the nb of times it should play)
+func _on_loop_finished() -> void:
+	pass
+
+
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
-	# Removes enemy from current engagers upon death
-	EnemyManager.release_engagement(target)
-	EnemyManager.remove_hand(target)
-	$"../Alive".disabled = true
+	pick_attack_anim()
+
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
@@ -23,14 +32,8 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
-	target.velocity = target.knockback
-	target.move_and_slide()
-	
-	if target.crowd_control == true:
-		# No knockback if the enemy is trapped
-		target.knockback = lerp(Vector2.ZERO, Vector2.ZERO, 0.0)
-	else:
-		target.knockback = lerp(target.knockback, Vector2.ZERO, _delta*10)
+	pass
+
 
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root
@@ -58,3 +61,23 @@ func _state_timeout() -> void:
 # Called when any other Timer times out
 func _on_timeout(_name) -> void:
 	pass
+
+func pick_attack_anim():
+	var my_position = target.global_position
+	var attack_position = target.follow_object.global_position
+	
+	var attack_direction = my_position.direction_to(attack_position).normalized()
+	var xdir = attack_direction.snapped(Vector2.ONE).x
+	var ydir = attack_direction.snapped(Vector2.ONE).y
+	
+	match [xdir, ydir]:
+		[1.0, _]:
+			change_state("AttackRight")
+		[-1.0, _]:
+			change_state("AttackLeft")
+		[0.0, 1.0]:
+			change_state("AttackDown")
+		[0.0, -1.0]:
+			change_state("AttackUp")
+		[_, _]:
+			change_state("AttackDown")
