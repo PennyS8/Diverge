@@ -117,7 +117,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 12.0
 offset_top = 8.0
-offset_right = -5.0
+offset_right = -12.0
 offset_bottom = -5.0
 grow_horizontal = 2
 grow_vertical = 2
@@ -192,21 +192,25 @@ theme = ExtResource("8_uhdg3")
 
 [node name="PanelContainer" type="PanelContainer" parent="Notification"]
 layout_mode = 2
-offset_left = 610.0
-offset_top = 292.0
-offset_right = 1310.0
-offset_bottom = 392.0
+offset_left = 602.0
+offset_top = 284.0
+offset_right = 1318.0
+offset_bottom = 400.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 6
+mouse_filter = 2
 
 [node name="Panel" type="Panel" parent="Notification/PanelContainer"]
+material = ExtResource("3_uhdg3")
 clip_contents = true
-custom_minimum_size = Vector2(700, 100)
+custom_minimum_size = Vector2(1500, 100)
 layout_mode = 2
+mouse_filter = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="Notification/PanelContainer"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 30
 theme_override_constants/margin_top = 20
 theme_override_constants/margin_right = 30
@@ -216,6 +220,7 @@ theme_override_constants/margin_bottom = 20
 unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 35)
 layout_mode = 2
+mouse_filter = 2
 bbcode_enabled = true
 fit_content = true
 scroll_active = false
