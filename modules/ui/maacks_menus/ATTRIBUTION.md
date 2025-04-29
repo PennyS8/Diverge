@@ -10,8 +10,8 @@ Penny Silliman
 ### Artists
 [Abeljohn Burke-Raymond](https://youtube.com/@disabel) - Portraits, Shade Sprites
 Luca Castigador - Juniper sprites
-[Rylan Gibson](instagram.com/ry.gibson.art) - Concept art
-[Willow Larsen](soundcloud.com/cork-leaves) - Composer 
+[Rylan Gibson](https://instagram.com/ry.gibson.art) - Concept art
+[Willow Larsen](https://soundcloud.com/cork-leaves) - Composer 
 
 ## Sourced / Unaffiliated
 ### Textures
