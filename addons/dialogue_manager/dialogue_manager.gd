@@ -424,6 +424,9 @@ func show_example_dialogue_balloon(resource: DialogueResource, title: String = "
 
 ## Show the configured dialogue balloon
 func show_dialogue_balloon(resource: DialogueResource, title: String = "", extra_game_states: Array = []) -> Node:
+	if LevelManager.player:
+		LevelManager.player.dir = Vector2.ZERO
+
 	var balloon_path: String = DMSettings.get_setting(DMSettings.BALLOON_PATH, _get_example_balloon_path())
 	if not ResourceLoader.exists(balloon_path):
 		balloon_path = _get_example_balloon_path()
