@@ -5,7 +5,7 @@
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_tx0ap"]
 [ext_resource type="PackedScene" uid="uid://bmnk17c835wi4" path="res://modules/objects/inventory_helpers/NatesGroundItem.tscn" id="4_d54k8"]
 [ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="5_tcohm"]
-[ext_resource type="PackedScene" uid="uid://ouhylxqig8h1" path="res://modules/ui/input_button_overlays/right_click.tscn" id="6_tcohm"]
+[ext_resource type="PackedScene" path="res://modules/ui/input_button_overlays/right_click.tscn" id="6_tcohm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_utre4"]
 size = Vector2(12, 7)

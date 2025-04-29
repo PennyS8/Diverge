@@ -221,4 +221,3 @@ func check_encounter():
 	var area = areas[0]
 	if area is EncounterArea:
 		return area
-
