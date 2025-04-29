@@ -281,7 +281,7 @@ func load_player(loaded_level):
 	player.health_component.max_health = saved_player.player_max_health
 	# Only loads players global_position if they are loaded into the same room
 	# they were saved from
-	if loaded_level == saved_player.level_path:
+	if loaded_level.scene_file_path == saved_player.level_path:
 		player.global_position = saved_player.player_position
 	
 	# Sets the player's hud to visibly show health

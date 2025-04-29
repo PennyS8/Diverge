@@ -208,3 +208,8 @@ func check_encounter():
 	var area = areas[0]
 	if area is EncounterArea:
 		return area
+
+func respawn():
+	LevelManager.player_transition(LevelManager.current_level.scene_file_path, Vector2.ZERO)
+	await LevelManager.swap_done
+	SaveAndLoad.load_player(LevelManager.current_level)

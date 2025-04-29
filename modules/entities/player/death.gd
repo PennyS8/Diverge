@@ -29,3 +29,7 @@ func _on_enter(_args) -> void:
 	death_dir = death_dir.snapped(Vector2.ONE)
 	
 	change_state(death_states[death_dir])
+
+func change_to_next_substate():
+	target.respawn()
+	target.fsm.disabled = true
