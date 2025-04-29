@@ -32,4 +32,3 @@ func _on_enter(_args) -> void:
 
 func change_to_next_substate():
 	target.respawn()
-	target.fsm.disabled = true

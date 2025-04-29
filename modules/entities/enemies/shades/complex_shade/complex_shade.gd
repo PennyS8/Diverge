@@ -119,3 +119,8 @@ func drop_ramen():
 		ramen.get_node("Item").set_deferred("monitoring", true)
 		ramen.call_deferred("reparent", get_parent())
 		#starts shining shader
+
+func release_player():
+	EnemyManager.release_engagement(self)
+	follow_object = null
+	fsm.change_state("Idle")
