@@ -16,6 +16,8 @@ var default_position
 @onready var health_component = %Health
 @onready var hurtbox = %HurtBox
 
+@onready var heart_node = preload("res://modules/objects/debug/heal_area/heal_area.tscn")
+
 ## NATE - STEERING BEHAVIORS
 var ai_steering := AISteering.new()
 var strafe_factor := 0.25
@@ -75,6 +77,7 @@ func on_load_game(saved_data:SavedData):
 #region Damage Handling
 func _on_health_component_died() -> void:
 	drop_ramen()
+	drop_heart()
 	damaged_particles.restart()
 	fsm.change_state("Dead")
 	%AnimationPlayer.call_deferred("play", "die")
@@ -119,3 +122,19 @@ func drop_ramen():
 		ramen.get_node("Item").set_deferred("monitoring", true)
 		ramen.call_deferred("reparent", get_parent())
 		#starts shining shader
+
+func drop_heart():
+	if follow_object:
+		if follow_object.is_in_group("player"):
+			var player_max_health = follow_object.health_component.max_health
+			var player_health = follow_object.health_component.health
+			
+			if player_health < (player_max_health * 0.75):
+				print("Dropping heart")
+				var heart = heart_node.instantiate()
+				var node = get_node(get_parent().get_path())
+				node.add_child(heart)
+				heart.global_position = global_position
+				
+	
+	
