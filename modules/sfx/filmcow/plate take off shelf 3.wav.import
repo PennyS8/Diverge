@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://wf7q8lqpmlon"
-path="res://.godot/imported/plate take off shelf 3.wav-1c29f21b4cc4d34ec0dabee4cf5e12d9.sample"
+path="res://.godot/imported/plate take off shelf 3.wav-8196023963e3ce15938986bf38178433.sample"
 
 [deps]
 
-source_file="res://assets/sfx/filmcow/plate take off shelf 3.wav"
-dest_files=["res://.godot/imported/plate take off shelf 3.wav-1c29f21b4cc4d34ec0dabee4cf5e12d9.sample"]
+source_file="res://modules/sfx/filmcow/plate take off shelf 3.wav"
+dest_files=["res://.godot/imported/plate take off shelf 3.wav-8196023963e3ce15938986bf38178433.sample"]
 
 [params]
 

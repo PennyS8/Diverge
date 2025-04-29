@@ -3,12 +3,12 @@
 importer="oggvorbisstr"
 type="AudioStreamOggVorbis"
 uid="uid://mnishhbv70hc"
-path="res://.godot/imported/footstep_concrete_003.ogg-80c69dd8f0caf25593d6128624bca733.oggvorbisstr"
+path="res://.godot/imported/footstep_concrete_003.ogg-4175754f4ba0bef7b0081b44915eeda4.oggvorbisstr"
 
 [deps]
 
-source_file="res://assets/sfx/kenney/footstep_concrete_003.ogg"
-dest_files=["res://.godot/imported/footstep_concrete_003.ogg-80c69dd8f0caf25593d6128624bca733.oggvorbisstr"]
+source_file="res://modules/sfx/kenney/footstep_concrete_003.ogg"
+dest_files=["res://.godot/imported/footstep_concrete_003.ogg-4175754f4ba0bef7b0081b44915eeda4.oggvorbisstr"]
 
 [params]
 

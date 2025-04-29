@@ -1,4 +1,4 @@
-[gd_scene load_steps=90 format=3 uid="uid://dx5na7ufncxg3"]
+[gd_scene load_steps=87 format=3 uid="uid://dx5na7ufncxg3"]
 
 [ext_resource type="PackedScene" uid="uid://8xtoptvgrpqi" path="res://modules/entities/enemies/hp_bar/shade_hp_indicator.tscn" id="2_88af2"]
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
@@ -17,17 +17,16 @@
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_5ojq5"]
 [ext_resource type="Script" uid="uid://judy3seldx6h" path="res://modules/entities/enemies/shades/complex_shade/xsm/charge_attack.gd" id="10_iug1g"]
 [ext_resource type="Script" uid="uid://cggi1jq1vgh8q" path="res://modules/entities/enemies/shades/complex_shade/xsm/dead.gd" id="10_m6rex"]
-[ext_resource type="Script" uid="uid://d1od6kbhhnppb" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
+[ext_resource type="Script" uid="uid://bes5sheuaa4il" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
-[ext_resource type="AudioStream" uid="uid://ck772bbyuikiy" path="res://assets/sfx/Sonniss/pop_2.wav" id="13_dvtn2"]
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_dnu80"]
 [ext_resource type="FontFile" uid="uid://dx7pho86vkti5" path="res://assets/hud/open-sans/OpenSans-Bold.ttf" id="18_1e20k"]
 [ext_resource type="Script" uid="uid://b5gptums252wm" path="res://modules/entities/fsm_debug_label.gd" id="18_mjkpu"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="19_mjkpu"]
 [ext_resource type="Texture2D" uid="uid://d1722pdo2nahk" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Down.png" id="19_o0472"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="21_hvs5h"]
-[ext_resource type="Material" uid="uid://c8m31s5vmsyhk" path="res://modules/entities/enemies/shades/fx/better_enemy_shader.tres" id="21_iug1g"]
+[ext_resource type="Material" uid="uid://bcw6swreclbwb" path="res://modules/entities/enemies/shades/fx/better_enemy_shader.tres" id="21_iug1g"]
 [ext_resource type="Texture2D" uid="uid://bshmraj3f7qqo" path="res://modules/entities/enemies/shades/complex_shade/sprites/Lunge/Lunge_LR_MotionTrails.png" id="22_hvs5h"]
 [ext_resource type="Texture2D" uid="uid://c76phvuy7wnqn" path="res://modules/entities/enemies/shades/complex_shade/sprites/Lunge/Lunge_D_Combined.png" id="26_hw5jo"]
 [ext_resource type="Texture2D" uid="uid://dt1njlc33r2km" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Right_Down.png" id="26_pra3i"]
@@ -41,7 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://chpbdfsf6jyng" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Up.png" id="29_xu3ac"]
 [ext_resource type="Texture2D" uid="uid://08y4slel3t1j" path="res://modules/entities/enemies/shades/complex_shade/sprites/Idle/IDLE_LR_Base.png" id="35_dvtn2"]
 [ext_resource type="AudioStream" uid="uid://logbde0okioc" path="res://modules/entities/enemies/shades/complex_shade/sfx/spawn_twinkle.wav" id="39_tvkt4"]
-[ext_resource type="AudioStream" uid="uid://usibjpk6afof" path="res://assets/sfx/battlemagic/25_Wind_01.wav" id="40_dvtn2"]
+[ext_resource type="AudioStream" uid="uid://usibjpk6afof" path="res://modules/sfx/battlemagic/25_Wind_01.wav" id="40_dvtn2"]
 [ext_resource type="AudioStream" uid="uid://c1uldj3nuo44y" path="res://modules/entities/enemies/shades/complex_shade/sfx/spawn_sfx.wav" id="40_iug1g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mjkpu"]
@@ -49,25 +48,6 @@ resource_local_to_scene = true
 shader = ExtResource("3_o0472")
 shader_parameter/Flash = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_pra3i"]
-playback_mode = 1
-random_pitch = 1.2
-streams_count = 2
-stream_0/stream = ExtResource("12_iug1g")
-stream_0/weight = 2.5
-stream_1/stream = ExtResource("13_dvtn2")
-
-[sub_resource type="GDScript" id="GDScript_tvkt4"]
-script/source = "@tool
-extends StateSound
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_wyc7l"]
-playback_mode = 1
-random_pitch = 1.2
-streams_count = 2
-stream_0/stream = ExtResource("12_iug1g")
-stream_0/weight = 2.5
-stream_1/stream = ExtResource("13_dvtn2")
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e3xrx"]
 radius = 13.0384
@@ -2525,7 +2505,6 @@ _data = {
 [node name="ComplexShade" type="CharacterBody2D" groups=["enemy", "saved_data", "tetherable_body"]]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(2, 0)
 collision_layer = 1032
 collision_mask = 83
 motion_mode = 1
@@ -2706,7 +2685,6 @@ next_state = NodePath("../Alive/Movement/Idle")
 
 [node name="Dead" type="Node" parent="ShadeFSM"]
 script = ExtResource("10_m6rex")
-sample = null
 animation_player = NodePath("../../AnimationPlayer")
 anim_on_enter = "NONE"
 disabled = false

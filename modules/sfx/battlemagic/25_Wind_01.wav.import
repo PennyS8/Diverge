@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://usibjpk6afof"
-path="res://.godot/imported/25_Wind_01.wav-9758d479a0fff7d8fcd2333d92650d47.sample"
+path="res://.godot/imported/25_Wind_01.wav-2e46755ad3b130a071ef0c3ebd6f5dd4.sample"
 
 [deps]
 
-source_file="res://assets/sfx/battlemagic/25_Wind_01.wav"
-dest_files=["res://.godot/imported/25_Wind_01.wav-9758d479a0fff7d8fcd2333d92650d47.sample"]
+source_file="res://modules/sfx/battlemagic/25_Wind_01.wav"
+dest_files=["res://.godot/imported/25_Wind_01.wav-2e46755ad3b130a071ef0c3ebd6f5dd4.sample"]
 
 [params]
 

@@ -1,13 +1,13 @@
-[gd_scene load_steps=106 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=90 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
 [ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="1_q2vpm"]
-[ext_resource type="Resource" uid="uid://2e4es4y4ng4" path="res://modules/ui/hud/wyvern_inv/weaverhook.tres" id="2_2irlg"]
-[ext_resource type="Resource" uid="uid://gmra8hy1uvo" path="res://modules/ui/hud/wyvern_inv/yarnbag.tres" id="3_7h8sm"]
+[ext_resource type="Resource" uid="uid://c2agev3nx2dlo" path="res://modules/ui/hud/wyvern_inv/weaverhook.tres" id="2_2irlg"]
+[ext_resource type="Resource" uid="uid://cbciukbgyqajv" path="res://modules/ui/hud/wyvern_inv/yarnbag.tres" id="3_7h8sm"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="3_c6noe"]
 [ext_resource type="Script" uid="uid://q574b254i248" path="res://modules/entities/player/xsm/dash_possible.gd" id="3_rf1lm"]
-[ext_resource type="Resource" uid="uid://4lrnolhua468" path="res://modules/ui/hud/wyvern_inv/deep_breath.tres" id="4_7h8sm"]
+[ext_resource type="Resource" uid="uid://c45f072eocqyr" path="res://modules/ui/hud/wyvern_inv/deep_breath.tres" id="4_7h8sm"]
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="4_biapr"]
 [ext_resource type="Script" uid="uid://73bl87tdl80f" path="res://modules/entities/player/xsm/dash_timer.gd" id="4_j2uqp"]
 [ext_resource type="Script" uid="uid://cubktjma6htld" path="res://modules/entities/player/xsm/movement.gd" id="4_xto71"]
@@ -15,24 +15,32 @@
 [ext_resource type="Script" uid="uid://bl8vcpeu60p0q" path="res://modules/entities/player/xsm/idle.gd" id="6_p1gyv"]
 [ext_resource type="Script" uid="uid://vmjglki3j80d" path="res://modules/entities/player/xsm/walk.gd" id="6_rn5yy"]
 [ext_resource type="Script" uid="uid://chm5jdso2fvbw" path="res://modules/entities/player/xsm/can_attack.gd" id="6_yyqig"]
-[ext_resource type="Script" path="res://modules/entities/player/abilities.gd" id="8_lle26"]
+[ext_resource type="Script" uid="uid://bi00868skhp1y" path="res://modules/entities/player/abilities.gd" id="8_lle26"]
 [ext_resource type="Script" uid="uid://b52l2mfpn8xxu" path="res://modules/entities/player/xsm/dash.gd" id="9_x3ix7"]
 [ext_resource type="Script" uid="uid://cd13uijgbv68l" path="res://modules/entities/player/xsm/attack_melee.gd" id="10_v37cr"]
 [ext_resource type="Script" uid="uid://cim5cquo2x5ig" path="res://modules/entities/player/xsm/lasso.gd" id="12_ds73y"]
 [ext_resource type="Script" uid="uid://sgbgpy8s08d3" path="res://addons/xsm/state_animation.gd" id="12_e6mu1"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_41n4o"]
-[ext_resource type="AudioStream" uid="uid://bwg1bo378kk2y" path="res://assets/sfx/dash_randomizer.tres" id="13_ken2u"]
+[ext_resource type="AudioStream" uid="uid://bwg1bo378kk2y" path="res://modules/sfx/dash_randomizer.tres" id="13_ken2u"]
 [ext_resource type="Script" uid="uid://cu57huvshgpwy" path="res://modules/entities/player/xsm/fall.gd" id="13_upq7c"]
 [ext_resource type="Script" uid="uid://c44tfmii554el" path="res://modules/entities/player/xsm/push.gd" id="13_xr8le"]
 [ext_resource type="Script" uid="uid://cbki1wx5sldj2" path="res://modules/entities/player/xsm/throw.gd" id="14_7pa4m"]
 [ext_resource type="Script" uid="uid://35wultrt2jyq" path="res://modules/entities/player/xsm/hop.gd" id="14_l3d1o"]
-[ext_resource type="Script" uid="uid://d3k8myw5l01oe" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
+[ext_resource type="Script" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="15_257pe"]
 [ext_resource type="Script" uid="uid://dmux7vy5y0hk4" path="res://modules/entities/player/xsm/grapple.gd" id="15_trbfo"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Script" uid="uid://8u175eaigjct" path="res://modules/entities/player/xsm/recall.gd" id="17_qcq68"]
-[ext_resource type="Script" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
+[ext_resource type="AudioStream" uid="uid://ch6n2b05gkn1i" path="res://modules/sfx/sound-digitator/swoosh-1.wav" id="19_4ascy"]
+[ext_resource type="AudioStream" uid="uid://dsob1cdrnjblr" path="res://modules/sfx/sound-digitator/swoosh-2.wav" id="20_hudlm"]
+[ext_resource type="Script" uid="uid://yaywue3qai2t" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
+[ext_resource type="AudioStream" uid="uid://bowii3wok1ekf" path="res://modules/sfx/sound-digitator/swoosh-3.wav" id="21_ken2u"]
 [ext_resource type="Script" path="res://modules/entities/player/death.gd" id="21_xyfbm"]
+[ext_resource type="AudioStream" uid="uid://b5b1gnk0g0f3j" path="res://modules/sfx/sound-digitator/swoosh-4.wav" id="22_iaft3"]
+[ext_resource type="AudioStream" uid="uid://86ihnhl0l038" path="res://modules/sfx/sound-digitator/swoosh-5.wav" id="23_fngpe"]
+[ext_resource type="AudioStream" uid="uid://blgci5vdseigh" path="res://modules/sfx/sound-digitator/swoosh-6.wav" id="24_elisq"]
+[ext_resource type="AudioStream" uid="uid://b2roxyvxukxta" path="res://modules/sfx/sound-digitator/swoosh-7.wav" id="25_g0qvg"]
+[ext_resource type="AudioStream" uid="uid://c8xeftggbqden" path="res://modules/sfx/sound-digitator/swoosh-8.wav" id="26_6t0gw"]
 [ext_resource type="Texture2D" uid="uid://cw6e3445io3hb" path="res://modules/entities/player/real_sprites/idle_walk/idle_walk_down.png" id="31_l84k2"]
 [ext_resource type="Texture2D" uid="uid://b0tjbksbiy8k3" path="res://modules/entities/player/real_sprites/crochet_swing/crochet_swing_down.png" id="32_l84k2"]
 [ext_resource type="Texture2D" uid="uid://dl44tw5ka1vsf" path="res://modules/entities/player/real_sprites/crochet_swing/crochet_swing_left.png" id="33_hfpac"]
@@ -47,34 +55,6 @@
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="46_lle26"]
 [ext_resource type="PackedScene" uid="uid://72t5en3w3lah" path="res://modules/ui/input_button_overlays/movement_keys.tscn" id="55_hfpac"]
 [ext_resource type="Shader" uid="uid://d0p05imkhnhst" path="res://modules/objects/stress_causer/stress_effect.gdshader" id="57_7h8sm"]
-[ext_resource type="AudioStream" uid="uid://btwbusjjnsfg5" path="res://assets/sfx/Sonniss/pop_1.wav" id="18_l84k2"]
-[ext_resource type="AudioStream" uid="uid://ch6n2b05gkn1i" path="res://assets/sfx/sound-digitator/swoosh-1.wav" id="19_4ascy"]
-[ext_resource type="AudioStream" uid="uid://ck772bbyuikiy" path="res://assets/sfx/Sonniss/pop_2.wav" id="19_hfpac"]
-[ext_resource type="AudioStream" uid="uid://dsob1cdrnjblr" path="res://assets/sfx/sound-digitator/swoosh-2.wav" id="20_hudlm"]
-[ext_resource type="Script" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
-[ext_resource type="AudioStream" uid="uid://bowii3wok1ekf" path="res://assets/sfx/sound-digitator/swoosh-3.wav" id="21_ken2u"]
-[ext_resource type="AudioStream" uid="uid://b5b1gnk0g0f3j" path="res://assets/sfx/sound-digitator/swoosh-4.wav" id="22_iaft3"]
-[ext_resource type="AudioStream" uid="uid://86ihnhl0l038" path="res://assets/sfx/sound-digitator/swoosh-5.wav" id="23_fngpe"]
-[ext_resource type="AudioStream" uid="uid://blgci5vdseigh" path="res://assets/sfx/sound-digitator/swoosh-6.wav" id="24_elisq"]
-[ext_resource type="AudioStream" uid="uid://b2roxyvxukxta" path="res://assets/sfx/sound-digitator/swoosh-7.wav" id="25_g0qvg"]
-[ext_resource type="AudioStream" uid="uid://c8xeftggbqden" path="res://assets/sfx/sound-digitator/swoosh-8.wav" id="26_6t0gw"]
-[ext_resource type="AudioStream" uid="uid://o3hvnhy5m155" path="res://assets/sfx/footstep_randomizer.tres" id="51_iaft3"]
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_l84k2"]
-playback_mode = 1
-random_pitch = 1.2
-streams_count = 2
-stream_0/stream = ExtResource("18_l84k2")
-stream_0/weight = 2.5
-stream_1/stream = ExtResource("19_hfpac")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_hfpac"]
-playback_mode = 1
-random_pitch = 1.2
-streams_count = 2
-stream_0/stream = ExtResource("18_l84k2")
-stream_0/weight = 2.5
-stream_1/stream = ExtResource("19_hfpac")
 
 [sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_bif3w"]
 playback_mode = 1
@@ -87,14 +67,6 @@ stream_4/stream = ExtResource("23_fngpe")
 stream_5/stream = ExtResource("24_elisq")
 stream_6/stream = ExtResource("25_g0qvg")
 stream_7/stream = ExtResource("26_6t0gw")
-
-[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_7h8sm"]
-playback_mode = 1
-random_pitch = 1.2
-streams_count = 2
-stream_0/stream = ExtResource("18_l84k2")
-stream_0/weight = 2.5
-stream_1/stream = ExtResource("19_hfpac")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7l3cj"]
 size = Vector2(8, 16)
@@ -1671,7 +1643,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/path = NodePath("Audio/Footsteps")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1680,25 +1652,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [3]
 }
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Audio/Footsteps")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.1,
-"start_offset": 0.0,
-"stream": ExtResource("51_iaft3")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("51_iaft3")
-}],
-"times": PackedFloat32Array(0.125, 0.625)
-}
-tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_iaft3"]
 resource_name = "walk_left"
@@ -1732,7 +1685,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/path = NodePath("Audio/Footsteps")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1741,25 +1694,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [3]
 }
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Audio/Footsteps")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("51_iaft3")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("51_iaft3")
-}],
-"times": PackedFloat32Array(0.125, 0.625)
-}
-tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_ken2u"]
 resource_name = "walk_right"
@@ -1793,7 +1727,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/path = NodePath("Audio/Footsteps")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1802,25 +1736,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [3]
 }
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Audio/Footsteps")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("51_iaft3")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("51_iaft3")
-}],
-"times": PackedFloat32Array(0.125, 0.625)
-}
-tracks/2/use_blend = true
 
 [sub_resource type="Animation" id="Animation_fngpe"]
 resource_name = "walk_up"
@@ -1854,7 +1769,7 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/path = NodePath("Audio/Footsteps")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
@@ -1863,25 +1778,6 @@ tracks/2/keys = {
 "update": 1,
 "values": [3]
 }
-tracks/2/type = "audio"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Audio/Footsteps")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("51_iaft3")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("51_iaft3")
-}],
-"times": PackedFloat32Array(0.125, 0.625)
-}
-tracks/2/use_blend = true
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1um1b"]
 _data = {
@@ -2035,8 +1931,8 @@ metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
 [node name="DeepBreath" type="Node" parent="PlayerFSM/Abilities"]
 script = ExtResource("21_1lef0")
-disabled = true
-debug_mode = true
+disabled = false
+debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
@@ -2571,6 +2467,7 @@ one_shot = true
 gravity = Vector2(0, 0)
 color = Color(1, 1, 1, 0.129412)
 color_ramp = SubResource("Gradient_xyfbm")
+
 [node name="Audio" type="Node2D" parent="."]
 
 [node name="AudioListener2D" type="AudioListener2D" parent="Audio"]

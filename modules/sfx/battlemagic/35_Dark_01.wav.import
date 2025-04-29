@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dwpa1lbkxgouw"
-path="res://.godot/imported/35_Dark_01.wav-422e6788d4a27142367587deaf344406.sample"
+path="res://.godot/imported/35_Dark_01.wav-abb08bc8bbeac39357691809fcae4162.sample"
 
 [deps]
 
-source_file="res://assets/sfx/battlemagic/35_Dark_01.wav"
-dest_files=["res://.godot/imported/35_Dark_01.wav-422e6788d4a27142367587deaf344406.sample"]
+source_file="res://modules/sfx/battlemagic/35_Dark_01.wav"
+dest_files=["res://.godot/imported/35_Dark_01.wav-abb08bc8bbeac39357691809fcae4162.sample"]
 
 [params]
 

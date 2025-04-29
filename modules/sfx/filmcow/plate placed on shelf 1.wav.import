@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://bs2sdpntbeq5h"
-path="res://.godot/imported/plate placed on shelf 1.wav-cda13e4ec0e9942073db289fa7cf14bf.sample"
+path="res://.godot/imported/plate placed on shelf 1.wav-dfdc3ecb99c7cd9fa16c3276387cf2b6.sample"
 
 [deps]
 
-source_file="res://assets/sfx/filmcow/plate placed on shelf 1.wav"
-dest_files=["res://.godot/imported/plate placed on shelf 1.wav-cda13e4ec0e9942073db289fa7cf14bf.sample"]
+source_file="res://modules/sfx/filmcow/plate placed on shelf 1.wav"
+dest_files=["res://.godot/imported/plate placed on shelf 1.wav-dfdc3ecb99c7cd9fa16c3276387cf2b6.sample"]
 
 [params]
 

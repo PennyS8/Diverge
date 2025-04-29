@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemType" load_steps=4 format=3 uid="uid://br4t7nyfx77ur"]
+[gd_resource type="Resource" script_class="ItemType" load_steps=4 format=3 uid="uid://bn04a8c828d0e"]
 
 [ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="1_8aiqs"]
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_knbjs"]

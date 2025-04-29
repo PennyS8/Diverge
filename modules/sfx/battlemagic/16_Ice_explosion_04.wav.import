@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cnfpl0dbjad1l"
-path="res://.godot/imported/16_Ice_explosion_04.wav-0da1f41d8353ca5ee11a03e0cab585d7.sample"
+path="res://.godot/imported/16_Ice_explosion_04.wav-20443a8db7bf24c61df1ce6cf1e1f512.sample"
 
 [deps]
 
-source_file="res://assets/sfx/battlemagic/16_Ice_explosion_04.wav"
-dest_files=["res://.godot/imported/16_Ice_explosion_04.wav-0da1f41d8353ca5ee11a03e0cab585d7.sample"]
+source_file="res://modules/sfx/battlemagic/16_Ice_explosion_04.wav"
+dest_files=["res://.godot/imported/16_Ice_explosion_04.wav-20443a8db7bf24c61df1ce6cf1e1f512.sample"]
 
 [params]
 

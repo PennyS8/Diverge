@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemType" load_steps=4 format=3 uid="uid://4lrnolhua468"]
+[gd_resource type="Resource" script_class="ItemType" load_steps=4 format=3 uid="uid://c45f072eocqyr"]
 
 [ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="1_pm573"]
 [ext_resource type="Texture2D" uid="uid://crw313hpftog0" path="res://assets/environment/downtown_dungeon/custom_sprites/Glimmer Fx.png" id="2_5svfi"]
