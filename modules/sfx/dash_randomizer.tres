@@ -1,7 +1,7 @@
 [gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://bwg1bo378kk2y"]
 
-[ext_resource type="AudioStream" uid="uid://1q6sd5ieildf" path="res://assets/sfx/minifantasy/18_human_dash_1.wav" id="1_y80en"]
-[ext_resource type="AudioStream" uid="uid://b38uortsrmntp" path="res://assets/sfx/minifantasy/19_human_dash_2.wav" id="2_a4ddh"]
+[ext_resource type="AudioStream" uid="uid://1q6sd5ieildf" path="res://modules/sfx/minifantasy/18_human_dash_1.wav" id="1_y80en"]
+[ext_resource type="AudioStream" uid="uid://b38uortsrmntp" path="res://modules/sfx/minifantasy/19_human_dash_2.wav" id="2_a4ddh"]
 
 [resource]
 random_pitch = 1.3

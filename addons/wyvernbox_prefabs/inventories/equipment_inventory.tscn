@@ -179,10 +179,11 @@ focus_mode = 2
 mouse_filter = 0
 texture = SubResource("1")
 
-[node name="Hand3" type="TextureRect" parent="Cells" instance=ExtResource("1")]
-texture_filter = 1
-custom_minimum_size = Vector2(14, 14)
+[node name="Hand3" parent="Cells" instance=ExtResource("1")]
 layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
 offset_left = -45.0
 offset_top = 16.0
 offset_right = -19.0
@@ -191,4 +192,3 @@ size_flags_horizontal = 3
 focus_mode = 2
 mouse_filter = 0
 texture = SubResource("1")
-expand_mode = 1

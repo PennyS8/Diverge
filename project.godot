@@ -12,7 +12,7 @@ config_version=5
 
 config/name="Project Diverge"
 config/version="0.1"
-run/main_scene="res://modules/ui/maacks_menus/scenes/opening/opening_with_logo.tscn"
+run/main_scene="uid://dckk4bv55hf05"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=120
 
