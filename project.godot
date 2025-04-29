@@ -11,7 +11,8 @@ config_version=5
 [application]
 
 config/name="Project Diverge"
-run/main_scene="uid://dibtck8dlixm1"
+config/version="0.1"
+run/main_scene="res://modules/ui/maacks_menus/scenes/opening/opening_with_logo.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=120
 
@@ -23,9 +24,12 @@ LevelManager="*res://modules/globals/level_manager.tscn"
 DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 GameManager="*res://modules/globals/game_manager.gd"
 SaveAndLoad="*res://modules/globals/saving/save_load.gd"
-TetherableBody="*res://modules/status_effects/tetherable_body.gd"
 InventoryHelper="*res://modules/globals/inventory_helper.gd"
 EnemyManager="*res://modules/globals/enemy_manager.gd"
+AppConfig="*res://addons/maaacks_menus_template/base/scenes/autoloads/app_config.tscn"
+SceneLoader="*res://addons/maaacks_menus_template/base/scenes/autoloads/scene_loader.tscn"
+ProjectMusicController="*res://addons/maaacks_menus_template/base/scenes/autoloads/project_music_controller.tscn"
+ProjectUISoundController="*res://addons/maaacks_menus_template/base/scenes/autoloads/project_ui_sound_controller.tscn"
 
 [debug]
 
@@ -42,9 +46,13 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/stretch/mode="canvas_items"
 
+[editor]
+
+movie_writer/fps=1
+
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/ldtk-importer/plugin.cfg", "res://addons/scene_palette/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/wyvernbox/editor/plugin.cfg", "res://addons/xsm/plugin.cfg")
+enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg", "res://addons/ldtk-importer/plugin.cfg", "res://addons/maaacks_menus_template/plugin.cfg", "res://addons/scene_palette/plugin.cfg", "res://addons/shaker/plugin.cfg", "res://addons/wyvernbox/editor/plugin.cfg", "res://addons/xsm/plugin.cfg")
 
 [global_group]
 
@@ -62,6 +70,10 @@ tetherable_body=""
 boss=""
 encounter_entrance=""
 player_input_guide=""
+
+[gui]
+
+theme/custom="res://modules/ui/maacks_menus/resources/themes/lab.tres"
 
 [input]
 
@@ -168,6 +180,7 @@ deep_breath={
 
 [internationalization]
 
+locale/translations=PackedStringArray("res://addons/maaacks_menus_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_menus_template/base/translations/menus_translations.fr.translation")
 locale/translations_pot_files=PackedStringArray("res://modules/dialogue/dialogue.dialogue", "res://modules/levels/cafeteria/questgiver/juni_hungry.dialogue", "res://modules/levels/cafeteria/cafeteria_puzzle_intro.dialogue", "res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue", "res://modules/levels/school_modular_levels/Playtest/playtest_dialogue.dialogue", "res://modules/levels/classroom_maze/anxious_classroom.dialogue", "res://modules/dialogue/demo_scenes.dialogue", "res://modules/levels/school_modular_levels/tutorials/tutorials.dialogue")
 
 [layer_names]
@@ -186,6 +199,12 @@ locale/translations_pot_files=PackedStringArray("res://modules/dialogue/dialogue
 2d_physics/layer_13="CocoonHit"
 2d_physics/layer_14="EncounterCheck"
 2d_physics/layer_y="BoxEdge"
+
+[maaacks_menus_template]
+
+disable_update_check=false
+disable_install_wizard=true
+copy_path="res://modules/ui/maacks_menus"
 
 [rendering]
 
