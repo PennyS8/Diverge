@@ -952,6 +952,12 @@ material = SubResource("ShaderMaterial_vas0v")
 [node name="AttackArc" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/DisplayComponents" index="5"]
 material = SubResource("ShaderMaterial_vas0v")
 
+[node name="AnimationPlayer" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="7"]
+autoplay = ""
+
+[node name="Death" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="9"]
+stream = null
+
 [node name="CameraBoundry" type="Area2D" parent="NavigationRegion2D"]
 visible = false
 position = Vector2(-29, 1)

@@ -117,6 +117,7 @@ script = ExtResource("5_jmjhv")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 stream = ExtResource("15_gvmbe")
 autoplay = true
 bus = &"soundtrack"

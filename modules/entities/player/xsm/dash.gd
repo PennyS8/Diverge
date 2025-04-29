@@ -53,6 +53,11 @@ func _on_enter(_args):
 	
 	var swing_dir = dash_direction
 	
+	# if juni has no hook, play no hook animations
+	var no_hook = ""
+	if target.hook_locked:
+		no_hook = "no_spear/"
+		
 	var dust_dir = swing_dir.snapped(Vector2.ONE)
 	
 	if component_x > component_y:
@@ -80,7 +85,7 @@ func _on_enter(_args):
 	dust.play(dust_anims[dust_dir])
 	
 	idle_dir = swing_dir
-	play(dash_states[swing_dir])
+	play(no_hook + dash_states[swing_dir])
 
 func _on_update(_delta):
 	target.velocity = dash_direction * dash_speed

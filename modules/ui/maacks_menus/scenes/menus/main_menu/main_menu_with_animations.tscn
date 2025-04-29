@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_4t38d"]
 [ext_resource type="Script" uid="uid://bvofgugpilqu3" path="res://modules/ui/maacks_menus/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_c4gtu"]
 [ext_resource type="PackedScene" uid="uid://b1nvsmlwr435x" path="res://modules/ui/maacks_menus/scenes/credits/credits.tscn" id="3_0w5yg"]
-[ext_resource type="PackedScene" path="res://modules/ui/outside_menu.tscn" id="3_bj1hx"]
+[ext_resource type="PackedScene" uid="uid://8g6fiydkcauo" path="res://modules/ui/outside_menu.tscn" id="3_bj1hx"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="3_c4gtu"]
 [ext_resource type="Texture2D" uid="uid://bvcmov6th45s7" path="res://assets/environment/downtown_dungeon/custom_sprites/juniperlogo.png" id="4_c4gtu"]
 [ext_resource type="FontFile" uid="uid://dtyn18rtxvf8u" path="res://assets/hud/Jersey_10/Jersey10-Regular.ttf" id="5_c4gtu"]

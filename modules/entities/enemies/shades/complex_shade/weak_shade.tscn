@@ -40,4 +40,7 @@ material = SubResource("ShaderMaterial_hogpt")
 [node name="AttackArc" parent="DisplayComponents" index="5"]
 material = SubResource("ShaderMaterial_jlumo")
 
+[node name="AnimationPlayer" parent="." index="7"]
+autoplay = "idle_right"
+
 [editable path="BehaviorComponents/SoftCollision"]
