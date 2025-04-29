@@ -80,5 +80,5 @@ frame = 39
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_cg2u1")
+&"": SubResource("AnimationLibrary_cg2u1")
 }
