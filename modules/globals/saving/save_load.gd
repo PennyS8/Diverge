@@ -165,13 +165,13 @@ func room_save(room_id):
 	get_tree().call_group("saved_data", "on_save_game", saved_data)
 	saved_room.saved_data = saved_data
 	
-	var save_room_path = "user://temp/saveroom_{id}.tres"
+	var save_room_path = save_path + "/saveroom_{id}.tres"
 	var format_path = save_room_path.format({"id": room_id})
 	ResourceSaver.save(saved_room, format_path)
 
 # Loads data of a given room from the temporary directory if it exists
 func room_load(room_id):
-	var save_room_path = "user://temp/saveroom_{id}.tres"
+	var save_room_path = "user://saves/saveroom_{id}.tres"
 	var format_path = save_room_path.format({"id": room_id})
 	
 	print("Loaded Level: " + room_id)
@@ -241,6 +241,48 @@ func delete_room_saves():
 		DirAccess.remove_absolute(room_save_path)
 	else:
 		print("Temp folder does not exist")
+#endregion
+
+#region Player save and load
+# Saves the player's health and position
+func save_player():
+	var save_path = "user://saves"
+	
+	if DirAccess.open(save_path) == null:
+		DirAccess.make_dir_absolute(save_path)
+	
+	print("Saved Player")
+	
+	var saved_player:SavedGame = SavedGame.new()
+	
+	saved_player.player_health = player.health_component.health
+	saved_player.player_max_health = player.health_component.max_health
+	saved_player.player_position = player.global_position
+	
+	var save_player_path = save_path + "/player_save.tres"
+	ResourceSaver.save(saved_player, save_player_path)
+
+# Loads the player's health and position upon loading up the game
+func load_player():
+	var player_save = "user://saves/player_save.tres"
+	
+	print("Load player save information")
+	
+	if !(save_exists(player_save)):
+		print("No existing player save")
+		return
+	
+	var saved_player:SavedGame = load(player_save)
+	
+	# Loads player's health and position
+	player.health_component.health = saved_player.player_health
+	player.health_component.max_health = saved_player.player_max_health
+	player.global_position = saved_player.player_position
+	
+	# Sets the player's hud to visibly show health
+	var hud = get_tree().get_first_node_in_group("gui")
+	var damage_amount = saved_player.player_max_health - saved_player.player_health
+	hud.heart_damage(damage_amount)
 #endregion
 
 # Helper functions checking if save files / folders exist.

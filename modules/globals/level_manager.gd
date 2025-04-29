@@ -74,7 +74,7 @@ func change_level(path : String, entrance_name : String = "0"):
 	
 	player = get_tree().get_first_node_in_group("player")
 
-	# save level state
+	# save level state and player state
 	await SaveAndLoad.room_save(current_level.get_name())
 	
 	var tween = get_tree().create_tween()
@@ -198,5 +198,7 @@ func player_transition(level_path : String, direction : Vector2, entrance_name :
 	else:
 		# If player is holding an input direction, keep going that direction. To prevent the one-frame stutterstep
 		player.dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	SaveAndLoad.save_player()
+	
 	player.exit_cutscene()
-
