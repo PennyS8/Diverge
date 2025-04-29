@@ -15,7 +15,7 @@
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_at4ji"]
 [ext_resource type="PackedScene" uid="uid://dywn8ybv2xl4i" path="res://modules/objects/puzzle_pieces/lever/lever.tscn" id="13_kgxs5"]
 [ext_resource type="PackedScene" uid="uid://bme0largcnr4h" path="res://modules/objects/level_transition_zone/transition_double_door.tscn" id="13_usixv"]
-[ext_resource type="PackedScene" uid="uid://bus3juxuqyq0d" path="res://modules/levels/school_modular_levels/Playtest/moving_wall.tscn" id="13_xknx3"]
+[ext_resource type="PackedScene" path="res://modules/levels/school_modular_levels/Playtest/moving_wall.tscn" id="13_xknx3"]
 [ext_resource type="Resource" uid="uid://fgga6obgfqb6" path="res://modules/objects/library_book_lab.tres" id="14_vrsc7"]
 [ext_resource type="FontFile" uid="uid://bgveetmypd20b" path="res://assets/hud/sf-pixelate/TrueType/SFPixelate-Bold.ttf" id="14_w3j1q"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="14_x3qlk"]
@@ -28,7 +28,7 @@
 [ext_resource type="Shader" uid="uid://145awv4gjeoq" path="res://assets/debug/pixel_perfect_styling/SmoothPixel.gdshader" id="25_usixv"]
 [ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="26_j0ml5"]
 [ext_resource type="PackedScene" uid="uid://bii7n4y5k0hsf" path="res://modules/entities/enemies/shades/complex_shade/weak_shade.tscn" id="28_j0vq7"]
-[ext_resource type="Script" path="res://modules/levels/school_modular_levels/Playtest/deep_breath_tutorial_zone.gd" id="29_j0vq7"]
+[ext_resource type="Script" uid="uid://hxdnggturjhp" path="res://modules/levels/school_modular_levels/Playtest/deep_breath_tutorial_zone.gd" id="29_j0vq7"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
@@ -9257,7 +9257,7 @@ tile_map_data = PackedByteArray("AADu//b/AAAKABEAAADu//f/AAAKABEAAADu//j/AAAKABE
 tile_set = SubResource("TileSet_xnlxt")
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(534, 30)
+position = Vector2(1488, -396)
 
 [node name="StartRoom" type="Node2D" parent="." groups=["room_with_dynamic_transitions"]]
 visible = false
@@ -9614,6 +9614,7 @@ position = Vector2(132.5, -41)
 shape = SubResource("RectangleShape2D_m5qk1")
 
 [node name="URoom" type="Node2D" parent="."]
+y_sort_enabled = true
 use_parent_material = true
 position = Vector2(480, -456)
 
@@ -9672,6 +9673,7 @@ entrance_name = "LibraryEntrance"
 transition_direction = 1
 
 [node name="URoom2" type="Node2D" parent="."]
+y_sort_enabled = true
 use_parent_material = true
 position = Vector2(1320, -456)
 
