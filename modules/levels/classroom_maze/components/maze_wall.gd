@@ -26,7 +26,7 @@ func _on_spawing_area_body_entered(body: Node2D) -> void:
 		var instance : CharacterBody2D = scene.instantiate()
 		instance.set_collision_mask_value(2, false)
 		get_tree().current_scene.call_deferred("add_child", instance)
-		
+		DialogueManager.show_dialogue_balloon(load("res://modules/dialogue/demo_scenes.dialogue"), "hey_you", [self])
 		instance.position = Vector2.ZERO
 		instance.global_position = global_position
 		spawned = true
