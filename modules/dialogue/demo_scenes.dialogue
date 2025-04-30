@@ -163,6 +163,14 @@ Juniper: Hm.
 do player.exit_cutscene()
 => END
 
+#boss battle dialogue
+~ gym_battle
+Juniper: Um--I don't think my crochet hook is gonna cut it this time. All I want is to get back to class!
+Juniper: But what if I'm trapped here forever? And even if I do get out of here I have to take the test and what if I fail it and- and- and-
+Juniper: I need to take a [b]deep breath.[\b][wait=1] I've got this.
+
+=> END
+
 #classroom
 
 ~ taking_the_test
