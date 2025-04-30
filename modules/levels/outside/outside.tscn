@@ -5,7 +5,7 @@
 [ext_resource type="TileSet" uid="uid://beeu22p6kg3am" path="res://assets/environment/downtown_dungeon/Tiles 24x24/outdoors.tres" id="2_qwmn5"]
 [ext_resource type="Texture2D" uid="uid://d1i2h41pm54o2" path="res://assets/debug/2d_lights_and_shadows_neutral_point_light.webp" id="3_jgkm2"]
 [ext_resource type="PackedScene" uid="uid://4ybabjj78svj" path="res://modules/entities/npcs/olli/olli.tscn" id="6_oonry"]
-[ext_resource type="Script" path="res://modules/levels/outside/olli_dialogue_trigger.gd" id="7_snlqb"]
+[ext_resource type="Script" uid="uid://dufsldjxltqe1" path="res://modules/levels/outside/olli_dialogue_trigger.gd" id="7_snlqb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_oonry"]
 size = Vector2(256, 109)

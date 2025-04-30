@@ -1,24 +1,24 @@
-[gd_scene load_steps=12 format=4 uid="uid://d31nsqlyrknj3"]
+[gd_scene load_steps=11 format=4 uid="uid://d31nsqlyrknj3"]
 
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="1_7v4fa"]
+[ext_resource type="Script" uid="uid://cfljp4f7bspdf" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/foyer_postboss.gd" id="2_bhba7"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_q4se8"]
 [ext_resource type="PackedScene" uid="uid://c4f5tcvmt380f" path="res://modules/objects/level_transition_zone/transition_door.tscn" id="2_yxccn"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="3_y0qnv"]
-[ext_resource type="PackedScene" uid="uid://bmjl2guxmrnp4" path="res://modules/objects/school_dungeon/key_doubledoor_blue/key_doubledoor_blue.tscn" id="4_o8mcn"]
-[ext_resource type="PackedScene" uid="uid://bme0largcnr4h" path="res://modules/objects/level_transition_zone/transition_double_door.tscn" id="5_g13rj"]
-[ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="6_rooya"]
-[ext_resource type="Resource" uid="uid://bn04a8c828d0e" path="res://modules/objects/puzzle_pieces/key/foyerkey.tres" id="7_lgn3y"]
 [ext_resource type="Texture2D" uid="uid://dhcparmknfhw3" path="res://modules/objects/school_dungeon/key_doubledoor_blue/school_keydoubledoor_unlocked_blue.png" id="9_bhba7"]
+[ext_resource type="Script" uid="uid://pnh6ygoplf2s" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/end_dialogue_trigger.gd" id="10_yxccn"]
+[ext_resource type="PackedScene" uid="uid://4ybabjj78svj" path="res://modules/entities/npcs/olli/olli.tscn" id="11_y0qnv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4p5id"]
 size = Vector2(528, 456)
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yagkp"]
-load_path = "res://.godot/imported/school_keydoubledoor_unlocked_blue.png-69021e694d582ec411dd35da2cf30b12.ctex"
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o8mcn"]
+size = Vector2(64, 48)
 
 [node name="FoyerPostboss" type="Node2D"]
 y_sort_enabled = true
 material = ExtResource("2_q4se8")
+script = ExtResource("2_bhba7")
 
 [node name="Tiles" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -113,6 +113,7 @@ entrance_name = "HallLeftLeftEast"
 transition_direction = 2
 
 [node name="CameraBoundry" type="Area2D" parent="Foyer"]
+visible = false
 collision_layer = 512
 collision_mask = 4
 
@@ -130,22 +131,6 @@ z_index = 1
 y_sort_enabled = true
 use_parent_material = true
 
-[node name="LockedDoor" parent="Foyer/Entities" instance=ExtResource("4_o8mcn")]
-visible = false
-z_index = 1
-position = Vector2(-24, -108)
-locked_sprite = SubResource("CompressedTexture2D_yagkp")
-unlocked_sprite = SubResource("CompressedTexture2D_yagkp")
-
-[node name="TransitionDoubleDoor" parent="Foyer/Entities" instance=ExtResource("5_g13rj")]
-visible = false
-z_index = 1
-position = Vector2(0, -108)
-next_level_path = "uid://dibtck8dlixm1"
-entrance_name = "Foyer"
-door_name = "foyer_door"
-keys_needed = Array[ExtResource("6_rooya")]([ExtResource("7_lgn3y")])
-
 [node name="SchoolKeydoubledoorUnlockedBlue" type="Sprite2D" parent="Foyer/Entities"]
 use_parent_material = true
 position = Vector2(0, -108)
@@ -153,4 +138,40 @@ texture = ExtResource("9_bhba7")
 offset = Vector2(0, -24)
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(1, 125)
+position = Vector2(0, -84)
+
+[node name="Endscene" type="Node2D" parent="."]
+position = Vector2(-192, -528)
+
+[node name="EndDialogueTrigger" type="Area2D" parent="Endscene"]
+script = ExtResource("10_yxccn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Endscene/EndDialogueTrigger"]
+position = Vector2(192, 456)
+shape = SubResource("RectangleShape2D_o8mcn")
+
+[node name="Olli" parent="Endscene" instance=ExtResource("11_y0qnv")]
+visible = false
+position = Vector2(128, 689)
+
+[node name="Spikes" type="Node2D" parent="Endscene"]
+
+[node name="Marker2D" type="Marker2D" parent="Endscene/Spikes"]
+position = Vector2(173, 520)
+
+[node name="Marker2D2" type="Marker2D" parent="Endscene/Spikes"]
+position = Vector2(216, 512)
+
+[node name="Marker2D5" type="Marker2D" parent="Endscene/Spikes"]
+position = Vector2(205, 512)
+
+[node name="Marker2D3" type="Marker2D" parent="Endscene/Spikes"]
+position = Vector2(215, 684)
+
+[node name="Marker2D6" type="Marker2D" parent="Endscene/Spikes"]
+position = Vector2(183, 520)
+
+[node name="Marker2D4" type="Marker2D" parent="Endscene/Spikes"]
+position = Vector2(188, 686)
+
+[connection signal="body_entered" from="Endscene/EndDialogueTrigger" to="Endscene/EndDialogueTrigger" method="_on_body_entered"]
