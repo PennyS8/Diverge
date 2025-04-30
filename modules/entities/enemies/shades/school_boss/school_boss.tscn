@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="9_ae4fe"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="9_den2k"]
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_ae4fe"]
-[ext_resource type="Material" uid="uid://c8m31s5vmsyhk" path="res://modules/entities/enemies/shades/fx/better_enemy_shader.tres" id="11_2i40n"]
+[ext_resource type="Material" uid="uid://bcw6swreclbwb" path="res://modules/entities/enemies/shades/fx/better_enemy_shader.tres" id="11_2i40n"]
 [ext_resource type="Texture2D" uid="uid://bl35skok3q2gy" path="res://modules/entities/enemies/shades/complex_shade/sprites/Spawn/Shade_Vortex_FX.png" id="13_b2rs3"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="13_bp3ra"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_hivce"]
