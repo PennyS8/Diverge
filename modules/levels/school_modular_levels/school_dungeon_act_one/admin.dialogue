@@ -1,7 +1,12 @@
 ~ start
 do! LevelManager.player.enter_cutscene()
 Juniper: No one is here..
-Juniper: I guess no one would mind if I slip past the front desk and find that key
+Juniper: I guess no one would mind if I slip past the front desk and find that key.
+do LevelManager.player.do_walk(marker1.global_position)
+do LevelManager.player.do_walk(marker2.global_position)
+Juniper: That's in a bit of a tricky spot.
+Juniper: The desk is like, wedged against the wall. If I'm not careful, I might knock it off the desk.
+Juniper: I wonder... if I could use some of my yarn? Make a little lasso, or something? That might work.
 do! LevelManager.player.exit_cutscene()
 => END
 

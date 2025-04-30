@@ -14,7 +14,7 @@ func _on_body_entered(body: Node2D) -> void:
 		olli = $"../Olli"
 		olli.show()
 		DialogueManager.show_dialogue_balloon(load("res://modules/dialogue/demo_scenes.dialogue"), "end_convo", [self])
-		player.dialogue_tracker["end_scene"] == true
+		player.dialogue_tracker["end_scene"] = true
 
 func fade_out():
 	LevelManager.change_level("res://modules/ui/maacks_menus/scenes/end_credits/end_creds_with_player.tscn")

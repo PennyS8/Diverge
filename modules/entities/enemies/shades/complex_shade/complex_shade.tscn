@@ -2940,7 +2940,6 @@ autoplay = "idle_left"
 
 [node name="Death" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_dvtn2")
-bus = &"enemydistort"
 
 [connection signal="mouse_entered" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_exited"]

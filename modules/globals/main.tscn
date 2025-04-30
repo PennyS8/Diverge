@@ -120,7 +120,6 @@ script = ExtResource("5_jmjhv")
 process_mode = 3
 stream = ExtResource("15_gvmbe")
 autoplay = true
-bus = &"soundtrack"
 
 [connection signal="check_hook" from="GUI2/InventoryPanel/EquipmentPanel" to="." method="_on_equipment_panel_check_hook"]
 [connection signal="item_stack_added" from="GUI2/InventoryPanel/EquipmentPanel/Equip" to="." method="_on_equip_item_stack_added"]

@@ -113,7 +113,7 @@ material = ExtResource("1_pt88k")
 metadata/_edit_vertical_guides_ = [-840.0]
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(804, 756)
+position = Vector2(803, 507)
 
 [node name="Tiles" type="NavigationRegion2D" parent="."]
 y_sort_enabled = true
@@ -549,6 +549,12 @@ shape = SubResource("RectangleShape2D_dkp6j")
 position = Vector2(-20, -16)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_skfq5")
+
+[node name="Marker2D" type="Marker2D" parent="Rooms/Admin"]
+position = Vector2(-116, 94)
+
+[node name="Marker2D2" type="Marker2D" parent="Rooms/Admin"]
+position = Vector2(-104, 5)
 
 [node name="ElectricalCloset" type="Node2D" parent="Rooms"]
 y_sort_enabled = true
