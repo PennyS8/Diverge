@@ -102,8 +102,8 @@ func _on_projectile_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape
 	
 	player.add_tethered_status()
 	area.get_parent().add_tethered_status()
+	area.get_parent().leash_owner = player
 	
 	if (area.get_parent().is_in_group("enemy")):
 		area.get_parent().tethered_stun()
-		area.get_parent().leash_owner = player
 	$Projectile.queue_free()
