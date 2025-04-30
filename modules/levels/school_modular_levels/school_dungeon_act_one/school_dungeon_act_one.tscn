@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=4 uid="uid://cs2a4pq3yt5l6"]
+[gd_scene load_steps=47 format=4 uid="uid://cs2a4pq3yt5l6"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_pt88k"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_yqbfs"]
@@ -21,8 +21,6 @@
 [ext_resource type="PackedScene" uid="uid://c0xn1iqitvhmq" path="res://modules/objects/puzzle_pieces/key/key.tscn" id="10_0c127"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="10_0natf"]
 [ext_resource type="Texture2D" uid="uid://dhcparmknfhw3" path="res://modules/objects/school_dungeon/key_doubledoor_blue/school_keydoubledoor_unlocked_blue.png" id="12_bffxx"]
-[ext_resource type="Script" uid="uid://pnh6ygoplf2s" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/end_dialogue_trigger.gd" id="21_ntqx1"]
-[ext_resource type="PackedScene" uid="uid://4ybabjj78svj" path="res://modules/entities/npcs/olli/olli.tscn" id="22_bffxx"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qgpn2"]
 vertices = PackedVector2Array(1264, 1112, 1264, 1168, 1072, 1168, 1040, 1120, 1072, 1192, 1040, 1192, 1016, 1120, 1016, 1112, -287.062, 928, -272, 928, -272, 944, -376, 952, -376, 944, -248, 944, -248, 952, -272, 952, -272, 1120, -376, 1120, -400, 952, -400, 944, -376, 920, -328, 920, -328, 848, -320, 848, -320, 920, -288.062, 920, -767.062, 904, -752, 904, -752, 909, -808, 952, -808, 909, -656, 909, -656, 952, -752, 952, -656, 981, -656, 1048, -664, 1048, -664, 1024, -752, 981, -704, 1024, -704, 1072, -763, 1072, -763, 1035, -904, 1035, -904, 981, -808, 981, -904, 952, -904, 909, -808, 896, -768.062, 896, 256, 896, 256, 1024, -136, 1024, -136, 952, -160, 952, -160, 944, -136, 944, -136, 896, 1440.94, 784, 1456, 784, 1456, 848, 1400, 832, 1400, 800, 1480, 848, 1480, 856, 1456, 856, 1456, 1000, 1400, 1000, 1352, 832, 1352, 800, 1400, 776, 1439.94, 776, -176, 704, -128, 704, -128, 736, -392, 736, -392, 771, -400, 771, -400, 736, -520, 736, -520, 704, -472, 704, -472, 680, -176, 680, -680, 704, -632, 704, -632, 736, -776, 736, -776, 760, -784, 760, -784, 736, -856, 736, -856, 680, -680, 680, 824, 688, 792.062, 688, 793.062, 680, 1072, 680, 1072, 736, 824, 728, 808, 736, 784, 728, 768.938, 688, 784, 688, 608, 736, 656, 704, 808, 760, 800, 760, 800, 736, 608, 704, 656, 680, 767.938, 680, 1120, 736, 1112, 736, 1112, 704, 1120, 704, 1480, 512, 1504, 512, 1504, 520, 1480, 520, 1376, 512, 1480, 592, 1432, 592, 1376, 520, 1432, 640, 1424, 640, 1424, 592, 1376, 592, 1352, 520, 1352, 512, 1376, 464, 1480, 464, -416, 392, -416, 544, -424, 544, -424, 520, -640, 392, -544, 485, -544, 520, -608, 485, -640, 520, -608, 520, 1112, 429, 1112, 392, 1168, 392, 1168, 405, 1240, 405, 1240, 414, 1168, 414, 1168, 453, 1240, 453, 1240, 462, 1168, 462, 1168, 501, 1240, 501, 1240, 520, 1048, 520, 1048, 544, 1040, 544, 1040, 520, 920, 520, 920, 501, 992, 501, 992, 462, 920, 462, 920, 453, 992, 453, 992, 414, 920, 414, 920, 405, 992, 405, 992, 392, 1048, 392, 1048, 429, 1688, 429, 1688, 392, 1720, 392, 1720, 429, 1760, 429, 1760, 392, 1792, 392, 1792, 429, 1840, 429, 1840, 520, 1832, 520, 1832, 472, 1792, 472, 1760, 472, 1792, 520, 1760, 520, 1720, 472, 1688, 472, 1720, 520, 1688, 520, 1648, 429, 1648, 472, 1648, 520, 1592, 520, 1592, 512, 1616, 512, 1616, 392, 1648, 392, 2192, 141, 2192, 104, 2200, 104, 2200, 171, 2152, 171, 2152, 141, 2152, 213, 2200, 213, 2200, 219, 2152, 219, 2152, 261, 2200, 261, 2200, 280, 2080, 280, 2080, 328, 2072, 328, 2072, 261, 2120, 261, 2120, 219, 2120, 213, 2072, 219, 2072, 213, 2120, 171, 2120, 165, 2072, 171, 2072, 165, 2120, 123, 2152, 104, 2072, 104, 2072, 123, 1112, 141, 1112, 104, 1168, 104, 1168, 117, 1240, 117, 1240, 126, 1168, 126, 1168, 165, 1240, 165, 1240, 174, 1168, 174, 1168, 213, 1240, 213, 1240, 232, 1120, 232, 1120, 280, 1112, 280, 1112, 232, 896, 232, 896, 224, 920, 224, 920, 213, 992, 213, 992, 174, 920, 174, 920, 165, 992, 165, 992, 126, 920, 126, 920, 117, 992, 117, 992, 104, 1048, 104, 1048, 141, 1736, 165, 1736, 128, 1768, 128, 1768, 165, 1808, 165, 1808, 128, 1840, 128, 1840, 248, 1864, 248, 1864, 256, 1808, 256, 1808, 208, 1768, 208, 1736, 208, 1768, 256, 1736, 256, 1696, 165, 1696, 208, 1696, 256, 1664, 256, 1664, 208, 1664, 165, 1624, 208, 1624, 256, 1616, 256, 1616, 165, 1696, 128, 1664, 128, 2000, 861, 2000, 824, 2032, 824, 2032, 864, 2008, 864, 2008, 896, 2009, 896, 2009, 902, 1999, 902, 2000, 896, 2000, 936, 2000, 864, 1936, 861, 1960, 864, 1960, 896, 1961, 896, 1961, 902, 1967, 902, 1967, 909, 1960, 936, 1994, 909, 1994, 902, 1999, 896, 2015, 902, 2015, 909, 2008, 936, 2032, 909, 2032, 936, 2008, 968, 2009, 968, 2009, 974, 2000, 968, 1999, 974, 1960, 968, 1961, 968, 1961, 974, 1922, 981, 1967, 974, 1967, 981, 1912, 1011, 1994, 981, 1994, 974, 1999, 968, 2015, 974, 2015, 981, 2032, 981, 2032, 1011, 1912, 1048, 1904, 1048, 1904, 981, 1922, 974, 1927, 974, 1927, 968, 1928, 968, 1928, 936, 1904, 936, 1904, 909, 1922, 909, 1922, 902, 1927, 902, 1927, 896, 1928, 896, 1928, 864, 1904, 864, 1904, 861, 1928, 861, 1928, 824, 1936, 824, 1792, 837, 1792, 952, 1784, 909, 1784, 856, 1744, 837, 1744, 856, 1592, 952, 1744, 909, 1592, 856, 1592, 848, 1568, 856, 1568, 848, 1592, 824, 1744, 824, 1792, 1216, 1592, 1216, 1640, 1173, 1792, 1120, 1600, 1173, 1592, 1101, 1600, 1120, 1640, 1120, 1640, 1101, 1792, 1112, 1816, 1112, 1816, 1120, 1792, 1088, 1640, 1088, 616, 405, 616, 512, 604, 477, 604, 448, 605, 428, 743, 405, 832, 405, 832, 520, 808, 520, 808, 544, 800, 544, 800, 520, 752, 472, 752, 520, 712, 472, 512, 520, 512, 405, 524, 405, 524, 428, 605, 405, 575, 448, 575, 477, 556, 477, 556, 448, 527, 448, 527, 477, 680, 512, 680, 404, 743, 404, 712, 520, 304, 503, 304, 680, 272, 560, 272, 520, 283, 503, 152, 560, 232, 520, 232, 560, 80, 680, 152, 520, 352, 680, 352, 704, -16, 736, 32, 704, 76, 692, 400, 704, 400, 736, -16, 704, 32, 680, 44, 680, 44, 692, 76, 680, 80, 503, 102, 503, 112, 520, 112, 560, 102, 440, 283, 440)
@@ -108,10 +106,7 @@ polygon = PackedVector2Array(-12, 24, 12, 24, 12, -24, -12, -24)
 cull_mode = 1
 polygon = PackedVector2Array(-12, 24, 12, 24, 12, -24, -12, -24)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_07h0r"]
-size = Vector2(64, 48)
-
-[node name="SchoolDungeonDec18" type="Node2D"]
+[node name="SchoolDungeonDec19" type="Node2D"]
 y_sort_enabled = true
 texture_filter = 2
 material = ExtResource("1_pt88k")
@@ -1007,43 +1002,9 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AABFABAABQAPAAkAAABIABAABQAPAAkAAABIAA8ABQAPAAkAAABFAA8ABQAPAAkAAABLABQABQAPAAkAAABLABMABQAPAAkAAABIABMABQAPAAkAAABIABQABQAPAAkAAABFABQABQAPAAkAAABFABMABQAPAAkAAABMABAAAQAOAAsAAABDAAUAAQANAA0AAEBEAAgABQAPAAkAADBEAAkABQAPAAkAADBHAAkABQAPAAkAADBHAAgABQAPAAkAADBHAAQABQAPAAkAADBHAAUABQAPAAkAADBKAAUABQAPAAkAADBKAAQABQAPAAkAADBKAAkABQAPAAkAADBKAAgABQAPAAkAADBWAAkABQAPAA8AAABXAAkABQAPAA8AAABWAAcABQAPAA8AAABXAAcABQAPAA8AAABWAAUABQAPAA8AAABXAAUABQAPAA8AAABaAAcABQAPAA8AAABbAAcABQAPAA8AAABaAAkABQAPAA8AAABbAAkABQAPAA8AAABaAAQAAQAOAAsAAFBDACwAAQAPAA8AABBJACEAAQAPAA8AAABRACIAAQAKAA8AAGAWAAQAAQAOAA8AAAAcAAIAAQAOAAsAAADf/ywAAQANAAwAAADh/ywAAQANAA8AAADj/ywAAQAPAAwAAAA=")
 tile_set = ExtResource("2_yqbfs")
 
-[node name="Endscene" type="Node2D" parent="."]
-
-[node name="EndDialogueTrigger" type="Area2D" parent="Endscene"]
-script = ExtResource("21_ntqx1")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Endscene/EndDialogueTrigger"]
-position = Vector2(192, 456)
-shape = SubResource("RectangleShape2D_07h0r")
-
-[node name="Olli" parent="Endscene" instance=ExtResource("22_bffxx")]
-visible = false
-position = Vector2(128, 689)
-
-[node name="Spikes" type="Node2D" parent="Endscene"]
-
-[node name="Marker2D" type="Marker2D" parent="Endscene/Spikes"]
-position = Vector2(173, 520)
-
-[node name="Marker2D2" type="Marker2D" parent="Endscene/Spikes"]
-position = Vector2(216, 512)
-
-[node name="Marker2D5" type="Marker2D" parent="Endscene/Spikes"]
-position = Vector2(205, 512)
-
-[node name="Marker2D3" type="Marker2D" parent="Endscene/Spikes"]
-position = Vector2(215, 684)
-
-[node name="Marker2D6" type="Marker2D" parent="Endscene/Spikes"]
-position = Vector2(183, 520)
-
-[node name="Marker2D4" type="Marker2D" parent="Endscene/Spikes"]
-position = Vector2(188, 686)
-
 [connection signal="body_entered" from="Rooms/Foyer/ShadesWalkingCutscene" to="Rooms/Foyer/ShadesWalkingCutscene" method="_on_body_entered"]
 [connection signal="body_entered" from="Rooms/Foyer/StaticBody2D/Area2D" to="Rooms/Foyer/StaticBody2D" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="Rooms/HallRight/CutsceneChecker-GottaFight" to="Rooms/HallRight/CutsceneChecker-GottaFight" method="_on_body_entered"]
 [connection signal="body_entered" from="Rooms/Admin/Area2D" to="Rooms/Admin" method="_on_area_2d_body_entered"]
-[connection signal="body_entered" from="Endscene/EndDialogueTrigger" to="Endscene/EndDialogueTrigger" method="_on_body_entered"]
 
 [editable path="Rooms/Foyer/EncounterEntrance"]

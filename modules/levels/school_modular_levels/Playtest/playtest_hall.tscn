@@ -1,4 +1,4 @@
-[gd_scene load_steps=123 format=4 uid="uid://dibtck8dlixm1"]
+[gd_scene load_steps=125 format=4 uid="uid://dibtck8dlixm1"]
 
 [ext_resource type="Texture2D" uid="uid://ce10vjgkrj5nk" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png" id="1_453bp"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="2_at4ji"]
@@ -15,7 +15,7 @@
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_at4ji"]
 [ext_resource type="PackedScene" uid="uid://dywn8ybv2xl4i" path="res://modules/objects/puzzle_pieces/lever/lever.tscn" id="13_kgxs5"]
 [ext_resource type="PackedScene" uid="uid://bme0largcnr4h" path="res://modules/objects/level_transition_zone/transition_double_door.tscn" id="13_usixv"]
-[ext_resource type="PackedScene" uid="uid://bus3juxuqyq0d" path="res://modules/levels/school_modular_levels/Playtest/moving_wall.tscn" id="13_xknx3"]
+[ext_resource type="PackedScene" path="res://modules/levels/school_modular_levels/Playtest/moving_wall.tscn" id="13_xknx3"]
 [ext_resource type="Resource" uid="uid://fgga6obgfqb6" path="res://modules/objects/library_book_lab.tres" id="14_vrsc7"]
 [ext_resource type="FontFile" uid="uid://bgveetmypd20b" path="res://assets/hud/sf-pixelate/TrueType/SFPixelate-Bold.ttf" id="14_w3j1q"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="14_x3qlk"]
@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://dr0cvjhys8cx7" path="res://assets/environment/downtown_dungeon/custom_sprites/anxiety_door.png" id="16_mee8l"]
 [ext_resource type="Resource" uid="uid://v46rcraqdjre" path="res://modules/objects/library_book_cafeteria.tres" id="16_uy203"]
 [ext_resource type="Resource" uid="uid://cw25ojt8dsl75" path="res://modules/objects/library_book_classroom.tres" id="21_0knhu"]
-[ext_resource type="Script" uid="uid://bfhxhru7gksj4" path="res://modules/levels/school_modular_levels/Playtest/new_area_dialogue_trigger.gd" id="23_wly3n"]
+[ext_resource type="Script" path="res://modules/levels/school_modular_levels/Playtest/new_area_dialogue_trigger.gd" id="23_wly3n"]
 [ext_resource type="Script" uid="uid://jdbescwh43bj" path="res://modules/objects/level_transition_zone/transition_double_door.gd" id="25_4lksq"]
 [ext_resource type="Shader" uid="uid://145awv4gjeoq" path="res://assets/debug/pixel_perfect_styling/SmoothPixel.gdshader" id="25_usixv"]
 [ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="26_j0ml5"]
@@ -9192,7 +9192,7 @@ shader_parameter/Flash = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vp17h"]
-size = Vector2(73, 20)
+size = Vector2(72, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_at4ji"]
 size = Vector2(21, 14)
@@ -9252,9 +9252,6 @@ region = Rect2(23, 240, 25, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ioon7"]
 size = Vector2(84, 107.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp17h"]
-size = Vector2(72, 48)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_txk0m"]
 size = Vector2(72, 24)

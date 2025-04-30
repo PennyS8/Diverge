@@ -169,6 +169,7 @@ do player.exit_cutscene()
 #foyer post battle
 
 ~ end_convo
+do player.do_walk(player.to_global(Vector2(0, 1)))
 Juniper: [i] I made it back! [/i]
 do olli.do_walk(spike_list[0].global_position)
 Olli: There you are! Class is about to start! I was worried about you.
@@ -180,7 +181,8 @@ Olli: You've got this look in your eye. You're gonna ace it.
 Juniper: ...yeah. I just want this over with.[i] Surely a history test will be easier than fighting shadows...
 Juniper: In...hold...out...hold... It [i] is [/i] only a test. [wait = .5] Let's go.
 do! olli.do_walk(spike_list[5].global_position)
-do player.do_walk(spike_list[3].global_position, 1)
+do! player.do_walk(spike_list[3].global_position, 1)
+do! fade_out()
 => END
 
 #home
