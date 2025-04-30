@@ -7,4 +7,5 @@ do! start_boss_fight()
 
 ~ boss_defeated
 Juniper: Woohoo I defeated the boss.
+do! transition()
 => END

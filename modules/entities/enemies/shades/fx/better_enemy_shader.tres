@@ -1,6 +1,6 @@
 [gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bcw6swreclbwb"]
 
-[ext_resource type="Shader" uid="uid://gcwt752b74cd" path="res://modules/entities/enemies/shades/fx/compiled_enemy_shader.gdshader" id="1_eiey2"]
+[ext_resource type="Shader" path="res://modules/entities/enemies/shades/fx/compiled_enemy_shader.gdshader" id="1_eiey2"]
 
 [resource]
 resource_local_to_scene = true

@@ -178,7 +178,8 @@ do! start_boss_fight()
 
 ~ end_convo
 do player.do_walk(player.to_global(Vector2(0, 1)))
-Juniper: [i] I made it back! [/i]
+Juniper: [i] ...is this... normal now? [/i]
+Juniper: ......Olli!
 do olli.do_walk(spike_list[0].global_position)
 Olli: There you are! Class is about to start! I was worried about you.
 do player.do_walk(spike_list[1].global_position, 1)

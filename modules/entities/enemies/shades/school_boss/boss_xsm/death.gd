@@ -6,6 +6,7 @@ extends State
 func _on_enter(_args) -> void:
 	EnemyManager.remove_all_hands()
 	EnemyManager.remove_boss_spawned_enemies()
+	target.get_parent().start_timer()
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent

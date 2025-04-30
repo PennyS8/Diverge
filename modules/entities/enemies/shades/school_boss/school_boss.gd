@@ -12,6 +12,8 @@ signal spawned
 
 func _ready() -> void:
 	default_position = global_position
+	
+	
 
 #func tethered_stun():
 	#crowd_control = true
