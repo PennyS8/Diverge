@@ -38,13 +38,13 @@ func remove_tethered_status():
 	remove_from_group("status_tethered")
 
 func _physics_process(_delta):
-	# this is sooo ugly -- this is the case where player IS pulling the body towards themselves
-	if self != player:
-		if !leash_owner:
-			leash_owner = player
-	else:
-		leash_owner = null
-	
+	## this is sooo ugly -- this is the case where player IS pulling the body towards themselves
+	#if self != player:
+		#if !leash_owner:
+			#leash_owner = player
+	#else:
+		#leash_owner = null
+	#
 	# else, deadeye has given us a leash owner (another tetherablebody)
 	if leash_owner:
 		# Prevents a cocoon of just hands or if hand is leash owner

@@ -62,7 +62,7 @@ radius = 36.0
 size = Vector2(8, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xa74g"]
-size = Vector2(24, 39)
+size = Vector2(24, 23)
 
 [sub_resource type="Curve" id="Curve_tvkt4"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.78777), 0.0, 0.0, 0, 0]
@@ -2772,7 +2772,6 @@ position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_e3xrx")
 
 [node name="BehaviorComponents" type="Node2D" parent="."]
-visible = false
 
 [node name="SoftCollision" parent="BehaviorComponents" instance=ExtResource("4_kcpdx")]
 unique_name_in_owner = true
@@ -2810,14 +2809,13 @@ debug_color = Color(1, 0, 1, 0.262745)
 
 [node name="HurtBox" type="Area2D" parent="BehaviorComponents" node_paths=PackedStringArray("health_component")]
 unique_name_in_owner = true
-visible = false
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("11_mqmca")
 health_component = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviorComponents/HurtBox"]
-position = Vector2(0, -19.5)
+position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_xa74g")
 
 [node name="Health" type="Node" parent="BehaviorComponents"]

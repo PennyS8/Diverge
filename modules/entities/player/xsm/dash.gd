@@ -84,7 +84,7 @@ func _on_enter(_args):
 	dust.global_position = target.global_position
 	dust.play(dust_anims[dust_dir])
 	
-	idle_dir = swing_dir
+	target.idle_dir = swing_dir
 	play(no_hook + dash_states[swing_dir])
 
 func _on_update(_delta):
@@ -94,7 +94,7 @@ func _on_update(_delta):
 func _after_update(_delta):
 	if distance_travelled >= dash_distance:
 		target.velocity = Vector2.ZERO
-		change_state("Idle", idle_dir)
+		change_state("Idle")
 
 func _on_exit(_args):
 	target.velocity = Vector2.ZERO

@@ -49,6 +49,7 @@ func _on_enter(_args) -> void:
 	swing_dir = swing_dir.snapped(Vector2.ONE)
 	
 	target.swing_dir = swing_dir
+	target.idle_dir = swing_dir
 	# our four cardinals are:
 	# UP: (0,-1)
 	# RIGHT: (1,0)
@@ -70,4 +71,4 @@ func _after_update(_delta):
 		target.velocity = Vector2.ZERO
 
 func change_to_next_substate():
-	change_state("Idle", swing_dir)
+	change_state("Idle")

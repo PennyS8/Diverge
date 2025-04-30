@@ -8,6 +8,7 @@ var in_cutscene := false
 var cutscene_walk_to_position := Vector2.ZERO
 
 var dir : Vector2 = Vector2.ZERO
+var idle_dir : Vector2 = Vector2.ZERO
 
 var dialogue_open : bool = false
 
@@ -205,7 +206,7 @@ func _on_health_component_died() -> void:
 	
 	if idle == true:
 		print("Idle Found")
-		current_dir = $PlayerFSM/Movement/Idle.idle_dir
+		current_dir = idle_dir
 	else: 
 		current_dir = dir
 	
@@ -221,3 +222,6 @@ func check_encounter():
 	var area = areas[0]
 	if area is EncounterArea:
 		return area
+
+func _on_animation_player_current_animation_changed(name: String) -> void:
+	$Hook/CollisionPolygon2D.set_deferred("disabled", true)
