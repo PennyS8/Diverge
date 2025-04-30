@@ -6,6 +6,8 @@ do! start_boss_fight()
 => END
 
 ~ boss_defeated
-Juniper: Woohoo I defeated the boss.
+Juniper: I did it! I did it! I took the deep breaths and I fought it and it wasn't as bad as I thought, really.
+Juniper: [i]Maybe the test won't be either.[/i]
+Juniper: Now how do I get out of here?
 do! transition()
 => END
