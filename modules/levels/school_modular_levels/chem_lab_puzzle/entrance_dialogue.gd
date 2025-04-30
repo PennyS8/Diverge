@@ -21,8 +21,8 @@ func _on_body_entered(_body: Node2D) -> void:
 		dialogue = load("res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue")
 		dialogue_type = "entrance"
 	elif LevelManager.current_level.name == "SchoolGym":
-		dialogue = load("res://modules/levels/placeholder_gym/gym_boss.dialogue")
-		dialogue_type = "boss_seen"
+		dialogue = load("res://modules/dialogue/demo_scenes.dialogue")
+		dialogue_type = "gym_battle"
 		param = get_tree().get_first_node_in_group("boss")
 	# Additionally you can add a dialogue for when the puzzle has been solved to
 	# indicate to the player there is nothing more for them here.
