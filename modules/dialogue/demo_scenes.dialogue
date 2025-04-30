@@ -104,10 +104,13 @@ Juniper: Nope. Not going the way the creepy shadow things went. Nope.
 Juniper: Nopenopenopenopenopenopenope.
 => END
 
+
+
 #puzzles
-~ safety
+~ new_hallway
+Juniper: This... I'm in the same building. I went outside and it's more hallway.
 Juniper: I want to go to the library. I need to go to the library. It's quiet and calm and there's books and it'll be alright if I go there.[wait=1]
-Juniper: Oh no. I have overdue books. I need to get my library books before I can look the librarian in the eye! She'd be so mad at me![wait = .5] But I don't remember having them at home last night, so they must be around here somewhere...
+Juniper: Oh no. I have overdue books. I need to get my library books before I can look the librarian in the eye! She'd be so mad at me![wait = .5] But I don't remember having them at home last night, so they must be around here somewhere... I bet I left them in some of the classrooms.
 => END
 
 #library
@@ -163,13 +166,21 @@ Juniper: Hm.
 do player.exit_cutscene()
 => END
 
-#classroom
+#foyer post battle
 
-~ taking_the_test
+~ end_convo
 Juniper: [i] I made it back! [/i]
-Olli: There you are! Class is about to start!
-Olli: You're gonna ace it.
-Juniper: ...yeah. I just want this over with. [i] Surely a history test will be easier than fighting shadows...Like the librarian said. In...hold...out...hold...[/i]
+do olli.do_walk(spike_list[0].global_position)
+Olli: There you are! Class is about to start! I was worried about you.
+do player.do_walk(spike_list[1].global_position, 1)
+do player.do_walk(spike_list[2].global_position, 1)
+do olli.do_walk(spike_list[4].global_position)
+Juniper: Oh yeah, the test!
+Olli: You've got this look in your eye. You're gonna ace it.
+Juniper: ...yeah. I just want this over with.[i] Surely a history test will be easier than fighting shadows...
+Juniper: In...hold...out...hold... It [i] is [/i] only a test. [wait = .5] Let's go.
+do! olli.do_walk(spike_list[5].global_position)
+do player.do_walk(spike_list[3].global_position, 1)
 => END
 
 #home
