@@ -1,6 +1,8 @@
 ~ boss_seen
 Juniper: Why is this one so big??
-Juniper: I'll have to try to tie it down.
+Juniper: Its okay..
+Juniper: I just have to remember to take a deep breath.
+do! start_boss_fight()
 => END
 
 ~ boss_defeated

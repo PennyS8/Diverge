@@ -69,3 +69,6 @@ func _on_tetherable_area_2d_mouse_entered() -> void:
 func _on_tetherable_area_2d_mouse_exited() -> void:
 	deselect()
 #endregion
+
+func start_boss_fight():
+	fsm.disabled = false

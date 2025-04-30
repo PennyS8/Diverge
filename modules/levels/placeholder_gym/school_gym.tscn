@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=4 uid="uid://m6shqoju2l67"]
+[gd_scene load_steps=10 format=4 uid="uid://m6shqoju2l67"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_yq4i7"]
 [ext_resource type="TileSet" uid="uid://bb4c8ub1jfs3l" path="res://modules/levels/placeholder_gym/gym_tileset.tres" id="2_5qqrf"]
 [ext_resource type="Script" uid="uid://kfndxak1lwjf" path="res://modules/levels/school_modular_levels/school_dungeon_dec18/camera_boundry_region.gd" id="2_44i17"]
+[ext_resource type="PackedScene" uid="uid://bwvk0fmen7rw3" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/entrance_dialogue.tscn" id="2_v64th"]
 [ext_resource type="PackedScene" uid="uid://mhjd65car3ej" path="res://modules/entities/enemies/shades/school_boss/school_boss.tscn" id="4_18pen"]
 [ext_resource type="Texture2D" uid="uid://cxktnnq44odxo" path="res://assets/environment/downtown_dungeon/gym_floor_paint.png" id="4_axoyq"]
 
@@ -36,6 +37,18 @@ position = Vector2(372, 396)
 [node name="Gym" type="Node2D" parent="."]
 y_sort_enabled = true
 material = ExtResource("1_yq4i7")
+
+[node name="EntranceDialogue" parent="Gym" instance=ExtResource("2_v64th")]
+position = Vector2(371, 410)
+
+[node name="CollisionShape2D" parent="Gym/EntranceDialogue" index="0"]
+position = Vector2(1.5, -71)
+
+[node name="CollisionShape2D2" parent="Gym/EntranceDialogue" index="1"]
+position = Vector2(-42, -29)
+
+[node name="CollisionShape2D3" parent="Gym/EntranceDialogue" index="2"]
+position = Vector2(43, -29)
 
 [node name="CameraBoundry" type="Area2D" parent="Gym"]
 collision_layer = 512
@@ -93,4 +106,6 @@ tile_set = ExtResource("2_5qqrf")
 y_sort_enabled = true
 
 [node name="SchoolBoss" parent="Gym/Entities" instance=ExtResource("4_18pen")]
-position = Vector2(375, 204)
+position = Vector2(375, 273)
+
+[editable path="Gym/EntranceDialogue"]

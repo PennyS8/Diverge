@@ -3,10 +3,10 @@
 [ext_resource type="Script" uid="uid://bmrc6kgne6fhf" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/entrance_dialogue.gd" id="1_jmsom"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0jtan"]
-size = Vector2(72, 12)
+size = Vector2(77, 12)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7r4fh"]
-size = Vector2(12, 48)
+size = Vector2(16, 92.4999)
 
 [node name="EntranceDialogue" type="Area2D"]
 z_index = 2
