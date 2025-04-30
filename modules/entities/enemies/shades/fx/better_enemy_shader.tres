@@ -5,5 +5,5 @@
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_eiey2")
-shader_parameter/Flash = true
+shader_parameter/Flash = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)

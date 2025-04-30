@@ -3,15 +3,16 @@
 #	transition to DarkRoom
 if check_keys():
 	do you_shall_pass()
-	Yippie you completed the playtest!\nTYSM
 else:
 	=> need_books
-#else:
-#	=> need_books
 => END
 
 ~ need_books
 Juniper: I need to get my library books before I can look the librarian in the eye! She'd be so mad at me!
+=> END
+
+~ need_key
+Juniper: I'll need a big, disproportiate, cartoony key. I passed the admin office earlier didn't I?
 => END
 
 ~ puzzle_complete

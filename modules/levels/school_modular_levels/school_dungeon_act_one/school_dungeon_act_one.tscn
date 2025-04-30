@@ -234,6 +234,7 @@ z_index = 1
 position = Vector2(0, -108)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "Foyer"
+door_name = "foyer_door"
 keys_needed = Array[ExtResource("7_ntqx1")]([ExtResource("8_bffxx")])
 
 [node name="EncounterEntrance" parent="Rooms/Foyer" node_paths=PackedStringArray("enemy_spawn_points") instance=ExtResource("7_1ddbp")]
@@ -379,7 +380,7 @@ anti_key = ExtResource("8_bffxx")
 [node name="HallRightSouth" parent="Rooms/HallRight/Exit" instance=ExtResource("4_p07fd")]
 position = Vector2(-36, 84)
 scale = Vector2(4, 4)
-next_level_path = "uid://cs2a4pq3yt5l6"
+next_level_path = "uid://t7qmgj6gq2gb"
 entrance_name = "ElectricalClosetNorth"
 transition_direction = 1
 
