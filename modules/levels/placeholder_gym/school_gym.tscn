@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bwvk0fmen7rw3" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/entrance_dialogue.tscn" id="2_v64th"]
 [ext_resource type="PackedScene" uid="uid://mhjd65car3ej" path="res://modules/entities/enemies/shades/school_boss/school_boss.tscn" id="4_18pen"]
 [ext_resource type="Texture2D" uid="uid://cxktnnq44odxo" path="res://assets/environment/downtown_dungeon/gym_floor_paint.png" id="4_axoyq"]
-[ext_resource type="Script" uid="uid://emj5i8f061rq" path="res://modules/levels/placeholder_gym/boss_handler.gd" id="6_qd47k"]
+[ext_resource type="Script" path="res://modules/levels/placeholder_gym/boss_handler.gd" id="6_qd47k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qd47k"]
 size = Vector2(97, 20)
