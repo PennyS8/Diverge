@@ -5,7 +5,9 @@ extends Area2D
 var player
 
 func _ready() -> void:
-	pass
+	player = LevelManager.player
+	if player.dialogue_tracker["library"] and $"../block exit" != null:
+		$"../block exit".queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
 	var timer = Timer.new()

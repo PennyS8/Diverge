@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=4 uid="uid://dibtck8dlixm1"]
+[gd_scene load_steps=124 format=4 uid="uid://dibtck8dlixm1"]
 
 [ext_resource type="Texture2D" uid="uid://ce10vjgkrj5nk" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png" id="1_453bp"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="2_at4ji"]
@@ -15,7 +15,7 @@
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_at4ji"]
 [ext_resource type="PackedScene" uid="uid://dywn8ybv2xl4i" path="res://modules/objects/puzzle_pieces/lever/lever.tscn" id="13_kgxs5"]
 [ext_resource type="PackedScene" uid="uid://bme0largcnr4h" path="res://modules/objects/level_transition_zone/transition_double_door.tscn" id="13_usixv"]
-[ext_resource type="PackedScene" path="res://modules/levels/school_modular_levels/Playtest/moving_wall.tscn" id="13_xknx3"]
+[ext_resource type="PackedScene" uid="uid://bus3juxuqyq0d" path="res://modules/levels/school_modular_levels/Playtest/moving_wall.tscn" id="13_xknx3"]
 [ext_resource type="Resource" uid="uid://fgga6obgfqb6" path="res://modules/objects/library_book_lab.tres" id="14_vrsc7"]
 [ext_resource type="FontFile" uid="uid://bgveetmypd20b" path="res://assets/hud/sf-pixelate/TrueType/SFPixelate-Bold.ttf" id="14_w3j1q"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="14_x3qlk"]
@@ -28,7 +28,8 @@
 [ext_resource type="Shader" uid="uid://145awv4gjeoq" path="res://assets/debug/pixel_perfect_styling/SmoothPixel.gdshader" id="25_usixv"]
 [ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="26_j0ml5"]
 [ext_resource type="PackedScene" uid="uid://bii7n4y5k0hsf" path="res://modules/entities/enemies/shades/complex_shade/weak_shade.tscn" id="28_j0vq7"]
-[ext_resource type="Script" uid="uid://hxdnggturjhp" path="res://modules/levels/school_modular_levels/Playtest/deep_breath_tutorial_zone.gd" id="29_j0vq7"]
+[ext_resource type="Script" path="res://modules/levels/school_modular_levels/Playtest/deep_breath_tutorial_zone.gd" id="29_j0vq7"]
+[ext_resource type="Script" uid="uid://cnafmmtqskci4" path="res://modules/levels/school_modular_levels/Playtest/library_barrier.gd" id="30_wly3n"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
@@ -9248,6 +9249,12 @@ region = Rect2(23, 240, 25, 48)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ioon7"]
 size = Vector2(84, 107.5)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vp17h"]
+size = Vector2(72, 48)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_txk0m"]
+size = Vector2(72, 24)
+
 [node name="PlaytestHall" type="Node2D"]
 y_sort_enabled = true
 material = ExtResource("13_at4ji")
@@ -9727,8 +9734,8 @@ z_index = 1
 position = Vector2(288, 0)
 script = ExtResource("25_4lksq")
 next_level_path = "uid://m6shqoju2l67"
-door_name = "gym_door"
 entrance_name = "0"
+door_name = "gym_door"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="URoom2/TransitionDoubleDoor"]
 position = Vector2(0, -12)
@@ -9829,11 +9836,29 @@ script = ExtResource("29_j0vq7")
 position = Vector2(18, -12)
 shape = SubResource("RectangleShape2D_ioon7")
 
+[node name="LibraryBarrier" type="Area2D" parent="URoom2"]
+position = Vector2(540, 168)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("30_wly3n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="URoom2/LibraryBarrier"]
+shape = SubResource("RectangleShape2D_vp17h")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="URoom2/LibraryBarrier"]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="URoom2/LibraryBarrier/StaticBody2D"]
+position = Vector2(0, 36)
+shape = SubResource("RectangleShape2D_txk0m")
+
 [connection signal="body_entered" from="StartRoom/CameraBoundry" to="StartRoom/MovingWall" method="_on_camera_boundry_body_entered"]
 [connection signal="body_entered" from="Hallway/Exits/HallwayWest" to="StartRoom/MovingWall" method="_on_hallway_west_body_entered"]
 [connection signal="body_entered" from="URoom2/TransitionDoubleDoor/Area2D" to="URoom2/TransitionDoubleDoor" method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="URoom2/TransitionDoubleDoor/Area2D" to="URoom2/TransitionDoubleDoor" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="URoom2/Area2D" to="URoom2/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="URoom2/LibraryBarrier" to="URoom2/LibraryBarrier" method="_on_body_entered"]
 
 [editable path="Hallway/Exits/PuzzleDoorA"]
 [editable path="Hallway/Exits/PuzzleDoorB"]
