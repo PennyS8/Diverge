@@ -27,9 +27,10 @@ func request_engagement(enemy : CharacterBody2D):
 		return true
 	return false
 
-func release_engagement(enemy : CharacterBody2D, timer : Timer = null):
-	if timer:
-		#timer.timeout.disconnect(release_engagement)
+func release_engagement(enemy : CharacterBody2D):
+	# search for timer object
+	if marked_for_disengage.has(enemy):
+		var timer = marked_for_disengage[enemy]
 		timer.queue_free()
 	else:
 		if marked_for_disengage.has(enemy):
@@ -49,7 +50,7 @@ func mark_for_disengage(enemy : CharacterBody2D):
 	
 	var timer := Timer.new()
 	timer.one_shot = true
-	timer.timeout.connect(release_engagement.bind(enemy, timer), CONNECT_ONE_SHOT)
+	timer.timeout.connect(release_engagement.bind(enemy), CONNECT_ONE_SHOT)
 	get_tree().current_scene.add_child(timer)
 	timer.start(randf_range(1.0, 3.0))
 	marked_for_disengage.set(enemy, timer)

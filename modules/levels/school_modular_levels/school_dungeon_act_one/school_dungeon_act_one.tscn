@@ -234,6 +234,7 @@ door_name = "foyer_door"
 keys_needed = Array[ExtResource("7_ntqx1")]([ExtResource("8_bffxx")])
 
 [node name="EncounterEntrance" parent="Rooms/Foyer" node_paths=PackedStringArray("enemy_spawn_points") instance=ExtResource("7_1ddbp")]
+visible = false
 position = Vector2(-40, 91)
 enemy_spawn_points = [NodePath("EnemySpawn"), NodePath("EnemySpawn2"), NodePath("EnemySpawn3")]
 
@@ -666,6 +667,7 @@ next_level_path = "uid://cs2a4pq3yt5l6"
 entrance_name = "ClassroomSouth"
 
 [node name="CameraBoundry" type="Area2D" parent="UnusedNodes/HallLeft"]
+visible = false
 collision_layer = 512
 collision_mask = 4
 
@@ -707,6 +709,7 @@ next_level_path = "uid://cs2a4pq3yt5l6"
 entrance_name = "HallLeftNorthWest"
 
 [node name="CameraBoundry" type="Area2D" parent="UnusedNodes/Classroom"]
+visible = false
 collision_layer = 512
 collision_mask = 4
 
@@ -761,6 +764,7 @@ next_level_path = "uid://cs2a4pq3yt5l6"
 entrance_name = "HallLeftNorthEast"
 
 [node name="CameraBoundry" type="Area2D" parent="UnusedNodes/Restroom"]
+visible = false
 collision_layer = 512
 collision_mask = 4
 
