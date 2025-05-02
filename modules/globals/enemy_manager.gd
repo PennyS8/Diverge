@@ -27,7 +27,10 @@ func request_engagement(enemy : CharacterBody2D):
 		return true
 	return false
 
-func release_engagement(enemy : CharacterBody2D):
+func release_engagement(enemy):
+	if !enemy:
+		return
+	
 	# search for timer object
 	if marked_for_disengage.has(enemy):
 		var timer = marked_for_disengage[enemy]
