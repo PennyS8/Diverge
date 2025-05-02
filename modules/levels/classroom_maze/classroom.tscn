@@ -129,9 +129,15 @@ position = Vector2(701, 241)
 position = Vector2(435, 426)
 rotation = -1.5708
 
+[node name="StaticBody2D" parent="NavigationRegion2D/MazeWalls/MazeWall9" index="1"]
+scale = Vector2(1.56, 1)
+
 [node name="MazeWall17" parent="NavigationRegion2D/MazeWalls" instance=ExtResource("2_ajujk")]
-position = Vector2(522, 420)
+position = Vector2(524, 425)
 rotation = 1.5708
+
+[node name="StaticBody2D" parent="NavigationRegion2D/MazeWalls/MazeWall17" index="1"]
+scale = Vector2(1.395, 1)
 
 [node name="MazeWall5" parent="NavigationRegion2D/MazeWalls" instance=ExtResource("2_ajujk")]
 position = Vector2(512, 283)
@@ -450,6 +456,8 @@ mouse_filter = 2
 [connection signal="body_entered" from="fuzz_dialogue" to="fuzz_dialogue" method="_on_body_entered"]
 [connection signal="body_exited" from="fuzz_dialogue" to="fuzz_dialogue" method="_on_body_exited"]
 
+[editable path="NavigationRegion2D/MazeWalls/MazeWall9"]
+[editable path="NavigationRegion2D/MazeWalls/MazeWall17"]
 [editable path="NavigationRegion2D/Desks/FrontRow/DeskChairIn"]
 [editable path="NavigationRegion2D/Desks/FrontRow/DeskChairIn/DeskChairOut"]
 [editable path="NavigationRegion2D/Desks/FrontRow/DeskChairIn2"]

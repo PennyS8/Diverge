@@ -1,4 +1,4 @@
-[gd_scene load_steps=125 format=4 uid="uid://dibtck8dlixm1"]
+[gd_scene load_steps=127 format=4 uid="uid://dibtck8dlixm1"]
 
 [ext_resource type="Texture2D" uid="uid://ce10vjgkrj5nk" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png" id="1_453bp"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="2_at4ji"]
@@ -28,6 +28,7 @@
 [ext_resource type="Script" uid="uid://jdbescwh43bj" path="res://modules/objects/level_transition_zone/transition_double_door.gd" id="25_4lksq"]
 [ext_resource type="Shader" uid="uid://145awv4gjeoq" path="res://assets/debug/pixel_perfect_styling/SmoothPixel.gdshader" id="25_usixv"]
 [ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="26_j0ml5"]
+[ext_resource type="Texture2D" uid="uid://jmvoe0bsxhlm" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/6_Music_and_sport_Black_Shadow_16x16.png" id="26_txk0m"]
 [ext_resource type="PackedScene" uid="uid://bii7n4y5k0hsf" path="res://modules/entities/enemies/shades/complex_shade/weak_shade.tscn" id="28_j0vq7"]
 [ext_resource type="Script" uid="uid://hxdnggturjhp" path="res://modules/levels/school_modular_levels/Playtest/deep_breath_tutorial_zone.gd" id="29_j0vq7"]
 [ext_resource type="Script" uid="uid://cnafmmtqskci4" path="res://modules/levels/school_modular_levels/Playtest/library_barrier.gd" id="30_wly3n"]
@@ -9203,6 +9204,9 @@ size = Vector2(23, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3j1q"]
 size = Vector2(780, 428)
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_burro"]
+load_path = "res://.godot/imported/6_Music_and_sport_Black_Shadow_16x16.png-5632c92fae0c65661975dfbb5bdccf79.ctex"
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b2upq"]
 size = Vector2(48, 24)
 
@@ -9669,7 +9673,7 @@ tile_set = ExtResource("10_kgxs5")
 [node name="Furniture" type="TileMapLayer" parent="URoom"]
 z_index = 1
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAGAP//AQABAAUAAAAGAAAAAQABAAYAAAASAP//AQABAAUAAAASAAAAAQABAAYAAAAHAP7/BQAFAAAAAAAHAP//BQAFAAEAAAATAP7/BQADAAAAAAATAP//BQADAAEAAAARAP7/BQADAAIAAAARAP//BQADAAMAAAAFAP7/BQADAAQAAAAUAP7/BQAEAAAAAAAUAP//BQAEAAEAAAAIAP7/DAAEAAYAAAAIAP//DAAEAAcAAAAIAAAADAAEAAgAAAAJAP7/DAAFAAYAAAAJAP//DAAFAAcAAAAJAAAADAAFAAgAAAAPAP7/DAABAAYAAAAPAP//DAABAAcAAAAPAAAADAABAAgAAAAQAP7/DAACAAYAAAAQAP//DAACAAcAAAAQAAAADAACAAgAAAAOAP//AQAAAAMAAAAOAAAAAQAAAAQAAAA=")
+tile_map_data = PackedByteArray("AAAGAP//AQABAAUAAAAGAAAAAQABAAYAAAASAP//AQABAAUAAAASAAAAAQABAAYAAAATAP7/BQADAAAAAAATAP//BQADAAEAAAARAP7/BQADAAIAAAARAP//BQADAAMAAAAFAP7/BQADAAQAAAAUAP7/BQAEAAAAAAAUAP//BQAEAAEAAAAIAAAADAAEAAgAAAAJAP7/DAAFAAYAAAAJAP//DAAFAAcAAAAJAAAADAAFAAgAAAAPAP7/DAABAAYAAAAPAP//DAABAAcAAAAPAAAADAABAAgAAAAQAP7/DAACAAYAAAAQAP//DAACAAcAAAAQAAAADAACAAgAAAAOAP//AQAAAAMAAAAOAAAAAQAAAAQAAAAKAP7/AgAAAAYAAAAKAP//AgAAAAcAAAALAP7/AgABAAYAAAALAP//AgABAAcAAAAMAP7/AgAAAAYAAAAMAP//AgAAAAcAAAANAP7/AgABAAYAAAANAP//AgABAAcAAAAVAP7/AgAAAAYAAAAVAP//AgAAAAcAAAAWAP7/AgABAAYAAAAWAP//AgABAAcAAAADAP7/AgAAAAYAAAADAP//AgAAAAcAAAAEAP7/AgABAAYAAAAEAP//AgABAAcAAAABAP7/AgAAAAYAAAABAP//AgAAAAcAAAACAP7/AgABAAYAAAACAP//AgABAAcAAAAIAP7/DAAEAAYAAAAIAP//DAAEAAcAAAAHAP7/BQAFAAAAAAAHAP//BQAFAAEAAAA=")
 tile_set = ExtResource("10_kgxs5")
 
 [node name="HiddenDoor" type="TileMapLayer" parent="URoom"]
@@ -9688,6 +9692,144 @@ scale = Vector2(4, 4)
 next_level_path = "uid://8va60gkf6ldr"
 entrance_name = "LibraryEntrance"
 transition_direction = 1
+
+[node name="Trophies" type="Node2D" parent="URoom"]
+position = Vector2(0, 48)
+
+[node name="Sprite2D" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(255, -77)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(130, 407, 11, 16)
+
+[node name="Sprite2D4" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(349, -77)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(34, 329, 27, 16)
+
+[node name="Sprite2D5" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(133, -66)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(129, 439, 30, 20)
+
+[node name="Sprite2D6" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(39, -77)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(114, 407, 11, 16)
+
+[node name="Sprite2D7" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(100, -78)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(114, 407, 11, 16)
+
+[node name="Sprite2D8" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(43, -65)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(114, 407, 11, 16)
+
+[node name="Sprite2D11" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(303, -78)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(114, 407, 11, 16)
+
+[node name="Sprite2D9" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(56, -77)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(114, 407, 11, 16)
+
+[node name="Sprite2D2" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(87, -77)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(130, 407, 11, 16)
+
+[node name="Sprite2D3" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(103, -66)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(130, 407, 11, 16)
+
+[node name="Sprite2D10" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(259, -65)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(130, 407, 11, 16)
+
+[node name="Sprite2D12" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(519, -69)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(180, 332, 9, 24)
+
+[node name="Sprite2D13" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(563, -75)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(181, 405, 23, 14)
+
+[node name="Sprite2D14" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(156, -82)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(181, 405, 23, 14)
+
+[node name="Sprite2D15" type="Sprite2D" parent="URoom/Trophies"]
+z_index = 1
+material = ExtResource("13_at4ji")
+position = Vector2(444, -83)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, 0)
+region_enabled = true
+region_rect = Rect2(177, 375, 14, 20)
 
 [node name="URoom2" type="Node2D" parent="."]
 y_sort_enabled = true
