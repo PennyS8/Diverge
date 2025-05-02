@@ -633,7 +633,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath(".")
-metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="Reaction" type="Node" parent="ShadeFSM/Alive"]
 script = ExtResource("3_w7155")
@@ -656,7 +655,6 @@ timed = true
 waiting_time = 0.25
 on_timer_finished = 3
 next_state = NodePath("../../Movement/Idle")
-metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="Spawn" type="Node" parent="ShadeFSM"]
 unique_name_in_owner = true
@@ -670,7 +668,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("../Alive/Movement/Idle")
-metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 
 [node name="Dead" type="Node" parent="ShadeFSM"]
 script = ExtResource("6_den2k")
@@ -679,7 +676,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath(".")
-metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 visible = false

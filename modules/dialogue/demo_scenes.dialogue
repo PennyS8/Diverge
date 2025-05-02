@@ -168,10 +168,12 @@ do player.exit_cutscene()
 
 #boss battle dialogue
 ~ gym_battle
+do player.enter_cutscene(global_position)
 Juniper: Um--I don't think my crochet hook is gonna cut it this time. All I want is to get back to class!
 Juniper: But what if I'm trapped here forever? And even if I do get out of here I have to take the test and what if I fail it and- and- and-
 Juniper: I need to take a [b]deep breath.[/b][wait=1] I've got this.
 do! start_boss_fight()
+do player.exit_cutscene()
 => END
 
 #classroom
