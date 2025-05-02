@@ -3348,7 +3348,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("../Death")
-metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="DeathUp" type="Node" parent="PlayerFSM/Movement/Death"]
 script = ExtResource("12_e6mu1")
@@ -3361,7 +3360,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
-metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 
 [node name="DeathRight" type="Node" parent="PlayerFSM/Movement/Death"]
 script = ExtResource("12_e6mu1")
@@ -3374,7 +3372,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
-metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 
 [node name="DeathDown" type="Node" parent="PlayerFSM/Movement/Death"]
 script = ExtResource("12_e6mu1")
@@ -3387,7 +3384,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
-metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 
 [node name="DeathLeft" type="Node" parent="PlayerFSM/Movement/Death"]
 script = ExtResource("12_e6mu1")
@@ -3400,7 +3396,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
-metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 
 [node name="MovementDisabled" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("1_q2vpm")

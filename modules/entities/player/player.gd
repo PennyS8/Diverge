@@ -44,6 +44,8 @@ var cutscene_marker_packed = preload("res://modules/objects/debug/cutscene_walk_
 #makes sure certain dialogue popups only appear once
 var dialogue_tracker = {"closet": false, "library": false, "new_hallway": false, "boss_battled" : false, "end_scene": false}
 
+signal attack_swung
+
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(dialogue_done)
 	
