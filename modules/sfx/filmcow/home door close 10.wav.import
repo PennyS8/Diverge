@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://b7dajir6ssh48"
+path="res://.godot/imported/home door close 10.wav-2ea7551e34afe4eeec8c614ed8eec6fb.sample"
+
+[deps]
+
+source_file="res://modules/sfx/filmcow/home door close 10.wav"
+dest_files=["res://.godot/imported/home door close 10.wav-2ea7551e34afe4eeec8c614ed8eec6fb.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

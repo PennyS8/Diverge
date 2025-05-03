@@ -17,6 +17,8 @@ var inv : Inventory
 
 var encounter_active
 
+@onready var sfx_player = $AudioStreamPlayer2D
+
 func _ready():
 	if GameManager.inventory_node:
 		inv = GameManager.inventory_node.inventory
@@ -36,6 +38,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 				var dialogue = load("res://modules/levels/school_modular_levels/Playtest/playtest_dialogue.dialogue")
 				DialogueManager.show_dialogue_balloon(dialogue, "puzzle_complete")
 			else:
+				$AudioStreamPlayer2D.play()
 				LevelManager.change_level(next_level_path, entrance_name)
 		elif locked:
 			player.dir = Vector2.ZERO

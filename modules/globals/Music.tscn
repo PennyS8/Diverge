@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://c2afe8xygq60v"]
+
+[ext_resource type="Script" uid="uid://c3dfydsg2mo6o" path="res://modules/globals/music_manager.gd" id="1_yu0oo"]
+[ext_resource type="AudioStream" uid="uid://cgukf6tewjykn" path="res://modules/sfx/music/loop and chimes ver.mp3" id="2_sc8k3"]
+[ext_resource type="AudioStream" uid="uid://dtc375berwy55" path="res://modules/sfx/music/texture.wav" id="3_gbhl6"]
+[ext_resource type="AudioStream" uid="uid://qx3fehf72rtq" path="res://modules/sfx/music/Composure_v1.wav" id="4_auomu"]
+
+[node name="MusicManager" type="Node"]
+script = ExtResource("1_yu0oo")
+music_tracks = Dictionary[String, AudioStream]({
+"chill": ExtResource("2_sc8k3"),
+"confidence": ExtResource("4_auomu"),
+"wtf": ExtResource("3_gbhl6")
+})
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+autoplay = true
+bus = &"Music"
