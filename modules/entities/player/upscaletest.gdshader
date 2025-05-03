@@ -2,7 +2,7 @@ shader_type canvas_item;
 
 
 void fragment()
-{   
+{
 	vec2 frCoor = UV * vec2(textureSize(TEXTURE, 0)) * 2.0;
 	ivec2 texPos = ivec2(frCoor.xy / 2.);
 	int id = int(floor(mod(frCoor.x, 2.)) + floor(mod(frCoor.y, 2.)) * 2.); // 0-1 / 2-3
@@ -25,10 +25,10 @@ void fragment()
 		} else {
 			result = (H == F) ? F : C;
 		}
-	} 
+	}
 	else {
 		result = C;
 	}
-	
+
 	COLOR = result;
 }

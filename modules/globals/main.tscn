@@ -1,15 +1,22 @@
-[gd_scene load_steps=18 format=3 uid="uid://b8ywe7vivb1en"]
+[gd_scene load_steps=25 format=3 uid="uid://b8ywe7vivb1en"]
 
 [ext_resource type="Script" uid="uid://hrfgvn40midl" path="res://modules/globals/main.gd" id="1_2uu7l"]
+[ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="2_piw7p"]
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="2_wwsun"]
+[ext_resource type="Resource" uid="uid://c2agev3nx2dlo" path="res://modules/ui/hud/wyvern_inv/weaverhook.tres" id="3_erlxn"]
 [ext_resource type="PackedScene" uid="uid://gna64jq1jkf1" path="res://modules/ui/debug/num_keys/num_keys.tscn" id="3_wjh11"]
 [ext_resource type="PackedScene" uid="uid://dlgu6ii31q1ht" path="res://modules/ui/hud/player_hud/player_hud.tscn" id="4_1al8n"]
 [ext_resource type="Script" uid="uid://cyh0d64pfygbl" path="res://addons/maaacks_menus_template/base/scripts/pause_menu_controller.gd" id="4_61b6o"]
 [ext_resource type="PackedScene" uid="uid://ddv7xdgy2vjt" path="res://modules/ui/coping_overlays/breath_mode.tscn" id="4_c8snn"]
+[ext_resource type="Resource" uid="uid://c45f072eocqyr" path="res://modules/ui/hud/wyvern_inv/deep_breath.tres" id="4_erlxn"]
+[ext_resource type="Resource" uid="uid://cbciukbgyqajv" path="res://modules/ui/hud/wyvern_inv/yarnbag.tres" id="4_ypu4l"]
 [ext_resource type="PackedScene" uid="uid://c33qufye8x8ng" path="res://modules/ui/maacks_menus/scenes/overlaid_menus/pause_menu.tscn" id="5_gvmbe"]
 [ext_resource type="Script" uid="uid://t66eoi8gmq5o" path="res://modules/globals/saving/save_load.gd" id="5_jmjhv"]
+[ext_resource type="Resource" uid="uid://cw25ojt8dsl75" path="res://modules/objects/library_book_classroom.tres" id="5_km564"]
 [ext_resource type="PackedScene" uid="uid://c57dyngu35ntf" path="res://modules/ui/coping_overlays/attack_tutorial.tscn" id="5_tdd3g"]
 [ext_resource type="PackedScene" uid="uid://c3op3a42rmxl4" path="res://modules/ui/coping_overlays/deep_breath_tutorial.tscn" id="6_2825a"]
+[ext_resource type="Resource" uid="uid://v46rcraqdjre" path="res://modules/objects/library_book_cafeteria.tres" id="6_wacsg"]
+[ext_resource type="Resource" uid="uid://fgga6obgfqb6" path="res://modules/objects/library_book_lab.tres" id="7_gnxnq"]
 [ext_resource type="Script" uid="uid://c8qxb50jimxvj" path="res://modules/globals/inventory_panel.gd" id="8_02pmu"]
 [ext_resource type="PackedScene" uid="uid://ms4bp1b33wt2" path="res://modules/ui/hud/wyvern_inv/notebook_panel.tscn" id="8_dbv5s"]
 [ext_resource type="Shader" uid="uid://c7ga40mwai0hs" path="res://modules/globals/shader_effects/blur.gdshader" id="9_nlpsi"]
@@ -34,6 +41,14 @@ z_as_relative = false
 y_sort_enabled = true
 script = ExtResource("1_2uu7l")
 inventory_path = NodePath("GUI2/InventoryPanel/EquipmentPanel/Equip")
+command_items = Dictionary[String, ExtResource("2_piw7p")]({
+"ao3oldmanyaoi": ExtResource("5_km564"),
+"loyalty3": ExtResource("4_ypu4l"),
+"proteinbarisbreakfast": ExtResource("6_wacsg"),
+"respiration3": ExtResource("4_erlxn"),
+"sharpnessV": ExtResource("3_erlxn"),
+"threeandahalfnames": ExtResource("7_gnxnq")
+})
 
 [node name="Player" parent="." instance=ExtResource("2_wwsun")]
 
