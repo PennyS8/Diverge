@@ -11,6 +11,7 @@ do! get_tree().get_first_node_in_group("enemy").get_node("ShadeFSM").change_stat
 ~ deep_breath_tutorial
 do! LevelManager.player.enter_cutscene()
 Juniper: Ah crap.
+do! Music.play_track(Music.Vibe.WTF)
 Shade: You're late to the test!
 Shade: What if you fail it?
 Shadee: There's no point in even going now.

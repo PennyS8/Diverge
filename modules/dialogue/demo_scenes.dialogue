@@ -97,9 +97,9 @@ Juniper: The only place I can think of a big, disproportiate, cartoony key being
 => END
 
 ~ hall1_encounter
-Juniper: [i] I... guess I have to fight these guys. They're blocking the admin room with this fire alarm crap.[/i]
-Juniper: [i] Just like a video game, right? Heh. [/i]
-Juniper: [i] Here goes nothing, I guess. [/i]
+Juniper: [i]I... guess I have to fight these guys. They're blocking the admin room with this fire alarm crap.[/i]
+Juniper: [i]...Just like a video game, right?[/i]
+Juniper: [i]Here goes nothing, I guess. [/i]
 => END
 
 ~ not_goin_dat_way
@@ -119,6 +119,7 @@ Juniper: Oh no. I have overdue books. I need to get my library books before I ca
 #library
 ~ library_entry
 do player.enter_cutscene(player.global_position)
+do Music.play_track(Music.Vibe.CHILL)
 Juniper: It's quiet.
 #goes to favorite corner
 Juniper: And comfy.

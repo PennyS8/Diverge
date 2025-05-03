@@ -43,6 +43,7 @@ func cope():
 	await LevelManager.deep_breath_overlay(true)
 	
 	exit_deep_breath_tutorial()
+	Music.play_track(Music.Vibe.CONFIDENT)
 
 func exit_deep_breath_tutorial():
 	tutorial_in_progress = false

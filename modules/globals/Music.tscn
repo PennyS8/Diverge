@@ -6,6 +6,7 @@
 [ext_resource type="AudioStream" uid="uid://qx3fehf72rtq" path="res://modules/sfx/music/Composure_v1.wav" id="4_auomu"]
 
 [node name="MusicManager" type="Node"]
+process_mode = 3
 script = ExtResource("1_yu0oo")
 music_tracks = Dictionary[String, AudioStream]({
 "chill": ExtResource("2_sc8k3"),
