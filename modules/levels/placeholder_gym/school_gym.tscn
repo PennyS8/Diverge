@@ -134,7 +134,7 @@ y_sort_enabled = true
 script = ExtResource("6_qd47k")
 
 [node name="SchoolBoss" parent="Gym/BossHandler" instance=ExtResource("4_18pen")]
-position = Vector2(375, 196)
+position = Vector2(375, 196.5)
 
 [node name="Wavers" type="Node2D" parent="Gym"]
 y_sort_enabled = true

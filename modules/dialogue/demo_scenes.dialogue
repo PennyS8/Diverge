@@ -164,9 +164,17 @@ Juni: In for four, hold for four, out for four, then hold for four. Again and ag
 Juniper: A [i][b]deep breath[/b][/i].
 do add_item()
 do wait(1)
+You recalled [color=green][wave amp=25 freq=5]Deep Breath![/wave][/color]
 Juniper: So why are you doing quiet time right now?
 Juni: Because quiet time helps me slow down. And sometimes, things feel different after I do quiet time. Even if they didn't really change.
 Juniper: Hm.
+Juni: You'll remember how to do quiet time, right? I promised Mama I'd never forget it!
+Juniper: I'll try my best.
+do player.do_walk(spike_list[5].global_position)
+do wait(0.5)
+do player.do_walk(spike_list[6].global_position)
+Juniper: Oh, Juni?
+Juniper: I'm sorry I haven't been kinder to you.
 do player.exit_cutscene()
 => END
 

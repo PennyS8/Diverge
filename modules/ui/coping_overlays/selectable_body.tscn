@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cjtvynn63jb2r"]
+[gd_scene load_steps=9 format=3 uid="uid://cjtvynn63jb2r"]
 
 [ext_resource type="Script" uid="uid://c02mguuo4jocx" path="res://modules/ui/coping_overlays/selectable_body.gd" id="1_kf1ud"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="2_7v3qk"]
+[ext_resource type="Script" uid="uid://b6m23nq7jnwit" path="res://modules/ui/coping_overlays/selection_indicator.gd" id="3_5c82q"]
 [ext_resource type="Shader" uid="uid://d0p05imkhnhst" path="res://modules/objects/stress_causer/stress_effect.gdshader" id="3_7v3qk"]
 [ext_resource type="PackedScene" uid="uid://dtl2xvpka5wmn" path="res://modules/ui/input_button_overlays/pointer.tscn" id="4_6o6f5"]
 
@@ -46,6 +47,7 @@ texture_mode = 1
 joint_mode = 2
 begin_cap_mode = 2
 end_cap_mode = 2
+script = ExtResource("3_5c82q")
 
 [node name="MouseDetector" type="Control" parent="."]
 layout_mode = 3
@@ -73,4 +75,5 @@ visible = false
 position = Vector2(0, -23)
 rotation = 3.14159
 
+[connection signal="visibility_changed" from="Line2D" to="Line2D" method="_on_visibility_changed"]
 [connection signal="mouse_entered" from="MouseDetector" to="." method="_on_control_mouse_entered"]
