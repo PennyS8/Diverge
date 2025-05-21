@@ -397,7 +397,7 @@ position = Vector2(-576, -428)
 [node name="ClassroomSouth" parent="Exit" instance=ExtResource("8_lw440")]
 position = Vector2(756, 612)
 scale = Vector2(4, 4)
-next_level_path = "uid://dibtck8dlixm1"
+next_level_path = "uid://bqotfp8yphsb"
 entrance_name = "PuzzleDoorC"
 transition_direction = 1
 

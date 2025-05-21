@@ -228,7 +228,7 @@ unlocked_sprite = SubResource("CompressedTexture2D_skfq5")
 [node name="TransitionDoubleDoor" parent="Rooms/Foyer/Entities" instance=ExtResource("6_h3dec")]
 z_index = 1
 position = Vector2(0, -108)
-next_level_path = "uid://dibtck8dlixm1"
+next_level_path = "uid://bqotfp8yphsb"
 entrance_name = "Foyer"
 door_name = "foyer_door"
 keys_needed = Array[ExtResource("7_ntqx1")]([ExtResource("8_bffxx")])

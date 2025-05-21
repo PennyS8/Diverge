@@ -789,7 +789,7 @@ position = Vector2(-564, 876)
 [node name="TransitionZone" parent="Rooms/Library" instance=ExtResource("8_df0qr")]
 position = Vector2(-564, 828)
 scale = Vector2(4, 4)
-next_level_path = "uid://dibtck8dlixm1"
+next_level_path = "uid://bqotfp8yphsb"
 entrance_name = "LibraryExit"
 
 [node name="CameraBoundry" type="Area2D" parent="Rooms/Library"]

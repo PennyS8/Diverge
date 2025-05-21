@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=4 uid="uid://dibtck8dlixm1"]
+[gd_scene load_steps=129 format=4 uid="uid://bqotfp8yphsb"]
 
 [ext_resource type="Texture2D" uid="uid://ce10vjgkrj5nk" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png" id="1_453bp"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="2_at4ji"]
@@ -28,7 +28,9 @@
 [ext_resource type="Script" uid="uid://jdbescwh43bj" path="res://modules/objects/level_transition_zone/transition_double_door.gd" id="25_4lksq"]
 [ext_resource type="Shader" uid="uid://145awv4gjeoq" path="res://assets/debug/pixel_perfect_styling/SmoothPixel.gdshader" id="25_usixv"]
 [ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="26_j0ml5"]
+[ext_resource type="PackedScene" uid="uid://cmr82b3m7no0t" path="res://modules/levels/cafeteria/props/vending_machine_blue.tscn" id="26_l0gkm"]
 [ext_resource type="Texture2D" uid="uid://jmvoe0bsxhlm" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/6_Music_and_sport_Black_Shadow_16x16.png" id="26_txk0m"]
+[ext_resource type="PackedScene" uid="uid://d1xkjbo67pt4b" path="res://modules/levels/cafeteria/props/vending_machine_red.tscn" id="27_f0v23"]
 [ext_resource type="PackedScene" uid="uid://bii7n4y5k0hsf" path="res://modules/entities/enemies/shades/complex_shade/weak_shade.tscn" id="28_j0vq7"]
 [ext_resource type="Script" uid="uid://hxdnggturjhp" path="res://modules/levels/school_modular_levels/Playtest/deep_breath_tutorial_zone.gd" id="29_j0vq7"]
 [ext_resource type="Script" uid="uid://cnafmmtqskci4" path="res://modules/levels/school_modular_levels/Playtest/library_barrier.gd" id="30_wly3n"]
@@ -9346,7 +9348,7 @@ position = Vector2(204, 42)
 [node name="StartRoomEast" parent="StartRoom/Exits" instance=ExtResource("11_xknx3")]
 position = Vector2(240, 42)
 scale = Vector2(8, 14)
-next_level_path = "uid://dibtck8dlixm1"
+next_level_path = "uid://bqotfp8yphsb"
 entrance_name = "HallwayWest"
 
 [node name="MovingWall" parent="StartRoom" instance=ExtResource("13_xknx3")]
@@ -9535,7 +9537,7 @@ texture = ExtResource("16_mee8l")
 z_index = 0
 position = Vector2(252, 40)
 scale = Vector2(8, 14)
-next_level_path = "uid://dibtck8dlixm1"
+next_level_path = "uid://bqotfp8yphsb"
 entrance_name = "EndRoomWest"
 transition_direction = 3
 
@@ -9543,7 +9545,7 @@ transition_direction = 3
 z_index = 0
 position = Vector2(-324, 42)
 scale = Vector2(8, 14)
-next_level_path = "uid://dibtck8dlixm1"
+next_level_path = "uid://bqotfp8yphsb"
 entrance_name = "StartRoomEast"
 
 [node name="NewAreaDialogueTrigger" type="Area2D" parent="Hallway"]
@@ -9612,7 +9614,7 @@ y_sort_enabled = true
 [node name="TransitionDoubleDoor" parent="EndRoom/Exits" instance=ExtResource("13_usixv")]
 z_index = 1
 position = Vector2(72, -48)
-next_level_path = "uid://dibtck8dlixm1"
+next_level_path = "uid://bqotfp8yphsb"
 entrance_name = "DarkRoomEntrance"
 door_name = "book_door"
 keys_needed = Array[ExtResource("15_l83xx")]([ExtResource("21_0knhu"), ExtResource("16_uy203"), ExtResource("14_vrsc7")])
@@ -9620,7 +9622,7 @@ keys_needed = Array[ExtResource("15_l83xx")]([ExtResource("21_0knhu"), ExtResour
 [node name="EndRoomWest" parent="EndRoom/Exits" instance=ExtResource("11_xknx3")]
 position = Vector2(-96, 40)
 scale = Vector2(8, 14)
-next_level_path = "uid://dibtck8dlixm1"
+next_level_path = "uid://bqotfp8yphsb"
 entrance_name = "HallwayEast"
 transition_direction = 2
 
@@ -9673,8 +9675,14 @@ tile_set = ExtResource("10_kgxs5")
 [node name="Furniture" type="TileMapLayer" parent="URoom"]
 z_index = 1
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAGAP//AQABAAUAAAAGAAAAAQABAAYAAAASAP//AQABAAUAAAASAAAAAQABAAYAAAATAP7/BQADAAAAAAATAP//BQADAAEAAAARAP7/BQADAAIAAAARAP//BQADAAMAAAAFAP7/BQADAAQAAAAUAP7/BQAEAAAAAAAUAP//BQAEAAEAAAAJAP7/DAAFAAYAAAAJAP//DAAFAAcAAAAJAAAADAAFAAgAAAAPAP7/DAABAAYAAAAPAP//DAABAAcAAAAPAAAADAABAAgAAAAQAP7/DAACAAYAAAAQAP//DAACAAcAAAAQAAAADAACAAgAAAAOAP//AQAAAAMAAAAOAAAAAQAAAAQAAAAKAP7/AgAAAAYAAAAKAP//AgAAAAcAAAALAP7/AgABAAYAAAALAP//AgABAAcAAAAMAP7/AgAAAAYAAAAMAP//AgAAAAcAAAANAP7/AgABAAYAAAANAP//AgABAAcAAAAVAP7/AgAAAAYAAAAVAP//AgAAAAcAAAAWAP7/AgABAAYAAAAWAP//AgABAAcAAAADAP7/AgAAAAYAAAADAP//AgAAAAcAAAAEAP7/AgABAAYAAAAEAP//AgABAAcAAAABAP7/AgAAAAYAAAABAP//AgAAAAcAAAACAP7/AgABAAYAAAACAP//AgABAAcAAAAIAP7/DAAEAAYAAAAIAP//DAAEAAcAAAAHAP7/BQAFAAAAAAAHAP//BQAFAAEAAAAIAAAADAAEAAgAAAA=")
+tile_map_data = PackedByteArray("AAAGAP//AQABAAUAAAAGAAAAAQABAAYAAAASAP//AQABAAUAAAASAAAAAQABAAYAAAATAP7/BQADAAAAAAATAP//BQADAAEAAAARAP7/BQADAAIAAAARAP//BQADAAMAAAAFAP7/BQADAAQAAAAUAP7/BQAEAAAAAAAUAP//BQAEAAEAAAAOAP//AQAAAAMAAAAOAAAAAQAAAAQAAAAKAP7/AgAAAAYAAAAKAP//AgAAAAcAAAALAP7/AgABAAYAAAALAP//AgABAAcAAAAMAP7/AgAAAAYAAAAMAP//AgAAAAcAAAANAP7/AgABAAYAAAANAP//AgABAAcAAAAVAP7/AgAAAAYAAAAVAP//AgAAAAcAAAAWAP7/AgABAAYAAAAWAP//AgABAAcAAAADAP7/AgAAAAYAAAADAP//AgAAAAcAAAAEAP7/AgABAAYAAAAEAP//AgABAAcAAAABAP7/AgAAAAYAAAABAP//AgAAAAcAAAACAP7/AgABAAYAAAACAP//AgABAAcAAAAHAP7/BQAFAAAAAAAHAP//BQAFAAEAAAA=")
 tile_set = ExtResource("10_kgxs5")
+
+[node name="BlueVendingMachine" parent="URoom/Furniture" instance=ExtResource("26_l0gkm")]
+position = Vector2(215, -15)
+
+[node name="RedVendingMachine" parent="URoom/Furniture" instance=ExtResource("27_f0v23")]
+position = Vector2(384, -15)
 
 [node name="Trophies" type="Node2D" parent="URoom"]
 z_index = 1
