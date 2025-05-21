@@ -9673,8 +9673,132 @@ tile_set = ExtResource("10_kgxs5")
 [node name="Furniture" type="TileMapLayer" parent="URoom"]
 z_index = 1
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAGAP//AQABAAUAAAAGAAAAAQABAAYAAAASAP//AQABAAUAAAASAAAAAQABAAYAAAATAP7/BQADAAAAAAATAP//BQADAAEAAAARAP7/BQADAAIAAAARAP//BQADAAMAAAAFAP7/BQADAAQAAAAUAP7/BQAEAAAAAAAUAP//BQAEAAEAAAAIAAAADAAEAAgAAAAJAP7/DAAFAAYAAAAJAP//DAAFAAcAAAAJAAAADAAFAAgAAAAPAP7/DAABAAYAAAAPAP//DAABAAcAAAAPAAAADAABAAgAAAAQAP7/DAACAAYAAAAQAP//DAACAAcAAAAQAAAADAACAAgAAAAOAP//AQAAAAMAAAAOAAAAAQAAAAQAAAAKAP7/AgAAAAYAAAAKAP//AgAAAAcAAAALAP7/AgABAAYAAAALAP//AgABAAcAAAAMAP7/AgAAAAYAAAAMAP//AgAAAAcAAAANAP7/AgABAAYAAAANAP//AgABAAcAAAAVAP7/AgAAAAYAAAAVAP//AgAAAAcAAAAWAP7/AgABAAYAAAAWAP//AgABAAcAAAADAP7/AgAAAAYAAAADAP//AgAAAAcAAAAEAP7/AgABAAYAAAAEAP//AgABAAcAAAABAP7/AgAAAAYAAAABAP//AgAAAAcAAAACAP7/AgABAAYAAAACAP//AgABAAcAAAAIAP7/DAAEAAYAAAAIAP//DAAEAAcAAAAHAP7/BQAFAAAAAAAHAP//BQAFAAEAAAA=")
+tile_map_data = PackedByteArray("AAAGAP//AQABAAUAAAAGAAAAAQABAAYAAAASAP//AQABAAUAAAASAAAAAQABAAYAAAATAP7/BQADAAAAAAATAP//BQADAAEAAAARAP7/BQADAAIAAAARAP//BQADAAMAAAAFAP7/BQADAAQAAAAUAP7/BQAEAAAAAAAUAP//BQAEAAEAAAAJAP7/DAAFAAYAAAAJAP//DAAFAAcAAAAJAAAADAAFAAgAAAAPAP7/DAABAAYAAAAPAP//DAABAAcAAAAPAAAADAABAAgAAAAQAP7/DAACAAYAAAAQAP//DAACAAcAAAAQAAAADAACAAgAAAAOAP//AQAAAAMAAAAOAAAAAQAAAAQAAAAKAP7/AgAAAAYAAAAKAP//AgAAAAcAAAALAP7/AgABAAYAAAALAP//AgABAAcAAAAMAP7/AgAAAAYAAAAMAP//AgAAAAcAAAANAP7/AgABAAYAAAANAP//AgABAAcAAAAVAP7/AgAAAAYAAAAVAP//AgAAAAcAAAAWAP7/AgABAAYAAAAWAP//AgABAAcAAAADAP7/AgAAAAYAAAADAP//AgAAAAcAAAAEAP7/AgABAAYAAAAEAP//AgABAAcAAAABAP7/AgAAAAYAAAABAP//AgAAAAcAAAACAP7/AgABAAYAAAACAP//AgABAAcAAAAIAP7/DAAEAAYAAAAIAP//DAAEAAcAAAAHAP7/BQAFAAAAAAAHAP//BQAFAAEAAAAIAAAADAAEAAgAAAA=")
 tile_set = ExtResource("10_kgxs5")
+
+[node name="Trophies" type="Node2D" parent="URoom"]
+z_index = 1
+position = Vector2(245, 0)
+
+[node name="Sprite2D" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(9, -18.305)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(130, 407, 11, 16)
+
+[node name="Sprite2D4" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(103, -22)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(34, 329, 27, 16)
+
+[node name="Sprite2D5" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(-113, -11)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(129, 439, 30, 20)
+
+[node name="Sprite2D6" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(-207, -22)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(114, 407, 11, 16)
+
+[node name="Sprite2D7" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(-137, -22.305)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(114, 407, 11, 16)
+
+[node name="Sprite2D8" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(-203, -10)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(114, 407, 11, 16)
+
+[node name="Sprite2D11" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(57, -23)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(114, 407, 11, 16)
+
+[node name="Sprite2D9" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(-190, -22)
+texture = SubResource("CompressedTexture2D_burro")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(114, 407, 11, 16)
+
+[node name="Sprite2D2" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(-159, -22)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(130, 407, 11, 16)
+
+[node name="Sprite2D3" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(-143, -11)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(130, 407, 11, 16)
+
+[node name="Sprite2D10" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(13, -10)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(130, 407, 11, 16)
+
+[node name="Sprite2D12" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(273, -14)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(180, 332, 9, 24)
+
+[node name="Sprite2D13" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(317, -20)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(181, 405, 23, 14)
+
+[node name="Sprite2D14" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(-90, -27)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(181, 405, 23, 14)
+
+[node name="Sprite2D15" type="Sprite2D" parent="URoom/Trophies"]
+material = ExtResource("13_at4ji")
+position = Vector2(198, -28)
+texture = ExtResource("26_txk0m")
+offset = Vector2(0.5, -8)
+region_enabled = true
+region_rect = Rect2(177, 375, 14, 20)
 
 [node name="HiddenDoor" type="TileMapLayer" parent="URoom"]
 visible = false
@@ -9692,144 +9816,6 @@ scale = Vector2(4, 4)
 next_level_path = "uid://8va60gkf6ldr"
 entrance_name = "LibraryEntrance"
 transition_direction = 1
-
-[node name="Trophies" type="Node2D" parent="URoom"]
-position = Vector2(0, 48)
-
-[node name="Sprite2D" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(255, -77)
-texture = ExtResource("26_txk0m")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(130, 407, 11, 16)
-
-[node name="Sprite2D4" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(349, -77)
-texture = SubResource("CompressedTexture2D_burro")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(34, 329, 27, 16)
-
-[node name="Sprite2D5" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(133, -66)
-texture = SubResource("CompressedTexture2D_burro")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(129, 439, 30, 20)
-
-[node name="Sprite2D6" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(39, -77)
-texture = SubResource("CompressedTexture2D_burro")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(114, 407, 11, 16)
-
-[node name="Sprite2D7" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(100, -78)
-texture = SubResource("CompressedTexture2D_burro")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(114, 407, 11, 16)
-
-[node name="Sprite2D8" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(43, -65)
-texture = SubResource("CompressedTexture2D_burro")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(114, 407, 11, 16)
-
-[node name="Sprite2D11" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(303, -78)
-texture = SubResource("CompressedTexture2D_burro")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(114, 407, 11, 16)
-
-[node name="Sprite2D9" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(56, -77)
-texture = SubResource("CompressedTexture2D_burro")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(114, 407, 11, 16)
-
-[node name="Sprite2D2" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(87, -77)
-texture = ExtResource("26_txk0m")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(130, 407, 11, 16)
-
-[node name="Sprite2D3" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(103, -66)
-texture = ExtResource("26_txk0m")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(130, 407, 11, 16)
-
-[node name="Sprite2D10" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(259, -65)
-texture = ExtResource("26_txk0m")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(130, 407, 11, 16)
-
-[node name="Sprite2D12" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(519, -69)
-texture = ExtResource("26_txk0m")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(180, 332, 9, 24)
-
-[node name="Sprite2D13" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(563, -75)
-texture = ExtResource("26_txk0m")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(181, 405, 23, 14)
-
-[node name="Sprite2D14" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(156, -82)
-texture = ExtResource("26_txk0m")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(181, 405, 23, 14)
-
-[node name="Sprite2D15" type="Sprite2D" parent="URoom/Trophies"]
-z_index = 1
-material = ExtResource("13_at4ji")
-position = Vector2(444, -83)
-texture = ExtResource("26_txk0m")
-offset = Vector2(0.5, 0)
-region_enabled = true
-region_rect = Rect2(177, 375, 14, 20)
 
 [node name="URoom2" type="Node2D" parent="."]
 y_sort_enabled = true
