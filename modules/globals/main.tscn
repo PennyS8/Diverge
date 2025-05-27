@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://b8ywe7vivb1en"]
+[gd_scene load_steps=27 format=3 uid="uid://b8ywe7vivb1en"]
 
 [ext_resource type="Script" uid="uid://hrfgvn40midl" path="res://modules/globals/main.gd" id="1_2uu7l"]
 [ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="2_piw7p"]
@@ -22,6 +22,10 @@
 [ext_resource type="Shader" uid="uid://c7ga40mwai0hs" path="res://modules/globals/shader_effects/blur.gdshader" id="9_nlpsi"]
 [ext_resource type="Shader" uid="uid://bqvwhxrfa0vww" path="res://modules/globals/shader_effects/fisheyeCRT.gdshader" id="11_2825a"]
 [ext_resource type="AudioStream" uid="uid://qx3fehf72rtq" path="res://modules/sfx/music/Composure_v1.wav" id="15_gvmbe"]
+[ext_resource type="Script" uid="uid://b3qvxt6yg5mmp" path="res://modules/ui/debug/meter_progress.gd" id="20_ypu4l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_km564"]
+font_size = 48
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yc34w"]
 shader = ExtResource("9_nlpsi")
@@ -92,6 +96,15 @@ process_mode = 3
 follow_viewport_enabled = true
 
 [node name="Health" parent="GUI2" groups=["gui"] instance=ExtResource("4_1al8n")]
+
+[node name="Label" type="Label" parent="GUI2/Health"]
+offset_left = 831.0
+offset_top = 17.0
+offset_right = 871.0
+offset_bottom = 80.6667
+text = "0"
+label_settings = SubResource("LabelSettings_km564")
+script = ExtResource("20_ypu4l")
 
 [node name="InventoryPanel" type="CanvasLayer" parent="GUI2"]
 visible = false

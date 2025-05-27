@@ -14,6 +14,40 @@ var marked_for_disengage : Dictionary[CharacterBody2D, Timer] = {}
 var hand_spawn_counter : Dictionary[CharacterBody2D, Vector2] = {}
 var boss_spawned_enemies : Array[CharacterBody2D] = []
 
+#region VARIABLES - Ultimate Meter
+## Private Variable - Represents the current state of the Ult Meter (# of enemies defeated)
+var _focus_meter := 0
+
+## When _meter is equal to MAX_METER, player can initialize deep breath
+const MIN_METER := 0
+const MAX_METER := 10
+
+## Variable that keeps track of status of deep breath upon focus_meter's set
+var can_deep_breath := false
+
+## Public interface for _focus_meter that auto-clamps its values and handles  
+var focus_meter: int:
+	get:
+		return _focus_meter
+	set(value):
+		_focus_meter = clamp(value, MIN_METER, MAX_METER)
+		
+		# Sets `can_deep_breath` based on meter's progress
+		set_deep_breath_status()
+
+
+func set_deep_breath_status():
+	if _focus_meter == MAX_METER:
+		can_deep_breath = true
+	else:
+		can_deep_breath = false
+
+func reset_focus_meter():
+	focus_meter = 0
+	can_deep_breath = false
+
+#endregion
+
 ## If an enemy wishes to engage the player, make sure they can
 func request_engagement(enemy : CharacterBody2D):
 	if current_engagers.has(enemy):
