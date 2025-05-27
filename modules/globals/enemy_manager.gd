@@ -20,7 +20,7 @@ var _focus_meter := 0
 
 ## When _meter is equal to MAX_METER, player can initialize deep breath
 const MIN_METER := 0
-const MAX_METER := 10
+const MAX_METER := 4
 
 ## Variable that keeps track of status of deep breath upon focus_meter's set
 var can_deep_breath := false
