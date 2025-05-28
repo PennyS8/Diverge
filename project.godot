@@ -10,11 +10,12 @@ config_version=5
 
 [application]
 
-config/name="Project Diverge"
+config/name="Juniper"
 config/version="0.1"
 run/main_scene="uid://dckk4bv55hf05"
 config/features=PackedStringArray("4.4", "Forward Plus")
 run/max_fps=120
+config/icon="uid://d3t1wppksnhjh"
 
 [autoload]
 

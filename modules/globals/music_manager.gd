@@ -17,6 +17,7 @@ func play_track(vibe : Vibe):
 			next_track = music_tracks["confidence"]
 	
 	music_player.stream = next_track
+	stop()
 	music_player.play()
 
 func stop():
