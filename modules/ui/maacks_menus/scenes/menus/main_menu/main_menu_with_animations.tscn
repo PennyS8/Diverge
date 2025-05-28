@@ -385,6 +385,7 @@ modulate = Color(1, 1, 1, 0)
 
 [node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0"]
 visible = false
+text = "Juniper"
 
 [node name="TextureRect" type="TextureRect" parent="MenuContainer/TitleMargin/TitleContainer" index="1"]
 material = ExtResource("3_c4gtu")
