@@ -16,7 +16,9 @@ func _ready():
 		
 		LimboConsole.register_command(add_all_items, "givall", "Gives a user all items in dictionary in main.tscn.")
 		LimboConsole.register_command(clear_inv, "clrall", "Clears user's inventory.")
-
+		
+		LimboConsole.register_command(kill_boss, "peacefulmode", "Kills the boss if present.")
+	
 func add_item(item_name : String) -> bool:
 	var inventory_node = GameManager.inventory_node
 	if !inventory_node:
@@ -58,6 +60,12 @@ func clear_inv() -> bool:
 	LimboConsole.info("deleted inventory file in user directory.")
 
 	return true
+
+func kill_boss():
+	var boss = get_tree().get_first_node_in_group("boss")
+	if boss:
+		var boss_hp : HealthComponent = boss.get_node("%Health")
+		boss_hp.Died.emit()
 	
 func _on_equipment_panel_check_hook() -> void:
 	if get_node_or_null("Player"):

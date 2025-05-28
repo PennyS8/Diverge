@@ -15,6 +15,8 @@ var hand_spawn_counter : Dictionary[CharacterBody2D, Vector2] = {}
 var boss_spawned_enemies : Array[CharacterBody2D] = []
 
 #region VARIABLES - Ultimate Meter
+var deep_breath_unlocked := false
+
 ## Private Variable - Represents the current state of the Ult Meter (# of enemies defeated)
 var _focus_meter := 0
 
@@ -25,17 +27,26 @@ const MAX_METER := 4
 ## Variable that keeps track of status of deep breath upon focus_meter's set
 var can_deep_breath := false
 
+## Signal that is emitted whenever focus_meter is updated
+signal focus_updated(new_value)
+
 ## Public interface for _focus_meter that auto-clamps its values and handles  
 var focus_meter: int:
 	get:
 		return _focus_meter
 	set(value):
+		if !deep_breath_unlocked:
+			return
+		
 		_focus_meter = clamp(value, MIN_METER, MAX_METER)
+		
+		# Send this so UI can update
+		focus_updated.emit(value)
 		
 		# Sets `can_deep_breath` based on meter's progress
 		set_deep_breath_status()
 
-
+## Sets `can_deep_breath` based on focus meter's progress
 func set_deep_breath_status():
 	if _focus_meter == MAX_METER:
 		can_deep_breath = true

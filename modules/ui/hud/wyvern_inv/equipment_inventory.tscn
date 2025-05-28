@@ -1,14 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://gpeishkjbb60"]
+[gd_scene load_steps=10 format=3 uid="uid://gpeishkjbb60"]
 
 [ext_resource type="Script" uid="uid://bvm3c5gk8ux70" path="res://addons/wyvernbox/inventory_view.gd" id="1_igakj"]
 [ext_resource type="Script" uid="uid://fp2iki0mkowk" path="res://addons/wyvernbox/inventories/restricted_inventory.gd" id="2_u5gh5"]
-[ext_resource type="Script" uid="uid://dkgq7a3p81sh2" path="res://addons/wyvernbox/crafting/item_like.gd" id="3_1i8ug"]
 [ext_resource type="PackedScene" uid="uid://co5ok1mm2s7vu" path="res://addons/wyvernbox_prefabs/item_stack_view.tscn" id="3_vtxtt"]
 [ext_resource type="StyleBox" uid="uid://cqx3opxr50d2o" path="res://addons/wyvernbox_prefabs/graphics/selected_cell.tres" id="4_djypq"]
-[ext_resource type="Resource" uid="uid://cbciukbgyqajv" path="res://modules/ui/hud/wyvern_inv/yarnbag.tres" id="5_57iw6"]
 [ext_resource type="PackedScene" uid="uid://b7jlucsddt6dg" path="res://addons/wyvernbox_prefabs/inventory_cell.tscn" id="5_ele7e"]
-[ext_resource type="Resource" uid="uid://c2agev3nx2dlo" path="res://modules/ui/hud/wyvern_inv/weaverhook.tres" id="5_vpxuf"]
-[ext_resource type="Script" uid="uid://d1a114hwwhdiu" path="res://addons/wyvernbox/item_instantiator.gd" id="6_ojqjg"]
 [ext_resource type="Texture2D" uid="uid://bibwfg1e2rajp" path="res://assets/debug/Juni.JPG" id="6_x6ee3"]
 [ext_resource type="Texture2D" uid="uid://bdkrtjyq7nxcc" path="res://assets/debug/TESTPENCILBOX.png" id="10_u08uh"]
 
@@ -18,19 +14,6 @@ script = ExtResource("2_u5gh5")
 allow_rotation = false
 restricted_to_types = Array[int]([131072, 65536, 262144, 256, 256, 256, 256, 256, 0, 0, 0, 0, 0])
 width = 13
-
-[sub_resource type="Resource" id="Resource_c2qd2"]
-script = ExtResource("6_ojqjg")
-items_to_add = Array[ExtResource("3_1i8ug")]([ExtResource("5_vpxuf"), ExtResource("5_57iw6")])
-item_repeat_ranges = Array[Vector2]([Vector2(1, 1), Vector2(1, 1)])
-item_chances = Array[float]([200.0, 100.0])
-repeat_post_chance = true
-randomize_locations = false
-delay_between_items = 0.0
-spread_distance = 32.0
-spread_cone_degrees = 360.0
-spread_angle_degrees = 0.0
-metadata/_custom_type_script = "uid://d1a114hwwhdiu"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fedji"]
 atlas = ExtResource("6_x6ee3")
@@ -49,7 +32,6 @@ offset_bottom = -3.0
 grow_horizontal = 2
 script = ExtResource("1_igakj")
 inventory = SubResource("Resource_vpxuf")
-contents = SubResource("Resource_c2qd2")
 item_scene = ExtResource("3_vtxtt")
 interaction_mode = 0
 cell_size = Vector2(48, 48)

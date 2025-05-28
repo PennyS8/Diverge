@@ -16,9 +16,13 @@ Shateau: You're late to the test!
 Shadet: What if you fail it?
 Shame: There's no point in even going now.
 Juniper: [i]Alright, just like you learned it.[/i]
+set EnemyManager.focus_meter = 1
 Juniper: [i]Four in...[/i]
+set EnemyManager.focus_meter = 2
 Juniper: [i]Hold...[/i]
+set EnemyManager.focus_meter = 3
 Juniper: [i]Four out...[/i]
+set EnemyManager.focus_meter = 4
 Juniper: [i]Hold...[/i]
 Juniper: ...And, here we go.
 do! LevelManager.player.exit_cutscene()

@@ -8,11 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://c6l4seb1uw45e" path="res://modules/objects/puzzle_pieces/key_slot/small_key_slot.tscn" id="3_vuq42"]
 [ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.tscn" id="5_3nmoc"]
 [ext_resource type="PackedScene" uid="uid://r6dufu5v4ydi" path="res://modules/objects/puzzle_pieces/sideways_gate/sideways_gate.tscn" id="6_e2c5h"]
-[ext_resource type="Script" uid="uid://c1kvmxns7l22x" path="res://modules/levels/debug/trap_trigger.gd" id="7_7fox4"]
+[ext_resource type="Script" uid="uid://cpbjj06xk52np" path="res://modules/levels/debug/trap_trigger.gd" id="7_7fox4"]
 [ext_resource type="AudioStream" uid="uid://djspx6fvpwq44" path="res://assets/placeholder_enemy_trap.ogg" id="8_r3cbc"]
-[ext_resource type="Script" uid="uid://du5fgs351q5la" path="res://modules/levels/debug/completed_enemy_trap_trigger.gd" id="9_d1ure"]
+[ext_resource type="Script" uid="uid://c3b6qsxqhq710" path="res://modules/levels/debug/completed_enemy_trap_trigger.gd" id="9_d1ure"]
 [ext_resource type="PackedScene" uid="uid://c0xn1iqitvhmq" path="res://modules/objects/puzzle_pieces/key/key.tscn" id="11_hjnpr"]
 [ext_resource type="PackedScene" uid="uid://gna64jq1jkf1" path="res://modules/ui/debug/num_keys/num_keys.tscn" id="12_2u8hh"]
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1giiv"]
 size = Vector2(6, 32)

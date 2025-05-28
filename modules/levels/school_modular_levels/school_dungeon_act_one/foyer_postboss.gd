@@ -4,7 +4,8 @@ extends Node2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	await LevelManager.swap_done
-	DirAccess.remove_absolute("user://player_inventory")
+	var inv : Inventory = GameManager.inventory_node.inventory
+	inv.clear()
 	LevelManager.player.hook_locked = true
 
 
