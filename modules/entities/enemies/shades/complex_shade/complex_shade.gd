@@ -15,6 +15,12 @@ var default_position
 
 @onready var health_component = %Health
 @onready var hurtbox = %HurtBox
+@onready var tetherable_area = $TetherableArea2D
+
+## This edits our max health variable
+@export var max_health := 40
+
+@onready var heart_node = preload("res://modules/objects/debug/heal_area/heal_area.tscn")
 
 ## NATE - STEERING BEHAVIORS
 var ai_steering := AISteering.new()
@@ -26,7 +32,8 @@ signal spawned
 
 func _ready() -> void:
 	default_position = global_position
-
+	%Health.max_health = max_health
+	
 func _physics_process(_delta: float) -> void:
 	# Vision Cone rotates to direction walked
 	%AgroRegion.look_at(to_global(velocity))
@@ -58,7 +65,7 @@ func on_save_game(saved_data:Array[SavedData]):
 	my_data.scene_path = scene_file_path
 	# Gets path up to node for reinstantiation
 	my_data.parent_node_path = get_parent().get_path()
-	
+	my_data.max_health = %Health.max_health
 	# Gets path up to node for reinstantiation
 	my_data.parent_node_path = get_parent().get_path()
 	saved_data.append(my_data)
@@ -70,11 +77,13 @@ func on_before_load_game():
 func on_load_game(saved_data:SavedData):
 	global_position = saved_data.position
 	default_position = saved_data.position
+	%Health.set_deferred("max_health", saved_data.max_health)
 #endregion
 
 #region Damage Handling
 func _on_health_component_died() -> void:
 	drop_ramen()
+	drop_heart()
 	damaged_particles.restart()
 	fsm.change_state("Dead")
 	%AnimationPlayer.call_deferred("play", "die")
@@ -119,3 +128,19 @@ func drop_ramen():
 		ramen.get_node("Item").set_deferred("monitoring", true)
 		ramen.call_deferred("reparent", get_parent())
 		#starts shining shader
+
+func drop_heart():
+	if follow_object:
+		if follow_object.is_in_group("player"):
+			var player_max_health = follow_object.health_component.max_health
+			var player_health = follow_object.health_component.health
+			
+			if player_health < (player_max_health * 0.75):
+				print("Dropping heart")
+				var heart = heart_node.instantiate()
+				var node = get_node(get_parent().get_path())
+				node.call_deferred("add_child",heart)
+				heart.set_deferred("global_position", self.global_position)
+				
+	
+	

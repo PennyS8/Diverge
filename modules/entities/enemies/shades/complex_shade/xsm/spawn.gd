@@ -57,7 +57,10 @@ func _on_exit(_args) -> void:
 	# Checks if enemy was spawned by boss. If so, sets its collision back to player
 	if EnemyManager.boss_spawned_enemies.has(target):
 		var hurtbox = target.hurtbox
+		var tetherable_area = target.tetherable_area
+		
 		hurtbox.set_collision_mask_value(3, true)
+		tetherable_area.set_collision_layer_value(9, true)
 
 
 # when StateAutomaticTimer timeout()

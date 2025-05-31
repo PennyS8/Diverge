@@ -8,3 +8,8 @@ func _input(_event: InputEvent) -> void:
 		else:
 			show()
 			LevelManager.player.check_unlock_hook()
+	if _event.is_action_pressed("ui_cancel"):
+		if visible:
+			hide()
+			get_viewport().set_input_as_handled()
+			

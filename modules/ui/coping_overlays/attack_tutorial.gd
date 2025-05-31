@@ -31,3 +31,5 @@ func exit_attack_tutorial():
 	
 	self.hide()
 	get_tree().paused = false
+	LevelManager.player.fsm.change_state("AttackMelee")
+	

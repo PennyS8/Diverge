@@ -21,9 +21,16 @@ repeat = 1
 [node name="YarnController" type="Node2D"]
 script = ExtResource("1_f6jx5")
 
+[node name="WallDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetector"]
+shape = SubResource("CircleShape2D_febas")
+
 [node name="Projectile" type="Area2D" parent="."]
 collision_layer = 0
-collision_mask = 338
+collision_mask = 322
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile"]
 shape = SubResource("CircleShape2D_febas")
@@ -39,6 +46,8 @@ texture_mode = 1
 target_position = Vector2(0, 0)
 collision_mask = 66
 
+[connection signal="body_entered" from="WallDetector" to="." method="_on_wall_detector_body_shape_entered"]
+[connection signal="body_shape_entered" from="WallDetector" to="." method="_on_wall_detector_body_shape_entered"]
 [connection signal="area_shape_entered" from="Projectile" to="." method="_on_projectile_area_shape_entered"]
 [connection signal="body_shape_entered" from="Projectile" to="." method="_on_projectile_body_shape_entered"]
 [connection signal="draw" from="Line2D" to="." method="_on_line_2d_draw"]

@@ -8,3 +8,46 @@ script = ExtResource("2_ak63l")
 
 [node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" index="1"]
 theme_override_constants/outline_size = 16
+text = "[center][font_size=72]Studio Diverge[/font_size]
+
+[font_size=64]Developers[/font_size]
+Sophie Arcangel  
+Max Clark
+Nate Hopper
+Penny Silliman  
+
+[font_size=64]Artists[/font_size]
+[url=https://youtube.com/@disabel]Abeljohn Burke-Raymond[/url] - Portraits, Shade Sprites
+Luca Castigador - Juniper sprites
+[url=https://instagram.com/ry.gibson.art]Rylan Gibson[/url] - Concept art
+[url=https://soundcloud.com/cork-leaves]Willow Larsen[/url] - Composer 
+
+[font_size=72]Sourced / Unaffiliated[/font_size]
+[font_size=64]Textures[/font_size]
+
+[font_size=48]Environment Textures[/font_size]
+Author: [url=https://www.dmachin.co.uk/]Darby Machin[/url]  
+Source: [url=https://malibudarby.itch.io/downtown-dungeon]malibudarby.itch.io[/url]  
+License: CC0
+
+[font_size=48]Godot Engine Logo[/font_size]
+Author: Andrea Calabró  
+Source: [url=https://godotengine.org/press/]godotengine.org : press[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt]CC BY 4.0 International[/url] 
+
+[font_size=72]Tools[/font_size]
+[font_size=48]Godot[/font_size]
+Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
+Source: [url=https://godotengine.org/]godotengine.org[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
+
+[font_size=48]Git[/font_size]
+Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
+Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
+License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
+
+[font_size=48]Godot Menus Template[/font_size]
+Author: [url=https://github.com/Maaack/Godot-Menus-Template/graphs/contributors]Marek Belski[/url]  
+Source: [url=https://github.com/Maaack/Godot-Menus-Template]github: Godot-Menus-Template[/url]  
+License: [url=LICENSE.txt]MIT License[/url]  
+[/center]"

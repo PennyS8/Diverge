@@ -83,6 +83,8 @@ shape = SubResource("CircleShape2D_i8hlk")
 
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="body_entered" from="Item" to="." method="_on_item_body_entered"]
 

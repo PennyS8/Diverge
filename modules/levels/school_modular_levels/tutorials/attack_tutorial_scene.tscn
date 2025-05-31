@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://t7qmgj6gq2gb"]
+[gd_scene load_steps=15 format=4 uid="uid://t7qmgj6gq2gb"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_56em5"]
 [ext_resource type="Script" uid="uid://djqav51u3idup" path="res://modules/levels/school_modular_levels/tutorials/attack_tutorial_scene.gd" id="2_v3n63"]
@@ -7,6 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://dx5na7ufncxg3" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn" id="5_a0lcq"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="6_4vi1j"]
 [ext_resource type="Script" uid="uid://bfwcpq5508uvf" path="res://modules/levels/school_modular_levels/tutorials/attack_tutorial_entrance_dialogue.gd" id="7_v3n63"]
+[ext_resource type="Texture2D" uid="uid://d1i2h41pm54o2" path="res://assets/debug/2d_lights_and_shadows_neutral_point_light.webp" id="8_kvwte"]
+[ext_resource type="FontFile" uid="uid://dtyn18rtxvf8u" path="res://assets/hud/Jersey_10/Jersey10-Regular.ttf" id="9_bn1yh"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_qgpn2"]
 parsed_collision_mask = 4294966355
@@ -28,6 +30,7 @@ shader_parameter/Flash = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_c6v5b"]
+size = Vector2(233, 160)
 
 [node name="AttackTutorialScene" type="Node2D"]
 y_sort_enabled = true
@@ -73,23 +76,23 @@ tile_set = ExtResource("3_c6v5b")
 z_index = 1
 y_sort_enabled = true
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAlACMAAQAOAAEAAAAlACQAAQAOAAIAAAAmACMAAQAPAAEAAAAmACQAAQAPAAIAAAAnACMAAQAPAAEAAAAnACQAAQAPAAIAAAA=")
+tile_map_data = PackedByteArray("AAAlACMAAQAOAAEAAAAlACQAAQAOAAIAAAAmACMAAQAPAAEAAAAmACQAAQAPAAIAAAAnACMAAQAPAAEAAAAnACQAAQAPAAIAAAAiACMAAQAMAAEAAAAiACQAAQAMAAIAAAAjACMAAQANAAEAAAAjACQAAQANAAIAAAA=")
 tile_set = ExtResource("3_c6v5b")
 
 [node name="Objects" type="TileMapLayer" parent="Tiles"]
 z_index = 1
 y_sort_enabled = true
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAgACYAAQAMAA8AAGAgACkAAQAAAAMAAAAhACgAAQAPAAwAAAAiACMAAQAMAAEAAAAiACQAAQAMAAIAAAAiACUAAQAMAA8AAGAiACYAAQAPAAwAAAAjACMAAQANAAEAAAAjACQAAQANAAIAAAAjACUAAQAAAAQAAAAjACcAAQAMAA8AADAkACMAAQAAAA8AAAAkACQAAQABAAEAAAAkACUAAQAHAAMAAAAkACcAAQAPAAwAAAAlACQAAQAGAAAAAAAlACUAAQAHAAQAAAAlACgAAQAMAA8AAAAmACMAAQAIAAQAAAAmACQAAQAIAAUAAAAmACUAAQAIAAYAAAAnACMAAQAHAA8AAAAnACQAAQAPAAAAAAAhACkAAQANAAkAAAAiACkAAQAOAAkAAAAjACkAAQAPAAkAAAAkACkAAQANAAkAAAAlACkAAQAOAAkAAAAmACkAAQAPAAkAAAA=")
+tile_map_data = PackedByteArray("AAAgACYAAQAMAA8AAGAgACkAAQAAAAMAAAAhACgAAQAPAAwAAAAiACUAAQAMAA8AAGAiACYAAQAPAAwAAAAjACUAAQAAAAQAAAAjACcAAQAMAA8AADAkACMAAQAAAA8AAAAkACQAAQABAAEAAAAkACUAAQAHAAMAAAAkACcAAQAPAAwAAAAlACQAAQAGAAAAAAAlACUAAQAHAAQAAAAlACgAAQAMAA8AAAAmACMAAQAIAAQAAAAmACQAAQAIAAUAAAAmACUAAQAIAAYAAAAnACMAAQAHAA8AAAAnACQAAQAPAAAAAAAhACkAAQANAAkAAAAiACkAAQAOAAkAAAAjACkAAQAPAAkAAAAkACkAAQANAAkAAAAlACkAAQAOAAkAAAAmACkAAQAPAAkAAAAjACQAAQAAAAEAAAA=")
 tile_set = ExtResource("3_c6v5b")
 
 [node name="ElectricalClosetNorth" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(-55, -29)
+position = Vector2(-60, -30)
 
 [node name="HallRightNorthEast" parent="." instance=ExtResource("4_2c6sg")]
 z_index = 1
 position = Vector2(-60, -42)
-next_level_path = "uid://cxbgdwps7aaf"
+next_level_path = "uid://ch5cr2nm4vosg"
 entrance_name = "HallRightSouth"
 
 [node name="CameraBoundry" type="Area2D" parent="."]
@@ -107,25 +110,30 @@ position = Vector2(-340, 283)
 position = Vector2(399, -347)
 
 [node name="ComplexShade" parent="." instance=ExtResource("5_a0lcq")]
-position = Vector2(-30, 6)
+visible = false
+position = Vector2(-60, -30)
 
 [node name="ShadeHPIndicator" parent="ComplexShade" index="0"]
 material = SubResource("ShaderMaterial_mjkpu")
 
+[node name="ShadeFSM" parent="ComplexShade" index="1"]
+disabled = true
+
 [node name="Pursue" parent="ComplexShade/ShadeFSM/Alive/Movement/Chase" index="0"]
 next_state = NodePath(".")
 
+[node name="Health" parent="ComplexShade/BehaviorComponents" index="4"]
+max_health = 10
+
 [node name="DisplayComponents" parent="ComplexShade" index="4"]
 material = SubResource("ShaderMaterial_h7nfj")
+scale = Vector2(-1, 1)
 
-[node name="AttackArc" parent="ComplexShade/DisplayComponents" index="4"]
+[node name="Shadow" parent="ComplexShade/DisplayComponents" index="3"]
 material = SubResource("ShaderMaterial_h7nfj")
 
-[node name="Shadow" parent="ComplexShade/DisplayComponents" index="5"]
+[node name="AttackArc" parent="ComplexShade/DisplayComponents" index="5"]
 material = SubResource("ShaderMaterial_h7nfj")
-
-[node name="FSMDebug" parent="ComplexShade" index="6"]
-visible = false
 
 [node name="EntranceDialgoue" type="Area2D" parent="."]
 position = Vector2(72, 24)
@@ -134,7 +142,89 @@ collision_mask = 4
 script = ExtResource("7_v3n63")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EntranceDialgoue"]
+position = Vector2(-59.5, -9)
 shape = SubResource("RectangleShape2D_c6v5b")
+
+[node name="Spikes" type="Node2D" parent="."]
+
+[node name="Juniper" type="Node2D" parent="Spikes"]
+
+[node name="StartMove" type="Marker2D" parent="Spikes/Juniper"]
+position = Vector2(35, 17)
+
+[node name="JumpScare" type="Marker2D" parent="Spikes/Juniper"]
+position = Vector2(49, 17)
+
+[node name="JumpScare2" type="Marker2D" parent="Spikes/Juniper"]
+position = Vector2(72, 17)
+
+[node name="JumpScare3" type="Marker2D" parent="Spikes/Juniper"]
+position = Vector2(90, 17)
+
+[node name="Shade" type="Node2D" parent="Spikes"]
+
+[node name="Marker2D" type="Marker2D" parent="Spikes/Shade"]
+
+[node name="Marker2D2" type="Marker2D" parent="Spikes/Shade"]
+position = Vector2(18, 9)
+
+[node name="Marker2D3" type="Marker2D" parent="Spikes/Shade"]
+position = Vector2(59, 17)
+
+[node name="Lighting" type="Node2D" parent="."]
+
+[node name="PointLight2D" type="PointLight2D" parent="Lighting"]
+position = Vector2(54, 17)
+color = Color(1, 0.869543, 0.824151, 1)
+energy = 0.0
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.788235)
+texture = ExtResource("8_kvwte")
+texture_scale = 0.7
+
+[node name="CanvasModulate" type="CanvasModulate" parent="Lighting"]
+z_index = -2
+material = ExtResource("1_56em5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TransOverlay" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/TransOverlay"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.101961, 0, 0.184314, 1)
+
+[node name="Label" type="Label" parent="CanvasLayer/TransOverlay"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -420.5
+offset_top = -70.5
+offset_right = 420.5
+offset_bottom = 70.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("9_bn1yh")
+theme_override_font_sizes/font_size = 64
+text = "Inside a storage closet in the school...
+(Juniper is panicking.)"
+horizontal_alignment = 1
 
 [connection signal="body_entered" from="EntranceDialgoue" to="EntranceDialgoue" method="_on_body_entered"]
 

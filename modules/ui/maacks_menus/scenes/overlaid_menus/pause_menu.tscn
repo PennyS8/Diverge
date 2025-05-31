@@ -8,3 +8,21 @@
 script = ExtResource("2_x5ihk")
 options_packed_scene = ExtResource("3_d0de5")
 main_menu_scene = "res://modules/ui/maacks_menus/scenes/menus/main_menu/main_menu_with_animations.tscn"
+
+[node name="TitleLabel" parent="MenuPanelContainer/MarginContainer/BoxContainer/TitleMargin" index="0"]
+theme_override_font_sizes/font_size = 72
+
+[node name="CloseButton" parent="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="0"]
+theme_override_font_sizes/font_size = 72
+
+[node name="RestartButton" parent="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="1"]
+theme_override_font_sizes/font_size = 72
+
+[node name="OptionsButton" parent="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="2"]
+theme_override_font_sizes/font_size = 72
+
+[node name="MainMenuButton" parent="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="3"]
+theme_override_font_sizes/font_size = 72
+
+[node name="ExitButton" parent="MenuPanelContainer/MarginContainer/BoxContainer/MenuButtonsMargin/MenuButtons" index="4"]
+theme_override_font_sizes/font_size = 72

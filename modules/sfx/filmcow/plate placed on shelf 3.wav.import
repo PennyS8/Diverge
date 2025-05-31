@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://me1lbsa4gt68"
+path="res://.godot/imported/plate placed on shelf 3.wav-f54906d9c2d3aa101195b9d9e912b336.sample"
+
+[deps]
+
+source_file="res://modules/sfx/filmcow/plate placed on shelf 3.wav"
+dest_files=["res://.godot/imported/plate placed on shelf 3.wav-f54906d9c2d3aa101195b9d9e912b336.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

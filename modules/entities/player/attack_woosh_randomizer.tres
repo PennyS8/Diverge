@@ -1,0 +1,22 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=9 format=3 uid="uid://dgi52d11jrqrf"]
+
+[ext_resource type="AudioStream" uid="uid://ch6n2b05gkn1i" path="res://modules/sfx/sound-digitator/swoosh-1.wav" id="1_vukdh"]
+[ext_resource type="AudioStream" uid="uid://dsob1cdrnjblr" path="res://modules/sfx/sound-digitator/swoosh-2.wav" id="2_u6fqc"]
+[ext_resource type="AudioStream" uid="uid://bowii3wok1ekf" path="res://modules/sfx/sound-digitator/swoosh-3.wav" id="3_hl1bg"]
+[ext_resource type="AudioStream" uid="uid://b5b1gnk0g0f3j" path="res://modules/sfx/sound-digitator/swoosh-4.wav" id="4_5ffot"]
+[ext_resource type="AudioStream" uid="uid://86ihnhl0l038" path="res://modules/sfx/sound-digitator/swoosh-5.wav" id="5_d0lbp"]
+[ext_resource type="AudioStream" uid="uid://blgci5vdseigh" path="res://modules/sfx/sound-digitator/swoosh-6.wav" id="6_5d6ua"]
+[ext_resource type="AudioStream" uid="uid://b2roxyvxukxta" path="res://modules/sfx/sound-digitator/swoosh-7.wav" id="7_e3k5m"]
+[ext_resource type="AudioStream" uid="uid://c8xeftggbqden" path="res://modules/sfx/sound-digitator/swoosh-8.wav" id="8_wugbh"]
+
+[resource]
+playback_mode = 1
+streams_count = 8
+stream_0/stream = ExtResource("1_vukdh")
+stream_1/stream = ExtResource("2_u6fqc")
+stream_2/stream = ExtResource("3_hl1bg")
+stream_3/stream = ExtResource("4_5ffot")
+stream_4/stream = ExtResource("5_d0lbp")
+stream_5/stream = ExtResource("6_5d6ua")
+stream_6/stream = ExtResource("7_e3k5m")
+stream_7/stream = ExtResource("8_wugbh")

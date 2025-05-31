@@ -1,0 +1,13 @@
+~ boss_seen
+Juniper: Why is this one so big??
+Juniper: Its okay..
+Juniper: I just have to remember to take a deep breath.
+do! start_boss_fight()
+=> END
+
+~ boss_defeated
+Juniper: I did it! I did it! I took the deep breaths and I fought it and it wasn't as bad as I thought, really.
+Juniper: [i]Maybe the test won't be either.[/i]
+Juniper: Now how do I get out of here?
+do! transition()
+=> END

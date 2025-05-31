@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="ItemType" load_steps=4 format=3 uid="uid://gmra8hy1uvo"]
+[gd_resource type="Resource" script_class="ItemType" load_steps=4 format=3 uid="uid://cbciukbgyqajv"]
 
 [ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="1_kyh75"]
 [ext_resource type="Texture2D" uid="uid://d2xv04pdwvyy0" path="res://assets/environment/downtown_dungeon/custom_sprites/yarn_bag.png" id="2_kyh75"]
