@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c4f5tcvmt380f"]
+[gd_scene load_steps=13 format=3 uid="uid://c4f5tcvmt380f"]
 
 [ext_resource type="Script" uid="uid://c6q6080bnw84g" path="res://modules/objects/level_transition_zone/transition_door.gd" id="1_3ij6u"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="2_1ry3b"]
@@ -6,6 +6,7 @@
 [ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="4_xe10q"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="5_hu4tb"]
 [ext_resource type="Texture2D" uid="uid://d1ewbo84vqt8s" path="res://assets/environment/downtown_dungeon/custom_sprites/lock.png" id="6_bjtih"]
+[ext_resource type="AudioStream" uid="uid://dohuln2n7nftt" path="res://modules/sfx/filmcow/home door open 9.wav" id="7_bjtih"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_38vbv"]
 size = Vector2(36, 24)
@@ -82,6 +83,10 @@ region_rect = Rect2(12, 17, 24, 21)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Blocker"]
 shape = SubResource("RectangleShape2D_6adpx")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_bjtih")
+bus = &"Door Sound Effects"
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

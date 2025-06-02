@@ -11,6 +11,9 @@ var death_states : Dictionary = {
 var death_dir : Vector2
 
 func _on_enter(_args) -> void:
+	target.dir = Vector2.ZERO
+	target.velocity = Vector2.ZERO
+	
 	change_state("NoAttack")
 	change_state("NoDash")
 	

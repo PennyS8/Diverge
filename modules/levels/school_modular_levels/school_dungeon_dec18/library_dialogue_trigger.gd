@@ -6,8 +6,9 @@ var player
 
 func _ready() -> void:
 	player = LevelManager.player
-	if player.dialogue_tracker["library"] and $"../block exit" != null:
-		$"../block exit".queue_free()
+	if player:
+		if player.dialogue_tracker["library"] and $"../block exit" != null:
+			$"../block exit".queue_free()
 
 func _on_body_entered(body: Node2D) -> void:
 	var timer = Timer.new()

@@ -3,6 +3,7 @@ extends Area2D
 var read : bool = false
 @onready var shade = $"../ComplexShade"
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var door = $"../HallRightNorthEast"
 
 var shade_spikes : Array[Vector2]
 var juniper_spikes : Array[Vector2]

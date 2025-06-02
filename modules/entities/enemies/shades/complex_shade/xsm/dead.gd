@@ -13,6 +13,9 @@ func _on_enter(_args) -> void:
 	EnemyManager.release_engagement(target)
 	EnemyManager.remove_hand(target)
 	
+	# Increments player's focus meter for deep breath
+	EnemyManager.focus_meter += 1
+	
 	if target.leash_owner:
 		if target.leash_owner.is_in_group("player"):
 			target.leash_owner.fsm.change_state("Recall")

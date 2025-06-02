@@ -3,11 +3,11 @@
 [ext_resource type="Script" uid="uid://ca0ooleuqasbl" path="res://modules/objects/puzzle_pieces/breakable_barrel/breakable_barrel.gd" id="1_65xo1"]
 [ext_resource type="Texture2D" uid="uid://cdjm07xrahh71" path="res://assets/environment/Pixel Crawler 1.8/Environment/Dungeon Prison/Assets/Props.png" id="2_f4gt4"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_sy0e3"]
-[ext_resource type="Script" uid="uid://bkh7hboi87hth" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="3_ke3lh"]
-[ext_resource type="Script" uid="uid://dlt3rmvwhls5s" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="4_dlbfx"]
-[ext_resource type="Script" uid="uid://d4ms0086jwwq6" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="5_xgq67"]
-[ext_resource type="Script" uid="uid://gw3earl8n85" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="6_w70w5"]
-[ext_resource type="Script" uid="uid://o82wc4fc60r6" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="7_dh27g"]
+[ext_resource type="Script" uid="uid://cg2f06vo4xmiv" path="res://addons/shaker/src/Vector2/shaker_component2D.gd" id="3_ke3lh"]
+[ext_resource type="Script" uid="uid://dc81hdnwhctkh" path="res://addons/shaker/data/Vector2/BaseShakerType2D.gd" id="4_dlbfx"]
+[ext_resource type="Script" uid="uid://c1m480spqaknk" path="res://addons/shaker/data/Vector2/ShakerTypeRandom2D.gd" id="5_xgq67"]
+[ext_resource type="Script" uid="uid://u0jqx8th6adx" path="res://addons/shaker/data/Single/BaseShakerType1D.gd" id="6_w70w5"]
+[ext_resource type="Script" uid="uid://drbop2skxgkw6" path="res://addons/shaker/data/Vector2/ShakerPreset2D.gd" id="7_dh27g"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="9_0sa2f"]
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_b6nhn"]
 
@@ -55,7 +55,8 @@ material = ExtResource("2_sy0e3")
 position = Vector2(4.32134e-07, -1.04308e-07)
 texture = ExtResource("2_f4gt4")
 region_enabled = true
-region_rect = Rect2(16, 10, 16, 22)
+region_rect = Rect2(16, 9, 16, 23)
+region_filter_clip_enabled = true
 
 [node name="ShakerComponent2D" type="Node2D" parent="Sprite2D"]
 script = ExtResource("3_ke3lh")
