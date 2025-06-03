@@ -31,4 +31,4 @@ func _on_enter(_args) -> void:
 	change_state(death_states[death_dir])
 
 func change_to_next_substate():
-	target.respawn()
+	RespawnManager.respawn()
