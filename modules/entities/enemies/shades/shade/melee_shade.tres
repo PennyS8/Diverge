@@ -131,6 +131,7 @@ void fragment() {
 
 }
 "
+graph_offset = Vector2(-1372, 0)
 mode = 1
 flags/light_only = false
 varyings/modulate = "0,5"

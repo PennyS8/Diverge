@@ -1,0 +1,8 @@
+[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bt74pod4dsaiu"]
+
+[ext_resource type="Texture2D" uid="uid://dqg67evevgpxg" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Room_Builder_subfiles/Room_Builder_Floors_16x16.png" id="1_afegi"]
+
+[resource]
+atlas = ExtResource("1_afegi")
+region = Rect2(192, 256, 48, 32)
+filter_clip = true

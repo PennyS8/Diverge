@@ -1,0 +1,56 @@
+[gd_scene load_steps=8 format=4 uid="uid://bot2t2vdup7rg"]
+
+[ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="1_assnx"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="2_cam8m"]
+[ext_resource type="TileSet" uid="uid://dv4vwp7xxnkbu" path="res://modules/levels/home/home_tile_set.tres" id="3_hmm1v"]
+[ext_resource type="Texture2D" uid="uid://dvasicuqsehh2" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General_A2.png" id="4_ium3p"]
+[ext_resource type="Texture2D" uid="uid://ceykw28jgux2o" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior_B2.png" id="5_3mq04"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q1854"]
+atlas = ExtResource("4_ium3p")
+region = Rect2(194, 242, 44, 44)
+filter_clip = true
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvq41"]
+atlas = ExtResource("5_3mq04")
+region = Rect2(48, 122, 48, 45)
+
+[node name="YourRoom" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_assnx")]
+visible = false
+
+[node name="Tile Layers" type="Node2D" parent="."]
+
+[node name="Floor" type="TileMapLayer" parent="Tile Layers"]
+material = ExtResource("2_cam8m")
+tile_map_data = PackedByteArray("AAABAAEABAAAAAQAAAACAAEABAAAAAQAAAADAAEABAAAAAQAAAAEAAEABAAAAAQAAAAFAAEABAAAAAUAAAAGAAEABAAAAAUAAAAHAAEABAAAAAUAAAAIAAEABAAAAAQAAAAIAAIABAAAAAUAAAAIAAMABAAAAAUAAAAHAAMABAAAAAUAAAAHAAIABAAAAAUAAAAGAAIABAAAAAUAAAAFAAIABAAAAAUAAAAEAAIABAAAAAUAAAADAAIABAAAAAUAAAACAAIABAAAAAUAAAABAAIABAAAAAUAAAAJAAIABAAAAAUAAAAJAAEABAAAAAQAAAAJAAMABAAAAAUAAAAGAAMABAAAAAUAAAAFAAMABAAAAAUAAAAEAAMABAAAAAUAAAADAAMABAAAAAUAAAACAAMABAAAAAUAAAABAAMABAAAAAUAAAABAAQABAAAAAUAAAABAAUABAAAAAUAAAACAAUABAAAAAUAAAACAAQABAAAAAUAAAADAAQABAAAAAUAAAAEAAQABAAAAAUAAAADAAUABAAAAAUAAAAEAAUABAAAAAUAAAAFAAQABAAAAAUAAAAGAAQABAAAAAUAAAAHAAQABAAAAAUAAAAIAAQABAAAAAUAAAAJAAQABAAAAAUAAAAFAAAABAAAAAQAAAAGAAAABAAAAAQAAAAHAAAABAAAAAQAAAA=")
+tile_set = ExtResource("3_hmm1v")
+
+[node name="Rug" type="StaticBody2D" parent="Tile Layers"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tile Layers/Rug"]
+material = ExtResource("2_cam8m")
+position = Vector2(122, 63)
+texture = SubResource("AtlasTexture_q1854")
+
+[node name="Bed" type="StaticBody2D" parent="Tile Layers"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Tile Layers/Bed"]
+material = ExtResource("2_cam8m")
+position = Vector2(132, 58)
+texture = SubResource("AtlasTexture_pvq41")
+
+[node name="Wall" type="TileMapLayer" parent="Tile Layers"]
+material = ExtResource("2_cam8m")
+tile_map_data = PackedByteArray("AAACAAAAAAAOACMAAAADAAAAAAAOACMAAAAEAAAAAAAPACMAAAAIAAAAAAANACMAAAAEAP//AAAPACEAAAADAP//AAAOACEAAAAIAP//AAANACEAAAAHAP//AAAOABcAAAAGAP//AAAOABcAAAAFAP//AAAOABcAAAAEAP7/AAATAAMAAAADAP7/AAASAAMAAAACAP7/AAASAAMAAAAIAP7/AAARAAMAAAAFAP3/AAASAAMAAAAGAP3/AAASAAMAAAAHAP3/AAASAAMAAAAEAP3/AAATAAQAAAAIAP3/AAASAAQAAAD//wQAAAATAAIAAAD//wMAAAATAAIAAAD//wIAAAATAAIAAAD//wEAAAATAAIAAAD//wAAAAATAAIAAAD/////AAATAAIAAAAAAP7/AAASAAMAAAD///7/AAATAAQAAAAAAAQABAAAAAUAAAAAAAMABAAAAAUAAAAAAAIABAAAAAUAAAAAAAEABAAAAAQAAAAAAAAAAAAOACMAAAAJAP7/AAASAAQAAAAJAP//AAARAAIAAAAJAAAAAAARAAIAAAAJAAEAAAARAAIAAAAJAAIAAAARAAIAAAAJAAMAAAARAAIAAAAJAAQAAAARAAIAAAD//wUAAAARAAQAAAAAAAUAAAASAAEAAAABAAUAAAASAAEAAAACAAUAAAASAAEAAAADAAUAAAASAAEAAAAEAAUAAAASAAEAAAAFAAUAAAASAAEAAAAGAAUAAAASAAEAAAAHAAUAAAASAAEAAAAIAAUAAAASAAEAAAAJAAUAAAAQAAQAAAACAP//AAAOACEAAAAAAP//AAAOACEAAAABAAAAAAAOACMAAAABAP//AAAOACEAAAABAP7/AAASAAMAAAA=")
+tile_set = ExtResource("3_hmm1v")
+
+[node name="Decoration" type="TileMapLayer" parent="Tile Layers"]
+material = ExtResource("2_cam8m")
+tile_map_data = PackedByteArray("AAAFAP7/BgAMAAAAAAAFAP//BgAMAAEAAAAGAP7/BgANAAIAAAAGAP//BgANAAMAAAAHAP7/BgAOAAAAAAAHAP//BgAOAAEAAAAAAP//BwAAAAwAAAAAAAAABwAAAA0AAAACAP//BwACAAwAAAACAAAABwACAA0AAAABAP//BwACAA4AABABAAAABwACAA8AABA=")
+tile_set = ExtResource("3_hmm1v")
+
+[node name="Foreground" type="TileMapLayer" parent="Tile Layers"]
+material = ExtResource("2_cam8m")
+tile_set = ExtResource("3_hmm1v")

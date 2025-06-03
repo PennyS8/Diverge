@@ -3,7 +3,7 @@
 [ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="1_6up2k"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_yitfa"]
 [ext_resource type="TileSet" uid="uid://dp01idjexi8cb" path="res://modules/levels/debug/testing_grounds/dungeon.tres" id="2_t4eyn"]
-[ext_resource type="TileSet" uid="uid://hucr822xvev5" path="res://modules/levels/placeholder_mom_house/ldtk_imports/placeholder_home/tilesets/tileset_16px.res" id="3_qh6v7"]
+[ext_resource type="TileSet" uid="uid://hucr822xvev5" path="res://modules/levels/old__placeholder_mom_house/ldtk_imports/placeholder_home/tilesets/tileset_16px.res" id="3_qh6v7"]
 [ext_resource type="Texture2D" uid="uid://c63xirfk4p8vq" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Room_Builder_subfiles/Room_Builder_3d_walls_16x16.png" id="5_8llpq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c1npo"]
