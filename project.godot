@@ -30,6 +30,7 @@ AppConfig="*res://addons/maaacks_menus_template/base/scenes/autoloads/app_config
 SceneLoader="*res://addons/maaacks_menus_template/base/scenes/autoloads/scene_loader.tscn"
 ProjectMusicController="*res://addons/maaacks_menus_template/base/scenes/autoloads/project_music_controller.tscn"
 ProjectUISoundController="*res://addons/maaacks_menus_template/base/scenes/autoloads/project_ui_sound_controller.tscn"
+RespawnManager="*res://modules/globals/respawn_manager.gd"
 
 [debug]
 

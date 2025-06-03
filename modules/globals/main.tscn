@@ -11,7 +11,7 @@
 [ext_resource type="Script" uid="uid://c8qxb50jimxvj" path="res://modules/globals/inventory_panel.gd" id="8_02pmu"]
 [ext_resource type="PackedScene" uid="uid://ms4bp1b33wt2" path="res://modules/ui/hud/wyvern_inv/notebook_panel.tscn" id="8_dbv5s"]
 [ext_resource type="Shader" uid="uid://c7ga40mwai0hs" path="res://modules/globals/blur.gdshader" id="9_nlpsi"]
-[ext_resource type="Shader" path="res://modules/globals/fisheyeCRT.gdshader" id="11_2825a"]
+[ext_resource type="Shader" uid="uid://bqvwhxrfa0vww" path="res://modules/globals/fisheyeCRT.gdshader" id="11_2825a"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_yc34w"]
 shader = ExtResource("9_nlpsi")

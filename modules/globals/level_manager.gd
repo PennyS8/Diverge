@@ -77,6 +77,10 @@ func change_level(path : String, entrance_name : String = "0"):
 	# save level state
 	await SaveAndLoad.room_save(current_level.get_name())
 	
+	RespawnManager.last_level_path = current_level.scene_file_path
+	RespawnManager.last_level_name = current_level.get_name()
+	RespawnManager.last_entrance = entrance_name
+	
 	var tween = get_tree().create_tween()
 	tween.set_parallel(false)
 	tween.tween_property(fade_screen, "color:a", 1, fade_time)
@@ -202,3 +206,21 @@ func player_transition(level_path : String, direction : Vector2, entrance_name :
 	SaveAndLoad.save_player()
 	
 	player.exit_cutscene()
+
+func respawn_transition(level_path : String, entrance_name : String):
+	if transitioning:
+		return
+	transitioning = true
+	
+	player = get_tree().get_first_node_in_group("player")
+	
+	var tween = get_tree().create_tween()
+	tween.set_parallel(false)
+	tween.tween_property(fade_screen, "color:a", 1, fade_time)
+	tween.tween_callback(_swap_level.bind(level_path, entrance_name))
+	
+	await swap_done
+
+	var tween_two = get_tree().create_tween()
+	tween_two.tween_property(fade_screen, "color:a", 0, fade_time)
+	tween_two.finished.connect(_transition_complete)
