@@ -71,6 +71,7 @@ tetherable_body=""
 boss=""
 encounter_entrance=""
 player_input_guide=""
+entrance_area=""
 
 [gui]
 

@@ -95,7 +95,7 @@ func start_encounter():
 func end_encounter():
 	# unlock all doors
 	LevelManager.exit_encounter.emit()
-
+	
 	encounter_active = false
 
 func enemy_defeated(enemy):

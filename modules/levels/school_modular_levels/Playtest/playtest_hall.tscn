@@ -9738,7 +9738,7 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAAKAP7/AgAEAAwAAAAKAP//AgAEAA0AAAALAP7/AgAFAAoAAAALAP//AgAEAAsAAAAMAP7/AgAFAAoAAAAMAP//AgAFAAsAAAANAP7/AgAGAAwAAAANAP//AgAGAA0AAAA=")
 tile_set = ExtResource("10_kgxs5")
 
-[node name="TransitionDoubleDoor" type="StaticBody2D" parent="URoom2"]
+[node name="TransitionDoubleDoor" type="StaticBody2D" parent="URoom2" groups=["entrance_area"]]
 z_index = 1
 position = Vector2(288, 0)
 script = ExtResource("25_4lksq")
