@@ -1,7 +1,7 @@
 @tool
 extends StateSound
 
-var yarn_controller = preload("res://modules/status_effects/yarn_controller.tscn")
+var yarn_controller = preload("res://modules/entities/player/yarn/yarn_controller.tscn")
 
 # This function is called when the state enters
 # XSM enters the root first, then the children

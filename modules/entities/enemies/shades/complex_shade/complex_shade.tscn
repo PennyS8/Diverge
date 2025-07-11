@@ -2677,7 +2677,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../ReturnToPost")
 
 [node name="ReturnToPost" type="Node" parent="ShadeFSM/Alive/Movement"]
 editor_description = "TODO: Not implemented"
@@ -2694,7 +2694,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../Reaction")
 
 [node name="ChargeAttack" type="Node" parent="ShadeFSM/Alive/Combat"]
 script = ExtResource("10_iug1g")

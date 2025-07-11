@@ -11,7 +11,7 @@ var tutorial_bodies : Array[Node]
 var main_body_selected
 
 var selectable_body_selector : PackedScene = preload("res://modules/ui/coping_overlays/selectable_body.tscn")
-var yarn_controller_packed : PackedScene = preload("res://modules/status_effects/yarn_controller.tscn")
+var yarn_controller_packed : PackedScene = preload("res://modules/entities/player/yarn/yarn_controller.tscn")
 var first_tetherable : TetherableBody
 
 # Used for path comparison in coping mechanism

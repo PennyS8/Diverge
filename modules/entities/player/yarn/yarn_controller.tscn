@@ -1,17 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgxc0xpb1lawa"]
 
-[ext_resource type="Script" uid="uid://cmedhnkse60t5" path="res://modules/status_effects/yarn_controller.gd" id="1_f6jx5"]
+[ext_resource type="Script" uid="uid://cmedhnkse60t5" path="res://modules/entities/player/yarn/yarn_controller.gd" id="1_f6jx5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_febas"]
 radius = 5.0
 
-[sub_resource type="Gradient" id="Gradient_dd7vi"]
+[sub_resource type="Gradient" id="Gradient_nfenq"]
 offsets = PackedFloat32Array(0, 0.5, 1)
 colors = PackedColorArray(0.43606, 0, 0, 1, 0.552962, 1.35969e-06, 4.81307e-07, 1, 0.435294, 0, 0, 1)
 metadata/_snap_enabled = true
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tiuj8"]
-gradient = SubResource("Gradient_dd7vi")
+gradient = SubResource("Gradient_nfenq")
 width = 16
 height = 16
 fill_from = Vector2(0.25, 0.25)

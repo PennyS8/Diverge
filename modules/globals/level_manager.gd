@@ -41,6 +41,7 @@ func _ready():
 	if scene.name != "Main":
 		if get_tree().get_first_node_in_group("player"):
 			found_player = true
+			player = get_tree().get_first_node_in_group("player")
 		custom_scene_path = get_tree().current_scene.scene_file_path
 		get_tree().call_deferred("change_scene_to_file","res://modules/globals/main.tscn")
 	main_ready.connect(_main_ready)

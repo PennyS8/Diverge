@@ -5,7 +5,7 @@ var current_dist := 0.0
 var speed := 325.0
 
 var can_collide := true
-var yarn = LevelManager.player.get_node("PlayerFSM/Abilities/Yarn")
+@onready var yarn = LevelManager.player.get_node("PlayerFSM/Abilities/Yarn")
 
 @onready var player = LevelManager.player
 @onready var init_pos = self.global_position

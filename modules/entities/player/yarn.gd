@@ -1,6 +1,6 @@
 extends State
 
-var yarn_aim_guide = preload("res://modules/status_effects/yarn_aim_guide.tscn")
+var yarn_aim_guide = preload("res://modules/entities/player/yarn/yarn_controller.tscn")
 var guide_arrow
 var arrow_point
 

@@ -88,7 +88,7 @@ func give_hook():
 	if GameManager.inventory_node:
 		var inv : RestrictedInventory = GameManager.inventory_node.inventory
 		InventoryHelper.add_itemtype_to_inventory(inv, hook_type, 1)
-		
+
 # Checks for all player ability unlocks. Unlocks FSM states if item found in inventory
 func check_unlock_hook():
 	if GameManager.inventory_node:
@@ -124,6 +124,7 @@ func can_attack():
 
 func _physics_process(delta: float) -> void:
 	pass
+
 # Override
 func fling():
 	pass

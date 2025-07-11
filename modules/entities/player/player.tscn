@@ -1,4 +1,4 @@
-[gd_scene load_steps=105 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=109 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://sgbgpy8s08d3" path="res://addons/xsm/state_animation.gd" id="12_e6mu1"]
 [ext_resource type="Script" uid="uid://vrhsev0r4xam" path="res://modules/entities/player/yarn.gd" id="13_2irlg"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_41n4o"]
+[ext_resource type="Script" uid="uid://i4fq84o5548w" path="res://modules/entities/player/crochet.gd" id="13_bif3w"]
 [ext_resource type="AudioStream" uid="uid://bwg1bo378kk2y" path="res://modules/sfx/dash_randomizer.tres" id="13_ken2u"]
 [ext_resource type="Script" uid="uid://cu57huvshgpwy" path="res://modules/entities/player/xsm/fall.gd" id="13_upq7c"]
 [ext_resource type="Script" uid="uid://c44tfmii554el" path="res://modules/entities/player/xsm/push.gd" id="13_xr8le"]
@@ -2941,6 +2942,22 @@ shader = ExtResource("54_hfpac")
 shader_parameter/Flash = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_bif3w"]
+radius = 5.0
+
+[sub_resource type="Gradient" id="Gradient_dd7vi"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.43606, 0, 0, 1, 0.552962, 1.35969e-06, 4.81307e-07, 1, 0.435294, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bif3w"]
+gradient = SubResource("Gradient_dd7vi")
+width = 16
+height = 16
+fill_from = Vector2(0.25, 0.25)
+fill_to = Vector2(0.75, 0.75)
+repeat = 1
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 process_mode = 1
 z_index = 1
@@ -3046,7 +3063,7 @@ disabled = false
 debug_mode = true
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Yarn")
+next_state = NodePath("../Inactive")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
 [node name="DeepBreath" type="Node" parent="PlayerFSM/Abilities"]
@@ -3055,8 +3072,12 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("../Yarn")
+next_state = NodePath("../Inactive")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
+
+[node name="Crochet" type="Node" parent="PlayerFSM/Abilities"]
+script = ExtResource("13_bif3w")
+metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="Yarn" type="Node" parent="PlayerFSM/Abilities"]
 unique_name_in_owner = true
@@ -3066,9 +3087,8 @@ metadata/_custom_type_script = "uid://gptykq0qp1fx"
 [node name="Lasso" type="Node" parent="PlayerFSM/Abilities/Yarn"]
 script = ExtResource("12_ds73y")
 sample = null
-animation_player = NodePath("../../../../AnimationPlayer")
-anim_on_enter = "NONE"
-disabled = true
+animation_player = NodePath("")
+disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
@@ -3616,6 +3636,28 @@ frame_progress = 0.235804
 
 [node name="Yarn" parent="." instance=ExtResource("57_bif3w")]
 
+[node name="YarnProj" type="Node2D" parent="."]
+position = Vector2(0, -12)
+
+[node name="Projectile" type="Area2D" parent="YarnProj"]
+collision_layer = 0
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="YarnProj/Projectile"]
+shape = SubResource("CircleShape2D_bif3w")
+
+[node name="Line2D" type="Line2D" parent="YarnProj"]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+texture = SubResource("GradientTexture2D_bif3w")
+texture_mode = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="YarnProj"]
+target_position = Vector2(0, 0)
+collision_mask = 66
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="current_animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_current_animation_changed"]
+[connection signal="area_shape_entered" from="YarnProj/Projectile" to="PlayerFSM/Abilities/Crochet" method="_on_projectile_area_shape_entered"]
