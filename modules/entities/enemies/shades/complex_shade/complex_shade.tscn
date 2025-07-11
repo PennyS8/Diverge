@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_5ojq5"]
 [ext_resource type="Script" uid="uid://judy3seldx6h" path="res://modules/entities/enemies/shades/complex_shade/xsm/charge_attack.gd" id="10_iug1g"]
 [ext_resource type="Script" uid="uid://cggi1jq1vgh8q" path="res://modules/entities/enemies/shades/complex_shade/xsm/dead.gd" id="10_m6rex"]
-[ext_resource type="Script" uid="uid://d1od6kbhhnppb" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
+[ext_resource type="Script" uid="uid://bes5sheuaa4il" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_dnu80"]

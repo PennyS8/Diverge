@@ -13,10 +13,7 @@ func _ready() -> void:
 	# Lock mouse and also ensure that we can unlock mouse even during game pauses
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	process_mode = Node.PROCESS_MODE_ALWAYS
-	
-	pass
-	
-	
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
@@ -25,7 +22,6 @@ func _input(event: InputEvent) -> void:
 		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 			Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 			return
-	pass
 
 func hitlag():
 	Engine.time_scale = hitfreeze_scale

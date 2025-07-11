@@ -10,6 +10,3 @@ func _on_enter(_args) -> void:
 		var yarn = entity.get_node_or_null("YarnController")
 		if yarn:
 			yarn.queue_free()
-	
-	change_state("Idle")
-	change_state("CanAttack")

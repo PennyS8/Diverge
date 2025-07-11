@@ -12,4 +12,3 @@ func _input(_event: InputEvent) -> void:
 		if visible:
 			hide()
 			get_viewport().set_input_as_handled()
-			

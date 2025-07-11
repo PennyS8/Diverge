@@ -1,106 +1,67 @@
 extends Node2D
 
-var YARN_LENGTH := 128.0
-
 var proj_distance := 96.0
 var current_dist := 0.0
 var speed := 325.0
 
-var hold_projectile := false
-@export var can_collide := true
-var tethered_body
+var can_collide := true
+var yarn = LevelManager.player.get_node("PlayerFSM/Abilities/Yarn")
 
-@onready var player = get_tree().get_first_node_in_group("player")
+@onready var player = LevelManager.player
+@onready var init_pos = self.global_position
 
 func _process(delta):
-	# to dereference the player and abstract the YarnController
-	if hold_projectile:
-		return
-	
 	var yarn_end_pos := Vector2.ZERO
 	
+	# yarn is frogged or snaps from tension or otherwise breaks
+	if (
+		current_dist >= player.yarn_length or
+		Input.is_action_just_pressed("frog") or
+		!can_collide and !is_instance_valid(yarn.tethered_body) #or
+		#$RayCast2D.get_collider() != tethered_body
+	):
+		player.get_node("PlayerFSM").change_state("Frog")
+		queue_free()
+	
+	# Continue the projectile's path
 	if can_collide:
 		$Projectile.position.x += speed * delta
 		current_dist += speed * delta
 		yarn_end_pos = $Projectile.position
-	else: # Yarn has collided with a body
-		if is_instance_valid(tethered_body):
-			current_dist = global_position.distance_to(tethered_body.global_position)
-			yarn_end_pos = Vector2(current_dist, 0.0)
-			
-			# Rotate the yarn projectile toward the mouse
-			var tethered_body_dir = tethered_body.global_position
-			var dir = get_parent().global_position.direction_to(tethered_body_dir).normalized()
-			global_rotation = Vector2.ZERO.angle_to_point(dir)
-		else:
-			if get_parent().is_in_group("player"):
-				get_parent().get_node("PlayerFSM").change_state("Recall")
-			queue_free()
+	
+	# Rotate the yarn projectile toward the tethered_body
+	elif is_instance_valid(yarn.tethered_body):
+		current_dist = global_position.distance_to(yarn.tethered_body.global_position)
+		yarn_end_pos = Vector2(current_dist, 0.0)
+		
+		var dir = get_parent().global_position.direction_to(yarn.tethered_body.global_position).normalized()
+		global_rotation = Vector2.ZERO.angle_to_point(dir)
 	
 	$Line2D.points[1] = yarn_end_pos
 	$RayCast2D.target_position = yarn_end_pos
-	
-	# Base case, yarn is recalled or snaps from tension
-	if (
-		current_dist >= YARN_LENGTH or
-		Input.is_action_just_pressed("recall") #or
-		#$RayCast2D.get_collider() != tethered_body
-	):
-		if get_parent().is_in_group("player"):
-			get_parent().get_node("PlayerFSM").change_state("Recall")
-		queue_free()
 
-func _on_projectile_body_shape_entered(_body_rid: RID, _body: Node2D, _body_shape_index: int, _local_shape_index: int) -> void:
-	## Do not collide with parent
-	if _body == get_parent():
-		return
+func _on_projectile_area_shape_entered(_area_rid: RID, _area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
 	
-	if get_parent() == player:
-		player.can_attack()
-		
-	can_collide = false
-	$Projectile.queue_free()
-	
-
-func _on_projectile_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape_index: int, _local_shape_index: int) -> void:
-	# Do not collide with parent
-	if area == get_parent():
-		return
-	
-	if get_parent() == player:
-		player.can_attack()
-	
-	if (
-		area == player or
-		!can_collide or
-		!area.get_parent().is_in_group("tetherable_body")
-	): # Do NOT collide if any of the above conditions are true
-		can_collide = false
+	if (!can_collide):
 		$Projectile.queue_free()
 		return
 	
 	# Projectile has collided with a tetherable body
-	
+	yarn.tethered_body = _area.get_parent()
+	tether_object(yarn.tethered_body)
+
+func tether_object(body:CharacterBody2D):
 	can_collide = false
-	tethered_body = area
 	
-	player.add_tethered_status()
-	area.get_parent().add_tethered_status()
-	area.get_parent().leash_owner = player
+	body.add_tethered_status()
+	body.leash_owner = player
 	
-	if (area.get_parent().is_in_group("enemy")):
-		area.get_parent().tethered_stun()
+	if body.is_in_group("enemy"):
+		body.tethered_stun()
+	
 	$Projectile.queue_free()
 
 ## Check for wall collisions
 func _on_wall_detector_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
-	## Do not collide with parent
-	if body == get_parent():
-		return
-	
-	if get_parent() == player:
-		player.can_attack()
-		
 	can_collide = false
 	$Projectile.queue_free()
-	

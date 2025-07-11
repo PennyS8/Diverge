@@ -18,7 +18,7 @@ func _on_enter(_args) -> void:
 	
 	if target.leash_owner:
 		if target.leash_owner.is_in_group("player"):
-			target.leash_owner.fsm.change_state("Recall")
+			target.leash_owner.fsm.change_state("Frog")
 		
 	target.tetherable_area.monitorable = false
 	

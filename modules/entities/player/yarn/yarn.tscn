@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dj4tyl4hkpxqi"]
+
+[ext_resource type="PackedScene" uid="uid://dodmsyjysmdcc" path="res://modules/entities/player/yarn/yarn_segment.tscn" id="1_6r5xi"]
+[ext_resource type="Script" uid="uid://w3giydv836mq" path="res://modules/entities/player/yarn/yarn.gd" id="1_be5ow"]
+
+[sub_resource type="Gradient" id="Gradient_dd7vi"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.43606, 0, 0, 1, 0.552962, 1.35969e-06, 4.81307e-07, 1, 0.435294, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_7r6ji"]
+gradient = SubResource("Gradient_dd7vi")
+width = 16
+height = 16
+fill_from = Vector2(0.25, 0.25)
+fill_to = Vector2(0.75, 0.75)
+repeat = 1
+
+[node name="Yarn" type="Node2D"]
+script = ExtResource("1_be5ow")
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+texture = SubResource("GradientTexture2D_7r6ji")
+texture_mode = 1
+
+[node name="YarnStart" parent="." instance=ExtResource("1_6r5xi")]
+freeze = true
+
+[node name="YarnEnd" parent="." instance=ExtResource("1_6r5xi")]
+position = Vector2(88, 52)
