@@ -122,6 +122,12 @@ disabled = true
 [node name="Pursue" parent="ComplexShade/ShadeFSM/Alive/Movement/Chase" index="0"]
 next_state = NodePath(".")
 
+[node name="Evade" parent="ComplexShade/ShadeFSM/Alive/Movement" index="2"]
+next_state = NodePath("")
+
+[node name="Combat" parent="ComplexShade/ShadeFSM/Alive" index="1"]
+next_state = NodePath("")
+
 [node name="Health" parent="ComplexShade/BehaviorComponents" index="4"]
 max_health = 10
 

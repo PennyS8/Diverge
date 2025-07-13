@@ -15,8 +15,8 @@ func state_unhandled_input(event : InputEvent):
 		else:
 			print("Can't cope! Not enough meter!")
 	
-	elif Input.is_action_just_pressed("frog"):
-			change_state("Frog")
+	elif Input.is_action_just_pressed("crochet"):
+		change_state("Crochet")
 
 func _on_update(_delta: float) -> void:
 	pass

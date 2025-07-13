@@ -42,12 +42,10 @@ var curr_camera_boundry : Area2D
 
 var cutscene_marker_packed = preload("res://modules/objects/debug/cutscene_walk_point.tscn")
  
-
 #makes sure certain dialogue popups only appear once
 var dialogue_tracker = {"closet": false, "library": false, "new_hallway": false, "boss_battled" : false, "end_scene": false}
 
 signal attack_swung
-
 
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(dialogue_done)
@@ -98,7 +96,7 @@ func check_unlock_hook():
 			hook_locked = false
 		
 		if InventoryHelper.is_itemtype_in_inventory(inv, yarn_bag_type):
-			$PlayerFSM/Abilities/Yarn/Lasso.disabled = false
+			$PlayerFSM/Abilities/Crochet.disabled = false
 			
 		if InventoryHelper.is_itemtype_in_inventory(inv, cope_type):
 			$PlayerFSM/Abilities/DeepBreath.disabled = false

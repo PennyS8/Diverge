@@ -2,33 +2,35 @@ extends Node2D
 
 @onready var yarn_segment = preload("res://modules/entities/player/yarn/yarn_segment.tscn")
 
-@onready var yarn_start = $YarnStart
-@onready var yarn_end = $YarnEnd
+@onready var start_segment = $StartSegment
+@onready var end_segment = $EndSegment
 @onready var line2d_node = $Line2D
 
-var static_yarn_end : bool = false
-var interval_scale_fator : float = 0.03
-var yarn_segment_points = []
+@export var static_end_segment : bool = false
+@export var interval_scale_fator : float = 0.01
+@export var base_interval : float = 10.0
+@export var bias : float = 0.99
+@export var softness : float = 0.003
+
 var yarn_segments = []
 
 func _ready() -> void:
 	spawn_yarn()
 
 func spawn_yarn():
-	var start_pos = yarn_start.get_node("PinJoint2D").global_position
-	var end_pos = yarn_end.get_node("PinJoint2D").global_position
+	var start_pos = start_segment.get_node("PinJoint2D").global_position
+	var end_pos = end_segment.get_node("PinJoint2D").global_position
 	var dist = start_pos.distance_to(end_pos)
 	
-	var base_interval : float = 10.0
 	var interval = base_interval + (dist * interval_scale_fator)
 	var dir = (end_pos - start_pos).normalized()
 	var num_segments = ceil(dist/interval)
 	var rotation = dir.angle() - PI/2
 	
-	yarn_start.segment_index = 0;
+	start_segment.segment_index = 0;
 	var curr_pos = start_pos
-	var curr_segment = yarn_start
-	yarn_segments = [yarn_start]
+	var curr_segment = start_segment
+	yarn_segments = [start_segment]
 	for index in range(num_segments):
 		curr_segment = yarn_segments[index]
 		
@@ -41,13 +43,13 @@ func spawn_yarn():
 		if joint_pos.distance_to(end_pos) < interval:
 			break;
 	
-	connect_yarn_parts(yarn_end, curr_segment)
-	yarn_end.rotation = rotation
-	yarn_segments.append(yarn_end)
+	connect_yarn_parts(end_segment, curr_segment)
+	end_segment.rotation = rotation
+	yarn_segments.append(end_segment)
 	
-	if static_yarn_end:
-		yarn_end.freeze = true
-	yarn_end.segment_index = num_segments
+	if static_end_segment:
+		end_segment.freeze = true
+	end_segment.segment_index = num_segments
 
 func connect_yarn_parts(segment_a:Node2D, segment_b:Node2D):
 	segment_a.get_node("PinJoint2D").node_a = segment_a.get_path()
@@ -64,19 +66,19 @@ func add_yarn_segment(prev_segment:Node2D, id:int, rotation:float, pos:Vector2):
 	add_child(segment)
 	prev_segment.get_node("PinJoint2D").node_a = prev_segment.get_path()
 	prev_segment.get_node("PinJoint2D").node_b = segment.get_path()
-	prev_segment.get_node("PinJoint2D").bias = 0.99
-	prev_segment.get_node("PinJoint2D").softness = 0.003
+	prev_segment.get_node("PinJoint2D").bias = bias
+	prev_segment.get_node("PinJoint2D").softness = softness
 	
 	return segment
 
-func update_line2d():
-	yarn_segment_points = []
-	yarn_segment_points.append(yarn_start.get_node("PinJoint2D").global_position)
-	
-	for segment in yarn_segments:
-		yarn_segment_points.append(segment.global_position)
-	yarn_segment_points.append(yarn_end.get_node("PinJoint2D").global_position)
-	line2d_node = yarn_segment_points
-
 func _process(delta: float) -> void:
 	update_line2d()
+
+func update_line2d():
+	var yarn_segment_points = []
+	yarn_segment_points.append(start_segment.get_node("PinJoint2D").position)
+	
+	for segment in yarn_segments:
+		yarn_segment_points.append(segment.position)
+	yarn_segment_points.append(end_segment.get_node("PinJoint2D").position)
+	line2d_node.points = yarn_segment_points

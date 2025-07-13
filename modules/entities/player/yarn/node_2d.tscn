@@ -1,0 +1,55 @@
+[gd_scene load_steps=5 format=3 uid="uid://ca380r2qoxrs8"]
+
+[ext_resource type="Script" uid="uid://ndh304bqplxv" path="res://modules/entities/player/yarn/node_2d.gd" id="1_l6m1b"]
+[ext_resource type="Script" uid="uid://djl4pb8pb0buw" path="res://modules/entities/player/yarn/rope_2.gd" id="1_v50ur"]
+[ext_resource type="Script" uid="uid://dvxegqp0cf77n" path="res://addons/ropesim/RopeInteraction.gd" id="3_l6m1b"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6m1b"]
+radius = 2.0
+height = 8.0
+
+[node name="Node2D" type="Node2D"]
+script = ExtResource("1_l6m1b")
+
+[node name="Node2D2" type="RigidBody2D" parent="."]
+position = Vector2(0, 11)
+freeze = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Node2D2"]
+shape = SubResource("CapsuleShape2D_l6m1b")
+
+[node name="Rope2" type="Node2D" parent="."]
+script = ExtResource("1_v50ur")
+gravity = 0.0
+gravity_direction = Vector2(0, 0)
+render_debug = true
+line_width = 1.0
+enable_collisions = true
+resolve_collisions_while_constraining = true
+report_contact_points = true
+collision_mask = 0
+metadata/_custom_type_script = "uid://b2shq2gjd4fvt"
+
+[node name="RopeInteraction" type="Node" parent="Rope2" node_paths=PackedStringArray("target_node", "rope")]
+script = ExtResource("3_l6m1b")
+position_update_mode = 1
+target_node = NodePath("../../Node2D2")
+rope = NodePath("..")
+rope_position = 0.0
+offset = Vector2(0, -12)
+metadata/_custom_type_script = "uid://dvxegqp0cf77n"
+
+[node name="RopeInteraction2" type="Node" parent="Rope2" node_paths=PackedStringArray("target_node", "rope")]
+script = ExtResource("3_l6m1b")
+position_update_mode = 1
+target_node = NodePath("../../Node2D")
+rope = NodePath("..")
+offset = Vector2(0, -12)
+metadata/_custom_type_script = "uid://dvxegqp0cf77n"
+
+[node name="Node2D" type="RigidBody2D" parent="."]
+position = Vector2(-36, 0)
+freeze = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+shape = SubResource("CapsuleShape2D_l6m1b")
