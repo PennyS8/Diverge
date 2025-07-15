@@ -1,10 +1,11 @@
+@tool
 extends StateSound
 
 @onready var yarn = $"../../../Yarn"
 @onready var projectile = $"../../../Yarn/Projectile"
 
 var current_dist := 0.0
-var speed := 325.0
+var speed := 240.0
 var casting := true
 var tethered_body : CharacterBody2D
 
@@ -18,7 +19,7 @@ func _on_enter(_args) -> void:
 	tethered_body = null
 	casting = true
 
-func _on_update(delta: float) -> void:
+func _on_update(delta:float) -> void:
 	# yarn is frogged or snaps from tension or otherwise breaks
 	if (current_dist >= target.yarn_length):
 		casting = false
@@ -29,23 +30,36 @@ func _on_update(delta: float) -> void:
 		if current_dist <= 24:
 			exit()
 			return
-		yank(delta)
+		yank(delta, tethered_body.weight)
 	else:
-		exit()
+		if current_dist <= 12:
+			exit()
+			return
+		recoil(delta)
 
 func lasso(delta:float):
 	current_dist += speed * delta
 	projectile.position.x = current_dist
 	yarn.get_node("Line2D").points[1].x = current_dist
 
-func yank(delta:float):
+func yank(delta:float, tethered_body_weight:float):
+	var player_weight = LevelManager.player.weight # 10
+	var sum_weight = player_weight + tethered_body_weight
+	
 	var dir = target.global_position.direction_to(tethered_body.global_position).normalized()
 	yarn.rotation = Vector2.ZERO.angle_to_point(dir)
 	
-	tethered_body.global_position -= dir * (speed/2 * delta)
-	target.global_position += dir * (speed/2 * delta)
+	var base_speed = dir*speed*delta
+	tethered_body.global_position -= base_speed * (player_weight/sum_weight)
+	target.global_position += base_speed * (tethered_body_weight/sum_weight)
 	
 	current_dist = target.global_position.distance_to(tethered_body.global_position)
+	projectile.position.x = current_dist
+	yarn.get_node("Line2D").points[1].x = current_dist
+
+func recoil(delta:float):
+	var dir = yarn.rotation+PI # +PI flips the direction by 180 degrees
+	current_dist -= (speed * delta)
 	projectile.position.x = current_dist
 	yarn.get_node("Line2D").points[1].x = current_dist
 

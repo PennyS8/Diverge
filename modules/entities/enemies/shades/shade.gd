@@ -2,6 +2,7 @@ extends TetherableBody
 
 @export var hitpoints : int
 @export var movement_speed : float
+@export var weight := 5.0
 
 var follow_target
 var knockback : Vector2 = Vector2.ZERO

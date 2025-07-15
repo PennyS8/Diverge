@@ -30,6 +30,7 @@ var hook_locked := true
 @export var dash_type : ItemType
 
 @export var yarn_length := 96.0 # 64 + 32
+@export var weight := 10.0
 
 # this is to pass unhandled input to states
 signal unhandled_input_received(event)

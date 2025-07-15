@@ -3047,7 +3047,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("Idle")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
 [node name="Inactive" type="Node" parent="PlayerFSM/Abilities"]
@@ -3070,6 +3070,14 @@ metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
 [node name="Crochet" type="Node" parent="PlayerFSM/Abilities"]
 script = ExtResource("13_bif3w")
+sample = null
+animation_player = NodePath("../../../AnimationPlayer")
+anim_on_enter = ""
+disabled = false
+debug_mode = false
+target_path = NodePath("")
+timed = false
+next_state = NodePath("")
 metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="Movement" type="Node" parent="PlayerFSM"]

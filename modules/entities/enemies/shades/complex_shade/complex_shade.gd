@@ -10,6 +10,8 @@ var crowd_control := false
 
 var default_position
 
+@export var weight := 0.0
+
 @onready var damaged_particles = $DisplayComponents/HitFX
 @onready var fsm = $ShadeFSM
 
