@@ -17,9 +17,13 @@ func _main_ready():
 	player = get_tree().get_first_node_in_group("player")
 
 func respawn():
-	# TODO: Set this up upon entering boss room so we don't have to have this code everywhere
-	EnemyManager.remove_all_hands()
-	EnemyManager.remove_boss_spawned_enemies()
+	# Removes all enemies marked for engagement as well as all boss spawned enemies
+	EnemyManager.remove_marked_enemies()
+	
+	# Removes stress effect if it exists
+	var player_noise = LevelManager.player.get_node("stressEffect")
+	if player_noise: 
+		player_noise.hide()
 	
 	if last_level_path == null:
 		last_level_path = LevelManager.current_level.scene_file_path

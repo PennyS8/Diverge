@@ -123,11 +123,14 @@ script = ExtResource("6_qd47k")
 position = Vector2(375, 273)
 
 [node name="Entrance" type="Node2D" parent="Gym"]
+position = Vector2(372, 396)
+
+[node name="GymHallway" type="Marker2D" parent="Gym/Entrance" groups=["level_entrance"]]
 
 [node name="Exit" type="Node2D" parent="Gym"]
-
-[node name="GymHallway" parent="Gym/Exit" instance=ExtResource("2_6a26f")]
 position = Vector2(373, 434)
+
+[node name="GymHallway" parent="Gym/Exit" groups=["entrance_area"] instance=ExtResource("2_6a26f")]
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "TransitionDoubleDoor"
 transition_direction = 1

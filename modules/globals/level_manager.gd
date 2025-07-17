@@ -85,6 +85,8 @@ func change_level(path : String, entrance_name : String = "0"):
 	# Sets the last played scene before completing transition for future respawning
 	RespawnManager.last_level_path = current_level.scene_file_path
 	RespawnManager.last_level_name = current_level.get_name()
+	# Sets transition zone used for future respawning
+	RespawnManager.last_entrance = entrance_name
 	
 	var tween = get_tree().create_tween()
 	tween.set_parallel(false)

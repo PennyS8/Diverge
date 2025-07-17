@@ -88,7 +88,6 @@ func _on_health_component_died() -> void:
 	fsm.change_state("Dead")
 	%AnimationPlayer.call_deferred("play", "die")
 
-
 func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	# Apply knockback from the Hitbox's "knockback_coefficient"
 	knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef

@@ -32,9 +32,6 @@ func _on_body_entered(body: Node2D) -> void:
 			pass
 			#GameManager.inventory_node.inventory.load_state("player_inventory")
 		
-		# Sets transition zone used for future respawning
-		RespawnManager.last_entrance = entrance_name
-		
 		start_transition_cutscene()
 		
 		## Heal the player to max
