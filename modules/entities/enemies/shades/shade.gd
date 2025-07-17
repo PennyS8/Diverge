@@ -2,7 +2,7 @@ extends TetherableBody
 
 @export var hitpoints : int
 @export var movement_speed : float
-@export var weight := 5.0
+@export var weight : float = 5.0
 
 var follow_target
 var knockback : Vector2 = Vector2.ZERO
@@ -37,11 +37,11 @@ func _ready() -> void:
 
 func fling(): 
 	$ShadeFSM.change_state("Stunned")
-	super.fling()
+	#super.fling()
 
 func pull():
 	$ShadeFSM.change_state("Stunned")
-	super.pull()
+	#super.pull()
 
 func _physics_process(_delta: float) -> void:
 	super(_delta)
@@ -83,11 +83,11 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	#follow_target = null
 	#$ShadeFSM.change_state("Roaming")
 
-func _on_tetherable_area_2d_mouse_entered() -> void:
-	select()
-
-func _on_tetherable_area_2d_mouse_exited() -> void:
-	deselect()
+#func _on_tetherable_area_2d_mouse_entered() -> void:
+	#select()
+#
+#func _on_tetherable_area_2d_mouse_exited() -> void:
+	#deselect()
 
 # Removes the knockback from the enemy for tethering but still stuns enemy
 func tethered_stun():

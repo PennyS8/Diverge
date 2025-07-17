@@ -1,4 +1,4 @@
-extends TetherableBody
+extends CharacterBody2D
 
 # Most logic is handled by the xsm below
 # Player keeps it own velocity, as well as vars that can be used by many different states
@@ -29,8 +29,9 @@ var hook_locked := true
 @export var cope_type : ItemType
 @export var dash_type : ItemType
 
-@export var yarn_length := 96.0 # 64 + 32
-@export var weight := 10.0
+@export var yarn_length : float = 96.0 # 64 + 32
+@export var weight : float = 10.0
+@export var yarn_height : float = 12.0
 
 # this is to pass unhandled input to states
 signal unhandled_input_received(event)
@@ -51,7 +52,7 @@ signal attack_swung
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(dialogue_done)
 	
-func dialogue_done(resource : Resource) -> void:
+func dialogue_done(_resource : Resource) -> void:
 	dialogue_open = false
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -78,10 +79,10 @@ func update_cam_limits():
 		
 		var top_right : Vector2 = area.get_node("LimitTopRight").global_position
 		var bottom_left : Vector2 = area.get_node("LimitBottomLeft").global_position
-		camera.limit_top = top_right.y
-		camera.limit_right = top_right.x
-		camera.limit_bottom = bottom_left.y
-		camera.limit_left = bottom_left.x
+		camera.limit_top = int(top_right.y)
+		camera.limit_right = int(top_right.x)
+		camera.limit_bottom = int(bottom_left.y)
+		camera.limit_left = int(bottom_left.x)
 
 func give_hook():
 	if GameManager.inventory_node:
@@ -120,18 +121,7 @@ func _camera_move():
 func can_attack():
 	fsm.change_state("CanAttack")
 	fsm.change_state("Idle")
-
-func _physics_process(delta: float) -> void:
-	pass
-
-# Override
-func fling():
-	pass
-
-# Override
-func pull():
-	pass
-
+ 
 func enter_cutscene(camera_pos : Vector2 = Vector2.INF):
 	if camera_pos == Vector2.INF:
 		camera_pos = camera.global_position
@@ -231,5 +221,5 @@ func check_encounter():
 	if area is EncounterArea:
 		return area
 
-func _on_animation_player_current_animation_changed(name: String) -> void:
+func _on_animation_player_current_animation_changed(_name: String) -> void:
 	$Hook/CollisionPolygon2D.set_deferred("disabled", true)

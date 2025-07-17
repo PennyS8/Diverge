@@ -62,6 +62,6 @@ func tether_object(body:CharacterBody2D):
 	$Projectile.queue_free()
 
 ## Check for wall collisions
-func _on_wall_detector_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
+func _on_wall_detector_body_shape_entered(_body_rid, _body, _body_shape_index, _local_shape_index):
 	can_collide = false
 	$Projectile.queue_free()

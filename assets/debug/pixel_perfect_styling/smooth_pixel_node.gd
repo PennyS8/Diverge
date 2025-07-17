@@ -58,7 +58,7 @@ func _get_output_port_type(port):
 		0:
 			return PORT_TYPE_VECTOR_4D
 
-func _get_global_code(mode):
+func _get_global_code(_mode):
 	return """
 		vec4 smoothpixel(vec2 uv_in, vec2 texture_pixel_size, sampler2D original_texture) {
 			vec2 box_size = clamp(fwidth(uv_in) / texture_pixel_size, 1e-5, 1);
@@ -74,7 +74,7 @@ func _get_global_code(mode):
 	"""
 
 func _get_code(input_vars, output_vars,
-		mode, type):
+		_mode, _type):
 	var code = \
 		"""
 		vec4 smoothed_texture = smoothpixel(%s, %s, %s);

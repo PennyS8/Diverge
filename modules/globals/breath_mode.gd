@@ -27,7 +27,7 @@ func _on_visibility_changed() -> void:
 			get_tree().paused = false
 			_yank_all_yarn()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if visible:
 		time_remaining.text = "%.2f" % [timer.time_left]
 

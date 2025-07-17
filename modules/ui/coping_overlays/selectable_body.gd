@@ -8,7 +8,7 @@ var locked_in := false
 
 signal mouse_entered
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if !locked_in:
 		var mouse_point = global_position - get_global_mouse_position()
 		var numerator = max(mouse_point.length() - 24.0, 0)

@@ -56,16 +56,7 @@ func _on_hurt_box_hit(_area : HitBoxComponent2D) -> void:
 	fsm.change_state("Stunned")
 	# Disables the Attack box if player hits hand mid attack
 	attack_box.get_child(0).disabled
-	
 
 func _on_health_died() -> void:
 	fsm.change_state("Dead")
-#endregion
-
-#region Tetherable Area
-func _on_tetherable_area_mouse_entered() -> void:
-	select()
-
-func _on_tetherable_area_mouse_exited() -> void:
-	deselect()
 #endregion

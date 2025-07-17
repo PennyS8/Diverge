@@ -65,13 +65,13 @@ ledge=""
 saved_data=""
 thread=""
 hook=""
-status_tethered=""
 selected=""
-anchor=""
 tetherable_body=""
 boss=""
 encounter_entrance=""
 player_input_guide=""
+status_tethered=""
+anchor=""
 
 [gui]
 

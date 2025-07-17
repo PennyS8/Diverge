@@ -3590,6 +3590,8 @@ position = Vector2(0, -12)
 [node name="Projectile" type="Area2D" parent="Yarn"]
 collision_layer = 0
 collision_mask = 256
+monitoring = false
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Yarn/Projectile"]
 shape = SubResource("CircleShape2D_bif3w")
@@ -3604,4 +3606,5 @@ texture_mode = 1
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="current_animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_current_animation_changed"]
+[connection signal="area_entered" from="Yarn/Projectile" to="PlayerFSM/Abilities/Crochet" method="_on_projectile_area_entered"]
 [connection signal="area_shape_entered" from="Yarn/Projectile" to="PlayerFSM/Abilities/Crochet" method="_on_projectile_area_shape_entered"]

@@ -10,7 +10,8 @@ var crowd_control := false
 
 var default_position
 
-@export var weight := 0.0
+@export var weight : float = 10.0
+@export var yarn_height : float = 12.0
 
 @onready var damaged_particles = $DisplayComponents/HitFX
 @onready var fsm = $ShadeFSM
@@ -49,13 +50,13 @@ func tethered_stun():
 	# turns crowd control back off for future
 	crowd_control = false
 	
-func fling(): 
-	fsm.change_state("Stunned")
-	super.fling()
+#func fling(): 
+	#fsm.change_state("Stunned")
+	#super.fling()
 
-func pull():
-	fsm.change_state("Stunned")
-	super.pull()
+#func pull():
+	#fsm.change_state("Stunned")
+	#super.pull()
 
 #region Savegame
 func on_save_game(saved_data:Array[SavedData]):
@@ -101,20 +102,8 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	if (health_component.health - _area.damage) > 0:
 		%AnimationPlayer.call_deferred("play", "damaged")
 		fsm.call_deferred("change_state", "Stunned")
-
-		damaged_particles.restart()
 		
-		# If the attacking _area is the players thread apply the tethered status effect
-		if _area.is_in_group("thread"):
-			add_tethered_status()
-#endregion
-
-#region TetherableArea Selection
-func _on_tetherable_area_2d_mouse_entered() -> void:
-	select()
-
-func _on_tetherable_area_2d_mouse_exited() -> void:
-	deselect()
+		damaged_particles.restart()
 #endregion
 
 func fade_in():

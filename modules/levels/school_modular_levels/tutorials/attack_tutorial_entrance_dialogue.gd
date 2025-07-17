@@ -27,14 +27,13 @@ func _on_body_entered(_body: Node2D) -> void:
 	
 	player.dir = Vector2.ZERO
 	player.get_node("PlayerFSM").disabled = true
-
+	
 	var tween = create_tween()
 	tween.tween_interval(2.0)
 	tween.tween_property($"../CanvasLayer/TransOverlay", "modulate:a", 0.0, 3.0)
 	
 	await tween.finished
 	
-
 	var dialogue = load("res://modules/dialogue/demo_scenes.dialogue")
 	DialogueManager.show_dialogue_balloon(dialogue, "hiding_away", [self])
 	player.get_node("PlayerFSM").disabled = false
@@ -43,9 +42,9 @@ func _on_body_entered(_body: Node2D) -> void:
 	
 	player.get_node("PlayerFSM").change_state("CanDash")
 	player.get_node("PlayerFSM").change_state("CanAttack")
-
-	LevelManager.enter_tutorial("AttackTutorial")
 	
+	LevelManager.enter_tutorial("AttackTutorial")
+
 func move_shade(global_point, speed : float = 30.0) -> void:
 	var dist = shade.global_position.distance_to(global_point)
 	
@@ -65,4 +64,3 @@ func darken_lighting():
 	var tween : Tween = create_tween()
 	tween.tween_property($"../Lighting/CanvasModulate", "color", darkness_end_color, 5.0)
 	tween.parallel().tween_property($"../Lighting/PointLight2D", "energy", 1.0, 5.0)
-	#tween.

@@ -8,7 +8,7 @@ var accessed = false
 func _ready() -> void:
 	pass
 
-func _on_body_entered(body: Node2D) -> void:
+func _on_body_entered(_body: Node2D) -> void:
 	if(accessed == false):
 		player = LevelManager.player
 		olli = $"../Olli"

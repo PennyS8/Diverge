@@ -3,6 +3,9 @@ extends TetherableBody
 @export var spawns_wanderer : bool
 @export var item_stack : ItemType
 
+@export var weight : float = 0.0
+@export var yarn_height : float = 0.0
+
 @onready var dispenser_node = $"../../.."
 
 var great_grandparent
@@ -59,7 +62,7 @@ func _on_item_body_entered(body: Node2D) -> void:
 		$Item.set_deferred("monitoring", false)
 		var deinv = GameManager.inventory_node.inventory
 		$Item.try_pickup(deinv)
-		dispenser_node.player_got_ramen()
+		#dispenser_node.player_got_ramen()
 		#deinv.save_state("player_inventory")
 		queue_free()
 		
@@ -79,11 +82,11 @@ func _on_item_body_entered(body: Node2D) -> void:
 		
 		dispenser_node.shade_got_ramen(body)
 
-func pull():
-	$Item.set_collision_mask_value(4, false)
-	super.pull()
+#func pull():
+	#$Item.set_collision_mask_value(4, false)
+	#super.pull()
 	
-func fling():
-	$AudioStreamPlayer2D.play()
-	$Item.set_collision_mask_value(4, false)
-	super.fling()
+#func fling():
+	#$AudioStreamPlayer2D.play()
+	#$Item.set_collision_mask_value(4, false)
+	#super.fling()

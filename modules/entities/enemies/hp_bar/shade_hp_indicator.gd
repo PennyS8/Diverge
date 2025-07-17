@@ -26,12 +26,7 @@ func _ready():
 		current_heart_nodes.append(heart)
 		
 		heart.texture = hp_indicators.pick_random()
-		
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
 func hp_update():
 	$AnimationPlayer.play("fade_in")
 	num_current = ceil(health_component.health / 10.0)

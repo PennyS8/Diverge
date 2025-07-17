@@ -2,6 +2,10 @@ extends TetherableBody
 
 @export var key_id := 0
 @export var toggled := false
+
+@export var weight : float = -1.0
+@export var yarn_height : float = 4.0
+
 @onready var tetherable_area = $TetherableArea2D
 
 func on_save_game(saved_data:Array[SavedData]):
@@ -45,7 +49,7 @@ func fling(): #func fling(fling_point : Vector2):
 		# if lever is right and pulled left, or if lever is left and pulled right, flip the lever
 		if toggled and fling_dir.x > 0 or !toggled:
 			flip() # if lever is right and pulled left, flip
-	remove_tethered_status()
+	#remove_tethered_status()
 
 	
 # Override
@@ -64,8 +68,8 @@ func flip():
 		$Sprite2D.offset.x = 8
 		KeyChain.key.emit(key_id, false)
 
-func _on_tetherable_area_2d_mouse_entered() -> void:
-	select()
-
-func _on_tetherable_area_2d_mouse_exited() -> void:
-	deselect()
+#func _on_tetherable_area_2d_mouse_entered() -> void:
+	#select()
+#
+#func _on_tetherable_area_2d_mouse_exited() -> void:
+	#deselect()

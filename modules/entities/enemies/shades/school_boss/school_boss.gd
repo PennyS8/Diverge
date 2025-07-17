@@ -12,15 +12,6 @@ signal spawned
 
 func _ready() -> void:
 	default_position = global_position
-	
-	
-
-#func tethered_stun():
-	#crowd_control = true
-	#fsm.change_state("Stunned")
-	#
-	## turns crowd control back off for future
-	#crowd_control = false
 
 # Fling and Pull function override from parent. Prevents boss from being pulled by player
 func fling(): 
@@ -62,14 +53,6 @@ func _on_hurt_box_component_hit(_area : HitBoxComponent2D) -> void:
 func _on_health_component_died() -> void:
 	fsm.call_deferred("change_state", "Dead")
 	%AnimationPlayer.call_deferred("play", "die")
-#endregion
-
-#region Tetherable Area
-func _on_tetherable_area_2d_mouse_entered() -> void:
-	select()
-
-func _on_tetherable_area_2d_mouse_exited() -> void:
-	deselect()
 #endregion
 
 func start_boss_fight():

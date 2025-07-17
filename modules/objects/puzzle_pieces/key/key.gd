@@ -3,6 +3,9 @@ extends TetherableBody
 @export var key_id := 0
 @export var state := true
 
+@export var weight : float = 0.0
+@export var yarn_height : float = 0.0
+
 var picked_up := false
 
 func on_save_game(saved_data:Array[SavedData]):

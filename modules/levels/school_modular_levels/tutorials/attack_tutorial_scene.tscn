@@ -1,11 +1,15 @@
-[gd_scene load_steps=15 format=4 uid="uid://t7qmgj6gq2gb"]
+[gd_scene load_steps=19 format=4 uid="uid://t7qmgj6gq2gb"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_56em5"]
-[ext_resource type="Script" uid="uid://djqav51u3idup" path="res://modules/levels/school_modular_levels/tutorials/attack_tutorial_scene.gd" id="2_v3n63"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="3_c6v5b"]
 [ext_resource type="PackedScene" uid="uid://c4f5tcvmt380f" path="res://modules/objects/level_transition_zone/transition_door.tscn" id="4_2c6sg"]
+[ext_resource type="PackedScene" uid="uid://c3hs0j0l3dsrr" path="res://modules/objects/puzzle_pieces/breakable_barrel/breakable_barrel.tscn" id="5_7l26d"]
 [ext_resource type="PackedScene" uid="uid://dx5na7ufncxg3" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn" id="5_a0lcq"]
+[ext_resource type="PackedScene" uid="uid://bw5puypn7f5nx" path="res://modules/levels/cafeteria/ramen_tray.tscn" id="5_mitws"]
 [ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="6_4vi1j"]
+[ext_resource type="PackedScene" uid="uid://c0xn1iqitvhmq" path="res://modules/objects/puzzle_pieces/key/key.tscn" id="6_8rgg6"]
+[ext_resource type="PackedScene" uid="uid://cn80hyaaf6syw" path="res://modules/objects/puzzle_pieces/anchor/anchor.tscn" id="6_wwvoh"]
+[ext_resource type="PackedScene" uid="uid://dywn8ybv2xl4i" path="res://modules/objects/puzzle_pieces/lever/lever.tscn" id="7_noh3k"]
 [ext_resource type="Script" uid="uid://bfwcpq5508uvf" path="res://modules/levels/school_modular_levels/tutorials/attack_tutorial_entrance_dialogue.gd" id="7_v3n63"]
 [ext_resource type="Texture2D" uid="uid://d1i2h41pm54o2" path="res://assets/debug/2d_lights_and_shadows_neutral_point_light.webp" id="8_kvwte"]
 [ext_resource type="FontFile" uid="uid://dtyn18rtxvf8u" path="res://assets/hud/Jersey_10/Jersey10-Regular.ttf" id="9_bn1yh"]
@@ -36,7 +40,6 @@ size = Vector2(233, 160)
 y_sort_enabled = true
 texture_filter = 2
 material = ExtResource("1_56em5")
-script = ExtResource("2_v3n63")
 metadata/_edit_vertical_guides_ = [-840.0]
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
@@ -64,7 +67,7 @@ z_index = 1
 y_sort_enabled = true
 texture_filter = 2
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAfACIAAAALABMAAAAfACMAAAALABEAAAAfACQAAAALABEAAAAfACUAAAALABEAAAAfACYAAAALABEAAAAfACcAAAALABEAAAAfACgAAAALABEAAAAfACkAAAALABEAAAAfACoAAAAJABMAAAAgACIAAAAKABIAAAAgACoAAAAKABAAAAAhACIAAAAKABIAAAAhACoAAAAKABAAAAAiACIAAAAKABIAAAAiACoAAAAKABAAAAAjACIAAAAKABIAAAAjACoAAAAKABAAAAAkACIAAAAKABIAAAAkACoAAAAKABAAAAAlACIAAAAKABIAAAAlACoAAAAKABAAAAAmACIAAAAKABIAAAAmACoAAAAKABAAAAAnACIAAAAKABIAAAAnACoAAAAKABAAAAAoACIAAAAKABMAAAAoACMAAAAJABEAAAAoACQAAAAJABEAAAAoACUAAAAJABEAAAAoACYAAAAJABEAAAAoACcAAAAJABEAAAAoACgAAAAJABEAAAAoACkAAAAJABEAAAAoACoAAAAIABMAAAA=")
+tile_map_data = PackedByteArray("AAAfACIAAAALABMAAAAfACMAAAALABEAAAAfACQAAAALABEAAAAfACUAAAALABEAAAAfACYAAAALABEAAAAfACcAAAALABEAAAAfACgAAAALABEAAAAfACkAAAALABEAAAAgACIAAAAKABIAAAAhACIAAAAKABIAAAAiACIAAAAKABIAAAAjACIAAAAKABIAAAAkACIAAAAKABIAAAAlACIAAAAKABIAAAAmACIAAAAKABIAAAAnACIAAAAKABIAAAAoACIAAAAKABMAAAAoACMAAAAJABEAAAAoACQAAAAJABEAAAAoACUAAAAJABEAAAAoACYAAAAJABEAAAAoACcAAAAJABEAAAAoACgAAAAJABEAAAAoACkAAAAJABEAAAAfACoAAAAJABMAAAAgACoAAAAKABAAAAAhACoAAAAKABAAAAAiACoAAAAKABAAAAAjACoAAAAKABAAAAAkACoAAAAKABAAAAAlACoAAAAKABAAAAAmACoAAAAKABAAAAAnACoAAAAKABAAAAAoACoAAAAIABMAAAA=")
 tile_set = ExtResource("3_c6v5b")
 
 [node name="WallFronts" type="TileMapLayer" parent="Tiles/Walls"]
@@ -109,6 +112,23 @@ position = Vector2(-340, 283)
 [node name="LimitTopRight" type="Marker2D" parent="CameraBoundry"]
 position = Vector2(399, -347)
 
+[node name="BreakableBarrel" parent="." instance=ExtResource("5_7l26d")]
+position = Vector2(-7, -19)
+
+[node name="RamenTray" parent="." instance=ExtResource("5_mitws")]
+position = Vector2(-69, 34)
+
+[node name="Key" parent="." instance=ExtResource("6_8rgg6")]
+position = Vector2(-67, -17)
+
+[node name="Lever" parent="." instance=ExtResource("7_noh3k")]
+position = Vector2(75, -21)
+
+[node name="Anchor" parent="." instance=ExtResource("6_wwvoh")]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(37, -16)
+
 [node name="ComplexShade" parent="." instance=ExtResource("5_a0lcq")]
 visible = false
 position = Vector2(-60, -30)
@@ -123,10 +143,10 @@ disabled = true
 next_state = NodePath(".")
 
 [node name="Evade" parent="ComplexShade/ShadeFSM/Alive/Movement" index="2"]
-next_state = NodePath("")
+next_state = NodePath("../ReturnToPost")
 
 [node name="Combat" parent="ComplexShade/ShadeFSM/Alive" index="1"]
-next_state = NodePath("")
+next_state = NodePath("../Reaction")
 
 [node name="Health" parent="ComplexShade/BehaviorComponents" index="4"]
 max_health = 10
