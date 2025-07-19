@@ -32,3 +32,5 @@ func _on_enter(_args) -> void:
 
 func change_to_next_substate():
 	RespawnManager.respawn()
+	change_state("CanAttack")
+	change_state("CanDash")
