@@ -394,7 +394,7 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(-576, -428)
 
-[node name="ClassroomSouth" parent="Exit" instance=ExtResource("8_lw440")]
+[node name="ClassroomSouth" parent="Exit" groups=["entrance_area"] instance=ExtResource("8_lw440")]
 position = Vector2(756, 612)
 scale = Vector2(4, 4)
 next_level_path = "uid://bqotfp8yphsb"

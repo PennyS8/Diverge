@@ -9486,11 +9486,13 @@ position = Vector2(216, 42)
 [node name="HallwayWest" type="Marker2D" parent="Hallway/Entrances" groups=["level_entrance"]]
 position = Vector2(-288, 42)
 
+[node name="Marker2D" type="Marker2D" parent="Hallway/Entrances"]
+
 [node name="Exits" type="Node2D" parent="Hallway"]
 z_index = 1
 y_sort_enabled = true
 
-[node name="PuzzleDoorA" parent="Hallway/Exits" instance=ExtResource("12_w3j1q")]
+[node name="PuzzleDoorA" parent="Hallway/Exits" groups=["entrance_area"] instance=ExtResource("12_w3j1q")]
 position = Vector2(-156, -24)
 next_level_path = "uid://cp53bw4fgv7b2"
 entrance_name = "LabSouth"
@@ -9505,7 +9507,7 @@ texture = ExtResource("15_mee8l")
 material = SubResource("ShaderMaterial_vrsc7")
 texture = ExtResource("15_mee8l")
 
-[node name="PuzzleDoorB" parent="Hallway/Exits" instance=ExtResource("12_w3j1q")]
+[node name="PuzzleDoorB" parent="Hallway/Exits" groups=["entrance_area"] instance=ExtResource("12_w3j1q")]
 position = Vector2(-36, -24)
 next_level_path = "uid://d0oqu04cc5tr8"
 entrance_name = "ASouth"
@@ -9518,7 +9520,7 @@ material = SubResource("ShaderMaterial_0knhu")
 [node name="Sprite2D" parent="Hallway/Exits/PuzzleDoorB/Glint" index="0"]
 material = SubResource("ShaderMaterial_0knhu")
 
-[node name="PuzzleDoorC" parent="Hallway/Exits" instance=ExtResource("12_w3j1q")]
+[node name="PuzzleDoorC" parent="Hallway/Exits" groups=["entrance_area"] instance=ExtResource("12_w3j1q")]
 position = Vector2(84, -24)
 next_level_path = "uid://cfqgwnxrjxs7m"
 entrance_name = "ClassroomSouth"
@@ -9874,35 +9876,42 @@ use_parent_material = true
 tile_map_data = PackedByteArray("AAAKAP7/AgAEAAwAAAAKAP//AgAEAA0AAAALAP7/AgAFAAoAAAALAP//AgAEAAsAAAAMAP7/AgAFAAoAAAAMAP//AgAFAAsAAAANAP7/AgAGAAwAAAANAP//AgAGAA0AAAA=")
 tile_set = ExtResource("10_kgxs5")
 
-[node name="TransitionDoubleDoor" type="StaticBody2D" parent="URoom2"]
-z_index = 1
+[node name="Entrance" type="Node2D" parent="URoom2"]
+position = Vector2(288, 14)
+
+[node name="TransitionDoubleDoor" type="Marker2D" parent="URoom2/Entrance" groups=["level_entrance"]]
+
+[node name="Exit" type="Node2D" parent="URoom2"]
 position = Vector2(288, 0)
+
+[node name="TransitionDoubleDoor" type="StaticBody2D" parent="URoom2/Exit" groups=["entrance_area"]]
+z_index = 1
 script = ExtResource("25_4lksq")
 next_level_path = "uid://m6shqoju2l67"
-entrance_name = "0"
+entrance_name = "GymHallway"
 door_name = "gym_door"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="URoom2/TransitionDoubleDoor"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="URoom2/Exit/TransitionDoubleDoor"]
 position = Vector2(0, -12)
 shape = SubResource("RectangleShape2D_b2upq")
 
-[node name="Area2D" type="Area2D" parent="URoom2/TransitionDoubleDoor"]
+[node name="Area2D" type="Area2D" parent="URoom2/Exit/TransitionDoubleDoor"]
 collision_layer = 0
 collision_mask = 4
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="URoom2/TransitionDoubleDoor/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="URoom2/Exit/TransitionDoubleDoor/Area2D"]
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_5plkm")
 debug_color = Color(0.908494, 0.230311, 0.491003, 0.42)
 
-[node name="Sprite2D" type="Sprite2D" parent="URoom2/TransitionDoubleDoor"]
+[node name="Sprite2D" type="Sprite2D" parent="URoom2/Exit/TransitionDoubleDoor"]
 texture_filter = 2
 material = ExtResource("13_at4ji")
 position = Vector2(12, -24)
 texture = SubResource("AtlasTexture_j0ml5")
 region_rect = Rect2(0, 112, 32, 96)
 
-[node name="Sprite2D4" type="Sprite2D" parent="URoom2/TransitionDoubleDoor"]
+[node name="Sprite2D4" type="Sprite2D" parent="URoom2/Exit/TransitionDoubleDoor"]
 texture_filter = 2
 material = SubResource("ShaderMaterial_4lksq")
 position = Vector2(-12, -24)
@@ -9910,35 +9919,35 @@ texture = SubResource("AtlasTexture_ioon7")
 flip_h = true
 region_rect = Rect2(0, 112, 32, 96)
 
-[node name="Sprite2D2" type="Sprite2D" parent="URoom2/TransitionDoubleDoor"]
+[node name="Sprite2D2" type="Sprite2D" parent="URoom2/Exit/TransitionDoubleDoor"]
 texture_filter = 2
 material = ExtResource("13_at4ji")
 position = Vector2(-27, -24)
 texture = SubResource("AtlasTexture_b2upq")
 region_rect = Rect2(0, 112, 32, 96)
 
-[node name="Sprite2D3" type="Sprite2D" parent="URoom2/TransitionDoubleDoor"]
+[node name="Sprite2D3" type="Sprite2D" parent="URoom2/Exit/TransitionDoubleDoor"]
 texture_filter = 2
 material = ExtResource("13_at4ji")
 position = Vector2(27, -24)
 texture = SubResource("AtlasTexture_5plkm")
 region_rect = Rect2(0, 112, 32, 96)
 
-[node name="Glint" type="CanvasGroup" parent="URoom2/TransitionDoubleDoor"]
+[node name="Glint" type="CanvasGroup" parent="URoom2/Exit/TransitionDoubleDoor"]
 visible = false
 material = SubResource("ShaderMaterial_ioon7")
 position = Vector2(0, -24)
 fit_margin = 0.0
 clear_margin = 0.0
 
-[node name="Sprite2D" type="Sprite2D" parent="URoom2/TransitionDoubleDoor/Glint"]
+[node name="Sprite2D" type="Sprite2D" parent="URoom2/Exit/TransitionDoubleDoor/Glint"]
 texture_filter = 2
 material = ExtResource("13_at4ji")
 position = Vector2(12, 1)
 texture = SubResource("AtlasTexture_4lksq")
 region_rect = Rect2(0, 112, 32, 96)
 
-[node name="Sprite2D2" type="Sprite2D" parent="URoom2/TransitionDoubleDoor/Glint"]
+[node name="Sprite2D2" type="Sprite2D" parent="URoom2/Exit/TransitionDoubleDoor/Glint"]
 texture_filter = 2
 material = SubResource("ShaderMaterial_j0ml5")
 position = Vector2(-12, 0)
@@ -10001,8 +10010,8 @@ shape = SubResource("RectangleShape2D_txk0m")
 [connection signal="body_entered" from="StartRoom/CameraBoundry" to="StartRoom/MovingWall" method="_on_camera_boundry_body_entered"]
 [connection signal="body_entered" from="Hallway/Exits/HallwayWest" to="StartRoom/MovingWall" method="_on_hallway_west_body_entered"]
 [connection signal="body_entered" from="Hallway/NewAreaDialogueTrigger" to="Hallway/NewAreaDialogueTrigger" method="_on_body_entered"]
-[connection signal="body_entered" from="URoom2/TransitionDoubleDoor/Area2D" to="URoom2/TransitionDoubleDoor" method="_on_area_2d_body_entered"]
-[connection signal="body_exited" from="URoom2/TransitionDoubleDoor/Area2D" to="URoom2/TransitionDoubleDoor" method="_on_area_2d_body_exited"]
+[connection signal="body_entered" from="URoom2/Exit/TransitionDoubleDoor/Area2D" to="URoom2/Exit/TransitionDoubleDoor" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="URoom2/Exit/TransitionDoubleDoor/Area2D" to="URoom2/Exit/TransitionDoubleDoor" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="URoom2/Area2D" to="URoom2/Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="URoom2/LibraryBarrier" to="URoom2/LibraryBarrier" method="_on_body_entered"]
 

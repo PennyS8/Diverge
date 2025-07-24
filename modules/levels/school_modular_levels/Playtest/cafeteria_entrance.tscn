@@ -69,14 +69,14 @@ position = Vector2(60, 88)
 
 [node name="Exits" type="Node2D" parent="RoomA"]
 
-[node name="AEast" parent="RoomA/Exits" instance=ExtResource("3_2asp8")]
+[node name="AEast" parent="RoomA/Exits" groups=["encounter_entrance"] instance=ExtResource("3_2asp8")]
 position = Vector2(204, 36)
 scale = Vector2(4, 12)
 next_level_path = "uid://bgxeo4378llba"
 entrance_name = "0"
 transition_direction = 3
 
-[node name="ASouth" parent="RoomA/Exits" instance=ExtResource("3_2asp8")]
+[node name="ASouth" parent="RoomA/Exits" groups=["encounter_entrance"] instance=ExtResource("3_2asp8")]
 position = Vector2(60, 108)
 scale = Vector2(12, 4)
 next_level_path = "uid://bqotfp8yphsb"

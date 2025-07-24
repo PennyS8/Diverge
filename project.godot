@@ -32,6 +32,7 @@ ProjectMusicController="*res://addons/maaacks_menus_template/base/scenes/autoloa
 ProjectUISoundController="*res://addons/maaacks_menus_template/base/scenes/autoloads/project_ui_sound_controller.tscn"
 Music="*res://modules/globals/Music.tscn"
 LimboConsole="*res://addons/limbo_console/limbo_console.gd"
+RespawnManager="*res://modules/globals/respawn_manager.gd"
 
 [debug]
 
@@ -72,6 +73,7 @@ tetherable_body=""
 boss=""
 encounter_entrance=""
 player_input_guide=""
+entrance_area=""
 
 [gui]
 

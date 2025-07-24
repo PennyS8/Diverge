@@ -157,3 +157,9 @@ func remove_boss_spawned_enemies():
 	
 	boss_spawned_enemies.clear()
 #endregion
+
+func remove_marked_enemies():
+	current_engagers.clear()
+	marked_for_disengage.clear()
+	hand_spawn_counter.clear()
+	boss_spawned_enemies.clear()

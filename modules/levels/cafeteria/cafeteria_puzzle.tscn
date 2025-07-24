@@ -235,7 +235,7 @@ material = ExtResource("1_ad4o5")
 [node name="Exits" type="Node2D" parent="."]
 position = Vector2(-106, -24)
 
-[node name="Exit" parent="Exits" instance=ExtResource("2_nel61")]
+[node name="Exit" parent="Exits" groups=["entrance_area"] instance=ExtResource("2_nel61")]
 position = Vector2(-314, 21)
 scale = Vector2(4, 12)
 next_level_path = "uid://d0oqu04cc5tr8"
