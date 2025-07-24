@@ -218,6 +218,7 @@ func player_transition(level_path : String, direction : Vector2, entrance_name :
 	
 	player.exit_cutscene()
 
+## Simplified transition function that does not include any saving features.
 func respawn_transition(level_path : String, entrance_name : String):
 	if transitioning:
 		return
