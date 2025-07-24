@@ -58,6 +58,7 @@ func _on_enter(_args) -> void:
 	# the dictionary initialized at the top of this script assigns each vector2
 	# value to the corresponding state node name
 	change_state(attack_states[swing_dir])
+	target.attack_swung.emit()
 
 
 # pretty much same logic as dash for these two functions.

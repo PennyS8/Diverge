@@ -79,6 +79,6 @@ transition_direction = 3
 [node name="ASouth" parent="RoomA/Exits" groups=["encounter_entrance"] instance=ExtResource("3_2asp8")]
 position = Vector2(60, 108)
 scale = Vector2(12, 4)
-next_level_path = "uid://dibtck8dlixm1"
+next_level_path = "uid://bqotfp8yphsb"
 entrance_name = "PuzzleDoorB"
 transition_direction = 1

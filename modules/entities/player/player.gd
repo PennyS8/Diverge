@@ -46,6 +46,8 @@ var cutscene_marker_packed = preload("res://modules/objects/debug/cutscene_walk_
 var dialogue_tracker = {"closet": false, "library": false, "new_hallway": false, 
 	"boss_battled" : false, "end_scene": false, "deep_breath_practice": false}
 
+signal attack_swung
+
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(dialogue_done)
 	
@@ -99,6 +101,9 @@ func check_unlock_hook():
 			
 		if InventoryHelper.is_itemtype_in_inventory(inv, cope_type):
 			$PlayerFSM/Abilities/DeepBreath.disabled = false
+			
+			# So that # of enemies tracker doesn't update until we can actually do the thing
+			EnemyManager.deep_breath_unlocked = true
 		
 		# NOTE: This is commented out on purpose. May disable in future.
 		#if InventoryHelper.is_itemtype_in_inventory(inv, dash_type):

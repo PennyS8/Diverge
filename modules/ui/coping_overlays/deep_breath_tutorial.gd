@@ -42,7 +42,11 @@ func cope():
 	LevelManager.overlay.tutorial_bodies = shades
 	await LevelManager.deep_breath_overlay(true)
 	
+	# Reset "focus meter" aka the glowing orb that indicates you can deep breath
+	EnemyManager.focus_meter = EnemyManager.MIN_METER
+	
 	exit_deep_breath_tutorial()
+	Music.play_track(Music.Vibe.CONFIDENT)
 
 func exit_deep_breath_tutorial():
 	tutorial_in_progress = false

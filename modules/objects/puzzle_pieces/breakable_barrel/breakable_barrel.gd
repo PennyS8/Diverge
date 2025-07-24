@@ -44,7 +44,9 @@ func _on_cpu_particles_2d_finished() -> void:
 		queue_free()
 
 func _on_health_component_died() -> void:
-	particles.amount = 16
+	particles.set_deferred("amount", 16)
+	particles.call_deferred("restart")
+
 	$Sprite2D.visible = false
 	set_collision_layer_value(5, false)
 	set_collision_layer_value(6, false)
