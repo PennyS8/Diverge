@@ -25,9 +25,12 @@ func heart_damage(amount : int):
 			else:
 				damage -= 2
 			hearts[i].damage_sprite("full_damage")
+			display_hurt_ui()
 		else:
 			hearts[i].damage_sprite("half_damage")
 			damage = 0
+			display_hurt_ui()
+
 
 func heart_heal(amount : int):
 	
@@ -49,3 +52,10 @@ func heart_heal(amount : int):
 			else:
 				heal = 0
 				heart.heal_sprite("half_heal")
+
+func display_hurt_ui():
+	var tween = create_tween()
+	tween.tween_property($IngameUI/HurtIndicator, "modulate:a", 1.0, 0.1)
+	tween.tween_interval(0.3)
+	tween.tween_property($IngameUI/HurtIndicator, "modulate:a", 0.0, 0.1)
+	
