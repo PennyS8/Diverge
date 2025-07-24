@@ -95,7 +95,7 @@ func start_encounter():
 func end_encounter():
 	# unlock all doors
 	LevelManager.exit_encounter.emit()
-
+	
 	encounter_active = false
 
 func enemy_defeated(enemy):
@@ -117,5 +117,6 @@ func enemy_added(enemy):
 		return
 	
 	enemy.health_component.Died.connect(enemy_defeated.bind(enemy))
+	
 	current_enemies.append(enemy)
 #endregion

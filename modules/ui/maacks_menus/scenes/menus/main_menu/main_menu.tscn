@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://6o1q14hasou8"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_lgmg5"]
-[ext_resource type="Script" path="res://modules/ui/maacks_menus/scenes/menus/main_menu/main_menu.gd" id="2_qtvir"]
-[ext_resource type="PackedScene" path="res://modules/ui/maacks_menus/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_72cdi"]
-[ext_resource type="PackedScene" path="res://modules/ui/maacks_menus/scenes/credits/credits.tscn" id="4_rd3br"]
+[ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/scenes/menus/main_menu/main_menu.tscn" id="1_lgmg5"]
+[ext_resource type="Script" uid="uid://muujmhbecrwn" path="res://modules/ui/maacks_menus/scenes/menus/main_menu/main_menu.gd" id="2_qtvir"]
+[ext_resource type="PackedScene" uid="uid://c6nvrwgytwso3" path="res://modules/ui/maacks_menus/scenes/menus/options_menu/master_options_menu_with_tabs.tscn" id="3_72cdi"]
+[ext_resource type="PackedScene" uid="uid://b1nvsmlwr435x" path="res://modules/ui/maacks_menus/scenes/credits/credits.tscn" id="4_rd3br"]
 
 [node name="MainMenu" instance=ExtResource("1_lgmg5")]
 script = ExtResource("2_qtvir")

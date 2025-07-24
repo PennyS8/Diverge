@@ -37,12 +37,14 @@ var curr_camera_boundry : Area2D
 @onready var anim_player = $AnimationPlayer
 @onready var camera : Camera2D = $Camera2D
 @onready var fsm : State = $PlayerFSM
+@onready var hurtbox = $HurtBoxComponent2D
 
 var cutscene_marker_packed = preload("res://modules/objects/debug/cutscene_walk_point.tscn")
  
 
 #makes sure certain dialogue popups only appear once
-var dialogue_tracker = {"closet": false, "library": false, "new_hallway": false, "boss_battled" : false, "end_scene": false}
+var dialogue_tracker = {"closet": false, "library": false, "new_hallway": false, 
+	"boss_battled" : false, "end_scene": false, "deep_breath_practice": false}
 
 func _ready() -> void:
 	DialogueManager.dialogue_ended.connect(dialogue_done)
@@ -196,6 +198,8 @@ func start_movement_tutorial():
 	$MovementKeys.start_tutorial()
 	
 func _on_health_component_died() -> void:
+	set_collision_layer_value(3, false)
+	
 	var current_dir : Vector2
 	var idle := false
 	

@@ -1,7 +1,7 @@
 [gd_scene load_steps=99 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
-[ext_resource type="Script" uid="uid://bfg3nrrx0fd1" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
+[ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
 [ext_resource type="Script" uid="uid://dr6vxgun7rg7n" path="res://addons/xsm/state.gd" id="1_q2vpm"]
 [ext_resource type="Resource" uid="uid://c2agev3nx2dlo" path="res://modules/ui/hud/wyvern_inv/weaverhook.tres" id="2_2irlg"]
 [ext_resource type="Resource" uid="uid://cbciukbgyqajv" path="res://modules/ui/hud/wyvern_inv/yarnbag.tres" id="3_7h8sm"]
@@ -15,23 +15,23 @@
 [ext_resource type="Script" uid="uid://bl8vcpeu60p0q" path="res://modules/entities/player/xsm/idle.gd" id="6_p1gyv"]
 [ext_resource type="Script" uid="uid://vmjglki3j80d" path="res://modules/entities/player/xsm/walk.gd" id="6_rn5yy"]
 [ext_resource type="Script" uid="uid://chm5jdso2fvbw" path="res://modules/entities/player/xsm/can_attack.gd" id="6_yyqig"]
-[ext_resource type="Script" path="res://modules/entities/player/abilities.gd" id="8_lle26"]
+[ext_resource type="Script" uid="uid://bi00868skhp1y" path="res://modules/entities/player/abilities.gd" id="8_lle26"]
 [ext_resource type="Script" uid="uid://b52l2mfpn8xxu" path="res://modules/entities/player/xsm/dash.gd" id="9_x3ix7"]
 [ext_resource type="Script" uid="uid://cd13uijgbv68l" path="res://modules/entities/player/xsm/attack_melee.gd" id="10_v37cr"]
 [ext_resource type="Script" uid="uid://cim5cquo2x5ig" path="res://modules/entities/player/xsm/lasso.gd" id="12_ds73y"]
-[ext_resource type="Script" uid="uid://dhgmd182ifigx" path="res://addons/xsm/state_animation.gd" id="12_e6mu1"]
+[ext_resource type="Script" uid="uid://sgbgpy8s08d3" path="res://addons/xsm/state_animation.gd" id="12_e6mu1"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="13_41n4o"]
 [ext_resource type="AudioStream" uid="uid://bwg1bo378kk2y" path="res://modules/sfx/dash_randomizer.tres" id="13_ken2u"]
 [ext_resource type="Script" uid="uid://cu57huvshgpwy" path="res://modules/entities/player/xsm/fall.gd" id="13_upq7c"]
 [ext_resource type="Script" uid="uid://c44tfmii554el" path="res://modules/entities/player/xsm/push.gd" id="13_xr8le"]
 [ext_resource type="Script" uid="uid://cbki1wx5sldj2" path="res://modules/entities/player/xsm/throw.gd" id="14_7pa4m"]
 [ext_resource type="Script" uid="uid://35wultrt2jyq" path="res://modules/entities/player/xsm/hop.gd" id="14_l3d1o"]
-[ext_resource type="Script" uid="uid://20j3qpog56l0" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
+[ext_resource type="Script" uid="uid://d3k8myw5l01oe" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="15_257pe"]
 [ext_resource type="Script" uid="uid://dmux7vy5y0hk4" path="res://modules/entities/player/xsm/grapple.gd" id="15_trbfo"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]
 [ext_resource type="Script" uid="uid://8u175eaigjct" path="res://modules/entities/player/xsm/recall.gd" id="17_qcq68"]
-[ext_resource type="Script" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
+[ext_resource type="Script" uid="uid://yaywue3qai2t" path="res://modules/entities/player/deep_breath.gd" id="21_1lef0"]
 [ext_resource type="Script" uid="uid://bkr3e1t0a8kwu" path="res://modules/entities/player/death.gd" id="21_xyfbm"]
 [ext_resource type="AudioStream" uid="uid://dgi52d11jrqrf" path="res://modules/entities/player/attack_woosh_randomizer.tres" id="24_xyfbm"]
 [ext_resource type="Texture2D" uid="uid://cw6e3445io3hb" path="res://modules/entities/player/real_sprites/idle_walk/idle_walk_down.png" id="31_l84k2"]
@@ -2920,7 +2920,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../DashTimer")
 
 [node name="DashTimer" type="Node" parent="PlayerFSM/DashPossible"]
 script = ExtResource("4_j2uqp")
@@ -2930,7 +2930,7 @@ target_path = NodePath("")
 timed = true
 waiting_time = 0.5
 on_timer_finished = 3
-next_state = NodePath("")
+next_state = NodePath("../CanDash")
 
 [node name="CanDash" type="Node" parent="PlayerFSM/DashPossible"]
 script = ExtResource("5_parbs")
@@ -2987,7 +2987,7 @@ disabled = false
 debug_mode = true
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../DeepBreath")
 metadata/_custom_type_script = "uid://dr6vxgun7rg7n"
 
 [node name="DeepBreath" type="Node" parent="PlayerFSM/Abilities"]
@@ -3039,7 +3039,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../WalkRight")
 
 [node name="WalkRight" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -3051,7 +3051,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../WalkUp")
 
 [node name="WalkUp" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -3063,7 +3063,7 @@ disabled = true
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../WalkLeft")
 
 [node name="WalkLeft" type="Node" parent="PlayerFSM/Movement/Walk"]
 script = ExtResource("12_e6mu1")
@@ -3110,7 +3110,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../DashDown")
 
 [node name="DashDown" type="Node" parent="PlayerFSM/Movement/Dash"]
 script = ExtResource("12_e6mu1")
@@ -3120,7 +3120,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../DashUp")
 
 [node name="DashUp" type="Node" parent="PlayerFSM/Movement/Dash"]
 script = ExtResource("12_e6mu1")
@@ -3130,7 +3130,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../DashLeft")
 
 [node name="DashLeft" type="Node" parent="PlayerFSM/Movement/Dash"]
 script = ExtResource("12_e6mu1")
@@ -3219,7 +3219,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../AttackRight")
 
 [node name="AttackRight" type="Node" parent="PlayerFSM/Movement/AttackMelee"]
 script = ExtResource("12_e6mu1")
@@ -3231,7 +3231,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../AttackDown")
 
 [node name="AttackDown" type="Node" parent="PlayerFSM/Movement/AttackMelee"]
 script = ExtResource("12_e6mu1")
@@ -3243,7 +3243,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../AttackLeft")
 
 [node name="AttackLeft" type="Node" parent="PlayerFSM/Movement/AttackMelee"]
 script = ExtResource("12_e6mu1")
@@ -3300,7 +3300,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../HopLeft")
 
 [node name="HopLeft" type="Node" parent="PlayerFSM/Movement/Hop"]
 script = ExtResource("12_e6mu1")
@@ -3312,7 +3312,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../HopRight")
 
 [node name="HopRight" type="Node" parent="PlayerFSM/Movement/Hop"]
 script = ExtResource("12_e6mu1")
@@ -3324,7 +3324,7 @@ disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../HopDown")
 
 [node name="HopDown" type="Node" parent="PlayerFSM/Movement/Hop"]
 script = ExtResource("12_e6mu1")
@@ -3355,12 +3355,12 @@ script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "death_up"
 loop_mode = 0
-on_finished = 1
+on_finished = 2
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../DeathRight")
 metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 
 [node name="DeathRight" type="Node" parent="PlayerFSM/Movement/Death"]
@@ -3368,12 +3368,12 @@ script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "death_right"
 loop_mode = 0
-on_finished = 1
+on_finished = 2
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../DeathDown")
 metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 
 [node name="DeathDown" type="Node" parent="PlayerFSM/Movement/Death"]
@@ -3381,12 +3381,12 @@ script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "death_down"
 loop_mode = 0
-on_finished = 1
+on_finished = 2
 disabled = false
 debug_mode = false
 target_path = NodePath("")
 timed = false
-next_state = NodePath("")
+next_state = NodePath("../DeathLeft")
 metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 
 [node name="DeathLeft" type="Node" parent="PlayerFSM/Movement/Death"]
@@ -3394,7 +3394,7 @@ script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
 anim_on_enter = "death_left"
 loop_mode = 0
-on_finished = 1
+on_finished = 2
 disabled = false
 debug_mode = false
 target_path = NodePath("")

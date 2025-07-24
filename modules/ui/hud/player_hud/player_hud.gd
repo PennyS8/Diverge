@@ -6,7 +6,6 @@ func _ready() -> void:
 	for child in $IngameUI/HBoxContainer/MarginContainer/HFlowContainer.get_children():
 		if child is HUDHeart:
 			hearts.append(child)
-			
 
 func heart_damage(amount : int):
 	var player_max_health = get_tree().get_first_node_in_group("player").health_component.max_health
