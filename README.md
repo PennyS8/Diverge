@@ -18,7 +18,7 @@
 
 ## Executive pitch
 
-*Project Diverge* is an action adventure game where players step into the life of _______. ______'s story of neurodivergent life in an allistic world is explored in the style of classic RPG games such as *The Legend of Zelda*. Featuring mechanics and levels informed by real-life neurodivergent experiences, *Project Diverge* allows players to fight, problem solve, laugh, and cry as ______ in the journey that is their everyday life.
+*Project Diverge* is an action adventure game where players step into the life of Juniper. Juniper's story of neurodivergent life in an allistic world is explored in the style of classic RPG games such as *The Legend of Zelda*. Featuring mechanics and levels informed by real-life neurodivergent experiences, *Project Diverge* allows players to fight, problem solve, laugh, and cry as Juniper in the journey that is their everyday life.
 
 ## Mechanics
 
@@ -34,13 +34,13 @@
 
 ## Story
 
-Wake up as _____ and navigate through their day. In a world that isn't built for them, adventure through dungeons and challenges inspired by everyday situations such as traditional school days and crowded social settings. Learn from the experience of community members, including ways to balance your energy, survive busy days, and honor time and space for self-care. 
+Wake up as Juniper and navigate through their day. In a world that isn't built for them, adventure through dungeons and challenges inspired by everyday situations such as traditional school days and crowded social settings. Learn from the experience of community members, including ways to balance your energy, survive busy days, and honor time and space for self-care. 
 
 ## Objectives
 
-- Help ___ navigate their day by completing dungeons
+- Help Juniper navigate their day by completing dungeons
 - Collect different mechanics and coping mechanisms
-- Learn about neurodivergent experiences from _____ community
+- Learn about neurodivergent experiences from Juniper's community
 
 ## Reference art
 *Stardew Valley*
