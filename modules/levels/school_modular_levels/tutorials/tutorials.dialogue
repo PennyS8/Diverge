@@ -1,7 +1,7 @@
 ~ attack_tutorial
 do! LevelManager.player.enter_cutscene()
 Juniper: Oh Shi--
-Shaded Figure: ...
+Shade: ...
 Juniper: tf is that?
 do! LevelManager.player.exit_cutscene()
 do! get_tree().get_first_node_in_group("enemy").get_node("ShadeFSM").disabled = false
@@ -11,9 +11,9 @@ do! get_tree().get_first_node_in_group("enemy").get_node("ShadeFSM").change_stat
 ~ deep_breath_tutorial
 do! LevelManager.player.enter_cutscene()
 Juniper: Ah crap.
-Shaded Figure: You're late to the test!
-Shaded Figure: What if you fail it?
-Shaded Figure: There's no point in even going now.
+Shade: You're late to the test!
+Shade: What if you fail it?
+Shadee: There's no point in even going now.
 Juniper: Alright, just like you learned it.
 Juniper: 5 in ...
 Juniper: 7 out ...

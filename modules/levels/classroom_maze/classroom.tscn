@@ -388,11 +388,12 @@ z_index = 1
 y_sort_enabled = true
 position = Vector2(-576, -428)
 
-[node name="ClassroomSouth" parent="Exit" instance=ExtResource("8_lw440")]
+[node name="ClassroomSouth" parent="Exit" groups=["entrance_area"] instance=ExtResource("8_lw440")]
 position = Vector2(756, 612)
 scale = Vector2(4, 4)
 next_level_path = "uid://dibtck8dlixm1"
 entrance_name = "PuzzleDoorC"
+transition_direction = 1
 
 [node name="NatesGroundItem" parent="." instance=ExtResource("10_qkcgf")]
 z_index = 2

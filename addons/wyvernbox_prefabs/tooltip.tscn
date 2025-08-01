@@ -37,8 +37,8 @@ content_margin_bottom = 0.0
 
 [node name="Tooltip" type="PanelContainer" groups=["tooltip"]]
 z_index = 2
-offset_right = 160.0
-offset_bottom = 76.0
+offset_right = 336.0
+offset_bottom = 149.0
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_nnyc7")
 script = ExtResource("1")

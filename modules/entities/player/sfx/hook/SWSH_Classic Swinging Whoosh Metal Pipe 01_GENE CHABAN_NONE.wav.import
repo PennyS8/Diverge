@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dhsdmhi071kkh"
+path="res://.godot/imported/SWSH_Classic Swinging Whoosh Metal Pipe 01_GENE CHABAN_NONE.wav-ac2bb15b7bba1b5944097eeac98433b1.sample"
+
+[deps]
+
+source_file="res://modules/entities/player/sfx/hook/SWSH_Classic Swinging Whoosh Metal Pipe 01_GENE CHABAN_NONE.wav"
+dest_files=["res://.godot/imported/SWSH_Classic Swinging Whoosh Metal Pipe 01_GENE CHABAN_NONE.wav-ac2bb15b7bba1b5944097eeac98433b1.sample"]
+
+[params]
+
+force/8_bit=true
+force/mono=false
+force/max_rate=true
+force/max_rate_hz=12000.0
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

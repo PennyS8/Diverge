@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://dx5na7ufncxg3"]
+[gd_scene load_steps=88 format=3 uid="uid://dx5na7ufncxg3"]
 
 [ext_resource type="PackedScene" uid="uid://8xtoptvgrpqi" path="res://modules/entities/enemies/hp_bar/shade_hp_indicator.tscn" id="2_88af2"]
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
@@ -17,7 +17,7 @@
 [ext_resource type="Script" uid="uid://ct6vby56i820l" path="res://addons/basecomponents/Components/health_component.gd" id="10_5ojq5"]
 [ext_resource type="Script" uid="uid://judy3seldx6h" path="res://modules/entities/enemies/shades/complex_shade/xsm/charge_attack.gd" id="10_iug1g"]
 [ext_resource type="Script" uid="uid://cggi1jq1vgh8q" path="res://modules/entities/enemies/shades/complex_shade/xsm/dead.gd" id="10_m6rex"]
-[ext_resource type="Script" uid="uid://d1od6kbhhnppb" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
+[ext_resource type="Script" uid="uid://bes5sheuaa4il" path="res://modules/entities/enemies/shades/complex_shade/xsm/surprised.gd" id="10_twtcd"]
 [ext_resource type="Script" uid="uid://b1svtud75bya4" path="res://addons/basecomponents/Components/2D/hurtbox_component_2d.gd" id="11_mqmca"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="12_rteho"]
 [ext_resource type="FontFile" uid="uid://b7wkaxpbeflgu" path="res://assets/fonts/Tiny5/Tiny5-Regular.ttf" id="17_dnu80"]
@@ -26,7 +26,7 @@
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="19_mjkpu"]
 [ext_resource type="Texture2D" uid="uid://d1722pdo2nahk" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Down.png" id="19_o0472"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="21_hvs5h"]
-[ext_resource type="Material" uid="uid://c8m31s5vmsyhk" path="res://modules/entities/enemies/shades/fx/better_enemy_shader.tres" id="21_iug1g"]
+[ext_resource type="Material" uid="uid://bcw6swreclbwb" path="res://modules/entities/enemies/shades/fx/better_enemy_shader.tres" id="21_iug1g"]
 [ext_resource type="Texture2D" uid="uid://bshmraj3f7qqo" path="res://modules/entities/enemies/shades/complex_shade/sprites/Lunge/Lunge_LR_MotionTrails.png" id="22_hvs5h"]
 [ext_resource type="Texture2D" uid="uid://c76phvuy7wnqn" path="res://modules/entities/enemies/shades/complex_shade/sprites/Lunge/Lunge_D_Combined.png" id="26_hw5jo"]
 [ext_resource type="Texture2D" uid="uid://dt1njlc33r2km" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Right_Down.png" id="26_pra3i"]
@@ -40,6 +40,7 @@
 [ext_resource type="Texture2D" uid="uid://chpbdfsf6jyng" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Up.png" id="29_xu3ac"]
 [ext_resource type="Texture2D" uid="uid://08y4slel3t1j" path="res://modules/entities/enemies/shades/complex_shade/sprites/Idle/IDLE_LR_Base.png" id="35_dvtn2"]
 [ext_resource type="AudioStream" uid="uid://logbde0okioc" path="res://modules/entities/enemies/shades/complex_shade/sfx/spawn_twinkle.wav" id="39_tvkt4"]
+[ext_resource type="AudioStream" uid="uid://usibjpk6afof" path="res://modules/sfx/battlemagic/25_Wind_01.wav" id="40_dvtn2"]
 [ext_resource type="AudioStream" uid="uid://c1uldj3nuo44y" path="res://modules/entities/enemies/shades/complex_shade/sfx/spawn_sfx.wav" id="40_iug1g"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mjkpu"]
@@ -61,7 +62,7 @@ radius = 36.0
 size = Vector2(8, 27)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xa74g"]
-size = Vector2(24, 39)
+size = Vector2(24, 23)
 
 [sub_resource type="Curve" id="Curve_tvkt4"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.78777), 0.0, 0.0, 0, 0]
@@ -414,6 +415,30 @@ tracks/26/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
+}
+tracks/27/type = "value"
+tracks/27/imported = false
+tracks/27/enabled = true
+tracks/27/path = NodePath("Spawn:stream")
+tracks/27/interp = 1
+tracks/27/loop_wrap = true
+tracks/27/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Death:volume_db")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_88af2"]
@@ -1240,6 +1265,35 @@ tracks/6/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/7/type = "method"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Death")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.25),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}, {
+"args": [],
+"method": &"stop"
+}]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Death:volume_db")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.0]
+}
 
 [sub_resource type="Animation" id="Animation_ts514"]
 resource_name = "dash"
@@ -1503,7 +1557,7 @@ tracks/4/keys = {
 
 [sub_resource type="Animation" id="Animation_kynnu"]
 resource_name = "die"
-length = 0.750006
+length = 1.25001
 step = 0.0625
 tracks/0/type = "method"
 tracks/0/imported = false
@@ -1512,7 +1566,7 @@ tracks/0/path = NodePath(".")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.6875),
+"times": PackedFloat32Array(1.125),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
@@ -1614,6 +1668,20 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(0.101961, 0, 0.243137, 1), Color(0.101961, 0, 0.243137, 0)]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Death")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_shkbt"]
@@ -1877,6 +1945,7 @@ tracks/3/keys = {
 [sub_resource type="Animation" id="Animation_pra3i"]
 resource_name = "idle_left"
 length = 1.50001
+loop_mode = 1
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1942,6 +2011,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_o61v4"]
 resource_name = "idle_right"
 length = 1.50001
+loop_mode = 1
 step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2059,7 +2129,7 @@ tracks/3/keys = {
 
 [sub_resource type="Animation" id="Animation_2jpn2"]
 resource_name = "spawn"
-length = 5.00001
+length = 2.50001
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -2121,48 +2191,58 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false]
 }
-tracks/5/type = "audio"
+tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("AudioStreamPlayer2D")
+tracks/5/path = NodePath(".:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"clips": [{
-"end_offset": 0.0,
-"start_offset": 1.0,
-"stream": ExtResource("39_tvkt4")
-}, {
-"end_offset": 0.0,
-"start_offset": 0.0,
-"stream": ExtResource("40_iug1g")
-}],
-"times": PackedFloat32Array(0, 1.58333)
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
 }
-tracks/5/use_blend = true
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath(".:visible")
+tracks/6/path = NodePath("DisplayComponents:material:shader_parameter/Flash")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("DisplayComponents:material:shader_parameter/Flash")
+tracks/7/path = NodePath("Spawn:stream")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.58333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [false]
+"values": [ExtResource("39_tvkt4"), ExtResource("40_iug1g")]
+}
+tracks/8/type = "method"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Spawn")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 1.58333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [1.0],
+"method": &"play"
+}, {
+"args": [0.0],
+"method": &"play"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_n2c8b"]
@@ -2486,10 +2566,14 @@ _data = {
 &"walk_up": SubResource("Animation_tvkt4")
 }
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_dvtn2"]
+random_pitch = 1.3
+streams_count = 1
+stream_0/stream = ExtResource("40_dvtn2")
+
 [node name="ComplexShade" type="CharacterBody2D" groups=["enemy", "saved_data", "tetherable_body"]]
 z_index = 1
 y_sort_enabled = true
-position = Vector2(2, 0)
 collision_layer = 1032
 collision_mask = 83
 motion_mode = 1
@@ -2688,7 +2772,6 @@ position = Vector2(0, -10)
 shape = SubResource("CircleShape2D_e3xrx")
 
 [node name="BehaviorComponents" type="Node2D" parent="."]
-visible = false
 
 [node name="SoftCollision" parent="BehaviorComponents" instance=ExtResource("4_kcpdx")]
 unique_name_in_owner = true
@@ -2726,14 +2809,13 @@ debug_color = Color(1, 0, 1, 0.262745)
 
 [node name="HurtBox" type="Area2D" parent="BehaviorComponents" node_paths=PackedStringArray("health_component")]
 unique_name_in_owner = true
-visible = false
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("11_mqmca")
 health_component = NodePath("../Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviorComponents/HurtBox"]
-position = Vector2(0, -19.5)
+position = Vector2(0, -5.5)
 shape = SubResource("RectangleShape2D_xa74g")
 
 [node name="Health" type="Node" parent="BehaviorComponents"]
@@ -2838,6 +2920,7 @@ position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_56qhg")
 
 [node name="FSMDebug" type="Label" parent="."]
+visible = false
 offset_left = -29.0
 offset_top = -57.0
 offset_right = 29.0
@@ -2851,8 +2934,12 @@ unique_name_in_owner = true
 libraries = {
 &"": SubResource("AnimationLibrary_n2c8b")
 }
+autoplay = "idle_left"
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="Spawn" type="AudioStreamPlayer2D" parent="."]
+
+[node name="Death" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamRandomizer_dvtn2")
 
 [connection signal="mouse_entered" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_exited"]

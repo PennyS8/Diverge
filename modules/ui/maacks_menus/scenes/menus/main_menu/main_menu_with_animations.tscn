@@ -410,15 +410,15 @@ modulate = Color(1, 1, 1, 0)
 
 [node name="MenuButtonsBoxContainer" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer" index="0"]
 offset_left = -215.0
-offset_top = -413.0
+offset_top = -355.0
 offset_right = 215.0
-offset_bottom = 487.0
+offset_bottom = 545.0
 lock = true
 
 [node name="NewGameButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="0"]
 custom_minimum_size = Vector2(0, 64)
 theme_override_fonts/font = ExtResource("5_c4gtu")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 
 [node name="ContinueGameButton" type="Button" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="1"]
 unique_name_in_owner = true
@@ -426,23 +426,23 @@ visible = false
 custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_c4gtu")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 text = "Continue"
 
 [node name="OptionsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="2"]
 custom_minimum_size = Vector2(0, 64)
 theme_override_fonts/font = ExtResource("5_c4gtu")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 
 [node name="CreditsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="3"]
 custom_minimum_size = Vector2(0, 64)
 theme_override_fonts/font = ExtResource("5_c4gtu")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 
 [node name="ExitButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="4"]
 custom_minimum_size = Vector2(0, 64)
 theme_override_fonts/font = ExtResource("5_c4gtu")
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 64
 
 [node name="FlowControlContainer" parent="." index="10"]
 theme_override_constants/margin_left = 36

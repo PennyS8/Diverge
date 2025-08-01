@@ -12,6 +12,8 @@ signal spawned
 
 func _ready() -> void:
 	default_position = global_position
+	
+	
 
 #func tethered_stun():
 	#crowd_control = true
@@ -69,3 +71,6 @@ func _on_tetherable_area_2d_mouse_entered() -> void:
 func _on_tetherable_area_2d_mouse_exited() -> void:
 	deselect()
 #endregion
+
+func start_boss_fight():
+	fsm.disabled = false

@@ -5,8 +5,6 @@ extends StateSound
 @export var acceleration := 20.0
 @export var friction := 10
 
-var idle_dir := Vector2.DOWN
-
 # the number of physics frames for walking against a wall to count as pushing
 @export var push_frames := 20
 var curr_push_frame := push_frames
@@ -33,7 +31,7 @@ func _on_enter(_args):
 # XSM updates the root first, then the children
 func _on_update(_delta):
 	if target.dir == Vector2.ZERO:
-		change_state("Idle", idle_dir)
+		change_state("Idle")
 
 	# if juni has no hook, play no hook animations
 	var no_hook = ""
@@ -42,22 +40,28 @@ func _on_update(_delta):
 		
 	target.velocity = lerp(target.velocity, target.dir * ground_speed, acceleration * _delta)
 	
-	var xdir = target.dir.snapped(Vector2.ONE).x
-	var ydir = target.dir.snapped(Vector2.ONE).y
+	var moonwalk_scalar
+	if target.moon_walk:
+		moonwalk_scalar = -1
+	else:
+		moonwalk_scalar = 1
+	
+	var xdir = target.dir.snapped(Vector2.ONE).x * moonwalk_scalar
+	var ydir = target.dir.snapped(Vector2.ONE).y * moonwalk_scalar
 	
 	if xdir == 1:
 		play_blend(no_hook + "walk_right", 0.0)
-		idle_dir = Vector2.RIGHT
+		target.idle_dir = Vector2.RIGHT
 	elif xdir == -1:
 		play_blend(no_hook + "walk_left", 0.0)
-		idle_dir = Vector2.LEFT
+		target.idle_dir = Vector2.LEFT
 	elif xdir == 0:
 		if ydir == 1:
 			play_blend(no_hook + "walk_down", 0.0)
-			idle_dir = Vector2.DOWN
+			target.idle_dir = Vector2.DOWN
 		elif ydir == -1:
 			play_blend(no_hook + "walk_up", 0.0)
-			idle_dir = Vector2.UP
+			target.idle_dir = Vector2.UP
 	
 	# get_wall_normal returns the direction the wall's collision is to us;
 	# i.e. newton's second law, opposite reaction to our action

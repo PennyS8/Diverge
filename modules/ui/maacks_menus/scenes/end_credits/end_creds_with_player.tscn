@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dr248rw5kwghh"]
+
+[ext_resource type="PackedScene" uid="uid://otacjb07jso1" path="res://modules/ui/maacks_menus/scenes/end_credits/end_credits.tscn" id="1_me0nn"]
+
+[node name="EndCredsWithPlayer" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 2
+
+[node name="EndCredits" parent="CanvasLayer" instance=ExtResource("1_me0nn")]

@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bii7n4y5k0hsf"]
+
+[ext_resource type="PackedScene" uid="uid://dx5na7ufncxg3" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn" id="1_kuqsn"]
+[ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="2_x6eyh"]
+[ext_resource type="Shader" uid="uid://gcwt752b74cd" path="res://modules/entities/enemies/shades/fx/compiled_enemy_shader.gdshader" id="3_1sh0y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjkpu"]
+resource_local_to_scene = true
+shader = ExtResource("2_x6eyh")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hogpt"]
+resource_local_to_scene = true
+shader = ExtResource("3_1sh0y")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jlumo"]
+resource_local_to_scene = true
+shader = ExtResource("2_x6eyh")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[node name="WeakShade" instance=ExtResource("1_kuqsn")]
+max_health = 10
+
+[node name="ShadeHPIndicator" parent="." index="0"]
+material = SubResource("ShaderMaterial_mjkpu")
+
+[node name="Pursue" parent="ShadeFSM/Alive/Movement/Chase" index="0"]
+next_state = NodePath(".")
+
+[node name="Health" parent="BehaviorComponents" index="4"]
+max_health = 10
+
+[node name="DisplayComponents" parent="." index="4"]
+material = SubResource("ShaderMaterial_hogpt")
+
+[node name="AttackArc" parent="DisplayComponents" index="5"]
+material = SubResource("ShaderMaterial_jlumo")
+
+[node name="AnimationPlayer" parent="." index="7"]
+autoplay = "idle_right"
+
+[editable path="BehaviorComponents/SoftCollision"]

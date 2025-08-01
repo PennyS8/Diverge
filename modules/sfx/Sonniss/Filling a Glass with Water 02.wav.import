@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bgqefumagp7ja"
+path="res://.godot/imported/Filling a Glass with Water 02.wav-3cda0091238dc686830cd9d1a0575f04.sample"
+
+[deps]
+
+source_file="res://modules/sfx/Sonniss/Filling a Glass with Water 02.wav"
+dest_files=["res://.godot/imported/Filling a Glass with Water 02.wav-3cda0091238dc686830cd9d1a0575f04.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

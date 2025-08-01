@@ -6,6 +6,7 @@ extends Resource
 @export var puzzle_completed:bool
 @export var puzzle_key_id:int
 @export var parent_node_path:NodePath
+@export var max_health : int
 
 #region Encounter Area
 @export var child_nodes : Array[PackedScene]

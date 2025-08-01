@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgxc0xpb1lawa"]
+
+[ext_resource type="Script" uid="uid://cmedhnkse60t5" path="res://modules/status_effects/yarn_controller.gd" id="1_f6jx5"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_febas"]
+radius = 5.0
+
+[sub_resource type="Gradient" id="Gradient_dd7vi"]
+offsets = PackedFloat32Array(0, 0.5, 1)
+colors = PackedColorArray(0.43606, 0, 0, 1, 0.552962, 1.35969e-06, 4.81307e-07, 1, 0.435294, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_tiuj8"]
+gradient = SubResource("Gradient_dd7vi")
+width = 16
+height = 16
+fill_from = Vector2(0.25, 0.25)
+fill_to = Vector2(0.75, 0.75)
+repeat = 1
+
+[node name="YarnController" type="Node2D"]
+script = ExtResource("1_f6jx5")
+
+[node name="WallDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 19
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetector"]
+shape = SubResource("CircleShape2D_febas")
+
+[node name="Projectile" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 338
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Projectile"]
+shape = SubResource("CircleShape2D_febas")
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_repeat = 2
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+texture = SubResource("GradientTexture2D_tiuj8")
+texture_mode = 1
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+target_position = Vector2(0, 0)
+collision_mask = 66
+
+[connection signal="body_entered" from="WallDetector" to="." method="_on_wall_detector_body_shape_entered"]
+[connection signal="body_shape_entered" from="WallDetector" to="." method="_on_wall_detector_body_shape_entered"]
+[connection signal="area_shape_entered" from="Projectile" to="." method="_on_projectile_area_shape_entered"]
+[connection signal="body_shape_entered" from="Projectile" to="." method="_on_projectile_body_shape_entered"]
+[connection signal="draw" from="Line2D" to="." method="_on_line_2d_draw"]

@@ -27,24 +27,90 @@ do player.exit_cutscene()
 => END
 
 ~ hiding_away
-do player.enter_cutscene(player.global_position)
+do darken_lighting()
 Juniper: It's okay. I'm okay. It's just a test. I just need to go back to class...but it's not just a test and if I fail it my grade is going to down from a C to a D and I've never gotten anything less than an A on my report card and...
 Ping!
 Olli: Hey where are you? Class starts soon.
 Juniper: Shoot. I need to go back.
+do player.do_walk(juniper_spikes[0])
+# Door SFX, shade inside
+do shade.show()
+
+Juniper: ...Hello? ...Is that you, Olli?
+do move_shade(shade_spikes[0], 20.0)
+# Shade walks towards Juni
+Juniper: AAAAAH!
+set player.moon_walk = true
+do player.do_walk(juniper_spikes[1])
+Juniper: Whoev-whatever you are, please step away from me. Oh, wait, you don't have legs, uh, float? Please float away from me.
+do! move_shade(shade_spikes[1])
+do player.do_walk(juniper_spikes[2])
+Juniper: FLOAT AWAY RIGHT NOW!!!
+do! move_shade(shade_spikes[2])
+do player.do_walk(juniper_spikes[3])
+Juniper: [i]This is it. This is where I die. I'm never gonna get to go to college. I'll never have a future. I'll be a failure.[/i]
+Juniper: [i]Quick Juniper, think!! Something to defend yourself! Anything![/i]
+do player.give_hook()
+# Tutorial time
+set player.moon_walk = false
 do player.exit_cutscene()
+=> END
+
+~ tutorial_done
+Juniper: AHHHHHHHHH!!!!!!
+Juniper: Oh. It's gone.
+Juniper: Am I hallucinating?
+Juniper: [i]Last I checked, my sanity was wholly intact. But then again, last I checked as well, my crochet hook was not [b]TWO FEET LONG.[/b][/i]
+Juniper: [i]Honestly, actually, this is pretty cool. It's like a frickin' sword![/i] 
+Juniper: [i]Heck, class is probably starting now. I really need to get back in time.[/i]
 => END
 
 ~ this_changed
 Juniper: This... doesn't seem right.
+Juniper: I don't think this hallway looked like this??? I've got to be losing my mind.
 => END
 
-#tutorial
+~ not_open_admin
+Juniper: Is this my classroom?
+Juniper: Nope. Admin office. What the heck?
+=> END 
+
+~ not_open_lab
+Juniper: Is this class?
+Juniper: Nope. Physics Lab?? What is going on?
+Juniper: Ahhh... How I wish I was doing a physics lab right now and not a history test.
+Juniper: Crap, gotta run.
+=> END
+
+~ foyer_encounter
+do move_shades(-86)
+do player.do_walk(juniper_spikes[0].global_position)
+Juniper: Okay, so I wasn't hallucinating.
+Juniper: Screw class. I am getting out of this place.
+Juniper: I'm in the foyer. I see the front door directly to my North.
+do player.do_walk(juniper_spikes[1].global_position, 1.5)
+Juniper: You've GOT to be kidding me.
+Juniper: The only place I can think of a big, disproportiate, cartoony key being located is the admin office, which should have been one of the doors in the hallway I came from.
+=> END
+
+~ hall1_encounter
+Juniper: [i] I... guess I have to fight these guys. They're blocking the admin room with this fire alarm crap.[/i]
+Juniper: [i] Just like a video game, right? Heh. [/i]
+Juniper: [i] Here goes nothing, I guess. [/i]
+=> END
+
+~ not_goin_dat_way
+Juniper: Nope. Not going the way the creepy shadow things went. Nope.
+Juniper: Nopenopenopenopenopenopenope.
+=> END
+
+
 
 #puzzles
-~ safety
+~ new_hallway
+Juniper: This... I'm in the same building. I went outside and it's more hallway.
 Juniper: I want to go to the library. I need to go to the library. It's quiet and calm and there's books and it'll be alright if I go there.[wait=1]
-Juniper: Oh no. I have overdue books. I need to get my library books before I can look the librarian in the eye! She'd be so mad at me![wait = .5] But I don't remember having them at home last night, so they must be around here somewhere...
+Juniper: Oh no. I have overdue books. I need to get my library books before I can look the librarian in the eye! She'd be so mad at me![wait = .5] But I don't remember having them at home last night, so they must be around here somewhere... I bet I left them in some of the classrooms.
 => END
 
 #library
@@ -72,7 +138,7 @@ Juni: You look sad. And scared.
 	Juniper: I forgot I named my bear "Wolf."
 	
 - Whatcha got there?
-	Juni: My teddy. Her name is-
+	Juni: My teddy. She's doing quiet time with me. Her name is-
 	Juniper: Wolf. Why'd I name her that again?
 
 Juni: You're not doing quiet time right. You're being loud.
@@ -92,6 +158,7 @@ Juni: In...hold...out...hold. In...hold...out...hold... Why aren't you breathing
 	Juni: Well, during quiet time you're supposed to take a [i][b]deep breath[/b][/i].
 Juni: In for four, hold for four, out for four, then hold for four. Again and again until you get a little bit bored.
 Juniper: A [i][b]deep breath[/b][/i].
+do add_item()
 do wait(1)
 Juniper: So why are you doing quiet time right now?
 Juni: Because quiet time helps me slow down. And sometimes, things feel different after I do quiet time. Even if they didn't really change.
@@ -99,13 +166,32 @@ Juniper: Hm.
 do player.exit_cutscene()
 => END
 
+#boss battle dialogue
+~ gym_battle
+Juniper: Um--I don't think my crochet hook is gonna cut it this time. All I want is to get back to class!
+Juniper: But what if I'm trapped here forever? And even if I do get out of here I have to take the test and what if I fail it and- and- and-
+Juniper: I need to take a [b]deep breath.[/b][wait=1] I've got this.
+do! start_boss_fight()
+=> END
+
 #classroom
 
-~ taking_the_test
-Juniper: [i] I made it back! [/i]
-Olli: There you are! Class is about to start!
-Olli: You're gonna ace it.
-Juniper: ...yeah. I just want this over with. [i] Surely a history test will be easier than fighting shadows...Like the librarian said. In...hold...out...hold...[/i]
+~ end_convo
+do player.do_walk(player.to_global(Vector2(0, 1)))
+Juniper: [i] ...is this... normal now? [/i]
+Juniper: ......Olli!
+do olli.do_walk(spike_list[0].global_position)
+Olli: There you are! Class is about to start! I was worried about you.
+do player.do_walk(spike_list[1].global_position, 1)
+do player.do_walk(spike_list[2].global_position, 1)
+do olli.do_walk(spike_list[4].global_position)
+Juniper: Oh yeah, the test!
+Olli: You've got this look in your eye. You're gonna ace it.
+Juniper: ...yeah. I just want this over with.[i] Surely a history test will be easier than fighting shadows...
+Juniper: In...hold...out...hold... It [i] is [/i] only a test. [wait = .5] Let's go.
+do! olli.do_walk(spike_list[5].global_position)
+do! player.do_walk(spike_list[3].global_position, 1)
+do! fade_out()
 => END
 
 #home
@@ -120,4 +206,19 @@ Juniper: [i]It's messy and it's wrong and I- I- [/i]
 Juniper: I did it! 
 Juniper: I did it.
 Juniper: [i]Sigh.[/i] I think I'm gonna go crochet for a bit.
+=> END
+
+~ hey_you
+%
+	You're in my way!
+%
+	Hey, we're trying to have a conversation.
+%
+	Watch where you're going!
+%
+	I can't see the board!
+%
+	I'm trying to pay attention!
+%
+	What are you doing in here?
 => END

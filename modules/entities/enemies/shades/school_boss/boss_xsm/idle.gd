@@ -9,11 +9,15 @@ var shade_scene = preload("res://modules/entities/enemies/shades/complex_shade/c
 var hand_scene = preload("res://modules/entities/enemies/shades/school_boss/school_boss_hands.tscn")
 var spawn = false
 
+var player
+
 # This function is called when the state enters
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	# Adds delay to allow for player to load in before boss spawns
 	add_timer("SpawnDelay", 1.0)
+	
+	player = get_tree().get_first_node_in_group("player")
 
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
@@ -23,6 +27,12 @@ func _after_enter(_args) -> void:
 # This function is called each frame if the state is ACTIVE
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
+	if !player:
+		return
+	
+	if player.health_component.alive == false:
+		return
+	
 	var stack_found = false
 	for enemy in EnemyManager.hand_spawn_counter:
 		if enemy:
@@ -51,6 +61,7 @@ func _on_update(_delta: float) -> void:
 				shade_y = shade_location.y
 			
 			shade_node.hurtbox.set_collision_mask_value(3, false)
+			shade_node.tetherable_area.set_collision_layer_value(9, false)
 			shade_node.fsm.change_state("Spawn")
 			shade_node.global_position = shade_location
 			

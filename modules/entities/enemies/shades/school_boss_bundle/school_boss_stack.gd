@@ -42,6 +42,8 @@ func _on_health_component_died() -> void:
 			var split_pos = Vector2(cos(angle_offset*i), sin(angle_offset*i))
 			enemy.set_deferred("global_position", global_position + split_pos)
 			enemy.get_node("%Health").set_deferred("health", shade_healths_stored[i-1])
+			
+			enemy.get_node("%ShadeFSM").set_deferred("disabled", false)
 	
 	# Clear the hand array as they no longer exist
 	EnemyManager.hand_spawn_counter.clear()

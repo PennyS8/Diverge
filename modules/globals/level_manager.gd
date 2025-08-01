@@ -24,6 +24,11 @@ signal swap_done
 
 ## Is called when we enter an encounter to tell interactables and doors to lock themselves
 signal enter_encounter
+
+## Is called when player regains control
+signal encounter_begun
+
+## Is called when all shades are dead
 signal exit_encounter
 
 var overlay : Control
@@ -77,6 +82,12 @@ func change_level(path : String, entrance_name : String = "0"):
 	# save level state
 	await SaveAndLoad.room_save(current_level.get_name())
 	
+	# Sets the last played scene before completing transition for future respawning
+	RespawnManager.last_level_path = current_level.scene_file_path
+	RespawnManager.last_level_name = current_level.get_name()
+	# Sets transition zone used for future respawning
+	RespawnManager.last_entrance = entrance_name
+	
 	var tween = get_tree().create_tween()
 	tween.set_parallel(false)
 	tween.tween_property(fade_screen, "color:a", 1, fade_time)
@@ -128,6 +139,9 @@ func _transition_complete():
 	#player.exit_cutscene()
 	transitioning = false
 	if player:
+		var inv = GameManager.inventory_node.inventory
+		if inv:
+			InventoryHelper.add_itemtype_to_inventory(inv,load("res://modules/ui/hud/wyvern_inv/yarnbag.tres"), 1)
 		player.check_unlock_hook()
 
 func deep_breath_overlay(timer_override:bool = false):
@@ -195,7 +209,30 @@ func player_transition(level_path : String, direction : Vector2, entrance_name :
 	if possible_boundry:
 		if possible_boundry.encounter_active:
 			await possible_boundry.start_encounter()
+			encounter_begun.emit()
 	else:
 		# If player is holding an input direction, keep going that direction. To prevent the one-frame stutterstep
 		player.dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
+	
+	SaveAndLoad.save_player()
+	
 	player.exit_cutscene()
+
+## Simplified transition function that does not include any saving features.
+func respawn_transition(level_path : String, entrance_name : String):
+	if transitioning:
+		return
+	transitioning = true
+	
+	player = get_tree().get_first_node_in_group("player")
+	
+	var tween = get_tree().create_tween()
+	tween.set_parallel(false)
+	tween.tween_property(fade_screen, "color:a", 1, fade_time)
+	tween.tween_callback(_swap_level.bind(level_path, entrance_name))
+	
+	await swap_done
+
+	var tween_two = get_tree().create_tween()
+	tween_two.tween_property(fade_screen, "color:a", 0, fade_time)
+	tween_two.finished.connect(_transition_complete)

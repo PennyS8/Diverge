@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bmnk17c835wi4"]
+[gd_scene load_steps=5 format=3 uid="uid://bmnk17c835wi4"]
 
 [ext_resource type="Script" uid="uid://cex0v13k4f0dx" path="res://modules/objects/inventory_helpers/nates_ground_item.gd" id="1_cm2vp"]
 [ext_resource type="PackedScene" uid="uid://cjdtl6ek4qp7d" path="res://addons/wyvernbox_prefabs/ground_item_stack_view_2d.tscn" id="2_66wei"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="5_bo8bm"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_66wei"]
 
 [node name="NatesGroundItem" type="Node2D"]
 script = ExtResource("1_cm2vp")
@@ -15,6 +17,9 @@ use_parent_material = true
 
 [node name="Icon" parent="Item/VisItem/Icons" index="0"]
 material = ExtResource("5_bo8bm")
+
+[node name="Shape3D" parent="Item" index="1"]
+shape = SubResource("CircleShape2D_66wei")
 
 [connection signal="body_entered" from="Item" to="." method="_on_item_body_entered"]
 

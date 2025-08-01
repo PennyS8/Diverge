@@ -12,11 +12,9 @@ func _on_enter(_args):
 		no_hook = "no_spear/"
 	
 	if(_args):
-		idle_dir = _args
-	else:
-		idle_dir = Vector2.DOWN
-	
-	match idle_dir:
+		target.idle_dir = _args
+		
+	match target.idle_dir:
 		Vector2.UP:
 			play_blend(no_hook + "idle_up", 0.0)
 		Vector2.RIGHT:
@@ -37,7 +35,7 @@ func _on_update(_delta):
 	if target.hook_locked:
 		no_hook = "no_spear/"
 		
-	match idle_dir:
+	match target.idle_dir:
 		Vector2.UP:
 			play(no_hook + "idle_up")
 		Vector2.RIGHT:
