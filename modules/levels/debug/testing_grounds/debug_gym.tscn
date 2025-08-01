@@ -1,17 +1,37 @@
-[gd_scene load_steps=5 format=4 uid="uid://b8d2txpebdt2f"]
+[gd_scene load_steps=11 format=4 uid="uid://b8d2txpebdt2f"]
 
 [ext_resource type="PackedScene" uid="uid://m6shqoju2l67" path="res://modules/levels/placeholder_gym/school_gym.tscn" id="1_7w8lo"]
 [ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="2_f5k0d"]
 [ext_resource type="PackedScene" uid="uid://lbhb1gemkets" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.tscn" id="3_rl8tq"]
+[ext_resource type="Shader" uid="uid://gcwt752b74cd" path="res://modules/entities/enemies/shades/fx/compiled_enemy_shader.gdshader" id="4_654mc"]
 [ext_resource type="PackedScene" uid="uid://cyh345au8bpro" path="res://modules/entities/player/player.tscn" id="4_bv4iv"]
+[ext_resource type="Shader" uid="uid://bioxwr2g6j7rp" path="res://modules/entities/enemies/shades/shade/melee_shade.tres" id="5_vykf3"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xfqsl"]
+resource_local_to_scene = true
+shader = ExtResource("4_654mc")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8m7e1"]
+resource_local_to_scene = true
+shader = ExtResource("5_vykf3")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2irlg"]
+resource_local_to_scene = true
+shader = ExtResource("4_654mc")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lbjsx"]
+resource_local_to_scene = true
+shader = ExtResource("5_vykf3")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
 [node name="DebugGym" instance=ExtResource("1_7w8lo")]
-
-[node name="LedgeTesting" type="TileMapLayer" parent="Tiles" index="3"]
-use_parent_material = true
-tile_map_data = PackedByteArray("AAASAA8AAAADAAYAAAATAA8AAAAEAAcAAAATAA4AAAAEAAcAAAAUAA4AAAAEAAcAAAAUAA8AAAAEAAcAAAAUABAAAAAEAAcAAAATABAAAAAEAAcAAAASAA4AAAADAAYAAAASABAAAAADAAYAAAATAA0AAAACAAcAAAAUAA0AAAACAAcAAAASAA0AAAAEAAUAAAAVAA0AAAAFAAUAAAAVAA4AAAABAAYAAAAVAA8AAAABAAYAAAAVABAAAAABAAYAAAAVABEAAAAFAAYAAAAUABEAAAACAAUAAAATABEAAAACAAUAAAASABEAAAAEAAYAAAA=")
-tile_set = ExtResource("2_f5k0d")
 
 [node name="Objects" type="Node2D" parent="." index="1"]
 
@@ -26,4 +46,121 @@ position = Vector2(191, 199)
 
 [node name="Player" parent="." index="2" instance=ExtResource("4_bv4iv")]
 
+[node name="Sprite2D" parent="Player" index="6"]
+material = SubResource("ShaderMaterial_xfqsl")
+
+[node name="DashAfterimage" parent="Player" index="16"]
+material = SubResource("ShaderMaterial_8m7e1")
+
+[node name="InworldAbilityIndicator" parent="Player" index="18"]
+material = SubResource("ShaderMaterial_2irlg")
+
+[node name="Waver" parent="Gym/Wavers" index="0"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver21" parent="Gym/Wavers" index="1"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver22" parent="Gym/Wavers" index="2"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver23" parent="Gym/Wavers" index="3"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver24" parent="Gym/Wavers" index="4"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver25" parent="Gym/Wavers" index="5"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver26" parent="Gym/Wavers" index="6"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver27" parent="Gym/Wavers" index="7"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver28" parent="Gym/Wavers" index="8"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver29" parent="Gym/Wavers" index="9"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver30" parent="Gym/Wavers" index="10"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver31" parent="Gym/Wavers" index="11"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver32" parent="Gym/Wavers" index="12"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver33" parent="Gym/Wavers" index="13"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver34" parent="Gym/Wavers" index="14"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver2" parent="Gym/Wavers" index="15"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver3" parent="Gym/Wavers" index="16"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver4" parent="Gym/Wavers" index="17"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver5" parent="Gym/Wavers" index="18"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver6" parent="Gym/Wavers" index="19"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver7" parent="Gym/Wavers" index="20"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver8" parent="Gym/Wavers" index="21"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver9" parent="Gym/Wavers" index="22"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver10" parent="Gym/Wavers" index="23"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver11" parent="Gym/Wavers" index="24"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver12" parent="Gym/Wavers" index="25"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver13" parent="Gym/Wavers" index="26"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver14" parent="Gym/Wavers" index="27"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver15" parent="Gym/Wavers" index="28"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver16" parent="Gym/Wavers" index="29"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver17" parent="Gym/Wavers" index="30"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver18" parent="Gym/Wavers" index="31"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver19" parent="Gym/Wavers" index="32"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Waver20" parent="Gym/Wavers" index="33"]
+material = SubResource("ShaderMaterial_lbjsx")
+
+[node name="Tiles#LedgeTesting" type="TileMapLayer" parent="." index="5"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAASAA8AAAADAAYAAAATAA8AAAAEAAcAAAATAA4AAAAEAAcAAAAUAA4AAAAEAAcAAAAUAA8AAAAEAAcAAAAUABAAAAAEAAcAAAATABAAAAAEAAcAAAASAA4AAAADAAYAAAASABAAAAADAAYAAAATAA0AAAACAAcAAAAUAA0AAAACAAcAAAASAA0AAAAEAAUAAAAVAA0AAAAFAAUAAAAVAA4AAAABAAYAAAAVAA8AAAABAAYAAAAVABAAAAABAAYAAAAVABEAAAAFAAYAAAAUABEAAAACAAUAAAATABEAAAACAAUAAAASABEAAAAEAAYAAAA=")
+tile_set = ExtResource("2_f5k0d")
+
 [editable path="Player"]
+[editable path="Gym/EntranceDialogue"]

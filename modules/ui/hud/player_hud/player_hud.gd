@@ -53,6 +53,7 @@ func heart_heal(amount : int):
 				heart.heal_sprite("half_heal")
 
 func display_hurt_ui():
+	get_tree().get_first_node_in_group("player").start_invulnerability_effect()
 	var tween = create_tween()
 	tween.tween_property($IngameUI/HurtIndicator, "modulate:a", 1.0, 0.1)
 	tween.tween_interval(0.3)

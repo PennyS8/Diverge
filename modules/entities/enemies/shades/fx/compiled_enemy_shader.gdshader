@@ -22,7 +22,7 @@ uniform vec4 ColorParameter : source_color = vec4(1.000000, 1.000000, 1.000000, 
 			// sample the texture
 			return texture(original_texture, uv);
 		}
-	
+
 
 void vertex() {
 // Input:3
@@ -59,10 +59,10 @@ void fragment() {
 	vec4 n_out9p0;
 // SmoothPixel:9
 	{
-		
+
 				vec4 smoothed_texture = smoothpixel(n_out5p0, n_out4p0, TEXTURE);
 				n_out9p0 = smoothed_texture;
-				
+
 	}
 
 

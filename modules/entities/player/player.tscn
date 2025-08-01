@@ -1,4 +1,4 @@
-[gd_scene load_steps=103 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=106 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://bfg3nrrx0fd1" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -3440,7 +3440,6 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
-
 [node name="DeathRight" type="Node" parent="PlayerFSM/Movement/Death"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
@@ -3464,7 +3463,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
-
 
 [node name="DeathLeft" type="Node" parent="PlayerFSM/Movement/Death"]
 script = ExtResource("12_e6mu1")

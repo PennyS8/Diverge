@@ -39,6 +39,10 @@ var curr_camera_boundry : Area2D
 @onready var fsm : State = $PlayerFSM
 @onready var hurtbox = $HurtBoxComponent2D
 
+var is_invulnerable: bool = false
+var fade_tween : Tween
+@onready var character_sprite = $Sprite2D
+
 var cutscene_marker_packed = preload("res://modules/objects/debug/cutscene_walk_point.tscn")
  
 
@@ -232,9 +236,44 @@ func check_encounter():
 	if area is EncounterArea:
 		return area
 
-# Flashes player to signal they were hit
-func _on_health_component_update_complete() -> void:
-	$HitflashPlayer.play("Hitflash")
+## Flashes player to signal they were hit
+#func _on_health_component_update_complete() -> void:
+	#$HitflashPlayer.play("Hitflash")
 
+func start_invulnerability_effect(duration: float = 1.0, fade_speed: float = 0.15):
+	"""
+	Makes the character fade in and out to indicate invulnerability
+	duration: How long the invulnerability lasts in seconds
+	fade_speed: How fast each fade cycle is (lower = faster flashing)
+	"""
+	if is_invulnerable:
+		return  # Already invulnerable, don't restart
+	
+	is_invulnerable = true
+	
+	# Create a new tween
+	fade_tween = create_tween()
+	fade_tween.set_loops()  # Make it loop indefinitely
+	
+	# Chain fade out and fade in
+	fade_tween.tween_property(character_sprite, "modulate:a", 0.3, fade_speed)
+	fade_tween.tween_property(character_sprite, "modulate:a", 1.0, fade_speed)
+	
+	# Stop the effect after the duration
+	get_tree().create_timer(duration).timeout.connect(_end_invulnerability_effect)
+
+func _end_invulnerability_effect():
+	"""
+	Stops the fade effect and ensures character is fully visible
+	"""
+	is_invulnerable = false
+	
+	if fade_tween:
+		fade_tween.kill()
+	
+	# Ensure character is fully opaque
+	var end_tween = create_tween()
+	end_tween.tween_property(character_sprite, "modulate:a", 1.0, 0.1)
+	
 func _on_animation_player_current_animation_changed(name: String) -> void:
 	$Hook/CollisionPolygon2D.set_deferred("disabled", true)
