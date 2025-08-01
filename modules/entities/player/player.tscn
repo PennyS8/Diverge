@@ -1,4 +1,4 @@
-[gd_scene load_steps=99 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=102 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -50,6 +50,8 @@
 [ext_resource type="Texture2D" uid="uid://tgxl2mkaihrf" path="res://modules/entities/player/real_sprites/idle_walk/idle_walk_right.png" id="46_rl8eg"]
 [ext_resource type="Texture2D" uid="uid://bj8cuyco3d7jr" path="res://modules/entities/player/real_sprites/idle_walk/idle_walk_left.png" id="47_l84k2"]
 [ext_resource type="AudioStream" uid="uid://o3hvnhy5m155" path="res://modules/sfx/footstep_randomizer.tres" id="49_fnwuu"]
+[ext_resource type="PackedScene" uid="uid://cwcwootcevq1k" path="res://modules/ui/hud/hud_ability_indicator/inworld_ability_indicator.tscn" id="53_l84k2"]
+[ext_resource type="Shader" uid="uid://gcwt752b74cd" path="res://modules/entities/enemies/shades/fx/compiled_enemy_shader.gdshader" id="54_hfpac"]
 [ext_resource type="PackedScene" uid="uid://72t5en3w3lah" path="res://modules/ui/input_button_overlays/movement_keys.tscn" id="55_hfpac"]
 [ext_resource type="Shader" uid="uid://d0p05imkhnhst" path="res://modules/objects/stress_causer/stress_effect.gdshader" id="57_7h8sm"]
 
@@ -754,6 +756,18 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/10/use_blend = true
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Sprite2D:hframes")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
 
 [sub_resource type="Animation" id="Animation_fnwuu"]
 resource_name = "dash_down"
@@ -894,6 +908,18 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/10/use_blend = true
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Sprite2D:hframes")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
 
 [sub_resource type="Animation" id="Animation_cjsq4"]
 resource_name = "dash_left"
@@ -1046,6 +1072,18 @@ tracks/11/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/11/use_blend = true
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Sprite2D:hframes")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
 
 [sub_resource type="Animation" id="Animation_xyfbm"]
 resource_name = "dash_up"
@@ -1186,6 +1224,18 @@ tracks/10/keys = {
 "times": PackedFloat32Array(0)
 }
 tracks/10/use_blend = true
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Sprite2D:hframes")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
 
 [sub_resource type="Animation" id="Animation_y78jc"]
 resource_name = "death_down"
@@ -2882,6 +2932,12 @@ shader_parameter/fade = 0.1
 [sub_resource type="Gradient" id="Gradient_xyfbm"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_2irlg"]
+resource_local_to_scene = true
+shader = ExtResource("54_hfpac")
+shader_parameter/Flash = false
+shader_parameter/ColorParameter = Color(1, 1, 1, 1)
+
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 process_mode = 1
 z_index = 1
@@ -3348,7 +3404,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("../Death")
-metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="DeathUp" type="Node" parent="PlayerFSM/Movement/Death"]
 script = ExtResource("12_e6mu1")
@@ -3362,6 +3417,7 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("../DeathRight")
 metadata/_custom_type_script = "uid://sgbgpy8s08d3"
+
 
 [node name="DeathRight" type="Node" parent="PlayerFSM/Movement/Death"]
 script = ExtResource("12_e6mu1")
@@ -3389,6 +3445,7 @@ timed = false
 next_state = NodePath("../DeathLeft")
 metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 
+
 [node name="DeathLeft" type="Node" parent="PlayerFSM/Movement/Death"]
 script = ExtResource("12_e6mu1")
 animation_player = NodePath("../../../../AnimationPlayer")
@@ -3400,7 +3457,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
-metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 
 [node name="MovementDisabled" type="Node" parent="PlayerFSM/Movement"]
 script = ExtResource("1_q2vpm")
@@ -3545,6 +3601,11 @@ volume_db = -5.0
 
 [node name="Dash" type="AudioStreamPlayer2D" parent="Audio"]
 volume_db = -5.0
+
+[node name="InworldAbilityIndicator" parent="." instance=ExtResource("53_l84k2")]
+material = SubResource("ShaderMaterial_2irlg")
+position = Vector2(0, -12)
+frame_progress = 0.235804
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]

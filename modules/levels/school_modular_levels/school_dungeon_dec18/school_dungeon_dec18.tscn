@@ -774,6 +774,12 @@ position = Vector2(-455, 1080)
 [node name="Marker2D5" type="Marker2D" parent="Rooms/Library/JuniperSpikes"]
 position = Vector2(-461, 1080)
 
+[node name="Marker2D6" type="Marker2D" parent="Rooms/Library/JuniperSpikes"]
+position = Vector2(-444, 1070)
+
+[node name="Marker2D7" type="Marker2D" parent="Rooms/Library/JuniperSpikes"]
+position = Vector2(-448, 1071)
+
 [node name="LibraryDialogueTrigger" type="Area2D" parent="Rooms/Library"]
 position = Vector2(-564, 900)
 collision_mask = 4
@@ -789,7 +795,7 @@ position = Vector2(-564, 876)
 [node name="TransitionZone" parent="Rooms/Library" instance=ExtResource("8_df0qr")]
 position = Vector2(-564, 828)
 scale = Vector2(4, 4)
-next_level_path = "uid://dibtck8dlixm1"
+next_level_path = "uid://bqotfp8yphsb"
 entrance_name = "LibraryExit"
 
 [node name="CameraBoundry" type="Area2D" parent="Rooms/Library"]

@@ -89,7 +89,7 @@ func _physics_process(_delta):
 				# Removes both leash owner and shade from encounter
 				var encounter_entrances = get_tree().get_nodes_in_group("encounter_entrance")
 				for entrance in encounter_entrances:
-					if entrance.encounter_active:
+					if entrance.is_currently_running:
 						# Adds cocoon to prevent encounter from being disabled
 						entrance.enemy_added(cocoon)
 						

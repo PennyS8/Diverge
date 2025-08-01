@@ -14,6 +14,51 @@ var marked_for_disengage : Dictionary[CharacterBody2D, Timer] = {}
 var hand_spawn_counter : Dictionary[CharacterBody2D, Vector2] = {}
 var boss_spawned_enemies : Array[CharacterBody2D] = []
 
+#region VARIABLES - Ultimate Meter
+var deep_breath_unlocked := false
+
+## Private Variable - Represents the current state of the Ult Meter (# of enemies defeated)
+var _focus_meter := 0
+
+## When _meter is equal to MAX_METER, player can initialize deep breath
+const MIN_METER := 0
+const MAX_METER := 4
+
+## Variable that keeps track of status of deep breath upon focus_meter's set
+var can_deep_breath := false
+
+## Signal that is emitted whenever focus_meter is updated
+signal focus_updated(new_value)
+
+## Public interface for _focus_meter that auto-clamps its values and handles  
+var focus_meter: int:
+	get:
+		return _focus_meter
+	set(value):
+		if !deep_breath_unlocked:
+			return
+		
+		_focus_meter = clamp(value, MIN_METER, MAX_METER)
+		
+		# Send this so UI can update
+		focus_updated.emit(value)
+		
+		# Sets `can_deep_breath` based on meter's progress
+		set_deep_breath_status()
+
+## Sets `can_deep_breath` based on focus meter's progress
+func set_deep_breath_status():
+	if _focus_meter == MAX_METER:
+		can_deep_breath = true
+	else:
+		can_deep_breath = false
+
+func reset_focus_meter():
+	focus_meter = 0
+	can_deep_breath = false
+
+#endregion
+
 ## If an enemy wishes to engage the player, make sure they can
 func request_engagement(enemy : CharacterBody2D):
 	if current_engagers.has(enemy):
@@ -27,9 +72,13 @@ func request_engagement(enemy : CharacterBody2D):
 		return true
 	return false
 
-func release_engagement(enemy : CharacterBody2D, timer : Timer = null):
-	if timer:
-		#timer.timeout.disconnect(release_engagement)
+func release_engagement(enemy):
+	if !enemy:
+		return
+	
+	# search for timer object
+	if marked_for_disengage.has(enemy):
+		var timer = marked_for_disengage[enemy]
 		timer.queue_free()
 	else:
 		if marked_for_disengage.has(enemy):
@@ -49,7 +98,7 @@ func mark_for_disengage(enemy : CharacterBody2D):
 	
 	var timer := Timer.new()
 	timer.one_shot = true
-	timer.timeout.connect(release_engagement.bind(enemy, timer), CONNECT_ONE_SHOT)
+	timer.timeout.connect(release_engagement.bind(enemy), CONNECT_ONE_SHOT)
 	get_tree().current_scene.add_child(timer)
 	timer.start(randf_range(1.0, 3.0))
 	marked_for_disengage.set(enemy, timer)
