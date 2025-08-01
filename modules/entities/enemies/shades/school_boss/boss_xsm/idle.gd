@@ -62,7 +62,8 @@ func _on_update(_delta: float) -> void:
 			
 			shade_node.hurtbox.set_collision_mask_value(3, false)
 			shade_node.tetherable_area.set_collision_layer_value(9, false)
-			shade_node.fsm.change_state("Spawn")
+			shade_node.visible = false
+			shade_node.fsm.change_state_node_force(shade_node.get_node("%Spawn"))
 			shade_node.global_position = shade_location
 			
 			EnemyManager.add_hand(shade_node, shade_location)

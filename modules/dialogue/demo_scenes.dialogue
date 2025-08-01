@@ -27,15 +27,17 @@ do player.exit_cutscene()
 => END
 
 ~ hiding_away
+do Music.play_track(Music.Vibe.WTF)
 do darken_lighting()
 Juniper: It's okay. I'm okay. It's just a test. I just need to go back to class...but it's not just a test and if I fail it my grade is going to down from a C to a D and I've never gotten anything less than an A on my report card and...
 Ping!
 Olli: Hey where are you? Class starts soon.
 Juniper: Shoot. I need to go back.
 do player.do_walk(juniper_spikes[0])
+do Music.stop()
 # Door SFX, shade inside
+do door.sfx_player.play()
 do shade.show()
-
 Juniper: ...Hello? ...Is that you, Olli?
 do move_shade(shade_spikes[0], 20.0)
 # Shade walks towards Juni
@@ -63,6 +65,7 @@ Juniper: Am I hallucinating?
 Juniper: [i]Last I checked, my sanity was wholly intact. But then again, last I checked as well, my crochet hook was not [b]TWO FEET LONG.[/b][/i]
 Juniper: [i]Honestly, actually, this is pretty cool. It's like a frickin' sword![/i] 
 Juniper: [i]Heck, class is probably starting now. I really need to get back in time.[/i]
+do! Music.play_track(Music.Vibe.CONFIDENT)
 => END
 
 ~ this_changed
@@ -94,9 +97,9 @@ Juniper: The only place I can think of a big, disproportiate, cartoony key being
 => END
 
 ~ hall1_encounter
-Juniper: [i] I... guess I have to fight these guys. They're blocking the admin room with this fire alarm crap.[/i]
-Juniper: [i] Just like a video game, right? Heh. [/i]
-Juniper: [i] Here goes nothing, I guess. [/i]
+Juniper: [i]I... guess I have to fight these guys. They're blocking the admin room with this fire alarm crap.[/i]
+Juniper: [i]...Just like a video game, right?[/i]
+Juniper: [i]Here goes nothing, I guess. [/i]
 => END
 
 ~ not_goin_dat_way
@@ -116,6 +119,7 @@ Juniper: Oh no. I have overdue books. I need to get my library books before I ca
 #library
 ~ library_entry
 do player.enter_cutscene(player.global_position)
+do Music.play_track(Music.Vibe.CHILL)
 Juniper: It's quiet.
 #goes to favorite corner
 Juniper: And comfy.
@@ -160,18 +164,28 @@ Juni: In for four, hold for four, out for four, then hold for four. Again and ag
 Juniper: A [i][b]deep breath[/b][/i].
 do add_item()
 do wait(1)
+You recalled [color=green][wave amp=25 freq=5]Deep Breath![/wave][/color]
 Juniper: So why are you doing quiet time right now?
 Juni: Because quiet time helps me slow down. And sometimes, things feel different after I do quiet time. Even if they didn't really change.
 Juniper: Hm.
+Juni: You'll remember how to do quiet time, right? I promised Mama I'd never forget it!
+Juniper: I'll try my best.
+do player.do_walk(spike_list[5].global_position)
+do wait(0.5)
+do player.do_walk(spike_list[6].global_position)
+Juniper: Oh, Juni?
+Juniper: I'm sorry I haven't been kinder to you.
 do player.exit_cutscene()
 => END
 
 #boss battle dialogue
 ~ gym_battle
+do player.enter_cutscene(global_position)
 Juniper: Um--I don't think my crochet hook is gonna cut it this time. All I want is to get back to class!
 Juniper: But what if I'm trapped here forever? And even if I do get out of here I have to take the test and what if I fail it and- and- and-
 Juniper: I need to take a [b]deep breath.[/b][wait=1] I've got this.
 do! start_boss_fight()
+do player.exit_cutscene()
 => END
 
 #classroom

@@ -588,7 +588,6 @@ _data = {
 [node name="SchoolBoss" type="CharacterBody2D" groups=["boss", "saved_data", "tetherable_body"]]
 z_index = 1
 y_sort_enabled = true
-scale = Vector2(1.5, 1.5)
 collision_layer = 1032
 collision_mask = 83
 script = ExtResource("1_awdse")
@@ -633,7 +632,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath(".")
-metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="Reaction" type="Node" parent="ShadeFSM/Alive"]
 script = ExtResource("3_w7155")
@@ -656,7 +654,6 @@ timed = true
 waiting_time = 0.25
 on_timer_finished = 3
 next_state = NodePath("../../Movement/Idle")
-metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="Spawn" type="Node" parent="ShadeFSM"]
 unique_name_in_owner = true
@@ -670,7 +667,6 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("../Alive/Movement/Idle")
-metadata/_custom_type_script = "uid://sgbgpy8s08d3"
 
 [node name="Dead" type="Node" parent="ShadeFSM"]
 script = ExtResource("6_den2k")
@@ -679,10 +675,10 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath(".")
-metadata/_custom_type_script = "uid://gptykq0qp1fx"
 
 [node name="BodyCollider" type="CollisionShape2D" parent="."]
 visible = false
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_3uvfc")
 
 [node name="TetherableArea2D" type="Area2D" parent="."]
@@ -691,6 +687,7 @@ collision_layer = 256
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_icyt3")
 
 [node name="BehaviorComponents" type="Node2D" parent="."]
@@ -711,6 +708,7 @@ metadata/_custom_type_script = "uid://b1svtud75bya4"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviorComponents/HurtBox"]
 position = Vector2(1, -0.5)
+scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_m5niu")
 
 [node name="Health" type="Node" parent="BehaviorComponents"]
@@ -729,6 +727,7 @@ metadata/_custom_type_script = "uid://dc7k3kwq0lbts"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviorComponents/AttackBox"]
 visible = false
+scale = Vector2(1.5, 1.5)
 shape = SubResource("CircleShape2D_cilaq")
 
 [node name="DisplayComponents" type="Node2D" parent="."]
@@ -738,6 +737,7 @@ material = ExtResource("11_2i40n")
 [node name="SmokeFX" type="CPUParticles2D" parent="DisplayComponents"]
 modulate = Color(0.101961, 0, 0.243137, 1)
 position = Vector2(0, -12)
+scale = Vector2(1.5, 1.5)
 lifetime = 2.0
 emission_shape = 1
 emission_sphere_radius = 10.0
@@ -758,6 +758,7 @@ hue_variation_max = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="DisplayComponents"]
 use_parent_material = true
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("6_awdse")
 offset = Vector2(0, -11)
 hframes = 6
@@ -766,6 +767,7 @@ frame = 4
 [node name="Shadow" type="Sprite2D" parent="DisplayComponents"]
 material = ExtResource("13_hivce")
 position = Vector2(0, -11)
+scale = Vector2(1.5, 1.5)
 texture = ExtResource("13_bp3ra")
 
 [node name="SpawnFX" type="Sprite2D" parent="DisplayComponents"]

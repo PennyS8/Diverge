@@ -115,4 +115,4 @@ func pick_up_book():
 	var player_inventory = GameManager.inventory_node.inventory 
 	var book = load("res://modules/objects/library_book_lab.tres")
 	InventoryHelper.add_itemtype_to_inventory(player_inventory, book, 1)
-	player_inventory.save_state("player_inventory")
+	#player_inventory.save_state("player_inventory")

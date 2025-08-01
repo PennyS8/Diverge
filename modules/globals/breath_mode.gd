@@ -67,13 +67,20 @@ func start_mode(timer_override:bool = false):
 			selector.pointer.show()
 		
 		selector.global_position = body.global_position
-		selector.mouse_entered.connect(select_body.bind(body))
+		selector.mouse_entered.connect(select_body.bind(body, selector))
 		
 		# Add to list to free when done
 		current_selectables.append(selector)
 
-func select_body(body : TetherableBody):
+func select_body(body : TetherableBody, selector):
 	current_bodies_selected.append(body)
+	
+	if current_bodies_selected.size() == 1:
+		selector.line2d.set_indicator(true)
+	elif current_bodies_selected.size() > 1:
+		var direction_to_main = body.global_position.direction_to(current_bodies_selected[0].global_position)
+		selector.line2d.set_indicator(false, direction_to_main)
+
 	if body in tutorial_bodies:
 		tutorial_bodies.erase(body)
 		if tutorial_bodies.is_empty():
@@ -121,8 +128,6 @@ func _set_yarn():
 		# Set the start point of the yarn to be the first tetherbody selected
 		# (This makes all nodes selected become yanked to the first one)
 		first_tetherable.add_child(yarn)
-		
-		
 
 func _yank_all_yarn():
 	for selected_tether in current_bodies_selected:

@@ -1,0 +1,57 @@
+[gd_scene load_steps=9 format=3 uid="uid://cwcwootcevq1k"]
+
+[ext_resource type="Material" uid="uid://bcw6swreclbwb" path="res://modules/entities/enemies/shades/fx/better_enemy_shader.tres" id="1_q7pcl"]
+[ext_resource type="Texture2D" uid="uid://dd35h4ppg4x6f" path="res://modules/ui/hud/hud_ability_indicator/Purple Effect and Bullet 16x16.png" id="2_aomao"]
+[ext_resource type="Script" uid="uid://yc3rrtldbyl2" path="res://modules/ui/hud/hud_ability_indicator/inworld_ability_indicator.gd" id="3_aomao"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q7pcl"]
+atlas = ExtResource("2_aomao")
+region = Rect2(304, 81, 15, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmvah"]
+atlas = ExtResource("2_aomao")
+region = Rect2(320, 81, 15, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aomao"]
+atlas = ExtResource("2_aomao")
+region = Rect2(336, 81, 15, 14)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_msrux"]
+atlas = ExtResource("2_aomao")
+region = Rect2(352, 81, 15, 14)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cp26b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q7pcl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmvah")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aomao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_msrux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aomao")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmvah")
+}],
+"loop": true,
+"name": &"default",
+"speed": 6.0
+}]
+
+[node name="InworldAbilityIndicator" type="AnimatedSprite2D"]
+modulate = Color(2, 2, 2, 1)
+z_index = 2
+z_as_relative = false
+material = ExtResource("1_q7pcl")
+sprite_frames = SubResource("SpriteFrames_cp26b")
+autoplay = "default"
+frame_progress = 0.839372
+script = ExtResource("3_aomao")

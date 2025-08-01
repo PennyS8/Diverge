@@ -3,6 +3,8 @@ extends Area2D
 
 @export var encounter_active := true
 
+var is_currently_running := false
+
 ## The Marker2Ds to spawn enemies at. Ideally children of this node & referenced in array
 @export var enemy_spawn_points : Array[Marker2D]
 
@@ -90,6 +92,7 @@ func start_encounter():
 	
 	await current_enemies[0].spawned
 	begin_encounter.emit()
+	is_currently_running = true
 	#await LevelManager.player.exit_cutscene()
 
 func end_encounter():
@@ -97,6 +100,7 @@ func end_encounter():
 	LevelManager.exit_encounter.emit()
 	
 	encounter_active = false
+	is_currently_running = false
 
 func enemy_defeated(enemy):
 	if !current_enemies.has(enemy):
