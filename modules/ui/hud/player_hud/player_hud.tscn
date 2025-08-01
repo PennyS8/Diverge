@@ -1,9 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://dlgu6ii31q1ht"]
+[gd_scene load_steps=7 format=3 uid="uid://dlgu6ii31q1ht"]
 
 [ext_resource type="Script" uid="uid://cnc5dnwnqaph7" path="res://modules/ui/hud/player_hud/player_hud.gd" id="1_7rjie"]
 [ext_resource type="PackedScene" uid="uid://bcx1ka3l64iq4" path="res://modules/ui/hud/hud_heart/hud_heart.tscn" id="1_xbvhq"]
 [ext_resource type="PackedScene" uid="uid://dx0iml7qkauhn" path="res://modules/ui/hud/hud_small_key/hud_small_key.tscn" id="3_osnti"]
 [ext_resource type="PackedScene" uid="uid://gt54641y1ntm" path="res://modules/ui/hud/hud_big_key/hud_big_key.tscn" id="4_nce0q"]
+
+[sub_resource type="Gradient" id="Gradient_tvp6g"]
+interpolation_mode = 2
+offsets = PackedFloat32Array(0.13308, 0.56654, 1)
+colors = PackedColorArray(0, 0, 0, 0, 0, 0, 0, 0, 0.508903, 2.28621e-07, 0.110473, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kg28c"]
+gradient = SubResource("Gradient_tvp6g")
+height = 52
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [node name="HUD" type="CanvasLayer"]
 script = ExtResource("1_7rjie")
@@ -14,6 +25,19 @@ anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 mouse_filter = 2
+
+[node name="HurtIndicator" type="TextureRect" parent="IngameUI"]
+modulate = Color(1, 1, 1, 0)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -210.0
+offset_bottom = 212.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture2D_kg28c")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="IngameUI"]
 layout_mode = 1
