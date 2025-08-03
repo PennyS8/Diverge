@@ -31,8 +31,9 @@ func damage(amount := 0) -> void:
 		# Checks that parent is player in order to prevent HUD from being updated by
 		# boxes and enemies
 		if parent.is_in_group("player"):
-			if !parent.is_invulnerable:
-				heart_hud.heart_damage(amount)
+			if parent.is_invulnerable:
+				return
+			heart_hud.heart_damage(amount)
 		
 		health = clamp(health - abs(amount), 0, max_health)
 		

@@ -18,6 +18,8 @@ func damage_sprite(animation : String):
 		empty = false
 
 func heal_sprite(animation: String):
+	_animation_player.stop()
+
 	# Sets the sprite to a full heart
 	if animation == "full_heal":
 		_sprite.set_frame(39)
