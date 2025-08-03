@@ -1,4 +1,4 @@
-[gd_scene load_steps=129 format=4 uid="uid://bqotfp8yphsb"]
+[gd_scene load_steps=130 format=4 uid="uid://bqotfp8yphsb"]
 
 [ext_resource type="Texture2D" uid="uid://ce10vjgkrj5nk" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png" id="1_453bp"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="2_at4ji"]
@@ -24,6 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://dr0cvjhys8cx7" path="res://assets/environment/downtown_dungeon/custom_sprites/anxiety_door.png" id="16_mee8l"]
 [ext_resource type="Resource" uid="uid://v46rcraqdjre" path="res://modules/objects/library_book_cafeteria.tres" id="16_uy203"]
 [ext_resource type="Resource" uid="uid://cw25ojt8dsl75" path="res://modules/objects/library_book_classroom.tres" id="21_0knhu"]
+[ext_resource type="PackedScene" uid="uid://e7mplq2c2c5" path="res://modules/objects/interactable.tscn" id="23_usixv"]
 [ext_resource type="Script" uid="uid://bfhxhru7gksj4" path="res://modules/levels/school_modular_levels/Playtest/new_area_dialogue_trigger.gd" id="23_wly3n"]
 [ext_resource type="Script" uid="uid://jdbescwh43bj" path="res://modules/objects/level_transition_zone/transition_double_door.gd" id="25_4lksq"]
 [ext_resource type="Shader" uid="uid://145awv4gjeoq" path="res://assets/debug/pixel_perfect_styling/SmoothPixel.gdshader" id="25_usixv"]
@@ -34,7 +35,6 @@
 [ext_resource type="PackedScene" uid="uid://bii7n4y5k0hsf" path="res://modules/entities/enemies/shades/complex_shade/weak_shade.tscn" id="28_j0vq7"]
 [ext_resource type="Script" uid="uid://hxdnggturjhp" path="res://modules/levels/school_modular_levels/Playtest/deep_breath_tutorial_zone.gd" id="29_j0vq7"]
 [ext_resource type="Script" uid="uid://cnafmmtqskci4" path="res://modules/levels/school_modular_levels/Playtest/library_barrier.gd" id="30_wly3n"]
-[ext_resource type="PackedScene" uid="uid://e7mplq2c2c5" path="res://modules/objects/interactable.tscn" id="23_usixv"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 7, -12, 7)
@@ -9272,7 +9272,7 @@ tile_map_data = PackedByteArray("AADu//b/AAAKABEAAADu//f/AAAKABEAAADu//j/AAAKABE
 tile_set = SubResource("TileSet_xnlxt")
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(1861, -324)
+position = Vector2(-104, 19)
 
 [node name="StartRoom" type="Node2D" parent="." groups=["room_with_dynamic_transitions"]]
 visible = false
@@ -9558,6 +9558,7 @@ script = ExtResource("23_wly3n")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Hallway/NewAreaDialogueTrigger"]
 shape = SubResource("RectangleShape2D_vp17h")
+
 [node name="Interactables" type="Node2D" parent="Hallway"]
 position = Vector2(12, 0)
 
