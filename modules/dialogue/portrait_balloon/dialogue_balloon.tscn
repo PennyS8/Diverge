@@ -151,6 +151,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_kjl50")
 
 [node name="Responses" type="MarginContainer" parent="Balloon"]
@@ -244,6 +245,7 @@ offset_left = 1492.0
 offset_top = 412.0
 offset_right = 1808.0
 offset_bottom = 1012.0
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_5e3vs")
 
 [node name="PortraitPosition" type="Marker2D" parent="PortraitContainer"]
