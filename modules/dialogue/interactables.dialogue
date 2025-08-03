@@ -53,6 +53,31 @@ Juniper: Who would leave an entirely empty locker open?
 	Juniper: Plant.
 %
 	Juniper: It's fake. I don't think our school could keep a real one alive.
+	Juniper: Well, except for a few teachers and staff. Ms. Tran definitely could.
 %
 	Juniper: Plastic. Bad texture.
+=> END
+
+#magic_poster
+~ magic_poster
+Attached to the side of this poster is a handwritten note in a familiar handwriting.
+Mom: pb&j today! I made sure to buy smooth peanut butter & strawberry PRESERVES. not jelly. :-)
+=> END
+
+#busty
+~ busty
+Placard: Buchanan Baxter III, 1918-2000
+Juniper: Busty, you've got a good head on your shoulders. What should I do?
+Juniper: ...never gets old.
+=> END
+
+#lab_empty_notebook
+~ lab_empty_notebook
+It's a spiral-ring notebook, with a familiar but distant handwriting.
+Page 1: piano practice notebook!
+Page 2: Today I learned how to play twinkle twinkle Little star
+Page 3: monday... Today!!!!! I learned how to play mary had a little lamm
+Page 4: Empty.
+Page 5: Empty.
+The rest of the notebook is empty.
 => END

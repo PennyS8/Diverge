@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=4 uid="uid://bqotfp8yphsb"]
+[gd_scene load_steps=131 format=4 uid="uid://bqotfp8yphsb"]
 
 [ext_resource type="Texture2D" uid="uid://ce10vjgkrj5nk" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png" id="1_453bp"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="2_at4ji"]
@@ -9207,6 +9207,9 @@ size = Vector2(23, 14)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w3j1q"]
 size = Vector2(780, 428)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f0v23"]
+size = Vector2(36, 39)
+
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_burro"]
 load_path = "res://.godot/imported/6_Music_and_sport_Black_Shadow_16x16.png-5632c92fae0c65661975dfbb5bdccf79.ctex"
 
@@ -9444,7 +9447,7 @@ tile_set = ExtResource("10_kgxs5")
 z_index = 1
 y_sort_enabled = true
 use_parent_material = true
-tile_map_data = PackedByteArray("AAD5/wAAAgAOAAEAAAD5/wEAAgAPAAIAAAD6/wAAAgAPAAEAAAD6/wEAAgAPAAIAAAADAAAAAgAOAAUAAAADAAEAAgAOAAYAAAAEAAAAAgAPAAUAAAAEAAEAAgAPAAYAAADz/wAAAgANAAEAAADz/wEAAgANAAIAAAD0/wAAAgAOAAMAAAD0/wEAAgAOAAQAAAD1/wAAAgAPAAEAAAD1/wEAAgAPAAIAAAD+/wAAAgAOAAEAAAD+/wEAAgAOAAIAAAD9/wAAAgANAAMAAAD9/wEAAgANAAQAAAD4/wAAAgANAAUAAAD4/wEAAgANAAYAAAACAAAAAgANAAEAAAACAAEAAgANAAIAAAD//wAAAgAPAAMAAAD//wEAAgAPAAQAAAAFAAEAAQAAAA8AAAA=")
+tile_map_data = PackedByteArray("AAD5/wAAAgAOAAEAAAD5/wEAAgAOAAIAAAD6/wAAAgAPAAEAAAD6/wEAAgAPAAIAAAADAAAAAgAOAAUAAAADAAEAAgAOAAYAAAAEAAAAAgAPAAUAAAAEAAEAAgAPAAYAAADz/wAAAgANAAEAAADz/wEAAgANAAIAAAD0/wAAAgAOAAMAAAD0/wEAAgAOAAQAAAD1/wAAAgAPAAEAAAD1/wEAAgAPAAIAAAD+/wAAAgAOAAEAAAD+/wEAAgAOAAIAAAD9/wAAAgANAAMAAAD9/wEAAgANAAQAAAD4/wAAAgANAAUAAAD4/wEAAgANAAYAAAACAAAAAgANAAEAAAACAAEAAgANAAIAAAD//wAAAgAPAAMAAAD//wEAAgAPAAQAAAAFAAEAAQAAAA8AAAA=")
 tile_set = ExtResource("10_kgxs5")
 
 [node name="TopLayerVoid" type="TileMapLayer" parent="Hallway/Tiles"]
@@ -9720,8 +9723,19 @@ tile_set = ExtResource("10_kgxs5")
 [node name="BlueVendingMachine" parent="URoom/Furniture" instance=ExtResource("26_l0gkm")]
 position = Vector2(215, -15)
 
+[node name="Interactable" parent="URoom/Furniture/BlueVendingMachine" instance=ExtResource("23_usixv")]
+position = Vector2(0, 29)
+start_word = "wrong_machine"
+
+[node name="CollisionShape2D" parent="URoom/Furniture/BlueVendingMachine/Interactable" index="0"]
+shape = SubResource("RectangleShape2D_f0v23")
+
 [node name="RedVendingMachine" parent="URoom/Furniture" instance=ExtResource("27_f0v23")]
 position = Vector2(384, -15)
+
+[node name="Interactable" parent="URoom/Furniture/RedVendingMachine" instance=ExtResource("23_usixv")]
+position = Vector2(0, 30)
+start_word = "wrong_machine"
 
 [node name="Trophies" type="Node2D" parent="URoom"]
 z_index = 1
@@ -9903,8 +9917,25 @@ tile_set = ExtResource("10_kgxs5")
 [node name="Furniture" type="TileMapLayer" parent="URoom2"]
 z_index = 1
 use_parent_material = true
-tile_map_data = PackedByteArray("AAAGAP//AQABAAUAAAAGAAAAAQABAAYAAAASAP//AQABAAUAAAASAAAAAQABAAYAAAAHAP7/BQAFAAAAAAAHAP//BQAFAAEAAAATAP7/BQADAAAAAAATAP//BQADAAEAAAARAP7/BQADAAIAAAARAP//BQADAAMAAAAFAP7/BQADAAQAAAAUAP7/BQAEAAAAAAAUAP//BQAEAAEAAAAIAP7/DAAEAAYAAAAIAP//DAAEAAcAAAAIAAAADAAEAAgAAAAJAP7/DAAFAAYAAAAJAP//DAAFAAcAAAAJAAAADAAFAAgAAAAPAP7/DAABAAYAAAAPAP//DAABAAcAAAAPAAAADAABAAgAAAAQAP7/DAACAAYAAAAQAP//DAACAAcAAAAQAAAADAACAAgAAAAOAP//AQAAAAMAAAAOAAAAAQAAAAQAAAA=")
+tile_map_data = PackedByteArray("AAAGAP//AQABAAUAAAAGAAAAAQABAAYAAAASAP//AQABAAUAAAASAAAAAQABAAYAAAAHAP7/BQAFAAAAAAAHAP//BQAFAAEAAAATAP7/BQADAAAAAAATAP//BQADAAEAAAARAP7/BQADAAIAAAARAP//BQADAAMAAAAFAP7/BQADAAQAAAAUAP7/BQAEAAAAAAAUAP//BQAEAAEAAAAOAP//AQAAAAMAAAAOAAAAAQAAAAQAAAA=")
 tile_set = ExtResource("10_kgxs5")
+
+[node name="BlueVendingMachine" parent="URoom2/Furniture" instance=ExtResource("26_l0gkm")]
+position = Vector2(232, -13)
+
+[node name="Interactable" parent="URoom2/Furniture/BlueVendingMachine" instance=ExtResource("23_usixv")]
+position = Vector2(0, 29)
+start_word = "wrong_machine"
+
+[node name="CollisionShape2D" parent="URoom2/Furniture/BlueVendingMachine/Interactable" index="0"]
+shape = SubResource("RectangleShape2D_f0v23")
+
+[node name="RedVendingMachine" parent="URoom2/Furniture" instance=ExtResource("27_f0v23")]
+position = Vector2(384, -15)
+
+[node name="Interactable" parent="URoom2/Furniture/RedVendingMachine" instance=ExtResource("23_usixv")]
+position = Vector2(0, 30)
+start_word = "wrong_machine"
 
 [node name="HiddenDoor" type="TileMapLayer" parent="URoom2"]
 visible = false
@@ -10055,3 +10086,5 @@ shape = SubResource("RectangleShape2D_txk0m")
 [editable path="Hallway/Exits/PuzzleDoorA"]
 [editable path="Hallway/Exits/PuzzleDoorB"]
 [editable path="Hallway/Exits/PuzzleDoorC"]
+[editable path="URoom/Furniture/BlueVendingMachine/Interactable"]
+[editable path="URoom2/Furniture/BlueVendingMachine/Interactable"]
