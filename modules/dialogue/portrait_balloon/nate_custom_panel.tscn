@@ -119,6 +119,7 @@ use_parent_material = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.25
+mouse_filter = 1
 theme_override_styles/panel = SubResource("StyleBoxTexture_kjl50")
 
 [node name="Responses" type="MarginContainer" parent="."]
