@@ -11,8 +11,8 @@
 [ext_resource type="Texture2D" uid="uid://dnrioquuwaj0q" path="res://assets/environment/downtown_dungeon/basketball_paint.png" id="8_6a26f"]
 [ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="8_7nq88"]
 [ext_resource type="Texture2D" uid="uid://cubebxgi3psxy" path="res://assets/environment/downtown_dungeon/custom_sprites/ME_Singles_School_16x16_Basketball_Net_3.png" id="8_67ldu"]
-[ext_resource type="Texture2D" uid="uid://bnh28ob6np7iv" path="res://modules/entities/enemies/shades/IDLE_LR_Base.png" id="9_cwrk5"]
-[ext_resource type="Script" path="res://modules/levels/placeholder_gym/waver.gd" id="10_cwrk5"]
+[ext_resource type="Texture2D" uid="uid://cik1kaomussnm" path="res://modules/entities/enemies/shades/IDLE_LR_Base.png" id="9_cwrk5"]
+[ext_resource type="Script" uid="uid://cc7m12vc0y65h" path="res://modules/levels/placeholder_gym/waver.gd" id="10_cwrk5"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="10_fcicu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qd47k"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=66 format=4 uid="uid://bgxeo4378llba"]
+[gd_scene load_steps=67 format=4 uid="uid://bgxeo4378llba"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ad4o5"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="2_nel61"]
@@ -31,6 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://kyv7yk10fodg" path="res://assets/environment/downtown_dungeon/custom_sprites/table_water.png" id="29_clobj"]
 [ext_resource type="Texture2D" uid="uid://deyw8rhivgppt" path="res://assets/environment/downtown_dungeon/custom_sprites/table_book.png" id="30_vas0v"]
 [ext_resource type="Texture2D" uid="uid://xif0g3urgtv1" path="res://assets/environment/downtown_dungeon/custom_sprites/ramen.png" id="31_vas0v"]
+[ext_resource type="PackedScene" uid="uid://e7mplq2c2c5" path="res://modules/objects/interactable.tscn" id="32_nel61"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k3djk"]
 atlas = ExtResource("9_vgalx")
@@ -678,7 +679,7 @@ z_index = 1
 y_sort_enabled = true
 texture_repeat = 1
 position = Vector2(145, -106)
-collision_layer = 2
+collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/LunchLine"]
 position = Vector2(-37, 8)
@@ -1006,6 +1007,28 @@ offset = Vector2(0.5, 0.5)
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
 position = Vector2(-399, 4)
+
+[node name="Interactables" type="Node2D" parent="."]
+
+[node name="Interactable" parent="Interactables" instance=ExtResource("32_nel61")]
+position = Vector2(-265, -230)
+start_word = "wrong_machine"
+
+[node name="Interactable2" parent="Interactables" instance=ExtResource("32_nel61")]
+position = Vector2(-236, -230)
+start_word = "wrong_machine"
+
+[node name="Interactable5" parent="Interactables" instance=ExtResource("32_nel61")]
+position = Vector2(-225, -230)
+start_word = "wrong_machine"
+
+[node name="Interactable3" parent="Interactables" instance=ExtResource("32_nel61")]
+position = Vector2(293, -231)
+start_word = "wrong_machine"
+
+[node name="Interactable4" parent="Interactables" instance=ExtResource("32_nel61")]
+position = Vector2(321, -231)
+start_word = "wrong_machine"
 
 [connection signal="area_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints/DispensePoint1" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [1]]
 [connection signal="area_entered" from="NavigationRegion2D/CheckeredArea/RamenDispenser/DispensePoints/DispensePoint2" to="NavigationRegion2D/CheckeredArea/RamenDispenser" method="_on_dispense_point_area_entered" binds= [2]]
