@@ -251,6 +251,9 @@ func start_invulnerability_effect(duration: float = 1.0, fade_speed: float = 0.1
 	
 	is_invulnerable = true
 	
+	# Sets collision with enemy to false to prevent player from being hit again
+	hurtbox.set_collision_mask_value(4, false)
+	
 	# Create a new tween
 	fade_tween = create_tween()
 	fade_tween.set_loops()  # Make it loop indefinitely
@@ -274,6 +277,9 @@ func _end_invulnerability_effect():
 	# Ensure character is fully opaque
 	var end_tween = create_tween()
 	end_tween.tween_property(character_sprite, "modulate:a", 1.0, 0.1)
+	
+	# Sets collision with enemy to true to allow enemy to hit player again
+	hurtbox.set_collision_mask_value(4, true)
 	
 func _on_animation_player_current_animation_changed(name: String) -> void:
 	$Hook/CollisionPolygon2D.set_deferred("disabled", true)
