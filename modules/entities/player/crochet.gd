@@ -2,7 +2,8 @@
 extends StateSound
 
 @onready var yarn = $"../../../Yarn"
-@onready var projectile = $"../../../Yarn/Projectile"
+@onready var projectile = %YarnProjectile
+@onready var wall_detector = %WallDetector
 
 var current_dist := 0.0
 var speed := 240.0
@@ -29,6 +30,9 @@ func _on_enter(_args) -> void:
 	
 	projectile.monitorable = true
 	projectile.monitoring = true
+	
+	wall_detector.monitorable = true
+	wall_detector.monitoring = true
 
 func _on_update(delta:float) -> void:
 	# yarn is frogged or snaps from tension or otherwise breaks
@@ -90,6 +94,10 @@ func _on_projectile_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape
 	if tethered_body.is_in_group("enemy"):
 		tethered_body.tethered_stun()
 
+func _on_wall_detector_body_entered(_body: Node2D) -> void:
+	casting = false
+	tethered_body = null
+
 func _on_exit(_args) -> void:
 	# frog
 	yarn.rotation = 0
@@ -101,3 +109,6 @@ func _on_exit(_args) -> void:
 	
 	projectile.monitorable = false
 	projectile.monitoring = false
+	
+	wall_detector.monitorable = false
+	wall_detector.monitoring = false

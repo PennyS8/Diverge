@@ -1,4 +1,4 @@
-[gd_scene load_steps=102 format=3 uid="uid://cyh345au8bpro"]
+[gd_scene load_steps=103 format=3 uid="uid://cyh345au8bpro"]
 
 [ext_resource type="Script" uid="uid://c255tmgoaw4qs" path="res://modules/entities/player/player.gd" id="1_ehhf7"]
 [ext_resource type="Script" uid="uid://dw6la50yxyr6j" path="res://addons/xsm/state_regions.gd" id="1_mpvpn"]
@@ -48,7 +48,7 @@
 [ext_resource type="Texture2D" uid="uid://bj8cuyco3d7jr" path="res://modules/entities/player/real_sprites/idle_walk/idle_walk_left.png" id="47_l84k2"]
 [ext_resource type="AudioStream" uid="uid://o3hvnhy5m155" path="res://modules/sfx/footstep_randomizer.tres" id="49_fnwuu"]
 [ext_resource type="PackedScene" uid="uid://cwcwootcevq1k" path="res://modules/ui/hud/hud_ability_indicator/inworld_ability_indicator.tscn" id="53_l84k2"]
-[ext_resource type="Shader" path="res://modules/entities/enemies/shades/fx/compiled_enemy_shader.gdshader" id="54_hfpac"]
+[ext_resource type="Shader" uid="uid://gcwt752b74cd" path="res://modules/entities/enemies/shades/fx/compiled_enemy_shader.gdshader" id="54_hfpac"]
 [ext_resource type="PackedScene" uid="uid://72t5en3w3lah" path="res://modules/ui/input_button_overlays/movement_keys.tscn" id="55_hfpac"]
 [ext_resource type="Shader" uid="uid://d0p05imkhnhst" path="res://modules/objects/stress_causer/stress_effect.gdshader" id="57_7h8sm"]
 
@@ -2938,6 +2938,9 @@ shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 [sub_resource type="CircleShape2D" id="CircleShape2D_bif3w"]
 radius = 5.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_netii"]
+radius = 5.0
+
 [sub_resource type="Gradient" id="Gradient_dd7vi"]
 offsets = PackedFloat32Array(0, 0.5, 1)
 colors = PackedColorArray(0.43606, 0, 0, 1, 0.552962, 1.35969e-06, 4.81307e-07, 1, 0.435294, 0, 0, 1)
@@ -3587,14 +3590,26 @@ frame_progress = 0.235804
 [node name="Yarn" type="Node2D" parent="."]
 position = Vector2(0, -12)
 
-[node name="Projectile" type="Area2D" parent="Yarn"]
+[node name="YarnProjectile" type="Area2D" parent="Yarn"]
+unique_name_in_owner = true
 collision_layer = 0
 collision_mask = 256
 monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Yarn/Projectile"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Yarn/YarnProjectile"]
 shape = SubResource("CircleShape2D_bif3w")
+
+[node name="WallDetector" type="Area2D" parent="Yarn/YarnProjectile"]
+unique_name_in_owner = true
+position = Vector2(-5, 0)
+collision_layer = 0
+collision_mask = 2
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Yarn/YarnProjectile/WallDetector"]
+shape = SubResource("CircleShape2D_netii")
 
 [node name="Line2D" type="Line2D" parent="Yarn"]
 texture_repeat = 2
@@ -3606,5 +3621,6 @@ texture_mode = 1
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
 [connection signal="current_animation_changed" from="AnimationPlayer" to="." method="_on_animation_player_current_animation_changed"]
-[connection signal="area_entered" from="Yarn/Projectile" to="PlayerFSM/Abilities/Crochet" method="_on_projectile_area_entered"]
-[connection signal="area_shape_entered" from="Yarn/Projectile" to="PlayerFSM/Abilities/Crochet" method="_on_projectile_area_shape_entered"]
+[connection signal="area_entered" from="Yarn/YarnProjectile" to="PlayerFSM/Abilities/Crochet" method="_on_projectile_area_entered"]
+[connection signal="area_shape_entered" from="Yarn/YarnProjectile" to="PlayerFSM/Abilities/Crochet" method="_on_projectile_area_shape_entered"]
+[connection signal="body_entered" from="Yarn/YarnProjectile/WallDetector" to="PlayerFSM/Abilities/Crochet" method="_on_wall_detector_body_entered"]

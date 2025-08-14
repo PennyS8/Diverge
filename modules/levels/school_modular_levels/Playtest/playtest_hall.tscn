@@ -32,7 +32,7 @@
 [ext_resource type="Texture2D" uid="uid://jmvoe0bsxhlm" path="res://assets/environment/moderninteriors-win/1_Interiors/16x16/Theme_Sorter_Black_Shadow/6_Music_and_sport_Black_Shadow_16x16.png" id="26_txk0m"]
 [ext_resource type="PackedScene" uid="uid://d1xkjbo67pt4b" path="res://modules/levels/cafeteria/props/vending_machine_red.tscn" id="27_f0v23"]
 [ext_resource type="PackedScene" uid="uid://bii7n4y5k0hsf" path="res://modules/entities/enemies/shades/complex_shade/weak_shade.tscn" id="28_j0vq7"]
-[ext_resource type="Script" path="res://modules/levels/school_modular_levels/Playtest/deep_breath_tutorial_zone.gd" id="29_j0vq7"]
+[ext_resource type="Script" uid="uid://hxdnggturjhp" path="res://modules/levels/school_modular_levels/Playtest/deep_breath_tutorial_zone.gd" id="29_j0vq7"]
 [ext_resource type="Script" uid="uid://cnafmmtqskci4" path="res://modules/levels/school_modular_levels/Playtest/library_barrier.gd" id="30_wly3n"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]

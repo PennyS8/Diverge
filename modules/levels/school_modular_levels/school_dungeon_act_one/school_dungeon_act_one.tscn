@@ -13,9 +13,9 @@
 [ext_resource type="Script" uid="uid://cyamu3k7rpuu6" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/shades_walking_cutscene.gd" id="7_skfq5"]
 [ext_resource type="PackedScene" uid="uid://cuti2ni6cxjbq" path="res://modules/levels/school_modular_levels/school_props/fire_alarm.tscn" id="8_0natf"]
 [ext_resource type="Resource" uid="uid://bn04a8c828d0e" path="res://modules/objects/puzzle_pieces/key/foyerkey.tres" id="8_bffxx"]
-[ext_resource type="Script" uid="uid://b5b2mf7sbne8i" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/notgoindatway.gd" id="8_dkp6j"]
+[ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/notgoindatway.gd" id="8_dkp6j"]
 [ext_resource type="PackedScene" uid="uid://lbhb1gemkets" path="res://modules/objects/puzzle_pieces/pushable_desk/pushable_desk.tscn" id="8_e5ij6"]
-[ext_resource type="Script" uid="uid://jftftlnkvyoo" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/cutscene_checker_gotta_fight.gd" id="9_3ccj6"]
+[ext_resource type="Script" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/cutscene_checker_gotta_fight.gd" id="9_3ccj6"]
 [ext_resource type="PackedScene" uid="uid://bbdhy8cvtgg0l" path="res://modules/objects/puzzle_pieces/pushable_block/pushable_block.tscn" id="9_3mj1j"]
 [ext_resource type="Script" uid="uid://b23yh1ti1utiv" path="res://modules/levels/school_modular_levels/school_dungeon_act_one/admin.gd" id="9_skfq5"]
 [ext_resource type="PackedScene" uid="uid://c0xn1iqitvhmq" path="res://modules/objects/puzzle_pieces/key/key.tscn" id="10_0c127"]
@@ -107,7 +107,7 @@ material = ExtResource("1_pt88k")
 metadata/_edit_vertical_guides_ = [-840.0]
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(803, 507)
+position = Vector2(1044, 494)
 
 [node name="Tiles" type="Node2D" parent="."]
 y_sort_enabled = true
