@@ -64,7 +64,7 @@ region = Rect2(362, 193, 19, 12)
 margin = Rect2(0.5, 0, 0, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4w2me"]
-size = Vector2(69, 28)
+size = Vector2(69, 31)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a8oqr"]
 size = Vector2(121.5, 28)
@@ -508,7 +508,7 @@ position = Vector2(216, -156)
 
 [node name="Desk" type="Node2D" parent="Rooms/Admin"]
 z_index = 1
-position = Vector2(-117, -37)
+position = Vector2(-118, -35)
 
 [node name="Sprite2D" type="Sprite2D" parent="Rooms/Admin/Desk"]
 texture_filter = 1
@@ -527,24 +527,24 @@ material = ExtResource("1_pt88k")
 position = Vector2(32, 13)
 texture = SubResource("AtlasTexture_3ccj6")
 
-[node name="Area2D" type="StaticBody2D" parent="Rooms/Admin/Desk"]
-collision_layer = 16
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Admin/Desk/Area2D"]
-position = Vector2(9.5, 5)
-shape = SubResource("RectangleShape2D_4w2me")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Rooms/Admin/Desk/Area2D"]
-position = Vector2(10, -23)
-shape = SubResource("RectangleShape2D_a8oqr")
-
 [node name="InteractablePoster" parent="Rooms/Admin/Desk" instance=ExtResource("17_ntqx1")]
 position = Vector2(-303, 145)
 start_word = "magic_poster"
 
 [node name="CollisionShape2D" parent="Rooms/Admin/Desk/InteractablePoster" index="0"]
 position = Vector2(0, -6.5)
+
+[node name="Area2D" type="StaticBody2D" parent="Rooms/Admin/Desk"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Rooms/Admin/Desk/Area2D"]
+position = Vector2(9.5, 3.5)
+shape = SubResource("RectangleShape2D_4w2me")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Rooms/Admin/Desk/Area2D"]
+position = Vector2(10, -26)
+shape = SubResource("RectangleShape2D_a8oqr")
 
 [node name="InteractableBust" parent="Rooms/Admin/Desk" instance=ExtResource("17_ntqx1")]
 position = Vector2(-490, 276)
