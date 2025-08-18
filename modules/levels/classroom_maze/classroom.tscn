@@ -402,7 +402,7 @@ entrance_name = "PuzzleDoorC"
 transition_direction = 1
 
 [node name="NatesGroundItem" parent="." instance=ExtResource("10_qkcgf")]
-z_index = 2
+z_index = 3
 position = Vector2(-169, -167)
 ground_item = ExtResource("11_24tlu")
 
