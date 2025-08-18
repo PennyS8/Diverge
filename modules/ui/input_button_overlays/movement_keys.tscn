@@ -26,6 +26,7 @@ atlas = ExtResource("3_l4e3s")
 region = Rect2(497, 97, 46, 14)
 
 [node name="MovementKeys" type="Node2D"]
+z_index = 3
 script = ExtResource("1_htqnn")
 
 [node name="W" type="Sprite2D" parent="."]
