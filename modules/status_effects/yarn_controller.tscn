@@ -1,22 +1,133 @@
-[gd_scene load_steps=5 format=3 uid="uid://cgxc0xpb1lawa"]
+[gd_scene load_steps=23 format=3 uid="uid://cgxc0xpb1lawa"]
 
 [ext_resource type="Script" uid="uid://cmedhnkse60t5" path="res://modules/status_effects/yarn_controller.gd" id="1_f6jx5"]
+[ext_resource type="Material" uid="uid://bcw6swreclbwb" path="res://modules/entities/enemies/shades/fx/better_enemy_shader.tres" id="2_fd7kw"]
+[ext_resource type="Texture2D" uid="uid://1e0oirpn1m7c" path="res://modules/entities/player/placeholder_sprites/all_yarn_wave_amplitudes-cut-Sheet.png" id="3_inmfn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_febas"]
 radius = 5.0
 
-[sub_resource type="Gradient" id="Gradient_dd7vi"]
-offsets = PackedFloat32Array(0, 0.5, 1)
-colors = PackedColorArray(0.43606, 0, 0, 1, 0.552962, 1.35969e-06, 4.81307e-07, 1, 0.435294, 0, 0, 1)
-metadata/_snap_enabled = true
+[sub_resource type="TileSet" id="TileSet_jcueq"]
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tiuj8"]
-gradient = SubResource("Gradient_dd7vi")
-width = 16
-height = 16
-fill_from = Vector2(0.25, 0.25)
-fill_to = Vector2(0.75, 0.75)
-repeat = 1
+[sub_resource type="AtlasTexture" id="AtlasTexture_e63ci"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(0, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bjuh1"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(50, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_628ty"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(100, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_slq05"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(150, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gg8m4"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(200, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_by8me"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(250, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u3b6w"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(300, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_npjmf"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(350, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rlnkj"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(400, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wqcti"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(450, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wllac"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(500, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r2glc"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(550, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i2teh"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(600, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mymyr"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(650, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s555r"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(700, 0, 50, 27)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0qlqr"]
+atlas = ExtResource("3_inmfn")
+region = Rect2(750, 0, 50, 27)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1sgvl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e63ci")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bjuh1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_628ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_slq05")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gg8m4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_by8me")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u3b6w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_npjmf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rlnkj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wqcti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wllac")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r2glc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i2teh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mymyr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s555r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0qlqr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="YarnController" type="Node2D"]
 script = ExtResource("1_f6jx5")
@@ -37,14 +148,22 @@ shape = SubResource("CircleShape2D_febas")
 
 [node name="Line2D" type="Line2D" parent="."]
 texture_repeat = 2
-points = PackedVector2Array(0, 0, 0, 0)
-width = 2.0
-texture = SubResource("GradientTexture2D_tiuj8")
+material = ExtResource("2_fd7kw")
+points = PackedVector2Array(0, 0, 1361, 0)
+width = 28.0
 texture_mode = 1
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
 target_position = Vector2(0, 0)
 collision_mask = 66
+
+[node name="TileMapLayer" type="TileMapLayer" parent="."]
+tile_set = SubResource("TileSet_jcueq")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_1sgvl")
+frame = 13
+frame_progress = 0.640611
 
 [connection signal="body_entered" from="WallDetector" to="." method="_on_wall_detector_body_shape_entered"]
 [connection signal="area_shape_entered" from="Projectile" to="." method="_on_projectile_area_shape_entered"]
