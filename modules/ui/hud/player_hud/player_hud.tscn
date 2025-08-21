@@ -37,6 +37,7 @@ offset_top = -210.0
 offset_bottom = 212.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = SubResource("GradientTexture2D_kg28c")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="IngameUI"]
