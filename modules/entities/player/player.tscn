@@ -26,7 +26,7 @@
 [ext_resource type="Script" uid="uid://c44tfmii554el" path="res://modules/entities/player/xsm/push.gd" id="13_xr8le"]
 [ext_resource type="Script" uid="uid://cbki1wx5sldj2" path="res://modules/entities/player/xsm/throw.gd" id="14_7pa4m"]
 [ext_resource type="Script" uid="uid://35wultrt2jyq" path="res://modules/entities/player/xsm/hop.gd" id="14_l3d1o"]
-[ext_resource type="Script" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
+[ext_resource type="Script" uid="uid://d3k8myw5l01oe" path="res://modules/entities/player/player_camera.gd" id="15_25a4m"]
 [ext_resource type="Texture2D" uid="uid://c3qjwhc0ta7eu" path="res://modules/entities/player/placeholder_sprites/Shadow.png" id="15_257pe"]
 [ext_resource type="Script" uid="uid://dmux7vy5y0hk4" path="res://modules/entities/player/xsm/grapple.gd" id="15_trbfo"]
 [ext_resource type="Script" uid="uid://dc7k3kwq0lbts" path="res://addons/basecomponents/Components/2D/hitbox_component_2d.gd" id="16_7tnll"]

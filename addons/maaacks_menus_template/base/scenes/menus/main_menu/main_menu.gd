@@ -16,6 +16,9 @@ func load_game_scene() -> void:
 func new_game() -> void:
 	load_game_scene()
 
+func load_game() -> void:
+	SaveAndLoad.load_game()
+
 func _open_sub_menu(menu : Control) -> void:
 	sub_menu = menu
 	sub_menu.show()
@@ -77,6 +80,9 @@ func _ready() -> void:
 func _on_new_game_button_pressed() -> void:
 	DirAccess.remove_absolute("user://player_inventory")
 	new_game()
+
+func _on_load_game_button_pressed():
+	load_game()
 
 func _on_options_button_pressed() -> void:
 	_open_sub_menu(options_scene)

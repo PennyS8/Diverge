@@ -6,3 +6,4 @@ extends Resource
 @export var player_max_health:float
 @export var saved_data:Array[SavedData] = []
 @export var level_path:String
+@export var current_level_name:String

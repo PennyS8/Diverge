@@ -20,15 +20,15 @@ func _main_ready():
 func save_game():
 	print("Saved game")
 	
-	## TODO: Comment this out once save_game() is needed for save button (after
-	## graduation). Also make sure that all necessary player information is 
-	## being saved.
-	#var saved_game:SavedGame = SavedGame.new()
-	#
-	#saved_game.player_health = player.health_component.health
-	#saved_game.player_position = player.global_position
-	#
-	#ResourceSaver.save(saved_game, "user://savegame.tres")
+	## TODO: Make the savegame file include the room that the player is currently
+	## in along with all of the other information.
+	var saved_game:SavedGame = SavedGame.new()
+	
+	saved_game.player_health = player.health_component.health
+	saved_game.player_position = player.global_position
+	saved_game.current_level_name = LevelManager.current_level.name
+	
+	ResourceSaver.save(saved_game, "user://saves/savegame.tres")
 	
 	var temp_dir_path = "user://temp"
 	var dir_path = "user://saves"
@@ -73,46 +73,108 @@ func save_game():
 ## TODO: Have this load the specific save file that is saved in the save_game() function. 
 ## This will be an after graduation thing when we want to implement save & load buttons.
 # Loads all data from the game (rooms, player data, etc)
-func load_game(room_id):
-	print("Load game")
+#func load_game(room_id):
+	#print("Load game")
+	#
+	#var save_file = "user://savegame.tres"
+	#
+	## Makes sure to not load if save file doesn't exist
+	#if !(save_exists(save_file)):
+		#print("No existing save file.")
+		#return
+#
+	#var saved_game:SavedGame = load(save_file)
+	#
+	#player.health_component.health = saved_game.player_health
+	#player.global_position = saved_game.player_position
+	#
+	#get_tree().call_group("saved_data", "on_before_load_game")
+	#
+	#for item in saved_game.saved_data:
+		#var scene = load(item.scene_path) as PackedScene
+		#var restored_node = scene.instantiate()
+		#var node = get_node(item.parent_node_path)
+		#
+		## Gets node name before resinstantiation. This is to prevent us from having
+		## "CharacterBody@12" or some randomized name similar to that in Remote
+		#var item_name = restored_node.name
+		#
+		## If the node path does not exist, add the item to main
+		## NOTE: This should never occur but is more so a sanity check to be safe
+		#if node != null:
+			#node.add_child(restored_node)
+		#else:
+			#main.add_child(restored_node)
+		#
+		#if restored_node.has_method("on_load_game"):
+			#restored_node.on_load_game(item)
+		#
+		## Checks if the restored node name has been set to randomized unique name. If
+		## so, it renames it to what the item is and Godot adds a unique identifier
+		#if restored_node.name != item_name:
+			#restored_node.name = item_name
+
+func load_game():
+	print("Load Game")
 	
-	var save_file = "user://savegame.tres"
+	var save_file = "user://saves/savegame.tres"
 	
-	# Makes sure to not load if save file doesn't exist
 	if !(save_exists(save_file)):
 		print("No existing save file.")
 		return
-
+	
 	var saved_game:SavedGame = load(save_file)
+	
+	var temp_dir_path = "user://temp"
+	var dir_path = "user://saves"
+	
+	# Attempts to open temp save path. If it doesn't exist, create it
+	var temp_dir
+	if dir_exists(temp_dir_path):
+		temp_dir = DirAccess.open(temp_dir_path)
+		
+		# Makes sure save directory properly opened. If not we return
+		if !temp_dir:
+			print("Save directory could not be opened")
+			return
+	else:
+		DirAccess.make_dir_absolute(temp_dir_path)
+	
+	# Checks if there are current room saves. If so we load them into the permanent dir
+	if dir_exists(dir_path):
+		var dir = DirAccess.open(dir_path)
+		
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			
+			# Copies files over from the save folder to the temp folder
+			while file_name != "":
+				#If we see the savegame file, we want to move past it
+				if file_name == "savegame.tres":
+					file_name = dir.get_next()
+					continue
+				
+				var temp_file_path = temp_dir_path + "/" + file_name
+				var perm_file_path = dir_path + "/" + file_name
+				
+				if dir.file_exists(perm_file_path):
+					DirAccess.copy_absolute(perm_file_path, temp_file_path)
+				else:
+					print("File " + file_name + " does not exist")
+					
+				file_name = dir.get_next()
+			
+			dir.list_dir_end()
+		else:
+			print("Temp folder could not be opened for game save")
+	else:
+		print("Temp folder does not exist")
+	
+	room_load(saved_game.current_level_name)
 	
 	player.health_component.health = saved_game.player_health
 	player.global_position = saved_game.player_position
-	
-	get_tree().call_group("saved_data", "on_before_load_game")
-	
-	for item in saved_game.saved_data:
-		var scene = load(item.scene_path) as PackedScene
-		var restored_node = scene.instantiate()
-		var node = get_node(item.parent_node_path)
-		
-		# Gets node name before resinstantiation. This is to prevent us from having
-		# "CharacterBody@12" or some randomized name similar to that in Remote
-		var item_name = restored_node.name
-		
-		# If the node path does not exist, add the item to main
-		# NOTE: This should never occur but is more so a sanity check to be safe
-		if node != null:
-			node.add_child(restored_node)
-		else:
-			main.add_child(restored_node)
-		
-		if restored_node.has_method("on_load_game"):
-			restored_node.on_load_game(item)
-		
-		# Checks if the restored node name has been set to randomized unique name. If
-		# so, it renames it to what the item is and Godot adds a unique identifier
-		if restored_node.name != item_name:
-			restored_node.name = item_name
 
 # Deletes a full game save
 func delete_game_saves():
