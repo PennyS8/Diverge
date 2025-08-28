@@ -17,7 +17,8 @@ func new_game() -> void:
 	load_game_scene()
 
 func load_game() -> void:
-	SaveAndLoad.load_game()
+	await SaveAndLoad.load_game()
+	load_game_scene()
 
 func _open_sub_menu(menu : Control) -> void:
 	sub_menu = menu

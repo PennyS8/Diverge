@@ -18,6 +18,9 @@ func _main_ready():
 #region Full game saving, loading, and deleting
 # Saves all data from the game (rooms, player data, etc)
 func save_game():
+	# Saves the current room info into temp before making all saves permenant
+	room_save(LevelManager.current_level.name)
+	
 	print("Saved game")
 	
 	## TODO: Make the savegame file include the room that the player is currently
@@ -125,6 +128,8 @@ func load_game():
 	
 	var saved_game:SavedGame = load(save_file)
 	
+	LevelManager.custom_scene_path = saved_game.level_path
+	
 	var temp_dir_path = "user://temp"
 	var dir_path = "user://saves"
 	
@@ -171,10 +176,12 @@ func load_game():
 	else:
 		print("Temp folder does not exist")
 	
-	room_load(saved_game.current_level_name)
+	await room_load(saved_game.current_level_name)
 	
-	player.health_component.health = saved_game.player_health
-	player.global_position = saved_game.player_position
+	#player = get_tree().get_first_node_in_group("player")
+	
+	#player.health_component.health = saved_game.player_health
+	#player.global_position = saved_game.player_position
 
 # Deletes a full game save
 func delete_game_saves():
@@ -212,7 +219,7 @@ func delete_game_saves():
 func room_save(room_id):
 	# TODO: Once full game save is implemented for save buttons, change this to 
 	# a temp folder
-	var save_path = "user://saves"
+	var save_path = "user://temp"
 	
 	if DirAccess.open(save_path) == null:
 		DirAccess.make_dir_absolute(save_path)
@@ -233,7 +240,7 @@ func room_save(room_id):
 
 # Loads data of a given room from the temporary directory if it exists
 func room_load(room_id):
-	var save_room_path = "user://saves/saveroom_{id}.tres"
+	var save_room_path = "user://temp/saveroom_{id}.tres"
 	var format_path = save_room_path.format({"id": room_id})
 	
 	print("Loaded Level: " + room_id)
@@ -322,6 +329,7 @@ func save_player():
 	saved_player.player_position = player.global_position
 	# Gets name of level player is being saved in
 	saved_player.level_path = LevelManager.current_level.scene_file_path
+	
 	
 	var save_player_path = save_path + "/player_save.tres"
 	ResourceSaver.save(saved_player, save_player_path)
