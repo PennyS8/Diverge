@@ -12,6 +12,11 @@ func _on_body_entered(_body: Node2D) -> void:
 	# and return. EXCEPT, in the case the puzzle has already been solved; in
 	# this case, save var "read" as true.
 	
+	# Only prevents player from leaving once they are aware of the book in the room
+	%ExitDialogue.set_collision_mask_value(1, true)
+	%ExitDialogue.set_collision_layer_value(1, true)
+	%ExitDialogue/Area2D.set_collision_mask_value(3, true)
+	
 	player.dir = Vector2.ZERO
 	
 	var dialogue
