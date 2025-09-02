@@ -54,7 +54,7 @@ func menu_helper():
 	## This just calls the stuff in ready again
 	if scene.name != "Main":
 		get_tree().call_deferred("change_scene_to_file","res://modules/globals/main.tscn")
-		custom_scene_path = ""
+		#custom_scene_path = ""
 	main_ready.connect(_main_ready, CONNECT_ONE_SHOT)
 	await main_ready
 	

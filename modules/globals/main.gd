@@ -4,8 +4,6 @@ extends Node2D
 @export var command_items : Dictionary[String, ItemType]
 
 func _ready():
-	# Deletes 'temp' save folder if it exists
-	SaveAndLoad.delete_game_saves()
 	LevelManager.main_ready.emit()
 	SaveAndLoad.main_ready.emit()
 	RespawnManager.main_ready.emit()

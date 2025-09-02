@@ -27,9 +27,18 @@ func save_game():
 	## in along with all of the other information.
 	var saved_game:SavedGame = SavedGame.new()
 	
+	# Saves player info for current room
 	saved_game.player_health = player.health_component.health
 	saved_game.player_position = player.global_position
+	
+	# Saves current room info
 	saved_game.current_level_name = LevelManager.current_level.name
+	saved_game.level_path = LevelManager.current_level.scene_file_path
+	
+	# Saves current respawn info
+	saved_game.respawn_last_level_path = RespawnManager.last_level_path
+	saved_game.respawn_last_level_name = RespawnManager.last_level_name
+	saved_game.respawn_last_entrance = RespawnManager.last_entrance
 	
 	ResourceSaver.save(saved_game, "user://saves/savegame.tres")
 	
@@ -128,7 +137,13 @@ func load_game():
 	
 	var saved_game:SavedGame = load(save_file)
 	
+	# Sets the scene path to be loaded
 	LevelManager.custom_scene_path = saved_game.level_path
+	
+	# Resets the last respawn information incase player dies in loaded room
+	RespawnManager.last_level_path = saved_game.respawn_last_level_path
+	RespawnManager.last_level_name = saved_game.respawn_last_level_name
+	RespawnManager.last_entrance = saved_game.respawn_last_entrance
 	
 	var temp_dir_path = "user://temp"
 	var dir_path = "user://saves"
@@ -176,7 +191,9 @@ func load_game():
 	else:
 		print("Temp folder does not exist")
 	
-	await room_load(saved_game.current_level_name)
+	
+	## TODO: Most likely need to delete this in future.
+	#await room_load(saved_game.current_level_name)
 	
 	#player = get_tree().get_first_node_in_group("player")
 	
@@ -184,7 +201,7 @@ func load_game():
 	#player.global_position = saved_game.player_position
 
 # Deletes a full game save
-func delete_game_saves():
+func delete_perm_saves():
 	var save_path = "user://saves"
 	
 	if dir_exists(save_path):
@@ -280,7 +297,7 @@ func room_load(room_id):
 			restored_node.name = item_name
 
 # Deletes all room save files before deleting the temp directory as a whole
-func delete_room_saves():
+func delete_temp_saves():
 	var room_save_path = "user://temp"
 	
 	if dir_exists(room_save_path):

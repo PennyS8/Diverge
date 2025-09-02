@@ -14,9 +14,19 @@ func load_game_scene() -> void:
 	await LevelManager.menu_helper()
 	
 func new_game() -> void:
+	# Deletes both temp and perm save files as we are starting a new game
+	await SaveAndLoad.delete_temp_saves()
+	await SaveAndLoad.delete_perm_saves()
+	
+	# Resets custom path to prevent previous saves from being reloaded
+	LevelManager.custom_scene_path = ""
+	
 	load_game_scene()
 
 func load_game() -> void:
+	# Delete temp save files
+	await SaveAndLoad.delete_temp_saves()
+	# Load perm save files
 	await SaveAndLoad.load_game()
 	load_game_scene()
 
