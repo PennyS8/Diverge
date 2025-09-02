@@ -29,6 +29,8 @@ func load_game() -> void:
 	# Load perm save files
 	await SaveAndLoad.load_game()
 	load_game_scene()
+	
+	SaveAndLoad.load_player(LevelManager.custom_scene_path)
 
 func _open_sub_menu(menu : Control) -> void:
 	sub_menu = menu

@@ -28,8 +28,7 @@ func save_game():
 	var saved_game:SavedGame = SavedGame.new()
 	
 	# Saves player info for current room
-	saved_game.player_health = player.health_component.health
-	saved_game.player_position = player.global_position
+	save_player()
 	
 	# Saves current room info
 	saved_game.current_level_name = LevelManager.current_level.name
@@ -82,50 +81,7 @@ func save_game():
 	else:
 		print("Temp folder does not exist")
 
-## TODO: Have this load the specific save file that is saved in the save_game() function. 
-## This will be an after graduation thing when we want to implement save & load buttons.
 # Loads all data from the game (rooms, player data, etc)
-#func load_game(room_id):
-	#print("Load game")
-	#
-	#var save_file = "user://savegame.tres"
-	#
-	## Makes sure to not load if save file doesn't exist
-	#if !(save_exists(save_file)):
-		#print("No existing save file.")
-		#return
-#
-	#var saved_game:SavedGame = load(save_file)
-	#
-	#player.health_component.health = saved_game.player_health
-	#player.global_position = saved_game.player_position
-	#
-	#get_tree().call_group("saved_data", "on_before_load_game")
-	#
-	#for item in saved_game.saved_data:
-		#var scene = load(item.scene_path) as PackedScene
-		#var restored_node = scene.instantiate()
-		#var node = get_node(item.parent_node_path)
-		#
-		## Gets node name before resinstantiation. This is to prevent us from having
-		## "CharacterBody@12" or some randomized name similar to that in Remote
-		#var item_name = restored_node.name
-		#
-		## If the node path does not exist, add the item to main
-		## NOTE: This should never occur but is more so a sanity check to be safe
-		#if node != null:
-			#node.add_child(restored_node)
-		#else:
-			#main.add_child(restored_node)
-		#
-		#if restored_node.has_method("on_load_game"):
-			#restored_node.on_load_game(item)
-		#
-		## Checks if the restored node name has been set to randomized unique name. If
-		## so, it renames it to what the item is and Godot adds a unique identifier
-		#if restored_node.name != item_name:
-			#restored_node.name = item_name
-
 func load_game():
 	print("Load Game")
 	
@@ -190,10 +146,6 @@ func load_game():
 			print("Temp folder could not be opened for game save")
 	else:
 		print("Temp folder does not exist")
-	
-	
-	## TODO: Most likely need to delete this in future.
-	#await room_load(saved_game.current_level_name)
 	
 	#player = get_tree().get_first_node_in_group("player")
 	
