@@ -18,17 +18,13 @@ func _main_ready():
 #region Full game saving, loading, and deleting
 # Saves all data from the game (rooms, player data, etc)
 func save_game():
-	# Saves the current room info into temp before making all saves permenant
-	room_save(LevelManager.current_level.name)
+	# Saves the current room and player info into temp before making all saves permenant
+	await room_save(LevelManager.current_level.name)
+	await save_player()
 	
 	print("Saved game")
 	
-	## TODO: Make the savegame file include the room that the player is currently
-	## in along with all of the other information.
 	var saved_game:SavedGame = SavedGame.new()
-	
-	# Saves player info for current room
-	save_player()
 	
 	# Saves current room info
 	saved_game.current_level_name = LevelManager.current_level.name
@@ -38,8 +34,6 @@ func save_game():
 	saved_game.respawn_last_level_path = RespawnManager.last_level_path
 	saved_game.respawn_last_level_name = RespawnManager.last_level_name
 	saved_game.respawn_last_entrance = RespawnManager.last_entrance
-	
-	ResourceSaver.save(saved_game, "user://saves/savegame.tres")
 	
 	var temp_dir_path = "user://temp"
 	var dir_path = "user://saves"
@@ -55,6 +49,9 @@ func save_game():
 			return
 	else:
 		DirAccess.make_dir_absolute(dir_path)
+	
+	# Saves the previously assigned game info now that the 'saves' directory exists
+	ResourceSaver.save(saved_game, "user://saves/savegame.tres")
 	
 	# Checks if there are current room saves. If so we load them into the permanent dir
 	if dir_exists(temp_dir_path):
@@ -146,11 +143,6 @@ func load_game():
 			print("Temp folder could not be opened for game save")
 	else:
 		print("Temp folder does not exist")
-	
-	#player = get_tree().get_first_node_in_group("player")
-	
-	#player.health_component.health = saved_game.player_health
-	#player.global_position = saved_game.player_position
 
 # Deletes a full game save
 func delete_perm_saves():
@@ -284,7 +276,7 @@ func delete_temp_saves():
 #region Player save and load
 # Saves the player's health and position
 func save_player():
-	var save_path = "user://saves"
+	var save_path = "user://temp"
 	
 	if DirAccess.open(save_path) == null:
 		DirAccess.make_dir_absolute(save_path)
@@ -296,7 +288,7 @@ func save_player():
 	saved_player.player_health = player.health_component.health
 	saved_player.player_max_health = player.health_component.max_health
 	saved_player.player_position = player.global_position
-	# Gets name of level player is being saved in
+	# Saves path of level that the player is currently in
 	saved_player.level_path = LevelManager.current_level.scene_file_path
 	
 	
@@ -305,7 +297,7 @@ func save_player():
 
 # Loads the player's health and position upon loading up the game
 func load_player(loaded_level):
-	var player_save = "user://saves/player_save.tres"
+	var player_save = "user://temp/player_save.tres"
 	
 	print("Load player save information")
 	
@@ -317,14 +309,13 @@ func load_player(loaded_level):
 	
 	# Sets the player's hud to visibly show health
 	var hud = get_tree().get_first_node_in_group("gui")
-	#TODO: Get player health reseting fully working in future
-	#var health_difference = saved_player.player_max_health - saved_player.player_health
-	#if player.health_component.health <= 0:
-		#hud.heart_heal(saved_player.player_health)
-	#else:
-		#hud.heart_damage(health_difference)
 	
+	# Makes sure player's health is full before damaging the player
 	hud.heart_heal(saved_player.player_max_health)
+	
+	# Gets the difference in player health from the max and takes it from the hud
+	var health_difference = saved_player.player_max_health - saved_player.player_health
+	hud.heart_damage(health_difference)
 	
 	# Loads player's health and position
 	player.health_component.health = saved_player.player_health

@@ -28,7 +28,9 @@ func load_game() -> void:
 	await SaveAndLoad.delete_temp_saves()
 	# Load perm save files
 	await SaveAndLoad.load_game()
-	load_game_scene()
+	
+	# NOTE: This must use "await" otherwise load_player is called before the player and HUD exists
+	await load_game_scene()
 	
 	SaveAndLoad.load_player(LevelManager.custom_scene_path)
 
