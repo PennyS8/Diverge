@@ -140,7 +140,3 @@ Juniper: Time to head out now I guess!
 ~ puzzle_completed
 Juniper: I'm glad I don't need to use this anymore now that I've finished the lab! 
 => END
-
-~ no_exit
-Juniper: Wait I can't leave yet! I still need to get my library book.
-=> END
