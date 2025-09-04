@@ -290,6 +290,9 @@ func save_player():
 	saved_player.player_position = player.global_position
 	# Saves path of level that the player is currently in
 	saved_player.level_path = LevelManager.current_level.scene_file_path
+	saved_player.dialogue_tracker = player.dialogue_tracker
+	# Chem lab stations
+	saved_player.lab_stations = player.lab_stations
 	
 	
 	var save_player_path = save_path + "/player_save.tres"
@@ -320,11 +323,12 @@ func load_player(loaded_level):
 	# Loads player's health and position
 	player.health_component.health = saved_player.player_health
 	player.health_component.max_health = saved_player.player_max_health
+	player.lab_stations = saved_player.lab_stations
+	player.dialogue_tracker = saved_player.dialogue_tracker
 	# Only loads players global_position if they are loaded into the same room
 	# they were saved from
 	if loaded_level == saved_player.level_path:
 		player.global_position = saved_player.player_position
-		
 #endregion
 
 # Helper functions checking if save files / folders exist.

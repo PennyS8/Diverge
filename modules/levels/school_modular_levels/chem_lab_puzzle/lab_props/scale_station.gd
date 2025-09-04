@@ -37,7 +37,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 		player.dir = Vector2.ZERO
 		
-		if chem_inventory.stations["book"] == 1:
+		if player.lab_stations["book"] == 1:
 			puzzle_complete = true
 		
 		var dialogue = load("res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue")
