@@ -1,6 +1,7 @@
-[gd_scene load_steps=79 format=4 uid="uid://cp53bw4fgv7b2"]
+[gd_scene load_steps=80 format=4 uid="uid://cp53bw4fgv7b2"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_0bwgv"]
+[ext_resource type="Script" uid="uid://t3aykf8os8t5" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_puzzle.gd" id="1_5ce1p"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_beb0c"]
 [ext_resource type="Texture2D" uid="uid://ce10vjgkrj5nk" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_General-Walls_Non-Auto.png" id="2_jxrgu"]
 [ext_resource type="Texture2D" uid="uid://dr5j0ikmenh32" path="res://assets/environment/downtown_dungeon/Tiles 24x24/DD_Interior-School_B.png" id="3_hm8n3"]
@@ -3166,6 +3167,7 @@ size = Vector2(12, 48)
 
 [node name="ChemLabPuzzle" type="Node2D"]
 y_sort_enabled = true
+script = ExtResource("1_5ce1p")
 
 [node name="BaseLayerVoid" type="TileMapLayer" parent="."]
 visible = false
