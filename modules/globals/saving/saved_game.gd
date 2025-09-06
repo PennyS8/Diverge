@@ -20,6 +20,10 @@ extends Resource
 @export var respawn_last_entrance : String
 #endregion
 
-#region Chemistry Lab Information
+#region Chemistry Lab info
 @export var lab_stations : Dictionary
+#endregion
+
+#region Classroom info
+@export var stress_visible : bool
 #endregion

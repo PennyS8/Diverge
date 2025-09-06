@@ -62,6 +62,9 @@ func pack_custom_children(savedata : SavedData):
 #region Encounter Management
 
 func start_encounter():
+	# Prevents player from opening menu while encounter 'cutscene' is playing
+	LevelManager.encounter_transition = true
+	
 	# Move player camera to desired point & lock all doors
 	# Spawn as many enemies as we have children that are marker2ds
 	# connect each one's death to a function in here that removes them from a list

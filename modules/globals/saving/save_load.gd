@@ -293,6 +293,8 @@ func save_player():
 	saved_player.dialogue_tracker = player.dialogue_tracker
 	# Chem lab stations
 	saved_player.lab_stations = player.lab_stations
+	# Stress effect visibility 
+	saved_player.stress_visible = player.get_node("stressEffect").visible
 	
 	
 	var save_player_path = save_path + "/player_save.tres"
@@ -323,8 +325,12 @@ func load_player(loaded_level):
 	# Loads player's health and position
 	player.health_component.health = saved_player.player_health
 	player.health_component.max_health = saved_player.player_max_health
+	# Dialogue trackers
 	player.lab_stations = saved_player.lab_stations
 	player.dialogue_tracker = saved_player.dialogue_tracker
+	#Stress effect visibility
+	player.get_node("stressEffect").visible = saved_player.stress_visible
+	
 	# Only loads players global_position if they are loaded into the same room
 	# they were saved from
 	if loaded_level == saved_player.level_path:

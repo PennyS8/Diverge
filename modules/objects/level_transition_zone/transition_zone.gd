@@ -94,6 +94,10 @@ func make_blocker():
 	var tween = create_tween()
 	tween.tween_property(blocker, "modulate:a", 1.0, 2.0)
 	await tween.finished
+	
+	# Unlocks the pause menu for player
+	LevelManager.encounter_transition = false
+	
 	#vertical_firewall.global_position = blocker.global_position + Vector2(-20, -31.5)
 	#horizontal_firewall.global_position = blocker.global_position + Vector2(-29, -7.5)
 	

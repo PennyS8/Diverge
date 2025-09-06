@@ -7,7 +7,7 @@ extends Node
 @export var focused_viewport : Viewport
 
 func _unhandled_input(event : InputEvent) -> void:
-	if LevelManager.transitioning:
+	if LevelManager.transitioning || LevelManager.encounter_transition:
 		return
 	if event.is_action_pressed("ui_cancel"):
 		if not focused_viewport:

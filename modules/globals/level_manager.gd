@@ -18,6 +18,7 @@ var new_level_name : String
 
 var player
 var transitioning := false
+var encounter_transition := false
 var found_player := false
 
 signal swap_done
