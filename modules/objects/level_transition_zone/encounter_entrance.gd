@@ -16,12 +16,15 @@ signal begin_encounter
 var current_enemies : Array[CharacterBody2D]
 var enemy_packed : PackedScene = preload("res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn")
 
+var transition_door_path = "res://modules/objects/level_transition_zone/transition_door.tscn"
+
 #region Savegame Stuff
 func on_save_game(saved_data:Array[SavedData]):
 	var my_data = SavedData.new()
 	my_data.position = global_position
 	my_data.scene_path = scene_file_path
 	my_data.puzzle_completed = encounter_active
+	my_data.encounter_running = is_currently_running
 
 	# Gets path up to node for reinstantiation
 	my_data.parent_node_path = get_parent().get_path()
@@ -36,6 +39,15 @@ func on_before_load_game():
 func on_load_game(saved_data:SavedData):
 	global_position = saved_data.position
 	encounter_active = saved_data.puzzle_completed
+	is_currently_running = saved_data.encounter_running
+	
+	# If our encounter is active, set the transition door blockers to active. 
+	# Since we don't save and load our transition doors, set them manually here.
+	if is_currently_running == true:
+		var entrances = get_tree().get_nodes_in_group("entrance_area")
+		for entrance in entrances:
+			if entrance.scene_file_path == transition_door_path:
+				entrance.encounter_state(true)
 	
 	for node : PackedScene in saved_data.child_nodes:
 		var child = node.instantiate()
@@ -126,4 +138,10 @@ func enemy_added(enemy):
 	enemy.health_component.Died.connect(enemy_defeated.bind(enemy))
 	
 	current_enemies.append(enemy)
+
+func encounter_has_enemy(enemy):
+	if current_enemies.has(enemy):
+		return true
+	else:
+		return false
 #endregion

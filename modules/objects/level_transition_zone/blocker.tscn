@@ -1,17 +1,19 @@
-[gd_scene load_steps=4 format=3 uid="uid://dd01ak0uq50yh"]
+[gd_scene load_steps=5 format=3 uid="uid://dd01ak0uq50yh"]
 
+[ext_resource type="Script" uid="uid://1vbgg6ad7bw1" path="res://modules/objects/level_transition_zone/blocker.gd" id="1_eh6cm"]
 [ext_resource type="PackedScene" uid="uid://sek8dppwx6u7" path="res://modules/objects/level_transition_zone/firewall_horizontal.tscn" id="1_l8ay5"]
 [ext_resource type="PackedScene" uid="uid://dlx8tur6oue4g" path="res://modules/objects/level_transition_zone/firewall_vertical.tscn" id="2_2p0r0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvr3"]
 size = Vector2(6, 6)
 
-[node name="Blocker" type="StaticBody2D"]
+[node name="Blocker" type="StaticBody2D" groups=["saved_data"]]
 z_index = 1
 z_as_relative = false
 y_sort_enabled = true
 collision_layer = 2
 collision_mask = 8
+script = ExtResource("1_eh6cm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_jjvr3")
