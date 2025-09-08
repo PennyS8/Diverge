@@ -30,6 +30,9 @@ func save_game():
 	saved_game.current_level_name = LevelManager.current_level.name
 	saved_game.level_path = LevelManager.current_level.scene_file_path
 	
+	# Sets last playing music so that on load the right track starts up
+	saved_game.last_playing_music = Music.current_vibe
+	
 	# Saves current respawn info
 	saved_game.respawn_last_level_path = RespawnManager.last_level_path
 	saved_game.respawn_last_level_name = RespawnManager.last_level_name
@@ -97,6 +100,9 @@ func load_game():
 	RespawnManager.last_level_path = saved_game.respawn_last_level_path
 	RespawnManager.last_level_name = saved_game.respawn_last_level_name
 	RespawnManager.last_entrance = saved_game.respawn_last_entrance
+	
+	# Plays the music track that was playing when the game was saved
+	Music.play_track(saved_game.last_playing_music)
 	
 	var temp_dir_path = "user://temp"
 	var dir_path = "user://saves"
