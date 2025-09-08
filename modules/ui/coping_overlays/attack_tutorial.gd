@@ -20,7 +20,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 	if !tutorial_in_progress:
 		return
 	
-	if Input.is_action_just_pressed("left_click"):
+	if Input.is_action_just_pressed("attack_melee"):
 		exit_attack_tutorial()
 
 func exit_attack_tutorial():

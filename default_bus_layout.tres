@@ -37,6 +37,7 @@ predelay_msec = 64.0
 room_size = 0.05
 
 [resource]
+bus/0/volume_db = -5.95176
 bus/1/name = &"Footsteps"
 bus/1/solo = false
 bus/1/mute = false
