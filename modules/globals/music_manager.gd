@@ -1,3 +1,4 @@
+class_name MusicManager
 extends Node
 
 @export var music_tracks : Dictionary[String, AudioStream]

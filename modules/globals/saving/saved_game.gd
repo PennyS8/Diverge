@@ -20,7 +20,7 @@ enum MusicVibe { CHILL, WTF, CONFIDENT }
 ## This is preferable right now to setting designated "Zones" for each track, since that would require adding data to each level.
 ## At the moment that solution is unrealistic, but perhaps that will change in the longterm.
 ## -Nate, 9/7/25
-@export var last_playing_music : MusicVibe
+@export var last_playing_music : MusicManager.Vibe
 #endregion
 
 #region Respawn information
