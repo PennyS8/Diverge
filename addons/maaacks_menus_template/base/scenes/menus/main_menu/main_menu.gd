@@ -91,6 +91,12 @@ func _ready() -> void:
 	_add_or_hide_options()
 	_add_or_hide_credits()
 	_hide_new_game_if_unset()
+	
+	# Set the visibility of the load game button based on our savegame status
+	var save_file = "user://saves/savegame.tres"
+	%LoadGameButton.visible = SaveAndLoad.save_exists(save_file)
+	
+
 
 func _on_new_game_button_pressed() -> void:
 	DirAccess.remove_absolute("user://player_inventory")

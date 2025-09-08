@@ -429,17 +429,20 @@ theme_override_fonts/font = ExtResource("5_c4gtu")
 theme_override_font_sizes/font_size = 64
 text = "Continue"
 
-[node name="OptionsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="2"]
+[node name="LoadGameButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="2"]
+theme_override_font_sizes/font_size = 64
+
+[node name="OptionsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="3"]
 custom_minimum_size = Vector2(0, 64)
 theme_override_fonts/font = ExtResource("5_c4gtu")
 theme_override_font_sizes/font_size = 64
 
-[node name="CreditsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="3"]
+[node name="CreditsButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="4"]
 custom_minimum_size = Vector2(0, 64)
 theme_override_fonts/font = ExtResource("5_c4gtu")
 theme_override_font_sizes/font_size = 64
 
-[node name="ExitButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="4"]
+[node name="ExitButton" parent="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer" index="5"]
 custom_minimum_size = Vector2(0, 64)
 theme_override_fonts/font = ExtResource("5_c4gtu")
 theme_override_font_sizes/font_size = 64
