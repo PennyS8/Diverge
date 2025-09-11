@@ -18,17 +18,36 @@ func _main_ready():
 #region Full game saving, loading, and deleting
 # Saves all data from the game (rooms, player data, etc)
 func save_game():
+	var save_outside_room := false
+	
+	# If we are saving during an encounter or the boss fight, we set the player's save point to the
+	# last room.
+	var encounter : EncounterArea = player.check_encounter()
+	if encounter:
+		if encounter.is_currently_running:
+			save_outside_room = true
+	
+	var boss = get_tree().get_first_node_in_group("boss")
+	var boss_cocoon = get_tree().get_first_node_in_group("boss_cocoon")
+	if boss or boss_cocoon:
+		save_outside_room = true
+	
 	# Saves the current room and player info into temp before making all saves permenant
-	await room_save(LevelManager.current_level.name)
-	await save_player()
+	if !save_outside_room:
+		await room_save(LevelManager.current_level.name)
+	await save_player(save_outside_room)
 	
 	print("Saved game")
 	
 	var saved_game:SavedGame = SavedGame.new()
 	
 	# Saves current room info
-	saved_game.current_level_name = LevelManager.current_level.name
-	saved_game.level_path = LevelManager.current_level.scene_file_path
+	if !save_outside_room:
+		saved_game.current_level_name = LevelManager.current_level.name
+		saved_game.level_path = LevelManager.current_level.scene_file_path
+	else:
+		saved_game.current_level_name = RespawnManager.last_level_name
+		saved_game.level_path = RespawnManager.last_level_path
 	
 	# Sets last playing music so that on load the right track starts up
 	saved_game.last_playing_music = Music.current_vibe
@@ -281,7 +300,7 @@ func delete_temp_saves():
 
 #region Player save and load
 # Saves the player's health and position
-func save_player():
+func save_player(save_outside_room : bool):
 	var save_path = "user://temp"
 	
 	if DirAccess.open(save_path) == null:
@@ -293,14 +312,31 @@ func save_player():
 	
 	saved_player.player_health = player.health_component.health
 	saved_player.player_max_health = player.health_component.max_health
-	saved_player.player_position = player.global_position
-	# Saves path of level that the player is currently in
-	saved_player.level_path = LevelManager.current_level.scene_file_path
+	
+	# Doesn't save if we are spawning player in previous room due to encounter
+	if !save_outside_room:
+		saved_player.player_position = player.global_position
+		# Saves path of level that the player is currently in
+		saved_player.level_path = LevelManager.current_level.scene_file_path
+		# Stress effect visibility 
+		saved_player.stress_visible = player.get_node("stressEffect").visible
+	else:
+		saved_player.level_path = RespawnManager.last_level_path
+		
+		var destination_name
+		for entrance in get_tree().get_nodes_in_group("entrance_area"):
+			if entrance.name == RespawnManager.last_entrance:
+				destination_name = entrance.entrance_name
+				break
+		
+		for marker in get_tree().get_nodes_in_group("level_entrance"):
+			if marker.name == destination_name:
+				saved_player.player_position = marker.global_position
+				break
+	
 	saved_player.dialogue_tracker = player.dialogue_tracker
 	# Chem lab stations
 	saved_player.lab_stations = player.lab_stations
-	# Stress effect visibility 
-	saved_player.stress_visible = player.get_node("stressEffect").visible
 	
 	
 	var save_player_path = save_path + "/player_save.tres"

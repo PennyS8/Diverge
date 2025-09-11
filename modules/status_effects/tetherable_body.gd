@@ -80,11 +80,13 @@ func _physics_process(_delta):
 				
 				#Checks to see if boss is in scene. If not we don't want to use boss functions
 				if (boss_spawned != null) or (boss_cocoon_spawned != null):
-					EnemyManager.add_hand(cocoon, cocoon.global_position)
+					if !cocoon.is_in_group("boss_cocoon"):
+						cocoon.boss_spawned_enemy = true
+						EnemyManager.add_hand(cocoon, cocoon.global_position)
+						EnemyManager.remove_hand(leash_owner)
+						EnemyManager.remove_boss_spawned_enemy(leash_owner)
 					EnemyManager.remove_hand(self)
-					EnemyManager.remove_hand(leash_owner)
 					EnemyManager.remove_boss_spawned_enemy(self)
-					EnemyManager.remove_boss_spawned_enemy(leash_owner)
 				
 				# Removes both leash owner and shade from encounter
 				var encounter_entrances = get_tree().get_nodes_in_group("encounter_entrance")

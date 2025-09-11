@@ -18,3 +18,9 @@ extends Resource
 @export var blocker_scale : Vector2
 @export var blocker_collision_scale : Vector2
 #endregion
+
+#region Enemy Stacks
+@export var enemies_health : Array[int]
+@export var enemies_type : Array[String]
+@export var boss_spawned_enemy : bool
+#endregion

@@ -928,9 +928,6 @@ position = Vector2(-30, 123)
 [node name="ShadeHPIndicator" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="0"]
 material = SubResource("ShaderMaterial_mjkpu")
 
-[node name="Combat" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive" index="1"]
-next_state = NodePath("")
-
 [node name="Spawn" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="1"]
 unique_name_in_owner = false
 

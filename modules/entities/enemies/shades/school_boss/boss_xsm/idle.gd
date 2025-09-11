@@ -7,6 +7,7 @@ const SHADE_COUNT = 3
 
 var shade_scene = preload("res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn")
 var hand_scene = preload("res://modules/entities/enemies/shades/school_boss/school_boss_hands.tscn")
+var shade_stack_path = "res://modules/entities/enemies/shades/shade_bundle/shade_stack.tscn"
 var spawn = false
 
 var player
@@ -36,7 +37,7 @@ func _on_update(_delta: float) -> void:
 	var stack_found = false
 	for enemy in EnemyManager.hand_spawn_counter:
 		if enemy:
-			if enemy.name == "ShadeStack":
+			if enemy.scene_file_path == shade_stack_path:
 				stack_found = true
 	
 	if spawn and !stack_found:

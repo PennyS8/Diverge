@@ -127,6 +127,7 @@ func _swap_level(path : String, entrance_name : String = "0"):
 	
 	# Loads level while the tween is still happening to prevent player from seeing loading.
 	await SaveAndLoad.room_load(new_level_name)
+	
 	swap_done.emit()
 	player.check_unlock_hook()
 
@@ -217,7 +218,7 @@ func player_transition(level_path : String, direction : Vector2, entrance_name :
 		# If player is holding an input direction, keep going that direction. To prevent the one-frame stutterstep
 		player.dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
-	SaveAndLoad.save_player()
+	SaveAndLoad.save_player(false)
 	
 	player.exit_cutscene()
 

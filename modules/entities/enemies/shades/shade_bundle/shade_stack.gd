@@ -7,6 +7,33 @@ extends TetherableBody
 
 @onready var health_component = $HealthComponent
 
+#region Save and Load
+func on_save_game(saved_data:Array[SavedData]):
+	if health_component.health <= 0: 
+		return
+	
+	var my_data = SavedData.new()
+	my_data.position = global_position
+	my_data.scene_path = scene_file_path
+	# Gets path up to node for reinstantiation
+	my_data.parent_node_path = get_parent().get_path()
+	
+	my_data.enemies_health = shade_healths_stored
+	my_data.enemies_type = enemy_types_stored
+	
+	saved_data.append(my_data)
+
+func on_before_load_game():
+	get_parent().remove_child(self)
+	queue_free()
+
+func on_load_game(saved_data:SavedData):
+	global_position = saved_data.position
+	
+	shade_healths_stored = saved_data.enemies_health
+	enemy_types_stored = saved_data.enemies_type
+#endregion
+
 func _on_health_component_died() -> void:
 	if shade_healths_stored.is_empty():
 		shade_healths_stored.append(40)

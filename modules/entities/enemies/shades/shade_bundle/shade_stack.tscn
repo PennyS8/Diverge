@@ -164,7 +164,7 @@ repeat = 1
 font = ExtResource("3_8rbq4")
 font_color = Color(0.180392, 0, 0.384314, 1)
 
-[node name="ShadeStack" type="CharacterBody2D" groups=["cocoon"]]
+[node name="ShadeStack" type="CharacterBody2D" groups=["cocoon", "saved_data"]]
 y_sort_enabled = true
 collision_layer = 0
 collision_mask = 0
@@ -175,6 +175,10 @@ position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_nef4p")
 
 [node name="HealthComponent" type="Node" parent="."]
+script = ExtResource("7_n6dng")
+metadata/_custom_type_script = "uid://ct6vby56i820l"
+
+[node name="HealthComponent2" type="Node" parent="."]
 script = ExtResource("7_n6dng")
 metadata/_custom_type_script = "uid://ct6vby56i820l"
 
@@ -338,4 +342,5 @@ label_settings = ExtResource("4_tm3xj")
 z_index = 2
 
 [connection signal="Died" from="HealthComponent" to="." method="_on_health_component_died"]
+[connection signal="Died" from="HealthComponent2" to="." method="_on_health_component_died"]
 [connection signal="Hit" from="HurtBoxComponent2D" to="." method="_on_hurt_box_component_2d_hit"]
