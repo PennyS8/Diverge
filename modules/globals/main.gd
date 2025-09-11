@@ -19,6 +19,7 @@ func _ready():
 		LimboConsole.register_command(clear_inv, "clrall", "Clears user's inventory.")
 		
 		LimboConsole.register_command(kill_boss, "peacefulmode", "Kills the boss if present.")
+		LimboConsole.register_command(kill_player, "executehostage", "It's the more PC phrase.")
 	
 func add_item(item_name : String) -> bool:
 	var inventory_node = GameManager.inventory_node
@@ -67,6 +68,11 @@ func kill_boss():
 	if boss:
 		var boss_hp : HealthComponent = boss.get_node("%Health")
 		boss_hp.Died.emit()
+
+func kill_player():
+	var player = get_tree().get_first_node_in_group("player");
+	var player_hp : HealthComponent = player.get_node("HealthComponent")
+	player_hp.Died.emit()
 	
 func _on_equipment_panel_check_hook() -> void:
 	if get_node_or_null("Player"):
