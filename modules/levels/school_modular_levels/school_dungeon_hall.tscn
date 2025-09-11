@@ -113,7 +113,7 @@ locked_dialogue_name = "not_open_admin"
 [node name="HallRightSouth" parent="HallRight/Exit" instance=ExtResource("4_ho251")]
 position = Vector2(-36, 84)
 scale = Vector2(4, 4)
-next_level_path = "uid://cs2a4pq3yt5l6"
+next_level_path = "uid://8va60gkf6ldr"
 entrance_name = "ElectricalClosetNorth"
 transition_direction = 1
 
