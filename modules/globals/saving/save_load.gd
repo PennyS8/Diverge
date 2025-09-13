@@ -6,6 +6,11 @@ signal main_ready
 var player
 var main : Node2D
 
+## Global position of the marker the player would respawn at. Used for when we are
+## saving during an encounter or boss fight in order to spawn the player at the 
+## entrance of the transition they entered.
+var outside_marker_position : Vector2
+
 #region Ready Functions
 func _ready() -> void:
 	main_ready.connect(_main_ready)
@@ -322,17 +327,7 @@ func save_player(save_outside_room : bool):
 		saved_player.stress_visible = player.get_node("stressEffect").visible
 	else:
 		saved_player.level_path = RespawnManager.last_level_path
-		
-		var destination_name
-		for entrance in get_tree().get_nodes_in_group("entrance_area"):
-			if entrance.name == RespawnManager.last_entrance:
-				destination_name = entrance.entrance_name
-				break
-		
-		for marker in get_tree().get_nodes_in_group("level_entrance"):
-			if marker.name == destination_name:
-				saved_player.player_position = marker.global_position
-				break
+		saved_player.player_position = outside_marker_position
 	
 	saved_player.dialogue_tracker = player.dialogue_tracker
 	# Chem lab stations

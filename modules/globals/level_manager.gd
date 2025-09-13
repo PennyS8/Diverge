@@ -89,6 +89,18 @@ func change_level(path : String, entrance_name : String = "0"):
 	# Sets transition zone used for future respawning
 	RespawnManager.last_entrance = entrance_name
 	
+	# Finds the global position of the marker player would respawn at and saves that position. Allows
+	# player to respawn at the entrance of the transition they used to enter a boss fight or encounter.
+	var destination_name
+	for entrance in get_tree().get_nodes_in_group("entrance_area"):
+		if entrance.entrance_name == entrance_name:
+			destination_name = entrance.name
+			break
+	for marker in get_tree().get_nodes_in_group("level_entrance"):
+		if marker.name == destination_name:
+			SaveAndLoad.outside_marker_position = marker.global_position
+			break
+	
 	var tween = get_tree().create_tween()
 	tween.set_parallel(false)
 	tween.tween_property(fade_screen, "color:a", 1, fade_time)
