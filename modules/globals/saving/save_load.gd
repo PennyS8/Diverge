@@ -37,6 +37,13 @@ func save_game():
 	if boss or boss_cocoon:
 		save_outside_room = true
 	
+	# Checks for the case of fighting enemies outside of an encounter or boss fight (messed up
+	# lab, classroom, or cafeteria).
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	for enemy in enemies:
+		if enemy.visible == true and enemy.fsm.is_active("Chase"):
+			save_outside_room = true
+	
 	# Saves the current room and player info into temp before making all saves permenant
 	if !save_outside_room:
 		await room_save(LevelManager.current_level.name)
