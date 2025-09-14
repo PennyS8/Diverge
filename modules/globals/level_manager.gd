@@ -79,6 +79,13 @@ func change_level(path : String, entrance_name : String = "0"):
 	transitioning = true
 	
 	player = get_tree().get_first_node_in_group("player")
+	
+	# NOTE: This will need to be edited in the future if we implement a puzzle with the stress effect
+	#   that spans over multiple rooms.
+	# Prevents the stress effect from staying on player upon leaving classroom without completing puzzle
+	var stress_effect = player.get_node("stressEffect")
+	if stress_effect.visible:
+		stress_effect.hide()
 
 	# save level state
 	await SaveAndLoad.room_save(current_level.get_name())
@@ -90,7 +97,7 @@ func change_level(path : String, entrance_name : String = "0"):
 	RespawnManager.last_entrance = entrance_name
 	
 	# Finds the global position of the marker player would respawn at and saves that position. Allows
-	# player to respawn at the entrance of the transition they used to enter a boss fight or encounter.
+	#   player to respawn at the entrance of the transition they used to enter a boss fight or encounter
 	var destination_name
 	for entrance in get_tree().get_nodes_in_group("entrance_area"):
 		if entrance.entrance_name == entrance_name:
@@ -137,7 +144,7 @@ func _swap_level(path : String, entrance_name : String = "0"):
 	if current_level.name != new_level_name:
 		current_level.name = new_level_name
 	
-	# Loads level while the tween is still happening to prevent player from seeing loading.
+	# Loads level while the tween is still happening to prevent player from seeing loading
 	await SaveAndLoad.room_load(new_level_name)
 	
 	swap_done.emit()

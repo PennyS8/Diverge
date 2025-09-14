@@ -132,6 +132,10 @@ func load_game():
 	RespawnManager.last_level_name = saved_game.respawn_last_level_name
 	RespawnManager.last_entrance = saved_game.respawn_last_entrance
 	
+	# Clears all marked engagement arrays for both normal enemies and boss. Prevents freed objects
+	#   from being left in array if player loads game after going to the main menu. 
+	EnemyManager.remove_marked_enemies()
+	
 	# Plays the music track that was playing when the game was saved
 	Music.play_track(saved_game.last_playing_music)
 	
