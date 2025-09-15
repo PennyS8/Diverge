@@ -60,6 +60,9 @@ func on_save_game(saved_data:Array[SavedData]):
 	if %Health.health <= 0: 
 		return
 	
+	if is_in_group("haha_not_actually_in_saved_data_jk"):
+		return
+	
 	var my_data = SavedData.new()
 	my_data.position = global_position
 	my_data.scene_path = scene_file_path
@@ -84,10 +87,16 @@ func on_save_game(saved_data:Array[SavedData]):
 	saved_data.append(my_data)
 
 func on_before_load_game():
+	if is_in_group("haha_not_actually_in_saved_data_jk"):
+		return
+	
 	get_parent().remove_child(self)
 	queue_free()
 
 func on_load_game(saved_data:SavedData):
+	if is_in_group("haha_not_actually_in_saved_data_jk"):
+		return
+	
 	global_position = saved_data.position
 	default_position = saved_data.position
 	%Health.set_deferred("max_health", saved_data.max_health)

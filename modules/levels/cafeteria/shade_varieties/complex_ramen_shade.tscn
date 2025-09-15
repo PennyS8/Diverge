@@ -21,7 +21,7 @@ shader = ExtResource("2_hqaxx")
 shader_parameter/Flash = false
 shader_parameter/ColorParameter = Color(1, 1, 1, 1)
 
-[node name="ComplexRamenShade" instance=ExtResource("1_54xym")]
+[node name="ComplexRamenShade" groups=["haha_not_actually_in_saved_data_jk"] instance=ExtResource("1_54xym")]
 modulate = Color(1, 1, 1, 0)
 
 [node name="ShadeHPIndicator" parent="." index="0"]
@@ -68,6 +68,9 @@ debug_mode = false
 target_path = NodePath("")
 timed = false
 next_state = NodePath("")
+
+[node name="Combat" parent="ShadeFSM/Alive" index="1"]
+next_state = NodePath("../Reaction")
 
 [node name="Surprised" parent="ShadeFSM/Alive/Reaction" index="1"]
 next_state = NodePath("../../Movement/FoundRamen")

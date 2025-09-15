@@ -63,7 +63,6 @@ player=""
 level_entrance="A position that the player can spawn into a new level"
 enemy=""
 ledge=""
-saved_data=""
 thread=""
 hook=""
 status_tethered=""
@@ -74,6 +73,8 @@ boss=""
 encounter_entrance=""
 player_input_guide=""
 entrance_area=""
+saved_data=""
+haha_not_actually_in_saved_data_jk="Intended for instances of objects that are defaulted to saved_data and we actually don't want that haha jk"
 
 [gui]
 
