@@ -2,7 +2,7 @@ extends Area2D
 
 var read : bool = false
 @onready var shade = $"../ComplexShade"
-@onready var player = get_tree().get_first_node_in_group("player")
+@onready var player := get_tree().get_first_node_in_group("player")
 @onready var door = $"../HallRightNorthEast"
 
 var shade_spikes : Array[Vector2]
@@ -27,13 +27,13 @@ func _on_body_entered(_body: Node2D) -> void:
 	
 	player.dir = Vector2.ZERO
 	player.get_node("PlayerFSM").disabled = true
-
+	player.in_cutscene = true
+	
 	var tween = create_tween()
 	tween.tween_interval(2.0)
 	tween.tween_property($"../CanvasLayer/TransOverlay", "modulate:a", 0.0, 3.0)
 	
 	await tween.finished
-	
 
 	var dialogue = load("res://modules/dialogue/demo_scenes.dialogue")
 	DialogueManager.show_dialogue_balloon(dialogue, "hiding_away", [self])
