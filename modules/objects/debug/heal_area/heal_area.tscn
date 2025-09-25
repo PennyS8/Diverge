@@ -7,7 +7,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hgk1g"]
 size = Vector2(8, 7)
 
-[node name="HealArea" type="Area2D"]
+[node name="HealArea" type="Area2D" groups=["saved_data"]]
 z_index = 1
 y_sort_enabled = true
 material = ExtResource("1_5lbyj")

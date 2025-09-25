@@ -109,7 +109,7 @@ position = Vector2(-340, 283)
 [node name="LimitTopRight" type="Marker2D" parent="CameraBoundry"]
 position = Vector2(399, -347)
 
-[node name="ComplexShade" parent="." instance=ExtResource("5_a0lcq")]
+[node name="ComplexShade" parent="." groups=["haha_not_actually_in_saved_data_jk"] instance=ExtResource("5_a0lcq")]
 visible = false
 position = Vector2(-60, -30)
 
