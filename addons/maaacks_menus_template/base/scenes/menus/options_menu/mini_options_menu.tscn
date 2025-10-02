@@ -23,6 +23,7 @@ theme_override_constants/separation = 8
 alignment = 1
 script = ExtResource("1_32vm2")
 audio_control_scene = ExtResource("2_kpc65")
+hide_busses = Array[String](["Footsteps", "Enemies", "Door Sound Effects"])
 
 [node name="AudioControlContainer" type="VBoxContainer" parent="."]
 unique_name_in_owner = true

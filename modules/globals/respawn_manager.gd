@@ -17,8 +17,13 @@ func _main_ready():
 	player = get_tree().get_first_node_in_group("player")
 
 func respawn():
+	current_level_name = LevelManager.current_level.name
+	
 	# Removes all enemies marked for engagement as well as all boss spawned enemies
 	EnemyManager.remove_marked_enemies()
+	
+	# Removes the current encounter so that the blockers get despawned 
+	remove_encounter()
 	
 	# Removes stress effect if it exists
 	var player_noise = LevelManager.player.get_node("stressEffect")
@@ -27,6 +32,7 @@ func respawn():
 	
 	if last_level_path == null:
 		last_level_path = LevelManager.current_level.scene_file_path
+	
 	
 	for entrance in get_tree().get_nodes_in_group("entrance_area"):
 		if entrance.name == last_entrance:
@@ -45,3 +51,21 @@ func respawn():
 	player.health_component.alive = true
 	player.health_component.health = player.health_component.max_health
 	hud.heart_heal(player.health_component.max_health)
+
+# Removes enemies that were spawned in the scene and saved.
+func remove_spawned_enemies():
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	for enemy in enemies:
+		enemy.queue_free()
+
+# Finds any active encounters and ends them to remove blockers.
+func remove_encounter():
+	var encounter_entrances = get_tree().get_nodes_in_group("encounter_entrance")
+	for entrance in encounter_entrances:
+		if entrance.is_currently_running:
+			# Clears the enemy array from the encounter
+			entrance.current_enemies.clear()
+			
+			entrance.end_encounter()
+			# Sets the encounter back to active in order to allow for it to be triggered again.
+			entrance.encounter_active = true

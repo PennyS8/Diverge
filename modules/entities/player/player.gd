@@ -50,6 +50,8 @@ var cutscene_marker_packed = preload("res://modules/objects/debug/cutscene_walk_
 var dialogue_tracker = {"closet": false, "library": false, "new_hallway": false, 
 	"boss_battled" : false, "end_scene": false, "deep_breath_practice": false}
 
+var lab_stations = {"materials": 0, "scale": 0, "mixer": 0, "burner": 0, "book": 0}
+
 signal attack_swung
 
 func _ready() -> void:

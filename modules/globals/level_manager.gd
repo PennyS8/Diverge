@@ -18,6 +18,7 @@ var new_level_name : String
 
 var player
 var transitioning := false
+var encounter_transition := false
 var found_player := false
 
 signal swap_done
@@ -54,7 +55,7 @@ func menu_helper():
 	## This just calls the stuff in ready again
 	if scene.name != "Main":
 		get_tree().call_deferred("change_scene_to_file","res://modules/globals/main.tscn")
-		custom_scene_path = ""
+		#custom_scene_path = ""
 	main_ready.connect(_main_ready, CONNECT_ONE_SHOT)
 	await main_ready
 	
@@ -78,6 +79,13 @@ func change_level(path : String, entrance_name : String = "0"):
 	transitioning = true
 	
 	player = get_tree().get_first_node_in_group("player")
+	
+	# NOTE: This will need to be edited in the future if we implement a puzzle with the stress effect
+	#   that spans over multiple rooms.
+	# Prevents the stress effect from staying on player upon leaving classroom without completing puzzle
+	var stress_effect = player.get_node("stressEffect")
+	if stress_effect.visible:
+		stress_effect.hide()
 
 	# save level state
 	await SaveAndLoad.room_save(current_level.get_name())
@@ -87,6 +95,18 @@ func change_level(path : String, entrance_name : String = "0"):
 	RespawnManager.last_level_name = current_level.get_name()
 	# Sets transition zone used for future respawning
 	RespawnManager.last_entrance = entrance_name
+	
+	# Finds the global position of the marker player would respawn at and saves that position. Allows
+	#   player to respawn at the entrance of the transition they used to enter a boss fight or encounter
+	var destination_name
+	for entrance in get_tree().get_nodes_in_group("entrance_area"):
+		if entrance.entrance_name == entrance_name:
+			destination_name = entrance.name
+			break
+	for marker in get_tree().get_nodes_in_group("level_entrance"):
+		if marker.name == destination_name:
+			SaveAndLoad.outside_marker_position = marker.global_position
+			break
 	
 	var tween = get_tree().create_tween()
 	tween.set_parallel(false)
@@ -124,8 +144,9 @@ func _swap_level(path : String, entrance_name : String = "0"):
 	if current_level.name != new_level_name:
 		current_level.name = new_level_name
 	
-	# Loads level while the tween is still happening to prevent player from seeing loading.
+	# Loads level while the tween is still happening to prevent player from seeing loading
 	await SaveAndLoad.room_load(new_level_name)
+	
 	swap_done.emit()
 	player.check_unlock_hook()
 
@@ -210,11 +231,13 @@ func player_transition(level_path : String, direction : Vector2, entrance_name :
 		if possible_boundry.encounter_active:
 			await possible_boundry.start_encounter()
 			encounter_begun.emit()
+			# Unlocks the pause menu for player
+			encounter_transition = false
 	else:
 		# If player is holding an input direction, keep going that direction. To prevent the one-frame stutterstep
 		player.dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	
-	SaveAndLoad.save_player()
+	SaveAndLoad.save_player(false)
 	
 	player.exit_cutscene()
 

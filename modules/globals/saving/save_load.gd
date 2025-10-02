@@ -6,6 +6,11 @@ signal main_ready
 var player
 var main : Node2D
 
+## Global position of the marker the player would respawn at. Used for when we are
+## saving during an encounter or boss fight in order to spawn the player at the 
+## entrance of the transition they entered.
+var outside_marker_position : Vector2
+
 #region Ready Functions
 func _ready() -> void:
 	main_ready.connect(_main_ready)
@@ -18,17 +23,51 @@ func _main_ready():
 #region Full game saving, loading, and deleting
 # Saves all data from the game (rooms, player data, etc)
 func save_game():
+	var save_outside_room := false
+	
+	# If we are saving during an encounter or the boss fight, we set the player's save point to the
+	# last room.
+	var encounter : EncounterArea = player.check_encounter()
+	if encounter:
+		if encounter.is_currently_running:
+			save_outside_room = true
+	
+	var boss = get_tree().get_first_node_in_group("boss")
+	var boss_cocoon = get_tree().get_first_node_in_group("boss_cocoon")
+	if boss or boss_cocoon:
+		save_outside_room = true
+	
+	# Checks for the case of fighting enemies outside of an encounter or boss fight (messed up
+	# lab, classroom, or cafeteria).
+	var enemies = get_tree().get_nodes_in_group("enemy")
+	for enemy in enemies:
+		if enemy.visible == true and enemy.fsm.is_active("Chase"):
+			save_outside_room = true
+	
+	# Saves the current room and player info into temp before making all saves permenant
+	if !save_outside_room:
+		await room_save(LevelManager.current_level.name)
+	await save_player(save_outside_room)
+	
 	print("Saved game")
 	
-	## TODO: Comment this out once save_game() is needed for save button (after
-	## graduation). Also make sure that all necessary player information is 
-	## being saved.
-	#var saved_game:SavedGame = SavedGame.new()
-	#
-	#saved_game.player_health = player.health_component.health
-	#saved_game.player_position = player.global_position
-	#
-	#ResourceSaver.save(saved_game, "user://savegame.tres")
+	var saved_game:SavedGame = SavedGame.new()
+	
+	# Saves current room info
+	if !save_outside_room:
+		saved_game.current_level_name = LevelManager.current_level.name
+		saved_game.level_path = LevelManager.current_level.scene_file_path
+	else:
+		saved_game.current_level_name = RespawnManager.last_level_name
+		saved_game.level_path = RespawnManager.last_level_path
+	
+	# Sets last playing music so that on load the right track starts up
+	saved_game.last_playing_music = Music.current_vibe
+	
+	# Saves current respawn info
+	saved_game.respawn_last_level_path = RespawnManager.last_level_path
+	saved_game.respawn_last_level_name = RespawnManager.last_level_name
+	saved_game.respawn_last_entrance = RespawnManager.last_entrance
 	
 	var temp_dir_path = "user://temp"
 	var dir_path = "user://saves"
@@ -44,6 +83,9 @@ func save_game():
 			return
 	else:
 		DirAccess.make_dir_absolute(dir_path)
+	
+	# Saves the previously assigned game info now that the 'saves' directory exists
+	ResourceSaver.save(saved_game, "user://saves/savegame.tres")
 	
 	# Checks if there are current room saves. If so we load them into the permanent dir
 	if dir_exists(temp_dir_path):
@@ -70,52 +112,81 @@ func save_game():
 	else:
 		print("Temp folder does not exist")
 
-## TODO: Have this load the specific save file that is saved in the save_game() function. 
-## This will be an after graduation thing when we want to implement save & load buttons.
 # Loads all data from the game (rooms, player data, etc)
-func load_game(room_id):
-	print("Load game")
+func load_game():
+	print("Load Game")
 	
-	var save_file = "user://savegame.tres"
+	var save_file = "user://saves/savegame.tres"
 	
-	# Makes sure to not load if save file doesn't exist
 	if !(save_exists(save_file)):
 		print("No existing save file.")
 		return
-
+	
 	var saved_game:SavedGame = load(save_file)
 	
-	player.health_component.health = saved_game.player_health
-	player.global_position = saved_game.player_position
+	# Sets the scene path to be loaded
+	LevelManager.custom_scene_path = saved_game.level_path
 	
-	get_tree().call_group("saved_data", "on_before_load_game")
+	# Resets the last respawn information incase player dies in loaded room
+	RespawnManager.last_level_path = saved_game.respawn_last_level_path
+	RespawnManager.last_level_name = saved_game.respawn_last_level_name
+	RespawnManager.last_entrance = saved_game.respawn_last_entrance
 	
-	for item in saved_game.saved_data:
-		var scene = load(item.scene_path) as PackedScene
-		var restored_node = scene.instantiate()
-		var node = get_node(item.parent_node_path)
+	# Clears all marked engagement arrays for both normal enemies and boss. Prevents freed objects
+	#   from being left in array if player loads game after going to the main menu
+	EnemyManager.remove_marked_enemies()
+	
+	# Plays the music track that was playing when the game was saved
+	Music.play_track(saved_game.last_playing_music)
+	
+	var temp_dir_path = "user://temp"
+	var dir_path = "user://saves"
+	
+	# Attempts to open temp save path. If it doesn't exist, create it
+	var temp_dir
+	if dir_exists(temp_dir_path):
+		temp_dir = DirAccess.open(temp_dir_path)
 		
-		# Gets node name before resinstantiation. This is to prevent us from having
-		# "CharacterBody@12" or some randomized name similar to that in Remote
-		var item_name = restored_node.name
+		# Makes sure save directory properly opened. If not we return
+		if !temp_dir:
+			print("Save directory could not be opened")
+			return
+	else:
+		DirAccess.make_dir_absolute(temp_dir_path)
+	
+	# Checks if there are current room saves. If so we load them into the permanent dir
+	if dir_exists(dir_path):
+		var dir = DirAccess.open(dir_path)
 		
-		# If the node path does not exist, add the item to main
-		# NOTE: This should never occur but is more so a sanity check to be safe
-		if node != null:
-			node.add_child(restored_node)
+		if dir:
+			dir.list_dir_begin()
+			var file_name = dir.get_next()
+			
+			# Copies files over from the save folder to the temp folder
+			while file_name != "":
+				#If we see the savegame file, we want to move past it
+				if file_name == "savegame.tres":
+					file_name = dir.get_next()
+					continue
+				
+				var temp_file_path = temp_dir_path + "/" + file_name
+				var perm_file_path = dir_path + "/" + file_name
+				
+				if dir.file_exists(perm_file_path):
+					DirAccess.copy_absolute(perm_file_path, temp_file_path)
+				else:
+					print("File " + file_name + " does not exist")
+					
+				file_name = dir.get_next()
+			
+			dir.list_dir_end()
 		else:
-			main.add_child(restored_node)
-		
-		if restored_node.has_method("on_load_game"):
-			restored_node.on_load_game(item)
-		
-		# Checks if the restored node name has been set to randomized unique name. If
-		# so, it renames it to what the item is and Godot adds a unique identifier
-		if restored_node.name != item_name:
-			restored_node.name = item_name
+			print("Temp folder could not be opened for game save")
+	else:
+		print("Temp folder does not exist")
 
 # Deletes a full game save
-func delete_game_saves():
+func delete_perm_saves():
 	var save_path = "user://saves"
 	
 	if dir_exists(save_path):
@@ -150,7 +221,7 @@ func delete_game_saves():
 func room_save(room_id):
 	# TODO: Once full game save is implemented for save buttons, change this to 
 	# a temp folder
-	var save_path = "user://saves"
+	var save_path = "user://temp"
 	
 	if DirAccess.open(save_path) == null:
 		DirAccess.make_dir_absolute(save_path)
@@ -171,7 +242,7 @@ func room_save(room_id):
 
 # Loads data of a given room from the temporary directory if it exists
 func room_load(room_id):
-	var save_room_path = "user://saves/saveroom_{id}.tres"
+	var save_room_path = "user://temp/saveroom_{id}.tres"
 	var format_path = save_room_path.format({"id": room_id})
 	
 	print("Loaded Level: " + room_id)
@@ -211,7 +282,7 @@ func room_load(room_id):
 			restored_node.name = item_name
 
 # Deletes all room save files before deleting the temp directory as a whole
-func delete_room_saves():
+func delete_temp_saves():
 	var room_save_path = "user://temp"
 	
 	if dir_exists(room_save_path):
@@ -245,8 +316,8 @@ func delete_room_saves():
 
 #region Player save and load
 # Saves the player's health and position
-func save_player():
-	var save_path = "user://saves"
+func save_player(save_outside_room : bool):
+	var save_path = "user://temp"
 	
 	if DirAccess.open(save_path) == null:
 		DirAccess.make_dir_absolute(save_path)
@@ -257,16 +328,29 @@ func save_player():
 	
 	saved_player.player_health = player.health_component.health
 	saved_player.player_max_health = player.health_component.max_health
-	saved_player.player_position = player.global_position
-	# Gets name of level player is being saved in
-	saved_player.level_path = LevelManager.current_level.scene_file_path
+	
+	# Doesn't save if we are spawning player in previous room due to encounter
+	if !save_outside_room:
+		saved_player.player_position = player.global_position
+		# Saves path of level that the player is currently in
+		saved_player.level_path = LevelManager.current_level.scene_file_path
+		# Stress effect visibility 
+		saved_player.stress_visible = player.get_node("stressEffect").visible
+	else:
+		saved_player.level_path = RespawnManager.last_level_path
+		saved_player.player_position = outside_marker_position
+	
+	saved_player.dialogue_tracker = player.dialogue_tracker
+	# Chem lab stations
+	saved_player.lab_stations = player.lab_stations
+	
 	
 	var save_player_path = save_path + "/player_save.tres"
 	ResourceSaver.save(saved_player, save_player_path)
 
 # Loads the player's health and position upon loading up the game
 func load_player(loaded_level):
-	var player_save = "user://saves/player_save.tres"
+	var player_save = "user://temp/player_save.tres"
 	
 	print("Load player save information")
 	
@@ -278,23 +362,27 @@ func load_player(loaded_level):
 	
 	# Sets the player's hud to visibly show health
 	var hud = get_tree().get_first_node_in_group("gui")
-	#TODO: Get player health reseting fully working in future
-	#var health_difference = saved_player.player_max_health - saved_player.player_health
-	#if player.health_component.health <= 0:
-		#hud.heart_heal(saved_player.player_health)
-	#else:
-		#hud.heart_damage(health_difference)
 	
+	# Makes sure player's health is full before damaging the player
 	hud.heart_heal(saved_player.player_max_health)
+	
+	# Gets the difference in player health from the max and takes it from the hud
+	var health_difference = saved_player.player_max_health - saved_player.player_health
+	hud.heart_damage(health_difference)
 	
 	# Loads player's health and position
 	player.health_component.health = saved_player.player_health
 	player.health_component.max_health = saved_player.player_max_health
+	# Dialogue trackers
+	player.lab_stations = saved_player.lab_stations
+	player.dialogue_tracker = saved_player.dialogue_tracker
+	#Stress effect visibility
+	player.get_node("stressEffect").visible = saved_player.stress_visible
+	
 	# Only loads players global_position if they are loaded into the same room
 	# they were saved from
 	if loaded_level == saved_player.level_path:
 		player.global_position = saved_player.player_position
-		
 #endregion
 
 # Helper functions checking if save files / folders exist.

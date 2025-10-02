@@ -14,7 +14,25 @@ func load_game_scene() -> void:
 	await LevelManager.menu_helper()
 	
 func new_game() -> void:
+	# Deletes both temp and perm save files as we are starting a new game
+	await SaveAndLoad.delete_temp_saves()
+	await SaveAndLoad.delete_perm_saves()
+	
+	# Resets custom path to prevent previous saves from being reloaded
+	LevelManager.custom_scene_path = ""
+	
 	load_game_scene()
+
+func load_game() -> void:
+	# Delete temp save files
+	await SaveAndLoad.delete_temp_saves()
+	# Load perm save files
+	await SaveAndLoad.load_game()
+	
+	# NOTE: This must use "await" otherwise load_player is called before the player and HUD exists
+	await load_game_scene()
+	
+	SaveAndLoad.load_player(LevelManager.custom_scene_path)
 
 func _open_sub_menu(menu : Control) -> void:
 	sub_menu = menu
@@ -73,10 +91,19 @@ func _ready() -> void:
 	_add_or_hide_options()
 	_add_or_hide_credits()
 	_hide_new_game_if_unset()
+	
+	# Set the visibility of the load game button based on our savegame status
+	var save_file = "user://saves/savegame.tres"
+	%LoadGameButton.visible = SaveAndLoad.save_exists(save_file)
+	
+
 
 func _on_new_game_button_pressed() -> void:
 	DirAccess.remove_absolute("user://player_inventory")
 	new_game()
+
+func _on_load_game_button_pressed():
+	load_game()
 
 func _on_options_button_pressed() -> void:
 	_open_sub_menu(options_scene)

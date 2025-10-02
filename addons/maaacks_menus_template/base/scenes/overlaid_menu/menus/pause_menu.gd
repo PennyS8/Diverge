@@ -55,6 +55,9 @@ func _ready() -> void:
 	_hide_options_if_unset()
 	_hide_main_menu_if_unset()
 
+func _on_save_button_pressed():
+	SaveAndLoad.save_game()
+
 func _on_restart_button_pressed() -> void:
 	%ConfirmRestart.popup_centered()
 	popup_open = %ConfirmRestart

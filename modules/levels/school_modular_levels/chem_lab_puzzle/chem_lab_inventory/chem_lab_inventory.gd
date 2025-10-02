@@ -1,17 +1,10 @@
 extends Panel
 
 @onready var lab_inventory = %Equipment.inventory
+@onready var player = get_tree().get_first_node_in_group("player")
 var resource_path = "res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/"
 
 var converter_name : String
-
-var stations = {
-	"materials": 0,
-	"scale": 0,
-	"mixer": 0,
-	"burner": 0,
-	"book": 0
-}
 
 # Dictionary of all quest substance combinations which is used for item conversions.
 # NOTE: This does not cover all of the substances as we spawn enemies if one is not found.
@@ -54,7 +47,7 @@ func combine_items(station : String) -> bool:
 
 func failed_lab():
 	# Player must start over so we reset all stations
-	for station in stations.values():
+	for station in player.lab_stations.values():
 		station = 0
 	
 	# Delete items to allow player to restart
@@ -104,12 +97,12 @@ func has_needed_items(needed_items : Array[Resource]) -> bool:
 	return true
 
 func station_complete(station_name : String):
-	if station_name in stations:
-		stations[station_name] = 1
+	if station_name in player.lab_stations:
+		player.lab_stations[station_name] = 1
 
 func station_incomplete(station_name : String):
-	if station_name in stations:
-		stations[station_name] = 0
+	if station_name in player.lab_stations:
+		player.lab_stations[station_name] = 0
 
 func pick_up_book():
 	var player_inventory = GameManager.inventory_node.inventory 

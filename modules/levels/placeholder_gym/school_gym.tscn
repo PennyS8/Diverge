@@ -662,14 +662,14 @@ shape = SubResource("CircleShape2D_oyca8")
 [node name="Entrance" type="Node2D" parent="Gym"]
 position = Vector2(372, 396)
 
-[node name="GymHallway" type="Marker2D" parent="Gym/Entrance" groups=["level_entrance"]]
+[node name="GymSouthEntrance" type="Marker2D" parent="Gym/Entrance" groups=["level_entrance"]]
 
 [node name="Exit" type="Node2D" parent="Gym"]
 position = Vector2(373, 434)
 
-[node name="GymHallway" parent="Gym/Exit" groups=["entrance_area"] instance=ExtResource("2_6a26f")]
-next_level_path = "uid://dibtck8dlixm1"
-entrance_name = "TransitionDoubleDoor"
+[node name="GymSouthEntrance" parent="Gym/Exit" groups=["entrance_area"] instance=ExtResource("2_6a26f")]
+next_level_path = "uid://bqotfp8yphsb"
+entrance_name = "GymHallway"
 transition_direction = 1
 
 [node name="BasketballPaint" type="Sprite2D" parent="."]

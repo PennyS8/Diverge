@@ -60,24 +60,56 @@ func on_save_game(saved_data:Array[SavedData]):
 	if %Health.health <= 0: 
 		return
 	
+	if is_in_group("haha_not_actually_in_saved_data_jk"):
+		return
+	
 	var my_data = SavedData.new()
 	my_data.position = global_position
 	my_data.scene_path = scene_file_path
 	# Gets path up to node for reinstantiation
 	my_data.parent_node_path = get_parent().get_path()
 	my_data.max_health = %Health.max_health
-	# Gets path up to node for reinstantiation
-	my_data.parent_node_path = get_parent().get_path()
+
+	# Find any active encounters and mark enemies that are apart of the encounter
+	# in order to readd them to the encounter upon loading.
+	var encounter_entrances = get_tree().get_nodes_in_group("encounter_entrance")
+	for entrance in encounter_entrances: 
+		# Checks to make sure that enemy hasn't been marked as true in a
+		# different active encounter. This is a sanity check as realistically
+		# we won't have 2 active encounters at the same time. 
+		if entrance.is_currently_running && my_data.enemy_in_encounter != true:
+			my_data.enemy_in_encounter = entrance.encounter_has_enemy(self)
+	
+	# If no active encounter is found, make sure it is set to false
+	if my_data.enemy_in_encounter != true:
+		my_data.enemy_in_encounter = false
+	
 	saved_data.append(my_data)
 
 func on_before_load_game():
+	if is_in_group("haha_not_actually_in_saved_data_jk"):
+		return
+	
 	get_parent().remove_child(self)
 	queue_free()
 
 func on_load_game(saved_data:SavedData):
+	if is_in_group("haha_not_actually_in_saved_data_jk"):
+		return
+	
 	global_position = saved_data.position
 	default_position = saved_data.position
 	%Health.set_deferred("max_health", saved_data.max_health)
+	
+	# Wait before adding enemy in order to ensure encounter entrance exists
+	if saved_data.enemy_in_encounter:
+		await get_tree().create_timer(1.0, true).timeout
+	
+	# Reconnects enemies to encounter in order to remove encounter walls upon defeating enemies
+	var encounter_entrances = get_tree().get_nodes_in_group("encounter_entrance")
+	for entrance in encounter_entrances:
+		if entrance.is_currently_running && saved_data.enemy_in_encounter:
+			entrance.enemy_added(self)
 #endregion
 
 #region Damage Handling

@@ -36,7 +36,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 		player.dir = Vector2.ZERO
 		
-		if chem_inventory.stations["book"] == 1:
+		if player.lab_stations["book"] == 1:
 			puzzle_complete = true
 		
 		var dialogue = load("res://modules/levels/school_modular_levels/chem_lab_puzzle/interactions/chem_lab_stations.dialogue")
@@ -48,7 +48,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 			dialogue_type = "no_materials"
 		elif chem_inventory.lab_inventory.items.size() == 1:
 			dialogue_type = "one_material_mixer"
-		elif chem_inventory.stations["scale"] == 0:
+		elif player.lab_stations["scale"] == 0:
 			dialogue_type = "not_measured"
 		else: 
 			dialogue_type = "mixer"
