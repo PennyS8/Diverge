@@ -25,7 +25,7 @@
 [ext_resource type="Resource" uid="uid://v46rcraqdjre" path="res://modules/objects/library_book_cafeteria.tres" id="16_uy203"]
 [ext_resource type="Resource" uid="uid://cw25ojt8dsl75" path="res://modules/objects/library_book_classroom.tres" id="21_0knhu"]
 [ext_resource type="PackedScene" uid="uid://e7mplq2c2c5" path="res://modules/objects/interactable.tscn" id="23_usixv"]
-[ext_resource type="Script" uid="uid://bfhxhru7gksj4" path="res://modules/levels/school_modular_levels/Playtest/new_area_dialogue_trigger.gd" id="23_wly3n"]
+[ext_resource type="Script" path="res://modules/levels/school_modular_levels/Playtest/new_area_dialogue_trigger.gd" id="23_wly3n"]
 [ext_resource type="Script" uid="uid://jdbescwh43bj" path="res://modules/objects/level_transition_zone/transition_double_door.gd" id="25_4lksq"]
 [ext_resource type="Shader" uid="uid://145awv4gjeoq" path="res://assets/debug/pixel_perfect_styling/SmoothPixel.gdshader" id="25_usixv"]
 [ext_resource type="Shader" uid="uid://doqt0udpx1yyp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/glint.gdshader" id="26_j0ml5"]
@@ -9275,7 +9275,7 @@ tile_map_data = PackedByteArray("AADu//b/AAAKABEAAADu//f/AAAKABEAAADu//j/AAAKABE
 tile_set = SubResource("TileSet_xnlxt")
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(-104, 19)
+position = Vector2(1860, -360)
 
 [node name="StartRoom" type="Node2D" parent="." groups=["room_with_dynamic_transitions"]]
 visible = false

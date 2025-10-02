@@ -42,6 +42,9 @@ func _on_body_entered(_body: Node2D) -> void:
 		dialogue = load("res://modules/dialogue/demo_scenes.dialogue")
 		dialogue_type = "gym_battle"
 		param = get_tree().get_first_node_in_group("boss")
+		
+		if !param:
+			return
 	# Additionally you can add a dialogue for when the puzzle has been solved to
 	# indicate to the player there is nothing more for them here.
 	# i.e., "Dammit! I forgot what I was doing again. I already [insert task completed in this puzzle],
