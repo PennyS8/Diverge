@@ -7,7 +7,8 @@ var boss_dead = false
 func _process(delta: float) -> void:
 	
 	var boss = get_tree().get_first_node_in_group("boss")
-	if !boss and !boss_dead:
+	var boss_stack = get_tree().get_first_node_in_group("boss_cocoon")
+	if (!boss and !boss_stack) and !boss_dead:
 		boss_dead = true
 		start_timer()
 		$"../EntranceDialogue".queue_free()
