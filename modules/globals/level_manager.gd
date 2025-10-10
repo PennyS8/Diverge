@@ -115,6 +115,10 @@ func change_level(path : String, entrance_name : String = "0"):
 	
 	await swap_done
 
+	# clears the engagers list to avoid blocking it with nonexistent enemies
+	EnemyManager.current_engagers.clear()
+	EnemyManager.marked_for_disengage.clear()
+	
 	var tween_two = get_tree().create_tween()
 	tween_two.tween_property(fade_screen, "color:a", 0, fade_time)
 	tween_two.finished.connect(_transition_complete)

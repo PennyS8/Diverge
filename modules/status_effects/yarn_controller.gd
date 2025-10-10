@@ -19,9 +19,9 @@ func _process(delta):
 	
 	var yarn_end_pos := Vector2.ZERO
 
-	var origin_pos = get_parent().get_node_or_null("%YarnOrigin").position
+	var origin_pos = get_parent().get_node_or_null("%YarnOrigin")
 	if origin_pos:
-		position = origin_pos
+		position = origin_pos.position
 	
 	if can_collide:
 		$Projectile.position.x += speed * delta
@@ -33,9 +33,9 @@ func _process(delta):
 			yarn_end_pos = Vector2(current_dist, 0.0)
 			
 			# Rotate the yarn projectile toward the mouse
-			var tethered_body_parent = tethered_body.get_parent()
+			var tethered_body_parent : Node2D = tethered_body.get_parent()
 			var tethered_body_dir
-			if tethered_body_parent and tethered_body_parent.yarn_endpoint:
+			if tethered_body_parent and ("yarn_endpoint" in tethered_body_parent):
 				tethered_body_dir = tethered_body_parent.to_global(tethered_body_parent.yarn_endpoint)
 			else:
 				tethered_body_dir = tethered_body.global_position
