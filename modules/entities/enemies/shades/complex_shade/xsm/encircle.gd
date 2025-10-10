@@ -18,8 +18,9 @@ var fallback_attack_timer := randf_range(2.0, 4.0)
 # XSM enters the root first, the the children
 func _on_enter(_args) -> void:
 	target.ai_steering.apply_strafe(_args, strafe_factor)
-	target.ai_steering.apply_seek(_args, 0.15)
-	
+	target.ai_steering.apply_seek(_args, 0.2)
+	fallback_attack_timer = randf_range(2.0, 4.0)
+
 # This function is called just after the state enters
 # XSM after_enters the children first, then the parent
 func _after_enter(_args) -> void:
@@ -30,6 +31,12 @@ func _after_enter(_args) -> void:
 # XSM updates the root first, then the children
 func _on_update(_delta: float) -> void:
 	fallback_attack_timer -= _delta
+	if fallback_attack_timer <= 0.0:
+		if EnemyManager.request_engagement(target):
+			change_state("ChargeAttack")
+		else:
+			fallback_attack_timer = randf_range(2.0, 4.0)
+
 
 # This function is called each frame after all the update calls
 # XSM after_updates the children first, then the root
