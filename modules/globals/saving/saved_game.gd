@@ -9,6 +9,7 @@ enum MusicVibe { CHILL, WTF, CONFIDENT }
 @export var player_health : float
 @export var player_max_health : float
 @export var dialogue_tracker : Dictionary
+@export var movement_visibility : bool
 #endregion
 
 #region Level information

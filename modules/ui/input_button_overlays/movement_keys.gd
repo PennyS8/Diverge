@@ -12,11 +12,8 @@ var s_y := 52.0
 var d_y := 52.0
 var space_y := 97.0
 
-var w_read := false
-var a_read := false
-var s_read := false
-var d_read := false
-var space_read := false
+var key_dict = {"w_read": false, "a_read": false, 
+	"s_read": false, "d_read": false, "space_read": false}
 
 var tutorial_started := false
 var key_update_counter = 0.0
@@ -55,41 +52,41 @@ func _input(event: InputEvent):
 		press_space()
 
 func press_w():
-	if w_read:
+	if key_dict["w_read"]:
 		return
-	w_read = true
+	key_dict["w_read"] = true
 	w_y = 171
 	key_update_counter += 1
 	check_completeness()
 
 func press_a():
-	if a_read:
+	if key_dict["a_read"]:
 		return
-	a_read = true
+	key_dict["a_read"] = true
 	a_y = 188
 	key_update_counter += 1
 	check_completeness()
 
 func press_s():
-	if s_read:
+	if key_dict["s_read"]:
 		return
-	s_read = true
+	key_dict["s_read"] = true
 	s_y = 188
 	key_update_counter += 1
 	check_completeness()
 
 func press_d():
-	if d_read:
+	if key_dict["d_read"]:
 		return
-	d_read = true
+	key_dict["d_read"] = true
 	d_y = 188
 	key_update_counter += 1
 	check_completeness()
 
 func press_space():
-	if space_read:
+	if key_dict["space_read"]:
 		return
-	space_read = true
+	key_dict["space_read"] = true
 	space_y = 225
 	key_update_counter += 1
 	check_completeness()
@@ -119,5 +116,5 @@ func _on_timer_timeout():
 	s.hide()
 	d.hide()
 	space.hide()
-	
-	check_completeness()
+	# Hides the whole scene since we no longer are showing any keys
+	hide()
