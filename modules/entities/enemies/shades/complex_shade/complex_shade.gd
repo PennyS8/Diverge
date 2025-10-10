@@ -7,7 +7,7 @@ var follow_object
 
 var knockback : Vector2 = Vector2.ZERO
 var crowd_control := false
-
+var idle_dir := "left"
 var default_position
 
 @onready var damaged_particles = $DisplayComponents/HitFX
@@ -42,16 +42,19 @@ func _physics_process(_delta: float) -> void:
 # Removes the knockback from the enemy for tethering but still stuns enemy
 func tethered_stun():
 	crowd_control = true
+	$AnimationPlayer.call_deferred("play", "RESET")
 	fsm.change_state("Stunned")
 	
 	# turns crowd control back off for future
 	crowd_control = false
 	
-func fling(): 
+func fling():
+	$AnimationPlayer.call_deferred("play", "RESET")
 	fsm.change_state("Stunned")
 	super.fling()
 
 func pull():
+	$AnimationPlayer.call_deferred("play", "RESET")
 	fsm.change_state("Stunned")
 	super.pull()
 
@@ -114,6 +117,7 @@ func on_load_game(saved_data:SavedData):
 
 #region Damage Handling
 func _on_health_component_died() -> void:
+	$AnimationPlayer.call_deferred("play", "RESET")
 	drop_ramen()
 	drop_heart()
 	damaged_particles.restart()
@@ -124,11 +128,19 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	# Apply knockback from the Hitbox's "knockback_coefficient"
 	knockback = _area.global_position.direction_to(global_position) * _area.knockback_coef
 	
-	damaged_particles.set_deferred("rotation", get_angle_to(-knockback) + PI)
+	damaged_particles.set_deferred("rotation", get_angle_to(to_global(knockback)))
 	
 	# If, after damaging, we'll still be alive, stun us
 	if (health_component.health - _area.damage) > 0:
-		%AnimationPlayer.call_deferred("play", "damaged")
+		$AnimationPlayer.call_deferred("play", "RESET")
+		
+		if idle_dir == "up":
+			%AnimationPlayer.call_deferred("play", "damaged_up")
+		elif idle_dir == "down":
+			%AnimationPlayer.call_deferred("play", "damaged_down")
+		else:
+			%AnimationPlayer.call_deferred("play", "damaged")
+
 		fsm.call_deferred("change_state", "Stunned")
 
 		damaged_particles.restart()

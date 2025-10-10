@@ -12,6 +12,9 @@ var yarn_instance # Mainly so that levers can remove their visual yarn instance
 var boss_path = "res://modules/entities/enemies/shades/school_boss/school_boss.tscn"
 var hand_path = "res://modules/entities/enemies/shades/school_boss/school_boss_hands.tscn"
 
+# For enemies and other tetherablebodies to reference where on them the end of the yarn will attach to
+var yarn_endpoint := Vector2(0, -10)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass

@@ -69,9 +69,6 @@ target_path = NodePath("")
 timed = false
 next_state = NodePath("")
 
-[node name="Combat" parent="ShadeFSM/Alive" index="1"]
-next_state = NodePath("../Reaction")
-
 [node name="Surprised" parent="ShadeFSM/Alive/Reaction" index="1"]
 next_state = NodePath("../../Movement/FoundRamen")
 

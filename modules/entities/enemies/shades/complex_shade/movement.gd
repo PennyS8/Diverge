@@ -45,22 +45,21 @@ func animate_movement():
 	var xdir = dir.snapped(Vector2.ONE).x
 	var ydir = dir.snapped(Vector2.ONE).y
 	
-	var idle_dir = "down"
 	match [xdir, ydir]:
 		[1.0, _]:
 			play_blend("walk_right", 0.0)
-			idle_dir = "right"
+			target.idle_dir = "right"
 		[-1.0, _]:
 			play_blend("walk_left", 0.0)
-			idle_dir = "left"
+			target.idle_dir = "left"
 		[0.0, 1.0]:
 			play_blend("walk_down", 0.0)
-			idle_dir = "down"
+			target.idle_dir = "down"
 		[0.0, -1.0]:
 			play_blend("walk_up", 0.0)
-			idle_dir = "up"
+			target.idle_dir = "up"
 		[0.0, 0.0]:
-			play_blend("idle_"+idle_dir, 0.0)
+			play_blend("idle_"+target.idle_dir, 0.0)
 
 # This function is called before the State exits
 # XSM before_exits the root first, then the children

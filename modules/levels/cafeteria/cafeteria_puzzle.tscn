@@ -928,8 +928,10 @@ position = Vector2(-30, 123)
 [node name="ShadeHPIndicator" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="0"]
 material = SubResource("ShaderMaterial_mjkpu")
 
-[node name="Combat" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive" index="1"]
-next_state = NodePath("")
+[node name="Surprised" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM/Alive/Reaction" index="1"]
+anim_on_enter = "surprise"
+loop_mode = 0
+on_finished = 1
 
 [node name="Spawn" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/ShadeFSM" index="1"]
 unique_name_in_owner = false
@@ -946,6 +948,9 @@ max_health = 80
 [node name="DisplayComponents" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse" index="4"]
 material = SubResource("ShaderMaterial_vas0v")
 scale = Vector2(1.5, 1.5)
+
+[node name="HitFX" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/DisplayComponents" index="0"]
+amount = 6
 
 [node name="Shadow" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/DisplayComponents" index="3"]
 material = SubResource("ShaderMaterial_vas0v")

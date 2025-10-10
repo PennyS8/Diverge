@@ -18,6 +18,10 @@ func _process(delta):
 		return
 	
 	var yarn_end_pos := Vector2.ZERO
+
+	var origin_pos = get_parent().get_node_or_null("%YarnOrigin").position
+	if origin_pos:
+		position = origin_pos
 	
 	if can_collide:
 		$Projectile.position.x += speed * delta
@@ -29,8 +33,13 @@ func _process(delta):
 			yarn_end_pos = Vector2(current_dist, 0.0)
 			
 			# Rotate the yarn projectile toward the mouse
-			var tethered_body_dir = tethered_body.global_position
-			var dir = get_parent().global_position.direction_to(tethered_body_dir).normalized()
+			var tethered_body_parent = tethered_body.get_parent()
+			var tethered_body_dir
+			if tethered_body_parent and tethered_body_parent.yarn_endpoint:
+				tethered_body_dir = tethered_body_parent.to_global(tethered_body_parent.yarn_endpoint)
+			else:
+				tethered_body_dir = tethered_body.global_position
+			var dir = global_position.direction_to(tethered_body_dir).normalized()
 			global_rotation = Vector2.ZERO.angle_to_point(dir)
 		else:
 			if get_parent().is_in_group("player"):
@@ -93,7 +102,10 @@ func _on_projectile_area_shape_entered(_area_rid: RID, area: Area2D, _area_shape
 	$Projectile.queue_free()
 
 ## Check for wall collisions
-func _on_wall_detector_body_shape_entered(_body_rid, body, _body_shape_index, _local_shape_index):
+func _on_wall_detector_body_shape_entered(body):
+	if !get_node_or_null("Projectile"):
+		return
+	
 	## Do not collide with parent
 	if body == get_parent():
 		return

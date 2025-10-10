@@ -108,7 +108,7 @@ material = ExtResource("1_pt88k")
 metadata/_edit_vertical_guides_ = [-840.0]
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(886, 929)
+position = Vector2(349, 710)
 
 [node name="Tiles" type="Node2D" parent="."]
 y_sort_enabled = true

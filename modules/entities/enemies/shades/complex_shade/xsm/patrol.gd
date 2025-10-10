@@ -1,5 +1,5 @@
 @tool
-extends State
+extends StateAnimation
 
 #
 # FUNCTIONS TO INHERIT IN YOUR STATES
