@@ -38,6 +38,7 @@ var curr_camera_boundry : Area2D
 @onready var camera : Camera2D = $Camera2D
 @onready var fsm : State = $PlayerFSM
 @onready var hurtbox = $HurtBoxComponent2D
+@onready var movement_keys = $MovementKeys
 
 var is_invulnerable: bool = false
 var fade_tween : Tween
@@ -206,7 +207,7 @@ func do_walk(global_point : Vector2, speed_percentage : float = 1.0):
 	return
 
 func start_movement_tutorial():
-	$MovementKeys.start_tutorial()
+	movement_keys.start_tutorial()
 	
 func _on_health_component_died() -> void:
 	set_collision_layer_value(3, false)

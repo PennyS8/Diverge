@@ -343,6 +343,7 @@ func save_player(save_outside_room : bool):
 	saved_player.dialogue_tracker = player.dialogue_tracker
 	# Chem lab stations
 	saved_player.lab_stations = player.lab_stations
+	saved_player.movement_visibility = player.movement_keys.visible
 	
 	
 	var save_player_path = save_path + "/player_save.tres"
@@ -375,6 +376,7 @@ func load_player(loaded_level):
 	player.health_component.max_health = saved_player.player_max_health
 	# Dialogue trackers
 	player.lab_stations = saved_player.lab_stations
+	player.movement_keys.visible = saved_player.movement_visibility
 	player.dialogue_tracker = saved_player.dialogue_tracker
 	#Stress effect visibility
 	player.get_node("stressEffect").visible = saved_player.stress_visible
