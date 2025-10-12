@@ -1,6 +1,14 @@
 extends Node
 
-var inventory_node : Control
+var _inventory_node : Control
+var inventory_node : Control :
+	get:
+		return _inventory_node
+	set(val):
+		_inventory_node = val
+		inventory = val.inventory
+
+var inventory
 signal last_ramen_picked_up()
 var overlay : Control
 

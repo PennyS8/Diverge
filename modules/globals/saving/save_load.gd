@@ -385,6 +385,9 @@ func load_player(loaded_level):
 	# they were saved from
 	if loaded_level == saved_player.level_path:
 		player.global_position = saved_player.player_position
+	
+	var inventory : Inventory = GameManager.inventory
+	inventory.load_state("player_inventory")
 #endregion
 
 # Helper functions checking if save files / folders exist.
