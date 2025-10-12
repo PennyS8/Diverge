@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://c21tx8txxbw18"]
+[gd_scene load_steps=27 format=4 uid="uid://c21tx8txxbw18"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_apu1s"]
 [ext_resource type="TileSet" uid="uid://c1q13vjtcpw6d" path="res://assets/environment/fantasy_ [version 2.0]/taiga_/tile_ground.tres" id="2_wj027"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="14_usk1t"]
 [ext_resource type="PackedScene" uid="uid://n2x5iije4alx" path="res://modules/objects/debug/damage_area/damage_area.tscn" id="15_04g4e"]
 [ext_resource type="PackedScene" uid="uid://c5qx3tabt31rv" path="res://modules/objects/debug/heal_area/heal_area.tscn" id="16_gdg6b"]
+[ext_resource type="PackedScene" uid="uid://dx5na7ufncxg3" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.tscn" id="17_vk86g"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_57cbg"]
 texture = ExtResource("3_waj6y")
@@ -322,6 +323,9 @@ y_sort_enabled = true
 metadata/_edit_horizontal_guides_ = [-188.0, 611.0]
 metadata/_edit_vertical_guides_ = [915.0]
 
+[node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
+position = Vector2(134, 335)
+
 [node name="World" type="Node2D" parent="."]
 y_sort_enabled = true
 material = ExtResource("1_apu1s")
@@ -427,3 +431,43 @@ position = Vector2(552, 199)
 position = Vector2(616, 174)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ComplexShade" parent="." instance=ExtResource("17_vk86g")]
+z_index = 4
+position = Vector2(245, 328)
+
+[node name="ComplexShade2" parent="." instance=ExtResource("17_vk86g")]
+z_index = 4
+position = Vector2(227, 319)
+
+[node name="ComplexShade3" parent="." instance=ExtResource("17_vk86g")]
+z_index = 4
+position = Vector2(244, 312)
+
+[node name="ComplexShade4" parent="." instance=ExtResource("17_vk86g")]
+z_index = 4
+position = Vector2(257, 323)
+
+[node name="ComplexShade5" parent="." instance=ExtResource("17_vk86g")]
+z_index = 4
+position = Vector2(230, 336)
+
+[node name="ComplexShade6" parent="." instance=ExtResource("17_vk86g")]
+z_index = 4
+position = Vector2(250, 338)
+
+[node name="ComplexShade7" parent="." instance=ExtResource("17_vk86g")]
+z_index = 4
+position = Vector2(259, 333)
+
+[node name="ComplexShade8" parent="." instance=ExtResource("17_vk86g")]
+z_index = 4
+position = Vector2(218, 329)
+
+[node name="ComplexShade9" parent="." instance=ExtResource("17_vk86g")]
+z_index = 4
+position = Vector2(258, 309)
+
+[node name="ComplexShade10" parent="." instance=ExtResource("17_vk86g")]
+z_index = 4
+position = Vector2(226, 303)

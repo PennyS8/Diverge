@@ -279,3 +279,18 @@ func _end_invulnerability_effect():
 	
 func _on_animation_player_current_animation_changed(name: String) -> void:
 	$Hook/CollisionPolygon2D.set_deferred("disabled", true)
+
+## Returns 1.0 when agent is facing right.
+## Returns -1.0 when agent is facing left.
+func get_facing() -> float:
+	match idle_dir:
+		Vector2.RIGHT:
+			return 1.0
+		Vector2.LEFT:
+			return -1.0
+		Vector2.UP:
+			return 1.0
+		Vector2.DOWN:
+			return -1.0
+		_:
+			return 1.0

@@ -1,0 +1,123 @@
+[gd_resource type="BehaviorTree" load_steps=32 format=3 uid="uid://bpt1dcaahcip4"]
+
+[ext_resource type="Script" uid="uid://dko5wh2jus0gi" path="res://ai/tasks/get_first_in_group.gd" id="1_77b2d"]
+[ext_resource type="Script" uid="uid://dbo0kq2cwb4qv" path="res://demo/ai/tasks/face_target.gd" id="3_mk0se"]
+[ext_resource type="Script" uid="uid://b7r6jgnl6kvcu" path="res://ai/tasks/back_away.gd" id="4_te4dv"]
+[ext_resource type="Script" uid="uid://cwwha6hxxq37c" path="res://ai/tasks/pursue.gd" id="5_8ko0m"]
+[ext_resource type="Script" uid="uid://dcsbt16bn40w3" path="res://ai/tasks/check_engagement.gd" id="5_65xok"]
+[ext_resource type="Script" uid="uid://bfv1vdw2f6msb" path="res://ai/tasks/in_range.gd" id="5_te4dv"]
+[ext_resource type="Script" uid="uid://daiwddmnxevg5" path="res://ai/tasks/disengage_enemy.gd" id="7_65xok"]
+[ext_resource type="Script" uid="uid://b2uv6kwauiqaj" path="res://ai/tasks/strafe_target.gd" id="7_a10nm"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_boxpv"]
+var/speed/name = &"speed"
+var/speed/type = 3
+var/speed/value = 70.0
+var/speed/hint = 1
+var/speed/hint_string = "1,200,1"
+var/slow_speed/name = &"slow_speed"
+var/slow_speed/type = 3
+var/slow_speed/value = 50.0
+var/slow_speed/hint = 1
+var/slow_speed/hint_string = "1,200,1"
+
+[sub_resource type="BBNode" id="BBNode_nmubl"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_i1ysd"]
+await_completion = 2.6
+animation_player = SubResource("BBNode_nmubl")
+animation_name = &"spawn"
+custom_name = "Spawn Animation"
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_mk0se"]
+
+[sub_resource type="BTSequence" id="BTSequence_2exw4"]
+custom_name = "Spawn"
+children = [SubResource("BTPlayAnimation_i1ysd"), SubResource("BTRandomWait_mk0se")]
+
+[sub_resource type="BTRunLimit" id="BTRunLimit_q8l3p"]
+custom_name = "Play Spawn Animation (Only run once)"
+children = [SubResource("BTSequence_2exw4")]
+
+[sub_resource type="BTAction" id="BTAction_65xok"]
+custom_name = "Set $target to first node in \"player\" group"
+script = ExtResource("1_77b2d")
+group = &"player"
+output_var = &"target"
+
+[sub_resource type="BTAction" id="BTAction_a10nm"]
+custom_name = "EnemyManager - Attempt Engagement"
+script = ExtResource("5_65xok")
+
+[sub_resource type="BTAction" id="BTAction_ypm6i"]
+script = ExtResource("5_8ko0m")
+target_var = &"target"
+speed_var = &"speed"
+approach_distance = 12.0
+
+[sub_resource type="BTAction" id="BTAction_8ko0m"]
+script = ExtResource("3_mk0se")
+target_var = &"target"
+
+[sub_resource type="BBNode" id="BBNode_te4dv"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_8ko0m"]
+await_completion = 1.5
+animation_player = SubResource("BBNode_te4dv")
+animation_name = &"attack_right"
+
+[sub_resource type="BTSequence" id="BTSequence_77b2d"]
+custom_name = "Move in and Attack"
+children = [SubResource("BTAction_ypm6i"), SubResource("BTAction_8ko0m"), SubResource("BTPlayAnimation_8ko0m")]
+
+[sub_resource type="BTCooldown" id="BTCooldown_xyn6j"]
+duration = 5.0
+custom_name = "Attack Cooldown"
+children = [SubResource("BTSequence_77b2d")]
+
+[sub_resource type="BTAction" id="BTAction_lpn1b"]
+script = ExtResource("7_65xok")
+
+[sub_resource type="BTSequence" id="BTSequence_i5812"]
+custom_name = "Can We Attack Player?"
+children = [SubResource("BTAction_65xok"), SubResource("BTAction_a10nm"), SubResource("BTCooldown_xyn6j"), SubResource("BTAction_lpn1b")]
+
+[sub_resource type="BTCondition" id="BTCondition_nb1nl"]
+script = ExtResource("5_te4dv")
+distance_min = 0.0
+distance_max = 24.0
+target_var = &"target"
+
+[sub_resource type="BTAction" id="BTAction_xyn6j"]
+script = ExtResource("3_mk0se")
+target_var = &"target"
+
+[sub_resource type="BTAction" id="BTAction_lep7j"]
+script = ExtResource("4_te4dv")
+speed_var = &"speed"
+max_angle_deviation = 0.7
+
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_a10nm"]
+custom_name = "Are We Too Close?"
+children = [SubResource("BTCondition_nb1nl"), SubResource("BTAction_xyn6j"), SubResource("BTAction_lep7j")]
+
+[sub_resource type="BTAction" id="BTAction_te4dv"]
+script = ExtResource("7_a10nm")
+target_var = &"target"
+circle_speed = 55.0
+
+[sub_resource type="BTSequence" id="BTSequence_65xok"]
+custom_name = "Default Behavior - Strafe Around Player"
+children = [SubResource("BTAction_te4dv")]
+
+[sub_resource type="BTSelector" id="BTSelector_7fhru"]
+custom_name = "Enemy Behavior"
+children = [SubResource("BTRunLimit_q8l3p"), SubResource("BTSequence_i5812"), SubResource("BTDynamicSequence_a10nm"), SubResource("BTSequence_65xok")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_boxpv")
+root_task = SubResource("BTSelector_7fhru")

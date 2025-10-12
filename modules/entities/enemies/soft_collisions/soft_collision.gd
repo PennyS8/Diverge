@@ -11,5 +11,4 @@ func get_push_vector():
 		# Only need to move away from one of the surrounding areas.
 		var area = areas[0]
 		push_vector = area.global_position.direction_to(global_position)
-		push_vector = push_vector.normalized()
 	return push_vector

@@ -5,13 +5,21 @@ extends TetherableBody
 var movement_speed : float = 30.0
 var follow_object
 
+## The force applied by an attack or other "explosive" push
 var knockback : Vector2 = Vector2.ZERO
+
+## The force applied on the shade by its neighbor shades using soft_collision
+var separation_push : Vector2 = Vector2.ZERO
+
+## The direction*magnitude of our pathfinding code with LimboAI
+var pathing_velocity : Vector2 = Vector2.ZERO
+
 var crowd_control := false
 var idle_dir := "left"
 var default_position
 
 @onready var damaged_particles = $DisplayComponents/HitFX
-@onready var fsm = $ShadeFSM
+#@onready var fsm = $ShadeFSM
 
 @onready var health_component = %Health
 @onready var hurtbox = %HurtBox
@@ -21,6 +29,12 @@ var default_position
 @export var max_health := 40
 
 @onready var heart_node = preload("res://modules/objects/debug/heal_area/heal_area.tscn")
+
+# Stuff imported / adjusted for LimboAI import
+var _moved_this_frame := false
+var _frames_since_facing_update := 0
+@onready var root = %DisplayComponents
+@onready var soft_collision = %SoftCollision
 
 ## NATE - STEERING BEHAVIORS
 var ai_steering := AISteering.new()
@@ -35,27 +49,42 @@ func _ready() -> void:
 	%Health.max_health = max_health
 	
 func _physics_process(_delta: float) -> void:
+	# Applies neighbor separation as well as pathing velocity from decision tree
+	separation_push = soft_collision.get_push_vector() * 15.0
+	
+	velocity = separation_push + pathing_velocity
+	move_and_slide()
+	
 	# Vision Cone rotates to direction walked
 	%AgroRegion.look_at(to_global(velocity))
 	super(_delta)
+
+	_post_physics_process.call_deferred()
+
+func _post_physics_process() -> void:
+	if not _moved_this_frame:
+		velocity = lerp(velocity, Vector2.ZERO, 0.5)
+		pathing_velocity = Vector2.ZERO
 	
+	_moved_this_frame = false
+
 # Removes the knockback from the enemy for tethering but still stuns enemy
 func tethered_stun():
 	crowd_control = true
 	$AnimationPlayer.call_deferred("play", "RESET")
-	fsm.change_state("Stunned")
+#	fsm.change_state("Stunned")
 	
 	# turns crowd control back off for future
 	crowd_control = false
 	
 func fling():
 	$AnimationPlayer.call_deferred("play", "RESET")
-	fsm.change_state("Stunned")
+	#fsm.change_state("Stunned")
 	super.fling()
 
 func pull():
 	$AnimationPlayer.call_deferred("play", "RESET")
-	fsm.change_state("Stunned")
+	#fsm.change_state("Stunned")
 	super.pull()
 
 #region Savegame
@@ -121,7 +150,7 @@ func _on_health_component_died() -> void:
 	drop_ramen()
 	drop_heart()
 	damaged_particles.restart()
-	fsm.change_state("Dead")
+#	fsm.change_state("Dead")
 	%AnimationPlayer.call_deferred("play", "die")
 
 func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
@@ -141,7 +170,7 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 		else:
 			%AnimationPlayer.call_deferred("play", "damaged")
 
-		fsm.call_deferred("change_state", "Stunned")
+		#fsm.call_deferred("change_state", "Stunned")
 
 		damaged_particles.restart()
 		
@@ -188,4 +217,37 @@ func drop_heart():
 func release_player():
 	EnemyManager.release_engagement(self)
 	follow_object = null
-	fsm.change_state("Idle")
+	#fsm.change_state("Idle")
+
+func move(p_velocity: Vector2) -> void:
+	pathing_velocity = lerp(pathing_velocity, p_velocity, 0.2)
+	_moved_this_frame = true
+
+## Update agent's facing in the velocity direction.
+func update_facing(target_dir) -> void:
+	_frames_since_facing_update += 1
+	if _frames_since_facing_update > 3:
+		face_dir(target_dir.x)
+
+## Face specified direction.
+func face_dir(dir: float) -> void:
+	if dir > 0.0 and root.scale.x < 0.0:
+		root.scale.x = 1.0;
+		_frames_since_facing_update = 0
+	if dir < 0.0 and root.scale.x > 0.0:
+		root.scale.x = -1.0;
+		_frames_since_facing_update = 0
+
+## Returns 1.0 when agent is facing right.
+## Returns -1.0 when agent is facing left.
+func get_facing() -> float:
+	return signf(root.scale.x)
+	
+## Is specified position inside the arena (not inside an obstacle)?
+func is_good_position(p_position: Vector2) -> bool:
+	var space_state := get_world_2d().direct_space_state
+	var params := PhysicsPointQueryParameters2D.new()
+	params.position = p_position
+	params.collision_mask = (1 << 2 - 1) | (1 << 5 - 1) # Wall is layer 2, obstacle is layer 5
+	var collision := space_state.intersect_point(params)
+	return collision.is_empty()
