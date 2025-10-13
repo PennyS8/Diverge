@@ -387,7 +387,8 @@ func load_player(loaded_level):
 		player.global_position = saved_player.player_position
 	
 	var inventory : Inventory = GameManager.inventory
-	inventory.load_state("player_inventory")
+	if inventory:
+		inventory.load_state("player_inventory")
 #endregion
 
 # Helper functions checking if save files / folders exist.
