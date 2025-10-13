@@ -29,7 +29,7 @@ do player.exit_cutscene()
 ~ hiding_away
 do Music.play_track(Music.Vibe.WTF)
 do darken_lighting()
-Juniper: It's okay. I'm okay. It's just a test. I just need to go back to class...but it's not just a test and if I fail it my grade is going to down from a C to a D and I've never gotten anything less than an A on my report card and...
+Juniper: It's okay. I'm okay. It's just a test. I just need to go back to class...but it's not just a test and if I fail it my grade is going to go down from a C to a D and I've never gotten anything less than an A on my report card and...
 Ping!
 Olli (text): Hey where are you? Class starts soon.
 Juniper: Shoot. I need to go back.
