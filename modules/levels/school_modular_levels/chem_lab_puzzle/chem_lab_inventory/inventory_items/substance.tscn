@@ -1,0 +1,49 @@
+[gd_scene load_steps=8 format=3 uid="uid://dtf5boda2djmf"]
+
+[ext_resource type="Script" uid="uid://mgal56uptn3t" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/substance.gd" id="1_7xy3w"]
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ohqdb"]
+[ext_resource type="PackedScene" uid="uid://cjdtl6ek4qp7d" path="res://addons/wyvernbox_prefabs/ground_item_stack_view_2d.tscn" id="2_7xy3w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_xvx06"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_sjrr0"]
+radius = 6.0
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o7nbw"]
+size = Vector2(12, 19)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_47jud"]
+radius = 8.0
+
+[node name="Substance" type="CharacterBody2D"]
+script = ExtResource("1_7xy3w")
+
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasGroup"]
+material = ExtResource("1_ohqdb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_xvx06")
+
+[node name="TetherableArea2D" type="Area2D" parent="."]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
+shape = SubResource("CircleShape2D_sjrr0")
+
+[node name="Item" parent="." instance=ExtResource("2_7xy3w")]
+
+[node name="VisItem" parent="Item" index="0"]
+visible = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
+position = Vector2(0, 2.5)
+shape = SubResource("RectangleShape2D_o7nbw")
+
+[node name="TopCollider" type="CollisionShape2D" parent="Item"]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_47jud")
+
+[editable path="Item"]

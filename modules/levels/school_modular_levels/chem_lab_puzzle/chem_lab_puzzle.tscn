@@ -19,10 +19,10 @@
 [ext_resource type="PackedScene" uid="uid://dg1buhv8sgv7m" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/item_stack_littlefontcrayon.tscn" id="18_fmkvf"]
 [ext_resource type="FontFile" uid="uid://o386rfu4rprn" path="res://assets/fonts/CrayonLibre.ttf" id="18_mor7r"]
 [ext_resource type="PackedScene" uid="uid://0xji2upguay6" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/chalk_board.tscn" id="19_7r4fh"]
-[ext_resource type="PackedScene" uid="uid://wwrw6hyhhicu" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/materials_station.tscn" id="19_n07ws"]
 [ext_resource type="PackedScene" uid="uid://c02hclv07w7cs" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/chem_inventory.tscn" id="20_0jtan"]
 [ext_resource type="Script" uid="uid://bmrc6kgne6fhf" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/entrance_dialogue.gd" id="20_7r4fh"]
 [ext_resource type="PackedScene" uid="uid://crx2yh5r8pj50" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/lab_props/lab_trash_can.tscn" id="20_mor7r"]
+[ext_resource type="PackedScene" uid="uid://c4f5tcvmt380f" path="res://modules/objects/level_transition_zone/transition_door.tscn" id="23_246ub"]
 [ext_resource type="PackedScene" uid="uid://e7mplq2c2c5" path="res://modules/objects/interactable.tscn" id="24_246ub"]
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_xkp01"]
@@ -3215,7 +3215,7 @@ tile_set = ExtResource("2_beb0c")
 z_index = 1
 y_sort_enabled = true
 material = ExtResource("1_0bwgv")
-tile_map_data = PackedByteArray("AAD5//v/AgAFAAIAAAD6//v/AgAGAAIAAAD7//v/AgAHAAIAAAAEAPv/AgAGAAIAAAAFAPv/AgAGAAIAAAAGAPv/AgAHAAIAAAADAPv/AgAFAAIAAAA=")
+tile_map_data = PackedByteArray("AAD5//v/AgAFAAIAAAD6//v/AgAGAAIAAAD7//v/AgAHAAIAAAA=")
 tile_set = ExtResource("2_beb0c")
 
 [node name="Objects" type="TileMapLayer" parent="ChemLab/Tiles"]
@@ -3330,9 +3330,6 @@ position = Vector2(-24, 84)
 rotation = 2.92142e-05
 shape = SubResource("RectangleShape2D_7r4fh")
 
-[node name="MaterialsStation" parent="ChemLab/Tiles/Stations" instance=ExtResource("19_n07ws")]
-position = Vector2(120, -82)
-
 [node name="LabTrashCan" parent="ChemLab/Tiles/Stations" instance=ExtResource("20_mor7r")]
 position = Vector2(64, -72)
 
@@ -3341,7 +3338,12 @@ position = Vector2(64, -72)
 [node name="LabSouth" type="Marker2D" parent="ChemLab/Entrances" groups=["level_entrance"]]
 position = Vector2(-60, 108)
 
+[node name="LabNorth" type="Marker2D" parent="ChemLab/Entrances" groups=["level_entrance"]]
+position = Vector2(120, -62)
+
 [node name="Exits" type="Node2D" parent="ChemLab"]
+z_index = 1
+y_sort_enabled = true
 
 [node name="LabSouth" parent="ChemLab/Exits" groups=["entrance_area"] instance=ExtResource("4_hm8n3")]
 position = Vector2(-60, 132)
@@ -3349,6 +3351,11 @@ scale = Vector2(4, 4)
 next_level_path = "uid://bqotfp8yphsb"
 entrance_name = "PuzzleDoorA"
 transition_direction = 1
+
+[node name="LabNorth" parent="ChemLab/Exits" groups=["entrance_area"] instance=ExtResource("23_246ub")]
+position = Vector2(120, -72)
+next_level_path = "uid://cwaiu5sc0820t"
+entrance_name = "InventoryRoomSouth"
 
 [node name="Entities" type="Node2D" parent="ChemLab"]
 
