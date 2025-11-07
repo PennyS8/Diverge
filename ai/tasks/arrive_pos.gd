@@ -44,10 +44,10 @@ func _tick(_delta: float) -> Status:
 	var dist: float = absf(agent.global_position.x - target_pos.x)
 	var dir: Vector2 = agent.global_position.direction_to(target_pos)
 
-	# Prefer horizontal movement:
-	var vertical_factor: float = remap(dist, 200.0, 500.0, 1.0, 0.0)
-	vertical_factor = clampf(vertical_factor, 0.0, 1.0)
-	dir.y *= vertical_factor
+	## Prefer horizontal movement:
+	#var vertical_factor: float = remap(dist, 200.0, 500.0, 1.0, 0.0)
+	#vertical_factor = clampf(vertical_factor, 0.0, 1.0)
+	#dir.y *= vertical_factor
 
 	# Avoid the node specified by `avoid_var`.
 	# I.e., if `avoid_var` is set, agent will circle around that node while moving into position.

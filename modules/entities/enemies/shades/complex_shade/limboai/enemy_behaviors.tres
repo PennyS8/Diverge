@@ -1,7 +1,9 @@
-[gd_resource type="BehaviorTree" load_steps=32 format=3 uid="uid://bpt1dcaahcip4"]
+[gd_resource type="BehaviorTree" load_steps=65 format=3 uid="uid://bpt1dcaahcip4"]
 
 [ext_resource type="Script" uid="uid://dko5wh2jus0gi" path="res://ai/tasks/get_first_in_group.gd" id="1_77b2d"]
 [ext_resource type="Script" uid="uid://dbo0kq2cwb4qv" path="res://demo/ai/tasks/face_target.gd" id="3_mk0se"]
+[ext_resource type="Script" uid="uid://b60ahl17l846s" path="res://ai/tasks/select_flanking_pos.gd" id="3_te4dv"]
+[ext_resource type="Script" uid="uid://s5eppf5abs4s" path="res://ai/tasks/arrive_pos.gd" id="4_8ko0m"]
 [ext_resource type="Script" uid="uid://b7r6jgnl6kvcu" path="res://ai/tasks/back_away.gd" id="4_te4dv"]
 [ext_resource type="Script" uid="uid://cwwha6hxxq37c" path="res://ai/tasks/pursue.gd" id="5_8ko0m"]
 [ext_resource type="Script" uid="uid://dcsbt16bn40w3" path="res://ai/tasks/check_engagement.gd" id="5_65xok"]
@@ -20,6 +22,16 @@ var/slow_speed/type = 3
 var/slow_speed/value = 50.0
 var/slow_speed/hint = 1
 var/slow_speed/hint_string = "1,200,1"
+var/sprint/name = &"sprint"
+var/sprint/type = 3
+var/sprint/value = 90.0
+var/sprint/hint = 1
+var/sprint/hint_string = "1,200,1"
+var/attack_cooldown/name = &"attack_cooldown"
+var/attack_cooldown/type = 1
+var/attack_cooldown/value = false
+var/attack_cooldown/hint = 0
+var/attack_cooldown/hint_string = ""
 
 [sub_resource type="BBNode" id="BBNode_nmubl"]
 saved_value = NodePath("AnimationPlayer")
@@ -41,6 +53,71 @@ children = [SubResource("BTPlayAnimation_i1ysd"), SubResource("BTRandomWait_mk0s
 custom_name = "Play Spawn Animation (Only run once)"
 children = [SubResource("BTSequence_2exw4")]
 
+[sub_resource type="BBVariant" id="BBVariant_a10nm"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_ypm6i"]
+property = &"is_hit_this_frame"
+value = SubResource("BBVariant_a10nm")
+
+[sub_resource type="BBNode" id="BBNode_xyn6j"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_lpn1b"]
+await_completion = 0.5
+animation_player = SubResource("BBNode_xyn6j")
+animation_name = &"damaged"
+blend = 0.0
+
+[sub_resource type="BBVariant" id="BBVariant_te4dv"]
+type = 1
+saved_value = false
+resource_name = "<null>"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_8ko0m"]
+property = &"is_hit_this_frame"
+value = SubResource("BBVariant_te4dv")
+
+[sub_resource type="BTWait" id="BTWait_a10nm"]
+
+[sub_resource type="BBVariant" id="BBVariant_xyn6j"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTCheckAgentProperty" id="BTCheckAgentProperty_lpn1b"]
+property = &"is_attacking"
+value = SubResource("BBVariant_xyn6j")
+
+[sub_resource type="BBVariant" id="BBVariant_i5812"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTSetVar" id="BTSetVar_nb1nl"]
+variable = &"attack_cooldown"
+value = SubResource("BBVariant_i5812")
+
+[sub_resource type="BBVariant" id="BBVariant_lep7j"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_lri2m"]
+property = &"is_attacking"
+value = SubResource("BBVariant_lep7j")
+
+[sub_resource type="BTSequence" id="BTSequence_7fhru"]
+custom_name = "Turn on attack cooldown if interrupted"
+children = [SubResource("BTCheckAgentProperty_lpn1b"), SubResource("BTSetVar_nb1nl"), SubResource("BTSetAgentProperty_lri2m")]
+
+[sub_resource type="BTSequence" id="BTSequence_te4dv"]
+custom_name = "Have We Been Hit?"
+children = [SubResource("BTCheckAgentProperty_ypm6i"), SubResource("BTPlayAnimation_lpn1b"), SubResource("BTSetAgentProperty_8ko0m"), SubResource("BTWait_a10nm"), SubResource("BTSequence_7fhru")]
+
 [sub_resource type="BTAction" id="BTAction_65xok"]
 custom_name = "Set $target to first node in \"player\" group"
 script = ExtResource("1_77b2d")
@@ -51,11 +128,48 @@ output_var = &"target"
 custom_name = "EnemyManager - Attempt Engagement"
 script = ExtResource("5_65xok")
 
+[sub_resource type="BBVariant" id="BBVariant_8ko0m"]
+type = 1
+saved_value = true
+resource_name = "true"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_xyn6j"]
+property = &"is_attacking"
+value = SubResource("BBVariant_8ko0m")
+
+[sub_resource type="BTAction" id="BTAction_7fhru"]
+script = ExtResource("3_mk0se")
+target_var = &"target"
+
+[sub_resource type="BTRandomWait" id="BTRandomWait_a10nm"]
+min_duration = 0.5
+max_duration = 1.5
+
+[sub_resource type="BTConsolePrint" id="BTConsolePrint_ypm6i"]
+text = "Agent attempting attack!"
+
+[sub_resource type="BTAction" id="BTAction_i5812"]
+_enabled = false
+script = ExtResource("3_te4dv")
+target_var = &"target"
+flank_side = 0
+range_min = 8
+range_max = 20
+position_var = &"pos"
+
+[sub_resource type="BTAction" id="BTAction_nb1nl"]
+_enabled = false
+script = ExtResource("4_8ko0m")
+target_position_var = &"pos"
+speed_var = &"speed"
+tolerance = 12.0
+avoid_var = &"target"
+
 [sub_resource type="BTAction" id="BTAction_ypm6i"]
 script = ExtResource("5_8ko0m")
 target_var = &"target"
 speed_var = &"speed"
-approach_distance = 12.0
+approach_distance = 6.0
 
 [sub_resource type="BTAction" id="BTAction_8ko0m"]
 script = ExtResource("3_mk0se")
@@ -66,30 +180,48 @@ saved_value = NodePath("AnimationPlayer")
 resource_name = "AnimationPlayer"
 
 [sub_resource type="BTPlayAnimation" id="BTPlayAnimation_8ko0m"]
-await_completion = 1.5
+await_completion = 2.0
 animation_player = SubResource("BBNode_te4dv")
 animation_name = &"attack_right"
 
-[sub_resource type="BTSequence" id="BTSequence_77b2d"]
+[sub_resource type="BTSequence" id="BTSequence_ypm6i"]
 custom_name = "Move in and Attack"
-children = [SubResource("BTAction_ypm6i"), SubResource("BTAction_8ko0m"), SubResource("BTPlayAnimation_8ko0m")]
+children = [SubResource("BTSetAgentProperty_xyn6j"), SubResource("BTAction_7fhru"), SubResource("BTRandomWait_a10nm"), SubResource("BTConsolePrint_ypm6i"), SubResource("BTAction_i5812"), SubResource("BTAction_nb1nl"), SubResource("BTAction_ypm6i"), SubResource("BTAction_8ko0m"), SubResource("BTPlayAnimation_8ko0m")]
 
 [sub_resource type="BTCooldown" id="BTCooldown_xyn6j"]
 duration = 5.0
+cooldown_state_var = &"attack_cooldown"
 custom_name = "Attack Cooldown"
-children = [SubResource("BTSequence_77b2d")]
+children = [SubResource("BTSequence_ypm6i")]
+
+[sub_resource type="BTSequence" id="BTSequence_8ko0m"]
+custom_name = "Can we attack player?"
+children = [SubResource("BTAction_65xok"), SubResource("BTAction_a10nm"), SubResource("BTCooldown_xyn6j")]
 
 [sub_resource type="BTAction" id="BTAction_lpn1b"]
 script = ExtResource("7_65xok")
 
-[sub_resource type="BTSequence" id="BTSequence_i5812"]
-custom_name = "Can We Attack Player?"
-children = [SubResource("BTAction_65xok"), SubResource("BTAction_a10nm"), SubResource("BTCooldown_xyn6j"), SubResource("BTAction_lpn1b")]
+[sub_resource type="BBVariant" id="BBVariant_impht"]
+type = 1
+saved_value = false
+resource_name = "false"
+
+[sub_resource type="BTSetAgentProperty" id="BTSetAgentProperty_s3080"]
+property = &"is_attacking"
+value = SubResource("BBVariant_impht")
+
+[sub_resource type="BTParallel" id="BTParallel_te4dv"]
+num_successes_required = 3
+num_failures_required = 3
+children = [SubResource("BTAction_lpn1b"), SubResource("BTSetAgentProperty_s3080")]
+
+[sub_resource type="BTAlwaysFail" id="BTAlwaysFail_te4dv"]
+children = [SubResource("BTParallel_te4dv")]
 
 [sub_resource type="BTCondition" id="BTCondition_nb1nl"]
 script = ExtResource("5_te4dv")
 distance_min = 0.0
-distance_max = 24.0
+distance_max = 48.0
 target_var = &"target"
 
 [sub_resource type="BTAction" id="BTAction_xyn6j"]
@@ -101,23 +233,47 @@ script = ExtResource("4_te4dv")
 speed_var = &"speed"
 max_angle_deviation = 0.7
 
-[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_a10nm"]
-custom_name = "Are We Too Close?"
-children = [SubResource("BTCondition_nb1nl"), SubResource("BTAction_xyn6j"), SubResource("BTAction_lep7j")]
+[sub_resource type="BTTimeLimit" id="BTTimeLimit_a10nm"]
+time_limit = 0.5
+children = [SubResource("BTAction_lep7j")]
+
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_xyn6j"]
+custom_name = "Are we too close to player?"
+children = [SubResource("BTCondition_nb1nl"), SubResource("BTAction_xyn6j"), SubResource("BTTimeLimit_a10nm")]
+
+[sub_resource type="BTCondition" id="BTCondition_ypm6i"]
+script = ExtResource("5_te4dv")
+distance_min = 96.0
+distance_max = 99999.0
+target_var = &"target"
+
+[sub_resource type="BTAction" id="BTAction_lri2m"]
+script = ExtResource("5_8ko0m")
+target_var = &"target"
+speed_var = &"speed"
+approach_distance = 24.0
+
+[sub_resource type="BTDynamicSequence" id="BTDynamicSequence_lpn1b"]
+custom_name = "Are we too far from player?"
+children = [SubResource("BTCondition_ypm6i"), SubResource("BTAction_lri2m")]
 
 [sub_resource type="BTAction" id="BTAction_te4dv"]
 script = ExtResource("7_a10nm")
 target_var = &"target"
 circle_speed = 55.0
 
-[sub_resource type="BTSequence" id="BTSequence_65xok"]
-custom_name = "Default Behavior - Strafe Around Player"
+[sub_resource type="BTTimeLimit" id="BTTimeLimit_ypm6i"]
+time_limit = 3.0
 children = [SubResource("BTAction_te4dv")]
 
-[sub_resource type="BTSelector" id="BTSelector_7fhru"]
+[sub_resource type="BTSequence" id="BTSequence_a10nm"]
+custom_name = "Default Behavior - Strafe Around Player"
+children = [SubResource("BTTimeLimit_ypm6i")]
+
+[sub_resource type="BTDynamicSelector" id="BTDynamicSelector_lpn1b"]
 custom_name = "Enemy Behavior"
-children = [SubResource("BTRunLimit_q8l3p"), SubResource("BTSequence_i5812"), SubResource("BTDynamicSequence_a10nm"), SubResource("BTSequence_65xok")]
+children = [SubResource("BTRunLimit_q8l3p"), SubResource("BTSequence_te4dv"), SubResource("BTSequence_8ko0m"), SubResource("BTAlwaysFail_te4dv"), SubResource("BTDynamicSequence_xyn6j"), SubResource("BTDynamicSequence_lpn1b"), SubResource("BTSequence_a10nm")]
 
 [resource]
 blackboard_plan = SubResource("BlackboardPlan_boxpv")
-root_task = SubResource("BTSelector_7fhru")
+root_task = SubResource("BTDynamicSelector_lpn1b")

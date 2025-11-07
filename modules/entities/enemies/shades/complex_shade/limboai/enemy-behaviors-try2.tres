@@ -1,0 +1,42 @@
+[gd_resource type="BehaviorTree" load_steps=11 format=3 uid="uid://bovys3wljqydm"]
+
+[ext_resource type="Script" uid="uid://6jtpypwve6bv" path="res://ai/tasks/custom/can_see_player.gd" id="1_4y6xq"]
+[ext_resource type="Script" uid="uid://bfv1vdw2f6msb" path="res://ai/tasks/in_range.gd" id="2_bea33"]
+
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_wduod"]
+
+[sub_resource type="BTCondition" id="BTCondition_bea33"]
+script = ExtResource("1_4y6xq")
+detection_range = 300.0
+field_of_view = 90.0
+target_group = "player"
+
+[sub_resource type="BTCondition" id="BTCondition_drlq7"]
+script = ExtResource("2_bea33")
+distance_min = 24.0
+distance_max = 24.0
+target_var = &"target"
+
+[sub_resource type="BBNode" id="BBNode_bea33"]
+saved_value = NodePath("AnimationPlayer")
+resource_name = "AnimationPlayer"
+
+[sub_resource type="BTPlayAnimation" id="BTPlayAnimation_drlq7"]
+await_completion = 1.5
+animation_player = SubResource("BBNode_bea33")
+animation_name = &"attack_right"
+
+[sub_resource type="BTCooldown" id="BTCooldown_4opyu"]
+duration = 4.0
+children = [SubResource("BTPlayAnimation_drlq7")]
+
+[sub_resource type="BTSequence" id="BTSequence_drlq7"]
+custom_name = "Combat Branch"
+children = [SubResource("BTCondition_bea33"), SubResource("BTCondition_drlq7"), SubResource("BTCooldown_4opyu")]
+
+[sub_resource type="BTSelector" id="BTSelector_mhrya"]
+children = [SubResource("BTSequence_drlq7")]
+
+[resource]
+blackboard_plan = SubResource("BlackboardPlan_wduod")
+root_task = SubResource("BTSelector_mhrya")

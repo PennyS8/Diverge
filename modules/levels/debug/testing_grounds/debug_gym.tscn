@@ -58,25 +58,25 @@ position = Vector2(338, 249)
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="ComplexShade" parent="Objects" instance=ExtResource("1_gkshk")]
-position = Vector2(378, 191)
+position = Vector2(404, 240)
 
 [node name="ComplexShade2" parent="Objects" instance=ExtResource("1_gkshk")]
-position = Vector2(366, 208)
+position = Vector2(323, 245)
 
 [node name="ComplexShade3" parent="Objects" instance=ExtResource("1_gkshk")]
-position = Vector2(362, 186)
+position = Vector2(322, 144)
 
 [node name="ComplexShade4" parent="Objects" instance=ExtResource("1_gkshk")]
-position = Vector2(386, 206)
+position = Vector2(444, 180)
 
 [node name="ComplexShade5" parent="Objects" instance=ExtResource("1_gkshk")]
-position = Vector2(390, 185)
+position = Vector2(399, 134)
 
 [node name="ComplexShade6" parent="Objects" instance=ExtResource("1_gkshk")]
-position = Vector2(374, 174)
+position = Vector2(285, 187)
 
 [node name="ComplexShade7" parent="Objects" instance=ExtResource("1_gkshk")]
-position = Vector2(351, 189)
+position = Vector2(367, 288)
 
 [node name="Gym" type="Node2D" parent="."]
 y_sort_enabled = true

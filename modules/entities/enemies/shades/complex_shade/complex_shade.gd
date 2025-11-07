@@ -36,6 +36,8 @@ var _frames_since_facing_update := 0
 @onready var root = %DisplayComponents
 @onready var soft_collision = %SoftCollision
 
+var is_hit_this_frame := false
+var is_attacking := false
 ## NATE - STEERING BEHAVIORS
 var ai_steering := AISteering.new()
 var strafe_factor := 0.25
@@ -163,15 +165,15 @@ func _on_hurt_box_component_2d_hit(_area : HitBoxComponent2D) -> void:
 	if (health_component.health - _area.damage) > 0:
 		$AnimationPlayer.call_deferred("play", "RESET")
 		
-		if idle_dir == "up":
-			%AnimationPlayer.call_deferred("play", "damaged_up")
-		elif idle_dir == "down":
-			%AnimationPlayer.call_deferred("play", "damaged_down")
-		else:
-			%AnimationPlayer.call_deferred("play", "damaged")
+		#if idle_dir == "up":
+			#%AnimationPlayer.call_deferred("play", "damaged_up")
+		#elif idle_dir == "down":
+			#%AnimationPlayer.call_deferred("play", "damaged_down")
+		#else:
+			#%AnimationPlayer.call_deferred("play", "damaged")
 
 		#fsm.call_deferred("change_state", "Stunned")
-
+		is_hit_this_frame = true
 		damaged_particles.restart()
 		
 		# If the attacking _area is the players thread apply the tethered status effect

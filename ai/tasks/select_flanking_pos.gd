@@ -70,5 +70,6 @@ func _tick(_delta: float) -> Status:
 	if not agent.is_good_position(flank_pos):
 		# Choose the opposite side if the preferred side is not good (i.e., inside a collision shape).
 		flank_pos = target.global_position - offset
+	print("New position selected!")
 	blackboard.set_var(position_var, flank_pos)
 	return SUCCESS

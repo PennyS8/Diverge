@@ -91,6 +91,8 @@ func release_engagement(enemy):
 		marked_for_disengage.erase(enemy)
 
 func mark_for_disengage(enemy : CharacterBody2D):
+	if !current_engagers.has(enemy):
+		return
 	# if we've already marked this enemy for disengagement, free its timer
 	if marked_for_disengage.has(enemy):
 		marked_for_disengage[enemy].timeout.disconnect(release_engagement)

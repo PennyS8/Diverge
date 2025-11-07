@@ -28,18 +28,22 @@ func _tick(delta):
 		return FAILURE
 	
 	if agent is CharacterBody2D:
+
 		var target_pos_relative : Vector2 = target.global_position - agent.global_position
 		var angle = target_pos_relative.angle()
+		
+		agent.ai_steering.clear()
+		
 		#TODO: change 0.25 out for a strafe_factor variable
-		agent.ai_steering.apply_strafe(angle, 0.25)
-		agent.ai_steering.apply_seek(angle, 0.2)
+		agent.ai_steering.apply_seek(agent.velocity.angle(), 0.1)
+		agent.ai_steering.apply_strafe(angle, 0.3)
+		agent.ai_steering.apply_seek(angle, 0.1)
 		
 		#TODO: apply ai_steering forces in task after this rather than in the same state
 		# Get the direction we want to move
 		var normal = agent.ai_steering.get_desired_normal()
 		var desired_velocity = normal * circle_speed
 		
-		agent.update_facing(desired_velocity)
 		agent.move(desired_velocity)
 		
-		return SUCCESS
+		return RUNNING

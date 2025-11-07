@@ -1,4 +1,4 @@
-[gd_scene load_steps=77 format=3 uid="uid://dx5na7ufncxg3"]
+[gd_scene load_steps=79 format=3 uid="uid://dx5na7ufncxg3"]
 
 [ext_resource type="PackedScene" uid="uid://8xtoptvgrpqi" path="res://modules/entities/enemies/hp_bar/shade_hp_indicator.tscn" id="2_88af2"]
 [ext_resource type="Script" uid="uid://b0i8j6op07e6t" path="res://modules/entities/enemies/shades/complex_shade/complex_shade.gd" id="2_knfav"]
@@ -23,6 +23,7 @@
 [ext_resource type="Texture2D" uid="uid://d2k5ylavgktxb" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Left_Down.png" id="28_pufi2"]
 [ext_resource type="Texture2D" uid="uid://na43h01jh8sq" path="res://modules/entities/enemies/shades/complex_shade/sprites/Death/Death_LR_Combined.png" id="29_iug1g"]
 [ext_resource type="Texture2D" uid="uid://chpbdfsf6jyng" path="res://modules/entities/player/placeholder_sprites/Dash - NEW/Spear/Dash_Spear_Up.png" id="29_xu3ac"]
+[ext_resource type="PackedScene" uid="uid://c4kiv3fvs545d" path="res://modules/entities/enemies/shades/complex_shade/xsm/ai_steering_gizmo.tscn" id="30_c472j"]
 [ext_resource type="BehaviorTree" uid="uid://bpt1dcaahcip4" path="res://modules/entities/enemies/shades/complex_shade/limboai/enemy_behaviors.tres" id="31_thooc"]
 [ext_resource type="Texture2D" uid="uid://08y4slel3t1j" path="res://modules/entities/enemies/shades/complex_shade/sprites/Idle/IDLE_LR_Base.png" id="35_dvtn2"]
 [ext_resource type="AudioStream" uid="uid://logbde0okioc" path="res://modules/entities/enemies/shades/complex_shade/sfx/spawn_twinkle.wav" id="39_tvkt4"]
@@ -30,12 +31,10 @@
 [ext_resource type="AudioStream" uid="uid://c1uldj3nuo44y" path="res://modules/entities/enemies/shades/complex_shade/sfx/spawn_sfx.wav" id="40_iug1g"]
 [ext_resource type="Texture2D" uid="uid://chrodv1s7hmuu" path="res://modules/entities/enemies/shades/complex_shade/sprites/Lunge/Lunge_D_Base.png" id="42_pra3i"]
 
+[sub_resource type="BlackboardPlan" id="BlackboardPlan_thooc"]
+
 [sub_resource type="BlackboardPlan" id="BlackboardPlan_c472j"]
-var/slow_speed/name = &"slow_speed"
-var/slow_speed/type = 3
-var/slow_speed/value = 55.0
-var/slow_speed/hint = 1
-var/slow_speed/hint_string = "1,200,1"
+resource_local_to_scene = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mjkpu"]
 resource_local_to_scene = true
@@ -267,7 +266,7 @@ tracks/15/path = NodePath("DisplayComponents/Sprite2D:flip_h")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(-0.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [true]
@@ -2241,7 +2240,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [false]
+"values": [true]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -2830,6 +2829,11 @@ collision_mask = 83
 motion_mode = 1
 script = ExtResource("2_knfav")
 
+[node name="LimboHSM" type="LimboHSM" parent="."]
+blackboard_plan = SubResource("BlackboardPlan_thooc")
+
+[node name="LimboState" type="LimboState" parent="LimboHSM"]
+
 [node name="BTPlayer" type="BTPlayer" parent="."]
 behavior_tree = ExtResource("31_thooc")
 blackboard_plan = SubResource("BlackboardPlan_c472j")
@@ -3007,6 +3011,9 @@ autoplay = "idle_left"
 
 [node name="Death" type="AudioStreamPlayer2D" parent="."]
 stream = SubResource("AudioStreamRandomizer_dvtn2")
+
+[node name="AISteeringGizmo" parent="." node_paths=PackedStringArray("ai_steering_owner") instance=ExtResource("30_c472j")]
+ai_steering_owner = NodePath("..")
 
 [connection signal="mouse_entered" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_entered"]
 [connection signal="mouse_exited" from="TetherableArea2D" to="." method="_on_tetherable_area_2d_mouse_exited"]

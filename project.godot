@@ -210,6 +210,10 @@ locale/translations_pot_files=PackedStringArray("res://modules/dialogue/dialogue
 2d_physics/layer_14="EncounterCheck"
 2d_physics/layer_y="BoxEdge"
 
+[limbo_ai]
+
+behavior_tree/user_task_dirs=PackedStringArray("res://ai/tasks", "res://ai/tasks/custom")
+
 [maaacks_menus_template]
 
 disable_update_check=false
