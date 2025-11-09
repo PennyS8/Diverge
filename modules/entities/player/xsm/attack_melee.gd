@@ -25,10 +25,15 @@ var distance_travelled : float
 func _on_enter(_args) -> void:
 	change_state("NoAttack")
 	
-	var mouse_pos = target.get_global_mouse_position()  
 	
-	start_location = target.global_position
-	attack_dir = start_location.direction_to(mouse_pos).normalized()
+	if ControllerChecker.using_gamepad:
+		attack_dir = target.dir.normalized()
+		if attack_dir == Vector2.ZERO:
+			attack_dir = target.idle_dir
+	else:
+		var mouse_pos = target.get_global_mouse_position()
+		start_location = target.global_position
+		attack_dir = start_location.direction_to(mouse_pos).normalized()
 	distance_travelled = 0
 	
 	# this logic is so that we find which of the four cardinals our mouse is \

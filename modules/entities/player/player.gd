@@ -64,8 +64,11 @@ func dialogue_done(resource : Resource) -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	unhandled_input_received.emit(event)
 	if !in_cutscene:
+		if ControllerChecker.using_gamepad:
+			dir = Input.get_vector("move_left_joystick", "move_right_joystick", "move_up_joystick", "move_down_joystick")
+		else:
+			dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 		_camera_move()
-		dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 
 func _process(_delta):	
 	# Camera Boundries MUST NOT overlap eachother, and must have the collision\
@@ -121,7 +124,16 @@ func check_unlock_hook():
 	
 func _camera_move():
 	if !lock_camera:
-		camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
+		if !ControllerChecker.using_gamepad:
+			camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
+		else:
+			var aim = Input.get_vector("rstick_left", "rstick_right", "rstick_up", "rstick_down")
+			if aim.length() > 0.5:
+				$Crosshair.show()
+				camera.global_position = global_position + (aim * 24.0)
+			else:
+				$Crosshair.hide()
+				camera.global_position = global_position + (dir * 0.1)
 		camera.position_smoothing_enabled = true
 		
 func can_attack():
@@ -178,8 +190,7 @@ func exit_cutscene():
 	lock_camera = false
 	in_cutscene = false
 
-	camera.position_smoothing_enabled = true
-	camera.global_position = global_position + (get_global_mouse_position() - global_position) * 0.10
+	_camera_move()
 	
 ## To be called within a cutscene to move the player to a specific point.
 ## [param speed_percentage] A value that represents a percentage of the player's normal walk speed
@@ -280,3 +291,4 @@ func _end_invulnerability_effect():
 	
 func _on_animation_player_current_animation_changed(name: String) -> void:
 	$Hook/CollisionPolygon2D.set_deferred("disabled", true)
+	

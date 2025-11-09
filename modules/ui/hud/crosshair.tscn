@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://3a8pbiogytid"]
+
+[ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_4tudd"]
+[ext_resource type="Texture2D" uid="uid://80hxy8dv0cg2" path="res://assets/hud/crossy.png" id="2_la4ts"]
+[ext_resource type="Script" uid="uid://bx6m7osswfspy" path="res://modules/ui/hud/crosshair.gd" id="3_ps6bt"]
+
+[node name="Crosshair" type="Sprite2D"]
+process_mode = 3
+material = ExtResource("1_4tudd")
+texture = ExtResource("2_la4ts")
+script = ExtResource("3_ps6bt")

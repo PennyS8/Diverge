@@ -40,9 +40,14 @@ func _on_enter(_args):
 	change_state("NoAttack")
 	
 	start_location = target.global_position
-	# TODO: when implementing controller, override this with analog stick direction instead of mouse pos
-	var mouse_pos = target.get_global_mouse_position()
-	dash_direction = start_location.direction_to(mouse_pos).normalized()
+	if !ControllerChecker.using_gamepad:
+		var mouse_pos = target.get_global_mouse_position()
+		dash_direction = start_location.direction_to(mouse_pos).normalized()
+	else:
+		dash_direction = target.dir.normalized()
+		# incase player is not moving before dashing
+		if dash_direction == Vector2.ZERO:
+			dash_direction = target.idle_dir
 	distance_travelled = 0
 	
 	# this logic is so that we find which of the four cardinals our mouse is \

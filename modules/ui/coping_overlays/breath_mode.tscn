@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddv7xdgy2vjt"]
+[gd_scene load_steps=6 format=3 uid="uid://ddv7xdgy2vjt"]
 
-[ext_resource type="Shader" path="res://assets/debug/grayscale.gdshader" id="1_0hnpb"]
+[ext_resource type="Shader" uid="uid://hpx4oj7ke2hm" path="res://assets/debug/grayscale.gdshader" id="1_0hnpb"]
 [ext_resource type="Script" uid="uid://bcr45pjwtp6hj" path="res://modules/globals/breath_mode.gd" id="2_wd1eu"]
+[ext_resource type="PackedScene" uid="uid://v38l2x81cvqh" path="res://modules/ui/hud/free_crosshair.tscn" id="3_wd1eu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tdd3g"]
 shader = ExtResource("1_0hnpb")
@@ -46,6 +47,10 @@ vertical_alignment = 1
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
+
+[node name="FreeCrosshair" parent="." instance=ExtResource("3_wd1eu")]
+position = Vector2(960, 540)
+scale = Vector2(5.5, 5.5)
 
 [connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

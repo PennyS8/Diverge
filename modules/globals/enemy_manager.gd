@@ -27,6 +27,8 @@ const MAX_METER := 4
 ## Variable that keeps track of status of deep breath upon focus_meter's set
 var can_deep_breath := false
 
+var debug_infinite_cope := false
+
 ## Signal that is emitted whenever focus_meter is updated
 signal focus_updated(new_value)
 
@@ -48,12 +50,19 @@ var focus_meter: int:
 
 ## Sets `can_deep_breath` based on focus meter's progress
 func set_deep_breath_status():
+	if debug_infinite_cope:
+		can_deep_breath = true
+		return
+	
 	if _focus_meter == MAX_METER:
 		can_deep_breath = true
 	else:
 		can_deep_breath = false
 
 func reset_focus_meter():
+	if debug_infinite_cope:
+		can_deep_breath = true
+		return
 	focus_meter = 0
 	can_deep_breath = false
 
