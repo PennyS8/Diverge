@@ -356,7 +356,7 @@ position = Vector2(176, -33)
 position = Vector2(176, 38)
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
-position = Vector2(180, 160)
+position = Vector2(-179, -127)
 
 [node name="dialogue" type="Area2D" parent="."]
 y_sort_enabled = true

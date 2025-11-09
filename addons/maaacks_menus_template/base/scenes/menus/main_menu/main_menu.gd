@@ -100,6 +100,8 @@ func _ready() -> void:
 
 func _on_new_game_button_pressed() -> void:
 	DirAccess.remove_absolute("user://player_inventory")
+	if GameManager.inventory:
+		GameManager.inventory.clear()
 	new_game()
 
 func _on_load_game_button_pressed():
