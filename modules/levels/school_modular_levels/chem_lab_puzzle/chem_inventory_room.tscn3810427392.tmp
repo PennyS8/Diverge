@@ -1,14 +1,11 @@
-[gd_scene load_steps=11 format=4 uid="uid://cwaiu5sc0820t"]
+[gd_scene load_steps=8 format=4 uid="uid://cwaiu5sc0820t"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_whe1i"]
 [ext_resource type="TileSet" uid="uid://cq3hvofrushyg" path="res://modules/levels/school_modular_levels/hallway.tres" id="2_i8125"]
 [ext_resource type="Script" uid="uid://bgxdgii3xmyo6" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/material_spawn_manager.gd" id="3_53wmm"]
 [ext_resource type="PackedScene" uid="uid://btn1qexhyyea5" path="res://modules/objects/level_transition_zone/transition_zone.tscn" id="3_i8125"]
 [ext_resource type="Script" uid="uid://cgg102c222rfg" path="res://addons/wyvernbox/item_type.gd" id="4_5axso"]
-[ext_resource type="Resource" uid="uid://gwkfqguf7f7k" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/blue_substance.tres" id="5_amkik"]
-[ext_resource type="Resource" uid="uid://difvpl7frxbmp" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/orange_substance.tres" id="6_genvx"]
-[ext_resource type="Resource" uid="uid://dxsf6bvbtwl4m" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/yellow_substance.tres" id="7_h0box"]
-[ext_resource type="Resource" uid="uid://cal7ipjix4u6d" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/green_substance.tres" id="8_413kk"]
+[ext_resource type="Resource" uid="uid://ddkfnyew6hgco" path="res://modules/levels/cafeteria/ramen_tray_item.tres" id="5_fhog5"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_53wmm"]
 vertices = PackedVector2Array(32, 69, 88, 64, 136, 64, 136, 88, -56, 88, 32, -32, 88, 28, -32, 69, -64, 88, -88, -51, 50.5, -58, 64, -58, 64, -51, -32, -32, 160, -51, 160, -32, 88, -32, 88, 4, 136, 4, 136, 28, -56, 112, -64, 112, -136, 88, -136, 64, -88, 64, -88, 28, -136, 28, -136, 4, -88, 4, -88, -32, -160, -32, -160, -51, -88, -64, 50.5, -64)
@@ -84,12 +81,8 @@ NodePath("SpawnLocation3"): null,
 NodePath("SpawnLocation2"): null,
 NodePath("SpawnLocation1"): null
 }
-needed_mats = Dictionary[ExtResource("4_5axso"), bool]({
-ExtResource("5_amkik"): false,
-ExtResource("6_genvx"): false,
-ExtResource("7_h0box"): false
-})
-materials = Array[ExtResource("4_5axso")]([ExtResource("5_amkik"), ExtResource("8_413kk"), ExtResource("6_genvx"), ExtResource("7_h0box")])
+needed_mats = null
+materials = Array[ExtResource("4_5axso")]([ExtResource("5_fhog5")])
 
 [node name="SpawnLocation1" type="Marker2D" parent="InventoryRoom/SpawnManager"]
 position = Vector2(-134, 34)

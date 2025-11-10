@@ -19,16 +19,19 @@ radius = 8.0
 script = ExtResource("1_7xy3w")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
+material = ExtResource("1_ohqdb")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasGroup"]
+z_index = 1
+y_sort_enabled = true
 material = ExtResource("1_ohqdb")
+use_parent_material = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_xvx06")
 
 [node name="TetherableArea2D" type="Area2D" parent="."]
-visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
 shape = SubResource("CircleShape2D_sjrr0")

@@ -1,13 +1,16 @@
 extends Node2D
 
-var spawn_locations : Dictionary[Marker2D, ItemType]
-var needed_mats : Dictionary[ItemType, bool]
-var materials : Array[ItemType]
+@export var spawn_locations : Dictionary[Marker2D, CharacterBody2D]
+@export var needed_mats : Dictionary[ItemType, bool]
+@export var materials : Array[ItemType]
+
+var substance_packed : PackedScene = preload("res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/substance.tscn")
 
 func _ready() -> void:
-	for location in get_children():
-		# Adds each spawn point into the array. If it exists, does nothing.
-		spawn_locations.get_or_add(location, null)
+	var randi = randi_range(3, 7)
+	
+	for i in randi:
+		add_random_material()
 
 ## Adds a random material (or a random needed material if not all needed materials
 ## have spawned) to a random location.
@@ -16,7 +19,7 @@ func add_random_material() -> void:
 	var random_mat
 	
 	if has_needed_mats():
-		var randi = randi_range(0, materials.size())
+		var randi = randi_range(0, materials.size()-1)
 		random_mat = materials[randi]
 	else:
 		# If has_needed_mats() returns false, it marks the needed material for spawning.
@@ -25,8 +28,18 @@ func add_random_material() -> void:
 				random_mat = mat
 				
 				needed_mats[mat] = true
+				
+				break
 	
-	spawn_locations[random_point] = random_mat
+	var substance = substance_packed.instantiate()
+	random_point.add_child(substance)
+	
+	substance.set_substance_type(random_mat)
+	
+	substance.global_position = random_point.global_position
+	
+	spawn_locations[random_point] = substance
+	
 
 func remove_material(mat : ItemType) -> void:
 	var spawn_location = spawn_locations.find_key(mat)
@@ -49,9 +62,9 @@ func remove_existing_spawns() -> void:
 	spawn_locations.clear()
 
 ## Adds saved spawns to spawn_locations.
-func add_existing_spawns(existing_spawns : Dictionary[Marker2D, ItemType]) -> void:
+func add_existing_spawns(existing_spawns : Dictionary[Marker2D, CharacterBody2D]) -> void:
 	spawn_locations = existing_spawns
 
-## NOTE: This function is used for consistent testing.
-func _add_specific_material(mat : ItemType, loc : Marker2D) -> void:
-	spawn_locations[loc] = mat
+## NOTE: This function is used for consistent testing. ALSO not functional currently
+#func _add_specific_material(mat : ItemType, loc : Marker2D) -> void:
+	#spawn_locations[loc] = mat
