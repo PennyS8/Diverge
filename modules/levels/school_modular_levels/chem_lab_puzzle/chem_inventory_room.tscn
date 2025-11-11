@@ -65,24 +65,24 @@ tile_set = ExtResource("2_i8125")
 [node name="SpawnManager" type="Node2D" parent="InventoryRoom" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("3_53wmm")
 spawn_locations = {
-NodePath("SpawnLocation18"): null,
-NodePath("SpawnLocation17"): null,
-NodePath("SpawnLocation16"): null,
-NodePath("SpawnLocation15"): null,
-NodePath("SpawnLocation14"): null,
-NodePath("SpawnLocation13"): null,
-NodePath("SpawnLocation12"): null,
-NodePath("SpawnLocation11"): null,
-NodePath("SpawnLocation10"): null,
-NodePath("SpawnLocation9"): null,
-NodePath("SpawnLocation8"): null,
-NodePath("SpawnLocation7"): null,
-NodePath("SpawnLocation6"): null,
-NodePath("SpawnLocation5"): null,
-NodePath("SpawnLocation4"): null,
-NodePath("SpawnLocation3"): null,
+NodePath("SpawnLocation1"): null,
 NodePath("SpawnLocation2"): null,
-NodePath("SpawnLocation1"): null
+NodePath("SpawnLocation3"): null,
+NodePath("SpawnLocation4"): null,
+NodePath("SpawnLocation5"): null,
+NodePath("SpawnLocation6"): null,
+NodePath("SpawnLocation7"): null,
+NodePath("SpawnLocation8"): null,
+NodePath("SpawnLocation9"): null,
+NodePath("SpawnLocation10"): null,
+NodePath("SpawnLocation11"): null,
+NodePath("SpawnLocation12"): null,
+NodePath("SpawnLocation13"): null,
+NodePath("SpawnLocation14"): null,
+NodePath("SpawnLocation15"): null,
+NodePath("SpawnLocation16"): null,
+NodePath("SpawnLocation17"): null,
+NodePath("SpawnLocation18"): null
 }
 needed_mats = Dictionary[ExtResource("4_5axso"), bool]({
 ExtResource("5_amkik"): false,

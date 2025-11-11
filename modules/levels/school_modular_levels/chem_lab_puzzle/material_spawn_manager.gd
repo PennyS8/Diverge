@@ -15,8 +15,11 @@ func _ready() -> void:
 ## Adds a random material (or a random needed material if not all needed materials
 ## have spawned) to a random location.
 func add_random_material() -> void:
-	var random_point = spawn_locations.keys().pick_random()
 	var random_mat
+	var random_point = spawn_locations.keys().pick_random()
+	# Picks a new random point if we have already spawn a material at the picked location.
+	while spawn_locations[random_point] != null:
+		random_point = spawn_locations.keys().pick_random()
 	
 	if has_needed_mats():
 		var randi = randi_range(0, materials.size()-1)
