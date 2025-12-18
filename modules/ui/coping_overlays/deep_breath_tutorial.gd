@@ -1,6 +1,6 @@
 extends ColorRect
 
-var icons : Array[Node2D]
+var icons : Array[Control]
 var tutorial_in_progress := false
 var cope_in_progress := false
 
@@ -14,7 +14,7 @@ func start_deep_breath_tutorial():
 
 func hud_indicator_q():
 	var icon_path = "res://modules/ui/input_button_overlays/press_q.tscn"
-	var icon : Node2D = load(icon_path).instantiate()
+	var icon : Control = load(icon_path).instantiate()
 	
 	get_parent().get_parent().get_node("ScreenFXExclusion").add_child(icon)
 	icon.global_position = LevelManager.player.global_position + Vector2(0, -48)

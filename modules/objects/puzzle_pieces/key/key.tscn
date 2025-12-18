@@ -69,7 +69,8 @@ visible = false
 visible = false
 
 [node name="RightClick" parent="." instance=ExtResource("6_tcohm")]
-position = Vector2(0, 11)
+offset_top = -23.0
+offset_bottom = 17.0
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="NatesGroundItem/Item" to="." method="_on_item_body_entered"]

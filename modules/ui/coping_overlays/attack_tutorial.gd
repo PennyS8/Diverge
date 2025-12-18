@@ -1,6 +1,6 @@
 extends ColorRect 
 
-var icons : Array[Node2D]
+var icons : Array[Control]
 var tutorial_in_progress := false
 
 func start_attack_tutorial():
@@ -8,13 +8,20 @@ func start_attack_tutorial():
 	self.show()
 
 	var icon_path = "res://modules/ui/input_button_overlays/left_click.tscn"
-	var icon : Node2D = load(icon_path).instantiate()
+	var icon : Control = load(icon_path).instantiate()
 	
-	get_parent().get_parent().get_node("ScreenFXExclusion").add_child(icon)
-	icon.global_position = get_tree().get_first_node_in_group("enemy").global_position
-	icons.append(icon)
+	var enemy : Node2D = get_tree().get_first_node_in_group("enemy")
+	var enemy_loc = enemy.get_global_transform_with_canvas()
 	
-	tutorial_in_progress = true
+	var fx_exclusion_layer : CanvasLayer = get_parent().get_parent().get_node("ScreenFXExclusion")
+	
+	
+	if enemy:
+		fx_exclusion_layer.add_child(icon)
+		icon.global_position = enemy.global_position
+		icons.append(icon)
+		
+		tutorial_in_progress = true
 
 func _unhandled_input(_event: InputEvent) -> void:
 	if !tutorial_in_progress:

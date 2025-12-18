@@ -1,72 +1,63 @@
 [gd_scene load_steps=8 format=3 uid="uid://ouhylxqig8h1"]
 
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_kxv27"]
-[ext_resource type="Texture2D" uid="uid://m0pepru6ehj6" path="res://assets/hud/input_prompts/input_prompts.png" id="2_n0cv0"]
+[ext_resource type="Texture2D" uid="uid://c6cv5phl3gvvn" path="res://addons/input_prompts/icons/xbox/right_trigger.png" id="2_kagcm"]
+[ext_resource type="Script" uid="uid://cpmh2d0trpco8" path="res://addons/input_prompts/action_prompt/action_prompt.gd" id="3_kagcm"]
+[ext_resource type="Texture2D" uid="uid://tdsh1d8hbha3" path="res://addons/input_prompts/icons/generic/right_stick_up.png" id="4_d0npw"]
 
-[sub_resource type="Animation" id="Animation_cmcwv"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pressed:visible")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_kagcm"]
+device = -1
+axis = 3
+axis_value = -1.0
 
-[sub_resource type="Animation" id="Animation_lggqi"]
-resource_name = "left_click"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Pressed:visible")
-tracks/0/interp = 0
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0.5, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
+[sub_resource type="InputEventMouseButton" id="InputEventMouseButton_d0npw"]
+device = -1
+button_index = 2
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_ww3iy"]
-_data = {
-&"RESET": SubResource("Animation_cmcwv"),
-&"right_click": SubResource("Animation_lggqi")
-}
+[sub_resource type="InputEventJoypadMotion" id="InputEventJoypadMotion_5vedb"]
+device = -1
+axis = 5
+axis_value = 1.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_388dt"]
-atlas = ExtResource("2_n0cv0")
-region = Rect2(138, 34, 12, 16)
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_top = -21.0
+offset_bottom = 19.0
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_whdlb"]
-atlas = ExtResource("2_n0cv0")
-region = Rect2(172, 34, 12, 16)
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = -13.0
+offset_right = 20.0
+offset_bottom = 27.0
+grow_horizontal = 2
+pivot_offset = Vector2(20, 0)
+theme_override_constants/separation = 0
+alignment = 1
 
-[node name="RightClick" type="Node2D"]
-process_mode = 3
+[node name="ActionPrompt" type="TextureRect" parent="HBoxContainer"]
+material = ExtResource("1_kxv27")
+layout_mode = 2
+texture = ExtResource("4_d0npw")
+stretch_mode = 5
+script = ExtResource("3_kagcm")
+action = "rstick_up"
+icon = 0
+events = Array[InputEvent]([SubResource("InputEventJoypadMotion_kagcm")])
+metadata/_custom_type_script = "uid://cpmh2d0trpco8"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-process_mode = 3
-reset_on_save = false
-libraries = {
-&"": SubResource("AnimationLibrary_ww3iy")
-}
-autoplay = "right_click"
-
-[node name="Depressed" type="Sprite2D" parent="."]
+[node name="RightClick2" type="TextureRect" parent="HBoxContainer"]
 process_mode = 3
 material = ExtResource("1_kxv27")
-position = Vector2(0, 5)
-texture = SubResource("AtlasTexture_388dt")
-
-[node name="Pressed" type="Sprite2D" parent="."]
-process_mode = 3
-material = ExtResource("1_kxv27")
-position = Vector2(0, 5)
-texture = SubResource("AtlasTexture_whdlb")
+layout_mode = 2
+texture = ExtResource("2_kagcm")
+stretch_mode = 5
+script = ExtResource("3_kagcm")
+action = "lasso"
+icon = 0
+events = Array[InputEvent]([SubResource("InputEventMouseButton_d0npw"), SubResource("InputEventJoypadMotion_5vedb")])
+metadata/_custom_type_script = "uid://cpmh2d0trpco8"
