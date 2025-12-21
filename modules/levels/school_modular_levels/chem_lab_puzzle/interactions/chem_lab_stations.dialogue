@@ -1,4 +1,30 @@
 ~ mixer
+# TODO: Change this. This is extremely extremely ugly and I hate it but I cannot find a solution 
+# right now due to how dialogue works. Doing it this way for the time being for testing purposes.
+while mixing_counter < 2
+	Juniper: What do I need.
+	- Orange Substance [if has_specific_substance("Orange Substance") == true]
+		do mark_mixing_substance("Orange Substance")
+	- Yellow Substance [if has_specific_substance("Yellow Substance") == true]
+		do mark_mixing_substance("Yellow Substance")
+	- Green Substance [if has_specific_substance("Green Substance") == true]
+		do mark_mixing_substance("Green Substance")
+	- Blue Substance [if has_specific_substance("Blue Substance") == true]
+		do mark_mixing_substance("Blue Substance")
+	- Light Purple Substance [if has_specific_substance("Light Purple Substance") == true]
+		do mark_mixing_substance("Light Purple Substance")
+	- Purple Substance [if has_specific_substance("Purple Substance") == true]
+		do mark_mixing_substance("Purple Substance")
+	- Brown Substance [if has_specific_substance("Brown Substance") == true]
+		do mark_mixing_substance("Brown Substance")
+	- Olive Substance [if has_specific_substance("Olive Substance") == true]
+		do mark_mixing_substance("Olive Substance")
+	- Nothing
+		# Rests counter early if we end station dialogue
+		do mixing_counter = 0
+		=> END
+# Resets the mixing counter for future use
+do mixing_counter = 0
 Juniper: Time to mix these.
 Juniper: Where is the on switch for this? Ah there it is!
 Juniper: ...

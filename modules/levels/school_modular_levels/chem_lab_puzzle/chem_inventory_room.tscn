@@ -17,11 +17,13 @@ parsed_collision_mask = 4294966355
 agent_radius = 8.0
 
 [node name="ChemInventoryRoom" type="Node2D"]
+y_sort_enabled = true
 
 [node name="0" type="Marker2D" parent="." groups=["level_entrance"]]
 position = Vector2(-12, 0)
 
 [node name="InventoryRoom" type="Node2D" parent="."]
+y_sort_enabled = true
 
 [node name="Tiles" type="NavigationRegion2D" parent="InventoryRoom"]
 y_sort_enabled = true
@@ -35,7 +37,6 @@ tile_set = ExtResource("2_i8125")
 
 [node name="FloorObjects" type="TileMapLayer" parent="InventoryRoom/Tiles"]
 z_index = 1
-y_sort_enabled = true
 material = ExtResource("1_whe1i")
 tile_map_data = PackedByteArray("AAD6/wIABQAGAAoAAAD6/wEABQAGAAkAAAD6/wAABQAGAAkAAAD6////BQAGAAkAAAD6//7/BQAGAAkAAAD6//3/BQAGAAgAAAD8//3/BQAGAAgAAAD8//7/BQAGAAkAAAD8////BQAGAAkAAAD8/wAABQAGAAkAAAD8/wEABQAGAAkAAAD8/wIABQAGAAoAAAD+//3/BQAGAAgAAAD+//7/BQAGAAkAAAD+////BQAGAAkAAAD+/wAABQAGAAkAAAD+/wEABQAGAAkAAAD+/wIABQAGAAoAAAAAAP3/BQAHAAgAAAAAAP7/BQAHAAkAAAAAAP//BQAHAAkAAAAAAAAABQAHAAkAAAAAAAEABQAHAAkAAAAAAAIABQAHAAoAAAACAP3/BQAHAAgAAAACAP7/BQAHAAkAAAACAP//BQAHAAkAAAACAAAABQAHAAkAAAACAAEABQAHAAkAAAACAAIABQAHAAoAAAAEAAIABQAHAAoAAAAEAAEABQAHAAkAAAAEAAAABQAHAAkAAAAEAP//BQAHAAkAAAAEAP7/BQAHAAkAAAAEAP3/BQAHAAgAAAA=")
 tile_set = ExtResource("2_i8125")
@@ -65,24 +66,24 @@ tile_set = ExtResource("2_i8125")
 [node name="SpawnManager" type="Node2D" parent="InventoryRoom" node_paths=PackedStringArray("spawn_locations")]
 script = ExtResource("3_53wmm")
 spawn_locations = {
-NodePath("SpawnLocation1"): null,
-NodePath("SpawnLocation2"): null,
-NodePath("SpawnLocation3"): null,
-NodePath("SpawnLocation4"): null,
-NodePath("SpawnLocation5"): null,
-NodePath("SpawnLocation6"): null,
-NodePath("SpawnLocation7"): null,
-NodePath("SpawnLocation8"): null,
-NodePath("SpawnLocation9"): null,
-NodePath("SpawnLocation10"): null,
-NodePath("SpawnLocation11"): null,
-NodePath("SpawnLocation12"): null,
-NodePath("SpawnLocation13"): null,
-NodePath("SpawnLocation14"): null,
-NodePath("SpawnLocation15"): null,
-NodePath("SpawnLocation16"): null,
+NodePath("SpawnLocation18"): null,
 NodePath("SpawnLocation17"): null,
-NodePath("SpawnLocation18"): null
+NodePath("SpawnLocation16"): null,
+NodePath("SpawnLocation15"): null,
+NodePath("SpawnLocation14"): null,
+NodePath("SpawnLocation13"): null,
+NodePath("SpawnLocation12"): null,
+NodePath("SpawnLocation11"): null,
+NodePath("SpawnLocation10"): null,
+NodePath("SpawnLocation9"): null,
+NodePath("SpawnLocation8"): null,
+NodePath("SpawnLocation7"): null,
+NodePath("SpawnLocation6"): null,
+NodePath("SpawnLocation5"): null,
+NodePath("SpawnLocation4"): null,
+NodePath("SpawnLocation3"): null,
+NodePath("SpawnLocation2"): null,
+NodePath("SpawnLocation1"): null
 }
 needed_mats = Dictionary[ExtResource("4_5axso"), bool]({
 ExtResource("5_amkik"): false,

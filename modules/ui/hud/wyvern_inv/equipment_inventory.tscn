@@ -12,8 +12,8 @@
 resource_name = "RestrictedInventory"
 script = ExtResource("2_u5gh5")
 allow_rotation = false
-restricted_to_types = Array[int]([131072, 65536, 262144, 256, 256, 256, 256, 256, 0, 0, 0, 0, 0])
-width = 13
+restricted_to_types = Array[int]([131072, 65536, 262144, 256, 256, 256, 256, 256, 256, 256, 256, 256, 256, 0])
+width = 14
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_fedji"]
 atlas = ExtResource("6_x6ee3")
@@ -206,6 +206,20 @@ anchor_bottom = 0.0
 offset_left = 13.0
 offset_top = 117.0
 offset_right = 37.0
+offset_bottom = 141.0
+size_flags_horizontal = 3
+focus_mode = 2
+mouse_filter = 0
+texture = ExtResource("10_u08uh")
+
+[node name="Gen10" parent="Cells" instance=ExtResource("5_ele7e")]
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 38.0
+offset_top = 117.0
+offset_right = 62.0
 offset_bottom = 141.0
 size_flags_horizontal = 3
 focus_mode = 2

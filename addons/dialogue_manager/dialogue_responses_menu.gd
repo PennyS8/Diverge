@@ -15,7 +15,9 @@ signal response_selected(response)
 @export var next_action: StringName = &""
 
 ## Hide any responses where [code]is_allowed[/code] is false
-@export var hide_failed_responses: bool = false
+# MAX CLARK - 12/17/2025
+# Changing this to true in order to completely hide conditional responses
+@export var hide_failed_responses: bool = true
 
 ## The list of dialogue responses.
 var responses: Array = []:

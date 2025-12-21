@@ -7,8 +7,8 @@ extends Node2D
 var substance_packed : PackedScene = preload("res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/substance.tscn")
 
 func _ready() -> void:
-	var randi = randi_range(3, 7)
-	
+	# Adds a random amount of materials between 4 and 8.
+	var randi = randi_range(4, 8)
 	for i in randi:
 		add_random_material()
 

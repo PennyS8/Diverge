@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtf5boda2djmf"]
+[gd_scene load_steps=10 format=3 uid="uid://dtf5boda2djmf"]
 
 [ext_resource type="Script" uid="uid://mgal56uptn3t" path="res://modules/levels/school_modular_levels/chem_lab_puzzle/chem_lab_inventory/inventory_items/substance.gd" id="1_7xy3w"]
 [ext_resource type="Material" uid="uid://bisbatw7pxu6r" path="res://assets/debug/pixel_perfect_styling/smooth-pixel.tres" id="1_ohqdb"]
 [ext_resource type="PackedScene" uid="uid://cjdtl6ek4qp7d" path="res://addons/wyvernbox_prefabs/ground_item_stack_view_2d.tscn" id="2_7xy3w"]
+[ext_resource type="Material" uid="uid://b3i67aukbsan1" path="res://modules/levels/cafeteria/ramen_tray.tres" id="3_o7nbw"]
+[ext_resource type="Material" uid="uid://bo62wxenemsxt" path="res://modules/entities/enemies/shades/fx/enemy_shader.tres" id="4_47jud"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_xvx06"]
 
@@ -10,35 +12,47 @@
 radius = 6.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o7nbw"]
-size = Vector2(12, 19)
+size = Vector2(14, 19)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_47jud"]
-radius = 8.0
+radius = 9.0
 
-[node name="Substance" type="CharacterBody2D"]
+[node name="Substance" type="CharacterBody2D" groups=["tetherable_body"]]
+y_sort_enabled = true
+material = ExtResource("1_ohqdb")
+collision_layer = 0
+collision_mask = 128
 script = ExtResource("1_7xy3w")
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
-material = ExtResource("1_ohqdb")
+material = ExtResource("3_o7nbw")
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasGroup"]
 z_index = 1
 y_sort_enabled = true
-material = ExtResource("1_ohqdb")
-use_parent_material = true
+material = ExtResource("4_47jud")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("CircleShape2D_xvx06")
 
 [node name="TetherableArea2D" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TetherableArea2D"]
 shape = SubResource("CircleShape2D_sjrr0")
 
 [node name="Item" parent="." instance=ExtResource("2_7xy3w")]
+collision_layer = 0
 
 [node name="VisItem" parent="Item" index="0"]
+visible = false
+
+[node name="HoverRect" parent="Item" index="3"]
+mouse_filter = 2
+
+[node name="Label" parent="Item" index="4"]
 visible = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Item"]
@@ -46,7 +60,9 @@ position = Vector2(0, 2.5)
 shape = SubResource("RectangleShape2D_o7nbw")
 
 [node name="TopCollider" type="CollisionShape2D" parent="Item"]
-position = Vector2(0, -2)
+position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_47jud")
+
+[connection signal="body_entered" from="Item" to="." method="_on_item_body_entered"]
 
 [editable path="Item"]

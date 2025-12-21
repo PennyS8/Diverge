@@ -2,8 +2,8 @@ extends StaticBody2D
 
 var interactable : bool = false
 var puzzle_complete : bool = false
+var chem_inventory
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var chem_inventory = %ChemInventory
 
 func on_save_game(saved_data:Array[SavedData]):
 	var my_data = SavedData.new()
@@ -36,6 +36,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 		player.dir = Vector2.ZERO
 		
+		# Gets the EquipmentPanel of the inventory node
+		# TODO: Find a better way to access the EquipmentPanel than calling get_parent()
+		chem_inventory = GameManager.inventory_node.get_parent()
+		
 		if player.lab_stations["book"] == 1:
 			puzzle_complete = true
 		
@@ -44,7 +48,7 @@ func _unhandled_input(_event: InputEvent) -> void:
 		var dialogue_type
 		if puzzle_complete == true:
 			dialogue_type = "puzzle_completed"
-		elif chem_inventory.lab_inventory.count_all_items() == { }:
+		elif chem_inventory.has_substance() == 0:
 			dialogue_type = "no_materials"
 		elif player.lab_stations["mixer"] == 0:
 			dialogue_type = "not_mixed"

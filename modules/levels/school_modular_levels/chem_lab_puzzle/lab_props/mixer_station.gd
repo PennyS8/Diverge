@@ -36,6 +36,10 @@ func _unhandled_input(_event: InputEvent) -> void:
 
 		player.dir = Vector2.ZERO
 		
+		# Gets the EquipmentPanel of the inventory node
+		# TODO: Find a better way to access the EquipmentPanel than calling get_parent()
+		chem_inventory = GameManager.inventory_node.get_parent()
+		
 		if player.lab_stations["book"] == 1:
 			puzzle_complete = true
 		
@@ -44,9 +48,9 @@ func _unhandled_input(_event: InputEvent) -> void:
 		var dialogue_type
 		if puzzle_complete == true:
 			dialogue_type = "puzzle_completed"
-		elif chem_inventory.lab_inventory.count_all_items() == { }:
+		elif chem_inventory.has_substance() == 0:
 			dialogue_type = "no_materials"
-		elif chem_inventory.lab_inventory.items.size() == 1:
+		elif chem_inventory.has_substance() == 1:
 			dialogue_type = "one_material_mixer"
 		elif player.lab_stations["scale"] == 0:
 			dialogue_type = "not_measured"
