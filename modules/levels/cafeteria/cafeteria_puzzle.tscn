@@ -937,6 +937,9 @@ unique_name_in_owner = false
 [node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/SoftCollision" index="0"]
 scale = Vector2(1.5, 1.5)
 
+[node name="AttackBox" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents" index="2"]
+damage = 2
+
 [node name="CollisionShape2D" parent="NavigationRegion2D/CheckeredArea/RamenDispenser/BrickShadehouse/BehaviorComponents/AttackBox" index="0"]
 scale = Vector2(1.5, 1.5)
 

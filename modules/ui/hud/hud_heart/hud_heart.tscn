@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bcx1ka3l64iq4"]
+[gd_scene load_steps=8 format=3 uid="uid://bcx1ka3l64iq4"]
 
 [ext_resource type="Script" uid="uid://b51k3j50euyaq" path="res://modules/ui/hud/hud_heart/hud_heart.gd" id="1_66xcc"]
 [ext_resource type="Texture2D" uid="uid://cy4201deur1h3" path="res://assets/hud/Pixel_Hearts_GUI_Pack_v002/hearts.png" id="1_uxsif"]
+[ext_resource type="Material" uid="uid://bcw6swreclbwb" path="res://modules/entities/enemies/shades/fx/better_enemy_shader.tres" id="2_jg0vv"]
 
 [sub_resource type="Animation" id="Animation_e100q"]
 length = 0.001
@@ -70,6 +71,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
+material = ExtResource("2_jg0vv")
 scale = Vector2(5, 5)
 texture = ExtResource("1_uxsif")
 centered = false

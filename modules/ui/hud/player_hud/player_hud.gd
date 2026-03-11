@@ -28,21 +28,11 @@ func heart_damage(amount : int):
 	for i in range(max_hearts - 1, -1, -1):
 		if damage_left <= 0:
 			break
-		if hearts[i].empty:
+		if hearts[i].heart_health == 0:
 			continue
 		
-		if (damage_left >= 2) or (hearts[i].full == false):
-			if hearts[i].full == false:
-				damage_left -= 1
-				hearts[i].damage_sprite("half_damage")
-			else:
-				damage_left -= 2
-				hearts[i].damage_sprite("full_damage")
-			display_hurt_ui()
-		else:
-			hearts[i].damage_sprite("half_damage")
-			damage_left = 0
-			display_hurt_ui()
+		damage_left = hearts[i].damage_sprite(damage_left)
+		display_hurt_ui()
 	
 	updating = false
 	hud_update_complete.emit()
@@ -58,21 +48,12 @@ func heart_heal(amount : int):
 	updating = true
 	
 	for heart in hearts:
-		if heal_left<= 0:
+		if heal_left <= 0:
 			break
-		if heart.full:
+		if heart.heart_health == 2:
 			continue
 		
-		if (heal_left>= 2) and (heart.empty == true):
-			heal_left-= 2
-			heart.heal_sprite("full_heal")
-		else:
-			if heart.empty == false:
-				heal_left-= 1
-				heart.heal_sprite("full_heal")
-			else:
-				heal_left= 0
-				heart.heal_sprite("half_heal")
+		heal_left = heart.heal_sprite(heal_left)
 	
 	updating = false
 	hud_update_complete.emit()
