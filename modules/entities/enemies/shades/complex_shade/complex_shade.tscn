@@ -2811,7 +2811,7 @@ rotation = 3.14159
 collision_layer = 8
 collision_mask = 4
 script = ExtResource("12_rteho")
-damage = 2
+damage = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BehaviorComponents/AttackBox"]
 position = Vector2(4, -7.5)
