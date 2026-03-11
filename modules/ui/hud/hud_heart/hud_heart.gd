@@ -42,8 +42,6 @@ func heal_sprite(heal_left : int) -> int:
 		heal_left = heal_left - 1
 		heart_health = 1
 	
-	print("Heal Left: " + str(heal_left))
-	
 	return heal_left
 
 func flash():
